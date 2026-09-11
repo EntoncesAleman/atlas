@@ -139,7 +139,11 @@ export default async function EntryPage({ params }) {
               <ul className="atlas-sources-list">
                 {entrySources.map((source) => (
                   <li className="atlas-source-item" key={source.id}>
-                    <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>
+                    {source.url ? (
+                      <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>
+                    ) : (
+                      <span>{source.title}</span>
+                    )}
                     {source.authorOrInstitution && (
                       <span className="atlas-source-meta"> — {source.authorOrInstitution}</span>
                     )}

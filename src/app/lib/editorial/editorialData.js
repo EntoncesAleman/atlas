@@ -318,6 +318,13 @@ export const editorialEntries = [
         ]
       },
       {
+        id: 'historia',
+        title: 'Historia',
+        paragraphs: [
+          'La idea de que un sustrato en maceta se comporta distinto que el mismo suelo en el campo abierto se formalizó recién a mediados del siglo XX. Un trabajo clave fue el de White y Mastalerz (1966), que describieron el concepto de "capacidad de contenedor": después de regar a saturación y dejar drenar, un sustrato dentro de una maceta retiene más agua en su parte inferior que la misma mezcla en el suelo abierto, por una acumulación de agua que se forma en el fondo del recipiente —un efecto físico ligado a la altura del contenedor, no a un exceso de riego—. Antes de esa formalización, la práctica hortícola ya distinguía, de forma empírica, entre un sustrato "que retenga humedad" y uno "que no encharque", pero sin explicar por qué esas dos necesidades a veces entran en tensión dentro de un contenedor chico. Desde entonces, la investigación pasó de esa descripción cualitativa a cuantificar la relación entre porosidad de aireación y capacidad de retención de agua: en Argentina, un estudio del INTA (2020) evaluó cómo distintas proporciones de compost y turba en una mezcla modifican esa relación y el desarrollo de plantines florales, dentro de una línea de investigación que sigue activa.'
+        ]
+      },
+      {
         id: 'agua-y-drenaje',
         title: 'Agua y drenaje',
         paragraphs: [
@@ -330,7 +337,19 @@ export const editorialEntries = [
         title: 'Aireación y oxígeno',
         paragraphs: [
           'La raíz respira: consume oxígeno y libera dióxido de carbono, igual que el resto de la planta, para obtener la energía que necesita para absorber agua y nutrientes. Cuando el sustrato queda anegado, el agua desplaza el aire de los poros y esa respiración se interrumpe — un estado que se describe como hipoxia (falta de oxígeno) o, si se prolonga, anoxia.',
-          'Frente a esa falta de oxígeno, la raíz puede cambiar temporalmente su metabolismo hacia una vía que no lo requiere (fermentación), pero es una vía de emergencia, no una alternativa sostenible: si la condición se mantiene, la función radicular se deteriora.'
+          'Frente a esa falta de oxígeno, la raíz puede cambiar temporalmente su metabolismo hacia una vía que no lo requiere (fermentación alcohólica), pero es una vía de emergencia con mucho menor rendimiento energético, no una alternativa sostenible: si la condición se mantiene, la función radicular se deteriora.'
+        ]
+      },
+      {
+        id: 'que-se-evalua-que-se-ve-y-por-que',
+        title: 'Qué se evalúa, qué se ve y por qué',
+        paragraphs: [
+          'Separado en tres preguntas distintas, para no mezclar el proceso físico con la observación ni con su causa:'
+        ],
+        list: [
+          'Qué se evalúa: la capacidad del sustrato de sostener agua disponible para la raíz y, al mismo tiempo, dejar espacio poroso para el aire — dos capacidades que compiten por el mismo volumen, no dos sustratos distintos.',
+          'Qué se ve desde afuera: el sustrato oscurece y pesa más recién regado, aclara y aligera a medida que se seca; en un contenedor con buen drenaje, el agua sobrante escurre por los orificios de salida poco después de regar. Al revisar el fondo de la maceta, a veces se ven raíces claras llegando hasta los orificios de drenaje — es compatible con un sistema radicular activo, pero no alcanza por sí solo para concluir que el resto del sustrato está en buen estado.',
+          'Por qué ocurre así: el agua ocupa primero los poros más chicos (los que la retienen contra la gravedad) y el excedente circula por los poros más grandes hasta salir por el fondo; si esos poros grandes quedan bloqueados —por compactación, por un contenedor sin salida, o por riego constante sin dejar secar— el aire no puede volver a ocupar ese espacio y la raíz entra en hipoxia, porque no puede respirar con normalidad.'
         ]
       },
       {
@@ -339,6 +358,13 @@ export const editorialEntries = [
         paragraphs: [
           'La humedad del sustrato no se lee bien solo por la superficie: la parte superior puede estar seca al tacto mientras el interior todavía retiene agua, o al revés. El peso relativo de la maceta o el contenedor (más liviano cuando está seco, más pesado cuando está húmedo) suele ser una referencia más consistente que la apariencia superficial sola.',
           'Remover el sustrato de forma constante para "revisar" la humedad altera físicamente su estructura y puede introducir el mismo problema que se busca evitar.'
+        ]
+      },
+      {
+        id: 'relacion-con-otras-etapas',
+        title: 'Relación con otras etapas',
+        paragraphs: [
+          'El sustrato no es un tema aparte del resto del recorrido: es la base física sobre la que ocurre buena parte de lo que describen otras entradas del atlas. La radícula que aparece durante la "Germinación y primera lectura del material" se ancla y empieza a absorber agua exactamente en este mismo sistema de poros, agua y aire — el sustrato no cambia entre una etapa y otra, aunque las necesidades de la planta sí lo hagan. A medida que la planta avanza en su desarrollo ("Cultivo en secuencia"), el sistema de raíces ocupa más volumen y se vuelve más sensible a que ese equilibrio entre agua y aire se sostenga, porque una raíz más grande también respira más. Esta entrada no desarrolla esas etapas — solo señala que el sustrato es la base física común a todas ellas.'
         ]
       }
     ],
@@ -380,9 +406,16 @@ export const editorialEntries = [
     ],
     tags: ['suelo', 'agua', 'drenaje'],
     relatedEntryIds: ['germinacion', 'cultivo-en-secuencia'],
-    sourceIds: ['oficial-inta-relacion-suelo-planta-agua', 'academica-unlpam-inta-guia-evaluacion-visual-suelo'],
+    sourceIds: [
+      'oficial-inta-relacion-suelo-planta-agua',
+      'academica-unlpam-inta-guia-evaluacion-visual-suelo',
+      'oficial-inta-sustrato-maceta-rubio-karlanian',
+      'cientifica-barbaro-karlanian-2020-propiedades-fisicas-sustrato',
+      'academica-white-mastalerz-1966-container-capacity',
+      'cientifica-loreti-perata-2020-hypoxia-plants'
+    ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-10',
+    lastReviewed: '2026-09-11',
     metadata: {
       seoTitle: 'Sustrato, agua y drenaje — Atlas del Cultivo Argentino',
       seoDescription: 'Qué función cumple el sustrato, cómo se relacionan agua y aire en la raíz, y qué señales observar antes de concluir que falta o sobra riego.',

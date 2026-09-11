@@ -181,6 +181,49 @@ export const sources = [
     accessedAt: '2026-09-10',
     notes: 'VERIFICADO por lectura directa en Fase 7C (extracción local con PyMuPDF/pdftotext-equivalente, no era un PDF escaneado sino texto normal que la herramienta de fetch previa no pudo procesar). Confirma autoría (Noellemeyer et al., Editorial UNLPam, 2021, ISBN 978-950-863-430-6) y contenido real sobre estructura/porosidad/aireación/drenaje del suelo y su relación con retención de agua y oxígeno de raíz — respalda directamente el contenido ya publicado de "sustrato-y-drenaje" sin necesidad de citar cifras.'
   },
+
+  // --- Fuentes de contenido: Loop 2 — Sustrato, agua y drenaje (Fase 49, 2026-09-11) ---
+  {
+    id: 'oficial-inta-sustrato-maceta-rubio-karlanian',
+    title: 'Cómo elegir un buen sustrato para las macetas',
+    authorOrInstitution: 'Rubio, E.; Karlanian, M. — Instituto de Floricultura, INTA (Argentina.gob.ar)',
+    url: 'https://www.argentina.gob.ar/noticias/como-elegir-un-buen-sustrato-para-las-macetas',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO por lectura directa. Nota institucional del Instituto de Floricultura del INTA: define las funciones del sustrato (retención de agua/nutrientes, aireación, anclaje) y da rangos orientativos generales de aireación/retención hídrica citados por los propios investigadores del INTA — se usa para respaldar la función general del sustrato, no como cifra prescriptiva para Cannabis.'
+  },
+  {
+    id: 'cientifica-barbaro-karlanian-2020-propiedades-fisicas-sustrato',
+    title: 'Efecto de las propiedades físicas del sustrato sobre el desarrollo de plantines florales en maceta',
+    authorOrInstitution: 'Barbaro, L. A.; Karlanian, M. A. — INTA, revista Ciencia del Suelo, vol. 38, n.º 1',
+    url: 'https://www.scielo.org.ar/scielo.php?script=sci_arttext&pid=S1850-20672020000100001&lng=es&nrm=iso&tlng=es',
+    type: 'SCIENTIFIC',
+    publicationDate: '2020-07',
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO por lectura directa (SciELO Argentina, acceso abierto). DOI no localizado/no indexado en Crossref al momento de esta verificación — identificador usado es el PID de SciELO en la URL. Estudio con petunias y copetes (no Cannabis): compara mezclas de compost de corteza de pino y turba de Sphagnum en distintas proporciones y mide su relación entre porosidad de aireación y capacidad de retención de agua. Se cita únicamente para respaldar, como condición de ese estudio puntual (no como regla universal ni aplicable a Cannabis), que existe una relación medible y cuantificable entre esas dos propiedades del sustrato y el desarrollo de la parte aérea de la planta.'
+  },
+  {
+    id: 'academica-white-mastalerz-1966-container-capacity',
+    title: 'Soil moisture as related to container capacity',
+    authorOrInstitution: 'White, J. W.; Mastalerz, J. W. — Proceedings of the American Society for Horticultural Science, vol. 89, pp. 757-765 (páginas citadas de forma inconsistente entre fuentes secundarias: 757 o 758 de inicio)',
+    url: null,
+    type: 'ACADEMIC',
+    publicationDate: '1966',
+    accessedAt: '2026-09-11',
+    notes: 'SIN URL: no se localizó ninguna página real y verificable (ni de texto completo ni de sola referencia bibliográfica) para citar como enlace — se prefirió dejar `url: null` antes que inventar una dirección. NO verificado por lectura directa (publicación previa a la era DOI/acceso abierto digital). La cita (autores, año, revista, volumen) está corroborada de forma convergente por varias búsquedas independientes que la referencian como el trabajo que formalizó el concepto de "capacidad de contenedor" en horticultura de contenedor. Se usa únicamente para ese hecho histórico puntual —que ese concepto se formalizó en ese trabajo—, no para ninguna cifra o hallazgo interno del artículo. Candidato a reforzar con una fuente secundaria académica verificable en una fase futura si se retoma investigación histórica de esta entrada.'
+  },
+  {
+    id: 'cientifica-loreti-perata-2020-hypoxia-plants',
+    title: 'The Many Facets of Hypoxia in Plants',
+    authorOrInstitution: 'Loreti, E.; Perata, P. — Plants (Basel), MDPI',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7356549/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2020-06',
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO por lectura directa (PMC, artículo de libre acceso; DOI 10.3390/plants9060745). Revisión internacional que respalda, con cita textual, el mecanismo ya descripto en la entrada: la hipoxia limita la respiración aeróbica de la raíz, y la fermentación alcohólica la reemplaza de forma temporal con mucho menor rendimiento energético (2 moles de ATP contra 36 de la respiración aeróbica) — refuerzo internacional del mismo principio agua-oxígeno-raíz que ya citaban las fuentes argentinas de la Fase 7B2.'
+  },
+
   {
     id: 'academica-unne-fitocromos-desarrollo-vegetal',
     title: 'Fitocromos y desarrollo vegetal',
