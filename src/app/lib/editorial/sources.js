@@ -335,6 +335,78 @@ export const sources = [
     publicationDate: null,
     accessedAt: '2026-09-09',
     notes: 'CC BY 2.0. Verificado por lectura directa.'
+  },
+
+  // --- Fuentes de contenido: Loop 3B — base de datos de la Ficha Provincial (Fase 51, 2026-09-11) ---
+  {
+    id: 'oficial-georef-api-provincias',
+    title: 'API georef — provincias (id, nombre, nombre_completo, centroide)',
+    authorOrInstitution: 'georef-ar-api, apis.datos.gob.ar (datos oficiales IGN/INDEC)',
+    url: 'https://apis.datos.gob.ar/georef/api/provincias?campos=id,nombre,nombre_completo,centroide',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO por consulta directa a la API en esta sesión (misma API oficial ya usada desde la Fase 8A para la geometría del mapa y desde la Fase 11 para los centroides de `PROVINCE_LOCATIONS`). Devuelve las 24 jurisdicciones sin duplicados ni omisiones, con su código INDEC de 2 dígitos (campo `id`) y su nombre oficial completo (`nombre_completo`) — fuente de la tabla `identity` de `provinceProfile` (código INDEC y nombre oficial).'
+  },
+  {
+    id: 'oficial-smn-normales-1991-2020-cambios',
+    title: 'Cambios en las normales climatológicas del SMN',
+    authorOrInstitution: 'Servicio Meteorológico Nacional (SMN)',
+    url: 'https://www.argentina.gob.ar/noticias/cambios-en-las-normales-climatologicas-del-smn',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO por lectura directa. Nota oficial del SMN que compara las normales climatológicas 1981-2010 vs. 1991-2020: temperatura media anual país 16.1°C → 16.3°C, y cita textualmente la única comparación regional con porcentaje que aparece en la nota: "Los mayores cambios se observaron en el oeste del NOA y el norte de Córdoba, con un secamiento cercano al 7.5%, y en Mendoza y Entre Ríos con aumentos de precipitación entre un 8 y un 9% respecto del período anterior." Se usa: (a) la cifra nacional de temperatura, solo a nivel `ArgentinaProfile`, nunca asignada a ninguna provincia; (b) el cambio porcentual de precipitación de Mendoza y Entre Ríos, con la aclaración expresa de que es un cambio entre normales climatológicas (tendencia), no una precipitación anual absoluta. El dato de "oeste del NOA" NO se asignó a ninguna provincia puntual de las 6 que este proyecto agrupa como NOA — la nota no especifica a cuáles corresponde "oeste del NOA" con precisión suficiente para atribuirlo a una jurisdicción sin adivinar, así que se documentó como límite (ver `51_LOOP_3B_PROVINCIAL_DATA.md` §14). Lo mismo aplica a "norte de Córdoba": se registró para Córdoba con la aclaración explícita de que es solo el norte de la provincia, no toda su superficie.'
+  },
+  {
+    id: 'oficial-smn-normales-1991-2020-pdf',
+    title: 'Estadísticas Climatológicas Normales 1991-2020',
+    authorOrInstitution: 'Servicio Meteorológico Nacional (SMN), ISSN 2953-5549',
+    url: 'https://repositorio.smn.gob.ar/bitstream/handle/20.500.12160/2506/estad%C3%ADsticas_climatol%C3%B3gicas_normales_1991-2020.pdf?sequence=4&isAllowed=y',
+    type: 'OFFICIAL',
+    publicationDate: '2021',
+    accessedAt: '2026-09-11',
+    notes: 'Existencia y origen institucional verificados (URL real del repositorio institucional del SMN). Documento fuente primario de 105 estaciones SMN/INTA con normales de temperatura/precipitación por estación — NO se pudo procesar en esta sesión: el archivo excede el límite de tamaño de la herramienta de lectura disponible (>10MB). Ninguna cifra por estación/provincia de este documento se usó directamente en `provinceProfile` — la única cifra nacional usada (§`oficial-smn-normales-1991-2020-cambios`) viene de la nota periodística oficial del SMN que sí se pudo leer, no de este PDF. Queda como la fuente primaria a extraer manualmente en una fase futura dedicada (ver limitaciones).'
+  },
+  {
+    id: 'oficial-ign-anida-clima-argentina',
+    title: 'Clima en Argentina (fascículo ANIDA — Argentina Físico-Natural)',
+    authorOrInstitution: 'Instituto Geográfico Nacional (IGN) — Atlas Nacional Interactivo de la República Argentina (ANIDA)',
+    url: 'https://static.ign.gob.ar/anida/fasciculos/fasc_afn_clima_arg.pdf',
+    type: 'OFFICIAL',
+    publicationDate: '2014',
+    accessedAt: '2026-09-11',
+    notes: 'Existencia, autoría institucional (IGN) y año de creación (metadatos del PDF, 2014, con revisiones hasta 2023) verificados por acceso directo al archivo. Es el mismo proyecto ANIDA cuya capa GIS "Tipos de climas" ya se había verificado como fuente Köppen oficial en `21_GEO_CLIMATE_RESEARCH.md` (Fase 7). El contenido de texto/tablas del fascículo NO se pudo extraer en esta sesión (PDF con mucho contenido gráfico/comprimido) — no se usó ninguna afirmación de su contenido interno, solo se registra su existencia como candidato de lectura manual futura para clasificación climática por región.'
+  },
+  {
+    id: 'oficial-inta-atlas-climatico-digital-2010',
+    title: 'Atlas Climático Digital de la República Argentina',
+    authorOrInstitution: 'Bianchi, A. R.; Cravero, S. A. C. — INTA',
+    url: 'https://www.argentina.gob.ar/sites/default/files/inta-atlas_climatico_digital_argentina-2010.pdf',
+    type: 'OFFICIAL',
+    publicationDate: '2010',
+    accessedAt: '2026-09-11',
+    notes: 'Título, autoría y año corroborados de forma consistente por búsqueda (INTA, 2010) e identificados en una URL oficial de argentina.gob.ar. Contenido (mapas de temperatura media, precipitación anual, evapotranspiración, balance hídrico, índice de aridez de De Martonne) NO leído directamente en esta sesión. No se usó ninguna cifra de este atlas — se registra como el candidato más prometedor para climatología de referencia por región en una fase de investigación climática dedicada futura, dado que ya es mapas por variable a nivel de todo el país.'
+  },
+  {
+    id: 'cientifica-spencer-1971-solar-declination',
+    title: 'Fourier series representation of the position of the sun',
+    authorOrInstitution: 'Spencer, J. W. — Search, vol. 2, n.º 5, p. 172',
+    url: null,
+    type: 'SCIENTIFIC',
+    publicationDate: '1971',
+    accessedAt: '2026-09-11',
+    notes: 'SIN URL: no se localizó una copia digital accesible de esta publicación de 1971 (revista "Search" de la ANZAAS, previa a la era de acceso abierto digital) — se prefirió `url: null` antes que inventar una dirección. NO verificado por lectura directa del artículo original. La fórmula exacta de declinación solar (serie de Fourier de 7 términos) fue corroborada de forma textual y consistente por fuentes secundarias que la citan como la aproximación más citada en la literatura de geometría solar (error máximo documentado de ~0.28°). Usada en `lib/geo/photoperiod.js` para el cálculo de duración del día — nivel de evidencia D (cálculo determinista, no medición), nunca presentado como dato oficial.'
+  },
+  {
+    id: 'academica-cooper-1969-solar-geometry',
+    title: 'The absorption of radiation in solar stills (geometría solar estándar: ángulo horario y duración del día)',
+    authorOrInstitution: 'Cooper, P. I. — Solar Energy, vol. 12, n.º 3, pp. 333-346',
+    url: null,
+    type: 'ACADEMIC',
+    publicationDate: '1969',
+    accessedAt: '2026-09-11',
+    notes: 'SIN URL: no se localizó una copia digital verificable en esta sesión — se dejó `url: null`. NO verificado por lectura directa. Se cita por convención de la literatura de ingeniería solar como origen habitual de la relación estándar entre ángulo horario de salida/puesta de sol y latitud/declinación (`duración del día = (24/π) · arccos(-tan(latitud)·tan(declinación))`) — es geometría esférica estándar, reproducida idénticamente en numerosos textos posteriores (ej. Duffie & Beckman, "Solar Engineering of Thermal Processes"), no una fórmula exclusiva ni controvertida de este paper puntual.'
   }
 ];
 
