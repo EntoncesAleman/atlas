@@ -10,7 +10,7 @@ import {
   getAssetsForEntry
 } from '../../../lib/editorial/registry';
 import { SIGNAL_LEVEL_LABELS, MISTAKE_TYPE_LABELS } from '../../../lib/editorial/tags';
-import ProvinceContextPanel from '../../../components/ProvinceContextPanel';
+import ProvinceProfileCard from '../../../components/ProvinceProfileCard';
 
 export default async function EntryPage({ params }) {
   const { category: categorySlug, entry: entrySlug } = await params;
@@ -130,7 +130,6 @@ export default async function EntryPage({ params }) {
               </div>
             )}
 
-            <ProvinceContextPanel entryId={entry.id} />
           </div>
 
           {entrySources.length > 0 && (
@@ -155,6 +154,8 @@ export default async function EntryPage({ params }) {
         </article>
 
         <aside className="atlas-entry-aside">
+          <ProvinceProfileCard entryId={entry.id} />
+
           <span className="atlas-aside-label">Contenido relacionado</span>
           <div className="atlas-aside-list">
             {relatedEntries.length > 0 ? relatedEntries.map((related) => {

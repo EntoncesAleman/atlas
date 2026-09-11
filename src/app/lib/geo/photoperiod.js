@@ -94,6 +94,8 @@ export function getPhotoperiodDataPoint(latitudeDeg, date = new Date()) {
       sourceId: 'cientifica-spencer-1971-solar-declination',
       evidenceLevel: 'E',
       availability: 'UNAVAILABLE',
+      methodology: null,
+      limitation: null,
       notes: 'No calculable con la fórmula estándar para esta combinación de latitud/fecha.',
     };
   }
@@ -105,6 +107,8 @@ export function getPhotoperiodDataPoint(latitudeDeg, date = new Date()) {
     sourceId: 'cientifica-spencer-1971-solar-declination',
     evidenceLevel: 'D',
     availability: 'AVAILABLE',
+    methodology: 'Declinación solar (Spencer, 1971) + geometría estándar de ángulo horario (Cooper, 1969) a partir de la latitud.',
+    limitation: 'Cálculo astronómico determinista, no una medición ni un pronóstico. Ignora refracción atmosférica, ecuación del tiempo y elevación del terreno.',
     notes: 'Cálculo astronómico determinista (declinación solar + latitud), no una medición ni un pronóstico. Ignora refracción atmosférica, ecuación del tiempo y elevación del terreno.',
   };
 }

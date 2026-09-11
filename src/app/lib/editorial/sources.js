@@ -407,6 +407,28 @@ export const sources = [
     publicationDate: '1969',
     accessedAt: '2026-09-11',
     notes: 'SIN URL: no se localizó una copia digital verificable en esta sesión — se dejó `url: null`. NO verificado por lectura directa. Se cita por convención de la literatura de ingeniería solar como origen habitual de la relación estándar entre ángulo horario de salida/puesta de sol y latitud/declinación (`duración del día = (24/π) · arccos(-tan(latitud)·tan(declinación))`) — es geometría esférica estándar, reproducida idénticamente en numerosos textos posteriores (ej. Duffie & Beckman, "Solar Engineering of Thermal Processes"), no una fórmula exclusiva ni controvertida de este paper puntual.'
+  },
+
+  // --- Fuentes de contenido: Loop 3C — referencias fenológicas de Cultivo/Cosecha (Fase 52, 2026-09-11) ---
+  {
+    id: 'cientifica-garner-allard-1920-photoperiodism-discovery',
+    title: 'Effect of the Relative Length of Day and Night and Other Factors of the Environment on Growth and Reproduction in Plants',
+    authorOrInstitution: 'Garner, W. W.; Allard, H. A. — trabajo original en Journal of Agricultural Research 18:553-606 (1920); entrada verificada en Monthly Weather Review, vol. 48, p. 415',
+    url: 'https://doi.org/10.1175/1520-0493(1920)48%3C415b:EOTRLO%3E2.0.CO;2',
+    type: 'SCIENTIFIC',
+    publicationDate: '1920-07',
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO vía Crossref (DOI real, resuelve a la entrada bibliográfica del hallazgo en Monthly Weather Review — un resumen/reseña contemporáneo del trabajo original más extenso publicado el mismo año en Journal of Agricultural Research, no leído en su versión completa en esta sesión). Es el trabajo fundacional que describió por primera vez el fotoperiodismo vegetal, usando precisamente tabaco y SOJA (Glycine max) como especies experimentales — ambas plantas de día corto, la misma categoría fotoperiódica que Cannabis sativa. Se cita únicamente para respaldar que la soja es una especie históricamente fundacional en la ciencia del fotoperiodismo y del mismo tipo de respuesta (día corto) que el cannabis — no se cita ningún hallazgo cuantitativo específico del paper.'
+  },
+  {
+    id: 'academica-truffer-2011-soja-entrerios-grupos-madurez',
+    title: 'La dinámica del campo científico tecnológico en la construcción del conocimiento local: La soja en Entre Ríos',
+    authorOrInstitution: 'Truffer, I.; Saluso, A.; Nolla, J. D. — revista Pampa, n.º 7, supl. 1',
+    url: 'https://www.scielo.org.ar/scielo.php?lng=es&nrm=iso&pid=S2314-02082011000200009&script=sci_arttext&tlng=es',
+    type: 'ACADEMIC',
+    publicationDate: '2011',
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO por lectura directa (SciELO Argentina, acceso abierto). Cita textualmente (atribuido a Ing. Baigorri, 1991, dentro del propio artículo): "Debido a la respuesta fotoperiódica de la soja, el ciclo tiene una importancia fundamental en la adaptación de los cultivares a cada región... Cada Grupo de Madurez tiene una franja latitudinal en la que se comporta como ciclo medio" — y da un ejemplo concreto: "La provincia de Entre Ríos queda comprendida en la región Pampeana Norte, con los grupos de madurez VI y VII." Se usa para respaldar que la relación entre latitud/fotoperiodo y el ciclo de desarrollo de la soja está documentada y sistematizada en la agronomía argentina — NO se usa para asignar un grupo de madurez a ninguna otra de las 24 jurisdicciones (solo Entre Ríos tiene esta cita puntual) ni, bajo ningún concepto, para inferir una fecha de floración o cosecha de Cannabis sativa.'
   }
 ];
 

@@ -91,7 +91,55 @@ function pendingDataPoint(key, notes) {
     sourceId: null,
     evidenceLevel: 'E',
     availability: 'PENDING_RESEARCH',
+    methodology: null,
+    limitation: null,
     notes: notes ?? null,
+  };
+}
+
+// Referencia fenológica (Loop 3C, Fase 52) — jerarquía de evidencia para Cultivo/Cosecha definida
+// en la consigna: A (directa provincial) > B (científica/agronómica argentina aplicable) >
+// C (referencia fenológica de especie comparable) > D (derivación geográfica) > E (pendiente).
+// Ninguna de las 24 jurisdicciones tiene evidencia A o B para Cultivo/Cosecha de Cannabis sativa
+// (ver `51_LOOP_3B_PROVINCIAL_DATA.md` §12) — esto es un dato de nivel C, nunca elevado.
+//
+// Especie de referencia: SOJA (Glycine max). Por qué es comparable:
+// 1. Es, junto con el tabaco, una de las dos especies con las que Garner y Allard describieron
+//    por primera vez el fotoperiodismo vegetal en 1920 (`cientifica-garner-allard-1920-...`) —
+//    igual que Cannabis sativa, es una planta de DÍA CORTO: la transición a la fase reproductiva
+//    depende de que la duración de la oscuridad supere un umbral, no solo de la temperatura.
+// 2. Es la relación fotoperiodo-latitud mejor documentada de la agronomía argentina: los
+//    "grupos de madurez" de soja tienen una franja latitudinal de comportamiento, verificado por
+//    lectura directa para Entre Ríos en `academica-truffer-2011-soja-entrerios-grupos-madurez`
+//    ("Cada Grupo de Madurez tiene una franja latitudinal en la que se comporta como ciclo
+//    medio... La provincia de Entre Ríos queda comprendida en la región Pampeana Norte, con los
+//    grupos de madurez VI y VII").
+//
+// LÍMITE EXPLÍCITO de la analogía (se repite en cada `limitation` para que nunca se pierda de
+// vista): la soja y el Cannabis son especies distintas, con umbrales fotoperiódicos y ciclos
+// propios NO equivalentes entre sí. Esta referencia ilustra que el patrón fotoperiodo-latitud es
+// un fenómeno agronómico real y documentado en Argentina — nunca establece una fecha ni un
+// calendario de floración/cosecha para Cannabis sativa en ninguna provincia.
+const PHENOLOGICAL_REFERENCE_LIMITATION =
+  'Una referencia fenológica no constituye un calendario provincial de cultivo. La soja (Glycine max) y Cannabis sativa son especies distintas, con umbrales fotoperiódicos y duración de ciclo propios, no equivalentes entre sí — esta referencia ilustra que el patrón fotoperiodo-latitud es un fenómeno agronómico real y documentado en Argentina, nunca una fecha de floración o cosecha para Cannabis sativa.';
+
+function phenologicalReferenceDataPoint({ key, aspect, regionLabel }) {
+  return {
+    key,
+    value: null,
+    unit: null,
+    period: null,
+    sourceId: 'academica-truffer-2011-soja-entrerios-grupos-madurez',
+    evidenceLevel: 'C',
+    availability: 'AVAILABLE',
+    methodology: 'Analogía biológica por categoría fotoperiódica (planta de día corto) más documentación agronómica argentina de zonificación por latitud — no es una medición ni un dato provincial directo de Cannabis sativa.',
+    limitation: PHENOLOGICAL_REFERENCE_LIMITATION,
+    referenceSpecies: 'Glycine max (soja)',
+    referenceReason: 'Especie con la que se describió el fotoperiodismo vegetal (Garner y Allard, 1920) — misma categoría que Cannabis sativa: planta de día corto.',
+    photoperiodResponse: 'La transición a floración se acelera cuando el fotoperiodo baja de un umbral propio de cada "grupo de madurez" (variedad) — mismo principio de señal por oscuridad que "Luz como señal temporal", con umbrales distintos.',
+    referenceRegion: `Su grupo de madurez recomendado varía por franja latitudinal en Argentina — esta jurisdicción está en ${regionLabel}.`,
+    referenceSourceId: ['cientifica-garner-allard-1920-photoperiodism-discovery', 'academica-truffer-2011-soja-entrerios-grupos-madurez'],
+    notes: `Referencia fenológica sobre ${aspect}, no un dato directo de Cannabis sativa para esta provincia.`,
   };
 }
 
@@ -113,6 +161,8 @@ function buildEnvironment(provinceId) {
       sourceId: 'oficial-smn-normales-1991-2020-cambios',
       evidenceLevel: 'A',
       availability: 'AVAILABLE',
+      methodology: 'Comparación directa entre dos normales climatológicas oficiales del SMN (1981-2010 y 1991-2020).',
+      limitation: 'Es un cambio porcentual (tendencia), no una precipitación anual absoluta.',
       notes: trend.notes,
     });
   }
@@ -125,10 +175,25 @@ function buildLight(latitude) {
   return [getPhotoperiodDataPoint(latitude, new Date())];
 }
 
-function buildCultivation() {
+// Cultivo y Cosecha son bloques visuales separados (pedido explícito de la Fase "FICHA
+// PROVINCIAL" de este loop) pero comparten el mismo array `cultivation`, distinguidos por el
+// prefijo de `key` (`cultivo_`/`cosecha_`) — evita extender el modelo con un top-level nuevo
+// cuando no hace falta (ya lo permitía la forma definida en 3B).
+function buildCultivation(geoContext) {
+  const regionLabel = geoContext?.regionLabel ?? 'su región';
   return [
-    pendingDataPoint('stage_window_germinacion', 'Sin fuente provincial específica para Cannabis sativa — ver `51_LOOP_3B_PROVINCIAL_DATA.md` §12.'),
-    pendingDataPoint('harvest_window', 'Idem — no existe ninguna fuente por provincia que distinga esto de una variedad/genética particular sin generalizar de forma indebida.'),
+    pendingDataPoint('cultivo_ventana_directa', 'Sin fuente provincial/argentina directa (nivel A/B) para el momento de transición vegetativo→reproductivo de Cannabis sativa — ver `51_LOOP_3B_PROVINCIAL_DATA.md` §12.'),
+    phenologicalReferenceDataPoint({
+      key: 'cultivo_referencia_fenologica',
+      aspect: 'la transición de la fase vegetativa a la reproductiva (floración) por efecto del fotoperiodo',
+      regionLabel,
+    }),
+    pendingDataPoint('cosecha_ventana_directa', 'Sin fuente provincial/argentina directa (nivel A/B) para ventana de cosecha de Cannabis sativa — ver `51_LOOP_3B_PROVINCIAL_DATA.md` §13.'),
+    phenologicalReferenceDataPoint({
+      key: 'cosecha_referencia_fenologica',
+      aspect: 'cómo varía el tiempo hasta la madurez/cosecha según la latitud',
+      regionLabel,
+    }),
   ];
 }
 
@@ -167,7 +232,7 @@ export function getProvinceProfile(provinceId) {
     },
     environment: buildEnvironment(provinceId),
     light: buildLight(location.lat),
-    cultivation: buildCultivation(),
+    cultivation: buildCultivation(geoContext),
     sources: [], // se completa en runtime uniendo los sourceId presentes en environment/light/cultivation
     metadata: {
       generatedAt: new Date().toISOString(),
@@ -207,6 +272,8 @@ export function getArgentinaProfile() {
         sourceId: 'oficial-smn-normales-1991-2020-cambios',
         evidenceLevel: 'A',
         availability: 'AVAILABLE',
+        methodology: 'Normal climatológica oficial del SMN, período 1991-2020, agregada a nivel país.',
+        limitation: 'Promedio nacional — no representa el clima de ninguna provincia individual.',
         notes: 'Promedio a NIVEL PAÍS — nunca debe usarse para representar el clima de ninguna provincia individual (la propia fuente documenta variación regional real: ver `precipitation_trend_1991_2020_vs_1981_2010` en Córdoba/Mendoza/Entre Ríos).',
       },
     ],
@@ -224,19 +291,20 @@ export function getAllProvinceIds() {
   return Object.keys(IDENTITY_TABLE);
 }
 
-// Qué bloque(s) de la ficha se prioriza(n) según la entrada editorial que se está leyendo
-// (`50_FICHA_PROVINCIAL_ATLAS.md` §19). Cambia solo orden/énfasis — nunca oculta un bloque que
-// tenga datos reales, salvo `marco-editorial`, que por regla explícita nunca muestra
-// ambiente/cultivo (evitar que una entrada de marco legal parezca dar una recomendación
-// agronómica).
+// Qué bloque(s) de la ficha se prioriza(n)/resaltan según la entrada editorial que se está leyendo
+// (`50_FICHA_PROVINCIAL_ATLAS.md` §19, precisado en el Loop 3C). Los nombres de bloque
+// corresponden a los que renderiza `ProvinceProfileCard`: `environment`, `light`, `geography`,
+// `cultivation` y `context` (el bloque "Contexto de tu zona" / `ProvinceContextPanel`). Esto SOLO
+// cambia énfasis visual — nunca oculta un bloque que tenga datos reales, salvo `marco-editorial`,
+// que por regla explícita nunca muestra ambiente/cultivo (`MARCO_EDITORIAL_HIDDEN_BLOCKS`).
 export const ENTRY_FOCUS = {
-  germinacion: ['environment'],
-  'sustrato-y-drenaje': ['environment'],
-  'luz-y-fotoperiodo': ['light'],
+  germinacion: ['environment', 'light', 'context'],
+  'sustrato-y-drenaje': ['environment', 'context'],
+  'luz-y-fotoperiodo': ['light', 'geography'],
   'lectura-de-senales': ['environment'],
-  'cultivo-en-secuencia': ['cultivation'],
-  'cosecha-y-maduracion': ['cultivation', 'environment'],
-  'marco-editorial': [],
+  'cultivo-en-secuencia': ['environment', 'light', 'cultivation'],
+  'cosecha-y-maduracion': ['environment', 'light', 'cultivation'],
+  'marco-editorial': ['context'],
 };
 
 export const MARCO_EDITORIAL_HIDDEN_BLOCKS = ['environment', 'cultivation'];

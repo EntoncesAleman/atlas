@@ -781,6 +781,170 @@ body::before {
   color: var(--text-muted);
 }
 
+/* Ficha Provincial (Loop 3C, Fase 52) — vive dentro de .atlas-entry-aside ya existente, sin crear
+   ningún sistema de layout paralelo (misma columna, mismo grid de .atlas-entry-content-wrap). */
+.province-profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.province-profile-kicker {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+}
+
+.province-profile-identity h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 1.8vw, 26px);
+  color: var(--sage-dark);
+  margin: 4px 0 4px;
+}
+
+.province-profile-identity-meta {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+.province-profile-map {
+  width: 100%;
+  max-height: 160px;
+  display: block;
+}
+
+.province-profile-map-shape {
+  fill: var(--sage);
+  stroke: var(--paper);
+  stroke-width: 1;
+}
+
+.province-profile-map-national .province-profile-map-shape {
+  fill: var(--sage-light);
+  stroke: var(--paper);
+}
+
+.province-profile-block {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.province-profile-block > summary {
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--sage-dark);
+  font-weight: 600;
+}
+
+.province-profile-block-focus > summary {
+  color: var(--sage-deep);
+}
+
+.province-profile-block-focus > summary::after {
+  content: ' ·';
+  color: var(--soil);
+}
+
+.province-profile-datapoints {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.province-profile-datapoint-value {
+  font-weight: 700;
+  color: var(--sage-dark);
+}
+
+.province-profile-datapoint-period {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.province-profile-datapoint-notes {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.province-profile-cultivation-block {
+  margin-top: 10px;
+}
+
+.province-profile-cultivation-block:first-child {
+  margin-top: 6px;
+}
+
+.province-profile-cultivation-block h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 0 0 6px;
+}
+
+.province-profile-phenology-card {
+  background: var(--sage-glass);
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.province-profile-phenology-card p {
+  margin: 0 0 6px;
+  color: var(--text-soft);
+}
+
+.province-profile-phenology-card p:last-child {
+  margin-bottom: 0;
+}
+
+.province-profile-phenology-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 6px;
+}
+
+.province-profile-phenology-limitation {
+  font-size: 12px;
+}
+
+.province-profile-sources-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.province-profile-sources-list a {
+  color: var(--sage-deep);
+}
+
+@media (max-width: 640px) {
+  .province-profile-map {
+    max-height: 120px;
+  }
+}
+
 .mi-cultivo-mode-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(220px, 1fr));
