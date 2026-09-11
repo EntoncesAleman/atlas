@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="680" viewBox="0 0 900 680">
+  <rect width="900" height="680" fill="#f7f1e4"/>
+  <path d="M0 560 C120 540 140 590 190 560 C250 530 270 590 340 560 C390 540 420 550 470 570 C550 535 590 570 660 560 C710 555 735 575 780 560 C820 545 860 545 900 560 L900 680 L0 680 Z" fill="#b69a68" opacity="0.42" />
+  <rect x="45" y="45" width="810" height="590" fill="none" stroke="#435f40" stroke-width="2"/>
+  <text x="70" y="110" fill="#30452c" font-family="Inter, Arial" font-size="16" letter-spacing="3">SUELO Y AGUA</text>
+  <text x="70" y="525" fill="#30452c" font-family="Source Serif 4, Iowan Old Style, serif" font-size="58">Suelo y agua</text>
+  <path d="M310 250 C335 230 340 205 326 180 C350 180 378 202 380 230 C380 250 368 260 350 260 C340 270 335 280 330 290" fill="none" stroke="#435f40" stroke-width="2" />
+  <path d="M540 380 C570 330 610 330 628 360 C600 350 572 360 560 390" fill="none" stroke="#435f40" stroke-width="2" />
+  <path d="M220 320 C260 330 290 340 322 330" fill="none" stroke="#b69a68" stroke-width="2" />
+</svg>

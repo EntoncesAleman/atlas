@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="680" viewBox="0 0 900 680">
+  <rect width="900" height="680" fill="#eef3e7"/>
+  <path d="M130 560 C190 420 210 430 220 210 C260 230 270 270 270 330 C280 285 310 270 320 240 C345 320 350 340 360 410 C390 360 410 310 450 284 C500 345 510 380 550 500 C590 455 620 430 680 460 C710 420 720 360 760 350 C785 380 800 405 820 500 C790 450 770 420 745 500 C718 565 710 600 660 620 C585 620 610 570 560 560 C500 570 495 590 430 580 C370 590 365 570 330 580 C270 570 250 585 200 580 C150 585 130 585 110 570 Z" fill="#dde2cd" opacity="0.8" />
+  <rect x="45" y="45" width="810" height="590" fill="none" stroke="#435f40" stroke-width="2"/>
+  <text x="70" y="110" fill="#30452c" font-family="Inter, Arial" font-size="16" letter-spacing="3">LUZ Y CLIMA</text>
+  <text x="70" y="525" fill="#30452c" font-family="Source Serif 4, Iowan Old Style, serif" font-size="58">Luz y clima</text>
+  <circle cx="640" cy="230" r="96" fill="#f7f1e4" stroke="#b69a68" stroke-width="2" />
+  <path d="M640 150 L640 310" stroke="#435f40" stroke-width="1" />
+  <path d="M560 230 L720 230" stroke="#435f40" stroke-width="1" />
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="680" viewBox="0 0 900 680">
+  <rect width="900" height="680" fill="#eef3e7"/>
+  <g fill="none" stroke="#435f40" opacity="0.28">
+    <path d="M0 510 C110 480 150 440 210 450 C280 455 280 510 340 500 C420 485 428 530 500 525 C575 520 590 480 660 500 C718 510 745 472 820 500" />
+    <path d="M0 120 C70 110 92 130 145 130 C215 132 215 160 280 160 C340 160 350 118 410 120 C455 120 485 155 520 150 C575 150 610 112 640 120 C710 122 705 150 760 150 C810 150 830 160 860 160" />
+  </g>
+  <rect x="45" y="45" width="810" height="590" fill="none" stroke="#435f40" stroke-width="2"/>
+  <text x="70" y="110" fill="#30452c" font-family="Inter, Arial" font-size="16" letter-spacing="3">FUNDAMENTOS</text>
+  <text x="70" y="525" fill="#30452c" font-family="Source Serif 4, Iowan Old Style, serif" font-size="64">Fundamentos</text>
+  <circle cx="660" cy="250" r="140" fill="none" stroke="#b69a68" stroke-width="2" />
+  <path d="M660 110 L660 390" stroke="#435f40" stroke-width="1" />
+  <path d="M520 250 L800 250" stroke="#435f40" stroke-width="1" />
+</svg>

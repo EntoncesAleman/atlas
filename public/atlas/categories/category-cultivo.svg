@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="680" viewBox="0 0 900 680">
+  <rect width="900" height="680" fill="#eef3e7"/>
+  <rect x="45" y="45" width="810" height="590" fill="none" stroke="#435f40" stroke-width="2"/>
+  <g fill="none" stroke="#435f40" opacity="0.44">
+    <path d="M150 420 C170 380 170 330 150 300 C220 330 250 365 260 390 C286 380 316 390 340 405" />
+    <path d="M540 440 C560 380 600 370 620 350 C660 340 690 365 710 350 C730 315 760 330 780 350" />
+  </g>
+  <text x="70" y="105" fill="#30452c" font-family="Inter, Arial" font-size="16" letter-spacing="3">CULTIVO</text>
+  <text x="70" y="520" fill="#30452c" font-family="Source Serif 4, Iowan Old Style, serif" font-size="58">Cultivo</text>
+  <ellipse cx="330" cy="360" rx="140" ry="42" fill="#b69a68" opacity="0.34"/>
+  <ellipse cx="570" cy="330" rx="150" ry="46" fill="#b69a68" opacity="0.34"/>
+  <path d="M270 280 C270 350 290 390 330 420" fill="none" stroke="#435f40" stroke-width="2" />
+  <path d="M610 280 C590 330 590 355 610 390" fill="none" stroke="#435f40" stroke-width="2" />
+</svg>

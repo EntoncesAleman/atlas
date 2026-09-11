@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Atlas del Cultivo Argentino: información editorial sobre cultivo, clima, géografía y condiciones regionales." />
+  <title>Atlas del Cultivo Argentino</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Atlas del Cultivo Argentino">
+        <span class="brand-mark">ARG</span>
+        <span class="brand-copy">
+          <span class="brand-title">Atlas del Cultivo Argentino</span>
+          <span class="brand-subtitle">Geografía · Clima · Contenido</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="active" href="#">Inicio</a>
+        <a href="#">Argentina</a>
+        <a href="#">Provincias</a>
+        <a href="#">Enciclopedia</a>
+        <a href="#">Clima</a>
+        <a href="#">Mi Cultivo</a>
+      </nav>
+
+      <a class="header-button" href="#">
+        <span aria-hidden="true">☼</span>
+        Explorar
+      </a>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <section class="hero-content">
+          <div class="hero-copy">
+            <span class="section-label">Atlas de cultivo / Argentina</span>
+            <h1>El cultivo cambia según dónde estés.</h1>
+            <p class="hero-lede">Una guía pública para entender cultivo a partir de la geografía, el clima y la información regional de Argentina.</p>
+
+            <div class="hero-actions">
+              <a class="primary-button" href="#">
+                Explorar provincias
+              </a>
+              <a class="secondary-button" href="#">
+                Ver enciclopedia
+              </a>
+            </div>
+
+            <div class="hero-proof">
+              <div>
+                <span class="proof-number">23</span>
+                <span class="proof-label">Provincias</span>
+              </div>
+              <div>
+                <span class="proof-number">5+</span>
+                <span class="proof-label">Regiones</span>
+              </div>
+              <div>
+                <span class="proof-number">13</span>
+                <span class="proof-label">Categorías</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="hero-panel" aria-label="Selector de ubicación">
+          <div class="panel-card">
+            <div class="panel-top">
+              <span class="panel-kicker">¿Dónde cultivás?</span>
+              <span class="panel-status">Zona aproximada</span>
+            </div>
+
+            <div class="map-frame" aria-label="Mapa de Argentina">
+              <div class="map-surface">
+                <span class="map-shadow map-shadow-one"></span>
+                <span class="map-shadow map-shadow-two"></span>
+                <div class="map-grid">
+                  <span class="map-region region-north">NOA</span>
+                  <span class="map-region region-center">Centro</span>
+                  <span class="map-region region-south">Patagonia</span>
+                  <span class="map-region region-east">NEA</span>
+                </div>
+              </div>
+            </div>
+
+            <form class="location-form">
+              <div class="form-field">
+                <label for="province">Provincia</label>
+                <input id="province" name="province" list="province-list" placeholder="Buscar provincia" />
+                <datalist id="province-list">
+                  <option value="Buenos Aires"></option>
+                  <option value="Córdoba"></option>
+                  <option value="Mendoza"></option>
+                  <option value="Salta"></option>
+                  <option value="Patagonia"></option>
+                </datalist>
+              </div>
+
+              <div class="form-field">
+                <label for="zone">Zona aproximada</label>
+                <select id="zone" name="zone">
+                  <option>Seleccionar zona</option>
+                  <option>Andes</option>
+                  <option>Valle</option>
+                  <option>Meseta</option>
+                  <option>Región agrícola</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <button class="primary-button submit-button" type="button">Ver región</button>
+                <button class="secondary-button ghost-button" type="button">Explorar sin elegir</button>
+              </div>
+            </form>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section-strip">
+        <div class="section-strip-item">
+          <span class="strip-icon" aria-hidden="true">◇</span>
+          <span class="strip-copy">
+            <span class="strip-title">Sistema geográfico</span>
+            <span class="strip-text">Argentina → provincia → zona</span>
+          </span>
+        </div>
+        <div class="section-strip-item">
+          <span class="strip-icon" aria-hidden="true">✦</span>
+          <span class="strip-copy">
+            <span class="strip-title">Climatología</span>
+            <span class="strip-text">Referencia y pronóstico</span>
+          </span>
+        </div>
+        <div class="section-strip-item">
+          <span class="strip-icon" aria-hidden="true">☰</span>
+          <span class="strip-copy">
+            <span class="strip-title">Enciclopedia</span>
+            <span class="strip-text">Categorías del cultivo</span>
+          </span>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <section class="content-panel">
+          <div class="panel-heading">
+            <span class="section-label dark-label">Fase 1 · Foundation</span>
+            <h2>Base del atlas</h2>
+          </div>
+          <div class="article-list">
+            <article class="article-card">
+              <span class="article-tag">Geografía</span>
+              <h3>Provincias y zonas</h3>
+              <p>Una navegación regional clara, con jerarquía y contexto geográfico.</p>
+              <a href="#">Leer más</a>
+            </article>
+            <article class="article-card">
+              <span class="article-tag">Clima</span>
+              <h3>Condiciones ambientales</h3>
+              <p>Climatología de referencia y observaciones operativas por zona.</p>
+              <a href="#">Leer más</a>
+            </article>
+            <article class="article-card">
+              <span class="article-tag">Contenido</span>
+              <h3>Enciclopedia editorial</h3>
+              <p>Publicación estructurada por categorías y contenido regional.</p>
+              <a href="#">Leer más</a>
+            </article>
+          </div>
+        </section>
+
+        <aside class="sidebar-panel">
+          <div class="sidebar-card">
+            <span class="section-label dark-label">Región actual</span>
+            <div class="region-card">
+              <span class="region-card-label">Sin elección</span>
+              <h3>Argentina</h3>
+              <p class="region-card-copy">La información puede adaptarse a provincia o zona aproximada.</p>
+            </div>
+            <ul class="stat-list">
+              <li>
+                <span class="stat-label">Zona</span>
+                <span class="stat-value">Nacional</span>
+              </li>
+              <li>
+                <span class="stat-label">Clima</span>
+                <span class="stat-value">Referencia</span>
+              </li>
+              <li>
+                <span class="stat-label">Contenido</span>
+                <span class="stat-value">Público</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section-catalog">
+        <div class="section-heading">
+          <div>
+            <span class="section-label dark-label">Biblioteca</span>
+            <h2>Categorías del atlas</h2>
+          </div>
+          <a class="section-link" href="#">Ver todas</a>
+        </div>
+        <div class="category-grid">
+          <a class="category-card" href="#">
+            <span class="category-icon">☀</span>
+            <span class="category-name">Luz</span>
+          </a>
+          <a class="category-card" href="#">
+            <span class="category-icon">♒</span>
+            <span class="category-name">Agua</span>
+          </a>
+          <a class="category-card" href="#">
+            <span class="category-icon">♟</span>
+            <span class="category-name">Suelo</span>
+          </a>
+          <a class="category-card" href="#">
+            <span class="category-icon">✧</span>
+            <span class="category-name">Germinación</span>
+          </a>
+          <a class="category-card" href="#">
+            <span class="category-icon">☁</span>
+            <span class="category-name">Clima</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <a class="brand footer-brand" href="#">
+          <span class="brand-mark small">ARG</span>
+          <span class="brand-copy">
+            <span class="brand-title">Atlas del Cultivo Argentino</span>
+          </span>
+        </a>
+        <nav class="footer-links">
+          <a href="#">Sobre el proyecto</a>
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Mapa</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+</body>
+</html>

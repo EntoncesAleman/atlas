@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="680" viewBox="0 0 900 680">
+  <rect width="900" height="680" fill="#f7f1e4"/>
+  <rect x="45" y="45" width="810" height="590" fill="none" stroke="#435f40" stroke-width="2"/>
+  <text x="70" y="105" fill="#30452c" font-family="Inter, Arial" font-size="16" letter-spacing="3">SANIDAD</text>
+  <text x="70" y="520" fill="#30452c" font-family="Source Serif 4, Iowan Old Style, serif" font-size="58">Sanidad</text>
+  <path d="M420 120 C456 160 466 180 458 230 C455 255 450 270 438 282 C420 270 410 248 410 226 C410 210 404 200 396 190 C388 180 382 170 384 160 C386 150 392 140 406 135" fill="none" stroke="#435f40" stroke-width="2"/>
+  <path d="M405 250 C430 270 440 296 432 332 C420 355 425 365 440 370 C460 365 465 348 452 336 C458 330 472 330 482 338 C476 355 454 375 432 374 C395 374 388 340 396 320 C380 310 382 286 405 250" fill="none" stroke="#b69a68" stroke-width="2"/>
+  <circle cx="610" cy="250" r="26" fill="none" stroke="#435f40" stroke-width="2"/>
+  <path d="M610 224 L610 276 M586 250 L634 250" stroke="#435f40" stroke-width="2"/>
+</svg>

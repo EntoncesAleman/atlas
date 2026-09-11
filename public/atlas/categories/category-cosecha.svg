@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="680" viewBox="0 0 900 680">
+  <rect width="900" height="680" fill="#f7f1e4"/>
+  <rect x="45" y="45" width="810" height="590" fill="none" stroke="#435f40" stroke-width="2"/>
+  <text x="70" y="105" fill="#30452c" font-family="Inter, Arial" font-size="16" letter-spacing="3">COSECHA</text>
+  <text x="70" y="520" fill="#30452c" font-family="Source Serif 4, Iowan Old Style, serif" font-size="58">Cosecha</text>
+  <path d="M250 450 C250 380 290 330 340 320 C380 350 380 385 360 405 C380 420 400 440 412 450" fill="none" stroke="#435f40" stroke-width="2"/>
+  <path d="M470 235 C475 270 500 280 520 270 C540 270 555 250 550 230 C540 250 535 260 530 270" fill="none" stroke="#b69a68" stroke-width="2"/>
+  <path d="M510 260 C570 260 600 265 640 290" fill="none" stroke="#435f40" stroke-width="2"/>
+  <path d="M250 420 C320 420 360 410 390 380" fill="none" stroke="#b69a68" stroke-width="2"/>
+</svg>

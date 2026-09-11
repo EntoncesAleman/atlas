@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="680" viewBox="0 0 900 680">
+  <rect width="900" height="680" fill="#eef3e7"/>
+  <rect x="60" y="60" width="780" height="560" fill="none" stroke="#435f40" stroke-width="2"/>
+  <text x="70" y="110" fill="#30452c" font-family="Inter, Arial" font-size="16" letter-spacing="3">MARCO LEGAL</text>
+  <text x="70" y="520" fill="#30452c" font-family="Source Serif 4, Iowan Old Style, serif" font-size="58">Marco legal</text>
+  <path d="M180 210 L250 210 L250 520 L180 520 L180 210" fill="none" stroke="#435f40" stroke-width="2" />
+  <path d="M330 210 L460 210 L460 520 L330 520 L330 210" fill="none" stroke="#b69a68" stroke-width="2" />
+  <path d="M560 210 L690 210 L690 520 L560 520 L560 210" fill="none" stroke="#435f40" stroke-width="2" />
+  <path d="M220 260 L650 260" stroke="#435f40" stroke-width="1" opacity="0.8"/>
+  <path d="M220 360 L650 360" stroke="#b69a68" stroke-width="1" opacity="0.8"/>
+  <path d="M220 460 L650 460" stroke="#435f40" stroke-width="1" opacity="0.8"/>
+</svg>
