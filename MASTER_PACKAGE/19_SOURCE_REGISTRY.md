@@ -113,5 +113,22 @@ Fuentes de imagen/ilustración real usadas para reemplazar la colección generad
 
 **Nota sobre atribución**: las licencias CC BY/CC BY-SA/GFDL usadas exigen atribución (autor + licencia + enlace a la fuente); el detalle exacto de atribución por asset vive en `ASSET_REGISTRY.md`, no duplicado acá.
 
+## Fuentes de contenido — Loop 4, investigación ambiental y fenológica provincial (2026-09-11)
+
+Investigadas para la base de datos de la Ficha Provincial (`provinceProfile.js`), Fase 53. Ver
+detalle completo en `53_LOOP_4_ENVIRONMENTAL_RESEARCH.md`. Estructuradas también en
+`src/app/lib/editorial/sources.js` (fuente de verdad operativa; esta tabla es el espejo).
+
+| Fuente | URL | Tipo | Respalda | Estado |
+|---|---|---|---|---|
+| SMN — "Listado de Estaciones Meteorológicas del SMN" (vía datos.gob.ar) | https://ssl.smn.gob.ar/dpd/zipopendata.php?dato=estaciones | OFFICIAL | Cantidad real de estaciones SMN por provincia (dato de cobertura, no climático) | VERIFIED — descargado y parseado directamente (118 estaciones, 24 jurisdicciones con al menos 1) |
+| INDEC/IGN (ANIDA) — capa WFS "Tipos de climas" | https://geonode.indec.gob.ar/layers/geonode_data:geonode:tipos_climaticos | OFFICIAL | Clasificación climática (16 tipos, 4 grupos) en el centroide geométrico de cada una de las 24 provincias | VERIFIED — consultada por WFS GetFeature en vivo; clasificación calculada por punto-en-polígono real, no copiada de una fuente secundaria. Licencia "Not Specified" (ídem `21_GEO_CLIMATE_RESEARCH.md`/D10) |
+| Schmidt et al. (2024) — *Frontiers in Plant Science*, DOI 10.3389/fpls.2023.1249879 | https://pmc.ncbi.nlm.nih.gov/articles/PMC10794312/ | SCIENTIFIC | Evidencia de que el tabaco cultivado (*N. tabacum*) perdió la sensibilidad fotoperiódica de sus ancestros silvestres — usada para DESCARTAR al tabaco como segunda especie de referencia fenológica | VERIFIED — texto completo leído directamente, acceso abierto |
+
+Intentos sin resultado utilizable en este loop (documentados, no ocultos): PDF de 105 estaciones
+SMN con normales 1991-2020 (excede 10MB, no procesable); `climayagua.inta.gob.ar` (heladas INTA,
+conexión rechazada); Atlas Climático Digital INTA 2010 y fascículo IGN/ANIDA "Clima en Argentina"
+(existencia confirmada en el Loop 3B, contenido no extraído).
+
 ## Nota de uso de este registro
 Todo dato citado en [[03_GEO]], [[04_CLIMATE]], [[12_LEGAL]], [[13_STACK]] y [[18_EXTERNAL_SERVICES]] debe poder rastrearse a una fila de esta tabla. Las filas marcadas `UNVERIFIED` o `TODO RESEARCH` no deben presentarse en el sitio como hechos definitivos sin revisión adicional antes del lanzamiento.

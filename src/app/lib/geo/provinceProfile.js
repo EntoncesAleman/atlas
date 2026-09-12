@@ -82,6 +82,56 @@ const PRECIPITATION_TREND_1991_2020 = {
   entrerios: { value: 8.5, notes: 'La fuente da un rango de 8-9%; se registra el punto medio.' },
 };
 
+// Cantidad real de estaciones meteorológicas del SMN por provincia (Loop 4, Fase 53) — verificado
+// descargando y parseando el listado oficial (`oficial-smn-listado-estaciones`). No es un valor
+// climático: es un dato de cobertura de la red de observación, útil para entender qué tan densa
+// (o escasa) es la infraestructura de medición real de cada jurisdicción.
+const SMN_STATION_COUNT = {
+  'buenos-aires': 26, caba: 2, catamarca: 2, chaco: 2, chubut: 5, cordoba: 9, corrientes: 5,
+  entrerios: 3, formosa: 2, jujuy: 3, lapampa: 3, larioja: 4, mendoza: 6, misiones: 4,
+  neuquen: 2, rionegro: 5, salta: 5, sanjuan: 2, sanluis: 3, santacruz: 7, santafe: 7,
+  santiagodelestero: 2, tucuman: 1, tierradelfuego: 2,
+};
+
+// Clasificación climática oficial IGN/INDEC (capa "Tipos de climas", ANIDA) en el centroide
+// geométrico de cada provincia (Loop 4, Fase 53) — determinada por punto-en-polígono real contra
+// la capa WFS oficial (`oficial-indec-anida-tipos-climaticos-wfs`), no copiada de una fuente
+// secundaria ni estimada editorialmente. Cuatro provincias ya documentadas en `03_GEO.md` como
+// internamente heterogéneas (Mendoza, Salta, Jujuy, Buenos Aires) llevan una nota reforzada de que
+// el resultado es solo el del centroide, no el de toda su superficie.
+const HETEROGENEOUS_PROVINCES = new Set(['mendoza', 'salta', 'jujuy', 'buenos-aires']);
+
+const CLIMATE_CLASSIFICATION_CENTROID = {
+  jujuy: 'Cálido / Subtropical Serrano',
+  salta: 'Cálido / Subtropical Serrano',
+  formosa: 'Cálido / Subtropical con Estación Seca',
+  chaco: 'Cálido / Subtropical con Estación Seca',
+  misiones: 'Cálido / Subtropical sin Estación Seca',
+  corrientes: 'Cálido / Subtropical sin Estación Seca',
+  tucuman: 'Cálido / Subtropical Serrano',
+  catamarca: 'Árido / De sierras y campos',
+  santiagodelestero: 'Cálido / Subtropical con Estación Seca',
+  larioja: 'Árido / De sierras y campos',
+  cordoba: 'Templado / Pampeano',
+  santafe: 'Cálido / Subtropical con Estación Seca',
+  entrerios: 'Templado / Pampeano',
+  sanjuan: 'Árido / De sierras y campos',
+  mendoza: 'Árido / De la estepa patagónica',
+  sanluis: 'Templado / De transición',
+  'buenos-aires': 'Templado / Pampeano',
+  caba: 'Templado / Pampeano',
+  lapampa: 'Templado / De transición',
+  neuquen: 'Árido / Patagónico',
+  rionegro: 'Árido / Patagónico',
+  chubut: 'Árido / Patagónico',
+  santacruz: 'Árido / Patagónico',
+  tierradelfuego: 'Frío / Andes patagónico - fueguinos',
+};
+
+if (Object.keys(SMN_STATION_COUNT).length !== 24 || Object.keys(CLIMATE_CLASSIFICATION_CENTROID).length !== 24) {
+  throw new Error('SMN_STATION_COUNT y CLIMATE_CLASSIFICATION_CENTROID deben cubrir las 24 jurisdicciones.');
+}
+
 function pendingDataPoint(key, notes) {
   return {
     key,
@@ -145,11 +195,44 @@ function phenologicalReferenceDataPoint({ key, aspect, regionLabel }) {
 
 function buildEnvironment(provinceId) {
   const points = [
-    pendingDataPoint('temperature_mean_annual', 'Requiere extracción manual de estaciones SMN (Estadísticas Climatológicas Normales 1991-2020) o lectura del Atlas Climático Digital INTA 2010 — ninguno procesado todavía en este loop.'),
-    pendingDataPoint('precipitation_annual', 'Idem temperatura — climatología de referencia sigue en PARTIAL_RESEARCH (ver `04_CLIMATE.md`).'),
-    pendingDataPoint('climate_classification_koppen', 'Capa GIS oficial existe (INDEC/ANIDA, ver `21_GEO_CLIMATE_RESEARCH.md`) pero requiere análisis geoespacial no disponible en este entorno para determinar el/los tipo(s) predominante(s) por provincia.'),
-    pendingDataPoint('frost_dates', 'Bloqueado por acceso a dominios INTA (climayagua.inta.gob.ar) — ver `TODO.md`, sección BLOCKED.'),
+    pendingDataPoint('temperature_mean_annual', 'Requiere extracción manual de estaciones SMN (Estadísticas Climatológicas Normales 1991-2020, PDF >10MB no procesable en este entorno) o lectura completa del Atlas Climático Digital INTA 2010 — ninguno procesado todavía. El dataset abierto de "temperatura últimos 365 días" (datos.gob.ar) existe y es real, pero es TIEMPO reciente, no climatología de 30 años — se decidió deliberadamente no usarlo para no mezclar ambas categorías (Loop 4).'),
+    pendingDataPoint('precipitation_annual', 'Idem temperatura — climatología de referencia sigue en PARTIAL_RESEARCH (ver `04_CLIMATE.md`). Solo se pudo obtener una TENDENCIA de cambio porcentual para 3 provincias (ver `precipitation_trend_1991_2020_vs_1981_2010` más abajo), no un valor absoluto.'),
+    pendingDataPoint('frost_dates', 'Bloqueado por acceso a dominios INTA (climayagua.inta.gob.ar) — reintentado en el Loop 4 (conexión rechazada, mismo bloqueo ya documentado en `TODO.md`, sección BLOCKED).'),
   ];
+
+  const stationCount = SMN_STATION_COUNT[provinceId];
+  if (typeof stationCount === 'number') {
+    points.push({
+      key: 'smn_station_count',
+      value: stationCount,
+      unit: 'estaciones',
+      period: null,
+      sourceId: 'oficial-smn-listado-estaciones',
+      evidenceLevel: 'A',
+      availability: 'AVAILABLE',
+      methodology: 'Conteo directo del listado oficial de estaciones meteorológicas del SMN, filtrado por provincia.',
+      limitation: 'Es una medida de cobertura de la red de observación, no un valor climático — una provincia con pocas estaciones puede tener climas internos no representados por ninguna de ellas.',
+      notes: null,
+    });
+  }
+
+  const classification = CLIMATE_CLASSIFICATION_CENTROID[provinceId];
+  if (classification) {
+    points.push({
+      key: 'climate_classification_centroid',
+      value: classification,
+      unit: null,
+      period: null,
+      sourceId: 'oficial-indec-anida-tipos-climaticos-wfs',
+      evidenceLevel: 'A',
+      availability: 'AVAILABLE',
+      methodology: 'Punto-en-polígono (ray casting) entre el centroide geométrico provincial ya verificado (Fase 11) y la capa geoespacial oficial IGN/INDEC de tipos de clima — cálculo determinista sobre datos oficiales, no una estimación editorial.',
+      limitation: HETEROGENEOUS_PROVINCES.has(provinceId)
+        ? 'Corresponde solo al centroide geométrico — esta provincia ya está documentada como internamente heterogénea (`03_GEO.md`), así que otras zonas de su territorio pueden tener un tipo climático distinto del indicado acá.'
+        : 'Corresponde al centroide geométrico de la provincia, no a la totalidad de su superficie.',
+      notes: null,
+    });
+  }
 
   const trend = PRECIPITATION_TREND_1991_2020[provinceId];
   if (trend) {

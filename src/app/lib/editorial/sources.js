@@ -429,6 +429,38 @@ export const sources = [
     publicationDate: '2011',
     accessedAt: '2026-09-11',
     notes: 'VERIFICADO por lectura directa (SciELO Argentina, acceso abierto). Cita textualmente (atribuido a Ing. Baigorri, 1991, dentro del propio artículo): "Debido a la respuesta fotoperiódica de la soja, el ciclo tiene una importancia fundamental en la adaptación de los cultivares a cada región... Cada Grupo de Madurez tiene una franja latitudinal en la que se comporta como ciclo medio" — y da un ejemplo concreto: "La provincia de Entre Ríos queda comprendida en la región Pampeana Norte, con los grupos de madurez VI y VII." Se usa para respaldar que la relación entre latitud/fotoperiodo y el ciclo de desarrollo de la soja está documentada y sistematizada en la agronomía argentina — NO se usa para asignar un grupo de madurez a ninguna otra de las 24 jurisdicciones (solo Entre Ríos tiene esta cita puntual) ni, bajo ningún concepto, para inferir una fecha de floración o cosecha de Cannabis sativa.'
+  },
+
+  // --- Fuentes de contenido: Loop 4 — investigación ambiental y fenológica (Fase 53, 2026-09-11) ---
+  {
+    id: 'oficial-smn-listado-estaciones',
+    title: 'Listado de Estaciones Meteorológicas del SMN',
+    authorOrInstitution: 'Servicio Meteorológico Nacional (SMN), publicado vía datos.gob.ar (Datos Argentina)',
+    url: 'https://ssl.smn.gob.ar/dpd/zipopendata.php?dato=estaciones',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO por descarga y lectura directa (archivo ZIP oficial, descomprimido y parseado en esta sesión — 118 estaciones con nombre, provincia, latitud/longitud en grados/minutos, altura, número OACI). Se usó únicamente para contar estaciones SMN reales por provincia (dato de cobertura/densidad de red, no un valor climático) — las 24 jurisdicciones tienen al menos 1 estación (mínimo: Tucumán con 1; máximo: Buenos Aires con 26). No se usó ningún valor de temperatura/precipitación de este archivo (no los contiene: es solo el listado de estaciones, no sus normales).'
+  },
+  {
+    id: 'oficial-indec-anida-tipos-climaticos-wfs',
+    title: 'Tipos de climas (capa geoespacial WFS) — Atlas Nacional Interactivo de la República Argentina (ANIDA)',
+    authorOrInstitution: 'Adriana Zajarevich — INDEC / IGN, publicado vía GeoNode (geonode.indec.gob.ar)',
+    url: 'https://geonode.indec.gob.ar/layers/geonode_data:geonode:tipos_climaticos',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO por consulta directa al servicio WFS oficial (GetFeature, formato GeoJSON, EPSG:4326) en esta sesión — se obtuvieron las 16 geometrías reales de tipo de clima (clasificación propia IGN/INDEC en español, con 4 grupos —Frío, Templado, Cálido, Árido— y 16 tipos, ej. "Templado/Pampeano", "Árido/Patagónico"; no son códigos Köppen literales pero es la misma capa oficial ya identificada como fuente Köppen en `21_GEO_CLIMATE_RESEARCH.md`). Se determinó el tipo climático correspondiente a cada una de las 24 jurisdicciones mediante un cálculo de punto-en-polígono (ray casting, implementado sin librerías externas) usando el mismo centroide geométrico provincial ya verificado en `PROVINCE_LOCATIONS` (Fase 11) — un cálculo determinista sobre datos oficiales, no una estimación editorial. LICENCIA: figura "Not Specified" en el origen (mismo estado ya documentado en `21_GEO_CLIMATE_RESEARCH.md`/D10) — se cita el resultado de la clasificación con atribución completa, sin redistribuir el archivo/capa completo. LIMITACIÓN CENTRAL: el resultado corresponde al punto exacto del centroide, no a toda la superficie provincial — en provincias con alta diversidad interna ya documentada en `03_GEO.md` (Mendoza, Salta, Jujuy, Buenos Aires), el tipo climático de otras zonas de la misma provincia puede ser distinto del que da el centroide.'
+  },
+  {
+    id: 'cientifica-schmidt-2024-tabaco-fotoperiodo-domesticacion',
+    title: 'COL2-dependent photoperiodic floral induction in Nicotiana sylvestris seems to be lost in the N. sylvestris × N. tomentosiformis hybrid N. tabacum',
+    authorOrInstitution: 'Schmidt, F. J.; Grundmann, L.; Lahme, M.; Seidemann, M.; Schwarze, A.; Lichtenauer, S.; Twyman, R. M.; Prüfer, D.; Noll, G. A. — Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10794312/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2024',
+    accessedAt: '2026-09-11',
+    notes: 'VERIFICADO por lectura directa (PMC, artículo de libre acceso; DOI 10.3389/fpls.2023.1249879). Investigado como candidato para sumar el tabaco (cultivado realmente en Jujuy/Salta/Tucumán/Chaco/Catamarca/Misiones/Corrientes, según fuente oficial MAGyP) como segunda especie de referencia fenológica junto a la soja. RESULTADO: se descartó — el paper demuestra que el tabaco CULTIVADO (Nicotiana tabacum) perdió, durante su domesticación/hibridación, la sensibilidad fotoperiódica de sus ancestros silvestres (N. sylvestris, día largo obligado; N. tomentosiformis, día corto facultativo) y hoy tiene "comportamiento de floración día-neutro". Esto lo vuelve una referencia MÁS DÉBIL que la soja para ilustrar una respuesta de día corto comparable a Cannabis sativa, pese a cultivarse en regiones argentinas relevantes — se documenta la investigación y el descarte, no se incorpora el tabaco como referencia.'
   }
 ];
 
