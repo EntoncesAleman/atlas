@@ -51,9 +51,11 @@ export default async function CategoryPage({ params }) {
         <div className="atlas-entry-grid">
           {entries.length > 0 ? entries.map((entry) => (
             <article className="atlas-entry-card" key={entry.id}>
-              <div className="atlas-entry-card-media">
-                <img src={entry.image} alt={entry.alt} className="atlas-entry-image" />
-              </div>
+              {entry.image && (
+                <div className="atlas-entry-card-media">
+                  <img src={entry.image} alt={entry.alt} className="atlas-entry-image" />
+                </div>
+              )}
               <div className="atlas-entry-card-body">
                 <span className="atlas-entry-type">{entry.tags[0]}</span>
                 <h3><Link href={`/atlas/${category.slug}/${entry.slug}`}>{entry.title}</Link></h3>

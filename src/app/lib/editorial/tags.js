@@ -19,7 +19,12 @@ export const CONTROLLED_TAGS = [
   'maduración',
   'marco',
   'legal',
-  'contexto'
+  'contexto',
+  'historia',
+  'domesticación',
+  'argentina',
+  'genética',
+  'taxonomía'
 ];
 
 export function isControlledTag(tag) {

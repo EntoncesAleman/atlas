@@ -157,6 +157,26 @@ export const editorialCategories = [
       ogImage: null
     },
     status: 'PUBLISHED'
+  },
+  {
+    id: 'historia',
+    slug: 'historia',
+    title: 'Historia',
+    tag: 'Historia',
+    type: 'HISTORIA',
+    regionLabel: 'Origen',
+    cta: 'Explorar',
+    description: 'Origen, domesticación y llegada de la planta a Argentina.',
+    shortDescription: 'De dónde viene la planta y cómo llegó hasta acá.',
+    editorialDescription: 'El atlas mira hacia atrás: de dónde viene Cannabis sativa, cómo se domesticó, cómo llegó a América y qué evidencia real existe de su historia en el territorio que hoy es Argentina.',
+    tags: ['historia'],
+    metadata: {
+      seoTitle: 'Historia — Atlas del Cultivo Argentino',
+      seoDescription: 'Origen, domesticación y llegada de la planta a Argentina.',
+      canonical: null,
+      ogImage: null
+    },
+    status: 'PUBLISHED'
   }
 ];
 
@@ -280,7 +300,7 @@ export const editorialEntries = [
       'Argentina tiene una diversidad climática amplia entre regiones —ya documentada en la dimensión geográfica del atlas—, lo que significa que el ritmo y la estacionalidad de esta etapa al aire libre no son iguales en todo el país. Esta entrada no afirma diferencias puntuales por provincia porque esa capa de contenido regional todavía no está desarrollada con fuente propia; lo que sí puede decirse en general es que el mismo proceso biológico se expresa con tiempos distintos según cuánto se aleje el ambiente real de un rango estable de agua, oxígeno y temperatura.'
     ],
     tags: ['fundamentos', 'germinación', 'agua'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'luz-y-fotoperiodo', 'cultivo-en-secuencia'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'luz-y-fotoperiodo', 'cultivo-en-secuencia', 'historia-de-la-planta'],
     sourceIds: [
       'oficial-inase-vigor-semillas',
       'academica-unne-fisiologia-vegetal-germinacion',
@@ -454,6 +474,14 @@ export const editorialEntries = [
           'La planta no "ve" la duración del día de forma abstracta: la detecta a través de un pigmento sensible a la luz llamado fitocromo, que existe en dos formas que se convierten una en la otra según el tipo de luz que reciben (luz roja y roja lejana) y que revierten parcialmente durante la oscuridad. La proporción entre estas dos formas al final del período de oscuridad es, en términos generales, lo que la planta "lee" como información de tiempo.',
           'Esto explica por qué una interrupción breve del período de oscuridad con luz puede alterar la señal completa, incluso si la cantidad total de luz del día no cambió demasiado: lo que se altera es la continuidad de la oscuridad, no la cantidad de luz en sí.'
         ]
+      },
+      {
+        id: 'de-la-senal-a-la-flor',
+        title: 'De la señal a la flor: qué pasa adentro de la planta',
+        paragraphs: [
+          'Un trabajo reciente sobre Cannabis sativa específicamente —no una analogía con otra especie— siguió lo que ocurre entre que la planta recibe la señal de día corto y la inflorescencia aparece: bajo fotoperiodo de día corto, los niveles de una hormona vegetal (giberelina) bajan, y ese descenso es lo que frena el alargamiento de los entrenudos y permite que se forme la inflorescencia condensada característica de la floración. Aplicar giberelina de forma artificial reproduce el efecto contrario (el de día largo) e impide que la inflorescencia se compacte.',
+          'El mismo trabajo encontró que la señal necesita sostenerse: hacen falta al menos tres días consecutivos de fotoperiodo corto para que el cambio se registre — una interrupción antes de ese punto no alcanza para disparar la transición, coherente con la idea, ya mencionada arriba, de que lo que importa es la continuidad de la señal, no un único ciclo aislado.'
+        ]
       }
     ],
     observations: [
@@ -493,10 +521,10 @@ export const editorialEntries = [
       'Esta entrada no describe instalaciones de iluminación artificial ni parámetros técnicos de equipos: se limita al concepto de fotoperiodo como señal biológica, que es la base común a cualquier ambiente, protegido o exterior.'
     ],
     tags: ['luz', 'fotoperiodo', 'ambiente'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'cosecha-y-maduracion'],
-    sourceIds: ['academica-unne-fitocromos-desarrollo-vegetal', 'cientifica-hesami-2023-cannabis-life-cycle'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'cosecha-y-maduracion', 'genetica-y-tipos'],
+    sourceIds: ['academica-unne-fitocromos-desarrollo-vegetal', 'cientifica-hesami-2023-cannabis-life-cycle', 'cientifica-alter-2024-cannabis-fotoperiodo-giberelina'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-10',
+    lastReviewed: '2026-09-12',
     metadata: {
       seoTitle: 'Luz como señal temporal — Atlas del Cultivo Argentino',
       seoDescription: 'Qué es el fotoperiodismo, por qué Cannabis sativa responde al día corto, y por qué la duración de la oscuridad importa tanto como la cantidad de luz.',
@@ -818,6 +846,176 @@ export const editorialEntries = [
     metadata: {
       seoTitle: 'Marco editorial y responsable — Atlas del Cultivo Argentino',
       seoDescription: 'Qué es y qué no es el atlas, la diferencia entre información y recomendación, y un resumen no vinculante del contexto legal argentino con fuentes oficiales.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'historia-de-la-planta',
+    slug: 'historia-de-la-planta',
+    categoryId: 'historia',
+    title: 'Historia de la planta',
+    summary: 'De un pasto silvestre euroasiático a un cultivo intercontinental: una línea de tiempo que separa lo que hay evidencia de probar, de lo que todavía es hipótesis.',
+    intro: 'Contar la historia de Cannabis sativa exige la misma disciplina que el resto del atlas aplica a la observación de una planta viva: distinguir qué es evidencia directa (un resto arqueológico fechado, un documento de archivo), qué es interpretación razonable sobre esa evidencia, y qué sigue siendo hipótesis abierta. Esta entrada recorre esa historia como una línea de tiempo — desde el origen de la especie hasta las primeras huellas documentales de su cultivo en el territorio que hoy es Argentina — sin convertir ningún tramo en un relato más cerrado del que la evidencia permite.',
+    sections: [
+      {
+        id: 'origen-y-domesticacion',
+        title: 'Origen y domesticación',
+        paragraphs: [
+          'Los estudios genómicos más recientes (secuenciación de 110 genomas de variedades de todo el mundo) estiman que Cannabis sativa comenzó a domesticarse hace unos 12.000 años en el este de Asia: los cultivares actuales de fibra y de uso psicoactivo derivan de un mismo fondo genético ancestral, representado hoy por poblaciones silvestres y variedades locales de China. Es una fecha estimada por métodos genéticos —no una medición directa sobre un resto físico— y el origen geográfico exacto sigue en discusión académica.',
+          'La evidencia física más concreta es más tardía: fitolitos (microestructuras vegetales que se conservan mejor que una semilla) hallados en Shandong, norte de China, ubican a la planta dentro de un conjunto de cultivos manejados entre hace 4.500 y 3.400 años. En el sitio de la Edad del Bronce de Haimenkou (Yunnan, suroeste de China) se recuperaron más de 800 semillas (aquenios) de Cannabis fechadas entre 1650 y 400 a.C. — el registro arqueobotánico más directo de que la planta ya se manejaba y probablemente se propagaba de forma activa por semilla.'
+        ]
+      },
+      {
+        id: 'expansion-hacia-europa',
+        title: 'Expansión hacia Europa',
+        paragraphs: [
+          'Cannabis es una planta nativa de Europa desde mucho antes de cualquier cultivo humano: hay polen de la especie en el oeste de Europa desde el Pleistoceno tardío (hace 18.500-15.000 años), en un momento en que la planta crecía silvestre, sin ninguna relación con el ser humano todavía. Esta distinción —presencia silvestre versus cultivo— es central para no confundir "la planta ya estaba ahí" con "la gente ya la cultivaba".',
+          'La evidencia de cultivo (no solo presencia) en Europa aparece recién en la Edad del Cobre/Bronce, en el sudeste del continente. Un síntesis reciente de estudios de polen fósil propone que los escitas —una cultura esteparia de la Edad del Hierro— introdujeron el cultivo de cáñamo a pueblos celtas, eslavos y fino-úgricos: 28 estudios de polen en territorio celta muestran señales de cultivo de cáñamo que aparecen recién después del año 550 a.C., coincidiendo con el contacto con los escitas. Es una síntesis probabilística sobre muchos sitios, no un único hallazgo puntual.'
+        ]
+      },
+      {
+        id: 'llegada-a-america',
+        title: 'Llegada a América: dos historias distintas',
+        paragraphs: [
+          'La llegada de la planta a América no fue un único evento — fueron procesos distintos en el norte y en el sur del continente, con actores y cronologías propias.',
+          'En América del Norte, el cáñamo llegó con los colonos ingleses a Virginia: en Jamestown se cultivó cáñamo traído desde Inglaterra para cuerdas, velas y tela, y ya en 1616 el colono John Rolfe podía afirmar que el cáñamo cultivado ahí no era peor que el de Inglaterra u Holanda. Varias colonias inglesas llegaron a estar obligadas por ley a cultivarlo, como insumo para la marina.',
+          'En América del Sur, el proceso fue más temprano y más disperso de lo que suele repetirse: las primeras remisiones documentadas de semilla de cáñamo hacia "las Indias" datan de 1513-1520 (dos arrobas de cañamones y cuatro de lino en 1513, según el Archivo General de Indias), y llegaron primero a asentamientos en Mesoamérica, no a Chile. La Real Cédula de Carlos V de 1545 —la fecha que la mayoría de los sitios de divulgación repiten como "el momento en que el cáñamo llegó a Chile"— en realidad fue una orden general dirigida a "las Indias" en su conjunto, no una medida específica para Chile; para esa fecha ya se habían hecho intentos de siembra en el Caribe, Mesoamérica, Ecuador, Perú, Venezuela y el propio Río de la Plata. Lo que sí es cierto es que Chile terminó siendo, hacia 1577-1605, la única región donde el cultivo se volvió rentable y sostenido a gran escala (valles de Quillota y La Ligua) — probablemente por tener un clima mediterráneo similar al de origen de la semilla, no por haber sido el primer lugar de siembra.'
+        ]
+      },
+      {
+        id: 'rio-de-la-plata-y-tucuman',
+        title: 'El Río de la Plata y Tucumán: intentos coloniales, sin evidencia de éxito',
+        paragraphs: [
+          'Documentos primarios del Archivo General de Indias muestran que la Corona española no ignoró la región que hoy es Argentina: una real cédula de 1619 se dirigió específicamente al gobernador del Río de la Plata, y otra de 1626 se envió a los gobernadores del Río de la Plata, Cartagena, Tucumán y Paraguay, entre otros, instruyendo fomentar el cultivo de cáñamo en sus jurisdicciones — casi 180 años antes de que Manuel Belgrano escribiera sobre el mismo tema.',
+          'No hay, en la fuente consultada para esta entrada, evidencia de que esas órdenes se hayan traducido en un cultivo exitoso y sostenido en el Río de la Plata o Tucumán: los propios funcionarios reales fueron confirmando, con el correr de las décadas, que el cáñamo no podía cultivarse de forma rentable en ninguna jurisdicción americana salvo Chile. Lo que sí queda documentado es un vínculo económico indirecto: hacia 1644-1648, la escasez de mano de obra que limitaba ampliar los cultivos chilenos se atribuye, en los propios documentos de la época, en parte al cierre del puerto de Buenos Aires — el Río de la Plata aparece conectado a la cadena de suministro del cáñamo colonial como nudo logístico, no como zona de cultivo.'
+        ]
+      },
+      {
+        id: 'belgrano-y-el-canamo',
+        title: 'Belgrano y el cáñamo: qué escribió realmente',
+        paragraphs: [
+          'La frase que suele repetirse —"Belgrano promovía la plantación de cannabis"— simplifica y distorsiona un episodio real pero distinto. El 9 de junio de 1797, como Secretario del Real Consulado de Comercio de Buenos Aires (cargo que ocupó entre 1794 y 1809), Manuel Belgrano presentó una memoria titulada "Utilidades que resultarán a esta Provincia y a la Península del cultivo del lino y del cáñamo" — un texto de política económica sobre dos cultivos de fibra textil e industrial (lino y cáñamo), pensado para sustituir importaciones y abastecer de cuerdas y telas a la Corona, no un texto sobre la planta en su sentido psicoactivo o medicinal moderno.',
+          'Fue una entre unas quince memorias que Belgrano escribió para el Consulado sobre temas de agricultura, manufactura, comercio y crédito — parte de un programa más amplio de fomento económico, no una iniciativa aislada sobre esta planta en particular. Y, tal como pasó con los intentos coloniales de 150 años antes, la propuesta no prosperó: la iniciativa de cultivar lino y cáñamo a escala no encontró el apoyo gubernamental ni privado necesario para sostenerse.'
+        ]
+      },
+      {
+        id: 'siglo-xx-y-actualidad',
+        title: 'Siglo XX y actualidad',
+        paragraphs: [
+          'Entre los intentos coloniales del siglo XVII y la actualidad, esta entrada no encontró, dentro de su alcance de investigación, una fuente primaria verificada que documente una plantación argentina exitosa y sostenida posterior a Belgrano — lo que hay son órdenes, memorias y proyectos de fomento, no evidencia confirmada de cultivo a escala. Se documenta esa ausencia en vez de rellenarla con una "primera plantación" que ninguna fuente consultada respalda.',
+          'El marco legal y regulatorio moderno de Cannabis en Argentina —la Ley 23.737 (que tipifica el cultivo no autorizado), el fallo "Arriola" de la Corte Suprema (2009) y la Ley 27.350/REPROCANN (uso medicinal y autocultivo registrado)— ya está descripto con sus fuentes oficiales en la entrada "Marco editorial y responsable" de este atlas; esta entrada no repite ese contenido, solo señala la continuidad histórica hacia él.'
+        ]
+      }
+    ],
+    observations: [
+      'Un fitolito fechado o un documento de archivo con su fecha y su institución de origen es evidencia directa. Que una fecha se repita en muchos sitios web sin ninguna cita no la vuelve más cierta — el caso de "1545, Chile" es exactamente ese patrón: una simplificación repetida durante un siglo que la propia investigación histórica reciente cuestiona con documentos primarios.',
+      'Que la Corona española haya ordenado fomentar el cultivo de cáñamo en el Río de la Plata en 1619 y 1626 es un hecho documentado. Que ese cultivo se haya concretado ahí es, con la evidencia disponible, una afirmación que no se puede hacer — la ausencia de evidencia de éxito no es lo mismo que evidencia de fracaso, pero tampoco permite dar por hecho lo primero.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Confundir "primer envío de semilla documentado" con "primera plantación exitosa" — son dos afirmaciones distintas, y la evidencia disponible respalda mejor la primera que la segunda en la mayoría de los casos.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Repetir la frase "Belgrano promovía el cultivo de cannabis" sin la aclaración de que su memoria de 1797 trataba sobre lino y cáñamo como insumo textil/naval, en el marco de una política general de fomento agrícola — no sobre la planta en el sentido en que hoy se la discute.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Tratar una fecha ampliamente repetida en sitios de divulgación (como "1545, Quillota, Chile") como si fuera un hecho verificado, sin revisar si esa repetición proviene de una fuente primaria o de una simplificación heredada de un solo texto de principios del siglo XX.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['historia', 'domesticación', 'argentina'],
+    relatedEntryIds: ['genetica-y-tipos', 'germinacion', 'marco-editorial'],
+    sourceIds: [
+      'cientifica-ren-2021-cannabis-domestication-genomics',
+      'cientifica-dalmartello-2023-haimenkou-cannabis-archaeobotany',
+      'cientifica-liu-2026-shandong-cannabis-phytolith',
+      'cientifica-mcpartland-2018-cannabis-europa-polen',
+      'academica-diaz-ordonez-2017-cannabis-chile-colonial',
+      'historica-belgrano-1797-memoria-lino-canamo'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-12',
+    metadata: {
+      seoTitle: 'Historia de la planta — Atlas del Cultivo Argentino',
+      seoDescription: 'Origen, domesticación, llegada a Europa y a América, los intentos coloniales en el Río de la Plata y Tucumán, y qué escribió realmente Belgrano sobre el cáñamo.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'genetica-y-tipos',
+    slug: 'genetica-y-tipos',
+    categoryId: 'historia',
+    title: 'Genética y tipos: sativa, indica, ruderalis',
+    summary: '"Sativa", "indica" y "ruderalis" nacieron como nombres de especies propuestos por distintos botánicos en siglos distintos — no como categorías climáticas ni como las variedades comerciales que hoy llevan esos nombres.',
+    intro: 'Pocas etiquetas se usan con tanta seguridad y tan poca precisión como "sativa" e "indica". Esta entrada cuenta de dónde vienen esos nombres, por qué la clasificación en tres especies está discutida por la propia botánica moderna, y qué categorías tienen hoy más utilidad real para entender cómo responde la planta al ambiente — sin convertir ningún nombre histórico en una regla de adaptación climática.',
+    sections: [
+      {
+        id: 'la-clasificacion-original',
+        title: 'La clasificación original: tres botánicos, tres criterios distintos',
+        paragraphs: [
+          'Carl Linnaeus describió una única especie, Cannabis sativa, en su obra fundacional Species Plantarum (1753) — el punto de partida de la nomenclatura botánica moderna. En ese momento no existía ninguna otra especie de Cannabis reconocida.',
+          'En 1785, Jean-Baptiste Lamarck propuso una segunda especie, Cannabis indica, para diferenciar plantas cultivadas en Occidente (que él seguía llamando C. sativa) de poblaciones silvestres que había observado en India — basándose en diferencias morfológicas (altura, tipo de tallo, forma de las hojas), no en ninguna diferencia de clima ni de efecto. Es un dato importante: la distinción original de Lamarck fue morfológica y geográfica, no climática.',
+          'En 1924, el botánico ruso D. E. Janischevsky describió una tercera forma, Cannabis ruderalis, a partir de poblaciones silvestres y ruderales (que crecen en terrenos alterados, al margen de caminos y campos) del sur de Rusia y Asia Central — plantas más pequeñas, de ciclo corto, adaptadas a un clima muy distinto del de India o de Europa occidental.'
+        ]
+      },
+      {
+        id: 'una-clasificacion-discutida',
+        title: 'Por qué esta clasificación está discutida hoy',
+        paragraphs: [
+          'La botánica moderna no da por cerrada esta discusión. Buena parte de los taxónomos actuales tratan a Cannabis como un género de una sola especie variable (monoespecífico) o como una especie con múltiples formas (polimórfica), en vez de como tres especies separadas — la pregunta de si "indica" merece o no el rango de especie distinta sigue abierta en la literatura científica.',
+          'Más importante para este atlas: los nombres "sativa" e "indica" que usan hoy cultivadores, semillerías y dispensarios para describir variedades comerciales no tienen validez taxonómica — no corresponden a un registro botánico formal, sino a una clasificación vernácula construida por la industria, muchas veces sin relación clara con la clasificación original de Lamarck. Un cultivar comercial llamado "sativa" no es necesariamente más parecido a la C. sativa de Linnaeus que uno llamado "indica".'
+        ]
+      },
+      {
+        id: 'fotoperiodo-autofloracion-y-lo-que-si-es-util',
+        title: 'Fotoperiódica, autofloreciente: categorías más útiles que "sativa/indica"',
+        paragraphs: [
+          'Para entender cómo una planta responde al ambiente, la propia ciencia moderna del cannabis usa categorías distintas de "sativa/indica" — y son las que este atlas prioriza. La más relevante es la respuesta al fotoperiodo (ver "Luz como señal temporal"): la mayoría de las variedades de Cannabis son fotoperiódicas, es decir que necesitan que el período de oscuridad se alargue lo suficiente para pasar a floración — el mismo mecanismo que Garner y Allard describieron por primera vez en 1920, usando precisamente soja y tabaco como especies de estudio.',
+          'Las variedades autoflorecientes son la excepción: florecen según su propia edad/madurez, sin necesidad de un cambio de fotoperiodo. Ese rasgo se asocia genéticamente a la herencia de Cannabis ruderalis (adaptada a veranos cortos donde esperar la señal de día corto sería tarde) y hoy se sabe que tiene una base genética identificable, no solo una observación de campo.',
+          'Un trabajo reciente sobre el mecanismo fisiológico en Cannabis (no una analogía con otra especie) muestra que, bajo fotoperiodo de día corto, los niveles de una hormona vegetal (giberelina) bajan, lo que frena la elongación de la planta y forma la inflorescencia condensada característica de la floración — y que la señal necesita al menos tres días consecutivos de oscuridad prolongada para registrarse. Categorías como "fotoperiódica/autofloreciente" o "ciclo corto/medio/largo" describen esto con mucha más precisión que "sativa" o "indica" — y son las que la Ficha Provincial de este atlas usa cuando hay evidencia suficiente, nunca como una regla fija de adaptación climática.'
+        ]
+      }
+    ],
+    observations: [
+      'Que Lamarck haya distinguido "indica" de "sativa" por su morfología es un hecho histórico documentado. Que "sativa" e "indica" describan hoy, de forma consistente, dos perfiles de efecto o de clima de origen es una creencia popular que la propia botánica no respalda con la misma certeza.',
+      'Decir que una variedad es "autofloreciente" es una observación verificable (florece sin cambio de fotoperiodo). Decir que por eso "viene de un clima frío" es una interpretación que mezcla origen genético con recomendación de cultivo — la genética informa, no dicta, cómo se comporta una planta en un ambiente nuevo.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Presentar "sativa", "indica" y "ruderalis" como si fueran tres variedades modernas con efectos o climas de adaptación fijos, en vez de tres propuestas taxonómicas históricas hechas en siglos distintos con criterios distintos.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Usar "sativa = clima cálido", "indica = clima frío" o "ruderalis = clima norteño" como reglas de adaptación — ninguna de las tres clasificaciones originales se basó en clima, y la ciencia genómica moderna no respalda esas equivalencias como reglas universales.'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'Confundir el nombre comercial de un cultivar ("sativa", "indica") con una clasificación botánica válida — el propio campo científico señala que esos nombres de uso vernáculo no tienen respaldo taxonómico formal.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['historia', 'genética', 'taxonomía', 'fotoperiodo'],
+    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo'],
+    sourceIds: [
+      'cientifica-pollio-2016-nombre-cannabis-taxonomia',
+      'cientifica-garner-allard-1920-photoperiodism-discovery',
+      'cientifica-alter-2024-cannabis-fotoperiodo-giberelina',
+      'preprint-cannabis-daylength-mutation-2023',
+      'cientifica-ren-2021-cannabis-domestication-genomics'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-12',
+    metadata: {
+      seoTitle: 'Genética y tipos: sativa, indica, ruderalis — Atlas del Cultivo Argentino',
+      seoDescription: 'De dónde vienen los nombres sativa, indica y ruderalis, por qué la clasificación en tres especies está discutida, y qué categorías (fotoperiódica, autofloreciente) son más útiles hoy.',
       canonical: null,
       ogImage: null
     }

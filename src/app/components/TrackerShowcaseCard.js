@@ -1,9 +1,37 @@
-import Link from 'next/link';
+'use client';
 
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { getSupabaseClient } from '../lib/supabase/client';
+
+// Tarjeta única de "Mi Cultivo" en el Grid (Loop 4.1) — reutiliza el mismo componente y el mismo
+// destino (`/mi-cultivo`) para las personas con y sin cuenta, en vez de duplicar el sistema de Mi
+// Cultivo con una segunda tarjeta. Solo cambia el texto/CTA según haya sesión activa o no.
 export default function TrackerShowcaseCard() {
+  // `null` = todavía no se comprobó la sesión (evita mostrar un estado que después cambia al
+  // hidratar) — mismo patrón ya usado en `ProvinceContextPanel`/`GeoSelector`.
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+  useEffect(() => {
+    const supabase = getSupabaseClient();
+    if (!supabase) {
+      setIsAuthenticated(false);
+      return;
+    }
+    supabase.auth.getSession().then(({ data }) => {
+      setIsAuthenticated(Boolean(data.session));
+    });
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      setIsAuthenticated(Boolean(newSession));
+    });
+    return () => listener.subscription.unsubscribe();
+  }, []);
+
+  const label = isAuthenticated ? 'Ir a Mi Cultivo' : 'Seguimiento de cultivo — con o sin cuenta';
+
   return (
     <article className="atlas-card tracker-card">
-      <Link className="tracker-card-link" href="/mi-cultivo" aria-label="Ir a De semilla al frasco — seguimiento de cultivo">
+      <Link className="tracker-card-link" href="/mi-cultivo" aria-label={`${label} — De semilla al frasco`}>
         <div className="tracker-card-media">
           <span className="tracker-card-badge">Nuevo</span>
           <svg
@@ -60,11 +88,15 @@ export default function TrackerShowcaseCard() {
           </svg>
         </div>
         <div className="tracker-card-body">
-          <span className="tracker-card-kicker">Seguimiento de cultivo</span>
+          <span className="tracker-card-kicker">Mi Cultivo</span>
           <h3>De semilla al frasco</h3>
-          <p>El recorrido completo de una planta, etapa por etapa — con o sin cuenta.</p>
+          <p>
+            {isAuthenticated
+              ? 'Tu historial, etapas y fotos guardados en tu cuenta.'
+              : 'El recorrido completo de una planta, etapa por etapa — con o sin cuenta.'}
+          </p>
           <span className="tracker-card-cta">
-            <span>Explorar</span>
+            <span>{isAuthenticated ? 'Ir a Mi Cultivo' : 'Explorar o ingresar'}</span>
             <span aria-hidden="true">↗</span>
           </span>
         </div>

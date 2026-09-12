@@ -461,6 +461,78 @@ export const sources = [
     publicationDate: '2024',
     accessedAt: '2026-09-11',
     notes: 'VERIFICADO por lectura directa (PMC, artículo de libre acceso; DOI 10.3389/fpls.2023.1249879). Investigado como candidato para sumar el tabaco (cultivado realmente en Jujuy/Salta/Tucumán/Chaco/Catamarca/Misiones/Corrientes, según fuente oficial MAGyP) como segunda especie de referencia fenológica junto a la soja. RESULTADO: se descartó — el paper demuestra que el tabaco CULTIVADO (Nicotiana tabacum) perdió, durante su domesticación/hibridación, la sensibilidad fotoperiódica de sus ancestros silvestres (N. sylvestris, día largo obligado; N. tomentosiformis, día corto facultativo) y hoy tiene "comportamiento de floración día-neutro". Esto lo vuelve una referencia MÁS DÉBIL que la soja para ilustrar una respuesta de día corto comparable a Cannabis sativa, pese a cultivarse en regiones argentinas relevantes — se documenta la investigación y el descarte, no se incorpora el tabaco como referencia.'
+  },
+
+  // --- Fuentes de contenido: Loop 4.1 — Historia de la planta y Cannabis regional (Fase 54, 2026-09-12) ---
+  {
+    id: 'cientifica-mcpartland-2018-cannabis-europa-polen',
+    title: 'Cannabis is indigenous to Europe and cultivation began during the Copper or Bronze age: a probabilistic synthesis of fossil pollen studies',
+    authorOrInstitution: 'McPartland, J. M.; Guy, G. W.; Hegman, W. — Vegetation History and Archaeobotany, vol. 27, pp. 635-648',
+    url: 'https://doi.org/10.1007/s00334-018-0678-7',
+    type: 'SCIENTIFIC',
+    publicationDate: '2018-07',
+    accessedAt: '2026-09-12',
+    notes: 'Título, autoría, revista, volumen/páginas y DOI verificados de forma consistente y vía metadatos de búsqueda; texto completo no leído directamente en esta sesión. Síntesis probabilística de estudios de polen fósil: Cannabis es nativo de Europa desde el Pleistoceno (polen ya presente 18.500-15.000 años AP), pero la evidencia de CULTIVO (no solo presencia silvestre) recién aparece en la Edad del Cobre/Bronce en el sudeste de Europa, y los escitas (cultura esteparia de la Edad del Hierro) habrían introducido el cultivo de cáñamo a pueblos celtas/eslavos/fino-úgricos hacia el 550 a.C. Se cita para distinguir explícitamente "presencia silvestre" de "cultivo" en la línea de tiempo europea — no se afirma ninguna fecha de "primer cultivo mundial" a partir de esta fuente.'
+  },
+  {
+    id: 'academica-diaz-ordonez-2017-cannabis-chile-colonial',
+    title: 'Cannabis Sativa y Chile (1577-1700): Un Insumo al servicio del Imperio',
+    authorOrInstitution: 'Díaz-Ordóñez, M.; Rodríguez Hernández, A. J. — TEMPUS Revista en Historia General (Universidad de Antioquia), n.º 6, pp. 1-21',
+    url: 'https://revistas.udea.edu.co/index.php/tempus/article/view/329709',
+    type: 'ACADEMIC',
+    publicationDate: '2017-11',
+    accessedAt: '2026-09-12',
+    notes: 'VERIFICADO por lectura directa (texto completo de 22 páginas extraído y leído en esta sesión). Fuente central para la sección "Cannabis en Sudamérica" — con citas textuales a documentos primarios del Archivo General de Indias (AGI). Hallazgos clave usados: (1) el mito difundido de "1545, Quillota, Chile" como primer cultivo americano es cuestionado por los propios autores — la evidencia documental más temprana de envío de semillas a "las Indias" data de 1513-1520 y llegó primero a Mesoamérica, no a Chile; la Real Cédula de 1545 fue una orden general al virreinato, no específica de Chile. (2) Chile se consolidó como la única región con cultivo de cáñamo rentable a gran escala en América del Sur colonial (valles de Quillota y La Ligua, desde 1577/1605), por motivos fenológicos/climáticos (clima mediterráneo). (3) Documentos primarios AGI muestran que la Corona española extendió órdenes de fomento del cultivo de cáñamo a la región del Río de la Plata y Tucumán en 1619 (AGI, Buenos Aires, 2, L.5) y 1626 (AGI, Indiferente, 429, L.37) — es decir, hay evidencia documental de intentos/órdenes que alcanzaron el territorio hoy argentino casi 180 años antes de Belgrano, aunque sin evidencia de que resultaran en cultivo exitoso allí (los propios funcionarios españoles confirmaron que, salvo Chile, el cáñamo no podía cultivarse rentablemente en las demás jurisdicciones). (4) Hacia 1644-1648, la escasez de mano de obra en Chile se vincula documentalmente al cierre del puerto de Buenos Aires — un dato que conecta económicamente al Río de la Plata con la cadena de suministro del cáñamo colonial sin que la región fuera zona de cultivo.'
+  },
+  {
+    id: 'historica-belgrano-1797-memoria-lino-canamo',
+    title: 'Utilidades que resultarán a esta Provincia y a la Península del cultivo del lino y del cáñamo (Memoria del Consulado de Comercio de Buenos Aires)',
+    authorOrInstitution: 'Belgrano, Manuel — Secretario del Real Consulado de Comercio de Buenos Aires',
+    url: null,
+    type: 'OTHER',
+    publicationDate: '1797-06-09',
+    accessedAt: '2026-09-12',
+    notes: 'SIN URL: no se localizó una copia digitalizada del documento primario en esta sesión — se prefirió `url: null` antes que inventar una dirección. NO verificado por lectura directa del texto original de Belgrano. Título, autoría, fecha de presentación (9 de junio de 1797) y contexto institucional (Secretario del Consulado de Comercio de Buenos Aires) corroborados de forma consistente por varias fuentes secundarias (Biblioteca Nacional de Maestros, artículos de historia económica). Se cita específicamente para corregir la simplificación popular "Belgrano promovía el cultivo de cannabis": el documento real trata sobre "lino y cáñamo" (fibra textil/naval, uso industrial), no sobre la planta en sentido psicoactivo/medicinal moderno, y la iniciativa de fomento fracasó por falta de apoyo gubernamental y privado (no llegó a establecer un cultivo sostenido) — ambos matices corroborados de forma independiente por más de una fuente secundaria.'
+  },
+  {
+    id: 'cientifica-pollio-2016-nombre-cannabis-taxonomia',
+    title: 'The Name of Cannabis: A Short Guide for Nonbotanists',
+    authorOrInstitution: 'Pollio, A. — Cannabis and Cannabinoid Research, vol. 1, n.º 1',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5531363/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2016',
+    accessedAt: '2026-09-12',
+    notes: 'VERIFICADO por lectura directa (PMC, artículo de libre acceso; DOI 10.1089/can.2016.0027). Fuente central para "Genética y tipos": reconstruye la historia taxonómica real — Linnaeus (1753, Species Plantarum) describió una única especie, Cannabis sativa; Lamarck (1785) propuso Cannabis indica como especie distinta por diferencias morfológicas entre poblaciones cultivadas de Occidente y poblaciones silvestres de India (NO por diferencias climáticas); Janischevsky (1924) describió Cannabis ruderalis en poblaciones silvestres/ruderales del sur de Rusia. El propio artículo señala que la mayoría de los taxónomos modernos tratan a Cannabis como un género monoespecífico o polimórfico, no como tres especies separadas, y que los nombres "sativa"/"indica" usados hoy por cultivadores y dispensarios "no tienen validez taxonómica" — se cita textualmente para desactivar la idea de que son "tres variedades modernas independientes".'
+  },
+  {
+    id: 'cientifica-alter-2024-cannabis-fotoperiodo-giberelina',
+    title: 'Inflorescence development in female cannabis plants is mediated by photoperiod and gibberellin',
+    authorOrInstitution: 'Alter, H.; Sade, Y.; Sood, A.; Carmeli-Weissberg, M.; Shaya, F.; Kamenetsky-Goldstein, R.; Bernstein, N.; Spitzer-Rimon, B. — Horticulture Research',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11560369/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2024',
+    accessedAt: '2026-09-12',
+    notes: 'VERIFICADO por lectura directa (PMC, artículo de libre acceso; DOI 10.1093/hr/uhae245). Primer respaldo de este proyecto sobre el MECANISMO fotoperiódico específico de Cannabis sativa (no una analogía con otra especie): bajo fotoperiodo de día corto (SD), los niveles de giberelina (GA4) bajan, lo que produce el cese de elongación de entrenudos y la formación de una inflorescencia condensada; se requieren al menos 3 días consecutivos de fotoperiodo corto para que la señal de floración se registre. Aplicar giberelina exógena imita el efecto de día largo e impide la inflorescencia compacta. Se usa para reforzar la entrada "Luz como señal temporal" y la sección de Cultivo con ciencia directa de Cannabis, no una referencia de especie comparable.'
+  },
+  {
+    id: 'preprint-cannabis-daylength-mutation-2023',
+    title: 'Loss of daylength sensitivity by splice site mutation in Cannabis',
+    authorOrInstitution: 'Preprint en bioRxiv (autoría no confirmada por lectura directa en esta sesión)',
+    url: 'https://www.biorxiv.org/content/10.1101/2023.03.10.532103',
+    type: 'SCIENTIFIC',
+    publicationDate: '2023',
+    accessedAt: '2026-09-12',
+    notes: 'PREPRINT, sin revisión por pares confirmada — no verificado por lectura directa (la herramienta de fetch devolvió error de límite de solicitudes). Título y existencia corroborados por búsqueda. Se registra únicamente como respaldo indicativo, ya corroborado de forma independiente por múltiples fuentes divulgativas convergentes (no usadas como autoridad primaria), de que la pérdida de sensibilidad al fotoperiodo en Cannabis (rasgo asociado a variedades "autofloreciente") tiene una base genética identificable (mutación puntual) — no se cita ningún detalle cuantitativo del preprint.'
+  },
+  {
+    id: 'otra-semillalibre-2026-guia-regional-revisada',
+    title: '"Cuándo plantar Cannabis en Argentina según tu región — Guía 2026" (blog comercial, revisado y contrastado, no usado como autoridad)',
+    authorOrInstitution: 'Semilla Libre (sitio comercial de venta de semillas)',
+    url: 'https://semillalibre.com/blog/cuando-plantar-cannabis-en-argentina-segun-tu-region-guia-2026',
+    type: 'OTHER',
+    publicationDate: '2026',
+    accessedAt: '2026-09-12',
+    notes: 'Blog comercial SIN ninguna fuente/cita propia (confirmado por lectura directa: cero referencias en el artículo). Investigado por instrucción explícita del Loop 4.1, clasificando cada afirmación: (a) "las autoflorecientes no dependen del fotoperiodo para florecer" — CORROBORADA de forma independiente por ciencia real (ver `cientifica-pollio-2016-...` y `preprint-cannabis-daylength-mutation-2023`); (b) "Patagonia tiene temporadas más cortas y temperaturas más bajas" — PARCIALMENTE CORROBORADA (consistente con la clasificación climática real de esta provincia, `oficial-indec-anida-tipos-climaticos-wfs`, pero sin ninguna fuente que verifique la conclusión de cultivo específica); (c) ventanas de siembra/floración/cosecha por mes y por región (ej. "floración: febrero a abril" para la zona centro) — NO CORROBORADAS: ninguna fuente científica o agronómica independiente respalda esas fechas exactas para Cannabis en Argentina. Estas fechas NO se incorporaron a ningún dato del proyecto — se documentan acá únicamente como el resultado de la verificación pedida, no como contenido utilizable.'
   }
 ];
 

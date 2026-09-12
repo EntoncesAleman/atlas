@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { STAGES, createCultivo, createEvent, updateEvent, stageIndex, stageLabel } from '../lib/miCultivo/model';
 import { loadCultivo, saveCultivo, resetCultivo } from '../lib/miCultivo/storage';
 import { getSupabaseClient } from '../lib/supabase/client';
@@ -85,6 +86,7 @@ function translateAuthError(error) {
 }
 
 export default function MiCultivoPage() {
+  const router = useRouter();
   const [supabase] = useState(() => getSupabaseClient());
 
   // --- Auth ---
@@ -560,6 +562,11 @@ export default function MiCultivoPage() {
         if (!data.session) {
           setAuthNotice('Te enviamos un email para confirmar tu cuenta. Confirmalo y después iniciá sesión acá.');
           setAuthMode('signin');
+        } else {
+          // Sesión inmediata (confirmación de email desactivada en este proyecto): el ingreso
+          // lleva al Atlas completo, no directo a Mi Cultivo (Loop 4.1) — la sesión ya quedó
+          // activa acá mismo (`onAuthStateChange`), así que el Atlas la va a reconocer enseguida.
+          router.push('/atlas');
         }
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email: authEmail, password: authPassword });
@@ -567,6 +574,7 @@ export default function MiCultivoPage() {
           setAuthError(translateAuthError(error));
           return;
         }
+        router.push('/atlas');
       }
       setAuthPassword('');
     } finally {
@@ -650,6 +658,18 @@ export default function MiCultivoPage() {
             ) : (
               <>
                 <p>Creá una cuenta o iniciá sesión para que tu historial deje de depender de este navegador.</p>
+                <div className="mi-cultivo-auth-benefits">
+                  <span className="mi-cultivo-auth-benefits-title">¿Qué gano al ingresar?</span>
+                  <ul>
+                    <li>Guardar Mi Cultivo en la nube, no solo en este navegador.</li>
+                    <li>Registrar etapas y eventos con fecha y notas, con historial completo.</li>
+                    <li>Guardar fotos privadas de tu cultivo, asociadas a tu cuenta.</li>
+                    <li>Mantener guardado el contexto de tu provincia entre visitas.</li>
+                    <li>Consultar tu historial completo en "Mi Temporada".</li>
+                    <li>Usar el Chatbot del Atlas con contexto de tu propio cultivo.</li>
+                    <li>Conservar tu información si cambiás de dispositivo o de navegador.</li>
+                  </ul>
+                </div>
                 <form className="mi-cultivo-auth-form" onSubmit={handleAuthSubmit}>
                   <label className="mi-cultivo-field">
                     <span>Email</span>

@@ -1010,6 +1010,38 @@ body::before {
   color: var(--clay);
 }
 
+.mi-cultivo-auth-benefits {
+  margin: 12px 0 16px;
+  padding: 14px 16px;
+  background: var(--sage-glass);
+  border: 1px solid var(--line);
+  max-width: 360px;
+}
+
+.mi-cultivo-auth-benefits-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  margin-bottom: 8px;
+}
+
+.mi-cultivo-auth-benefits ul {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mi-cultivo-auth-benefits li {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.4;
+}
+
 .mi-cultivo-migration {
   padding-top: 0;
 }

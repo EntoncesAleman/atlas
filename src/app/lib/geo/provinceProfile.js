@@ -182,13 +182,17 @@ function phenologicalReferenceDataPoint({ key, aspect, regionLabel }) {
     sourceId: 'academica-truffer-2011-soja-entrerios-grupos-madurez',
     evidenceLevel: 'C',
     availability: 'AVAILABLE',
-    methodology: 'Analogía biológica por categoría fotoperiódica (planta de día corto) más documentación agronómica argentina de zonificación por latitud — no es una medición ni un dato provincial directo de Cannabis sativa.',
+    methodology: 'Analogía biológica por categoría fotoperiódica (planta de día corto) más documentación agronómica argentina de zonificación por latitud — no es una medición ni un dato provincial directo de Cannabis sativa. El mecanismo fotoperiódico en sí (no la variación por latitud, que sigue sin fuente argentina para Cannabis) está respaldado por ciencia directa de la propia especie (Alter et al. 2024, Loop 4.1), no por analogía.',
     limitation: PHENOLOGICAL_REFERENCE_LIMITATION,
     referenceSpecies: 'Glycine max (soja)',
     referenceReason: 'Especie con la que se describió el fotoperiodismo vegetal (Garner y Allard, 1920) — misma categoría que Cannabis sativa: planta de día corto.',
-    photoperiodResponse: 'La transición a floración se acelera cuando el fotoperiodo baja de un umbral propio de cada "grupo de madurez" (variedad) — mismo principio de señal por oscuridad que "Luz como señal temporal", con umbrales distintos.',
+    photoperiodResponse: 'En Cannabis sativa misma (no por analogía), el fotoperiodo de día corto reduce los niveles de giberelina y así dispara la inflorescencia condensada — se necesitan al menos 3 días consecutivos de oscuridad prolongada para que la señal se registre (Alter et al., 2024). La variación de ESE umbral según la latitud de cada provincia no tiene todavía fuente argentina propia para Cannabis; el patrón de "grupo de madurez" de la soja se usa solo para ilustrar que esa variación por latitud es un fenómeno agronómico real y documentado en el país, con umbrales distintos.',
     referenceRegion: `Su grupo de madurez recomendado varía por franja latitudinal en Argentina — esta jurisdicción está en ${regionLabel}.`,
-    referenceSourceId: ['cientifica-garner-allard-1920-photoperiodism-discovery', 'academica-truffer-2011-soja-entrerios-grupos-madurez'],
+    referenceSourceId: [
+      'cientifica-garner-allard-1920-photoperiodism-discovery',
+      'academica-truffer-2011-soja-entrerios-grupos-madurez',
+      'cientifica-alter-2024-cannabis-fotoperiodo-giberelina',
+    ],
     notes: `Referencia fenológica sobre ${aspect}, no un dato directo de Cannabis sativa para esta provincia.`,
   };
 }
