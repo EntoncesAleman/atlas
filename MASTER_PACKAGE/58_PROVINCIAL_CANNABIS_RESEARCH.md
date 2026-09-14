@@ -24,8 +24,11 @@ patrón ya se había detectado con Semilla Libre en el Loop 4.1 (`otra-semillali
 confirma de nuevo acá con las fuentes adicionales revisadas en este loop. Por eso la mayoría de las
 24 secciones no tiene un hallazgo *provincial* propio — tiene, como máximo, el dato de a qué
 macro-región pertenece y qué dice el patrón general de esa macro-región, con la misma clasificación
-de evidencia (nivel E, no corroborado) que ya se aplicó a Semilla Libre. La única jurisdicción con
-evidencia real de nivel A directa y propia sigue siendo Chubut (CONICET-CENPAT).
+de evidencia (nivel E, no corroborado) que ya se aplicó a Semilla Libre. Al cierre del Loop 4.3, la
+única jurisdicción con evidencia real de nivel A directa y propia era Chubut (CONICET-CENPAT); el
+Loop 4.4.1 sumó Jujuy (Cannava S.E., producción industrial activa) y Misiones (MisioPharma/
+Biofábrica, antecedente histórico ya disuelto) — ver la sección "Ampliación Loop 4.4" al final de
+este documento y las secciones de Jujuy/Misiones más abajo.
 
 ## Buenos Aires (pampeana)
 
@@ -99,13 +102,20 @@ Seca. Altitud de referencia: 60 m s. n. m. (Formosa Aero).
 
 ## Jujuy (NOA)
 
-Sin evidencia directa de Cannabis. Jujuy es una de las 4 provincias ya documentadas como
-internamente heterogéneas (junto con Mendoza, Salta y Buenos Aires) — Quebrada, Puna y Yungas
-tienen condiciones muy distintas entre sí, y el centroide geométrico no las representa a todas.
-Ningún sitio consultado diferencia esas 3 sub-zonas para Cannabis. Altitud de referencia: 909 m s.
-n. m. (Jujuy Aero) — la más alta entre las estaciones capitales del NOA registradas, coherente con
-la geografía real de la provincia, aunque el propio valor de la estación no representa ni a la
-Puna (mucho más alta) ni a las Yungas (más bajas).
+**Actualizado en el Loop 4.4.1 — segunda jurisdicción con evidencia directa de nivel A.** Cannava
+S.E., la empresa estatal jujeña habilitada por ANMAT, opera la primera planta industrial de
+Cannabis medicinal de grado farmacéutico del país (Finca El Pongo, San Pedro), con invernaderos
+automatizados que controlan temperatura, humedad, luz y riego (comunicados oficiales del Gobierno
+de Jujuy, 2022 y 2023, leídos directamente). A diferencia de Chubut (cultivo exterior), la
+evidencia de Jujuy es de producción bajo invernadero industrial. Los comunicados oficiales NO
+confirman fotoperiodo específico (18/6 u otro), iluminación suplementaria, temperatura/HR exactas
+ni PPFD — esos datos técnicos no están en ninguna fuente pública accesible y no deben atribuirse a
+Cannava sin fuente (ver auditoría P07 en `55_CANNABIS_ARGENTINA_EVIDENCE_MATRIX.md`, que rechaza
+explícitamente el claim de "18h" que circulaba en material de terceros). Jujuy es una de las 4
+provincias ya documentadas como internamente heterogéneas (junto con Mendoza, Salta y Buenos
+Aires) — Quebrada, Puna y Yungas tienen condiciones muy distintas entre sí, y ni el centroide
+geométrico ni la instalación de Cannava (San Pedro, en los valles) representan a esas otras
+sub-zonas. Altitud de referencia: 909 m s. n. m. (Jujuy Aero).
 
 ## La Pampa (pampeana)
 
@@ -128,8 +138,13 @@ limitación ya documentada en Loop 4). Altitud de referencia: 704 m s. n. m. (Me
 
 ## Misiones (NEA)
 
-Sin evidencia directa de Cannabis. Clasificación climática real: Cálido/Subtropical sin Estación
-Seca (la misma que Corrientes). Altitud de referencia: 125 m s. n. m. (Posadas Aero).
+**Actualizado en el Loop 4.4.1 — antecedente histórico, ya no vigente.** La empresa provincial
+MisioPharma/Biofábrica Misiones S.A. realizó producción real de Cannabis medicinal bajo modalidad
+híbrida (invernadero + cielo abierto), pero fue disuelta por el gobierno provincial el 2026-04-14
+(Infobae, verificado). No hay datos técnicos públicos (temperatura, HR, fotoperiodo) de esa
+producción, y la empresa ya no está operativa — este antecedente se documenta como histórico,
+nunca como actividad actual. Clasificación climática real: Cálido/Subtropical sin Estación Seca
+(la misma que Corrientes). Altitud de referencia: 125 m s. n. m. (Posadas Aero).
 
 ## Neuquén (Patagonia)
 
@@ -203,12 +218,96 @@ real: Cálido/Subtropical Serrano. Altitud de referencia: 450 m s. n. m. (Tucum�
 
 ## Cierre
 
-De las 24 jurisdicciones, 23 no tienen ningún hallazgo de Cannabis específicamente provincial —
-solo el dato de a qué macro-región pertenecen y qué dice, sin corroborar, el patrón general de esa
-macro-región según sitios comerciales de venta de insumos. Chubut es la única excepción real, con
-evidencia de nivel A. Esto no es un resultado de una búsqueda insuficiente: es lo que efectivamente
-existe publicado y accesible al momento de esta investigación (Loop 4.3, septiembre 2026). La
-ficha provincial de este proyecto refleja esa asimetría real en vez de simularla con una cobertura
-pareja e inventada — para las 23 jurisdicciones sin evidencia propia, prioriza evidencia general de
-Cannabis (Zhang et al. 2021, Alter et al. 2024) por sobre la analogía con otra especie, coherente
-con la jerarquía Cannabis-primero de la consigna (§7/§16).
+Al cierre del Loop 4.3, de las 24 jurisdicciones, 23 no tenían ningún hallazgo de Cannabis
+específicamente provincial — solo el dato de a qué macro-región pertenecen y qué dice, sin
+corroborar, el patrón general de esa macro-región según sitios comerciales de venta de insumos, y
+Chubut era la única excepción real con evidencia de nivel A. El Loop 4.4.1 sumó dos jurisdicciones
+más con evidencia real de nivel A: **Jujuy** (producción industrial bajo invernadero, Cannava
+S.E., activa) y **Misiones** (antecedente histórico de producción, MisioPharma/Biofábrica, ya
+disuelta). Las 21 jurisdicciones restantes siguen sin hallazgo Cannabis específicamente
+provincial. Esto no es un resultado de una búsqueda insuficiente: es lo que efectivamente existe
+publicado y accesible al momento de esta investigación. La ficha provincial de este proyecto
+refleja esa asimetría real en vez de simularla con una cobertura pareja e inventada — para las 21
+jurisdicciones sin evidencia propia, prioriza evidencia general de Cannabis (Zhang et al. 2021,
+Alter et al. 2024) por sobre la analogía con otra especie, coherente con la jerarquía
+Cannabis-primero de la consigna (§7/§16).
+
+---
+
+## Ampliación Loop 4.4 — Auditoría del material provincial recibido (septiembre 2026)
+
+Este bloque complementa las secciones anteriores con los hallazgos específicos de la auditoría
+del material "El Ciclo Agronómico Integral de Cannabis sativa L.", que incluye perfiles de las
+23 provincias más un bloque de cáñamo industrial. Los claims provinciales fueron auditados
+individualmente (ver P01-P25 en `55_CANNABIS_ARGENTINA_EVIDENCE_MATRIX.md`).
+
+**Resultado general**: ninguna de las 23 secciones provinciales del material recibido contiene
+datos que eleven a ninguna jurisdicción por encima del nivel que ya tenían en el Loop 4.3. Las
+afirmaciones provinciales del material son en su totalidad inferencias agronómicas que mezclan
+datos climáticos reales (temperatura, HR, precipitaciones — nivel D) con recomendaciones de
+cultivo Cannabis sin fuente específica de nivel A/B.
+
+### Actualizaciones por jurisdicción
+
+**Buenos Aires / CABA**: sin cambios respecto del Loop 4.3. Los datos de temperatura del material
+son plausibles pero no verificados individualmente con SMN. La inferencia sobre Botrytis por alta
+HR fluvial es lógica pero sin estudio de campo de Cannabis en PBA.
+
+**Córdoba, Santa Fe, Mendoza, San Juan, La Rioja**: sin cambios. Claims de temperatura plausibles
+(nivel D). Inferencias agronómicas sin fuente Cannabis específica.
+
+**Jujuy**: nueva observación importante. El material afirma que "Cannava integra invernaderos con
+luz artificial suplementaria para extender el fotoperiodo a 18 horas". Los comunicados oficiales
+del gobierno provincial (prensa.jujuy.gob.ar, leídos directamente) confirman invernaderos con
+control automatizado de temperatura, humedad, luz y riego — pero NO mencionan en ningún lugar el
+fotoperiodo específico ni la "iluminación suplementaria a 18h". Esta afirmación del material es
+una inferencia no verificada. No incorporar a ninguna ficha.
+
+**Salta**: sin cambios. El patrón de lluvias concentradas en verano (enero-marzo) en el NOA es
+real y verificable. La inferencia sobre hongos en Cannabis no tiene fuente específica.
+
+**Tucumán**: sin cambios. Yunga con plagas reales; inferencia Cannabis sin fuente.
+
+**Misiones**: actualización. El material presenta a MisioPharma como ejemplo activo de producción
+indoor. MisioPharma/Biofábrica fue disuelta el 2026-04-14 (Infobae, verificado). La producción
+híbrida invernadero+campo estuvo activa hasta la disolución pero sin datos técnicos públicos.
+
+**Corrientes, Entre Ríos, Chaco, Formosa, Santiago del Estero**: sin cambios. Todos son claims
+de temperatura + inferencias agronómicas sin fuente Cannabis.
+
+**Neuquén, Río Negro**: sin cambios. El patrón de vientos patagónicos es real. La inferencia
+específica de fractura de tallos de Cannabis no tiene fuente A/B.
+
+**Chubut**: la única provincia donde el material recibido tiene base real documentada. El material
+dice "baja temperatura nocturna restringe el cultivo exterior solo a una ventana estival corta
+(diciembre a marzo)". CONICET-CENPAT confirma cultivo exterior real en verano (temporada
+2022-2023), pero los comunicados dicen "el verano pasado", no "diciembre a marzo" específicamente.
+La ventana del material es plausible pero más estrecha que lo que la fuente dice explícitamente.
+
+**Santa Cruz**: discrepancia de fotoperiodo. El material dice 16.0/8.3h (verano/invierno). El
+Atlas calcula 16.42/7.58h para lat -51.6. La diferencia de +0.42h en verano y -0.72h en invierno
+sugiere que el material usó una latitud más septentrional (posiblemente Caleta Olivia, ~lat -46,
+que daría ~15.7h de verano). El Atlas conserva su cálculo canónico.
+
+**Tierra del Fuego**: sin cambios respecto del Loop 4.3. El material especifica tecnologías
+de indoor (LEDs 650W+, inyección CO2, paneles de poliuretano) que son razonables dadas las
+condiciones pero sin ninguna fuente argentina de nivel A/B que las valide. Aportes del material:
+ninguno verificable como nuevo.
+
+**La Pampa, San Luis, Catamarca**: sin cambios. Claims climáticos plausibles, inferencias
+agronómicas sin fuente Cannabis.
+
+### Cáñamo agroindustrial a campo (NEA + región pampeana)
+
+El material incluye una sección 24 sobre cáñamo industrial a campo en Chaco, Corrientes y Formosa
+(y la región pampeana en general), argumentando que es viable por baja demanda de control
+ambiental en la especie de fibra/grano.
+
+- **Lógica agronómica**: correcta en principio. El cáñamo industrial tiene mayor tolerancia a
+  variabilidad climática que el Cannabis medicinal de flor.
+- **Evidencia institucional encontrada**: INTA tiene convenios y ensayos en marcha (Concordia,
+  Alto Valle), pero sin resultados publicados todavía. INTA Cerrillos organizó jornada de
+  divulgación de cáñamo (2023) pero no es un ensayo propio.
+- **Veredicto**: plausible como área de investigación activa, sin resultado publicado que valide
+  el rendimiento real en esas provincias específicas. Nivel C (institución científica activa en
+  el tema, sin resultado publicado). No incorporar como hecho.

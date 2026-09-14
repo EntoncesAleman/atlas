@@ -63,7 +63,29 @@ export const communityVoices = [];
 // aliados NO tienen sección de menú ni página protagonista — aparecen EXCLUSIVAMENTE como una
 // franja discreta al final de `/atlas` (ver `PartnersStrip.js`). Por eso este array no tiene una
 // página de directorio propia en `/comunidad`, a diferencia de clubes/agenda/formación/voces.
+//
+// Schema de cada aliado (Loop 4.4.1, PARTE 10):
+//   id:          string — identificador único (snake_case)
+//   name:        string — nombre visible del aliado
+//   logo:        string|null — URL al logo/icono (puede ser null si no hay imagen)
+//   url:         string|null — URL al sitio del aliado (puede ser null)
+//   type:        PARTNER_TYPES[n] — tipo conceptual del aliado
+//   description: string|null — descripción breve opcional (una frase)
+//
+// NO inventar aliados reales. El array comienza vacío — la UI maneja el estado vacío
+// mostrando un mensaje discreto. Agregar aliados reales cuando existan.
 export const atlasPartners = [];
+// Ejemplo de estructura (no activar hasta tener aliados reales):
+// export const atlasPartners = [
+//   {
+//     id: 'ejemplo_aliado',
+//     name: 'Nombre del aliado',
+//     logo: null,           // o '/logos/aliado.svg'
+//     url: 'https://...',
+//     type: 'ALIADO_INSTITUCIONAL',
+//     description: 'Una frase breve que describe qué hace este aliado.',
+//   },
+// ];
 
 export const PARTNER_TYPES = ['SPONSOR', 'ALIADO_EDUCATIVO', 'ALIADO_INSTITUCIONAL', 'COLABORADOR'];
 

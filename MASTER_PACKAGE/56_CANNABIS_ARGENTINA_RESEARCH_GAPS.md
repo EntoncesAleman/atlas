@@ -88,3 +88,73 @@ cambia es la calidad de la evidencia disponible para **Chubut/Patagonia** en par
 evidencia A real de cultivo exitoso ahí, aunque sin datos de fenología/rendimiento públicos
 todavía) y la solidez del respaldo internacional (nivel B) para explicar el mecanismo
 genotipo×latitud sin necesitar la analogía de la soja para esa parte conceptual.
+
+---
+
+## 8. Vacíos nuevos identificados en el Loop 4.4 (septiembre 2026)
+
+Este loop incorporó a la auditoría el material agronómico "El Ciclo Agronómico Integral de
+Cannabis sativa L.", que incluye un ciclo fisiológico completo (9 etapas), una sección indoor y
+una sección provincial con las 23 provincias más un bloque de cáñamo. La auditoría identificó los
+siguientes vacíos y hallazgos nuevos:
+
+### 8.1 Vacíos confirmados sobre el ciclo fisiológico
+
+- **Rangos de HR por etapa** (40-60% vegetativo, 35-45% floración, 30-40% lavado, etc.): los
+  valores circulan ampliamente en la literatura de cultivo, pero ningún paper de nivel A/B leído
+  en este loop los establece como "los" rangos correctos para Cannabis sativa drug-type. Existen
+  revisiones (Saragoça 2025, pendiente de lectura directa) que podrían abordarlos.
+- **Duración de etapas** (1-7 días germinación, 2-3 semanas plántula, etc.): son rangos genéricos
+  del sector indoor no verificados con paper de nivel A/B. La Tabla 1 de Ahrens 2023 da rangos de
+  56-80 días a madurez comercial para 10 cultivares drug-type, lo que es la única referencia de
+  nivel B disponible hasta ahora.
+- **Práctica de lavado de raíces**: sigue sin evidencia científica y es explícitamente
+  controvertida en agronomía. RECHAZADA como claim válido.
+- **Temperatura óptima por etapa**: el único dato de nivel B disponible es 25°C constante (Ahrens
+  2023). El rango 20-26°C del material es plausible pero no está verificado con fuente A/B citada.
+- **Espectro lumínico específico** (450nm/660nm): principio general de fisiología vegetal, no
+  específicamente validado para Cannabis con fuente A/B leída.
+
+### 8.2 Vacíos confirmados sobre indoor en Argentina
+
+- **Condiciones numéricas de Cannava**: las fuentes oficiales del gobierno de Jujuy confirman
+  invernaderos con control automatizado de temperatura, humedad, luz y riego, pero NO publican los
+  valores específicos de fotoperiodo, temperatura ni HR en sus comunicados institucionales. Los
+  protocolos de producción de Cannava (SOPs/manuales) no están disponibles en fuentes públicas.
+- **Condiciones de MisioPharma/Biofábrica**: confirmada la modalidad híbrida invernadero+campo,
+  pero la empresa está disuelta (2026-04-14) y no dejó documentación técnica pública.
+- **Producción a campo de cáñamo industrial en NEA**: lógicamente plausible por latitud y
+  temperatura, pero sin ensayo publicado con resultados concretos de ninguna de las EEA del INTA
+  de la región (Concordia tiene convenio firmado pero resultados no publicados; Cerrillos fue sede
+  de una jornada de divulgación, no de ensayo).
+
+### 8.3 Vacíos confirmados sobre provincias específicas
+
+- **Fotoperiodos del material vs. fotoperiodos del Atlas**: el material tiene diferencias
+  sistemáticas de -0.06h a -0.26h respecto del cálculo del Atlas (el material da valores mayores
+  en todos los casos menos Santa Cruz). Para Santa Cruz la diferencia es invertida (+0.42h en
+  verano) lo que sugiere que el material usó una latitud distinta a la del centroide provincial
+  del Atlas. El Atlas conserva su cálculo como fuente canónica.
+- **Horas de sol anuales**: los valores del material (1500 hs TDF, 2900 hs San Juan, etc.) son
+  plausibles en orden de magnitud pero no fueron verificados uno a uno contra el dataset oficial
+  del SMN en este loop.
+- **Temperaturas provinciales**: los rangos del material son plausibles y comparables con las
+  normales climáticas del SMN, pero no se verificaron individualmente provincia por provincia en
+  este loop.
+- **Efectos específicos de clima provincial sobre Cannabis**: todas las provincias tienen
+  inferencias agronómicas que convierten datos climáticos en recomendaciones de cultivo Cannabis
+  sin fuente específica. Ninguna de las 23 provincias (excl. Chubut) tiene un estudio publicado
+  de campo con Cannabis que valide esas inferencias.
+
+### 8.4 Fuentes pendientes de leer directamente
+
+1. **Saragoça et al. (2025)** *Agriculture* 15:1635 — Revisión de parámetros de cultivo Cannabis.
+   Probable fuente de nivel B para temperatura/HR/fotoperiodo. PDF bloqueado en la sesión actual.
+2. **Paper Frontiers in Plant Science (2025)** sobre RH elevada y cannabinoides — potencial nivel B
+   para el claim de Misiones y otras provincias húmedas.
+3. **Resultados del ensayo INTA Concordia** (desde 2022, con ARQKUL SA) — si se publicaron, serían
+   la primera evidencia de nivel A para Cannabis en Entre Ríos.
+4. **Documentación técnica de Cannava** (SOPs, manuales de calidad farmacéutica) — si son
+   accesibles, resolverían el vacío sobre condiciones de producción indoor en Jujuy.
+5. **Heladas.agro.uba.ar** — pendiente desde el Loop 4, potencialmente útil para datos de heladas
+   por provincia que reforzarían los argumentos de viabilidad exterior.

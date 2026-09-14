@@ -614,6 +614,50 @@ export const sources = [
   // No se registra una fuente nueva: `oficial-smn-listado-estaciones` (arriba) ya cubre la
   // columna ALTURA del mismo archivo oficial ya descargado en el Loop 4 — ver
   // `lib/geo/provinceProfile.js` (`CAPITAL_STATION_ALTITUDE`) para el uso puntual de esa columna.
+
+  // --- Fuentes de contenido: Loop 4.4.1 — Evidencia argentina Jujuy/Misiones (2026-09-14) ---
+  {
+    id: 'oficial-cannava-jujuy-planta-anmat-2022',
+    title: 'Jujuy tiene la única Planta Industrial de procesamiento de Cannabis Medicinal habilitada por ANMAT',
+    authorOrInstitution: 'Gobierno de la Provincia de Jujuy — Secretaría de Comunicación y Gobierno Abierto',
+    url: 'https://prensa.jujuy.gob.ar/farmaceutico/jujuy-tiene-la-unica-planta-industrial-procesamiento-cannabis-medicinal-habilitada-anmat-n108790',
+    type: 'OFFICIAL',
+    publicationDate: '2022-10-04',
+    accessedAt: '2026-09-14',
+    notes: 'VERIFICADO por lectura directa. Comunicado oficial del Gobierno de Jujuy confirmando que Cannava S.E. opera la primera planta industrial de producción y procesamiento farmacéutico de Cannabis medicinal habilitada por ANMAT en Argentina. Confirma explícitamente: (1) invernadero automatizado que controla humedad, temperatura, luz y riego de forma computarizada; (2) capacidad productiva anual de 80 toneladas de inflorescencias medicinales; (3) primera cosecha de 35 hectáreas; (4) personal de 200 empleados. NO menciona fotoperiodo específico (18/6 u otro), iluminación suplementaria, temperatura o HR exactas, PPFD ni SOPs internos. Esos datos no están en ningún comunicado oficial público accesible — no se deben atribuir a Cannava sin fuente.'
+  },
+  {
+    id: 'oficial-cannava-jujuy-franquicias-2023',
+    title: 'Jujuy lanza un sistema inédito de franquicias biotecnológicas para la producción privada de cannabis medicinal de grado farmacéutico',
+    authorOrInstitution: 'Gobierno de la Provincia de Jujuy — Secretaría de Comunicación y Gobierno Abierto',
+    url: 'https://prensa.jujuy.gob.ar/gerado-morales/jujuy-lanza-un-sistema-inedito-franquicias-biotecnologicas-la-produccion-privada-cannabis-medicinal-grado-farmaceutico-n110861',
+    type: 'OFFICIAL',
+    publicationDate: '2023-04-14',
+    accessedAt: '2026-09-14',
+    notes: 'VERIFICADO por lectura directa. Confirma la escala del proyecto: parque de incubación de más de 70 hectáreas con 66 invernaderos altamente tecnificados y automatizados de 2500 m², capacidad para 2000 plantas por ciclo en 3 o 4 ciclos anuales. Menciona manuales de calidad y SOPs que los franquiciados deberán respetar — sin publicar el contenido de esos manuales. Confirma estándares de farmacopea alemana y GACP/GMP. Ninguna condición técnica numérica (temperatura, HR, fotoperiodo) aparece en el texto.'
+  },
+  {
+    id: 'periodistica-misiones-biofabrica-disolucion-2026',
+    title: 'Misiones disolvió la empresa provincial de cannabis medicinal a fin de "apuntalar la eficiencia del Estado"',
+    authorOrInstitution: 'Infobae',
+    url: 'https://www.infobae.com/politica/2026/04/14/misiones-disolvio-la-empresa-provincial-de-cannabis-medicinal-a-fin-de-apuntalar-la-eficiencia-del-estado/',
+    type: 'OTHER',
+    publicationDate: '2026-04-14',
+    accessedAt: '2026-09-14',
+    notes: 'Nota periodística verificada por búsqueda directa. Confirma que el gobierno de Misiones disolvió MisioPharma/Biofábrica Misiones S.A. en abril de 2026. La producción de cannabis medicinal que realizaba esta empresa (modalidad híbrida invernadero + cielo abierto) cesó con la disolución. No se debe presentar a MisioPharma como una empresa actualmente operativa.'
+  },
+
+  // --- Fuentes de contenido: Loop 4.4.1 — Ciclo general de Cannabis sativa L. (2026-09-14) ---
+  {
+    id: 'cientifica-ahrens-2023-photoperiod-flowering-indoor',
+    title: 'Is Twelve Hours Really the Optimum Photoperiod for Promoting Flowering in Indoor-Grown Cultivars of Cannabis sativa?',
+    authorOrInstitution: 'Ahrens, A.; Llewellyn, D.; Zheng, Y. — Plants (Basel), MDPI, vol. 12, n.º 14, art. 2605',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10386198/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2023-07-10',
+    accessedAt: '2026-09-14',
+    notes: 'VERIFICADO por lectura directa (PMC, artículo de libre acceso; DOI 10.3390/plants12142605). Estudio con 10 cultivares drug-type de Cannabis sativa bajo 6 fotoperiodos de floración (12 h a 15 h). Resultados clave: (1) el protocolo 18 h en vegetativo y 12 h en floración es el estándar industrial ampliamente adoptado, pero NO es el único que induce floración — muchos cultivares florecen robustamente hasta 14 h, con demoras de 0 a 4 días según cultivar; (2) algunos cultivares iniciaron floración incluso a 15 h aunque sin desarrollo posterior de inflorescencia; (3) la respuesta al fotoperiodo es cultivar-específica y no predecible de forma universal. Temperatura de ensayo: 25 °C constante. HR mantenida ≥ 60 % con sistema de nebulización. Se usa para respaldar: (a) el protocolo 18/6 y 12/12 como referencias ampliamente utilizadas, no como reglas universales; (b) que la variación entre cultivares es real y documentada; (c) los rangos de temperatura de referencia (25 °C para el ensayo) sin presentarlos como únicos valores válidos. No cita condiciones de cultivo argentino ni cultivares argentinos.'
+  },
 ];
 
 export function sourceById(id) {

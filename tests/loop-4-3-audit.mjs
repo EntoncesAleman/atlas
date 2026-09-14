@@ -64,7 +64,8 @@ async function main() {
     ok('Cultivo lista "Poda"', cultivoText.includes('Poda'));
     ok('Cultivo lista "Fertilización y nutrición"', cultivoText.includes('Fertilización y nutrición'));
     const cultivoCards = await page.locator('.atlas-entry-card').count();
-    ok('Cultivo muestra 3 tarjetas de entrada diferenciadas', cultivoCards === 3, `encontradas: ${cultivoCards}`);
+    // 4 desde el Loop 4.4.1 (se sumó "Ciclo de vida y condiciones de referencia" a las 3 de 4.3).
+    ok('Cultivo muestra 4 tarjetas de entrada diferenciadas', cultivoCards === 4, `encontradas: ${cultivoCards}`);
 
     await page.goto(`${BASE_URL}/atlas/cultivo/poda`, { waitUntil: 'networkidle' });
     ok('Poda es alcanzable por URL directa', page.url().endsWith('/atlas/cultivo/poda'));

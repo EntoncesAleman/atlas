@@ -137,3 +137,116 @@ datos ni contenido público. Los tres documentos (`55`, `56`, `57`) quedan como 
 en un loop de implementación futuro, qué de todo esto se incorpora al producto — con el mismo
 criterio ya aplicado en todos los loops anteriores: nunca convertir una analogía o un cálculo en
 un hecho directo, y nunca rellenar un vacío de evidencia con una estimación disfrazada de dato.
+
+---
+
+## Ampliación del Loop 4.4 — Auditoría del material agronómico (septiembre 2026)
+
+Esta sección responde las 7 preguntas de cierre del brief del Loop 4.4, complementando las 13
+preguntas del Loop 4.2 ya respondidas arriba. Ver las tablas de evidencia N01-N19 y P01-P25 en
+`55_CANNABIS_ARGENTINA_EVIDENCE_MATRIX.md` y los vacíos actualizados en `56_CANNABIS_ARGENTINA_RESEARCH_GAPS.md`.
+
+### 1. Claims confirmados (tienen respaldo A/B o D verificable)
+
+- **Control de fotoperiodo en indoor como mecanismo de gestión del ciclo**: VERIFIED nivel B
+  (Ahrens et al. 2023, leído en texto completo — N13).
+- **Fotoperiodo 18/6 en vegetativo como protocolo industrial estándar**: PARTIAL nivel B
+  (Ahrens 2023 lo documenta como el protocolo de la industria — N01).
+- **Fotoperiodo 12/12 en floración como protocolo dominante**: PARTIAL nivel B (Ahrens 2023 —
+  N02). Con la caveat importante de que muchos cultivares florecen hasta 14h.
+- **Fotoperiodos solsticiales por provincia**: VERIFIED nivel D (cálculo canónico del Atlas,
+  Spencer 1971 + Cooper 1969, ya verificado en Loops anteriores — E17). Los valores del material
+  recibido son astronómicamente plausibles pero difieren sistemáticamente del Atlas.
+- **Cannava opera invernaderos con control automatizado de temperatura, humedad, luz y riego**:
+  VERIFIED nivel A (prensa.jujuy.gob.ar, leído directamente — N18 parcial).
+- **MisioPharma operó producción híbrida invernadero+campo antes de su disolución**: VERIFIED
+  (fuentes periodísticas convergentes — N19).
+- **Marco normativo Ley 27.350 + Decreto 883/2020**: VERIFIED nivel A (Boletín Oficial).
+  Establece qué instituciones pueden investigar Cannabis a campo (INTA, CONICET).
+
+### 2. Claims parcialmente confirmados
+
+- **18/6 para vegetativo y 12/12 para floración**: el mecanismo fisiológico es correcto pero
+  la presentación como "regla fija" en el material es una simplificación que el propio Ahrens 2023
+  demuestra incorrecta — muchos cultivares florecen a 13-14h, y el estudio fue diseñado
+  específicamente para cuestionar el dogma del "12h obligatorio".
+- **Temperatura en vegetativo/floración 20-26°C**: plausible y consistente con el único dato
+  de nivel B disponible (25°C constante en Ahrens 2023), pero los rangos exactos del material
+  no tienen cita específica.
+- **Relación UV/cannabinoides**: el fenómeno existe pero el material lo describe de manera imprecisa
+  al mezclar síntesis de cannabinoides por UV durante cultivo con degradación de THC a CBN en
+  postcosecha.
+- **Inferencias de necesidad de indoor por clima provincial**: los datos climáticos base (temperatura,
+  HR, heladas, lluvias) son en su mayoría verificables por SMN (nivel D). Las inferencias
+  agronómicas sobre Cannabis son lógicas en algunos casos pero ninguna tiene un estudio de campo
+  argentino específico de Cannabis que las valide directamente.
+- **Chubut ventana exterior diciembre-marzo**: el cultivo exterior real en verano está verificado
+  (CONICET-CENPAT, nivel A), pero los límites exactos de la ventana no están en los comunicados
+  oficiales.
+
+### 3. Claims rechazados
+
+- **"Lavado de raíces"** (riego con agua pura en los últimos 7-10 días para consumir reservas):
+  sin evidencia científica revisada por pares. La agronomía no ha validado el mecanismo declarado.
+  RECHAZADO.
+- **"Cannava integra iluminación suplementaria para extender fotoperiodo a 18h"**: esta afirmación
+  específica NO está en ninguno de los comunicados oficiales de Cannava leídos. El material recibido
+  lo presenta como un hecho, pero es una inferencia no confirmada por la fuente. RECHAZADO como
+  afirmación verificada (puede ser cierto, pero no está documentado).
+
+### 4. Provincias con evidencia Cannabis directa
+
+- **Chubut**: única con evidencia de nivel A. CONICET-CENPAT cultivó realmente Cannabis al
+  aire libre en Puerto Madryn, verano 2022-2023 (E01/E02/E20). Sin datos exactos de ciclo.
+- **Jujuy**: evidencia A de que Cannava opera invernaderos con control ambiental. No es evidencia
+  de condiciones técnicas específicas de cultivo.
+- **Misiones**: evidencia C (periodística institucional) de producción híbrida real antes de la
+  disolución. Sin datos técnicos.
+- **Entre Ríos (Concordia)**: INTA firmó convenio para ensayo Cannabis. Sin resultados publicados.
+
+### 5. Provincias donde solo existe evidencia ambiental (nivel D)
+
+Las 19 provincias restantes (Buenos Aires, CABA, Córdoba, Santa Fe, Mendoza, San Juan, Salta,
+La Rioja, Tucumán, Corrientes, Neuquén, Río Negro, Santa Cruz, Tierra del Fuego, La Pampa, San
+Luis, Catamarca, Chaco, Santiago del Estero, Formosa) tienen datos climáticos verificables por
+SMN (temperatura, HR, fotoperiodo calculado, precipitación) pero sin ninguna evidencia directa de
+cultivo real de Cannabis en ninguna de ellas.
+
+### 6. Nuevos gaps descubiertos en este loop
+
+1. Los protocolos de Cannava (SOPs, condiciones numéricas reales de temperatura/HR/fotoperiodo)
+   no están en fuentes públicas accesibles.
+2. Los resultados del ensayo INTA Concordia (desde 2022) no fueron encontrados publicados.
+3. Saragoça et al. (2025) es una revisión de parámetros de cultivo Cannabis potencialmente útil
+   para verificar los rangos de HR/temperatura del material, pero el PDF no fue accesible en esta
+   sesión.
+4. Los fotoperiodos del material recibido difieren sistemáticamente del cálculo del Atlas, con un
+   caso atípico en Santa Cruz (diferencia de +0.42h en verano) que sugiere uso de latitudes
+   distintas al centroide provincial.
+
+### 7. Qué información puede pasar a la siguiente fase editorial
+
+- El **mecanismo de fotoperiodo en indoor** (control del ciclo a voluntad) puede incorporarse
+  como entrada editorial general de "cultivo controlado", citando Ahrens 2023 como fuente B —
+  siempre distinguiendo el principio fisiológico (sí está verificado) de los rangos numéricos
+  exactos (aún sin fuente A/B específica para todos).
+- Los **datos de Cannava** confirman que existe producción industrial real de Cannabis medicinal
+  en Argentina, a escala de invernadero, con control automatizado. Eso es incorporable como
+  evidencia de que el cultivo controlado funciona en el país — sin atribuir a Cannava condiciones
+  técnicas que sus comunicados no especifican.
+- Los **fotoperiodos calculados por el Atlas** (E17) siguen siendo la referencia canónica.
+  Los valores del material recibido son plausibles pero no coinciden exactamente.
+- El claim de **cáñamo a campo en NEA/Pampeana** tiene lógica agronómica, pero ningún ensayo
+  publicado por INTA u otra institución lo respalda todavía como "hecho" para ninguna provincia.
+  Puede presentarse solo como "área de investigación activa" o "potencial identificado", nunca
+  como hecho.
+
+### Nota sobre el material recibido
+
+El material "El Ciclo Agronómico Integral de Cannabis sativa L." no es utilizable como fuente
+directa del producto. No tiene citas propias. Su contenido mezcla datos astronómicos plausibles
+(fotoperiodos), datos climáticos reales (temperaturas, precipitaciones) e inferencias agronómicas
+sin respaldo bibliográfico. Sigue el mismo patrón ya detectado en Semilla Libre y otros sitios
+comerciales (E18, E22): formato profesional + zero citas propias. Se registra como fuente
+secundaria de descubrimiento (nivel E) pero ninguno de sus datos se incorpora al producto sin
+verificación independiente de nivel A/B/D.

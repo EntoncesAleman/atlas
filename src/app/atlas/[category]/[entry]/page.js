@@ -80,6 +80,30 @@ export default async function EntryPage({ params }) {
                     {section.list.map((item, index) => <li key={index}>{item}</li>)}
                   </ul>
                 )}
+                {section.table && (
+                  <div className="atlas-entry-table-wrap">
+                    <table className="atlas-entry-table">
+                      <caption>{section.table.caption}</caption>
+                      <thead>
+                        <tr>
+                          {section.table.headers.map((header) => <th key={header}>{header}</th>)}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row, index) => (
+                          <tr key={index}>
+                            <td data-label={section.table.headers[0]}>{row.etapa}</td>
+                            <td data-label={section.table.headers[1]}>{row.duracion}</td>
+                            <td data-label={section.table.headers[2]}>{row.fotoperiodo}</td>
+                            <td data-label={section.table.headers[3]}>{row.temperatura}</td>
+                            <td data-label={section.table.headers[4]}>{row.hr}</td>
+                            <td data-label={section.table.headers[5]}>{row.notas}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
                 {section.note && <p className="atlas-section-note">{section.note}</p>}
               </div>
             ))}

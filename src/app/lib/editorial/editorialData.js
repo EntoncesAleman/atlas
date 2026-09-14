@@ -780,7 +780,7 @@ export const editorialEntries = [
       'Esta entrada no fija un calendario ni una duración esperada para cada etapa — depende de demasiadas variables (genética, ambiente, manejo) como para dar una cifra única sin volverla arbitraria.'
     ],
     tags: ['cultivo', 'ciclo'],
-    relatedEntryIds: ['germinacion', 'luz-y-fotoperiodo', 'poda', 'fertilizacion-y-nutricion'],
+    relatedEntryIds: ['germinacion', 'luz-y-fotoperiodo', 'poda', 'fertilizacion-y-nutricion', 'ciclo-de-vida'],
     sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle', 'academica-uncuyo-guia-crecimiento'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-10',
@@ -1035,7 +1035,7 @@ export const editorialEntries = [
       'Esta entrada no fija una duración ni una fecha de cosecha: describe el proceso observable, coherente con el resto del atlas, que no convierte información botánica general en un calendario prescriptivo.'
     ],
     tags: ['cosecha', 'maduración'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'marco-editorial'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'marco-editorial', 'poscosecha'],
     sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-10',
@@ -1291,6 +1291,261 @@ export const editorialEntries = [
     metadata: {
       seoTitle: 'Genética y tipos: sativa, indica, ruderalis — Atlas del Cultivo Argentino',
       seoDescription: 'De dónde vienen los nombres sativa, indica y ruderalis, por qué la clasificación en tres especies está discutida, y qué categorías (fotoperiódica, autofloreciente) son más útiles hoy.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+
+  // --- Loop 4.4.1 — Ciclo general de Cannabis sativa L. ---
+  // Fuentes: Ahrens et al. 2023 (leído en texto completo, control de fotoperiodo y variación entre
+  // cultivares), Hesami et al. 2023 (ontogenia completa desde germinación hasta cosecha), Alter et
+  // al. 2024 (mecanismo fisiológico del fotoperiodo en floración), Zhang et al. 2021 (variación
+  // del umbral fotoperiódico entre cultivares por latitud de origen). Ningún valor presentado como
+  // "condición óptima universal": todos son rangos de referencia con variación explícita declarada.
+  {
+    id: 'ciclo-de-vida',
+    slug: 'ciclo-de-vida',
+    categoryId: 'cultivo',
+    title: 'Ciclo de vida y condiciones de referencia',
+    summary: 'Cannabis sativa L. atraviesa etapas fisiológicas reconocibles — germinación, plántula, vegetativo, floración, cosecha — con condiciones de referencia que varían según la genética, el cultivar y el sistema de cultivo.',
+    intro: 'Cannabis sativa es una especie con una ontogenia —una secuencia de desarrollo— que va desde la germinación hasta la maduración y cosecha. Esta entrada ofrece una referencia general de esas etapas: sus características fisiológicas principales, los rangos de condiciones bajo los que suelen manejarse, y por qué esos rangos son referencias orientativas, no recetas universales. La información se basa en evidencia científica internacional directa de la especie y se distingue explícitamente del conocimiento específico de cada región argentina, que requiere datos propios todavía en construcción.',
+    sections: [
+      {
+        id: 'como-leer-esta-entrada',
+        title: 'Cómo leer esta entrada',
+        paragraphs: [
+          'Esta entrada describe el ciclo de vida de Cannabis sativa como fenómeno biológico general. Los rangos de condiciones que aparecen (temperatura, humedad relativa, fotoperiodo) son referencias ampliamente documentadas en la literatura científica y en la práctica del cultivo controlado — no son valores obligatorios ni aplicables de forma idéntica a cualquier cultivar, ambiente o sistema.',
+          'Dos factores explican por qué esos rangos no son universales: la genética del cultivar (diferentes variedades pueden tener umbrales y respuestas distintos para las mismas variables) y el sistema de cultivo (un cultivo bajo ambiente controlado puede mantener condiciones estables; un cultivo exterior depende del clima real del lugar y la estación). Esta entrada no describe un sistema ni el otro: describe el proceso biológico que subyace a ambos.',
+          'Al final de esta entrada hay una sección dedicada al manejo poscosecha (secado y curado), separada del ciclo fisiológico de la planta viva porque son procesos distintos con objetivos diferentes.'
+        ]
+      },
+      {
+        id: 'fotoperiodo-como-eje',
+        title: 'El fotoperiodo como eje del ciclo',
+        paragraphs: [
+          'Cannabis sativa es una especie de día corto: la transición del desarrollo vegetativo al reproductivo (floración) se desencadena, en la mayoría de los cultivares, cuando la duración de la oscuridad supera un umbral crítico de forma sostenida. El mecanismo fisiológico implica cambios en los niveles de giberelinas: bajo fotoperiodo de día corto, estos niveles disminuyen, lo que promueve la formación de inflorescencias condensadas; bajo día largo, los niveles elevados inhiben esa transición. Se requieren al menos varios días consecutivos de fotoperiodo corto para que la señal quede registrada.',
+          'El umbral fotoperiódico no es idéntico en todos los cultivares: estudios con cultivares de cáñamo (aceite esencial, fibra, grano) mostraron que el umbral crítico varía entre cultivares, y que cultivares de origen genético de alta latitud florecen más rápido bajo fotoperiodo corto que cultivares de origen subtropical. Existen además cultivares que no responden al fotoperiodo (llamados "autoflorecientes" o "día-neutros"), cuya floración depende de la edad fisiológica de la planta en lugar del ciclo de luz.',
+          'En un ambiente exterior, el fotoperiodo es la duración astronómica del día, que depende de la latitud y la estación. En un ambiente controlado (indoor), el cultivador establece artificialmente ese ciclo de luz y oscuridad, pudiendo desacoplarlo del ciclo estacional externo.'
+        ]
+      },
+      {
+        id: 'tabla-etapas',
+        title: 'Etapas del ciclo: referencia general',
+        paragraphs: [
+          'La siguiente tabla presenta las etapas principales del ciclo de Cannabis sativa con sus características fisiológicas generales y los rangos de condiciones de referencia más frecuentemente documentados. Estos rangos son orientativos: pueden variar según el cultivar, el sistema de cultivo, el objetivo productivo y las condiciones reales del ambiente.',
+          'El ciclo fisiológico de la planta abarca desde la germinación hasta la cosecha. El manejo poscosecha (secado y curado) se presenta por separado al final de esta entrada, porque no forma parte de la fisiología de la planta viva.',
+        ],
+        table: {
+          caption: 'Rangos de referencia por etapa del ciclo de Cannabis sativa L. Todos los valores son orientativos y pueden variar según cultivar, sistema y condiciones.',
+          headers: ['Etapa', 'Duración de referencia', 'Fotoperiodo de referencia', 'Temperatura de referencia', 'Humedad relativa de referencia', 'Notas fisiológicas'],
+          rows: [
+            {
+              etapa: 'Germinación',
+              duracion: '1–7 días',
+              fotoperiodo: 'No determinante para el proceso germinativo (la semilla no necesita luz para germinar)',
+              temperatura: '22–26 °C',
+              hr: '80–90 %',
+              notas: 'La semilla absorbe agua (imbibición), reactiva su metabolismo y la radícula perfora la testa. Requiere humedad, oxígeno y temperatura estable. No existe un umbral de luz obligatorio para la germinación de esta especie.'
+            },
+            {
+              etapa: 'Plántula',
+              duracion: '2–3 semanas',
+              fotoperiodo: '18/6 o 20/4 como referencias de cultivo controlado; en exterior, la duración del día depende de la estación y la latitud',
+              temperatura: '22–27 °C',
+              hr: '65–80 %',
+              notas: 'Emergencia de cotiledones y primeras hojas verdaderas. La planta pasa de depender de las reservas de la semilla a la fotosíntesis activa. Responde a la calidad y cantidad de luz disponible.'
+            },
+            {
+              etapa: 'Vegetativo',
+              duracion: '4–8 semanas (variable según el sistema y el objetivo)',
+              fotoperiodo: '18/6 como referencia ampliamente utilizada en cultivo controlado; en exterior depende de la estación',
+              temperatura: '22–26 °C',
+              hr: '40–60 %',
+              notas: 'Desarrollo de estructura: tallos, ramas, nudos, hojas. Las necesidades nutricionales cambian con el desarrollo y varían según el sistema y el cultivar. Técnicas de conducción vegetal (LST, despunte) pueden aplicarse en esta etapa — son prácticas hortícolas, no procesos fisiológicos obligatorios del ciclo.'
+            },
+            {
+              etapa: 'Floración inicial / media',
+              duracion: '3–5 semanas (primera parte de la floración)',
+              fotoperiodo: '12/12 como referencia dominante en cultivo controlado; en exterior el fotoperiodo corto natural desencadena la transición',
+              temperatura: '20–26 °C',
+              hr: '40–50 %',
+              notas: 'El cambio de fotoperiodo a día corto desencadena la transición reproductiva. Aparecen las primeras inflorescencias. El umbral de día corto varía entre cultivares: estudios documentan que algunos cultivares florecen bajo fotoperiodos de hasta 14 h.'
+            },
+            {
+              etapa: 'Floración tardía / maduración',
+              duracion: '4–7 semanas',
+              fotoperiodo: '12/12 o equivalente',
+              temperatura: '18–24 °C',
+              hr: '35–45 %',
+              notas: 'Maduración de las inflorescencias. En los tricomas glandulares se observa el cambio gradual de transparente a lechoso y luego ámbar. Distintas estructuras de la misma inflorescencia pueden estar en puntos distintos de ese gradiente simultáneamente.'
+            },
+            {
+              etapa: 'Cosecha',
+              duracion: 'Evento puntual al finalizar la maduración',
+              fotoperiodo: 'N/A',
+              temperatura: '18–22 °C como referencia de manejo',
+              hr: '45–50 % como referencia de manejo',
+              notas: 'La cosecha marca el final del ciclo de la planta viva. El momento de cosecha se determina por observación del estado de maduración, no por una fecha fija. Incluye el corte y la eventual remoción de hojas (manicura).'
+            }
+          ]
+        }
+      },
+      {
+        id: 'variacion-entre-cultivares',
+        title: 'Por qué estos rangos no son universales',
+        paragraphs: [
+          'Los rangos de esta tabla son los más frecuentemente documentados en la literatura científica y en protocolos de cultivo controlado. Pero la respuesta real de una planta depende de múltiples factores:',
+        ],
+        list: [
+          'Genética: distintos cultivares tienen umbrales fotoperiódicos distintos. Algunos florecen robustamente bajo fotoperiodos de hasta 14 h; otros requieren menos de 12 h para iniciar floración. Los cultivares autoflorecientes no dependen del fotoperiodo.',
+          'Latitud de origen genético: cultivares de origen genético de alta latitud tienden a florecer más rápido bajo fotoperiodo corto que cultivares de origen subtropical, un patrón documentado en estudios con múltiples cultivares de cáñamo.',
+          'Sistema de cultivo: en un ambiente controlado (indoor), el cultivador puede mantener fotoperiodo, temperatura y humedad estables. En exterior, las condiciones dependen del clima real de la región, la estación y la latitud.',
+          'Objetivo productivo: un cultivo orientado a fibra, semilla o inflorescencia puede manejar distintas duraciones del ciclo vegetativo y distintos momentos de inducción a la floración.'
+        ]
+      },
+      {
+        id: 'ambiente-controlado-principio',
+        title: 'Cultivo bajo ambiente controlado: principio fisiológico',
+        paragraphs: [
+          'El cultivo bajo ambiente controlado (indoor, o invernadero con iluminación artificial) permite desacoplar el fotoperiodo del ciclo estacional externo. El cultivador puede mantener un fotoperiodo de día largo durante la etapa vegetativa y luego reducirlo para inducir la floración, independientemente de la estación del año o de la latitud geográfica.',
+          'Este principio tiene una base fisiológica directa: como las investigaciones sobre el mecanismo giberelina-fotoperiodo en Cannabis sativa confirman, la señal de floración se activa por la duración de la oscuridad sostenida, no por la temperatura ni por la estación del calendario. Controlar esa duración artificialmente es equivalente, desde el punto de vista fisiológico, a lo que hace el ciclo estacional en el exterior.',
+          'Argentina tiene diversidad geográfica y climática amplia: desde provincias con fotoperiodos invernales de menos de 9 horas (extremo sur) hasta provincias con variación anual del fotoperiodo relativamente reducida (extremo norte). Qué significa esa diversidad para el cultivo de Cannabis sativa en cada región es una capa de información distinta — para eso está la Ficha Provincial del Atlas, que refleja la evidencia real disponible por jurisdicción.'
+        ]
+      }
+    ],
+    observations: [
+      'Los rangos de esta tabla son referencias, no diagnósticos. Una planta fuera de esos rangos no está necesariamente en problemas; una planta dentro de ellos no está necesariamente bien. El contexto (cultivar, sistema, etapa exacta) importa tanto como el número.',
+      'La separación entre el ciclo fisiológico (planta viva) y el manejo poscosecha (secado/curado) es deliberada: el curado no es una etapa de la biología de la planta, es un proceso de manejo del material ya cosechado, con sus propias variables y objetivos.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'En la transición al fotoperiodo de floración: alargamiento visible de los entrenudos en las primeras semanas ("estiramiento"), seguido de la aparición de primordios florales en las yemas axilares. Esto ocurre en cultivares fotoperiódicos en respuesta a la reducción de horas de luz.'
+      },
+      {
+        level: 'ATTENTION',
+        description: 'Ausencia de señales de floración después de varias semanas bajo fotoperiodo de día corto puede indicar un cultivar con umbral fotoperiódico diferente al esperado, una interrupción de la oscuridad durante la noche, o un cultivar autofloreciente que ya había iniciado la transición reproductiva antes del cambio de fotoperiodo.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Una "reverte" o re-vegetación (aparición de hojas de forma vegetativa en una planta que ya había iniciado floración) puede ocurrir si el fotoperiodo se extiende nuevamente. No indica necesariamente un daño permanente, pero sí un cambio en la señal fotoperiódica que la planta recibió.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar los rangos de la tabla como valores obligatorios, en vez de como referencias orientativas que varían por cultivar y sistema.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que 12/12 es el único fotoperiodo que puede inducir floración. La evidencia científica muestra que muchos cultivares drug-type florecen robustamente bajo fotoperiodos de hasta 14 h, con demoras de 0 a 4 días según cultivar.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Confundir el manejo poscosecha (secado, curado) con etapas del ciclo fisiológico de la planta. Son procesos de distinta naturaleza con objetivos distintos.'
+      }
+    ],
+    environmentContext: [
+      'En Argentina, la diversidad geográfica implica que la duración del día varía significativamente entre provincias: en el solsticio de verano, el norte del país tiene fotoperiodos de alrededor de 13–14 horas, mientras que el extremo sur puede superar las 15–17 horas. En invierno, esa variación se invierte. Esta diferencia astronómica es real y calculable — lo que todavía no está completamente documentado con evidencia directa de Cannabis es cómo responden cultivares específicos a esa variación en cada región.',
+      'La Ficha Provincial del Atlas refleja la evidencia disponible por jurisdicción. Chubut cuenta con evidencia directa de nivel A de cultivo real de Cannabis sativa al aire libre (CONICET-CENPAT, cultivares Malvina y Pachamama, verano 2022-2023) y Jujuy cuenta con evidencia directa de nivel A de producción industrial bajo invernadero automatizado (Cannava S.E., habilitada por ANMAT) — sin que ninguna de las dos evidencias se generalice a otras provincias. Misiones tuvo una producción real documentada (MisioPharma/Biofábrica) que ya no está activa. Para el resto de las provincias, la información disponible combina datos ambientales verificables con principios fisiológicos generales, sin evidencia de campo local directa todavía.'
+    ],
+    tags: ['cultivo', 'ciclo', 'fotoperiodo', 'ambiente'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'poscosecha'],
+    sourceIds: [
+      'cientifica-ahrens-2023-photoperiod-flowering-indoor',
+      'cientifica-hesami-2023-cannabis-life-cycle',
+      'cientifica-alter-2024-cannabis-fotoperiodo-giberelina',
+      'cientifica-zhang-2021-hemp-photoperiod-cultivars'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-14',
+    metadata: {
+      seoTitle: 'Ciclo de vida y condiciones de referencia — Atlas del Cultivo Argentino',
+      seoDescription: 'Las etapas fisiológicas de Cannabis sativa, sus rangos de referencia de temperatura, humedad y fotoperiodo, y por qué esos rangos no son valores universales.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+
+  // --- Loop 4.4.1 — Manejo poscosecha ---
+  {
+    id: 'poscosecha',
+    slug: 'poscosecha',
+    categoryId: 'cosecha',
+    title: 'Manejo poscosecha: secado y curado',
+    summary: 'El secado y el curado son procesos de manejo del material ya cosechado, no etapas del ciclo fisiológico de la planta viva. Sus objetivos y condiciones son distintos a los del cultivo.',
+    intro: 'Una vez cosechada la inflorescencia, el proceso biológico de la planta terminó. Lo que sigue —secado y curado— es el manejo de ese material para estabilizarlo y preservarlo. Esta entrada describe esos procesos como lo que son: técnicas de postcosecha con condiciones de referencia propias, separadas del ciclo de la planta viva.',
+    sections: [
+      {
+        id: 'secado',
+        title: 'Secado',
+        paragraphs: [
+          'El secado reduce el contenido de humedad del material recién cosechado. Una humedad residual excesiva favorece el desarrollo de hongos (Botrytis, entre otros); un secado excesivamente rápido puede afectar la textura y las características organolépticas del material.',
+          'Como referencia general, se documentan condiciones de manejo de 18–20 °C y 50–60 % de humedad relativa, en un espacio con circulación de aire y oscuridad, durante 10 a 15 días. Estos valores varían según el volumen, la estructura de las inflorescencias y las condiciones del espacio disponible.'
+        ]
+      },
+      {
+        id: 'curado',
+        title: 'Curado',
+        paragraphs: [
+          'El curado es el proceso de maduración lenta del material ya seco, en envases herméticos (habitualmente de vidrio), con apertura periódica para regular la humedad y los gases. Su objetivo es la estabilización del perfil organoléptico del material.',
+          'Los rangos de referencia documentados son: 15–20 °C, 58–62 % de humedad relativa, oscuridad, con un mínimo de 4 semanas y frecuentemente hasta 8 semanas o más. La duración y las condiciones exactas dependen del material y del objetivo.',
+          'El curado no debe presentarse como una "continuación fisiológica" del ciclo de la planta, ni como un proceso de fermentación activa comparable a procesos industriales, sin una fuente científica específica que lo respalde para esta especie. Es un proceso de maduración del material cosechado, con similitudes a otras técnicas de postcosecha agrícola.'
+        ]
+      },
+      {
+        id: 'que-no-hace-el-poscosecha',
+        title: 'Qué no es el manejo poscosecha',
+        paragraphs: [
+          'Esta entrada no incluye el "lavado de raíces" como etapa del ciclo, ni lo trata como un requisito del manejo poscosecha. La práctica de regar únicamente con agua en los días finales antes de la cosecha para "obligar a la planta a consumir sus reservas nutricionales" carece de evidencia científica revisada por pares que valide ese mecanismo. Se documenta su existencia como práctica difundida en la cultura del cultivo, pero no como recomendación respaldada por evidencia.',
+          'Esta entrada tampoco incluye instrucciones de preparación, extracción, dosificación ni consumo. El foco es el proceso de manejo del material vegetal cosechado, no sus usos derivados.'
+        ]
+      }
+    ],
+    observations: [
+      'La diferencia entre el ciclo fisiológico y el manejo poscosecha es relevante editorialmente: en el primero, la planta viva responde activamente al ambiente; en el segundo, el material ya cosechado se maneja para preservarlo. Los errores de interpretación más frecuentes vienen de tratar ambos como si fueran la misma cosa.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'Durante el secado: reducción gradual del peso y del contenido de humedad del material, con las ramas que pierden flexibilidad progresivamente.'
+      },
+      {
+        level: 'ATTENTION',
+        description: 'Aparición de olor a moho, manchas visibles o textura esponjosa que no desaparece durante el secado son señales de presencia fúngica que puede avanzar si no se corrige la humedad o la circulación de aire.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Una humedad residual dentro del rango 58–62 % durante el curado puede mantenerse estable o fluctuar: si el envase muestra condensación, la humedad es excesiva; si el material se siente seco y crujiente, la humedad es insuficiente. El ajuste es gradual, no un evento puntual.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar el secado y el curado como etapas del ciclo de la planta, en vez de como manejo poscosecha del material ya cosechado.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que el "lavado de raíces" es un paso fisiológico necesario del ciclo, sin base en evidencia científica revisada por pares.'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'No revisar la humedad del material durante el curado de forma periódica, asumiendo que una vez en el frasco el proceso es pasivo y no requiere monitoreo.'
+      }
+    ],
+    environmentContext: [
+      'Las condiciones óptimas de secado y curado dependen del ambiente disponible: en regiones con alta humedad ambiental (como el NEA o Buenos Aires en verano) puede ser más difícil mantener la humedad relativa en rango sin equipamiento específico (deshumidificador). En regiones con baja humedad ambiental (Cuyo, Patagonia) puede ocurrir lo contrario. Esta entrada no da una recomendación específica por provincia porque no existe evidencia directa de campo en Argentina que la respalde para esta etapa — se describe el principio general.'
+    ],
+    tags: ['cosecha', 'maduración', 'cultivo'],
+    relatedEntryIds: ['cosecha-y-maduracion', 'ciclo-de-vida'],
+    sourceIds: [
+      'cientifica-hesami-2023-cannabis-life-cycle'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-14',
+    metadata: {
+      seoTitle: 'Manejo poscosecha: secado y curado — Atlas del Cultivo Argentino',
+      seoDescription: 'El secado y el curado como procesos de manejo poscosecha separados del ciclo fisiológico de la planta, con sus rangos de referencia y la distinción respecto de prácticas sin evidencia.',
       canonical: null,
       ogImage: null
     }

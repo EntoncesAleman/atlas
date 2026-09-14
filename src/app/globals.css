@@ -766,6 +766,87 @@ body::before {
   font-style: italic;
 }
 
+/* Loop 4.4.1 — tabla de referencia del ciclo de vida. Responsive: scroll horizontal en pantallas
+   medianas, apilado por fila (con etiqueta de columna) en mobile — mismo criterio ya usado en el
+   resto del Atlas de no crear un segundo sistema de layout. */
+.atlas-entry-table-wrap {
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.atlas-entry-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.atlas-entry-table caption {
+  text-align: left;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 8px;
+  caption-side: top;
+}
+
+.atlas-entry-table th,
+.atlas-entry-table td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.atlas-entry-table th {
+  background: var(--sage-glass);
+  color: var(--sage-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.atlas-entry-table td {
+  color: var(--text-soft);
+}
+
+@media (max-width: 720px) {
+  .atlas-entry-table thead {
+    display: none;
+  }
+
+  .atlas-entry-table,
+  .atlas-entry-table tbody,
+  .atlas-entry-table tr,
+  .atlas-entry-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .atlas-entry-table tr {
+    border: 1px solid var(--line);
+    margin-bottom: 10px;
+    padding: 8px 0;
+  }
+
+  .atlas-entry-table td {
+    border: none;
+    padding: 4px 12px;
+  }
+
+  .atlas-entry-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    margin-bottom: 2px;
+  }
+}
+
 .atlas-province-context-name {
   display: inline-block;
   font-size: 11px;
@@ -943,6 +1024,19 @@ body::before {
 
 .province-profile-badge-general {
   color: var(--text-muted);
+}
+
+/* Loop 4.4.1 — antecedente histórico (evidencia tier 1 real pero ya no vigente, ej. una empresa
+   provincial disuelta). Distinto del badge "directa" en tiempo presente: usa el tono cálido
+   (--clay) ya reservado en el proyecto para notas de alcance/limitación, no el verde de evidencia
+   activa. */
+.province-profile-evidence-historical {
+  border-style: dotted;
+  opacity: 0.92;
+}
+
+.province-profile-badge-historical {
+  color: var(--clay);
 }
 
 .province-profile-evidence-lastresort {

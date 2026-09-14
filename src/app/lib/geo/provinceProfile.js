@@ -308,8 +308,64 @@ function generalCannabisEvidenceDataPoint({ key, aspect }) {
   };
 }
 
-// Evidencia DIRECTA para Chubut (Loop 4.3 §7/§11, tier 1) — único caso, entre las 24
-// jurisdicciones, con cultivo real y documentado de Cannabis sativa: los 6 cultivares
+// Evidencia institucional para Jujuy (Loop 4.4.1) — nivel A para el hecho de que existe
+// producción industrial de Cannabis medicinal bajo invernadero automatizado en la provincia.
+// Cannava S.E. es la empresa estatal de Jujuy habilitada por ANMAT. Los comunicados oficiales
+// CONFIRMAN: invernadero con control computarizado de temperatura, humedad, luz y riego;
+// capacidad de 3-4 ciclos anuales; 80 toneladas/año. NO confirman fotoperiodo específico (18/6),
+// iluminación suplementaria, temperaturas/HR exactas ni SOPs internos — esos datos no están en
+// fuentes públicas. No se deben atribuir a Cannava condiciones no documentadas.
+function jujuyCannavaDataPoint() {
+  return {
+    key: 'cultivo_evidencia_cannava_jujuy',
+    value: 'Cannava S.E. — primera planta industrial de Cannabis medicinal habilitada por ANMAT en Argentina',
+    unit: null,
+    period: '2018–presente',
+    sourceId: 'oficial-cannava-jujuy-planta-anmat-2022',
+    evidenceLevel: 'A',
+    availability: 'AVAILABLE',
+    evidenceTier: 1,
+    methodology: 'Comunicados oficiales del Gobierno de Jujuy y habilitación de ANMAT, leídos directamente.',
+    limitation: 'Evidencia de producción industrial real bajo invernadero automatizado, pero sin datos públicos de condiciones técnicas numéricas (fotoperiodo, temperatura, HR, PPFD). No se debe generalizar a cultivo exterior ni a otras provincias.',
+    referenceSpecies: 'Cannabis sativa L. (uso medicinal, grado farmacéutico)',
+    referenceReason: 'Evidencia provincial directa de producción real bajo ambiente controlado — no una analogía ni una inferencia.',
+    photoperiodResponse: 'Los invernaderos de Cannava son automatizados con control de luz, pero el fotoperiodo específico utilizado no figura en los comunicados oficiales públicos.',
+    referenceRegion: 'Finca El Pongo, San Pedro, Jujuy. La evidencia es específica de esta instalación; no se extiende a cultivo exterior en la provincia ni a otras instalaciones privadas.',
+    referenceSourceId: [
+      'oficial-cannava-jujuy-planta-anmat-2022',
+      'oficial-cannava-jujuy-franquicias-2023',
+    ],
+    notes: 'Jujuy es la segunda jurisdicción con evidencia de nivel A de producción real de Cannabis medicinal en Argentina, después de Chubut. La diferencia clave: Chubut documenta cultivo al aire libre (CONICET-CENPAT); Jujuy documenta producción bajo invernadero industrial (Cannava). Misiones documentó producción híbrida (MisioPharma/Biofábrica) pero la empresa fue disuelta en abril de 2026.',
+  };
+}
+
+// Nota informativa para Misiones (Loop 4.4.1) — evidencia histórica de producción que ya no
+// está activa. MisioPharma/Biofábrica Misiones S.A. fue disuelta por el gobierno provincial el
+// 2026-04-14. No se debe presentar como empresa actualmente operativa.
+function misionesHistoricalNote() {
+  return {
+    key: 'cultivo_nota_historica_misiones',
+    value: 'MisioPharma / Biofábrica Misiones S.A. — empresa estatal disuelta en abril de 2026',
+    unit: null,
+    period: '2021–2026-04',
+    sourceId: 'periodistica-misiones-biofabrica-disolucion-2026',
+    evidenceLevel: 'C',
+    availability: 'HISTORICAL',
+    evidenceTier: 1,
+    methodology: 'Fuente periodística (Infobae, 2026-04-14) verificada por búsqueda directa, confirmando la disolución.',
+    limitation: 'Evidencia histórica: la empresa realizó producción híbrida invernadero + cielo abierto hasta su disolución, pero los datos técnicos de esa producción no están en fuentes públicas accesibles. La empresa ya no está operativa.',
+    referenceSpecies: 'Cannabis sativa L. (uso medicinal)',
+    referenceReason: 'Antecedente de producción provincial real que informa el contexto histórico, no una recomendación activa.',
+    photoperiodResponse: 'Sin datos publicados de condiciones técnicas de producción.',
+    referenceRegion: 'Posadas, Misiones. La evidencia es del período previo a la disolución de la empresa.',
+    referenceSourceId: ['periodistica-misiones-biofabrica-disolucion-2026'],
+    notes: 'Misiones tuvo producción real de Cannabis medicinal, pero la única empresa provincial que la realizaba fue disuelta en 2026. Esta nota documenta ese antecedente sin presentarlo como actividad actual.',
+  };
+}
+
+// Evidencia DIRECTA para Chubut (Loop 4.3 §7/§11, tier 1) — cultivo real y documentado de
+// Cannabis sativa al aire libre (ver también Jujuy/Cannava y Misiones/histórico más abajo, Loop
+// 4.4.1, para las otras dos jurisdicciones con evidencia tier 1): los 6 cultivares
 // CONICET-CENPAT registrados en INASE (Resolución 238/2023) y cultivados al aire libre en Puerto
 // Madryn (verano 2022-2023, confirmado por comunicado oficial de CONICET). No se generaliza a
 // ninguna otra provincia patagónica — la propia investigación de este proyecto (Loop 4.2) ya
@@ -445,7 +501,9 @@ function buildLight(latitude) {
 // cuando no hace falta (ya lo permitía la forma definida en 3B).
 //
 // Orden de prioridad Cannabis-primero (Loop 4.3 §7/§16 — nunca al revés):
-//   tier 1: Cannabis específico de la provincia (solo Chubut tiene esto hoy)
+//   tier 1: Cannabis específico de la provincia — Chubut (cultivo exterior, CONICET-CENPAT),
+//           Jujuy (producción industrial bajo invernadero, Cannava S.E.) y Misiones (antecedente
+//           histórico, MisioPharma disuelta 2026-04). Resto de provincias: sin tier 1.
 //   tier 2: Cannabis específico de una región argentina comparable (sin evidencia encontrada
 //           todavía para ninguna provincia — no se inventa una comparación sin fuente)
 //   tier 3: información general de Cannabis con respaldo científico (Zhang et al. 2021 + Alter et
@@ -461,6 +519,14 @@ function buildCultivation(geoContext, provinceId) {
 
   if (provinceId === 'chubut') {
     points.push(chubutCannabisEvidenceDataPoint('cultivo_evidencia_directa_chubut'));
+  }
+
+  if (provinceId === 'jujuy') {
+    points.push(jujuyCannavaDataPoint());
+  }
+
+  if (provinceId === 'misiones') {
+    points.push(misionesHistoricalNote());
   }
 
   points.push(
@@ -603,6 +669,9 @@ export const ENTRY_FOCUS = {
   'lectura-de-senales': ['environment'],
   'cultivo-en-secuencia': ['environment', 'light', 'cultivation'],
   'cosecha-y-maduracion': ['environment', 'light', 'cultivation'],
+  // Loop 4.4.1 — nuevas entradas
+  'ciclo-de-vida': ['light', 'cultivation'],
+  poscosecha: ['environment', 'cultivation'],
   'marco-editorial': ['context'],
 };
 

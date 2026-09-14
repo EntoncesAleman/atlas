@@ -94,6 +94,21 @@ function DirectCannabisEvidenceCard({ point }) {
   );
 }
 
+// Antecedente histórico (Loop 4.4.1): evidencia tier 1 real pero ya no vigente (ej. una empresa
+// provincial disuelta) — nunca se presenta con el mismo badge en tiempo presente que la evidencia
+// directa activa, para no sugerir que la actividad sigue en curso.
+function HistoricalCannabisEvidenceCard({ point }) {
+  return (
+    <div className="province-profile-phenology-card province-profile-evidence-historical">
+      <span className="province-profile-phenology-badge province-profile-badge-historical">Antecedente histórico (ya no vigente)</span>
+      <p><strong>{point.value}</strong> ({point.period})</p>
+      <p>{point.notes}</p>
+      <p className="province-profile-phenology-region">{point.referenceRegion}</p>
+      <p className="atlas-section-note province-profile-phenology-limitation">{point.limitation}</p>
+    </div>
+  );
+}
+
 function GeneralCannabisEvidenceCard({ point }) {
   return (
     <div className="province-profile-phenology-card province-profile-evidence-general">
@@ -126,17 +141,18 @@ function PhenologicalReferenceCard({ point }) {
   );
 }
 
-function CultivationBlock({ title, directPoint, directEvidencePoint, generalEvidencePoint, referencePoint }) {
+function CultivationBlock({ title, directPoint, directEvidencePoint, historicalEvidencePoint, generalEvidencePoint, referencePoint }) {
   return (
     <div className="province-profile-cultivation-block">
       <h4>{title}</h4>
-      {directPoint && !directEvidencePoint && (
+      {directPoint && !directEvidencePoint && !historicalEvidencePoint && (
         <p className="atlas-section-note">
           Todavía no hay evidencia directa (provincial o argentina específica) sobre esto para
           Cannabis sativa.
         </p>
       )}
       {directEvidencePoint && <DirectCannabisEvidenceCard point={directEvidencePoint} />}
+      {historicalEvidencePoint && <HistoricalCannabisEvidenceCard point={historicalEvidencePoint} />}
       {generalEvidencePoint && <GeneralCannabisEvidenceCard point={generalEvidencePoint} />}
       {referencePoint && <PhenologicalReferenceCard point={referencePoint} />}
     </div>
@@ -211,12 +227,18 @@ export default function ProvinceProfileCard({ entryId }) {
   const lightPoints = hiddenBlocks.has('light') ? [] : available(profile.light);
   const todayLight = lightPoints.find((p) => p.season === 'hoy');
   const seasonalLight = lightPoints.filter((p) => p.season && p.season !== 'hoy');
+  // Tier 1 (evidencia directa provincial) se busca por PREFIJO de key + tier, no por el nombre de
+  // una provincia puntual — así una jurisdicción nueva con evidencia real (ej. Jujuy/Cannava) se
+  // renderiza sin tocar este componente, y una evidencia ya no vigente (ej. Misiones, empresa
+  // disuelta) se distingue explícitamente por su `availability: 'HISTORICAL'` (Loop 4.4.1).
   const cultivoDirect = profile.cultivation.find((p) => p.key === 'cultivo_ventana_directa');
-  const cultivoDirectEvidence = profile.cultivation.find((p) => p.key === 'cultivo_evidencia_directa_chubut' && p.availability === 'AVAILABLE');
+  const cultivoDirectEvidence = profile.cultivation.find((p) => p.key.startsWith('cultivo_') && p.evidenceTier === 1 && p.availability === 'AVAILABLE');
+  const cultivoHistoricalEvidence = profile.cultivation.find((p) => p.key.startsWith('cultivo_') && p.evidenceTier === 1 && p.availability === 'HISTORICAL');
   const cultivoGeneralEvidence = profile.cultivation.find((p) => p.key === 'cultivo_evidencia_general_cannabis' && p.availability === 'AVAILABLE');
   const cultivoRef = profile.cultivation.find((p) => p.key === 'cultivo_referencia_fenologica' && p.availability === 'AVAILABLE');
   const cosechaDirect = profile.cultivation.find((p) => p.key === 'cosecha_ventana_directa');
-  const cosechaDirectEvidence = profile.cultivation.find((p) => p.key === 'cosecha_evidencia_directa_chubut' && p.availability === 'AVAILABLE');
+  const cosechaDirectEvidence = profile.cultivation.find((p) => p.key.startsWith('cosecha_') && p.evidenceTier === 1 && p.availability === 'AVAILABLE');
+  const cosechaHistoricalEvidence = profile.cultivation.find((p) => p.key.startsWith('cosecha_') && p.evidenceTier === 1 && p.availability === 'HISTORICAL');
   const cosechaGeneralEvidence = profile.cultivation.find((p) => p.key === 'cosecha_evidencia_general_cannabis' && p.availability === 'AVAILABLE');
   const cosechaRef = profile.cultivation.find((p) => p.key === 'cosecha_referencia_fenologica' && p.availability === 'AVAILABLE');
   const showCultivation = !hiddenBlocks.has('cultivation');
@@ -229,9 +251,11 @@ export default function ProvinceProfileCard({ entryId }) {
     ...lightPoints.map((p) => p.sourceId),
     ...(showCultivation ? [
       cultivoDirectEvidence?.sourceId, cosechaDirectEvidence?.sourceId,
+      cultivoHistoricalEvidence?.sourceId, cosechaHistoricalEvidence?.sourceId,
       cultivoGeneralEvidence?.sourceId, cosechaGeneralEvidence?.sourceId,
       cultivoRef?.sourceId, cosechaRef?.sourceId,
       ...(cultivoDirectEvidence?.referenceSourceId ?? []), ...(cosechaDirectEvidence?.referenceSourceId ?? []),
+      ...(cultivoHistoricalEvidence?.referenceSourceId ?? []), ...(cosechaHistoricalEvidence?.referenceSourceId ?? []),
       ...(cultivoGeneralEvidence?.referenceSourceId ?? []), ...(cosechaGeneralEvidence?.referenceSourceId ?? []),
       ...(cultivoRef?.referenceSourceId ?? []), ...(cosechaRef?.referenceSourceId ?? []),
     ] : []),
@@ -303,6 +327,7 @@ export default function ProvinceProfileCard({ entryId }) {
               title="Transición vegetativo → reproductivo"
               directPoint={cultivoDirect}
               directEvidencePoint={cultivoDirectEvidence}
+              historicalEvidencePoint={cultivoHistoricalEvidence}
               generalEvidencePoint={cultivoGeneralEvidence}
               referencePoint={cultivoRef}
             />
@@ -313,6 +338,7 @@ export default function ProvinceProfileCard({ entryId }) {
               title="Ventana de maduración/cosecha"
               directPoint={cosechaDirect}
               directEvidencePoint={cosechaDirectEvidence}
+              historicalEvidencePoint={cosechaHistoricalEvidence}
               generalEvidencePoint={cosechaGeneralEvidence}
               referencePoint={cosechaRef}
             />
