@@ -132,6 +132,78 @@ if (Object.keys(SMN_STATION_COUNT).length !== 24 || Object.keys(CLIMATE_CLASSIFI
   throw new Error('SMN_STATION_COUNT y CLIMATE_CLASSIFICATION_CENTROID deben cubrir las 24 jurisdicciones.');
 }
 
+// Altitud sobre el nivel del mar (Loop 4.3, §6/§14) — misma fuente ya registrada
+// (`oficial-smn-listado-estaciones`, columna ALTURA), reutilizada para un propósito nuevo, no una
+// fuente nueva. georef-ar-api (`/provincias`, `/localidades`) NO expone ningún campo de elevación
+// (confirmado en esta sesión contra el propio error de la API, que lista los campos válidos) y el
+// MDE-Ar del IGN solo se distribuye como raster descargable (.img), no como API de punto — se
+// descartaron ambos por impracticables para este loop. Se usa, para cada jurisdicción, la altura
+// real de la estación SMN cuyo nombre coincide con la ciudad capital (o, si no existe ninguna con
+// ese nombre exacto, la estación real más cercana a la capital) — nunca un promedio ni una
+// estimación editorial. `exact: true` = la estación lleva el nombre de la propia capital;
+// `exact: false` = estación real más cercana usada a falta de una con el nombre de la capital,
+// documentada explícitamente para no presentar la altura de otra ciudad como si fuera la de la
+// capital.
+const CAPITAL_STATION_ALTITUDE = {
+  'buenos-aires': { station: 'La Plata Aero', value: 23, exact: true },
+  caba: { station: 'Buenos Aires Observatorio', value: 25, exact: true },
+  catamarca: { station: 'Catamarca Aero', value: 464, exact: true },
+  chaco: { station: 'Resistencia Aero', value: 52, exact: true },
+  chubut: {
+    station: 'Trelew Aero',
+    value: 43,
+    exact: false,
+    note: 'La capital (Rawson) no tiene estación SMN propia en el listado oficial — se usa Trelew Aero, la estación real más cercana (~20 km), no un promedio ni una estimación.',
+  },
+  cordoba: { station: 'Córdoba Aero', value: 495, exact: true },
+  corrientes: { station: 'Corrientes Aero', value: 62, exact: true },
+  entrerios: { station: 'Paraná Aero', value: 78, exact: true },
+  formosa: { station: 'Formosa Aero', value: 60, exact: true },
+  jujuy: { station: 'Jujuy Aero', value: 909, exact: true },
+  lapampa: { station: 'Santa Rosa Aero', value: 191, exact: true },
+  larioja: { station: 'La Rioja Aero', value: 438, exact: true },
+  mendoza: { station: 'Mendoza Aero', value: 704, exact: true },
+  misiones: { station: 'Posadas Aero', value: 125, exact: true },
+  neuquen: { station: 'Neuquén Aero', value: 271, exact: true },
+  rionegro: { station: 'Viedma Aero', value: 7, exact: true },
+  salta: { station: 'Salta Aero', value: 1221, exact: true },
+  sanjuan: { station: 'San Juan Aero', value: 598, exact: true },
+  sanluis: { station: 'San Luis Aero', value: 713, exact: true },
+  santacruz: { station: 'Río Gallegos Aero', value: 25, exact: true },
+  santafe: {
+    station: 'Sauce Viejo Aero',
+    value: 18,
+    exact: false,
+    note: 'La capital (Santa Fe) no tiene estación SMN propia en el listado oficial — se usa Sauce Viejo Aero, el aeropuerto real que sirve a la ciudad (~10 km), no un promedio ni una estimación.',
+  },
+  santiagodelestero: { station: 'Santiago del Estero Aero', value: 199, exact: true },
+  tucuman: { station: 'Tucumán Aero', value: 450, exact: true },
+  tierradelfuego: { station: 'Ushuaia Aero', value: 57, exact: true },
+};
+
+if (Object.keys(CAPITAL_STATION_ALTITUDE).length !== 24) {
+  throw new Error('CAPITAL_STATION_ALTITUDE debe cubrir las 24 jurisdicciones.');
+}
+
+function buildAltitude(provinceId) {
+  const entry = CAPITAL_STATION_ALTITUDE[provinceId];
+  if (!entry) return pendingDataPoint('altitude_capital', null);
+  return {
+    key: 'altitude_capital',
+    value: entry.value,
+    unit: 'm s. n. m.',
+    period: null,
+    sourceId: 'oficial-smn-listado-estaciones',
+    evidenceLevel: 'A',
+    availability: 'AVAILABLE',
+    methodology: `Altura real de la estación meteorológica SMN "${entry.station}" (columna ALTURA del listado oficial), ${entry.exact ? 'la que lleva el nombre de la propia ciudad capital' : 'la estación real más cercana a la capital, a falta de una con su nombre exacto'}.`,
+    limitation: entry.exact
+      ? 'Es la altura del predio de la estación meteorológica, no necesariamente el punto más representativo de toda la ciudad capital (que puede tener relieve interno).'
+      : entry.note,
+    notes: null,
+  };
+}
+
 function pendingDataPoint(key, notes) {
   return {
     key,
@@ -182,6 +254,11 @@ function phenologicalReferenceDataPoint({ key, aspect, regionLabel }) {
     sourceId: 'academica-truffer-2011-soja-entrerios-grupos-madurez',
     evidenceLevel: 'C',
     availability: 'AVAILABLE',
+    // Tier 5 de la jerarquía Cannabis-primero (Loop 4.3 §7/§16): CANNABIS → ARGENTINA →
+    // PROVINCIA → AMBIENTE → EVIDENCIA, nunca "otra especie → suposición → Cannabis". La soja
+    // deja de ser el sustituto por defecto — queda como último recurso, siempre después de la
+    // evidencia general de Cannabis (tier 3) y nunca presentada sin esa evidencia al lado.
+    evidenceTier: 5,
     methodology: 'Analogía biológica por categoría fotoperiódica (planta de día corto) más documentación agronómica argentina de zonificación por latitud — no es una medición ni un dato provincial directo de Cannabis sativa. El mecanismo fotoperiódico en sí (no la variación por latitud, que sigue sin fuente argentina para Cannabis) está respaldado por ciencia directa de la propia especie (Alter et al. 2024, Loop 4.1), no por analogía.',
     limitation: PHENOLOGICAL_REFERENCE_LIMITATION,
     referenceSpecies: 'Glycine max (soja)',
@@ -193,7 +270,71 @@ function phenologicalReferenceDataPoint({ key, aspect, regionLabel }) {
       'academica-truffer-2011-soja-entrerios-grupos-madurez',
       'cientifica-alter-2024-cannabis-fotoperiodo-giberelina',
     ],
-    notes: `Referencia fenológica sobre ${aspect}, no un dato directo de Cannabis sativa para esta provincia.`,
+    notes: `Referencia fenológica sobre ${aspect} — analogía de última instancia con otra especie (soja), no un dato directo de Cannabis sativa para esta provincia. Se muestra después de la evidencia general de Cannabis, nunca en su lugar.`,
+  };
+}
+
+// Evidencia GENERAL de Cannabis sativa (Loop 4.3 §7, tier 3: "información general de Cannabis
+// con respaldo científico") — antes de esta reescritura, la única referencia disponible para
+// Cultivo/Cosecha en las 23 jurisdicciones sin evidencia directa era la analogía con soja (tier
+// 5). Zhang et al. (2021) es evidencia DIRECTA de Cannabis sativa (27 cultivares de cáñamo reales,
+// no una especie distinta) sobre por qué el umbral fotoperiódico y la duración hasta floración
+// varían — nunca un calendario, pero sí ciencia de la propia especie que no dependía de comparar
+// con otra planta.
+const GENERAL_CANNABIS_EVIDENCE_LIMITATION =
+  'Es evidencia directa de Cannabis sativa, pero internacional (cultivares de cáñamo de Norteamérica/Europa/Asia, ninguno argentino ni probado en Argentina) — explica por qué la duración del ciclo varía según el genotipo, nunca fija una fecha ni un calendario para ninguna provincia.';
+
+function generalCannabisEvidenceDataPoint({ key, aspect }) {
+  return {
+    key,
+    value: null,
+    unit: null,
+    period: null,
+    sourceId: 'cientifica-zhang-2021-hemp-photoperiod-cultivars',
+    evidenceLevel: 'B',
+    availability: 'AVAILABLE',
+    evidenceTier: 3,
+    methodology: 'Evidencia científica directa de Cannabis sativa (27 cultivares de cáñamo probados bajo 11 fotoperiodos distintos), de alcance internacional — no argentina ni provincial.',
+    limitation: GENERAL_CANNABIS_EVIDENCE_LIMITATION,
+    referenceSpecies: 'Cannabis sativa (cultivares de cáñamo internacionales, no argentinos)',
+    referenceReason: 'Evidencia directa de la propia especie sobre cómo varía el umbral fotoperiódico y la velocidad de floración entre cultivares — reemplaza la necesidad de recurrir primero a una analogía con otra especie.',
+    photoperiodResponse: 'El umbral fotoperiódico crítico (a partir del cual el cultivar deja de crecer en altura y empieza a florecer) varió entre 13h45m y 15h30m según el cultivar en cáñamo de aceite esencial, y se mantuvo más uniforme (~14h) en cáñamo de fibra/grano (Zhang et al., 2021). Los cultivares de origen genético más norteño (Canadá, Polonia) florecieron más rápido (4 a 11 días bajo fotoperiodo crítico) que los de origen más sureño (China, 21 a 25 días) — un patrón de adaptación genética a la latitud de origen, no de la latitud donde se cultive hoy.',
+    referenceRegion: 'Patrón documentado en cultivares internacionales de cáñamo — todavía no hay un estudio equivalente con cultivares argentinos ni ensayado en ninguna provincia del país.',
+    referenceSourceId: [
+      'cientifica-zhang-2021-hemp-photoperiod-cultivars',
+      'cientifica-alter-2024-cannabis-fotoperiodo-giberelina',
+    ],
+    notes: `Evidencia científica general de Cannabis sativa sobre ${aspect} — no es un dato argentino ni provincial, pero es de la propia especie, no una analogía con otra planta.`,
+  };
+}
+
+// Evidencia DIRECTA para Chubut (Loop 4.3 §7/§11, tier 1) — único caso, entre las 24
+// jurisdicciones, con cultivo real y documentado de Cannabis sativa: los 6 cultivares
+// CONICET-CENPAT registrados en INASE (Resolución 238/2023) y cultivados al aire libre en Puerto
+// Madryn (verano 2022-2023, confirmado por comunicado oficial de CONICET). No se generaliza a
+// ninguna otra provincia patagónica — la propia investigación de este proyecto (Loop 4.2) ya
+// documentó que no hay evidencia de que estos cultivares se hayan probado fuera de Chubut.
+function chubutCannabisEvidenceDataPoint(key) {
+  return {
+    key,
+    value: 'Cultivares registrados: Malvina, Ballena Franca, Cenpat, Pachamama, Conicet, Mariquita',
+    unit: null,
+    period: '2022-2023 (verano)',
+    sourceId: 'oficial-conicet-2023-comercializacion-semillas-cannabis',
+    evidenceLevel: 'A',
+    availability: 'AVAILABLE',
+    evidenceTier: 1,
+    methodology: 'Registro oficial de propiedad de cultivares (INASE, Resolución 238/2023) + comunicado oficial de CONICET que confirma el cultivo real al aire libre en Puerto Madryn, Chubut, con un ensayo a campo de 1200 semillas feminizadas de Malvina germinadas.',
+    limitation: 'Es evidencia real de cultivo exitoso en Chubut, pero sin datos públicos de fenología completa (fechas exactas de siembra, floración o cosecha) más allá de "el verano pasado" — no se debe generalizar a otras provincias patagónicas ni inferir un calendario a partir de esta evidencia.',
+    referenceSpecies: 'Cannabis sativa L. (cultivares CONICET-CENPAT: Malvina y Pachamama, comercializados; Ballena Franca, Cenpat, Conicet y Mariquita, registrados)',
+    referenceReason: 'Evidencia provincial directa, no una analogía ni una inferencia — cultivo real, documentado oficialmente, en el territorio de esta provincia.',
+    photoperiodResponse: 'Malvina (quimiotipo alto en THC) y Pachamama (quimiotipo alto en CBD) se cultivaron y cosecharon con éxito al aire libre en Puerto Madryn durante la temporada de verano 2022-2023, con un ensayo a campo de 1200 semillas feminizadas de Malvina — sin que la fuente consultada especifique fechas exactas de siembra, floración o cosecha.',
+    referenceRegion: 'Puerto Madryn, Chubut — no hay evidencia de que estos cultivares se hayan probado en otra provincia.',
+    referenceSourceId: [
+      'oficial-inase-resolucion-238-2023-cultivares-cannabis',
+      'oficial-conicet-2023-comercializacion-semillas-cannabis',
+    ],
+    notes: 'Única evidencia de nivel A de cultivo real de Cannabis sativa encontrada, entre las 24 jurisdicciones, para esta provincia — desarrollada por CONICET-CENPAT.',
   };
 }
 
@@ -257,31 +398,101 @@ function buildEnvironment(provinceId) {
   return points;
 }
 
+// Fechas de referencia de solsticios/equinoccios (Loop 4.3 §6/§12) — fechas calendario típicas
+// del hemisferio sur, usadas solo para fijar el DÍA DEL AÑO que alimenta el mismo cálculo
+// astronómico determinista ya verificado (`dayLengthHours`, Spencer 1971 + Cooper 1969). No son
+// datos nuevos por investigar ni varían de forma relevante para el uso editorial de esta ficha
+// (la fecha exacta de un equinoccio/solsticio puede correrse un día de un año a otro; esa
+// variación es irrelevante frente al propósito de comparar estaciones entre sí).
+const SEASON_REFERENCE_DATES = [
+  { season: 'verano', label: 'Verano (solsticio de diciembre)', monthDay: [11, 21] },
+  { season: 'otono', label: 'Otoño (equinoccio de marzo)', monthDay: [2, 20] },
+  { season: 'invierno', label: 'Invierno (solsticio de junio)', monthDay: [5, 21] },
+  { season: 'primavera', label: 'Primavera (equinoccio de septiembre)', monthDay: [8, 22] },
+];
+
+// "Duración del día astronómico" (de salida a puesta de sol) NO es lo mismo que "horas de sol"
+// reales de un lugar (que restan nubosidad, niebla, horizonte obstruido por relieve, etc.) — esta
+// aclaración se repite en cada dato (Loop 4.3 §6, pedido explícito) para que nunca se lea como una
+// medición de brillo solar real.
+const ASTRONOMICAL_DAY_LIMITATION =
+  'Es la duración del día astronómico (de salida a puesta de sol), calculada solo a partir de la latitud — no son "horas de sol" reales del lugar, que además dependen de nubosidad, niebla y relieve que este cálculo no incluye.';
+
 function buildLight(latitude) {
   if (typeof latitude !== 'number') return [];
-  return [getPhotoperiodDataPoint(latitude, new Date())];
+  const year = new Date().getUTCFullYear();
+  const seasonal = SEASON_REFERENCE_DATES.map(({ season, label, monthDay: [month, day] }) => {
+    const date = new Date(Date.UTC(year, month, day));
+    const base = getPhotoperiodDataPoint(latitude, date);
+    return {
+      ...base,
+      key: `day_length_hours_${season}`,
+      season,
+      seasonLabel: label,
+      limitation: ASTRONOMICAL_DAY_LIMITATION,
+      notes: ASTRONOMICAL_DAY_LIMITATION,
+    };
+  });
+  return [
+    { ...getPhotoperiodDataPoint(latitude, new Date()), season: 'hoy', seasonLabel: 'Hoy', limitation: ASTRONOMICAL_DAY_LIMITATION, notes: ASTRONOMICAL_DAY_LIMITATION },
+    ...seasonal,
+  ];
 }
 
 // Cultivo y Cosecha son bloques visuales separados (pedido explícito de la Fase "FICHA
 // PROVINCIAL" de este loop) pero comparten el mismo array `cultivation`, distinguidos por el
 // prefijo de `key` (`cultivo_`/`cosecha_`) — evita extender el modelo con un top-level nuevo
 // cuando no hace falta (ya lo permitía la forma definida en 3B).
-function buildCultivation(geoContext) {
+//
+// Orden de prioridad Cannabis-primero (Loop 4.3 §7/§16 — nunca al revés):
+//   tier 1: Cannabis específico de la provincia (solo Chubut tiene esto hoy)
+//   tier 2: Cannabis específico de una región argentina comparable (sin evidencia encontrada
+//           todavía para ninguna provincia — no se inventa una comparación sin fuente)
+//   tier 3: información general de Cannabis con respaldo científico (Zhang et al. 2021 + Alter et
+//           al. 2024) — se muestra para las 24 jurisdicciones, no solo cuando falta algo más
+//   tier 4: inferencia ambiental (ya cubierta por los bloques Ambiente/Luz, no se duplica acá)
+//   tier 5: analogía con otra especie (soja) — último recurso, siempre después del tier 3, nunca
+//           en su lugar
+function buildCultivation(geoContext, provinceId) {
   const regionLabel = geoContext?.regionLabel ?? 'su región';
-  return [
+  const points = [
     pendingDataPoint('cultivo_ventana_directa', 'Sin fuente provincial/argentina directa (nivel A/B) para el momento de transición vegetativo→reproductivo de Cannabis sativa — ver `51_LOOP_3B_PROVINCIAL_DATA.md` §12.'),
+  ];
+
+  if (provinceId === 'chubut') {
+    points.push(chubutCannabisEvidenceDataPoint('cultivo_evidencia_directa_chubut'));
+  }
+
+  points.push(
+    generalCannabisEvidenceDataPoint({
+      key: 'cultivo_evidencia_general_cannabis',
+      aspect: 'la transición de la fase vegetativa a la reproductiva (floración) por efecto del fotoperiodo',
+    }),
     phenologicalReferenceDataPoint({
       key: 'cultivo_referencia_fenologica',
       aspect: 'la transición de la fase vegetativa a la reproductiva (floración) por efecto del fotoperiodo',
       regionLabel,
     }),
     pendingDataPoint('cosecha_ventana_directa', 'Sin fuente provincial/argentina directa (nivel A/B) para ventana de cosecha de Cannabis sativa — ver `51_LOOP_3B_PROVINCIAL_DATA.md` §13.'),
+  );
+
+  if (provinceId === 'chubut') {
+    points.push(chubutCannabisEvidenceDataPoint('cosecha_evidencia_directa_chubut'));
+  }
+
+  points.push(
+    generalCannabisEvidenceDataPoint({
+      key: 'cosecha_evidencia_general_cannabis',
+      aspect: 'cómo varía el tiempo hasta la madurez/cosecha según el genotipo',
+    }),
     phenologicalReferenceDataPoint({
       key: 'cosecha_referencia_fenologica',
       aspect: 'cómo varía el tiempo hasta la madurez/cosecha según la latitud',
       regionLabel,
     }),
-  ];
+  );
+
+  return points;
 }
 
 export function getProvinceProfile(provinceId) {
@@ -311,6 +522,7 @@ export function getProvinceProfile(provinceId) {
       latitude: location.lat,
       longitude: location.lon,
       coordinateMeaning: 'centroide_geometrico_provincial',
+      altitude: buildAltitude(provinceId),
     },
     map: {
       // Referencia al dataset ya existente — nunca una copia del path SVG.
@@ -319,11 +531,11 @@ export function getProvinceProfile(provinceId) {
     },
     environment: buildEnvironment(provinceId),
     light: buildLight(location.lat),
-    cultivation: buildCultivation(geoContext),
+    cultivation: buildCultivation(geoContext, provinceId),
     sources: [], // se completa en runtime uniendo los sourceId presentes en environment/light/cultivation
     metadata: {
       generatedAt: new Date().toISOString(),
-      lastReviewed: '2026-09-11',
+      lastReviewed: '2026-09-13',
     },
   };
 }

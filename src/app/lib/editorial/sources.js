@@ -533,7 +533,87 @@ export const sources = [
     publicationDate: '2026',
     accessedAt: '2026-09-12',
     notes: 'Blog comercial SIN ninguna fuente/cita propia (confirmado por lectura directa: cero referencias en el artículo). Investigado por instrucción explícita del Loop 4.1, clasificando cada afirmación: (a) "las autoflorecientes no dependen del fotoperiodo para florecer" — CORROBORADA de forma independiente por ciencia real (ver `cientifica-pollio-2016-...` y `preprint-cannabis-daylength-mutation-2023`); (b) "Patagonia tiene temporadas más cortas y temperaturas más bajas" — PARCIALMENTE CORROBORADA (consistente con la clasificación climática real de esta provincia, `oficial-indec-anida-tipos-climaticos-wfs`, pero sin ninguna fuente que verifique la conclusión de cultivo específica); (c) ventanas de siembra/floración/cosecha por mes y por región (ej. "floración: febrero a abril" para la zona centro) — NO CORROBORADAS: ninguna fuente científica o agronómica independiente respalda esas fechas exactas para Cannabis en Argentina. Estas fechas NO se incorporaron a ningún dato del proyecto — se documentan acá únicamente como el resultado de la verificación pedida, no como contenido utilizable.'
-  }
+  },
+
+  // --- Fuentes de contenido: Loop 4.3 — investigación regional de Cannabis + Ficha Provincial (2026-09-13) ---
+  {
+    id: 'oficial-inase-resolucion-238-2023-cultivares-cannabis',
+    title: 'Resolución 238/2023 — Registro Nacional de la Propiedad de Cultivares: Malvina, Ballena Franca, Cenpat, Pachamama, Conicet y Mariquita (Cannabis sativa L.)',
+    authorOrInstitution: 'Instituto Nacional de Semillas (INASE) — Boletín Oficial de la República Argentina',
+    url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/286492/20230516',
+    type: 'OFFICIAL',
+    publicationDate: '2023-04-21',
+    accessedAt: '2026-09-13',
+    notes: 'VERIFICADO por lectura directa. Resolución que ordena la inscripción, a pedido de CONICET, de seis creaciones fitogenéticas de Cannabis sativa L. en el Registro Nacional de la Propiedad de Cultivares (Ley 20.247): Malvina, Ballena Franca, Cenpat, Pachamama, Conicet y Mariquita. Es la única evidencia de nivel A de cultivares de Cannabis argentinos registrados oficialmente que este proyecto encontró para cualquiera de las 24 jurisdicciones — desarrollados por CONICET-CENPAT (Puerto Madryn, Chubut).'
+  },
+  {
+    id: 'oficial-conicet-2023-comercializacion-semillas-cannabis',
+    title: 'Por primera vez se comercializarán semillas de cannabis medicinal con tecnología CONICET',
+    authorOrInstitution: 'CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas)',
+    url: 'https://www.conicet.gov.ar/por-primera-vez-se-comercializaran-semillas-de-cannabis-medicinal-con-tecnologia-conicet/',
+    type: 'OFFICIAL',
+    publicationDate: '2023-05-19',
+    accessedAt: '2026-09-13',
+    notes: 'VERIFICADO por lectura directa. Comunicado oficial de CONICET que confirma cultivo real al aire libre en Puerto Madryn, Chubut, de los cultivares Malvina y Pachamama (temporada de verano 2022-2023): "el verano pasado cultivamos las plantas de estos dos cultivares que vamos a comercializar... del ensayo a campo, donde se germinaron 1200 semillas feminizadas de Malvina, solo dos plantas mostraron floración masculina". Confirma quimiotipo (Malvina: alto en THC; Pachamama: alto en CBD) y la licencia de comercialización a la empresa Whale Leaf Farm (Puerto Madryn). Es la fuente que convierte el registro varietal (`oficial-inase-resolucion-238-2023-cultivares-cannabis`) en evidencia de CULTIVO REAL, no solo de registro de propiedad intelectual — nivel A para Chubut específicamente, sin datos públicos de fenología completa (fecha de siembra, floración o cosecha) más allá de "el verano pasado".'
+  },
+  {
+    id: 'cientifica-zhang-2021-hemp-photoperiod-cultivars',
+    title: 'Photoperiodic Flowering Response of Essential Oil, Grain, and Fiber Hemp (Cannabis sativa L.) Cultivars',
+    authorOrInstitution: 'Zhang, M.; Anderson, S. L.; Brym, Z. T.; Pearson, B. J. — Frontiers in Plant Science, vol. 12, art. 694153',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8367441/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2021-08-02',
+    accessedAt: '2026-09-13',
+    notes: 'VERIFICADO por lectura directa (PMC, artículo de libre acceso; DOI 10.3389/fpls.2021.694153). Evidencia DIRECTA de Cannabis sativa (27 cultivares de cáñamo: 15 de aceite esencial, 12 de fibra/grano), no una analogía con otra especie: el umbral fotoperiódico crítico varía sustancialmente entre cultivares (13h45m a 15h30m en los de aceite esencial; más uniforme, ~14h, en los de fibra/grano), y los cultivares de origen más norteño (Canadá, Polonia) florecieron más rápido (4-11 días bajo fotoperiodo crítico) que los de origen más sureño (China, 21-25 días) — un patrón de adaptación genotipo×latitud de origen, no de la latitud de cultivo actual. Se usa como evidencia GENERAL de Cannabis (nivel B: internacional, no argentina) para explicar por qué el ciclo/floración de Cannabis no es un valor único, en lugar de recurrir a la analogía de la soja para esta parte del contenido — ninguno de estos 27 cultivares es argentino ni se probó en Argentina.'
+  },
+
+  // --- Fuentes de contenido: Loop 4.3 — nuevas entradas "Formas de germinar", "Poda" y
+  // "Fertilización y nutrición" (2026-09-13) ---
+  {
+    id: 'academica-unne-nutricion-mineral-dabrio-2020',
+    title: 'Guía de estudio: Nutrición mineral de los vegetales',
+    authorOrInstitution: 'Dabrio, A. (elaboración); Marassi, M. A. (corrección) — Cátedra de Fisiología Vegetal, FaCENA, Universidad Nacional del Nordeste (UNNE)',
+    url: 'https://exa.unne.edu.ar/biologia/fisiologia.vegetal/Gu%C3%ADa%20de%20estudio-Nutricion%20mineral%202020.pdf',
+    type: 'ACADEMIC',
+    publicationDate: '2020',
+    accessedAt: '2026-09-13',
+    notes: 'VERIFICADO por lectura directa (extracción local con PyMuPDF; mismo dominio y misma cátedra que las fuentes ya verificadas de germinación y fitocromos de este proyecto). Guía de cátedra sobre nutrición mineral: clasificación macro/micronutrientes, criterios de esencialidad, y sintomatología de deficiencia nutriente por nutriente. Se cita textualmente para dos hechos concretos: (1) el nitrógeno y el fósforo son muy móviles dentro de la planta, por lo que sus síntomas de deficiencia aparecen primero en las hojas más viejas/adultas; (2) el azufre es relativamente inmóvil, por lo que su deficiencia se manifiesta primero en las hojas jóvenes — el mismo principio de movilidad que explica por qué el patrón de aparición de un síntoma (hojas viejas vs. hojas jóvenes) orienta sobre qué nutriente falta, sin necesitar una tabla de dosificación.'
+  },
+  {
+    id: 'academica-kirkby-romheld-2007-micronutrientes-fisiologia',
+    title: 'Micronutrientes en la fisiología de las plantas: funciones, absorción y movilidad',
+    authorOrInstitution: 'Kirkby, E. A. (Universidad de Leeds); Römheld, V. (Universidad de Hohenheim) — versión en español, publicada vía Cátedra de Fisiología Vegetal, FaCENA, UNNE',
+    url: 'https://exa.unne.edu.ar/biologia/fisiologia.vegetal/MicronutrientesenlaFisiologia.pdf',
+    type: 'ACADEMIC',
+    publicationDate: '2007',
+    accessedAt: '2026-09-13',
+    notes: 'VERIFICADO por lectura directa (extracción local con PyMuPDF). Versión en español de Kirkby, E.A. y V. Römheld (2007), "Micronutrients in plant physiology: functions, uptake and mobility", Proceedings 543, The International Fertilizer Society. Explica la clasificación macro/micronutrientes por concentración requerida (no por importancia), y documenta con el hierro un caso concreto de nutriente de baja movilidad en el floema: su deficiencia se manifiesta primero como clorosis en las hojas jóvenes, no en las viejas — el caso opuesto al nitrógeno/fósforo (ver `academica-unne-nutricion-mineral-dabrio-2020`). Se usa para el concepto general de movilidad de nutrientes, nunca para ninguna cifra de dosificación.'
+  },
+  {
+    id: 'cientifica-chavalina-2026-hemp-topping-morphology',
+    title: 'Morphological, physiological, and biochemical responses of two industrial hemp (Cannabis sativa L.) cultivars to different levels of topping',
+    authorOrInstitution: 'Chavalina, S.; Ioannidis, V.; Bilalis, D.; Lamari, F.; Zervoudakis, G.; Salachas, G. — Journal of Cannabis Research, vol. 8',
+    url: 'https://link.springer.com/article/10.1186/s42238-026-00410-2',
+    type: 'SCIENTIFIC',
+    publicationDate: '2026-03-06',
+    accessedAt: '2026-09-13',
+    notes: 'Título, autoría completa, revista, volumen y DOI (10.1186/s42238-026-00410-2) verificados vía Crossref. El texto completo no se pudo leer directamente en esta sesión (acceso institucional/paywall de Springer). Se cita únicamente para respaldar el hecho general de que existe evidencia científica directa (no una analogía con otra especie) de que el topping (despunte del meristema apical) produce cambios morfológicos, fisiológicos y bioquímicos medibles en cáñamo industrial (Cannabis sativa L.), y que esos cambios varían entre cultivares — no se cita ningún resultado cuantitativo específico del estudio, que no se pudo verificar por lectura directa.'
+  },
+  {
+    id: 'academica-beveridge-2023-apical-dominance-review',
+    title: 'Lessons from a century of apical dominance research',
+    authorOrInstitution: 'Beveridge, C. A.; Rameau, C.; Wijerathna-Yapa, A. — Journal of Experimental Botany, vol. 74, n.º 14, pp. 3903-3922',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10400159/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2023',
+    accessedAt: '2026-09-13',
+    notes: 'Título, autoría completa, revista, volumen/páginas y DOI (10.1093/jxb/erad137) verificados vía Crossref. El texto completo no se pudo leer directamente en esta sesión (la página de PMC devolvió una verificación anti-bot en el momento de la consulta). Se cita para respaldar el mecanismo general y ampliamente establecido de la dominancia apical (el meristema apical, vía auxina y otras señales hormonales, inhibe el crecimiento de las yemas laterales) — es una revisión de más de un siglo de investigación sobre un mecanismo consensuado en fisiología vegetal, no un hallazgo puntual o controvertido de este paper.'
+  },
+
+  // --- Fuentes de altitud: reutilización del listado SMN ya registrado (Loop 4.3, 2026-09-13) ---
+  // No se registra una fuente nueva: `oficial-smn-listado-estaciones` (arriba) ya cubre la
+  // columna ALTURA del mismo archivo oficial ya descargado en el Loop 4 — ver
+  // `lib/geo/provinceProfile.js` (`CAPITAL_STATION_ALTITUDE`) para el uso puntual de esa columna.
 ];
 
 export function sourceById(id) {

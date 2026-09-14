@@ -300,7 +300,7 @@ export const editorialEntries = [
       'Argentina tiene una diversidad climática amplia entre regiones —ya documentada en la dimensión geográfica del atlas—, lo que significa que el ritmo y la estacionalidad de esta etapa al aire libre no son iguales en todo el país. Esta entrada no afirma diferencias puntuales por provincia porque esa capa de contenido regional todavía no está desarrollada con fuente propia; lo que sí puede decirse en general es que el mismo proceso biológico se expresa con tiempos distintos según cuánto se aleje el ambiente real de un rango estable de agua, oxígeno y temperatura.'
     ],
     tags: ['fundamentos', 'germinación', 'agua'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'luz-y-fotoperiodo', 'cultivo-en-secuencia', 'historia-de-la-planta'],
+    relatedEntryIds: ['formas-de-germinar', 'sustrato-y-drenaje', 'luz-y-fotoperiodo', 'cultivo-en-secuencia', 'historia-de-la-planta'],
     sourceIds: [
       'oficial-inase-vigor-semillas',
       'academica-unne-fisiologia-vegetal-germinacion',
@@ -317,6 +317,105 @@ export const editorialEntries = [
     metadata: {
       seoTitle: 'Germinación y primera lectura del material — Atlas del Cultivo Argentino',
       seoDescription: 'Qué es la germinación, qué ocurre biológicamente, qué señales observar y qué errores de interpretación son frecuentes en esta primera etapa.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'formas-de-germinar',
+    slug: 'formas-de-germinar',
+    categoryId: 'fundamentos',
+    title: 'Formas de germinar',
+    summary: 'Sembrar directo, envolver la semilla en un medio húmedo o dejarla en remojo son formas distintas de ofrecer la misma combinación de agua, oxígeno y temperatura — no compiten por cuál es "mejor", sino por qué controlan y qué riesgo asumen.',
+    intro: 'La entrada "Germinación y primera lectura del material" describe qué ocurre biológicamente dentro de la semilla. Esta entrada mira el paso anterior: de qué formas distintas se le puede ofrecer a esa semilla el agua, el oxígeno y la temperatura que ese proceso necesita, y qué cambia —en control, en riesgo, en lo que se puede observar— según cuál se elija.',
+    sections: [
+      {
+        id: 'misma-fisiologia-formas-distintas',
+        title: 'La misma fisiología, formas distintas de ofrecerla',
+        paragraphs: [
+          'Ninguna forma de germinar cambia el proceso biológico en sí: imbibición, activación metabólica y emergencia de la radícula (ver "Germinación y primera lectura del material") ocurren igual sea cual sea el método. Lo que cambia entre un método y otro es cómo se controla el acceso de la semilla al agua y al aire, y qué tan fácil es observar el momento exacto en que la radícula emerge sin tener que remover el sustrato para verlo.',
+          'Por eso esta entrada no ordena los métodos de "mejor a peor": describe qué controla cada uno y qué compromiso asume, coherente con el resto del atlas.'
+        ]
+      },
+      {
+        id: 'siembra-directa',
+        title: 'Siembra directa en sustrato',
+        paragraphs: [
+          'Consiste en colocar la semilla directamente en el sustrato final (o uno provisorio de igual estructura) y regar, dejando que la radícula emerja y crezca directamente en su medio definitivo. La ventaja física es que la raíz nunca se manipula: no hay traspaso ni riesgo de dañar la radícula recién emergida, que es frágil y quebradiza en sus primeras horas. La contrapartida es que el proceso queda oculto bajo la superficie —no se puede confirmar a simple vista que la semilla efectivamente germinó hasta que asoma el hipocótilo, ni distinguir, si no ocurre, si la causa fue una semilla no viable o una condición del sustrato fuera de rango.'
+        ]
+      },
+      {
+        id: 'medio-humedo-envuelto',
+        title: 'Semilla envuelta en un medio húmedo (papel, tela, algodón)',
+        paragraphs: [
+          'Consiste en colocar la semilla entre capas de un material absorbente humedecido (papel de cocina, tela, algodón) en un ambiente cerrado que mantenga la humedad. Permite observar directamente el momento en que la testa se abre y la radícula emerge, sin necesidad de remover ningún sustrato — es, en ese sentido, el método con mayor visibilidad del proceso.',
+          'El compromiso está en el paso siguiente: una vez que la radícula emerge, hay que trasladar la semilla al sustrato definitivo, y ese traspaso es exactamente el momento de mayor riesgo de dañar físicamente una radícula que recién empieza a anclarse y que es más frágil cuanto más creció dentro del medio húmedo. Distintos tratamientos previos a la siembra (remojo, envoltura húmeda, y otras variantes agrupadas bajo el término "priming") se han estudiado específicamente en cultivares de cáñamo y muestran diferencias reales en el establecimiento posterior de la plántula — es decir, la elección del método no es un detalle indiferente, aunque esta entrada no recomiende un tratamiento específico por encima de otro.'
+        ]
+      },
+      {
+        id: 'remojo-en-agua',
+        title: 'Remojo previo en agua',
+        paragraphs: [
+          'Consiste en sumergir la semilla en agua durante un lapso antes de sembrarla (directo o en un medio húmedo), acelerando la imbibición inicial al maximizar el contacto con agua líquida. El límite físico de este método es el mismo que describe la entrada de germinación en general: el exceso de agua desplaza el aire, y una semilla sumergida por demasiado tiempo puede quedar con acceso insuficiente al oxígeno que la respiración del embrión necesita — por eso el remojo se usa como un paso acotado en el tiempo, no como el medio permanente de germinación.'
+        ]
+      },
+      {
+        id: 'que-no-cambia-entre-metodos',
+        title: 'Qué no cambia entre métodos',
+        paragraphs: [
+          'Ningún método reemplaza la necesidad de que la semilla sea viable: un embrión no viable no va a germinar sea cual sea la forma en que se lo intente (ver la distinción entre viabilidad y vigor, en "Germinación y primera lectura del material"). Tampoco ningún método "fuerza" una germinación más rápida que la que permite la propia semilla — lo que cambia es la visibilidad del proceso y el punto en que existe riesgo de manipulación física, no la velocidad biológica de fondo.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una semilla en medio húmedo abrió la testa y mostró la radícula un día antes que otra sembrada directamente no es evidencia de que el método haya sido "mejor" — puede deberse a que ese método simplemente permite verlo antes, no a que haya germinado antes en términos biológicos reales.',
+      'El traspaso de una radícula ya emergida desde un medio húmedo hacia el sustrato es un momento observable de riesgo físico, distinto del proceso de germinación en sí — confundir un daño de manipulación con "la semilla no germinó bien" es un error de atribución frecuente.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'En siembra directa: ausencia de cambio visible en superficie durante los primeros días, seguida de la emergencia del hipocótilo. En medio húmedo: apertura de la testa y radícula visible directamente sobre el material húmedo.'
+      },
+      {
+        level: 'ATTENTION',
+        description: 'Una radícula que se ve oscurecida, reseca o quebradiza inmediatamente después de un traspaso desde un medio húmedo amerita revisar si el manejo del traspaso fue la causa, antes de atribuirlo a la calidad de la semilla.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Que dos semillas del mismo lote, sembradas por métodos distintos, muestren tiempos distintos hasta que se hace visible la radícula no alcanza, por sí solo, para concluir que un método es más rápido que otro — la variabilidad individual entre semillas del mismo lote es real y esperable.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Concluir que un método de germinación es superior a otro a partir de cuándo se hizo visible la radícula, sin considerar que cada método ofrece distinta visibilidad del mismo proceso interno.'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'Revisar con demasiada frecuencia una siembra directa removiendo el sustrato para "ver cómo va", lo que puede dañar físicamente una radícula que ya está emergiendo bajo la superficie.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Atribuir a "mala calidad de semilla" un daño que en realidad ocurrió durante el traspaso desde un medio húmedo hacia el sustrato definitivo — son dos causas distintas de un mismo resultado visible (la planta no prospera).'
+      }
+    ],
+    environmentContext: [
+      'La elección de método no cambia qué condiciones ambientales importan (agua, oxígeno, temperatura, ya descriptas en "Germinación y primera lectura del material"), pero sí cambia cuánto control directo se tiene sobre esas condiciones: un medio húmedo cerrado suele mantener la humedad de forma más estable que un sustrato expuesto a la ventilación o al clima exterior.',
+      'Esta entrada no recomienda un método por sobre otro para ningún contexto (interior, exterior, escala) — describe las diferencias reales entre ellos para que la elección sea informada, no arbitraria.'
+    ],
+    tags: ['fundamentos', 'germinación', 'agua'],
+    relatedEntryIds: ['germinacion', 'sustrato-y-drenaje'],
+    sourceIds: [
+      'cientifica-bewley-1997-seed-germination-dormancy',
+      'cientifica-latif-2025-hemp-priming-germination',
+      'oficial-inase-vigor-semillas',
+      'academica-unne-fisiologia-vegetal-germinacion'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-13',
+    metadata: {
+      seoTitle: 'Formas de germinar — Atlas del Cultivo Argentino',
+      seoDescription: 'Siembra directa, medio húmedo envuelto y remojo previo: qué controla cada forma de germinar, qué riesgo asume, y por qué ninguna cambia la fisiología de fondo.',
       canonical: null,
       ogImage: null
     }
@@ -681,13 +780,189 @@ export const editorialEntries = [
       'Esta entrada no fija un calendario ni una duración esperada para cada etapa — depende de demasiadas variables (genética, ambiente, manejo) como para dar una cifra única sin volverla arbitraria.'
     ],
     tags: ['cultivo', 'ciclo'],
-    relatedEntryIds: ['germinacion', 'luz-y-fotoperiodo'],
+    relatedEntryIds: ['germinacion', 'luz-y-fotoperiodo', 'poda', 'fertilizacion-y-nutricion'],
     sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle', 'academica-uncuyo-guia-crecimiento'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-10',
     metadata: {
       seoTitle: 'Cultivo en secuencia — Atlas del Cultivo Argentino',
       seoDescription: 'Por qué el desarrollo de la planta es una secuencia continua (ontogenia) y no una serie de estados aislados, y cómo leer la transición de vegetativo a reproductivo.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'poda',
+    slug: 'poda',
+    categoryId: 'cultivo',
+    title: 'Poda',
+    summary: 'Podar interrumpe una señal hormonal concreta —la dominancia apical— y por eso cambia la forma de la planta; no es un atajo genérico para "que crezca mejor".',
+    intro: 'Podar suele describirse en términos de resultado ("para que salgan más ramas", "para que entre más luz"), pero el resultado se explica por un mecanismo fisiológico puntual: la dominancia apical. Esta entrada describe ese mecanismo, qué hace la poda sobre él, y qué evidencia existe —de la propia especie, no de una analogía— sobre sus efectos.',
+    sections: [
+      {
+        id: 'dominancia-apical',
+        title: 'Dominancia apical: por qué una planta crece "hacia arriba" por defecto',
+        paragraphs: [
+          'La dominancia apical es el fenómeno por el cual el meristema apical (la punta de crecimiento del tallo principal) inhibe el crecimiento de las yemas laterales ubicadas más abajo. El mecanismo involucra auxina producida en esa punta de crecimiento, que viaja hacia abajo y suprime el desarrollo de esas yemas — el resultado visible es una planta que prioriza el crecimiento vertical de un tallo principal por sobre la ramificación lateral.',
+          'Más de un siglo de investigación sobre este mecanismo muestra que no se explica solo por auxina: estudios recientes encontraron que, tras eliminar la punta de crecimiento, el aumento de citoquininas (otra hormona vegetal) en las yemas laterales está más correlacionado con un aumento de azúcares disponibles que con la caída de auxina en sí — el mecanismo completo sigue siendo objeto de investigación activa, no un capítulo cerrado.'
+        ]
+      },
+      {
+        id: 'que-hace-la-poda',
+        title: 'Qué hace la poda sobre ese mecanismo',
+        paragraphs: [
+          'Remover el meristema apical (una práctica conocida como "topping" cuando se hace en el tallo principal) elimina la fuente de la señal que inhibía a las yemas laterales — sin esa señal, esas yemas quedan liberadas para desarrollarse, y la planta pasa de un crecimiento dominado por un solo eje vertical a una estructura con más puntos de crecimiento activos.',
+          'Un estudio reciente con dos cultivares de cáñamo industrial (Cannabis sativa L.) sometidos a distintos niveles de topping encontró cambios medibles en su morfología, fisiología y composición bioquímica — y, relevante para no generalizar de más, esos cambios no fueron idénticos entre los dos cultivares: la respuesta a la poda varió según el material genético.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no da un momento del ciclo, una cantidad de nudos ni una técnica paso a paso para podar — reproducir una instrucción así, sin evidencia argentina ni de todos los contextos posibles (genética, ambiente, etapa de la planta), sería exactamente el tipo de receta universal que el atlas evita en el resto de su contenido. El estudio citado muestra que la respuesta varía por cultivar; no hay evidencia de que un único protocolo de poda funcione igual para cualquier planta.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una planta desarrolla más ramas laterales después de remover su punta de crecimiento es una observación consistente con el mecanismo de dominancia apical. Concluir que "más ramas" significa automáticamente "más producción final" es una interpretación distinta, que depende de otras variables (luz disponible para esas ramas nuevas, tiempo restante del ciclo) que esta entrada no evalúa.',
+      'Que dos plantas de cultivares distintos respondan de forma distinta al mismo corte no es una contradicción — es exactamente lo que encontró el estudio citado: la respuesta a la poda no es uniforme entre genotipos.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'Desarrollo progresivo de las yemas laterales antes inhibidas, en los días/semanas posteriores a la remoción del meristema apical — es el mecanismo esperado de liberación de la dominancia apical, no una anomalía.'
+      },
+      {
+        level: 'ATTENTION',
+        description: 'Una detención generalizada del crecimiento (no solo de las yemas antes dominadas) tras un corte amerita revisar si hubo un daño mayor al previsto, más allá del efecto esperado sobre la dominancia apical.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Que dos plantas del mismo lote respondan con distinta velocidad de ramificación tras un corte similar no alcanza, por sí solo, para concluir que el corte estuvo mal hecho en una de ellas — la variabilidad genética individual es real.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar la poda como una técnica con un único resultado garantizado, ignorando que el propio estudio de referencia encontró respuestas distintas entre cultivares de la misma especie.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar un protocolo de poda leído para un contexto o cultivar distinto sin considerar que la dominancia apical y su liberación son un mecanismo general, pero su magnitud y velocidad de respuesta varían según la planta.'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'Confundir el desarrollo esperado de yemas laterales liberadas de la dominancia apical con un "rebrote de emergencia" o una señal de estrés — es la respuesta fisiológica prevista, no una anomalía.'
+      }
+    ],
+    environmentContext: [
+      'La disponibilidad de luz para las nuevas ramas laterales que se desarrollan tras una poda depende del ambiente: en un espacio protegido con iluminación distribuida de forma más uniforme, esas ramas nuevas pueden acceder a más luz que en un ambiente donde la luz llega predominantemente desde un punto (el sol, en exterior, con su propio recorrido diario). Esta entrada no evalúa ese balance para ningún contexto específico.',
+      'No se fija ningún momento del ciclo como "el momento correcto" para podar — depende de la etapa de desarrollo de la planta (ver "Cultivo en secuencia") y de variables que esta entrada no cuantifica.'
+    ],
+    tags: ['cultivo', 'poda'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'fertilizacion-y-nutricion'],
+    sourceIds: [
+      'cientifica-chavalina-2026-hemp-topping-morphology',
+      'academica-beveridge-2023-apical-dominance-review'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-13',
+    metadata: {
+      seoTitle: 'Poda — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la dominancia apical, qué hace la poda sobre ese mecanismo, y qué muestra la evidencia científica directa de Cannabis sativa sobre sus efectos.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'fertilizacion-y-nutricion',
+    slug: 'fertilizacion-y-nutricion',
+    categoryId: 'cultivo',
+    title: 'Fertilización y nutrición',
+    summary: 'Cada nutriente cumple una función específica y se mueve de forma distinta dentro de la planta — esa movilidad, no una tabla de dosis, es lo que explica dónde aparece primero un síntoma de carencia.',
+    intro: 'Esta entrada no da ninguna tabla de dosificación: describe cómo funciona la nutrición mineral en general —qué son los nutrientes esenciales, por qué se agrupan en macro y micronutrientes, cómo se relaciona su movilidad dentro de la planta con dónde aparece un síntoma, y por qué carencia y exceso pueden producirse por mecanismos opuestos pero limitar el crecimiento igual. Ninguna cifra de esta entrada es específica de Cannabis sativa: es fisiología vegetal general, la misma que describen las guías de cátedra ya citadas en otras entradas de este atlas.',
+    sections: [
+      {
+        id: 'que-es-un-nutriente-esencial',
+        title: 'Qué es un nutriente esencial',
+        paragraphs: [
+          'Un elemento se considera esencial cuando su ausencia impide que la planta complete su ciclo de vida normal y esa función no puede ser reemplazada por ningún otro elemento. Esto se estableció experimentalmente comparando plantas cultivadas en soluciones nutritivas completas contra las mismas plantas con un elemento puntual suprimido — un método que sigue siendo la base de cómo se identifica la esencialidad de un nutriente.',
+          'Los nutrientes esenciales se agrupan en macronutrientes y micronutrientes según la concentración que la planta necesita, no según su importancia relativa: un micronutriente en concentración insuficiente limita el crecimiento tanto como un macronutriente insuficiente — la diferencia es cuánto de cada uno se necesita, no cuán esencial es.'
+        ]
+      },
+      {
+        id: 'movilidad-y-donde-aparece-el-sintoma',
+        title: 'Movilidad dentro de la planta: por qué el síntoma aparece donde aparece',
+        paragraphs: [
+          'No todos los nutrientes se mueven igual una vez que están dentro de la planta. Algunos —el nitrógeno y el fósforo, por ejemplo— tienen alta movilidad interna: cuando escasean, la planta puede retirarlos de las hojas más viejas para redirigirlos hacia el crecimiento nuevo. Por eso, la deficiencia de estos nutrientes se manifiesta primero como cambios (por ejemplo, amarillamiento) en las hojas más viejas, mientras las hojas jóvenes se mantienen con mejor aspecto por más tiempo.',
+          'Otros nutrientes tienen movilidad baja. El azufre, por ejemplo, normalmente no se redistribuye desde las hojas adultas hacia las jóvenes, así que su deficiencia —cuando ocurre— tiende a mostrarse de forma generalizada en las hojas jóvenes. El hierro es otro caso de baja movilidad: su carencia se expresa como clorosis (pérdida de verde) que aparece primero en las hojas jóvenes, no en las viejas.',
+          'Esta relación —movilidad del nutriente y ubicación del primer síntoma visible— es el principio general más útil para orientar una lectura: preguntarse "¿el cambio aparece primero en las hojas viejas o en las jóvenes?" acota el campo de nutrientes posibles antes de nombrar uno en particular, siguiendo la misma lógica de "leer el patrón, no el punto" que ya describe la entrada "Lectura de señales y sanidad".'
+        ]
+      },
+      {
+        id: 'carencia-toxicidad-estres',
+        title: 'Carencia, toxicidad y estrés ambiental: tres orígenes que pueden verse parecidos',
+        paragraphs: [
+          'La carencia (falta de un nutriente) y la toxicidad (exceso del mismo nutriente, o de otro) pueden limitar el crecimiento por mecanismos opuestos, pero producir una apariencia externa igualmente empobrecida: una planta con poco crecimiento, hojas de aspecto alterado, sin que ese aspecto solo alcance para distinguir cuál de las dos situaciones está ocurriendo.',
+          'A eso se suma que varios síntomas de origen nutricional —clorosis, necrosis en bordes o puntas, crecimiento reducido— también pueden originarse en un estrés puramente ambiental (agua, temperatura, luz) sin que ningún nutriente esté realmente desbalanceado, el mismo principio de "un síntoma no alcanza para diagnosticar" que ya describe "Lectura de señales y sanidad" para el origen biótico/abiótico en general.'
+        ]
+      },
+      {
+        id: 'suelo-planta-y-disponibilidad',
+        title: 'La relación entre el sustrato/agua y la disponibilidad del nutriente',
+        paragraphs: [
+          'Que un nutriente esté presente en el sustrato no garantiza que la planta pueda absorberlo: su disponibilidad real depende de que esté disuelto en la solución del sustrato y de que la raíz pueda acceder a él —la misma relación agua-aire-raíz que describe "Sustrato, agua y drenaje" es la base física sobre la que ocurre también la absorción de nutrientes, no un sistema aparte.',
+          'Por eso un síntoma de carencia visible no siempre significa que el nutriente falte en términos absolutos en el sustrato: puede significar que, en las condiciones actuales (agua, estructura del sustrato, otras variables), ese nutriente no está llegando a la raíz de forma disponible. Esta entrada no desarrolla esa relación en detalle —depende de demasiadas variables específicas de cada sustrato como para generalizar sin convertirlo en una receta.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que las hojas más viejas de una planta amarillean mientras las jóvenes se mantienen verdes es una observación compatible con la carencia de un nutriente de alta movilidad (como el nitrógeno). Concluir de inmediato "le falta nitrógeno" sin considerar otras causas posibles con el mismo patrón es una interpretación apresurada — el patrón acota el campo de causas, no lo cierra.',
+      'Que una hoja joven muestre clorosis con las venas todavía verdes es compatible con la carencia de un nutriente de baja movilidad (como el hierro) — es un patrón distinto del anterior, y confundir ambos patrones lleva a orientar la lectura hacia el nutriente equivocado.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'Diferencias graduales de color o vigor entre hojas de distinta edad a lo largo del desarrollo normal de la planta, sin un patrón de avance claro ni repetición en todas las plantas del mismo lote.'
+      },
+      {
+        level: 'ATTENTION',
+        description: 'Un patrón de amarillamiento que respeta consistentemente "hojas viejas primero" o "hojas jóvenes primero" en varias plantas del mismo lote, sin relación con ningún cambio ambiental reciente, orienta hacia revisar la nutrición — sin que esto sea un diagnóstico cerrado sin revisar también el sustrato, el riego y el resto del ambiente.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Un cambio de color puntual y localizado, en una sola hoja, sin patrón de avance ni repetición, es exactamente el tipo de caso donde carencia nutricional, toxicidad y estrés ambiental siguen siendo igualmente posibles — no alcanza para orientar hacia ninguna de las tres.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Nombrar un nutriente específico a partir de un síntoma aislado sin considerar el patrón de movilidad (dónde aparece primero el cambio) que es la pista más informativa disponible sin análisis de laboratorio.'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'Confundir un síntoma de toxicidad (exceso) con uno de carencia (falta) porque ambos pueden producir una apariencia externa similar de crecimiento reducido o alteración foliar.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar un correctivo nutricional sin revisar primero si el sustrato y el riego están permitiendo que el nutriente esté realmente disponible para la raíz — un problema de disponibilidad se ve igual que una carencia real, pero requiere una solución distinta.'
+      }
+    ],
+    environmentContext: [
+      'La disponibilidad real de un nutriente para la raíz depende de condiciones que varían entre un ambiente protegido (más estable, más controlable) y uno exterior (sujeto a lluvia, temperatura y evaporación variables) — la misma distinción que ya hace "Sustrato, agua y drenaje" para el agua aplica también a los nutrientes disueltos en ella.',
+      'Esta entrada no da una tabla de dosificación ni un calendario de fertilización para ningún contexto: describe la fisiología general de la nutrición mineral, no una receta aplicable sin considerar el sustrato, el agua y la etapa de desarrollo de cada planta en particular.'
+    ],
+    tags: ['cultivo', 'fertilización', 'nutrición'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'lectura-de-senales', 'poda'],
+    sourceIds: [
+      'academica-unne-nutricion-mineral-dabrio-2020',
+      'academica-kirkby-romheld-2007-micronutrientes-fisiologia'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-13',
+    metadata: {
+      seoTitle: 'Fertilización y nutrición — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es un nutriente esencial, por qué su movilidad dentro de la planta determina dónde aparece un síntoma, y por qué carencia, toxicidad y estrés ambiental pueden verse parecidos.',
       canonical: null,
       ogImage: null
     }

@@ -106,18 +106,6 @@ export default function GeoSelector() {
     }
   }
 
-  function clearLocation() {
-    setProvince('');
-    setZone('');
-    if (typeof window === 'undefined') return;
-    try {
-      window.localStorage.removeItem(PROVINCE_STORAGE_KEY);
-      window.localStorage.removeItem(ZONE_STORAGE_KEY);
-    } catch {
-      // ídem
-    }
-  }
-
   const provinceKeyHandler = (id) => (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -250,9 +238,6 @@ export default function GeoSelector() {
         <div className="geo-actions">
           <Link className="primary-button geo-submit" href="/atlas" onClick={persistLocation}>
             Explorar {selectedProvince}
-          </Link>
-          <Link className="secondary-button geo-clear" href="/atlas" onClick={clearLocation}>
-            Explorar sin elegir
           </Link>
         </div>
       </div>

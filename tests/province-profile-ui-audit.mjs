@@ -189,8 +189,9 @@ async function run() {
   {
     const page = await browser.newPage();
     await page.goto(`${BASE_URL}/`, { waitUntil: 'networkidle' });
-    await page.click('a.geo-clear');
-    await page.waitForURL('**/atlas', { timeout: 10000 });
+    // Loop 4.3 §1 eliminó "Explorar sin elegir" (redundante con "Explorar el Atlas") — se induce
+    // el estado "sin provincia" directamente en vez de a través de un botón que ya no existe.
+    await page.evaluate(() => window.localStorage.removeItem('atlas:selectedProvince'));
     await page.goto(`${BASE_URL}/atlas/fundamentos/germinacion`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.province-profile-card');
 

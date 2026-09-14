@@ -78,12 +78,41 @@ function DataPointList({ points }) {
   );
 }
 
+// Tres tarjetas de evidencia, en el mismo orden de prioridad Cannabis-primero del modelo de datos
+// (Loop 4.3 §7/§16): directa provincial (tier 1) > general de Cannabis (tier 3) > analogía con
+// otra especie (tier 5, último recurso, siempre visualmente más discreta que las dos anteriores).
+
+function DirectCannabisEvidenceCard({ point }) {
+  return (
+    <div className="province-profile-phenology-card province-profile-evidence-direct">
+      <span className="province-profile-phenology-badge province-profile-badge-direct">Evidencia directa de esta provincia</span>
+      <p><strong>{point.value}</strong> ({point.period})</p>
+      <p>{point.photoperiodResponse}</p>
+      <p className="province-profile-phenology-region">{point.referenceRegion}</p>
+      <p className="atlas-section-note province-profile-phenology-limitation">{point.limitation}</p>
+    </div>
+  );
+}
+
+function GeneralCannabisEvidenceCard({ point }) {
+  return (
+    <div className="province-profile-phenology-card province-profile-evidence-general">
+      <span className="province-profile-phenology-badge province-profile-badge-general">Evidencia general de Cannabis</span>
+      <p>{point.photoperiodResponse}</p>
+      <p className="province-profile-phenology-region">{point.referenceRegion}</p>
+      <p className="atlas-section-note province-profile-phenology-limitation">{point.limitation}</p>
+    </div>
+  );
+}
+
 // Referencia fenológica: nunca se presenta como un dato directo de Cannabis sativa — siempre
 // rotulada, siempre con la aclaración de qué NO permite concluir (Loop 3C, regla fundamental).
+// Loop 4.3 la reubica como último recurso (tier 5): solo aparece después de la evidencia directa
+// (si existe) y de la evidencia general de Cannabis, nunca sola ni primero.
 function PhenologicalReferenceCard({ point }) {
   return (
-    <div className="province-profile-phenology-card">
-      <span className="province-profile-phenology-badge">Referencia fenológica</span>
+    <details className="province-profile-phenology-card province-profile-evidence-lastresort">
+      <summary className="province-profile-phenology-badge province-profile-badge-lastresort">Analogía con otra especie (último recurso)</summary>
       <p>{point.notes}</p>
       <p>
         <strong>Especie de referencia:</strong> {point.referenceSpecies}. {point.referenceReason}
@@ -93,20 +122,22 @@ function PhenologicalReferenceCard({ point }) {
       </p>
       <p className="province-profile-phenology-region">{point.referenceRegion}</p>
       <p className="atlas-section-note province-profile-phenology-limitation">{point.limitation}</p>
-    </div>
+    </details>
   );
 }
 
-function CultivationBlock({ title, directPoint, referencePoint }) {
+function CultivationBlock({ title, directPoint, directEvidencePoint, generalEvidencePoint, referencePoint }) {
   return (
     <div className="province-profile-cultivation-block">
       <h4>{title}</h4>
-      {directPoint && (
+      {directPoint && !directEvidencePoint && (
         <p className="atlas-section-note">
           Todavía no hay evidencia directa (provincial o argentina específica) sobre esto para
           Cannabis sativa.
         </p>
       )}
+      {directEvidencePoint && <DirectCannabisEvidenceCard point={directEvidencePoint} />}
+      {generalEvidencePoint && <GeneralCannabisEvidenceCard point={generalEvidencePoint} />}
       {referencePoint && <PhenologicalReferenceCard point={referencePoint} />}
     </div>
   );
@@ -178,17 +209,32 @@ export default function ProvinceProfileCard({ entryId }) {
 
   const environmentPoints = hiddenBlocks.has('environment') ? [] : available(profile.environment);
   const lightPoints = hiddenBlocks.has('light') ? [] : available(profile.light);
+  const todayLight = lightPoints.find((p) => p.season === 'hoy');
+  const seasonalLight = lightPoints.filter((p) => p.season && p.season !== 'hoy');
   const cultivoDirect = profile.cultivation.find((p) => p.key === 'cultivo_ventana_directa');
+  const cultivoDirectEvidence = profile.cultivation.find((p) => p.key === 'cultivo_evidencia_directa_chubut' && p.availability === 'AVAILABLE');
+  const cultivoGeneralEvidence = profile.cultivation.find((p) => p.key === 'cultivo_evidencia_general_cannabis' && p.availability === 'AVAILABLE');
   const cultivoRef = profile.cultivation.find((p) => p.key === 'cultivo_referencia_fenologica' && p.availability === 'AVAILABLE');
   const cosechaDirect = profile.cultivation.find((p) => p.key === 'cosecha_ventana_directa');
+  const cosechaDirectEvidence = profile.cultivation.find((p) => p.key === 'cosecha_evidencia_directa_chubut' && p.availability === 'AVAILABLE');
+  const cosechaGeneralEvidence = profile.cultivation.find((p) => p.key === 'cosecha_evidencia_general_cannabis' && p.availability === 'AVAILABLE');
   const cosechaRef = profile.cultivation.find((p) => p.key === 'cosecha_referencia_fenologica' && p.availability === 'AVAILABLE');
   const showCultivation = !hiddenBlocks.has('cultivation');
+  const altitude = profile.geography.altitude?.availability === 'AVAILABLE' ? profile.geography.altitude : null;
 
   const allSourceIds = [
     profile.identity.sourceId,
+    altitude?.sourceId,
     ...environmentPoints.map((p) => p.sourceId),
     ...lightPoints.map((p) => p.sourceId),
-    ...(showCultivation ? [cultivoRef?.sourceId, cosechaRef?.sourceId, ...(cultivoRef?.referenceSourceId ?? []), ...(cosechaRef?.referenceSourceId ?? [])] : []),
+    ...(showCultivation ? [
+      cultivoDirectEvidence?.sourceId, cosechaDirectEvidence?.sourceId,
+      cultivoGeneralEvidence?.sourceId, cosechaGeneralEvidence?.sourceId,
+      cultivoRef?.sourceId, cosechaRef?.sourceId,
+      ...(cultivoDirectEvidence?.referenceSourceId ?? []), ...(cosechaDirectEvidence?.referenceSourceId ?? []),
+      ...(cultivoGeneralEvidence?.referenceSourceId ?? []), ...(cosechaGeneralEvidence?.referenceSourceId ?? []),
+      ...(cultivoRef?.referenceSourceId ?? []), ...(cosechaRef?.referenceSourceId ?? []),
+    ] : []),
   ].filter(Boolean);
 
   return (
@@ -210,6 +256,12 @@ export default function ProvinceProfileCard({ entryId }) {
           Latitud aproximada: {Math.abs(profile.geography.latitude).toFixed(1)}° sur (centroide
           geométrico de la provincia — no tu ubicación exacta).
         </p>
+        {altitude && (
+          <p>
+            Altitud de referencia: {altitude.value} {altitude.unit} ({altitude.methodology.includes('propia ciudad capital') ? 'estación de la capital' : 'estación más cercana a la capital'}).
+            <span className="atlas-section-note province-profile-altitude-note"> {altitude.limitation}</span>
+          </p>
+        )}
       </details>
 
       {environmentPoints.length > 0 && (
@@ -222,8 +274,24 @@ export default function ProvinceProfileCard({ entryId }) {
       {lightPoints.length > 0 && (
         <details className={blockClass('light')} open>
           <summary>Luz</summary>
-          <p className="atlas-section-note">Cálculo astronómico a partir de la latitud — no una medición ni un pronóstico.</p>
-          <DataPointList points={lightPoints} />
+          <p className="atlas-section-note">
+            {todayLight?.limitation ?? 'Cálculo astronómico a partir de la latitud — no una medición ni un pronóstico.'}
+          </p>
+          {todayLight && (
+            <div className="province-profile-light-today">
+              <DataPointList points={[todayLight]} />
+            </div>
+          )}
+          {seasonalLight.length > 0 && (
+            <ul className="province-profile-seasonal-light">
+              {seasonalLight.map((point) => (
+                <li key={point.key} className="province-profile-seasonal-light-item">
+                  <span className="province-profile-seasonal-light-label">{point.seasonLabel}</span>
+                  <span className="province-profile-seasonal-light-value">{point.value} h</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </details>
       )}
 
@@ -231,11 +299,23 @@ export default function ProvinceProfileCard({ entryId }) {
         <>
           <details className={blockClass('cultivation')} open>
             <summary>Cultivo</summary>
-            <CultivationBlock title="Transición vegetativo → reproductivo" directPoint={cultivoDirect} referencePoint={cultivoRef} />
+            <CultivationBlock
+              title="Transición vegetativo → reproductivo"
+              directPoint={cultivoDirect}
+              directEvidencePoint={cultivoDirectEvidence}
+              generalEvidencePoint={cultivoGeneralEvidence}
+              referencePoint={cultivoRef}
+            />
           </details>
           <details className={blockClass('cultivation')} open>
             <summary>Cosecha</summary>
-            <CultivationBlock title="Ventana de maduración/cosecha" directPoint={cosechaDirect} referencePoint={cosechaRef} />
+            <CultivationBlock
+              title="Ventana de maduración/cosecha"
+              directPoint={cosechaDirect}
+              directEvidencePoint={cosechaDirectEvidence}
+              generalEvidencePoint={cosechaGeneralEvidence}
+              referencePoint={cosechaRef}
+            />
           </details>
         </>
       )}

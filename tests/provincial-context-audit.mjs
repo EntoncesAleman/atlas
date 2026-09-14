@@ -256,9 +256,13 @@ async function run() {
     await page.click('a.geo-submit');
     await page.waitForURL('**/atlas', { timeout: 10000 });
 
+    // Loop 4.3 §1 eliminó el botón "Explorar sin elegir" de Home (redundante con "Explorar el
+    // Atlas", ambos llevaban a /atlas) — el estado "sin provincia elegida" sigue siendo un estado
+    // real de la app (usuaria que nunca eligió, o localStorage vacío), así que se induce
+    // directamente en vez de a través de un botón que ya no existe.
     await page.goto(`${BASE_URL}/`, { waitUntil: 'networkidle' });
-    await page.click('a.geo-clear');
-    await page.waitForURL('**/atlas', { timeout: 10000 });
+    await page.evaluate(() => window.localStorage.removeItem('atlas:selectedProvince'));
+    await page.goto(`${BASE_URL}/atlas`, { waitUntil: 'networkidle' });
 
     const storedAfterClear = await page.evaluate(() => window.localStorage.getItem('atlas:selectedProvince'));
     ok('Explorar sin elegir: limpia la selección persistida', storedAfterClear === null || storedAfterClear === '');

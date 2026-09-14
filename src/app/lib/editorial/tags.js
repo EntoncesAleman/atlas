@@ -24,7 +24,10 @@ export const CONTROLLED_TAGS = [
   'domesticación',
   'argentina',
   'genética',
-  'taxonomía'
+  'taxonomía',
+  'poda',
+  'fertilización',
+  'nutrición'
 ];
 
 export function isControlledTag(tag) {

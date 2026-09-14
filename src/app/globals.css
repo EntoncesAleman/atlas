@@ -925,6 +925,80 @@ body::before {
   font-size: 12px;
 }
 
+/* Loop 4.3 — tres niveles visuales de evidencia de Cannabis, siempre en el mismo orden de
+   prioridad del modelo de datos: directa provincial > general de Cannabis > analogía (último
+   recurso, la única que queda colapsada por defecto vía <details>). */
+.province-profile-evidence-direct {
+  border-color: var(--sage-deep);
+  border-width: 2px;
+}
+
+.province-profile-badge-direct {
+  color: var(--sage-deep);
+}
+
+.province-profile-evidence-general {
+  border-style: dashed;
+}
+
+.province-profile-badge-general {
+  color: var(--text-muted);
+}
+
+.province-profile-evidence-lastresort {
+  opacity: 0.85;
+}
+
+.province-profile-evidence-lastresort > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.province-profile-evidence-lastresort > summary::-webkit-details-marker {
+  display: none;
+}
+
+.province-profile-badge-lastresort {
+  color: var(--text-muted);
+}
+
+.province-profile-altitude-note {
+  display: block;
+  margin-top: 4px;
+}
+
+.province-profile-light-today {
+  margin-bottom: 10px;
+}
+
+.province-profile-seasonal-light {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.province-profile-seasonal-light-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  padding: 6px 8px;
+  background: var(--sage-glass);
+  border-radius: 4px;
+}
+
+.province-profile-seasonal-light-label {
+  color: var(--text-soft);
+}
+
+.province-profile-seasonal-light-value {
+  font-weight: 700;
+  color: var(--sage-deep);
+}
+
 .province-profile-sources-list {
   list-style: none;
   margin: 8px 0 0;
