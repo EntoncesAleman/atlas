@@ -46,7 +46,8 @@ export default function HomePage() {
             </span>
           </a>
           <nav className="footer-links">
-            <a href="#">Sobre el proyecto</a>
+            <a href="/sobre-el-proyecto">Sobre el proyecto</a>
+            <a href="/comunidad">Comunidad</a>
             <a href="#">Privacidad</a>
             <a href="#">Términos</a>
             <a href="/creditos">Créditos</a>
