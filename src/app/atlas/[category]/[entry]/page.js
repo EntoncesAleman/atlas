@@ -7,9 +7,10 @@ import {
   getEntriesForCategory,
   getRelatedEntries,
   getSourcesForEntry,
-  getAssetsForEntry
+  getAssetsForEntry,
+  groupSourcesByScope
 } from '../../../lib/editorial/registry';
-import { SIGNAL_LEVEL_LABELS, MISTAKE_TYPE_LABELS } from '../../../lib/editorial/tags';
+import { SIGNAL_LEVEL_LABELS, MISTAKE_TYPE_LABELS, SOURCE_SCOPE_LABELS } from '../../../lib/editorial/tags';
 import ProvinceProfileCard from '../../../components/ProvinceProfileCard';
 
 export default async function EntryPage({ params }) {
@@ -32,6 +33,15 @@ export default async function EntryPage({ params }) {
   const relatedEntries = getRelatedEntries(entry);
   const entrySources = getSourcesForEntry(entry);
   const [heroAsset] = getAssetsForEntry(entry);
+
+  const { cannabis: cannabisSources, general: generalSources, other: otherSources } =
+    groupSourcesByScope(entrySources);
+  const sourceGroups = [
+    { key: 'cannabis', label: SOURCE_SCOPE_LABELS.CANNABIS, items: cannabisSources },
+    { key: 'general', label: SOURCE_SCOPE_LABELS.GENERAL, items: generalSources },
+    { key: 'other', label: 'Otras fuentes', items: otherSources }
+  ].filter((group) => group.items.length > 0);
+  const showSourceGroupLabels = sourceGroups.length > 1;
 
   return (
     <main className="atlas-page entry-page">
@@ -159,20 +169,29 @@ export default async function EntryPage({ params }) {
           {entrySources.length > 0 && (
             <div className="atlas-sources">
               <span className="atlas-aside-label">Fuentes</span>
-              <ul className="atlas-sources-list">
-                {entrySources.map((source) => (
-                  <li className="atlas-source-item" key={source.id}>
-                    {source.url ? (
-                      <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>
-                    ) : (
-                      <span>{source.title}</span>
-                    )}
-                    {source.authorOrInstitution && (
-                      <span className="atlas-source-meta"> — {source.authorOrInstitution}</span>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              {sourceGroups.map((group) => (
+                <div className="atlas-source-group" key={group.key}>
+                  {showSourceGroupLabels && (
+                    <span className={`atlas-source-group-label atlas-source-group-${group.key}`}>
+                      {group.label}
+                    </span>
+                  )}
+                  <ul className="atlas-sources-list">
+                    {group.items.map((source) => (
+                      <li className="atlas-source-item" key={source.id}>
+                        {source.url ? (
+                          <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>
+                        ) : (
+                          <span>{source.title}</span>
+                        )}
+                        {source.authorOrInstitution && (
+                          <span className="atlas-source-meta"> — {source.authorOrInstitution}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           )}
         </article>

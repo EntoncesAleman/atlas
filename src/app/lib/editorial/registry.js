@@ -55,6 +55,17 @@ export function getSourcesForEntry(entry) {
     .filter(Boolean);
 }
 
+// Agrupa fuentes ya resueltas (ver getSourcesForEntry) por `scope` (CANNABIS | GENERAL |
+// sin scope) para que la UI pueda mostrar la distinción "evidencia específica de Cannabis"
+// vs. "evidencia general de fisiología vegetal" sin cada componente teniendo que conocer el
+// vocabulario controlado de `tags.js`. Preserva el orden original dentro de cada grupo.
+export function groupSourcesByScope(sources) {
+  const cannabis = sources.filter((source) => source.scope === 'CANNABIS');
+  const general = sources.filter((source) => source.scope === 'GENERAL');
+  const other = sources.filter((source) => source.scope !== 'CANNABIS' && source.scope !== 'GENERAL');
+  return { cannabis, general, other };
+}
+
 export function getAssetsForEntry(entry) {
   return assetsForEntry(entry.id);
 }

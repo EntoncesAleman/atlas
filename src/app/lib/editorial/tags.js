@@ -56,6 +56,19 @@ export const MISTAKE_TYPE_LABELS = {
   OTHER: 'Otro'
 };
 
+// Vocabulario controlado de alcance de fuente (`sources[].scope`) — formalizado para
+// distinguir, en la UI, evidencia específica de Cannabis sativa de evidencia general de
+// fisiología vegetal/agronomía usada por analogía o como marco conceptual transferible.
+// Ver la nota completa en lib/editorial/sources.js. Una fuente sin `scope` (legal,
+// geográfica, climática, astronómica) no entra en ninguno de estos dos grupos.
+
+export const SOURCE_SCOPES = ['CANNABIS', 'GENERAL'];
+
+export const SOURCE_SCOPE_LABELS = {
+  CANNABIS: 'Evidencia específica de Cannabis',
+  GENERAL: 'Evidencia general de fisiología vegetal'
+};
+
 // Auditoría de duplicados semánticos (Fase 7A, 2026-09-09):
 // Se revisaron los tags actualmente en uso en las 7 entradas migradas contra esta lista.
 // No se encontró ningún duplicado semántico (ej. "clima" vs "ambiente" usados de forma

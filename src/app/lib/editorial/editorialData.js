@@ -177,6 +177,108 @@ export const editorialCategories = [
       ogImage: null
     },
     status: 'PUBLISHED'
+  },
+
+  // --- Categorías separadas de "Crecimiento" e "Historia" (corrección de estructura) ---
+  {
+    id: 'germinacion',
+    slug: 'germinacion',
+    title: 'Germinación',
+    tag: 'Germinación',
+    type: 'CRECIMIENTO',
+    regionLabel: 'Inicio',
+    cta: 'Explorar',
+    description: 'La semilla y su primera transición biológica.',
+    shortDescription: 'Qué ocurre dentro de la semilla antes de que exista una planta para observar.',
+    editorialDescription: 'El atlas separa la germinación del resto del ciclo de crecimiento: es un punto de partida biológico propio, con su propia fisiología y sus propias señales, antes de que empiece la etapa vegetativa.',
+    tags: ['germinación'],
+    metadata: {
+      seoTitle: 'Germinación — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la germinación, qué ocurre biológicamente y qué formas distintas existen de ofrecerle a la semilla agua, oxígeno y temperatura.',
+      canonical: null,
+      ogImage: null
+    },
+    status: 'PUBLISHED'
+  },
+  {
+    id: 'poda',
+    slug: 'poda',
+    title: 'Poda',
+    tag: 'Poda',
+    type: 'MANEJO',
+    regionLabel: 'Manejo',
+    cta: 'Explorar',
+    description: 'Dominancia apical y manejo de la forma de la planta.',
+    shortDescription: 'Qué mecanismo fisiológico interrumpe la poda y qué evidencia existe sobre sus efectos.',
+    editorialDescription: 'El atlas trata la poda como una intervención sobre un mecanismo fisiológico concreto —la dominancia apical—, no como un instructivo genérico de tareas.',
+    tags: ['poda'],
+    metadata: {
+      seoTitle: 'Poda — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la dominancia apical, qué hace la poda sobre ese mecanismo, y qué muestra la evidencia científica directa de Cannabis sativa.',
+      canonical: null,
+      ogImage: null
+    },
+    status: 'PUBLISHED'
+  },
+  {
+    id: 'fertilizacion',
+    slug: 'fertilizacion',
+    title: 'Fertilización',
+    tag: 'Fertilización',
+    type: 'MANEJO',
+    regionLabel: 'Nutrición',
+    cta: 'Explorar',
+    description: 'Nutrientes esenciales y su disponibilidad para la planta.',
+    shortDescription: 'Movilidad de nutrientes, disponibilidad en el sustrato y lectura de síntomas.',
+    editorialDescription: 'El atlas mira la fertilización desde la disponibilidad real de nutrientes para la planta, no desde una tabla de dosis universal.',
+    tags: ['fertilización', 'nutrición'],
+    metadata: {
+      seoTitle: 'Fertilización — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es un nutriente esencial, cómo se distingue una carencia de una toxicidad, y qué determina su disponibilidad real para la planta.',
+      canonical: null,
+      ogImage: null
+    },
+    status: 'PUBLISHED'
+  },
+  {
+    id: 'manejo-poscosecha',
+    slug: 'manejo-poscosecha',
+    title: 'Manejo poscosecha',
+    tag: 'Poscosecha',
+    type: 'MANEJO',
+    regionLabel: 'Manejo',
+    cta: 'Explorar',
+    description: 'Secado y curado del material ya cosechado.',
+    shortDescription: 'El manejo del material cosechado, separado de la fisiología de la planta viva.',
+    editorialDescription: 'El atlas separa el manejo poscosecha —secado, curado— de la fisiología de la planta viva: son procesos distintos, con objetivos y variables propias.',
+    tags: ['cosecha', 'maduración'],
+    metadata: {
+      seoTitle: 'Manejo poscosecha — Atlas del Cultivo Argentino',
+      seoDescription: 'Secado y curado del material cosechado: qué objetivo tiene cada proceso y qué no hace el manejo poscosecha.',
+      canonical: null,
+      ogImage: null
+    },
+    status: 'PUBLISHED'
+  },
+  {
+    id: 'genetica-tipos',
+    slug: 'genetica-tipos',
+    title: 'Genética y tipos',
+    tag: 'Genética',
+    type: 'CLASIFICACIÓN',
+    regionLabel: 'Genética',
+    cta: 'Explorar',
+    description: 'Clasificación, fotoperiodo y autofloración.',
+    shortDescription: 'Cómo se clasifican los tipos de Cannabis sativa y qué distinciones son realmente útiles.',
+    editorialDescription: 'El atlas separa la genética y los tipos de la mirada histórica: es una clasificación viva, en discusión académica, no un capítulo cerrado del pasado.',
+    tags: ['genética', 'taxonomía'],
+    metadata: {
+      seoTitle: 'Genética y tipos — Atlas del Cultivo Argentino',
+      seoDescription: 'La clasificación de Cannabis sativa, por qué está discutida, y qué distinciones (fotoperiodo, autofloración) son realmente útiles hoy.',
+      canonical: null,
+      ogImage: null
+    },
+    status: 'PUBLISHED'
   }
 ];
 
@@ -184,7 +286,7 @@ export const editorialEntries = [
   {
     id: 'germinacion',
     slug: 'germinacion',
-    categoryId: 'fundamentos',
+    categoryId: 'germinacion',
     title: 'Germinación y primera lectura del material',
     summary: 'La semilla se vuelve legible cuando el entorno ofrece agua, oxígeno y una temperatura estable — la luz recién empieza a importar cuando la plántula emerge.',
     intro: 'La germinación es el primer punto de atención del atlas: una transición biológica, no una técnica. Antes de que exista una planta para observar, hay una semilla que absorbe agua, activa su metabolismo y rompe su cubierta desde adentro. Entender qué está pasando en ese proceso — y qué de lo que se ve realmente significa algo — es la base de cualquier lectura posterior del cultivo.',
@@ -324,7 +426,7 @@ export const editorialEntries = [
   {
     id: 'formas-de-germinar',
     slug: 'formas-de-germinar',
-    categoryId: 'fundamentos',
+    categoryId: 'germinacion',
     title: 'Formas de germinar',
     summary: 'Sembrar directo, envolver la semilla en un medio húmedo o dejarla en remojo son formas distintas de ofrecer la misma combinación de agua, oxígeno y temperatura — no compiten por cuál es "mejor", sino por qué controlan y qué riesgo asumen.',
     intro: 'La entrada "Germinación y primera lectura del material" describe qué ocurre biológicamente dentro de la semilla. Esta entrada mira el paso anterior: de qué formas distintas se le puede ofrecer a esa semilla el agua, el oxígeno y la temperatura que ese proceso necesita, y qué cambia —en control, en riesgo, en lo que se puede observar— según cuál se elija.',
@@ -794,7 +896,7 @@ export const editorialEntries = [
   {
     id: 'poda',
     slug: 'poda',
-    categoryId: 'cultivo',
+    categoryId: 'poda',
     title: 'Poda',
     summary: 'Podar interrumpe una señal hormonal concreta —la dominancia apical— y por eso cambia la forma de la planta; no es un atajo genérico para "que crezca mejor".',
     intro: 'Podar suele describirse en términos de resultado ("para que salgan más ramas", "para que entre más luz"), pero el resultado se explica por un mecanismo fisiológico puntual: la dominancia apical. Esta entrada describe ese mecanismo, qué hace la poda sobre él, y qué evidencia existe —de la propia especie, no de una analogía— sobre sus efectos.',
@@ -877,7 +979,7 @@ export const editorialEntries = [
   {
     id: 'fertilizacion-y-nutricion',
     slug: 'fertilizacion-y-nutricion',
-    categoryId: 'cultivo',
+    categoryId: 'fertilizacion',
     title: 'Fertilización y nutrición',
     summary: 'Cada nutriente cumple una función específica y se mueve de forma distinta dentro de la planta — esa movilidad, no una tabla de dosis, es lo que explica dónde aparece primero un síntoma de carencia.',
     intro: 'Esta entrada no da ninguna tabla de dosificación: describe cómo funciona la nutrición mineral en general —qué son los nutrientes esenciales, por qué se agrupan en macro y micronutrientes, cómo se relaciona su movilidad dentro de la planta con dónde aparece un síntoma, y por qué carencia y exceso pueden producirse por mecanismos opuestos pero limitar el crecimiento igual. Ninguna cifra de esta entrada es específica de Cannabis sativa: es fisiología vegetal general, la misma que describen las guías de cátedra ya citadas en otras entradas de este atlas.',
@@ -1225,7 +1327,7 @@ export const editorialEntries = [
   {
     id: 'genetica-y-tipos',
     slug: 'genetica-y-tipos',
-    categoryId: 'historia',
+    categoryId: 'genetica-tipos',
     title: 'Genética y tipos: sativa, indica, ruderalis',
     summary: '"Sativa", "indica" y "ruderalis" nacieron como nombres de especies propuestos por distintos botánicos en siglos distintos — no como categorías climáticas ni como las variedades comerciales que hoy llevan esos nombres.',
     intro: 'Pocas etiquetas se usan con tanta seguridad y tan poca precisión como "sativa" e "indica". Esta entrada cuenta de dónde vienen esos nombres, por qué la clasificación en tres especies está discutida por la propia botánica moderna, y qué categorías tienen hoy más utilidad real para entender cómo responde la planta al ambiente — sin convertir ningún nombre histórico en una regla de adaptación climática.',
@@ -1305,7 +1407,7 @@ export const editorialEntries = [
   {
     id: 'ciclo-de-vida',
     slug: 'ciclo-de-vida',
-    categoryId: 'cultivo',
+    categoryId: 'fundamentos',
     title: 'Ciclo de vida y condiciones de referencia',
     summary: 'Cannabis sativa L. atraviesa etapas fisiológicas reconocibles — germinación, plántula, vegetativo, floración, cosecha — con condiciones de referencia que varían según la genética, el cultivar y el sistema de cultivo.',
     intro: 'Cannabis sativa es una especie con una ontogenia —una secuencia de desarrollo— que va desde la germinación hasta la maduración y cosecha. Esta entrada ofrece una referencia general de esas etapas: sus características fisiológicas principales, los rangos de condiciones bajo los que suelen manejarse, y por qué esos rangos son referencias orientativas, no recetas universales. La información se basa en evidencia científica internacional directa de la especie y se distingue explícitamente del conocimiento específico de cada región argentina, que requiere datos propios todavía en construcción.',
@@ -1471,7 +1573,7 @@ export const editorialEntries = [
   {
     id: 'poscosecha',
     slug: 'poscosecha',
-    categoryId: 'cosecha',
+    categoryId: 'manejo-poscosecha',
     title: 'Manejo poscosecha: secado y curado',
     summary: 'El secado y el curado son procesos de manejo del material ya cosechado, no etapas del ciclo fisiológico de la planta viva. Sus objetivos y condiciones son distintos a los del cultivo.',
     intro: 'Una vez cosechada la inflorescencia, el proceso biológico de la planta terminó. Lo que sigue —secado y curado— es el manejo de ese material para estabilizarlo y preservarlo. Esta entrada describe esos procesos como lo que son: técnicas de postcosecha con condiciones de referencia propias, separadas del ciclo de la planta viva.',

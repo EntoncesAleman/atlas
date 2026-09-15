@@ -2,6 +2,14 @@
 // Cada fuente proviene de MASTER_PACKAGE/19_SOURCE_REGISTRY.md — no se inventa ninguna URL,
 // autor ni fecha. Si un dato no está determinado en el registro original, se deja `null`.
 // Tipos permitidos: OFFICIAL, ACADEMIC, SCIENTIFIC, AGRICULTURAL, LEGAL, VISUAL, OTHER.
+//
+// `scope` (opcional, ver lib/editorial/tags.js — SOURCE_SCOPES): distingue si la fuente es
+// evidencia ESPECÍFICA de Cannabis sativa ('CANNABIS') o evidencia GENERAL de fisiología
+// vegetal/agronomía aplicada por analogía, de otra especie o de metodología species-agnostic
+// ('GENERAL'). Se omite en fuentes legales y en fuentes puramente geográficas/climáticas/
+// astronómicas, donde la distinción no aplica. No reclasificar una fuente GENERAL como
+// CANNABIS solo porque se usa para respaldar contenido de una entrada sobre Cannabis — el
+// campo describe el objeto de estudio real de la fuente, no la entrada donde se cita.
 
 export const sources = [
   // --- Fuentes legales (ver MASTER_PACKAGE/12_LEGAL.md y 19_SOURCE_REGISTRY.md, sección Legal/regulatorio) ---
@@ -59,6 +67,7 @@ export const sources = [
   // --- Fuentes de contenido: piloto editorial "Germinación" (Fase 7B1, 2026-09-10) ---
   {
     id: 'oficial-inase-vigor-semillas',
+    scope: 'GENERAL',
     title: 'Vigor en semillas',
     authorOrInstitution: 'INASE — Instituto Nacional de Semillas (Argentina)',
     url: 'https://www.argentina.gob.ar/inase/vigor-en-semillas',
@@ -69,6 +78,7 @@ export const sources = [
   },
   {
     id: 'academica-unne-fisiologia-vegetal-germinacion',
+    scope: 'GENERAL',
     title: 'Guía de estudio — Germinación (Fisiología Vegetal I)',
     authorOrInstitution: 'Cátedra de Fisiología Vegetal, FaCENA, Universidad Nacional del Nordeste (UNNE)',
     url: 'https://exa.unne.edu.ar/biologia/fisiologia.vegetal/GuiadeestudioGerminacion.pdf',
@@ -79,6 +89,7 @@ export const sources = [
   },
   {
     id: 'academica-unpsjb-fisiologia-general-germinacion',
+    scope: 'GENERAL',
     title: 'TP15 — Germinación',
     authorOrInstitution: 'Cátedra de Fisiología General, Universidad Nacional de la Patagonia San Juan Bosco (UNPSJB)',
     url: 'https://www.fcn.unp.edu.ar/fisiologiageneral/images/tp/TP15_Germinacion.pdf',
@@ -89,6 +100,7 @@ export const sources = [
   },
   {
     id: 'cientifica-latif-2025-hemp-priming-germination',
+    scope: 'CANNABIS',
     title: 'Influence of different priming treatments on germination potential and seedling establishment of four important hemp (Cannabis sativa L.) cultivars',
     authorOrInstitution: 'Latif, S.; Qureshi, R. et al. — Scientific Reports (Nature), vol. 15, art. 3073',
     url: 'https://www.nature.com/articles/s41598-025-86469-y',
@@ -99,6 +111,7 @@ export const sources = [
   },
   {
     id: 'cientifica-cannabis-landraces-dormancy-2023',
+    scope: 'CANNABIS',
     title: 'Seed dormancy and germination responses of cannabis landraces to various pre-treatments',
     authorOrInstitution: 'Langa, S.; Magwaza, L. S.; Mditshwa, A.; Tesfay, S. Z. — South African Journal of Botany, vol. 165, pp. 91-100',
     url: 'https://doi.org/10.1016/j.sajb.2023.12.021',
@@ -111,6 +124,7 @@ export const sources = [
   // --- Fuentes de contenido: Loop 1 — Germinación, historia y refuerzo de "cómo ocurre" (Fase 48, 2026-09-11) ---
   {
     id: 'cientifica-bewley-1997-seed-germination-dormancy',
+    scope: 'GENERAL',
     title: 'Seed Germination and Dormancy',
     authorOrInstitution: 'Bewley, J. D. — The Plant Cell, vol. 9, n.º 7, pp. 1055-1066',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC156979/',
@@ -121,6 +135,7 @@ export const sources = [
   },
   {
     id: 'cientifica-ren-2021-cannabis-domestication-genomics',
+    scope: 'CANNABIS',
     title: 'Large-scale whole-genome resequencing unravels the domestication history of Cannabis sativa',
     authorOrInstitution: 'Ren, G.; Zhang, X.; Li, Y.; Ridout, K.; Serrano-Serrano, M. L.; Yang, Y.; Liu, A.; Ravikanth, G.; Nawaz, M. A.; Mumtaz, A. S.; Salamin, N.; Fumagalli, L. — Science Advances, vol. 7, n.º 29',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8284894/',
@@ -131,6 +146,7 @@ export const sources = [
   },
   {
     id: 'cientifica-dalmartello-2023-haimenkou-cannabis-archaeobotany',
+    scope: 'CANNABIS',
     title: 'Morphometric approaches to Cannabis evolution and differentiation from archaeological sites: interpreting the archaeobotanical evidence from bronze age Haimenkou, Yunnan',
     authorOrInstitution: 'Dal Martello, R.; Min, R.; Stevens, C. J.; Qin, L.; Fuller, D. Q. — Vegetation History and Archaeobotany, vol. 33, pp. 503-518',
     url: 'https://doi.org/10.1007/s00334-023-00966-6',
@@ -141,6 +157,7 @@ export const sources = [
   },
   {
     id: 'cientifica-liu-2026-shandong-cannabis-phytolith',
+    scope: 'CANNABIS',
     title: 'Integrating cannabis into the prehistoric crop assemblage: Phytolith evidence from Shandong, Northern China (4500-3400 BP)',
     authorOrInstitution: 'Liu, X.; Wu, R.; Wang, B.; Li, Y.; Zhang, S.; Lv, K.; Gao, J.; Ge, Y.; Chen, X. — Journal of Archaeological Science, vol. 189, art. 106545',
     url: 'https://doi.org/10.1016/j.jas.2026.106545',
@@ -153,6 +170,7 @@ export const sources = [
   // --- Fuentes de contenido: escalado editorial Fase 7B2 (2026-09-10) ---
   {
     id: 'oficial-inta-sintomatologia-diagnostico-diferencial',
+    scope: 'GENERAL',
     title: 'Sintomatología ocasionada por agentes fitopatógenos y diagnóstico diferencial',
     authorOrInstitution: 'INTA — Instituto Nacional de Tecnología Agropecuaria (CIAP)',
     url: 'https://www.argentina.gob.ar/inta/ciap/sintomatologia-ocasionada-por-agentes-fitopatogenos-y-diagnostico-diferencial',
@@ -163,6 +181,7 @@ export const sources = [
   },
   {
     id: 'oficial-inta-relacion-suelo-planta-agua',
+    scope: 'GENERAL',
     title: 'Relación suelo – planta – agua',
     authorOrInstitution: 'INTA — Centro Regional Patagonia Norte, EEA Alto Valle (Holzmann, R. L.)',
     url: 'https://repositorio.inta.gob.ar/xmlui/bitstream/handle/20.500.12123/14501/INTA_CRPatagoniaNorte_EEAAltoValle_holzmann_RL_Relaci%C3%B3n_suelo_planta_agua.pdf?sequence=1&isAllowed=y',
@@ -173,6 +192,7 @@ export const sources = [
   },
   {
     id: 'academica-unlpam-inta-guia-evaluacion-visual-suelo',
+    scope: 'GENERAL',
     title: 'Guía para la evaluación visual de la calidad del suelo',
     authorOrInstitution: 'Facultad de Agronomía, Universidad Nacional de La Pampa (UNLPam) y EEA INTA Anguil',
     url: 'https://www.unlpam.edu.ar/images/extension/edunlpam/Gu%C3%ADa%20para%20la%20evaluaci%C3%B3n%20visual%20de%20la%20calidad%20del%20suelo.pdf',
@@ -185,6 +205,7 @@ export const sources = [
   // --- Fuentes de contenido: Loop 2 — Sustrato, agua y drenaje (Fase 49, 2026-09-11) ---
   {
     id: 'oficial-inta-sustrato-maceta-rubio-karlanian',
+    scope: 'GENERAL',
     title: 'Cómo elegir un buen sustrato para las macetas',
     authorOrInstitution: 'Rubio, E.; Karlanian, M. — Instituto de Floricultura, INTA (Argentina.gob.ar)',
     url: 'https://www.argentina.gob.ar/noticias/como-elegir-un-buen-sustrato-para-las-macetas',
@@ -195,6 +216,7 @@ export const sources = [
   },
   {
     id: 'cientifica-barbaro-karlanian-2020-propiedades-fisicas-sustrato',
+    scope: 'GENERAL',
     title: 'Efecto de las propiedades físicas del sustrato sobre el desarrollo de plantines florales en maceta',
     authorOrInstitution: 'Barbaro, L. A.; Karlanian, M. A. — INTA, revista Ciencia del Suelo, vol. 38, n.º 1',
     url: 'https://www.scielo.org.ar/scielo.php?script=sci_arttext&pid=S1850-20672020000100001&lng=es&nrm=iso&tlng=es',
@@ -205,6 +227,7 @@ export const sources = [
   },
   {
     id: 'academica-white-mastalerz-1966-container-capacity',
+    scope: 'GENERAL',
     title: 'Soil moisture as related to container capacity',
     authorOrInstitution: 'White, J. W.; Mastalerz, J. W. — Proceedings of the American Society for Horticultural Science, vol. 89, pp. 757-765 (páginas citadas de forma inconsistente entre fuentes secundarias: 757 o 758 de inicio)',
     url: null,
@@ -215,6 +238,7 @@ export const sources = [
   },
   {
     id: 'cientifica-loreti-perata-2020-hypoxia-plants',
+    scope: 'GENERAL',
     title: 'The Many Facets of Hypoxia in Plants',
     authorOrInstitution: 'Loreti, E.; Perata, P. — Plants (Basel), MDPI',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7356549/',
@@ -226,6 +250,7 @@ export const sources = [
 
   {
     id: 'academica-unne-fitocromos-desarrollo-vegetal',
+    scope: 'GENERAL',
     title: 'Fitocromos y desarrollo vegetal',
     authorOrInstitution: 'Cátedra de Fisiología Vegetal, FaCENA, Universidad Nacional del Nordeste (UNNE) — texto original de Martínez-García, Monte y Ruiz Cantón',
     url: 'https://exa.unne.edu.ar/biologia/fisiologia.vegetal/Fitocromos%20y%20desarrollo%20vegetal.pdf',
@@ -236,6 +261,7 @@ export const sources = [
   },
   {
     id: 'academica-uncuyo-guia-crecimiento',
+    scope: 'GENERAL',
     title: 'Ciclo de Ingreso — Biología: Guía N°3, Crecimiento',
     authorOrInstitution: 'Facultad de Ciencias Exactas y Naturales, Universidad Nacional de Cuyo (UNCUYO)',
     url: 'https://fcen.uncuyo.edu.ar/ingreso/upload/guia-n3-crecimiento.pdf',
@@ -246,6 +272,7 @@ export const sources = [
   },
   {
     id: 'cientifica-hesami-2023-cannabis-life-cycle',
+    scope: 'CANNABIS',
     title: 'Morphological Characterization of Cannabis sativa L. Throughout Its Complete Life Cycle',
     authorOrInstitution: 'Hesami, M.; Pepe, M.; Jones, A. M. P. — revista Plants (Basel), 22 de octubre de 2023',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10610221/',
@@ -258,6 +285,7 @@ export const sources = [
   // --- Fuentes visuales (ver MASTER_PACKAGE/ASSET_REGISTRY.md y 19_SOURCE_REGISTRY.md, sección Biblioteca visual real) ---
   {
     id: 'visual-koehler-1887',
+    scope: 'CANNABIS',
     title: "Köhler's Medizinal-Pflanzen — lámina de Cannabis sativa",
     authorOrInstitution: 'Walther Otto Müller (1887)',
     url: 'https://commons.wikimedia.org/wiki/File:Cannabis_sativa_Koehler_drawing.jpg',
@@ -268,6 +296,7 @@ export const sources = [
   },
   {
     id: 'visual-germination-diagram',
+    scope: 'GENERAL',
     title: 'Diagrama de germinación epigea e hipogea',
     authorOrInstitution: 'Begoon (obra derivada de Kat1992)',
     url: 'https://commons.wikimedia.org/wiki/File:Germination-en.svg',
@@ -278,6 +307,7 @@ export const sources = [
   },
   {
     id: 'visual-soil-profile',
+    scope: 'GENERAL',
     title: 'Fotografía de perfil de suelo (0-125 cm)',
     authorOrInstitution: 'Mclund',
     url: 'https://commons.wikimedia.org/wiki/File:Soil_profile_0-125cm.jpg',
@@ -288,6 +318,7 @@ export const sources = [
   },
   {
     id: 'visual-photoperiodism-diagram',
+    scope: 'GENERAL',
     title: 'Diagrama del ciclo del fitocromo (Pr/Pfr) en fotoperiodismo vegetal',
     authorOrInstitution: 'Giovnnni pastrami',
     url: 'https://commons.wikimedia.org/wiki/File:Photoperiodism_in_plants.jpg',
@@ -298,6 +329,7 @@ export const sources = [
   },
   {
     id: 'visual-plant-under-phytolamp',
+    scope: 'GENERAL',
     title: 'Fotografía documental de una planta (ciclamen) bajo luz de cultivo artificial (fitolámpara)',
     authorOrInstitution: 'Alla Varta',
     url: 'https://commons.wikimedia.org/wiki/File:Plant_under_a_phytolamp.jpg',
@@ -308,6 +340,7 @@ export const sources = [
   },
   {
     id: 'visual-red-spider-mite',
+    scope: 'GENERAL',
     title: 'Fotografía macro de arañuela roja (Tetranychus urticae)',
     authorOrInstitution: 'Aleksey Gnilenkov',
     url: 'https://commons.wikimedia.org/wiki/File:Red_spider_mite_(Tetranychus_urticae).jpg',
@@ -318,6 +351,7 @@ export const sources = [
   },
   {
     id: 'visual-industrial-hemp-field',
+    scope: 'CANNABIS',
     title: 'Cultivo exterior de cáñamo industrial (Francia)',
     authorOrInstitution: 'Aleks',
     url: 'https://commons.wikimedia.org/wiki/File:Industrialhemp.jpg',
@@ -328,6 +362,7 @@ export const sources = [
   },
   {
     id: 'visual-cannabis-drying',
+    scope: 'CANNABIS',
     title: 'Inflorescencias de cannabis secándose tras la cosecha',
     authorOrInstitution: '"Cannabis Pictures" (usuario de Flickr, vía Wikimedia Commons)',
     url: 'https://commons.wikimedia.org/wiki/File:Cannabis_Drying_out_the_crop_(16558794823).jpg',
@@ -412,6 +447,7 @@ export const sources = [
   // --- Fuentes de contenido: Loop 3C — referencias fenológicas de Cultivo/Cosecha (Fase 52, 2026-09-11) ---
   {
     id: 'cientifica-garner-allard-1920-photoperiodism-discovery',
+    scope: 'GENERAL',
     title: 'Effect of the Relative Length of Day and Night and Other Factors of the Environment on Growth and Reproduction in Plants',
     authorOrInstitution: 'Garner, W. W.; Allard, H. A. — trabajo original en Journal of Agricultural Research 18:553-606 (1920); entrada verificada en Monthly Weather Review, vol. 48, p. 415',
     url: 'https://doi.org/10.1175/1520-0493(1920)48%3C415b:EOTRLO%3E2.0.CO;2',
@@ -422,6 +458,7 @@ export const sources = [
   },
   {
     id: 'academica-truffer-2011-soja-entrerios-grupos-madurez',
+    scope: 'GENERAL',
     title: 'La dinámica del campo científico tecnológico en la construcción del conocimiento local: La soja en Entre Ríos',
     authorOrInstitution: 'Truffer, I.; Saluso, A.; Nolla, J. D. — revista Pampa, n.º 7, supl. 1',
     url: 'https://www.scielo.org.ar/scielo.php?lng=es&nrm=iso&pid=S2314-02082011000200009&script=sci_arttext&tlng=es',
@@ -454,6 +491,7 @@ export const sources = [
   },
   {
     id: 'cientifica-schmidt-2024-tabaco-fotoperiodo-domesticacion',
+    scope: 'GENERAL',
     title: 'COL2-dependent photoperiodic floral induction in Nicotiana sylvestris seems to be lost in the N. sylvestris × N. tomentosiformis hybrid N. tabacum',
     authorOrInstitution: 'Schmidt, F. J.; Grundmann, L.; Lahme, M.; Seidemann, M.; Schwarze, A.; Lichtenauer, S.; Twyman, R. M.; Prüfer, D.; Noll, G. A. — Frontiers in Plant Science',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10794312/',
@@ -466,6 +504,7 @@ export const sources = [
   // --- Fuentes de contenido: Loop 4.1 — Historia de la planta y Cannabis regional (Fase 54, 2026-09-12) ---
   {
     id: 'cientifica-mcpartland-2018-cannabis-europa-polen',
+    scope: 'CANNABIS',
     title: 'Cannabis is indigenous to Europe and cultivation began during the Copper or Bronze age: a probabilistic synthesis of fossil pollen studies',
     authorOrInstitution: 'McPartland, J. M.; Guy, G. W.; Hegman, W. — Vegetation History and Archaeobotany, vol. 27, pp. 635-648',
     url: 'https://doi.org/10.1007/s00334-018-0678-7',
@@ -476,6 +515,7 @@ export const sources = [
   },
   {
     id: 'academica-diaz-ordonez-2017-cannabis-chile-colonial',
+    scope: 'CANNABIS',
     title: 'Cannabis Sativa y Chile (1577-1700): Un Insumo al servicio del Imperio',
     authorOrInstitution: 'Díaz-Ordóñez, M.; Rodríguez Hernández, A. J. — TEMPUS Revista en Historia General (Universidad de Antioquia), n.º 6, pp. 1-21',
     url: 'https://revistas.udea.edu.co/index.php/tempus/article/view/329709',
@@ -486,6 +526,7 @@ export const sources = [
   },
   {
     id: 'historica-belgrano-1797-memoria-lino-canamo',
+    scope: 'CANNABIS',
     title: 'Utilidades que resultarán a esta Provincia y a la Península del cultivo del lino y del cáñamo (Memoria del Consulado de Comercio de Buenos Aires)',
     authorOrInstitution: 'Belgrano, Manuel — Secretario del Real Consulado de Comercio de Buenos Aires',
     url: null,
@@ -496,6 +537,7 @@ export const sources = [
   },
   {
     id: 'cientifica-pollio-2016-nombre-cannabis-taxonomia',
+    scope: 'CANNABIS',
     title: 'The Name of Cannabis: A Short Guide for Nonbotanists',
     authorOrInstitution: 'Pollio, A. — Cannabis and Cannabinoid Research, vol. 1, n.º 1',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5531363/',
@@ -506,6 +548,7 @@ export const sources = [
   },
   {
     id: 'cientifica-alter-2024-cannabis-fotoperiodo-giberelina',
+    scope: 'CANNABIS',
     title: 'Inflorescence development in female cannabis plants is mediated by photoperiod and gibberellin',
     authorOrInstitution: 'Alter, H.; Sade, Y.; Sood, A.; Carmeli-Weissberg, M.; Shaya, F.; Kamenetsky-Goldstein, R.; Bernstein, N.; Spitzer-Rimon, B. — Horticulture Research',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11560369/',
@@ -516,6 +559,7 @@ export const sources = [
   },
   {
     id: 'preprint-cannabis-daylength-mutation-2023',
+    scope: 'CANNABIS',
     title: 'Loss of daylength sensitivity by splice site mutation in Cannabis',
     authorOrInstitution: 'Preprint en bioRxiv (autoría no confirmada por lectura directa en esta sesión)',
     url: 'https://www.biorxiv.org/content/10.1101/2023.03.10.532103',
@@ -526,6 +570,7 @@ export const sources = [
   },
   {
     id: 'otra-semillalibre-2026-guia-regional-revisada',
+    scope: 'CANNABIS',
     title: '"Cuándo plantar Cannabis en Argentina según tu región — Guía 2026" (blog comercial, revisado y contrastado, no usado como autoridad)',
     authorOrInstitution: 'Semilla Libre (sitio comercial de venta de semillas)',
     url: 'https://semillalibre.com/blog/cuando-plantar-cannabis-en-argentina-segun-tu-region-guia-2026',
@@ -538,6 +583,7 @@ export const sources = [
   // --- Fuentes de contenido: Loop 4.3 — investigación regional de Cannabis + Ficha Provincial (2026-09-13) ---
   {
     id: 'oficial-inase-resolucion-238-2023-cultivares-cannabis',
+    scope: 'CANNABIS',
     title: 'Resolución 238/2023 — Registro Nacional de la Propiedad de Cultivares: Malvina, Ballena Franca, Cenpat, Pachamama, Conicet y Mariquita (Cannabis sativa L.)',
     authorOrInstitution: 'Instituto Nacional de Semillas (INASE) — Boletín Oficial de la República Argentina',
     url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/286492/20230516',
@@ -548,6 +594,7 @@ export const sources = [
   },
   {
     id: 'oficial-conicet-2023-comercializacion-semillas-cannabis',
+    scope: 'CANNABIS',
     title: 'Por primera vez se comercializarán semillas de cannabis medicinal con tecnología CONICET',
     authorOrInstitution: 'CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas)',
     url: 'https://www.conicet.gov.ar/por-primera-vez-se-comercializaran-semillas-de-cannabis-medicinal-con-tecnologia-conicet/',
@@ -558,6 +605,7 @@ export const sources = [
   },
   {
     id: 'cientifica-zhang-2021-hemp-photoperiod-cultivars',
+    scope: 'CANNABIS',
     title: 'Photoperiodic Flowering Response of Essential Oil, Grain, and Fiber Hemp (Cannabis sativa L.) Cultivars',
     authorOrInstitution: 'Zhang, M.; Anderson, S. L.; Brym, Z. T.; Pearson, B. J. — Frontiers in Plant Science, vol. 12, art. 694153',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8367441/',
@@ -571,6 +619,7 @@ export const sources = [
   // "Fertilización y nutrición" (2026-09-13) ---
   {
     id: 'academica-unne-nutricion-mineral-dabrio-2020',
+    scope: 'GENERAL',
     title: 'Guía de estudio: Nutrición mineral de los vegetales',
     authorOrInstitution: 'Dabrio, A. (elaboración); Marassi, M. A. (corrección) — Cátedra de Fisiología Vegetal, FaCENA, Universidad Nacional del Nordeste (UNNE)',
     url: 'https://exa.unne.edu.ar/biologia/fisiologia.vegetal/Gu%C3%ADa%20de%20estudio-Nutricion%20mineral%202020.pdf',
@@ -581,6 +630,7 @@ export const sources = [
   },
   {
     id: 'academica-kirkby-romheld-2007-micronutrientes-fisiologia',
+    scope: 'GENERAL',
     title: 'Micronutrientes en la fisiología de las plantas: funciones, absorción y movilidad',
     authorOrInstitution: 'Kirkby, E. A. (Universidad de Leeds); Römheld, V. (Universidad de Hohenheim) — versión en español, publicada vía Cátedra de Fisiología Vegetal, FaCENA, UNNE',
     url: 'https://exa.unne.edu.ar/biologia/fisiologia.vegetal/MicronutrientesenlaFisiologia.pdf',
@@ -591,6 +641,7 @@ export const sources = [
   },
   {
     id: 'cientifica-chavalina-2026-hemp-topping-morphology',
+    scope: 'CANNABIS',
     title: 'Morphological, physiological, and biochemical responses of two industrial hemp (Cannabis sativa L.) cultivars to different levels of topping',
     authorOrInstitution: 'Chavalina, S.; Ioannidis, V.; Bilalis, D.; Lamari, F.; Zervoudakis, G.; Salachas, G. — Journal of Cannabis Research, vol. 8',
     url: 'https://link.springer.com/article/10.1186/s42238-026-00410-2',
@@ -601,6 +652,7 @@ export const sources = [
   },
   {
     id: 'academica-beveridge-2023-apical-dominance-review',
+    scope: 'GENERAL',
     title: 'Lessons from a century of apical dominance research',
     authorOrInstitution: 'Beveridge, C. A.; Rameau, C.; Wijerathna-Yapa, A. — Journal of Experimental Botany, vol. 74, n.º 14, pp. 3903-3922',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10400159/',
@@ -618,6 +670,7 @@ export const sources = [
   // --- Fuentes de contenido: Loop 4.4.1 — Evidencia argentina Jujuy/Misiones (2026-09-14) ---
   {
     id: 'oficial-cannava-jujuy-planta-anmat-2022',
+    scope: 'CANNABIS',
     title: 'Jujuy tiene la única Planta Industrial de procesamiento de Cannabis Medicinal habilitada por ANMAT',
     authorOrInstitution: 'Gobierno de la Provincia de Jujuy — Secretaría de Comunicación y Gobierno Abierto',
     url: 'https://prensa.jujuy.gob.ar/farmaceutico/jujuy-tiene-la-unica-planta-industrial-procesamiento-cannabis-medicinal-habilitada-anmat-n108790',
@@ -628,6 +681,7 @@ export const sources = [
   },
   {
     id: 'oficial-cannava-jujuy-franquicias-2023',
+    scope: 'CANNABIS',
     title: 'Jujuy lanza un sistema inédito de franquicias biotecnológicas para la producción privada de cannabis medicinal de grado farmacéutico',
     authorOrInstitution: 'Gobierno de la Provincia de Jujuy — Secretaría de Comunicación y Gobierno Abierto',
     url: 'https://prensa.jujuy.gob.ar/gerado-morales/jujuy-lanza-un-sistema-inedito-franquicias-biotecnologicas-la-produccion-privada-cannabis-medicinal-grado-farmaceutico-n110861',
@@ -638,6 +692,7 @@ export const sources = [
   },
   {
     id: 'periodistica-misiones-biofabrica-disolucion-2026',
+    scope: 'CANNABIS',
     title: 'Misiones disolvió la empresa provincial de cannabis medicinal a fin de "apuntalar la eficiencia del Estado"',
     authorOrInstitution: 'Infobae',
     url: 'https://www.infobae.com/politica/2026/04/14/misiones-disolvio-la-empresa-provincial-de-cannabis-medicinal-a-fin-de-apuntalar-la-eficiencia-del-estado/',
@@ -650,6 +705,7 @@ export const sources = [
   // --- Fuentes de contenido: Loop 4.4.1 — Ciclo general de Cannabis sativa L. (2026-09-14) ---
   {
     id: 'cientifica-ahrens-2023-photoperiod-flowering-indoor',
+    scope: 'CANNABIS',
     title: 'Is Twelve Hours Really the Optimum Photoperiod for Promoting Flowering in Indoor-Grown Cultivars of Cannabis sativa?',
     authorOrInstitution: 'Ahrens, A.; Llewellyn, D.; Zheng, Y. — Plants (Basel), MDPI, vol. 12, n.º 14, art. 2605',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10386198/',
