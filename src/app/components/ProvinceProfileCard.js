@@ -10,6 +10,7 @@ import {
 import { ARGENTINA_PROVINCES, ARGENTINA_MAP_VIEWBOX } from '../lib/geo/argentinaProvinces';
 import { sourceById } from '../lib/editorial/sources';
 import ProvinceContextPanel from './ProvinceContextPanel';
+import ProvinceStatusBar from './ProvinceStatusBar';
 
 // Misma clave que ya usan `GeoSelector`/`ProvinceContextPanel` desde la Fase 47.1/47.2 — no se
 // crea ningún estado ni clave de `localStorage` nueva (regla explícita del Loop 3C).
@@ -271,6 +272,8 @@ export default function ProvinceProfileCard({ entryId }) {
           {profile.geography.regionLabel ? ` · ${profile.geography.regionLabel}` : ''}
         </p>
       </div>
+
+      <ProvinceStatusBar />
 
       <ProfileMap provinceId={provinceId} label={profile.identity.visibleName} />
 

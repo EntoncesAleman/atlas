@@ -853,6 +853,43 @@ body::before {
   }
 }
 
+.atlas-province-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 10px 0 4px;
+}
+
+.atlas-province-status-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+}
+
+.atlas-province-status-clear {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  background: transparent;
+  border: 1px solid var(--sage-deep);
+  cursor: pointer;
+}
+
+.atlas-province-status-clear:hover {
+  background: var(--sage-deep);
+  color: var(--paper);
+}
+
 .atlas-province-context-name {
   display: inline-block;
   font-size: 11px;

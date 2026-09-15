@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import CategoryShowcase from '../components/CategoryShowcase';
 import PartnersStrip from '../components/PartnersStrip';
+import ProvinceStatusBar from '../components/ProvinceStatusBar';
 
 export default function AtlasIndexPage() {
   return (
@@ -19,6 +20,7 @@ export default function AtlasIndexPage() {
           <span className="section-label dark-label">Índice editorial</span>
           <h1>El Atlas</h1>
           <p className="atlas-lede">Una navegación editorial para recorrer el cultivo como sistema geográfico, ambiental y cultural.</p>
+          <ProvinceStatusBar />
         </div>
       </section>
 

@@ -20,6 +20,7 @@
 export const editorialCategories = [
   {
     id: 'fundamentos',
+    order: 4,
     slug: 'fundamentos',
     title: 'Crecimiento',
     tag: 'Crecimiento',
@@ -40,6 +41,7 @@ export const editorialCategories = [
   },
   {
     id: 'suelo-y-agua',
+    order: 2,
     slug: 'suelo-y-agua',
     title: 'Suelo y agua',
     tag: 'Suelo y agua',
@@ -60,6 +62,7 @@ export const editorialCategories = [
   },
   {
     id: 'luz-y-clima',
+    order: 3,
     slug: 'luz-y-clima',
     title: 'Luz y clima',
     tag: 'Luz y clima',
@@ -80,6 +83,7 @@ export const editorialCategories = [
   },
   {
     id: 'sanidad',
+    order: 10,
     slug: 'sanidad',
     title: 'Sanidad',
     tag: 'Sanidad',
@@ -100,6 +104,7 @@ export const editorialCategories = [
   },
   {
     id: 'cultivo',
+    order: 6,
     slug: 'cultivo',
     title: 'Cultivo',
     tag: 'Cultivo',
@@ -120,6 +125,7 @@ export const editorialCategories = [
   },
   {
     id: 'cosecha',
+    order: 8,
     slug: 'cosecha',
     title: 'Cosecha',
     tag: 'Cosecha',
@@ -140,6 +146,7 @@ export const editorialCategories = [
   },
   {
     id: 'marco-legal',
+    order: 13,
     slug: 'marco-legal',
     title: 'Marco legal',
     tag: 'Contexto',
@@ -160,6 +167,7 @@ export const editorialCategories = [
   },
   {
     id: 'historia',
+    order: 12,
     slug: 'historia',
     title: 'Historia',
     tag: 'Historia',
@@ -182,6 +190,7 @@ export const editorialCategories = [
   // --- Categorías separadas de "Crecimiento" e "Historia" (corrección de estructura) ---
   {
     id: 'germinacion',
+    order: 1,
     slug: 'germinacion',
     title: 'Germinación',
     tag: 'Germinación',
@@ -202,6 +211,7 @@ export const editorialCategories = [
   },
   {
     id: 'poda',
+    order: 7,
     slug: 'poda',
     title: 'Poda',
     tag: 'Poda',
@@ -222,6 +232,7 @@ export const editorialCategories = [
   },
   {
     id: 'fertilizacion',
+    order: 5,
     slug: 'fertilizacion',
     title: 'Fertilización',
     tag: 'Fertilización',
@@ -242,8 +253,9 @@ export const editorialCategories = [
   },
   {
     id: 'manejo-poscosecha',
+    order: 9,
     slug: 'manejo-poscosecha',
-    title: 'Manejo poscosecha',
+    title: 'Manejo y poscosecha',
     tag: 'Poscosecha',
     type: 'MANEJO',
     regionLabel: 'Manejo',
@@ -253,7 +265,7 @@ export const editorialCategories = [
     editorialDescription: 'El atlas separa el manejo poscosecha —secado, curado— de la fisiología de la planta viva: son procesos distintos, con objetivos y variables propias.',
     tags: ['cosecha', 'maduración'],
     metadata: {
-      seoTitle: 'Manejo poscosecha — Atlas del Cultivo Argentino',
+      seoTitle: 'Manejo y poscosecha — Atlas del Cultivo Argentino',
       seoDescription: 'Secado y curado del material cosechado: qué objetivo tiene cada proceso y qué no hace el manejo poscosecha.',
       canonical: null,
       ogImage: null
@@ -262,6 +274,7 @@ export const editorialCategories = [
   },
   {
     id: 'genetica-tipos',
+    order: 11,
     slug: 'genetica-tipos',
     title: 'Genética y tipos',
     tag: 'Genética',
@@ -1093,6 +1106,14 @@ export const editorialEntries = [
         ]
       },
       {
+        id: 'gradiente-dentro-de-la-planta',
+        title: 'El gradiente no es solo dentro de una inflorescencia',
+        paragraphs: [
+          'La heterogeneidad de maduración no se limita a una sola flor: un estudio sobre cannabis medicinal encontró un gradiente espacial natural de cannabinoides según la altura de la planta —el THC, junto con CBD, CBG, THCV y CBC, tiende a concentrarse más en las regiones superiores de la planta, mientras que CBN y CBT se concentran más en las flores medias e inferiores—. El mismo trabajo encontró que suplementar con ácido húmico reduce esa variabilidad espacial natural, aunque a costa de una concentración menor de cannabinoides en las regiones superiores.',
+          'Esto es coherente con la idea de esta entrada de que "toda la planta está madura" es una simplificación: la posición de una inflorescencia dentro del dosel —no solo el tiempo transcurrido— es una variable real detrás de por qué distintas zonas de una misma planta pueden leerse en puntos distintos del proceso.'
+        ]
+      },
+      {
         id: 'senal-visual-vs-conclusion',
         title: 'Señal visual vs. conclusión',
         paragraphs: [
@@ -1138,9 +1159,9 @@ export const editorialEntries = [
     ],
     tags: ['cosecha', 'maduración'],
     relatedEntryIds: ['cultivo-en-secuencia', 'marco-editorial', 'poscosecha'],
-    sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle'],
+    sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle', 'cientifica-bernstein-2019-cannabis-npk-cannabinoide-canopia'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-10',
+    lastReviewed: '2026-09-15',
     metadata: {
       seoTitle: 'Cosecha y maduración — Atlas del Cultivo Argentino',
       seoDescription: 'Qué cambia visiblemente en la inflorescencia durante la maduración, por qué es un proceso gradual y no un punto fijo, y qué errores de lectura son frecuentes.',
@@ -1176,9 +1197,19 @@ export const editorialEntries = [
         id: 'contexto-legal-argentina',
         title: 'Contexto legal en Argentina (resumen no vinculante)',
         paragraphs: [
-          'Al momento de esta revisión, Argentina cuenta con un marco (Ley 27.350 y su reglamentación vigente) que crea el Programa de Cannabis y su registro asociado (REPROCANN), habilitando modalidades de autocultivo, cultivo solidario o inscripción a través de una organización autorizada, con fines terapéuticos/medicinales.',
+          'Al momento de esta revisión, Argentina cuenta con un marco (Ley 27.350 y su reglamentación) que crea el Programa de Cannabis y su registro asociado (REPROCANN), habilitando modalidades de autocultivo, cultivo solidario (tercero cultivador) o inscripción a través de una organización autorizada, con fines terapéuticos/medicinales. El Decreto 883/2020 fue el que reglamentó por primera vez ese autocultivo registrado, derogando la reglamentación anterior (Decreto 738/2017).',
+          'La Resolución 1780/2025 del Ministerio de Salud (mayo de 2025) reordenó ese registro y endureció varios requisitos: exige presentar informes médicos y cromatográficos, reordena las categorías de usuario/cultivador e incorpora a las personas jurídicas que desarrollan proyectos de investigación. Los inscriptos previos tuvieron un plazo de adecuación a los nuevos requisitos. Esta entrada no detalla cada requisito porque cambian con el tiempo — para el estado exacto de una inscripción particular, la fuente vale más que este resumen.',
           'Por otro lado, la Ley 23.737 tipifica penalmente el cultivo de plantas destinado a la producción de estupefacientes, con una figura atenuada cuando la cantidad y las circunstancias muestran de manera inequívoca que el destino es el consumo personal. La base constitucional que ampara la esfera de decisión personal en este tipo de situaciones, cuando no hay daño a terceros, proviene del fallo "Arriola" de la Corte Suprema de Justicia de la Nación (2009).',
           'Este resumen es general, no vinculante y puede quedar desactualizado: el marco regulatorio argentino sobre este tema ha tenido cambios y anuncios de cambios en años recientes. No debe tomarse como la última palabra sobre la situación legal de nadie en particular — para eso hace falta asesoramiento profesional actualizado.'
+        ]
+      },
+      {
+        id: 'canamo-industrial-y-ariccame',
+        title: 'Cáñamo industrial: un marco distinto al del uso medicinal/personal',
+        paragraphs: [
+          'Todo lo descripto arriba (Ley 27.350, REPROCANN) regula el uso medicinal y el autocultivo personal. El cáñamo industrial —plantas de Cannabis sativa con no más de 1 % de THC en peso seco, destinadas a fibra, semilla u otros usos no psicoactivos— tiene desde 2022 un marco aparte: la Ley 27.669 lo excluye explícitamente del alcance penal de la Ley 23.737 y crea la Agencia Regulatoria de la Industria del Cáñamo y del Cannabis Medicinal (ARICCAME), reglamentada por el Decreto 405/2023, con competencia para autorizar y fiscalizar el cultivo, la producción, la comercialización y la importación/exportación de semillas y plantas con fines industriales o medicinales a escala comercial.',
+          'ARICCAME estuvo intervenida desde septiembre de 2024 (Decreto 833/2024) por lo que la propia norma describe como "inadecuada operatividad" del organismo, con el objetivo declarado de reordenar su funcionamiento; esa intervención fue prorrogada en 2025. Quien esté evaluando una licencia industrial o de propagación debería confirmar el estado institucional vigente de la Agencia directamente, no asumir que la situación descripta acá sigue igual.',
+          'Esta entrada no explica cómo tramitar una licencia ni qué categoría de registro corresponde a cada actor (productor de semillas, vivero, proyecto industrial): son detalles operativos que cambian con la reglamentación y exceden el propósito informativo general de esta entrada.'
         ]
       },
       {
@@ -1217,12 +1248,18 @@ export const editorialEntries = [
     // tema de la entrada (marco legal/responsabilidad) coincide exactamente con fuentes ya
     // registradas y verificadas en 19_SOURCE_REGISTRY.md — no se inventó ninguna. En 7B2 se
     // sumaron dos fuentes ya verificadas y también pertinentes (publicidad y datos personales).
-    sourceIds: ['ley-27350-reprocann', 'ley-23737-art5', 'fallo-arriola-csjn-2009', 'ley-27669-publicidad', 'ley-25326-datos-personales'],
+    // En Loop 8B (2026-09-15) se sumó el ángulo industrial/cáñamo (Ley 27.669 operativa,
+    // Decreto 405/2023, ARICCAME, Decreto 883/2020, Decreto 833/2024) — las 5 normas se
+    // verificaron por búsqueda directa contra boletinoficial.gob.ar antes de citarlas.
+    sourceIds: [
+      'ley-27350-reprocann', 'ley-23737-art5', 'fallo-arriola-csjn-2009', 'ley-27669-publicidad', 'ley-25326-datos-personales',
+      'ley-27669-marco-industrial', 'decreto-405-2023-reglamentario-27669', 'decreto-883-2020-reprocann', 'decreto-833-2024-intervencion-ariccame'
+    ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-10',
+    lastReviewed: '2026-09-15',
     metadata: {
       seoTitle: 'Marco editorial y responsable — Atlas del Cultivo Argentino',
-      seoDescription: 'Qué es y qué no es el atlas, la diferencia entre información y recomendación, y un resumen no vinculante del contexto legal argentino con fuentes oficiales.',
+      seoDescription: 'Qué es y qué no es el atlas, la diferencia entre información y recomendación, y un resumen no vinculante del contexto legal argentino (REPROCANN, cáñamo industrial y ARICCAME) con fuentes oficiales.',
       canonical: null,
       ogImage: null
     }
@@ -1357,11 +1394,21 @@ export const editorialEntries = [
           'Las variedades autoflorecientes son la excepción: florecen según su propia edad/madurez, sin necesidad de un cambio de fotoperiodo. Ese rasgo se asocia genéticamente a la herencia de Cannabis ruderalis (adaptada a veranos cortos donde esperar la señal de día corto sería tarde) y hoy se sabe que tiene una base genética identificable, no solo una observación de campo.',
           'Un trabajo reciente sobre el mecanismo fisiológico en Cannabis (no una analogía con otra especie) muestra que, bajo fotoperiodo de día corto, los niveles de una hormona vegetal (giberelina) bajan, lo que frena la elongación de la planta y forma la inflorescencia condensada característica de la floración — y que la señal necesita al menos tres días consecutivos de oscuridad prolongada para registrarse. Categorías como "fotoperiódica/autofloreciente" o "ciclo corto/medio/largo" describen esto con mucha más precisión que "sativa" o "indica" — y son las que la Ficha Provincial de este atlas usa cuando hay evidencia suficiente, nunca como una regla fija de adaptación climática.'
         ]
+      },
+      {
+        id: 'quimiotipos',
+        title: 'Quimiotipo: una clasificación química, no botánica ni comercial',
+        paragraphs: [
+          'Hay una tercera categoría, distinta de la taxonómica (sativa/indica/ruderalis) y de la fisiológica (fotoperiódica/autofloreciente), que responde a una pregunta diferente: qué cannabinoide predomina en la planta. El quimiotipo se define por la proporción entre ácido tetrahidrocannabinólico (THCA) y ácido cannabidiólico (CBDA) — a grandes rasgos, quimiotipo I (predominio de THCA), quimiotipo II (proporción mixta/intermedia) y quimiotipo III (predominio de CBDA), con quimiotipos IV y V para variantes con otros cannabinoides dominantes o con niveles muy bajos de ambos. A diferencia de "sativa/indica", el quimiotipo sí tiene una base química medible (cromatografía), no una apariencia o un nombre comercial.',
+          'Un estudio que siguió plantas de los tres quimiotipos principales durante todo su crecimiento encontró que esa proporción THCA/CBDA queda definida desde etapas tempranas del desarrollo y se mantiene estable a lo largo del ciclo —no es algo que "aparezca" recién en la floración—, aunque las plantas de quimiotipo II y III tardaron más que las de quimiotipo I en alcanzar el pico de producción de THCA, CBDA y monoterpenos.',
+          'Esta entrada no desarrolla la biosíntesis completa (la ruta que convierte el precursor CBGA en THCA, CBDA o CBCA mediante enzimas específicas) ni el detalle de los tricomas glandulares donde ocurre — son temas con entidad propia que exceden el alcance de una entrada sobre nomenclatura y clasificación.'
+        ]
       }
     ],
     observations: [
       'Que Lamarck haya distinguido "indica" de "sativa" por su morfología es un hecho histórico documentado. Que "sativa" e "indica" describan hoy, de forma consistente, dos perfiles de efecto o de clima de origen es una creencia popular que la propia botánica no respalda con la misma certeza.',
-      'Decir que una variedad es "autofloreciente" es una observación verificable (florece sin cambio de fotoperiodo). Decir que por eso "viene de un clima frío" es una interpretación que mezcla origen genético con recomendación de cultivo — la genética informa, no dicta, cómo se comporta una planta en un ambiente nuevo.'
+      'Decir que una variedad es "autofloreciente" es una observación verificable (florece sin cambio de fotoperiodo). Decir que por eso "viene de un clima frío" es una interpretación que mezcla origen genético con recomendación de cultivo — la genética informa, no dicta, cómo se comporta una planta en un ambiente nuevo.',
+      'Que una planta sea de "quimiotipo I" es una medición química verificable en laboratorio. Suponer que un cultivar vendido como "sativa" es necesariamente de un quimiotipo particular es una asociación sin base — nombre comercial y quimiotipo son dos clasificaciones independientes entre sí.'
     ],
     signals: null,
     commonMistakes: [
@@ -1376,23 +1423,28 @@ export const editorialEntries = [
       {
         type: 'OBSERVATION',
         description: 'Confundir el nombre comercial de un cultivar ("sativa", "indica") con una clasificación botánica válida — el propio campo científico señala que esos nombres de uso vernáculo no tienen respaldo taxonómico formal.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar "sativa/indica" y "quimiotipo I/II/III" como si fueran la misma clasificación con dos nombres distintos — una es vernácula y sin base taxonómica formal, la otra es una medición química verificable en laboratorio; no se corresponden entre sí de forma predecible.'
       }
     ],
     environmentContext: null,
     tags: ['historia', 'genética', 'taxonomía', 'fotoperiodo'],
-    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo'],
+    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo', 'cosecha-y-maduracion'],
     sourceIds: [
       'cientifica-pollio-2016-nombre-cannabis-taxonomia',
       'cientifica-garner-allard-1920-photoperiodism-discovery',
       'cientifica-alter-2024-cannabis-fotoperiodo-giberelina',
       'preprint-cannabis-daylength-mutation-2023',
-      'cientifica-ren-2021-cannabis-domestication-genomics'
+      'cientifica-ren-2021-cannabis-domestication-genomics',
+      'cientifica-vergara-2016-cannabis-quimiotipo-evolucion-cultivo'
     ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-12',
+    lastReviewed: '2026-09-15',
     metadata: {
       seoTitle: 'Genética y tipos: sativa, indica, ruderalis — Atlas del Cultivo Argentino',
-      seoDescription: 'De dónde vienen los nombres sativa, indica y ruderalis, por qué la clasificación en tres especies está discutida, y qué categorías (fotoperiódica, autofloreciente) son más útiles hoy.',
+      seoDescription: 'De dónde vienen los nombres sativa, indica y ruderalis, por qué la clasificación en tres especies está discutida, y qué categorías (fotoperiódica/autofloreciente, quimiotipo) son más útiles hoy.',
       canonical: null,
       ogImage: null
     }

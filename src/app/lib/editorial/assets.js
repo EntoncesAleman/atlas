@@ -9,7 +9,7 @@ export const assets = [
     id: 'asset-fundamentos-koehler',
     file: '/atlas/categories/real/category-fundamentos-real.jpg',
     type: 'illustration',
-    categoryId: 'fundamentos',
+    categoryId: null,
     entryId: null,
     sourceId: 'visual-koehler-1887',
     author: 'Walther Otto Müller',
@@ -17,7 +17,23 @@ export const assets = [
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_sativa_Koehler_drawing.jpg',
     alt: 'Lámina botánica histórica de Cannabis sativa (Köhler, 1887, dominio público) mostrando planta macho y hembra con detalle de flores, polen y semillas.',
     credit: 'W. Müller, Köhler\'s Medizinal-Pflanzen (1887) — dominio público',
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    knownIssues: 'Ya no es la portada de "Crecimiento" (Loop 8B) — se liberó el categoryId para que la categoría use una ilustración propia del proyecto en su lugar. Sigue activo como fallback/atribuible si se necesita.'
+  },
+  {
+    id: 'asset-fundamentos-ciclo-ia',
+    file: '/atlas/categories/real/category-fundamentos-ciclo-ia.jpg',
+    type: 'illustration',
+    categoryId: 'fundamentos',
+    entryId: null,
+    sourceId: null,
+    author: 'Proyecto Atlas del Cultivo Argentino (ilustración generada con IA — Gemini)',
+    license: 'Interno',
+    sourceUrl: null,
+    alt: 'Ilustración esquemática del ciclo de vida de Cannabis sativa: semilla, brote, etapa vegetativa, etapa de floración y frasco de vidrio lleno, unidos por una línea de tiempo punteada.',
+    credit: null,
+    status: 'ACTIVE',
+    knownIssues: 'Ilustración original generada con IA por el equipo del proyecto (no es una lámina histórica ni una fotografía documental) — coherente en estilo con la identidad visual de "Mi Cultivo" (tarjeta "De semilla al frasco"). No lleva atribución externa porque no reproduce ninguna fuente real.'
   },
   {
     id: 'asset-germinacion-diagram',
@@ -48,6 +64,21 @@ export const assets = [
     alt: 'Fotografía documental de un perfil de suelo excavado hasta 1,25 m de profundidad, con marcadores señalando los distintos horizontes (Mclund, CC BY 4.0).',
     credit: 'Mclund — CC BY 4.0, vía Wikimedia Commons',
     status: 'ACTIVE'
+  },
+  {
+    id: 'asset-sustrato-raices-ia',
+    file: '/atlas/categories/real/entry-sustrato-raices-ia.jpg',
+    type: 'illustration',
+    categoryId: null,
+    entryId: 'sustrato-y-drenaje',
+    sourceId: null,
+    author: 'Proyecto Atlas del Cultivo Argentino (ilustración generada con IA — Gemini)',
+    license: 'Interno',
+    sourceUrl: null,
+    alt: 'Ilustración esquemática del sistema de raíces de Cannabis sativa mostrando raíces secundarias, pelos radicales y una sección transversal y longitudinal de la raíz.',
+    credit: null,
+    status: 'ACTIVE',
+    knownIssues: 'Ilustración original generada con IA por el equipo del proyecto. El archivo fuente incluye un pie de imagen decorativo ("Tabula XXVII... Köhler, Plantas Medicinales") que imita el estilo de una lámina botánica histórica — es una elección estética del autor, no una atribución real: la ilustración NO proviene de Köhler ni de ninguna publicación de 1887, y no debe citarse como tal. El `alt` y el `credit` de este registro son la descripción/atribución válidas.'
   },
   {
     id: 'asset-luz-clima-cover',
@@ -184,7 +215,7 @@ export const assets = [
     id: 'asset-fertilizacion-hemp-field',
     file: '/atlas/categories/real/category-cultivo-real.jpg',
     type: 'photo',
-    categoryId: 'fertilizacion',
+    categoryId: null,
     entryId: null,
     sourceId: 'visual-industrial-hemp-field',
     author: 'Aleks',
@@ -193,7 +224,22 @@ export const assets = [
     alt: 'Fotografía documental de un cultivo exterior de cáñamo industrial (Cannabis sativa) en Francia (Aleks, CC BY-SA/GFDL).',
     credit: 'Aleks — CC BY-SA 3.0, vía Wikimedia Commons',
     status: 'ACTIVE',
-    knownIssues: 'Mismo archivo ya usado como portada de "Cultivo" (`asset-cultivo-hemp-field`) — reutilización deliberada de un asset ya verificado; no se buscó un asset nuevo específico de fertilización en esta fase (corrección de estructura, sin investigación de contenido nueva).'
+    knownIssues: 'Ya no es la portada de "Fertilización" (Loop 8B) — se liberó el categoryId a favor de una ilustración propia del proyecto. Sigue activo como fallback/atribuible si se necesita.'
+  },
+  {
+    id: 'asset-fertilizacion-ia',
+    file: '/atlas/categories/real/category-fertilizacion-ia.jpg',
+    type: 'illustration',
+    categoryId: 'fertilizacion',
+    entryId: null,
+    sourceId: null,
+    author: 'Proyecto Atlas del Cultivo Argentino (ilustración generada con IA — Gemini)',
+    license: 'Interno',
+    sourceUrl: null,
+    alt: 'Ilustración esquemática de Cannabis sativa mostrando el sistema radical con los macro y micronutrientes esenciales (N, P, K, Ca, Mg, S) y tres formas de aplicación de fertilizante: en el suelo (granular), líquida (riego) y foliar (pulverización).',
+    credit: null,
+    status: 'ACTIVE',
+    knownIssues: 'Ilustración original generada con IA por el equipo del proyecto. El archivo fuente incluye un pie de imagen decorativo ("Plate XLIII... Köhler, Plantas Medicinales") que imita el estilo de una lámina botánica histórica — es una elección estética del autor, no una atribución real: la ilustración NO proviene de Köhler ni de ninguna publicación de 1887, y no debe citarse como tal. El `alt` y el `credit` de este registro son la descripción/atribución válidas.'
   },
   {
     id: 'asset-manejo-poscosecha-drying',

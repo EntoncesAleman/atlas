@@ -714,6 +714,86 @@ export const sources = [
     accessedAt: '2026-09-14',
     notes: 'VERIFICADO por lectura directa (PMC, artículo de libre acceso; DOI 10.3390/plants12142605). Estudio con 10 cultivares drug-type de Cannabis sativa bajo 6 fotoperiodos de floración (12 h a 15 h). Resultados clave: (1) el protocolo 18 h en vegetativo y 12 h en floración es el estándar industrial ampliamente adoptado, pero NO es el único que induce floración — muchos cultivares florecen robustamente hasta 14 h, con demoras de 0 a 4 días según cultivar; (2) algunos cultivares iniciaron floración incluso a 15 h aunque sin desarrollo posterior de inflorescencia; (3) la respuesta al fotoperiodo es cultivar-específica y no predecible de forma universal. Temperatura de ensayo: 25 °C constante. HR mantenida ≥ 60 % con sistema de nebulización. Se usa para respaldar: (a) el protocolo 18/6 y 12/12 como referencias ampliamente utilizadas, no como reglas universales; (b) que la variación entre cultivares es real y documentada; (c) los rangos de temperatura de referencia (25 °C para el ensayo) sin presentarlos como únicos valores válidos. No cita condiciones de cultivo argentino ni cultivares argentinos.'
   },
+
+  // --- Fuentes de contenido: Loop 8B — verificación de documentacion/ (2026-09-15) ---
+  // Cada fuente de este bloque fue encontrada y leída directamente durante esta sesión (WebSearch +
+  // WebFetch) para reemplazar material de `documentacion/*.docx` que citaba estudios/normas por
+  // nombre sin URL verificable. Dos citas de `documentacion/` NO pudieron confirmarse y quedaron
+  // afuera deliberadamente: "Mejía et al. (2015)" (ningún estudio con esos datos apareció en la
+  // búsqueda) y la afiliación "University of Haifa" para Bernstein et al. 2019 (la afiliación real,
+  // verificada en el paper, es Volcani Center / Hebrew University of Jerusalem / Shenkar College).
+  {
+    id: 'ley-27669-marco-industrial',
+    title: 'Ley 27.669 — Marco Regulatorio para el Desarrollo de la Industria del Cáñamo Industrial y del Cannabis Medicinal (texto completo)',
+    authorOrInstitution: 'Boletín Oficial de la República Argentina',
+    url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/263212/20220526',
+    type: 'LEGAL',
+    publicationDate: '2022-05-26',
+    accessedAt: '2026-09-15',
+    notes: 'VERIFICADO por búsqueda directa. Mismo texto legal que ya cita `ley-27669-publicidad` (ese registro se enfoca solo en la restricción de publicidad); este registro respalda el marco regulatorio industrial completo: crea la Agencia Regulatoria de la Industria del Cáñamo y del Cannabis Medicinal (ARICCAME, art. 4) y excluye al cáñamo industrial (≤1% THC en peso seco) del alcance de la Ley 23.737 (art. 3).'
+  },
+  {
+    id: 'decreto-405-2023-reglamentario-27669',
+    title: 'Decreto 405/2023 — Reglamentación de la Ley 27.669 y puesta en funcionamiento de ARICCAME',
+    authorOrInstitution: 'Boletín Oficial de la República Argentina',
+    url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/291621/20230807',
+    type: 'LEGAL',
+    publicationDate: '2023-08-07',
+    accessedAt: '2026-09-15',
+    notes: 'VERIFICADO por búsqueda directa. Aprueba la reglamentación de la Ley 27.669 (promulgado 04/08/2023, publicado 07/08/2023) y establece a ARICCAME como autoridad de aplicación, con competencia para autorizar importación, exportación, cultivo, producción industrial, fabricación, comercialización y adquisición de semillas y plantas de cannabis y sus derivados.'
+  },
+  {
+    id: 'decreto-883-2020-reprocann',
+    title: 'Decreto 883/2020 — Reglamentación de la Ley 27.350: autocultivo registrado y creación de REPROCANN',
+    authorOrInstitution: 'Boletín Oficial de la República Argentina',
+    url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/237208/20201112',
+    type: 'LEGAL',
+    publicationDate: '2020-11-12',
+    accessedAt: '2026-09-15',
+    notes: 'VERIFICADO por búsqueda directa (múltiples fuentes coincidentes: Boletín Oficial, Observatorio de Cannabis UNPAZ, InfoLeg). Deroga el Decreto 738/2017 (NO el "Decreto 1242/2017" que menciona por error un informe de `documentacion/` sin fuente verificable — ese número de decreto no aparece en ninguna fuente oficial encontrada). Crea el Registro del Programa de Cannabis (REPROCANN) y habilita el autocultivo, el cultivo solidario (tercero cultivador) y la inscripción vía ONG/Asociación Civil.'
+  },
+  {
+    id: 'decreto-833-2024-intervencion-ariccame',
+    title: 'Decreto 833/2024 — Intervención de ARICCAME por un año (Dr. Ignacio Ferrari, interventor)',
+    authorOrInstitution: 'Boletín Oficial de la República Argentina',
+    url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/314127/20240918',
+    type: 'LEGAL',
+    publicationDate: '2024-09-18',
+    accessedAt: '2026-09-15',
+    notes: 'VERIFICADO por búsqueda directa. Interviene ARICCAME por "inadecuada operatividad", con posibilidad de una única prórroga de un año (efectivamente prorrogada desde el 03/09/2025 según Resolución 464/2025, Ministerio de Economía). El interventor ejerce las competencias que la Ley 27.669 y el Decreto 405/2023 asignan al directorio de la Agencia.'
+  },
+  {
+    id: 'resolucion-ariccame-41-2026-organos-propagacion',
+    title: 'Resolución ARICCAME 41/2026 — Régimen especial de licencias para órganos de propagación de Cannabis sativa L.',
+    authorOrInstitution: 'Boletín Oficial de la República Argentina',
+    url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/343731/20260630',
+    type: 'LEGAL',
+    publicationDate: '2026-06-30',
+    accessedAt: '2026-09-15',
+    notes: 'VERIFICADO por búsqueda directa. Es la resolución más reciente encontrada sobre el régimen de propagación (semillas, esquejes, plantines) para fines medicinales bajo licencia ARICCAME. No se verificó el detalle completo de su articulado (solo el aviso de publicación en Boletín Oficial) — antes de citar una condición específica de esta resolución en una entrada, conviene leer el texto completo.'
+  },
+  {
+    id: 'cientifica-bernstein-2019-cannabis-npk-cannabinoide-canopia',
+    scope: 'CANNABIS',
+    title: 'Impact of N, P, K, and Humic Acid Supplementation on the Chemical Profile of Medical Cannabis (Cannabis sativa L)',
+    authorOrInstitution: 'Bernstein, N.; Gorelick, J.; Zerahia, R.; Koch, S. — Frontiers in Plant Science, vol. 10, art. 736',
+    url: 'https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2019.00736/full',
+    type: 'SCIENTIFIC',
+    publicationDate: '2019-06-11',
+    accessedAt: '2026-09-15',
+    notes: 'VERIFICADO por lectura directa (Frontiers, acceso abierto). Reemplaza la cita sin URL de `documentacion/Informe Tecnico y Guia Practica.docx`, que atribuía este hallazgo a "Bernstein et al. (2019) / University of Haifa" — la afiliación real de los autores es Volcani Center, Hebrew University of Jerusalem, un centro I+D en Kiryat Arba y Shenkar College, no University of Haifa. Hallazgo clave: existe un gradiente espacial natural de cannabinoides según la altura de la planta — THC, CBD, CBG, THCV y CBC se concentran más en las regiones superiores; CBT y CBN se concentran más en flores medias/inferiores. La suplementación con ácido húmico reduce esa variabilidad espacial natural, pero a costa de menor concentración de cannabinoides en las regiones superiores.'
+  },
+  {
+    id: 'cientifica-vergara-2016-cannabis-quimiotipo-evolucion-cultivo',
+    scope: 'CANNABIS',
+    title: 'Evolution of the Cannabinoid and Terpene Content during the Growth of Cannabis sativa Plants from Different Chemotypes',
+    authorOrInstitution: 'Vergara, D. et al. — Journal of Natural Products, vol. 79, pp. 324-331',
+    url: 'https://pubs.acs.org/doi/abs/10.1021/acs.jnatprod.5b00949',
+    type: 'SCIENTIFIC',
+    publicationDate: '2016-01-01',
+    accessedAt: '2026-09-15',
+    notes: 'VERIFICADO por búsqueda directa (resumen y metadatos confirmados en ACS Publications y ResearchGate; DOI 10.1021/acs.jnatprod.5b00949) — texto completo no verificado línea por línea en esta sesión (paywall). Siete plantas (chemotipos I, II y III) analizadas por HPLC-DAD (8 cannabinoides) y GC-FID/GC-MS (28 terpenos) durante el crecimiento. Hallazgo clave: el quimiotipo (razón THCA/CBDA) queda definido desde etapas tempranas y se mantiene estable durante todo el crecimiento; las plantas de quimiotipos II y III tardan más en alcanzar el pico de producción de THCA, CBDA y monoterpenos que las de quimiotipo I.'
+  },
 ];
 
 export function sourceById(id) {

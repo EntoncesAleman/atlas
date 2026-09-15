@@ -9,7 +9,9 @@ import { sourceById } from './sources';
 import { assetForCategory, assetsForEntry } from './assets';
 
 export function getCategories() {
-  return editorialCategories.filter((category) => category.status === 'PUBLISHED');
+  return editorialCategories
+    .filter((category) => category.status === 'PUBLISHED')
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 }
 
 export function getEntries() {
