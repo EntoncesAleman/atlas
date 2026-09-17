@@ -3804,3 +3804,184 @@ body::before {
     animation: none;
   }
 }
+
+/* Widget de clima del Atlas (LOOP — WIDGET CLIMA DEL ATLAS). Reutiliza el mismo lenguaje visual
+   ya usado por el clima de Mi Cultivo (`.mi-cultivo-weather-*`) — mismos tokens, misma forma de
+   tarjeta de stat — para que el widget se sienta parte del mismo sistema, no uno nuevo. */
+.environmental-panel {
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 28px;
+}
+
+.environmental-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.environmental-message p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.environmental-note {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.environmental-retry {
+  margin-top: 12px;
+}
+
+.environmental-condition {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  color: var(--sage-dark);
+  margin: 0 0 16px;
+}
+
+.environmental-current {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
+}
+
+.environmental-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.environmental-stat-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.environmental-stat-value {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--sage-dark);
+}
+
+.environmental-stat-unit {
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
+.environmental-forecast {
+  margin-top: 20px;
+}
+
+.environmental-subheading {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.environmental-forecast ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.environmental-forecast li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 78px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--text-soft);
+  background: var(--paper);
+}
+
+.environmental-forecast-date {
+  font-weight: 700;
+  color: var(--sage-dark);
+}
+
+.environmental-forecast-condition {
+  font-size: 11px;
+  text-align: center;
+}
+
+.environmental-alerts {
+  margin-top: 20px;
+}
+
+.environmental-alerts ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.environmental-alerts li {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  padding: 10px 12px;
+  border-left: 2px solid var(--clay);
+  background: var(--sage-glass);
+  border-radius: 0 10px 10px 0;
+}
+
+.environmental-source {
+  margin-top: 18px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .environmental-current {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .environmental-forecast ol {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

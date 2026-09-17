@@ -14,6 +14,54 @@
 
 import { getProvinceLocation } from './locations';
 
+// Traducción de `weather_code` (WMO, el mismo estándar que documenta Open-Meteo) a una etiqueta
+// legible en español — cierre del widget de clima (LOOP — WIDGET CLIMA DEL ATLAS). Es una
+// traducción directa de un código real que ya devuelve el proveedor, no un dato inventado ni una
+// lectura agronómica: describe la condición del cielo, nada más.
+const WEATHER_CODE_LABELS = {
+  0: 'Despejado',
+  1: 'Mayormente despejado',
+  2: 'Parcialmente nublado',
+  3: 'Nublado',
+  45: 'Niebla',
+  48: 'Niebla con escarcha',
+  51: 'Llovizna débil',
+  53: 'Llovizna moderada',
+  55: 'Llovizna intensa',
+  56: 'Llovizna helada débil',
+  57: 'Llovizna helada intensa',
+  61: 'Lluvia débil',
+  63: 'Lluvia moderada',
+  65: 'Lluvia intensa',
+  66: 'Lluvia helada débil',
+  67: 'Lluvia helada intensa',
+  71: 'Nevada débil',
+  73: 'Nevada moderada',
+  75: 'Nevada intensa',
+  77: 'Granos de nieve',
+  80: 'Chubascos débiles',
+  81: 'Chubascos moderados',
+  82: 'Chubascos intensos',
+  85: 'Chubascos de nieve débiles',
+  86: 'Chubascos de nieve intensos',
+  95: 'Tormenta',
+  96: 'Tormenta con granizo débil',
+  99: 'Tormenta con granizo intenso',
+};
+
+function describeWeatherCode(code) {
+  if (typeof code !== 'number') return null;
+  return WEATHER_CODE_LABELS[code] ?? null;
+}
+
+// Open-Meteo devuelve `sunrise`/`sunset` ya en hora local (por `timezone=auto`, ver
+// `route.js`), como texto ISO sin offset — se recorta a "HH:MM", sin ningún cálculo propio.
+function formatLocalTime(isoDateTime) {
+  if (typeof isoDateTime !== 'string') return null;
+  const match = isoDateTime.match(/T(\d{2}:\d{2})/);
+  return match ? match[1] : null;
+}
+
 const FROST_THRESHOLD_C = 0;
 const HEAVY_RAIN_THRESHOLD_MM = 20;
 const STRONG_WIND_THRESHOLD_KMH = 40;
@@ -136,6 +184,11 @@ export async function fetchProvinceWeather(provinceId) {
     humidity: typeof rawCurrent.relative_humidity_2m === 'number' ? rawCurrent.relative_humidity_2m : null,
     precipitation: typeof rawCurrent.precipitation === 'number' ? rawCurrent.precipitation : null,
     windSpeed: typeof rawCurrent.wind_speed_10m === 'number' ? rawCurrent.wind_speed_10m : null,
+    // Campos agregados para el widget de clima del Atlas — opcionales, `null` si el proveedor no
+    // los trae (nunca un valor inventado en su lugar).
+    apparentTemperature: typeof rawCurrent.apparent_temperature === 'number' ? rawCurrent.apparent_temperature : null,
+    weatherCode: typeof rawCurrent.weather_code === 'number' ? rawCurrent.weather_code : null,
+    weatherLabel: describeWeatherCode(rawCurrent.weather_code),
   };
 
   const forecast = Array.isArray(rawDaily?.time)
@@ -144,6 +197,10 @@ export async function fetchProvinceWeather(provinceId) {
         tempMax: rawDaily.temperature_2m_max?.[index] ?? null,
         tempMin: rawDaily.temperature_2m_min?.[index] ?? null,
         precipitationSum: rawDaily.precipitation_sum?.[index] ?? null,
+        weatherCode: typeof rawDaily.weather_code?.[index] === 'number' ? rawDaily.weather_code[index] : null,
+        weatherLabel: describeWeatherCode(rawDaily.weather_code?.[index]),
+        sunrise: formatLocalTime(rawDaily.sunrise?.[index]),
+        sunset: formatLocalTime(rawDaily.sunset?.[index]),
       }))
     : [];
 
@@ -152,6 +209,10 @@ export async function fetchProvinceWeather(provinceId) {
     locationName: location.name,
     generatedAt: payload.generated_at ?? null,
     current,
+    // Amanecer/atardecer de hoy, si el proveedor los trajo — atajo directo al primer día del
+    // pronóstico para no obligar al widget a indexar `forecast[0]` por su cuenta.
+    sunrise: forecast[0]?.sunrise ?? null,
+    sunset: forecast[0]?.sunset ?? null,
     forecast,
     todayReadings: buildTodayReadings(current),
     alerts: buildForecastAlerts(forecast),

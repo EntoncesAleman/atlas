@@ -13,8 +13,18 @@ export async function GET(request) {
   const providerUrl = new URL('https://api.open-meteo.com/v1/forecast');
   providerUrl.searchParams.set('latitude', String(lat));
   providerUrl.searchParams.set('longitude', String(lon));
-  providerUrl.searchParams.set('current', 'temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m');
-  providerUrl.searchParams.set('daily', 'temperature_2m_max,temperature_2m_min,precipitation_sum');
+  // Cierre del widget de clima (LOOP — WIDGET CLIMA DEL ATLAS): se amplió `current`/`daily` con
+  // apparent_temperature, weather_code y sunrise/sunset — ampliación aditiva y compatible: los
+  // campos ya existentes no cambian de nombre ni de forma, `fetchProvinceWeather` (consumidor
+  // actual, usado por Mi Cultivo) sigue leyendo exactamente los mismos campos que antes.
+  providerUrl.searchParams.set(
+    'current',
+    'temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,apparent_temperature,weather_code'
+  );
+  providerUrl.searchParams.set(
+    'daily',
+    'temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code,sunrise,sunset'
+  );
   providerUrl.searchParams.set('forecast_days', '3');
   providerUrl.searchParams.set('timezone', 'auto');
 

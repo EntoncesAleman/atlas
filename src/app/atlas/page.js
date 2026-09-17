@@ -2,6 +2,12 @@ import Link from 'next/link';
 import CategoryShowcase from '../components/CategoryShowcase';
 import PartnersStrip from '../components/PartnersStrip';
 import ProvinceStatusBar from '../components/ProvinceStatusBar';
+import EnvironmentalPanel from '../components/EnvironmentalPanel';
+
+export const metadata = {
+  title: 'El Atlas — Atlas del Cultivo Argentino',
+  description: 'Índice editorial del Atlas: una navegación por categorías para recorrer el cultivo como sistema geográfico, ambiental y cultural.'
+};
 
 export default function AtlasIndexPage() {
   return (
@@ -22,6 +28,10 @@ export default function AtlasIndexPage() {
           <p className="atlas-lede">Una navegación editorial para recorrer el cultivo como sistema geográfico, ambiental y cultural.</p>
           <ProvinceStatusBar />
         </div>
+      </section>
+
+      <section className="atlas-section atlas-weather-section">
+        <EnvironmentalPanel />
       </section>
 
       <section className="atlas-section">
