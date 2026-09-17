@@ -64,6 +64,10 @@ export async function GET(request) {
       },
     });
   } catch (error) {
+    // Cierre de P3-3 (MASTER_PACKAGE/63_AUDITORIA_GENERAL_ATLAS.md): antes se devolvía
+    // `error.message` crudo al cliente. Se registra en el log del servidor para diagnóstico y se
+    // responde con un código de error estable, sin exponer el detalle interno.
+    console.error('climate_provider_exception', error);
     return NextResponse.json(
       {
         ok: false,
@@ -71,7 +75,6 @@ export async function GET(request) {
         region,
         cache: 'miss',
         source: 'open-meteo',
-        detail: error.message,
       },
       { status: 500 }
     );

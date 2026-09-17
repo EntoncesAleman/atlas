@@ -76,6 +76,24 @@ function formatElapsed(days) {
   return `Hace ${days} días`;
 }
 
+// Cierre de P1-3 (MASTER_PACKAGE/63_AUDITORIA_GENERAL_ATLAS.md): Mi Cultivo tiene su propia
+// `provinceId` (columna `province_id` en cuenta, o dentro del objeto local de
+// `lib/miCultivo/storage.js`), separada a propósito de `atlas:selectedProvince` — cada una
+// puede referirse a un cultivo/consulta distinta y no deben pisarse. Lo que sí se corrige acá
+// es la fricción real detectada: si Mi Cultivo todavía no tiene ninguna provincia propia
+// elegida, se sugiere como punto de partida la ya elegida en Inicio, en vez de arrancar vacío
+// sin motivo. Nunca sobreescribe una elección que la persona ya hizo dentro de Mi Cultivo.
+const ATLAS_SELECTED_PROVINCE_KEY = 'atlas:selectedProvince';
+
+function readAtlasSelectedProvince() {
+  if (typeof window === 'undefined') return null;
+  try {
+    return window.localStorage.getItem(ATLAS_SELECTED_PROVINCE_KEY) || null;
+  } catch {
+    return null;
+  }
+}
+
 function translateAuthError(error) {
   const message = error?.message ?? '';
   if (/invalid login credentials/i.test(message)) return 'Email o contraseña incorrectos.';
@@ -166,12 +184,15 @@ export default function MiCultivoPage() {
 
   function loadLocalIntoState() {
     const stored = loadCultivo();
-    if (stored) {
-      adoptCultivo(stored);
-    } else {
-      const fresh = createCultivo();
-      adoptCultivo(fresh);
+    const cultivo = stored ?? createCultivo();
+    // Solo sugiere la provincia de Inicio si Mi Cultivo todavía no tiene ninguna propia —
+    // nunca reemplaza una que la persona ya haya elegido acá (ver nota en
+    // `readAtlasSelectedProvince` más arriba).
+    if (!cultivo.provinceId) {
+      const suggestedProvinceId = readAtlasSelectedProvince();
+      if (suggestedProvinceId) cultivo.provinceId = suggestedProvinceId;
     }
+    adoptCultivo(cultivo);
   }
 
   // Hidratación inicial: siempre carga lo local primero (hace falta para
@@ -666,7 +687,7 @@ export default function MiCultivoPage() {
                     <li>Guardar fotos privadas de tu cultivo, asociadas a tu cuenta.</li>
                     <li>Mantener guardado el contexto de tu provincia entre visitas.</li>
                     <li>Consultar tu historial completo en "Mi Temporada".</li>
-                    <li>Usar el Chatbot del Atlas con contexto de tu propio cultivo.</li>
+                    <li>Usar el Buscador del Atlas con contexto de tu propio cultivo.</li>
                     <li>Conservar tu información si cambiás de dispositivo o de navegador.</li>
                   </ul>
                 </div>
@@ -803,7 +824,9 @@ export default function MiCultivoPage() {
           <p className="atlas-section-note">
             Solo a nivel provincia — nunca tu ubicación exacta ni GPS. Sirve para mostrar
             condiciones ambientales de referencia junto a tu cultivo, no para calcular nada
-            sobre él.
+            sobre él. Es independiente de la provincia elegida en Inicio para explorar el Atlas —
+            la usamos como punto de partida acá si todavía no elegiste una para tu cultivo, pero
+            podés cambiarla en cualquier momento sin afectar tu navegación del Atlas.
           </p>
 
           {!locationReady && (

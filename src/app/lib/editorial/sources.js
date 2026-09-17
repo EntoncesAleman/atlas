@@ -372,6 +372,156 @@ export const sources = [
     notes: 'CC BY 2.0. Verificado por lectura directa.'
   },
 
+  // --- Fuentes visuales: mejora del sistema visual del Atlas (2026-09-16). Investigación provista
+  // por el usuario (candidatas de Wikimedia Commons por categoría/entrada) — verificada de forma
+  // directa (fetch a la página real de cada archivo, no solo el resultado de una búsqueda) antes
+  // de integrar ninguna. Ninguna imagen generada por IA se agrega ni se conserva activa: los
+  // assets con `license: 'Interno'` que eran ilustraciones de IA (Fundamentos, Suelo y agua,
+  // Fertilización) se archivaron en `assets.js`, reemplazados por estas fuentes reales.
+  {
+    id: 'visual-keimender-hanfsamen',
+    scope: 'CANNABIS',
+    title: 'Keimender Hanfsamen (semilla de cáñamo germinando)',
+    authorOrInstitution: 'Vschlothauer',
+    url: 'https://commons.wikimedia.org/wiki/File:Keimender_Hanfsamen_-_Germinating_hemp_seed_01.jpg',
+    type: 'VISUAL',
+    publicationDate: '2024-04-22',
+    accessedAt: '2026-09-16',
+    notes: 'CC0 1.0 (dominio público). Verificado por lectura directa. Semilla de cáñamo ~5 días después de la siembra, testa abriéndose, radícula e hipocótilo arqueado visibles.'
+  },
+  {
+    id: 'visual-c-sativa-seedling',
+    scope: 'CANNABIS',
+    title: 'Plántula joven de Cannabis sativa',
+    authorOrInstitution: 'Avriette',
+    url: 'https://commons.wikimedia.org/wiki/File:C_sativa_seedling.jpg',
+    type: 'VISUAL',
+    publicationDate: '2006-12-15',
+    accessedAt: '2026-09-16',
+    notes: 'CC BY-SA 3.0 / GFDL 1.2+. Verificado por lectura directa. Plántula pequeña con cotiledones y primera hoja verdadera.'
+  },
+  {
+    id: 'visual-cannabis-seedling-seven-days',
+    scope: 'CANNABIS',
+    title: 'Plántula de cannabis a los siete días',
+    authorOrInstitution: 'Trav1085',
+    url: 'https://commons.wikimedia.org/wiki/File:Cannabis_seedling_-_seven_days.jpg',
+    type: 'VISUAL',
+    publicationDate: '2012-09-06',
+    accessedAt: '2026-09-16',
+    notes: 'CC BY-SA 3.0 / GFDL 1.2+. Verificado por lectura directa. Plántula con tres pares de hojas visibles, siete días tras la germinación.'
+  },
+  {
+    id: 'visual-cannabis-sativa-radix-profile',
+    scope: 'CANNABIS',
+    title: 'Perfil de raíz de Cannabis sativa en campo de cáñamo (Klagenfurt)',
+    authorOrInstitution: 'Prof. Dr. Lore Kutschera',
+    url: 'https://commons.wikimedia.org/wiki/File:Cannabis_sativa_radix_profile.png',
+    type: 'VISUAL',
+    publicationDate: '2006-03-12',
+    accessedAt: '2026-09-16',
+    notes: 'CC BY-SA 2.5. Verificado por lectura directa. Diagrama documental real del sistema de raíces de una planta de 180 cm expuesta en un campo de cáñamo, con horizontes de suelo marcados — no es una ilustración esquemática, es un registro de campo real.'
+  },
+  {
+    id: 'visual-stem-root-clay',
+    scope: 'CANNABIS',
+    title: 'Tallo y raíces de cannabis con sustrato de arcilla expandida',
+    authorOrInstitution: 'Beeblebrox',
+    url: 'https://commons.wikimedia.org/wiki/File:Stem_root_and_clay.jpg',
+    type: 'VISUAL',
+    publicationDate: '2022-09-29',
+    accessedAt: '2026-09-16',
+    notes: 'CC BY-SA 4.0. Verificado por lectura directa. Raíz y tallo principal con la arcilla expandida (sustrato hidropónico ebb-and-flow) usada para una sola planta.'
+  },
+  {
+    id: 'visual-cannabis-sunlight-closeup',
+    scope: 'CANNABIS',
+    title: 'Primer plano de planta de Cannabis a contraluz solar',
+    authorOrInstitution: 'Soyamol17',
+    url: 'https://commons.wikimedia.org/wiki/File:Close-Up_of_Cannabis_Plant_in_Sunlight.jpg',
+    type: 'VISUAL',
+    publicationDate: '2026-01-24',
+    accessedAt: '2026-09-16',
+    notes: 'CC0 1.0 (dominio público). Verificado por lectura directa. Reemplaza `visual-plant-under-phytolamp` (ciclamen, especie distinta) como portada de "Luz y clima" — la razón original para usar una especie genérica (no existía entonces una foto de Cannabis igual de legible) queda superada por esta candidata real y específica.'
+  },
+  {
+    id: 'visual-cannabis-vegetative-growth',
+    scope: 'CANNABIS',
+    title: 'Cannabis en etapa de crecimiento vegetativo',
+    authorOrInstitution: 'J. Patrick Bedell',
+    url: 'https://commons.wikimedia.org/wiki/File:Cannabis-vegetative-growth-00003.jpg',
+    type: 'VISUAL',
+    publicationDate: '2007-02-24',
+    accessedAt: '2026-09-16',
+    notes: 'Dominio público ("all rights released" por el propio autor). Verificado por lectura directa. Reemplaza una ilustración generada con IA como portada de "Crecimiento" — ninguna imagen de IA se mantiene activa tras esta ronda.'
+  },
+  {
+    id: 'visual-untrained-cannabis-vegetative',
+    scope: 'CANNABIS',
+    title: 'Planta de cannabis sin conducir en etapa vegetativa',
+    authorOrInstitution: 'Plantlady223',
+    url: 'https://commons.wikimedia.org/wiki/File:Untrained_cannabis_plant_in_the_vegetative_stage.jpg',
+    type: 'VISUAL',
+    publicationDate: '2016-01-04',
+    accessedAt: '2026-09-16',
+    notes: 'CC BY-SA 4.0. Verificado por lectura directa. Muestra la forma de "árbol de Navidad" no conducida, típica de la arquitectura natural de la especie sin intervención de poda.'
+  },
+  {
+    id: 'visual-cannabis-nutrient-deficiency',
+    scope: 'CANNABIS',
+    title: 'Hoja de cannabis con clorosis por desequilibrio nutricional',
+    authorOrInstitution: 'Cannabis Training University',
+    url: 'https://commons.wikimedia.org/wiki/File:Cannabis_Nutrient_Deficiency.JPG',
+    type: 'VISUAL',
+    publicationDate: '2011-05-18',
+    accessedAt: '2026-09-16',
+    notes: 'CC BY-SA 3.0. Verificado por lectura directa. Clorosis (amarillamiento) real documentada, coherente con el contenido de la entrada "Fertilización y nutrición" sobre carencia/toxicidad — no se usa como portada genérica de nutrición, se usa específicamente donde el texto habla de este síntoma.'
+  },
+  {
+    id: 'visual-cannabis-hoop-house',
+    scope: 'CANNABIS',
+    title: 'Cultivo de cannabis bajo túnel (hoop house)',
+    authorOrInstitution: 'Brian Shamblen',
+    url: 'https://commons.wikimedia.org/wiki/File:Cannabis_plants_in_hoop_house.jpg',
+    type: 'VISUAL',
+    publicationDate: '2018-09-21',
+    accessedAt: '2026-09-16',
+    notes: 'CC BY 2.0. Verificado por lectura directa (originado en Flickr, revisión de licencia confirmada en Commons el 2021-10-30). Sistema de cultivo estructurado real (invernadero tipo túnel), distinto de la fotografía de campo abierto ya usada como portada de "Cultivo".'
+  },
+  {
+    id: 'visual-bbmamatopped',
+    scope: 'CANNABIS',
+    title: 'Planta de cannabis "toppeada" (despuntada)',
+    authorOrInstitution: 'Big.thompson',
+    url: 'https://commons.wikimedia.org/wiki/File:BBMamaTopped.jpg',
+    type: 'VISUAL',
+    publicationDate: '2006-11-22',
+    accessedAt: '2026-09-16',
+    notes: 'Dominio público ("released into the public domain" por el autor). Verificado por lectura directa. Único candidato real encontrado que documenta específicamente el resultado del topping (varios brotes apicales co-dominantes tras remover el meristema principal) — se acepta con una reserva de calidad documentada en ASSET_REGISTRY.md (resolución 640×512, fondo doméstico poco prolijo) por ser la única alternativa real y verificable disponible frente a un placeholder genérico sin relación temática.'
+  },
+  {
+    id: 'visual-cannabis-drying-room',
+    scope: 'CANNABIS',
+    title: 'Sala de secado de cannabis tras la cosecha',
+    authorOrInstitution: 'Beeblebrox',
+    url: 'https://commons.wikimedia.org/wiki/File:Cannabis_drying_room.jpg',
+    type: 'VISUAL',
+    publicationDate: '2022-09-16',
+    accessedAt: '2026-09-16',
+    notes: 'CC BY-SA 4.0. Verificado por lectura directa. Sala de secado real (ventilación, control de clima), distinta de la fotografía ya usada para "Cosecha" — resuelve la duplicación exacta de imagen entre "Cosecha" y "Manejo y poscosecha".'
+  },
+  {
+    id: 'visual-cannabis-sativa-1542',
+    scope: 'CANNABIS',
+    title: 'Ilustración botánica de Cannabis sativa, De Historia Stirpium (1542)',
+    authorOrInstitution: 'Heinrich Füllmaurer, para Leonhart Fuchs',
+    url: 'https://commons.wikimedia.org/wiki/File:Cannabis_sativa_1542.jpg',
+    type: 'VISUAL',
+    publicationDate: '1542',
+    accessedAt: '2026-09-16',
+    notes: 'Dominio público (autor fallecido hace más de 100 años). Verificado por lectura directa. Xilografía distinta de la lámina de Köhler (1887) ya usada en Fundamentos/Historia — aporta un punto histórico más temprano y visualmente distinto para la entrada "Historia de la planta".'
+  },
+
   // --- Fuentes de contenido: Loop 3B — base de datos de la Ficha Provincial (Fase 51, 2026-09-11) ---
   {
     id: 'oficial-georef-api-provincias',
@@ -793,6 +943,69 @@ export const sources = [
     publicationDate: '2016-01-01',
     accessedAt: '2026-09-15',
     notes: 'VERIFICADO por búsqueda directa (resumen y metadatos confirmados en ACS Publications y ResearchGate; DOI 10.1021/acs.jnatprod.5b00949) — texto completo no verificado línea por línea en esta sesión (paywall). Siete plantas (chemotipos I, II y III) analizadas por HPLC-DAD (8 cannabinoides) y GC-FID/GC-MS (28 terpenos) durante el crecimiento. Hallazgo clave: el quimiotipo (razón THCA/CBDA) queda definido desde etapas tempranas y se mantiene estable durante todo el crecimiento; las plantas de quimiotipos II y III tardan más en alcanzar el pico de producción de THCA, CBDA y monoterpenos que las de quimiotipo I.'
+  },
+
+  // --- Fuentes de contenido: cierre de P2-5 (MASTER_PACKAGE/63_AUDITORIA_GENERAL_ATLAS.md,
+  // 2026-09-16) — huecos identificados en 62_LOOP_08_MAPA_MUNDIAL.md §4: "Cuidado de la plántula
+  // post-emergencia", "Escarificación y semillas con dormición dura" y "Química de la maduración:
+  // tricomas y cannabinoides". No se tocó el hueco de "Cáñamo industrial y régimen de licencias"
+  // (marco legal): esa sección del mapa marca explícitamente alta sensibilidad legal y pide una
+  // pasada de verificación dedicada contra Boletín Oficial antes de redactar, que excede el
+  // alcance de esta tarea (P2-4/P2-5 únicamente).
+  {
+    id: 'agricultural-psu-extension-2026-damping-off',
+    scope: 'GENERAL',
+    title: 'Safeguard Your Seedlings from Damping-Off',
+    authorOrInstitution: 'Jennie Diehl Mazzone — Penn State Extension',
+    url: 'https://extension.psu.edu/safeguard-your-seedlings-from-damping-off',
+    type: 'AGRICULTURAL',
+    publicationDate: '2026-01-21',
+    accessedAt: '2026-09-16',
+    notes: 'VERIFICADO por lectura directa. Describe el damping-off (pre- y post-emergencia) como enfermedad fúngica/de mohos de agua (Rhizoctonia, Fusarium, Pythium, Phytophthora) favorecida por exceso de humedad, y las prácticas culturales que lo previenen. Evidencia general de fisiología/patología vegetal, no específica de Cannabis.'
+  },
+  {
+    id: 'agricultural-illinois-extension-2022-leggy-seedlings',
+    scope: 'GENERAL',
+    title: '¿Qué anda mal con mis plántulas? (troubleshooting de problemas de siembra)',
+    authorOrInstitution: 'Ken Johnson — University of Illinois Extension ("Good Growing")',
+    url: 'https://extension.illinois.edu/blogs/good-growing/2022-02-25-whats-wrong-my-seedlings-troubleshooting-seed-starting-problems',
+    type: 'AGRICULTURAL',
+    publicationDate: '2022-02-25',
+    accessedAt: '2026-09-16',
+    notes: 'VERIFICADO por lectura directa. Identifica la luz insuficiente como causa más común de plántulas "estiradas" (etioladas) — tallos alargados y débiles — y describe cómo prevenirlo (luz suplementaria, distancia de la fuente, densidad de siembra). Evidencia general, no específica de Cannabis.'
+  },
+  {
+    id: 'academica-ermis-2024-hardseededness-review',
+    scope: 'GENERAL',
+    title: 'Seeds of Resilience: Physiology and Mechanisms of Hardseededness',
+    authorOrInstitution: 'Ermis, S.; Özden, E.; Yıldırım, E. — IntechOpen',
+    url: 'https://www.intechopen.com/chapters/1173028',
+    type: 'ACADEMIC',
+    publicationDate: '2024',
+    accessedAt: '2026-09-16',
+    notes: 'VERIFICADO por lectura directa (capítulo revisado por pares, acceso abierto). Describe el mecanismo general de dormición física por impermeabilidad del tegumento al agua/oxígeno, y cómo la escarificación mecánica/química/térmica lo supera. Evidencia general de fisiología de semillas, no específica de Cannabis — DOI 10.5772/intechopen.1003847.'
+  },
+  {
+    id: 'cientifica-walsh-2021-minor-cannabinoids-biosynthesis',
+    scope: 'CANNABIS',
+    title: 'Minor Cannabinoids: Biosynthesis, Molecular Pharmacology and Potential Therapeutic Uses',
+    authorOrInstitution: 'Walsh, K. B.; McKinney, A. E.; Holmes, A. E. — Frontiers in Pharmacology, vol. 12, art. 777804',
+    url: 'https://doi.org/10.3389/fphar.2021.777804',
+    type: 'SCIENTIFIC',
+    publicationDate: '2021',
+    accessedAt: '2026-09-16',
+    notes: 'VERIFICADO por lectura directa (Frontiers, acceso abierto). Describe la ruta de biosíntesis de cannabinoides dentro del tricoma glandular: condensación de hexanoil-CoA con malonil-CoA vía tetraketide synthase, ciclación a ácido olivetólico, prenilación a CBGA, y conversión de CBGA a THCA/CBDA/CBCA por sus respectivas oxidociclasas (THCA-sintasa, CBDA-sintasa, CBCA-sintasa).'
+  },
+  {
+    id: 'cientifica-livingston-2019-trichome-morphology-maturation',
+    scope: 'CANNABIS',
+    title: 'Cannabis glandular trichomes alter morphology and metabolite content during flower maturation',
+    authorOrInstitution: 'Livingston, S. J.; Quilichini, T. D.; Booth, J. K.; Wong, D. C. J.; Rensing, K. H.; Laflamme-Yonkman, J.; Castellarin, S. D.; Bohlmann, J.; Page, J. E.; Samuels, A. L. — The Plant Journal, vol. 101, no. 1, pp. 37-56',
+    url: 'https://doi.org/10.1111/tpj.14516',
+    type: 'SCIENTIFIC',
+    publicationDate: '2019-10-12',
+    accessedAt: '2026-09-16',
+    notes: 'PARCIAL — autoría completa, revista y DOI verificados directamente vía Crossref; el texto completo no se pudo leer (acceso bloqueado por el editor, HTTP 403), se usa el resumen/hallazgos reportados en múltiples fuentes secundarias convergentes. Describe los tres tipos de tricoma glandular de Cannabis sativa (bulboso y capitado-sésil en hojas vegetativas; capitado-pedunculado asociado a la inflorescencia) y diferencias documentadas de contenido de cannabinoides/terpenos entre ellos (los capitado-pedunculados como principal reservorio).'
   },
 ];
 

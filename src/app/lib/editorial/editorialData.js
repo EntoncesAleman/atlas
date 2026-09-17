@@ -415,7 +415,7 @@ export const editorialEntries = [
       'Argentina tiene una diversidad climática amplia entre regiones —ya documentada en la dimensión geográfica del atlas—, lo que significa que el ritmo y la estacionalidad de esta etapa al aire libre no son iguales en todo el país. Esta entrada no afirma diferencias puntuales por provincia porque esa capa de contenido regional todavía no está desarrollada con fuente propia; lo que sí puede decirse en general es que el mismo proceso biológico se expresa con tiempos distintos según cuánto se aleje el ambiente real de un rango estable de agua, oxígeno y temperatura.'
     ],
     tags: ['fundamentos', 'germinación', 'agua'],
-    relatedEntryIds: ['formas-de-germinar', 'sustrato-y-drenaje', 'luz-y-fotoperiodo', 'cultivo-en-secuencia', 'historia-de-la-planta'],
+    relatedEntryIds: ['formas-de-germinar', 'sustrato-y-drenaje', 'luz-y-fotoperiodo', 'cultivo-en-secuencia', 'historia-de-la-planta', 'cuidado-de-la-plantula'],
     sourceIds: [
       'oficial-inase-vigor-semillas',
       'academica-unne-fisiologia-vegetal-germinacion',
@@ -480,6 +480,15 @@ export const editorialEntries = [
         paragraphs: [
           'Ningún método reemplaza la necesidad de que la semilla sea viable: un embrión no viable no va a germinar sea cual sea la forma en que se lo intente (ver la distinción entre viabilidad y vigor, en "Germinación y primera lectura del material"). Tampoco ningún método "fuerza" una germinación más rápida que la que permite la propia semilla — lo que cambia es la visibilidad del proceso y el punto en que existe riesgo de manipulación física, no la velocidad biológica de fondo.'
         ]
+      },
+      {
+        id: 'semillas-con-dormicion-fisica',
+        title: 'Cuando la testa misma es la barrera: dormición física y escarificación',
+        paragraphs: [
+          'Los tres métodos anteriores asumen una semilla sin dormición prolongada, que es el caso de la mayoría de los cultivares comerciales de Cannabis sativa (ver "Germinación y primera lectura del material"). Existe, sin embargo, un caso distinto y documentado en fisiología de semillas en general: la dormición física (o "dormición dura"), en la que el propio tegumento de la semilla es impermeable al agua o al oxígeno y bloquea la imbibición, sin que haya ningún problema con el embrión que contiene. Es un mecanismo descripto en múltiples especies vegetales —no específico de Cannabis— y más probable en semilla vieja, silvestre o de variedades de cáñamo de fibra con testa particularmente gruesa.',
+          'La escarificación es el conjunto de tratamientos que buscan superar esa barrera, agrupados en tres tipos según cómo actúan: mecánica (abrasión o corte superficial de la testa), química (uso de sustancias que ablandan o disuelven parte del tegumento) y térmica (exposición a calor o agua caliente que agrieta la cubierta). Los tres comparten el mismo objetivo fisiológico — permitir que el agua llegue al embrión — y ninguno "fuerza" la germinación de un embrión no viable: siguen aplicando las mismas tres condiciones (agua, oxígeno, temperatura) que el resto de esta entrada describe, solo que a una semilla cuya testa, sin ese tratamiento previo, no las dejaría llegar.',
+          'Esta entrada no prescribe un método de escarificación, un tiempo ni una concentración específica: son variables que dependen del grosor real de la testa en cada caso, y aplicar un tratamiento más agresivo del necesario puede dañar el embrión en vez de ayudarlo.'
+        ]
       }
     ],
     observations: [
@@ -524,7 +533,8 @@ export const editorialEntries = [
       'cientifica-bewley-1997-seed-germination-dormancy',
       'cientifica-latif-2025-hemp-priming-germination',
       'oficial-inase-vigor-semillas',
-      'academica-unne-fisiologia-vegetal-germinacion'
+      'academica-unne-fisiologia-vegetal-germinacion',
+      'academica-ermis-2024-hardseededness-review'
     ],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-13',
@@ -1158,13 +1168,98 @@ export const editorialEntries = [
       'Esta entrada no fija una duración ni una fecha de cosecha: describe el proceso observable, coherente con el resto del atlas, que no convierte información botánica general en un calendario prescriptivo.'
     ],
     tags: ['cosecha', 'maduración'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'marco-editorial', 'poscosecha'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'marco-editorial', 'poscosecha', 'quimica-de-la-maduracion'],
     sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle', 'cientifica-bernstein-2019-cannabis-npk-cannabinoide-canopia'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-15',
     metadata: {
       seoTitle: 'Cosecha y maduración — Atlas del Cultivo Argentino',
       seoDescription: 'Qué cambia visiblemente en la inflorescencia durante la maduración, por qué es un proceso gradual y no un punto fijo, y qué errores de lectura son frecuentes.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+
+  // --- Cierre de P2-5 (MASTER_PACKAGE/63_AUDITORIA_GENERAL_ATLAS.md, 2026-09-16) — hueco #3 de
+  // 62_LOOP_08_MAPA_MUNDIAL.md §4/§9: "Cosecha y maduración" describe el cambio de color de los
+  // tricomas pero no su causa química ni los tipos de tricoma; "Genética y tipos: sativa, indica,
+  // ruderalis" agregó una
+  // sección de quimiotipo (I/II/III) que explícitamente declara fuera de su alcance "la biosíntesis
+  // completa... ni el detalle de los tricomas glandulares". Esta entrada cubre exactamente eso, sin
+  // duplicar ninguna de las dos.
+  {
+    id: 'quimica-de-la-maduracion',
+    slug: 'quimica-de-la-maduracion',
+    categoryId: 'cosecha',
+    title: 'Química de la maduración: tricomas y cannabinoides',
+    summary: 'El cambio de color de los tricomas que describe "Cosecha y maduración" tiene detrás una estructura (tres tipos de tricoma glandular, con distinto contenido de cannabinoides) y una reacción química (una ruta compartida que convierte un mismo precursor en distintos cannabinoides) — ninguna de las dos alcanza a simple vista.',
+    intro: '"Cosecha y maduración" describe qué se ve: el cambio gradual de color de los tricomas. "Genética y tipos: sativa, indica, ruderalis" describe el quimiotipo: qué cannabinoide predomina en una planta, y aclara explícitamente que no desarrolla la biosíntesis ni los tipos de tricoma por exceder el alcance de una entrada sobre clasificación. Esta entrada llena ese espacio: qué es un tricoma glandular, qué tipos existen, y qué ruta química ocurre dentro de ellos para producir los cannabinoides.',
+    sections: [
+      {
+        id: 'tres-tipos-de-tricoma',
+        title: 'Tres tipos de tricoma glandular',
+        paragraphs: [
+          'Un tricoma es una estructura microscópica que se proyecta desde la superficie de la planta. Cannabis sativa desarrolla varios tipos, pero los glandulares —los que producen y almacenan cannabinoides y terpenos— se agrupan en tres formas reconocibles: el tricoma bulboso (una cabeza pequeña sobre un tallo corto) y el capitado-sésil (una cabeza globular más grande, apoyada directamente sobre la superficie, sin tallo visible) aparecen sobre todo en las hojas durante el desarrollo vegetativo; el capitado-pedunculado (una cabeza globular grande sobre un tallo multicelular más alto) se asocia principalmente a la inflorescencia y prolifera durante la floración.',
+          'Un estudio que analizó el desarrollo y la composición de estos tres tipos a lo largo de la maduración de la inflorescencia encontró diferencias reales entre ellos: el tricoma capitado-pedunculado es el principal reservorio de cannabinoides y terpenos, mientras que el capitado-sésil presenta niveles notoriamente más bajos. Es decir, no todo tricoma glandular contribuye por igual — la forma del tricoma es, en sí misma, un dato relevante sobre cuánto cannabinoide puede estar produciendo.'
+        ]
+      },
+      {
+        id: 'de-cbga-a-thca-cbda-cbca',
+        title: 'De CBGA a THCA, CBDA y CBCA: la ruta compartida',
+        paragraphs: [
+          'Dentro del tricoma glandular, la biosíntesis de cannabinoides sigue una ruta con un punto de partida común. Primero se forma el ácido olivetólico a partir de una condensación de precursores metabólicos; después, una prenilación (la inserción de un grupo químico proveniente de la vía de los isoprenoides) lo convierte en ácido cannabigerólico (CBGA) — el precursor compartido de los principales cannabinoides ácidos.',
+          'A partir de ahí, tres enzimas distintas —la THCA-sintasa, la CBDA-sintasa y la CBCA-sintasa— compiten por el mismo CBGA y lo convierten, cada una, en un cannabinoide distinto: ácido tetrahidrocannabinólico (THCA), ácido cannabidiólico (CBDA) o ácido cannabicroménico (CBCA). Cuál de esas tres enzimas predomina en una planta determinada es, precisamente, lo que "Genética y tipos: sativa, indica, ruderalis" describe como quimiotipo (I, II o III) — una variación genética que determina qué enzima está mayoritariamente presente, no un efecto de la maduración en sí.'
+        ]
+      },
+      {
+        id: 'que-no-reemplaza-esta-entrada',
+        title: 'Qué no reemplaza esta entrada',
+        paragraphs: [
+          'Conocer esta ruta química no da un atajo para "calcular" el contenido de cannabinoides de una planta a simple vista: la proporción entre cannabinoides (el quimiotipo) queda determinada genéticamente desde etapas tempranas del desarrollo, mientras que lo que cambia visiblemente durante la maduración —el color y tamaño del tricoma, que describe "Cosecha y maduración"— refleja la actividad y el desarrollo estructural del tricoma, no un cambio en qué cannabinoide predomina. Son dos preguntas distintas: cuál cannabinoide predomina (genético, quimiotipo) y cuánto se desarrolló el tricoma que lo produce (estructural, maduración). Esta entrada no propone un método visual para estimar concentración exacta de cannabinoides — eso requiere análisis de laboratorio.'
+        ]
+      }
+    ],
+    observations: [
+      'Distinguir a simple vista un tricoma capitado-pedunculado (sobre la inflorescencia) de uno capitado-sésil (sobre una hoja) es, con magnificación adecuada, una observación directa de forma y ubicación. Concluir de esa sola observación una concentración exacta de cannabinoides no lo es — eso es una medición de laboratorio, no una lectura visual.',
+      'Que dos plantas tengan el mismo quimiotipo (misma proporción THCA/CBDA) no implica que tengan la misma cantidad total de cannabinoides ni el mismo grado de desarrollo de tricomas — son dos variables independientes entre sí.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'Presencia de tricomas bulbosos y capitado-sésiles sobre hojas desde etapas vegetativas tempranas, y proliferación creciente de tricomas capitado-pedunculados sobre la inflorescencia a medida que avanza la floración.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Diferenciar a ojo desnudo (sin magnificación) un tricoma capitado-sésil de uno capitado-pedunculado es poco confiable por su tamaño microscópico — la distinción documentada en la literatura se hizo con microscopía, no a simple vista.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Confundir el quimiotipo (qué cannabinoide predomina, determinado genéticamente) con la maduración (cuánto se desarrolló el tricoma que lo produce, un proceso estructural) — son dos fenómenos independientes que esta entrada separa a propósito.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Asumir que todos los tricomas glandulares de una planta contienen la misma cantidad de cannabinoides, cuando la evidencia documenta diferencias reales entre tipos (el capitado-pedunculado como principal reservorio, el capitado-sésil con niveles notoriamente más bajos).'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'Tratar una observación a ojo desnudo, sin magnificación, como si tuviera la misma precisión que la microscopía usada en los estudios que describen estos tres tipos de tricoma.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['cosecha', 'maduración', 'genética'],
+    relatedEntryIds: ['cosecha-y-maduracion', 'genetica-y-tipos'],
+    sourceIds: [
+      'cientifica-walsh-2021-minor-cannabinoids-biosynthesis',
+      'cientifica-livingston-2019-trichome-morphology-maturation',
+      'cientifica-vergara-2016-cannabis-quimiotipo-evolucion-cultivo'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-16',
+    metadata: {
+      seoTitle: 'Química de la maduración: tricomas y cannabinoides — Atlas del Cultivo Argentino',
+      seoDescription: 'Los tres tipos de tricoma glandular de Cannabis sativa y la ruta de biosíntesis que convierte CBGA en THCA, CBDA y CBCA dentro de ellos.',
       canonical: null,
       ogImage: null
     }
@@ -1431,7 +1526,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['historia', 'genética', 'taxonomía', 'fotoperiodo'],
-    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo', 'cosecha-y-maduracion'],
+    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'quimica-de-la-maduracion'],
     sourceIds: [
       'cientifica-pollio-2016-nombre-cannabis-taxonomia',
       'cientifica-garner-allard-1920-photoperiodism-discovery',
@@ -1604,7 +1699,7 @@ export const editorialEntries = [
       'La Ficha Provincial del Atlas refleja la evidencia disponible por jurisdicción. Chubut cuenta con evidencia directa de nivel A de cultivo real de Cannabis sativa al aire libre (CONICET-CENPAT, cultivares Malvina y Pachamama, verano 2022-2023) y Jujuy cuenta con evidencia directa de nivel A de producción industrial bajo invernadero automatizado (Cannava S.E., habilitada por ANMAT) — sin que ninguna de las dos evidencias se generalice a otras provincias. Misiones tuvo una producción real documentada (MisioPharma/Biofábrica) que ya no está activa. Para el resto de las provincias, la información disponible combina datos ambientales verificables con principios fisiológicos generales, sin evidencia de campo local directa todavía.'
     ],
     tags: ['cultivo', 'ciclo', 'fotoperiodo', 'ambiente'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'poscosecha'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'poscosecha', 'cuidado-de-la-plantula'],
     sourceIds: [
       'cientifica-ahrens-2023-photoperiod-flowering-indoor',
       'cientifica-hesami-2023-cannabis-life-cycle',
@@ -1616,6 +1711,101 @@ export const editorialEntries = [
     metadata: {
       seoTitle: 'Ciclo de vida y condiciones de referencia — Atlas del Cultivo Argentino',
       seoDescription: 'Las etapas fisiológicas de Cannabis sativa, sus rangos de referencia de temperatura, humedad y fotoperiodo, y por qué esos rangos no son valores universales.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+
+  // --- Cierre de P2-5 (MASTER_PACKAGE/63_AUDITORIA_GENERAL_ATLAS.md, 2026-09-16) — hueco #1 de
+  // 62_LOOP_08_MAPA_MUNDIAL.md §4: el tramo entre "aparecen las primeras hojas verdaderas" (fin de
+  // `germinacion`) y la etapa "Plántula" con rangos de referencia (inicio de la tabla de
+  // `ciclo-de-vida`) no tenía narrativa propia. Fuentes GENERAL (extensión agrícola universitaria,
+  // no específicas de Cannabis) — igual que el resto del atlas hace explícito cuando la evidencia
+  // es de fisiología general y no de la especie.
+  {
+    id: 'cuidado-de-la-plantula',
+    slug: 'cuidado-de-la-plantula',
+    categoryId: 'fundamentos',
+    title: 'Cuidado de la plántula: el tramo entre la germinación y el vegetativo',
+    summary: 'Entre que la radícula emerge y la planta entra de lleno en desarrollo vegetativo hay un tramo corto y frágil, con dos riesgos bien documentados en fisiología general de plántulas: el damping-off y la etiolación por luz insuficiente.',
+    intro: '"Germinación y primera lectura del material" termina en el momento en que aparecen las primeras hojas verdaderas. "Ciclo de vida y condiciones de referencia" retoma la secuencia ya en la etapa "Plántula", con sus rangos de referencia de temperatura, humedad y fotoperiodo. Esta entrada llena ese tramo intermedio: qué hace especialmente frágil a una plántula recién emergida, y cuáles son los dos riesgos con mejor evidencia documentada en esta etapa — ninguno específico de Cannabis, ambos observables en cualquier plántula.',
+    sections: [
+      {
+        id: 'por-que-esta-entrada-existe',
+        title: 'Por qué esta entrada existe',
+        paragraphs: [
+          'Ni "Germinación y primera lectura del material" ni "Ciclo de vida y condiciones de referencia" describen en detalle qué ocurre entre esos dos puntos. Es un tramo real, con entidad fisiológica propia: la plántula ya dejó de depender por completo de las reservas de la semilla, pero todavía no desarrolló el sistema de raíces ni la estructura foliar que la sostienen en la etapa vegetativa plena. Esa transición es, precisamente, cuando se documenta con más frecuencia el colapso de plántulas por causas evitables.',
+          'Esta entrada describe dos de esas causas con evidencia general de fisiología y patología vegetal (no específica de Cannabis sativa) — coherente con cómo el atlas ya trata otras entradas de manejo (ver "Suelo y agua", "Fertilización") cuando la evidencia disponible es de la fisiología vegetal en general, aplicada por analogía, y no un estudio de campo de esta especie en particular.'
+        ]
+      },
+      {
+        id: 'damping-off',
+        title: 'Damping-off: el colapso de la plántula recién emergida',
+        paragraphs: [
+          'El "damping-off" (o "mal de almácigo") es el nombre general para el colapso de plántulas causado por hongos y mohos de agua del suelo — géneros como Rhizoctonia, Fusarium, Pythium y Phytophthora son los más documentados. Se distingue una forma pre-emergencia, que destruye la radícula y el hipocótilo antes de que la plántula asome sobre el sustrato, de una forma post-emergencia, que se manifiesta como pudrición del tallo justo en la línea del sustrato o por debajo, y que suele terminar en el volcado y la muerte de la plántula ya emergida.',
+          'La condición ambiental más asociada a esta enfermedad es el exceso de humedad: un sustrato saturado o mal drenado, combinado con humedad relativa alta, favorece a estos patógenos. Esto conecta directamente con lo que "Sustrato, agua y drenaje" ya describe sobre la doble función del sustrato (retener agua y alojar aire): un sustrato que no drena no solo limita el oxígeno de la raíz, también crea las condiciones que estos patógenos necesitan.',
+          'Las prácticas generales documentadas para reducirlo incluyen partir de semilla y sustrato sanos, evitar el riego excesivo, favorecer la circulación de aire y evitar el hacinamiento de plántulas — ninguna es una receta cerrada ni específica de Cannabis, son principios generales de manejo de almácigo.'
+        ]
+      },
+      {
+        id: 'etiolacion',
+        title: 'Etiolación: el tallo que se estira buscando luz',
+        paragraphs: [
+          'La causa más frecuentemente documentada de plántulas "estiradas" (tallos alargados, delgados y débiles, con hojas pequeñas y muy espaciadas) es la luz insuficiente en intensidad, duración o cercanía a la fuente. Es un fenómeno general de fisiología vegetal, conocido como etiolación: en ausencia de suficiente luz, la planta destina energía a alargar el tallo en busca de una fuente de luz mejor, a costa del desarrollo de hojas y raíz.',
+          'Las medidas generales documentadas para prevenirlo o corregirlo son acercar la fuente de luz a una distancia adecuada, sostener una duración de luz suficiente, y evitar que las plántulas compitan entre sí por luz cuando están sembradas con demasiada densidad.'
+        ]
+      },
+      {
+        id: 'que-no-cambia-en-este-tramo',
+        title: 'Qué no cambia respecto a la germinación',
+        paragraphs: [
+          'Las tres condiciones que ya describe "Germinación y primera lectura del material" —agua, oxígeno y temperatura— siguen importando en este tramo; lo que se agrega es que ahora la luz pasa a ser una variable activa (la plántula ya fotosintetiza) y que el riesgo de patógenos de sustrato sigue vigente mientras el tallo permanece cerca de la línea del suelo. Esta entrada no fija valores de luz, riego ni densidad de siembra: describe los dos riesgos mejor documentados de esta etapa para que puedan reconocerse, no para prescribir un manejo único.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver un tallo alargado, delgado y de color pálido es una observación directa. Concluir sin más información que la planta quedó "dañada para siempre" es una interpretación — la etiolación es, ante todo, una respuesta a la falta de luz, y corregir la causa suele mejorar el desarrollo posterior, aunque esta entrada no cuantifica cuánto ni en qué plazo.',
+      'Ver que una plántula se dobla y colapsa en la línea del sustrato es una observación. Atribuirlo de entrada a "falta de nutrientes" sin considerar el patrón típico del damping-off (pudrición justo en esa línea, humedad excesiva reciente) es una interpretación apresurada que puede llevar a una corrección equivocada.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'Tallo corto y firme, hojas verdaderas de tamaño creciente y bien separadas entre nudos, color verde uniforme — desarrollo típico de una plántula con luz y humedad dentro de un rango razonable.'
+      },
+      {
+        level: 'ATTENTION',
+        description: 'Tallo notablemente alargado y delgado en relación al tamaño de las hojas (posible etiolación por luz insuficiente), o pudrición/oscurecimiento del tallo justo en la línea del sustrato con volcado de la plántula (patrón típico de damping-off post-emergencia).'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Un entrenudo algo más largo que el anterior, de forma aislada y sin que el resto de la plántula muestre signos de debilidad, no alcanza por sí solo para concluir etiolación — la variabilidad individual entre plántulas del mismo lote es real.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Atribuir el volcado de una plántula a una causa nutricional sin considerar el patrón típico del damping-off (pudrición en la línea del sustrato, asociada a exceso de humedad reciente).'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'No registrar la distancia y duración de la fuente de luz al notar tallos alargados, lo que dificulta confirmar la etiolación como causa más probable frente a otras posibles.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Responder a una plántula estirada agregando más riego o fertilizante en vez de revisar primero la luz disponible, que es la causa con mejor evidencia documentada para este síntoma.'
+      }
+    ],
+    environmentContext: [
+      'La evidencia de esta entrada proviene de extensión agrícola general (no específica de Cannabis sativa) — el mismo criterio de transparencia que ya aplica el atlas en "Suelo y agua" y "Fertilización" cuando la evidencia disponible es de fisiología vegetal general aplicada por analogía. No existe todavía, para esta etapa puntual, una fuente con evidencia directa y verificada de Cannabis sativa en Argentina.'
+    ],
+    tags: ['fundamentos', 'germinación', 'sanidad', 'riesgo', 'luz'],
+    relatedEntryIds: ['germinacion', 'ciclo-de-vida', 'lectura-de-senales', 'sustrato-y-drenaje'],
+    sourceIds: ['agricultural-psu-extension-2026-damping-off', 'agricultural-illinois-extension-2022-leggy-seedlings'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-16',
+    metadata: {
+      seoTitle: 'Cuidado de la plántula post-emergencia — Atlas del Cultivo Argentino',
+      seoDescription: 'El tramo entre la germinación y la etapa vegetativa: damping-off y etiolación por luz insuficiente, los dos riesgos mejor documentados de esta etapa.',
       canonical: null,
       ogImage: null
     }

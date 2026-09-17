@@ -109,16 +109,16 @@ export default function ChatbotPage() {
         <nav className="atlas-breadcrumb" aria-label="Breadcrumb">
           <Link className="crumb" href="/">Inicio</Link>
           <span className="crumb-sep">/</span>
-          <span className="crumb-current">Chatbot del Atlas</span>
+          <span className="crumb-current">Buscador del Atlas</span>
         </nav>
       </section>
 
       <section className="atlas-category-hero">
         <div>
           <span className="section-label dark-label">Función autenticada</span>
-          <h1>Chatbot del Atlas</h1>
+          <h1>Buscador del Atlas</h1>
           <p className="atlas-lede">
-            Preguntá sobre el contenido del Atlas y consultá información relacionada con tu cultivo.
+            Buscá contenido del Atlas y consultá información relacionada con tu cultivo.
           </p>
         </div>
       </section>
@@ -132,7 +132,7 @@ export default function ChatbotPage() {
           <div className="atlas-entry-section chatbot-gate">
             <h2>Esta función está disponible para usuarios con cuenta.</h2>
             <p className="atlas-section-note">
-              Iniciá sesión o creá una cuenta para usar el Chatbot del Atlas — el mismo acceso que
+              Iniciá sesión o creá una cuenta para usar el Buscador del Atlas — el mismo acceso que
               ya usás en Mi Cultivo, desde ahí.
             </p>
             <div className="mi-cultivo-form-actions">
@@ -236,7 +236,7 @@ export default function ChatbotPage() {
             </form>
 
             <p className="atlas-section-note chatbot-status-note">
-              El Chatbot del Atlas está en desarrollo: por ahora te muestra información relacionada
+              El Buscador del Atlas está en desarrollo: por ahora te muestra información relacionada
               del Atlas, todavía no arma una respuesta conversacional.
             </p>
           </div>

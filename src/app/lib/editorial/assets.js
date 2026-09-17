@@ -1,8 +1,13 @@
 // Registro estructurado de assets visuales.
-// Deriva de MASTER_PACKAGE/ASSET_REGISTRY.md — no se buscaron assets nuevos en esta fase,
-// no se reemplazó ningún archivo de Fase 6. Cada asset referencia su fuente real vía sourceId
+// Deriva de MASTER_PACKAGE/ASSET_REGISTRY.md. Cada asset referencia su fuente real vía sourceId
 // (ver ./sources.js) salvo los assets internos del proyecto (license: 'Interno').
 // Estados permitidos: ACTIVE, REVIEW, ARCHIVED, PENDING.
+//
+// Ronda 2026-09-16 (mejora del sistema visual): se reemplazaron todas las ilustraciones generadas
+// con IA que quedaban activas (Fundamentos, Suelo y agua, Fertilización) por fotografías/diagramas
+// reales verificados, y se corrigieron dos casos de especie incorrecta (Suelo y agua usaba suelo
+// genérico sin planta; Luz y clima usaba un ciclamen, no Cannabis). Ningún archivo se borró: los
+// assets reemplazados quedan `ARCHIVED` con su registro intacto, nunca reescritos ni eliminados.
 
 export const assets = [
   {
@@ -18,13 +23,13 @@ export const assets = [
     alt: 'Lámina botánica histórica de Cannabis sativa (Köhler, 1887, dominio público) mostrando planta macho y hembra con detalle de flores, polen y semillas.',
     credit: 'W. Müller, Köhler\'s Medizinal-Pflanzen (1887) — dominio público',
     status: 'ACTIVE',
-    knownIssues: 'Ya no es la portada de "Crecimiento" (Loop 8B) — se liberó el categoryId para que la categoría use una ilustración propia del proyecto en su lugar. Sigue activo como fallback/atribuible si se necesita.'
+    knownIssues: 'Ya no es la portada de "Crecimiento" (Loop 8B) — se liberó el categoryId para que la categoría use una fotografía real en su lugar (ronda 2026-09-16). Sigue activo como fallback/atribuible si se necesita.'
   },
   {
     id: 'asset-fundamentos-ciclo-ia',
     file: '/atlas/categories/real/category-fundamentos-ciclo-ia.jpg',
     type: 'illustration',
-    categoryId: 'fundamentos',
+    categoryId: null,
     entryId: null,
     sourceId: null,
     author: 'Proyecto Atlas del Cultivo Argentino (ilustración generada con IA — Gemini)',
@@ -32,59 +37,164 @@ export const assets = [
     sourceUrl: null,
     alt: 'Ilustración esquemática del ciclo de vida de Cannabis sativa: semilla, brote, etapa vegetativa, etapa de floración y frasco de vidrio lleno, unidos por una línea de tiempo punteada.',
     credit: null,
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-16: reemplazado como portada de "Crecimiento" por `asset-fundamentos-vegetative` (fotografía real, Cannabis en crecimiento vegetativo, dominio público) — regla vigente de esta ronda: ninguna imagen generada por IA queda activa en producción. Archivo conservado en disco, no borrado.'
+  },
+  {
+    id: 'asset-fundamentos-vegetative',
+    file: '/atlas/categories/real/category-fundamentos-vegetative-real.jpg',
+    type: 'photo',
+    categoryId: 'fundamentos',
+    entryId: null,
+    sourceId: 'visual-cannabis-vegetative-growth',
+    author: 'J. Patrick Bedell',
+    license: 'Dominio público',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis-vegetative-growth-00003.jpg',
+    alt: 'Fotografía documental real de una planta de Cannabis sativa en etapa de crecimiento vegetativo, identificada por su propio autor como tal (dominio público).',
+    credit: 'J. Patrick Bedell — dominio público, vía Wikimedia Commons',
     status: 'ACTIVE',
-    knownIssues: 'Ilustración original generada con IA por el equipo del proyecto (no es una lámina histórica ni una fotografía documental) — coherente en estilo con la identidad visual de "Mi Cultivo" (tarjeta "De semilla al frasco"). No lleva atribución externa porque no reproduce ninguna fuente real.'
+    knownIssues: 'Nueva portada de "Crecimiento" (2026-09-16), reemplaza una ilustración generada con IA.'
+  },
+  {
+    id: 'asset-ciclo-de-vida-untrained',
+    file: '/atlas/categories/real/entry-ciclo-de-vida-real.jpg',
+    type: 'photo',
+    categoryId: null,
+    entryId: 'ciclo-de-vida',
+    sourceId: 'visual-untrained-cannabis-vegetative',
+    author: 'Plantlady223',
+    license: 'CC BY-SA 4.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Untrained_cannabis_plant_in_the_vegetative_stage.jpg',
+    alt: 'Planta de Cannabis sativa en etapa vegetativa sin conducir, mostrando la forma natural de "árbol de Navidad" típica de la especie (CC BY-SA 4.0).',
+    credit: 'Plantlady223 — CC BY-SA 4.0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Asset nuevo (2026-09-16) — la entrada "Ciclo de vida y condiciones de referencia" no tenía imagen propia hasta esta ronda.'
+  },
+  {
+    id: 'asset-cuidado-de-la-plantula-seedling',
+    file: '/atlas/categories/real/entry-cuidado-de-la-plantula-real.jpg',
+    type: 'photo',
+    categoryId: null,
+    entryId: 'cuidado-de-la-plantula',
+    sourceId: 'visual-cannabis-seedling-seven-days',
+    author: 'Trav1085',
+    license: 'CC BY-SA 3.0 / GFDL 1.2+',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_seedling_-_seven_days.jpg',
+    alt: 'Plántula de cannabis siete días después de germinar, con tres pares de hojas visibles (CC BY-SA 3.0).',
+    credit: 'Trav1085 — CC BY-SA 3.0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Asset nuevo (2026-09-16) para la entrada "Cuidado de la plántula: el tramo entre la germinación y el vegetativo", creada en el cierre de P2-5.'
   },
   {
     id: 'asset-germinacion-diagram',
     file: '/atlas/categories/real/entry-germinacion-real.svg',
     type: 'diagram',
-    categoryId: 'germinacion',
+    categoryId: null,
     entryId: 'germinacion',
     sourceId: 'visual-germination-diagram',
     author: 'Begoon (derivado de Kat1992)',
     license: 'CC BY-SA 3.0',
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Germination-en.svg',
-    // Alt revisado en Fase 7B1 (piloto Germinación): antes mezclaba descripción y atribución.
-    // La atribución ya vive en `credit` — el alt queda puramente descriptivo de lo visible.
     alt: 'Diagrama comparativo de germinación epigea e hipogea: muestra la semilla, la radícula, el hipocótilo y la emergencia de las hojas cotiledonares por encima o por debajo de la superficie del sustrato según el tipo de germinación.',
     credit: 'Begoon, derivado de Kat1992 — CC BY-SA 3.0, vía Wikimedia Commons',
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    knownIssues: 'Ya no es la portada de la categoría "Germinación" (2026-09-16) — se liberó el categoryId para que la categoría use una fotografía real distinta (`asset-germinacion-hanfsamen`). Sigue activo como imagen específica de esta entrada, donde el diagrama técnico es directamente pertinente.'
+  },
+  {
+    id: 'asset-germinacion-hanfsamen',
+    file: '/atlas/categories/real/category-germinacion-real.jpg',
+    type: 'photo',
+    categoryId: 'germinacion',
+    entryId: null,
+    sourceId: 'visual-keimender-hanfsamen',
+    author: 'Vschlothauer',
+    license: 'CC0 1.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Keimender_Hanfsamen_-_Germinating_hemp_seed_01.jpg',
+    alt: 'Semilla de cáñamo germinando en sustrato húmedo, con la testa abriéndose y el hipocótilo arqueado emergiendo (CC0, dominio público).',
+    credit: 'Vschlothauer — CC0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Nueva portada de la categoría "Germinación" (2026-09-16) — antes la categoría compartía el diagrama de la entrada como portada; ahora tienen imágenes propias y distintas.'
+  },
+  {
+    id: 'asset-formas-de-germinar-seedling',
+    file: '/atlas/categories/real/entry-formas-de-germinar-real.jpg',
+    type: 'photo',
+    categoryId: null,
+    entryId: 'formas-de-germinar',
+    sourceId: 'visual-c-sativa-seedling',
+    author: 'Avriette',
+    license: 'CC BY-SA 3.0 / GFDL 1.2+',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:C_sativa_seedling.jpg',
+    alt: 'Plántula joven de Cannabis sativa con cotiledones y primera hoja verdadera, resultado de una germinación exitosa (CC BY-SA 3.0).',
+    credit: 'Avriette — CC BY-SA 3.0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Asset nuevo (2026-09-16) — la entrada "Formas de germinar" no tenía imagen propia hasta esta ronda.'
   },
   {
     id: 'asset-suelo-agua-profile',
     file: '/atlas/categories/real/category-suelo-y-agua-real.jpg',
     type: 'photo',
-    categoryId: 'suelo-y-agua',
-    entryId: 'sustrato-y-drenaje',
+    categoryId: null,
+    entryId: null,
     sourceId: 'visual-soil-profile',
     author: 'Mclund',
     license: 'CC BY 4.0',
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Soil_profile_0-125cm.jpg',
     alt: 'Fotografía documental de un perfil de suelo excavado hasta 1,25 m de profundidad, con marcadores señalando los distintos horizontes (Mclund, CC BY 4.0).',
     credit: 'Mclund — CC BY 4.0, vía Wikimedia Commons',
-    status: 'ACTIVE'
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-16: reemplazado como portada de "Suelo y agua" por `asset-suelo-agua-roots-clay` — es un perfil de suelo real pero sin ninguna planta, y ahora existe una alternativa real que muestra Cannabis sativa específicamente. Archivo conservado en disco, no borrado.'
+  },
+  {
+    id: 'asset-suelo-agua-roots-clay',
+    file: '/atlas/categories/real/category-suelo-y-agua-roots-real.jpg',
+    type: 'photo',
+    categoryId: 'suelo-y-agua',
+    entryId: null,
+    sourceId: 'visual-stem-root-clay',
+    author: 'Beeblebrox',
+    license: 'CC BY-SA 4.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Stem_root_and_clay.jpg',
+    alt: 'Tallo y raíces de una planta de cannabis junto al volumen de sustrato de arcilla expandida usado para cultivarla en un sistema hidropónico (CC BY-SA 4.0).',
+    credit: 'Beeblebrox — CC BY-SA 4.0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Nueva portada de "Suelo y agua" (2026-09-16), reemplaza una fotografía de suelo genérico sin planta.'
   },
   {
     id: 'asset-sustrato-raices-ia',
     file: '/atlas/categories/real/entry-sustrato-raices-ia.jpg',
     type: 'illustration',
     categoryId: null,
-    entryId: 'sustrato-y-drenaje',
+    entryId: null,
     sourceId: null,
     author: 'Proyecto Atlas del Cultivo Argentino (ilustración generada con IA — Gemini)',
     license: 'Interno',
     sourceUrl: null,
     alt: 'Ilustración esquemática del sistema de raíces de Cannabis sativa mostrando raíces secundarias, pelos radicales y una sección transversal y longitudinal de la raíz.',
     credit: null,
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-16: nunca llegó a renderizarse en producción (quedaba en segunda posición del array para `entryId: sustrato-y-drenaje`, y el componente solo toma el primer asset), pero se archiva formalmente para que ninguna imagen de IA quede en el registro como candidata activa. El archivo fuente incluye un pie de imagen decorativo que imita una lámina de Köhler de 1887 — no es una atribución real, no debe citarse como tal. Reemplazado por `asset-sustrato-y-drenaje-radix` (diagrama real de raíz de Cannabis).'
+  },
+  {
+    id: 'asset-sustrato-y-drenaje-radix',
+    file: '/atlas/categories/real/entry-sustrato-y-drenaje-real.png',
+    type: 'diagram',
+    categoryId: null,
+    entryId: 'sustrato-y-drenaje',
+    sourceId: 'visual-cannabis-sativa-radix-profile',
+    author: 'Prof. Dr. Lore Kutschera',
+    license: 'CC BY-SA 2.5',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_sativa_radix_profile.png',
+    alt: 'Diagrama documental real del sistema de raíces de una planta de Cannabis sativa de 180 cm, expuesta en un campo de cáñamo, con los horizontes de suelo marcados (CC BY-SA 2.5).',
+    credit: 'Prof. Dr. Lore Kutschera — CC BY-SA 2.5, vía Wikimedia Commons',
     status: 'ACTIVE',
-    knownIssues: 'Ilustración original generada con IA por el equipo del proyecto. El archivo fuente incluye un pie de imagen decorativo ("Tabula XXVII... Köhler, Plantas Medicinales") que imita el estilo de una lámina botánica histórica — es una elección estética del autor, no una atribución real: la ilustración NO proviene de Köhler ni de ninguna publicación de 1887, y no debe citarse como tal. El `alt` y el `credit` de este registro son la descripción/atribución válidas.'
+    knownIssues: 'Nuevo asset de entrada (2026-09-16), reemplaza una ilustración generada con IA que nunca llegó a renderizarse (ver `asset-sustrato-raices-ia`). Es un diagrama ancho con datos hasta los bordes (horizontes de suelo a la izquierda) — se usa solo como imagen de entrada (contenedor más ancho), nunca como portada de categoría, para no repetir el problema de recorte ya documentado con el diagrama de fotoperiodismo.'
   },
   {
     id: 'asset-luz-clima-cover',
     file: '/atlas/categories/real/category-luz-y-clima-cover-real.jpg',
     type: 'photo',
-    categoryId: 'luz-y-clima',
+    categoryId: null,
     entryId: null,
     sourceId: 'visual-plant-under-phytolamp',
     author: 'Alla Varta',
@@ -92,13 +202,29 @@ export const assets = [
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Plant_under_a_phytolamp.jpg',
     alt: 'Fotografía documental de flores de ciclamen iluminadas por una lámpara de cultivo artificial de tono violeta, en un ambiente interior oscuro (CC BY 4.0).',
     credit: 'Alla Varta — CC BY 4.0, vía Wikimedia Commons',
-    status: 'ACTIVE'
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-16: reemplazado como portada de "Luz y clima" por `asset-luz-clima-sunlight` — es una fotografía real y bien licenciada, pero de una especie distinta (ciclamen, no Cannabis); ahora existe una alternativa real de Cannabis igual de legible. Archivo conservado en disco, no borrado.'
+  },
+  {
+    id: 'asset-luz-clima-sunlight',
+    file: '/atlas/categories/real/category-luz-y-clima-sunlight-real.jpg',
+    type: 'photo',
+    categoryId: 'luz-y-clima',
+    entryId: null,
+    sourceId: 'visual-cannabis-sunlight-closeup',
+    author: 'Soyamol17',
+    license: 'CC0 1.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Close-Up_of_Cannabis_Plant_in_Sunlight.jpg',
+    alt: 'Primer plano de una planta de Cannabis sativa a contraluz solar, mostrando la inflorescencia y el follaje característico (CC0, dominio público).',
+    credit: 'Soyamol17 — CC0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Nueva portada de "Luz y clima" (2026-09-16), reemplaza una fotografía de una especie distinta (ciclamen).'
   },
   {
     id: 'asset-luz-clima-photoperiodism',
     file: '/atlas/categories/real/category-luz-y-clima-real.jpg',
     type: 'diagram',
-    categoryId: 'luz-y-clima',
+    categoryId: null,
     entryId: 'luz-y-fotoperiodo',
     sourceId: 'visual-photoperiodism-diagram',
     author: 'Giovnnni pastrami',
@@ -106,7 +232,8 @@ export const assets = [
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Photoperiodism_in_plants.jpg',
     alt: 'Diagrama científico real del ciclo del fitocromo (Pr/Pfr) que explica cómo el fotoperiodo activa la floración en plantas de día largo y de día corto (CC BY-SA 4.0).',
     credit: 'Giovnnni pastrami — CC BY-SA 4.0, vía Wikimedia Commons',
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    knownIssues: 'Sin cambios en esta ronda (2026-09-16) — se evaluó y se mantiene: sigue siendo la imagen más precisa disponible para el mecanismo que describe esta entrada.'
   },
   {
     id: 'asset-sanidad-spider-mite',
@@ -120,21 +247,38 @@ export const assets = [
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Red_spider_mite_(Tetranychus_urticae).jpg',
     alt: 'Fotografía macro documental de arañuela roja (Tetranychus urticae), una plaga común del cultivo (Aleksey Gnilenkov, CC BY 2.0).',
     credit: 'Aleksey Gnilenkov — CC BY 2.0, vía Wikimedia Commons',
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    knownIssues: 'Sin cambios en esta ronda (2026-09-16) — evaluado y confirmado como la mejor opción real disponible; no se encontró ningún candidato que lo superara.'
   },
   {
     id: 'asset-cultivo-hemp-field',
     file: '/atlas/categories/real/category-cultivo-real.jpg',
     type: 'photo',
     categoryId: 'cultivo',
-    entryId: 'cultivo-en-secuencia',
+    entryId: null,
     sourceId: 'visual-industrial-hemp-field',
     author: 'Aleks',
     license: 'GFDL 1.2+ / CC BY-SA 3.0 y compatibles',
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Industrialhemp.jpg',
     alt: 'Fotografía documental de un cultivo exterior de cáñamo industrial (Cannabis sativa) en Francia (Aleks, CC BY-SA/GFDL).',
     credit: 'Aleks — CC BY-SA 3.0, vía Wikimedia Commons',
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    knownIssues: 'Sin cambios como portada de categoría (2026-09-16): ya muestra un sistema de cultivo real, no una macro de flor — se evaluó explícitamente y se decidió no reemplazar. Se liberó el entryId (antes también servía a "cultivo-en-secuencia") para que esa entrada tenga una imagen propia y distinta (`asset-cultivo-en-secuencia-hoophouse`).'
+  },
+  {
+    id: 'asset-cultivo-en-secuencia-hoophouse',
+    file: '/atlas/categories/real/entry-cultivo-en-secuencia-real.jpg',
+    type: 'photo',
+    categoryId: null,
+    entryId: 'cultivo-en-secuencia',
+    sourceId: 'visual-cannabis-hoop-house',
+    author: 'Brian Shamblen',
+    license: 'CC BY 2.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_plants_in_hoop_house.jpg',
+    alt: 'Cultivo de cannabis bajo un invernadero de túnel (hoop house), un sistema de cultivo estructurado real (CC BY 2.0).',
+    credit: 'Brian Shamblen — CC BY 2.0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Asset nuevo (2026-09-16) — antes esta entrada reutilizaba exactamente la misma fotografía que la portada de la categoría; ahora tienen imágenes distintas, ambas de sistemas de cultivo reales.'
   },
   {
     id: 'asset-cosecha-drying',
@@ -149,7 +293,37 @@ export const assets = [
     alt: 'Fotografía documental de inflorescencias de cannabis colgadas para su secado tras la cosecha (CC BY 2.0).',
     credit: 'Cannabis Pictures — CC BY 2.0, vía Wikimedia Commons',
     status: 'ACTIVE',
-    knownIssues: 'Reserva estética documentada: tono más cálido/atractivo que el resto de la serie, en tensión con la regla anti-dispensario. Ver ASSET_REGISTRY.md.'
+    knownIssues: 'Reserva estética documentada: tono más cálido/atractivo que el resto de la serie, en tensión con la regla anti-dispensario. Ver ASSET_REGISTRY.md. Evaluado de nuevo en 2026-09-16 contra 2 candidatos nuevos ("Cannabis harvest", "Commercial cannabis, harvested and trimmed") — no se reemplazó: ambos candidatos provienen de una tour comercial de dispensario ("My 420 Tours") con descripciones que enfatizan "listo para empaquetar y vender", más cerca de la estética a evitar que la imagen actual.'
+  },
+  {
+    id: 'asset-manejo-poscosecha-drying',
+    file: '/atlas/categories/real/category-cosecha-real.jpg',
+    type: 'photo',
+    categoryId: null,
+    entryId: null,
+    sourceId: 'visual-cannabis-drying',
+    author: '"Cannabis Pictures"',
+    license: 'CC BY 2.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_Drying_out_the_crop_(16558794823).jpg',
+    alt: 'Fotografía documental de inflorescencias de cannabis colgadas para su secado tras la cosecha (CC BY 2.0).',
+    credit: 'Cannabis Pictures — CC BY 2.0, vía Wikimedia Commons',
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-16: duplicaba exactamente la misma fotografía ya usada como portada de "Cosecha" — reemplazado por `asset-manejo-poscosecha-drying-room`, una fotografía real y distinta (sala de secado), para que ninguna de las dos categorías repita imagen.'
+  },
+  {
+    id: 'asset-manejo-poscosecha-drying-room',
+    file: '/atlas/categories/real/category-manejo-poscosecha-real.jpg',
+    type: 'photo',
+    categoryId: 'manejo-poscosecha',
+    entryId: 'poscosecha',
+    sourceId: 'visual-cannabis-drying-room',
+    author: 'Beeblebrox',
+    license: 'CC BY-SA 4.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_drying_room.jpg',
+    alt: 'Sala de secado real con inflorescencias de cannabis colgadas de estanterías, ventilador y calefactor visibles (CC BY-SA 4.0).',
+    credit: 'Beeblebrox — CC BY-SA 4.0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Nuevo asset (2026-09-16), distinto de la fotografía de "Cosecha" — resuelve una duplicación exacta de imagen entre ambas categorías.'
   },
   {
     id: 'asset-historia-koehler',
@@ -164,14 +338,59 @@ export const assets = [
     alt: 'Lámina botánica histórica de Cannabis sativa (Köhler, 1887, dominio público) mostrando planta macho y hembra con detalle de flores, polen y semillas.',
     credit: 'W. Müller, Köhler\'s Medizinal-Pflanzen (1887) — dominio público',
     status: 'ACTIVE',
-    knownIssues: 'Mismo archivo real ya usado como portada de "Crecimiento" (`asset-fundamentos-koehler`) — reutilización deliberada de un asset histórico ya verificado, no una imagen nueva sin licenciar (Loop 4.1). Reforzado temáticamente: es una ilustración de 1887, apropiada para una categoría de Historia.'
+    knownIssues: 'Sin cambios como portada de categoría (2026-09-16): sigue siendo la elección correcta para "Historia". Se liberó el entryId (antes también servía a "historia-de-la-planta") para que esa entrada use una ilustración histórica distinta (`asset-historia-de-la-planta-1542`), de 1542, aportando un punto temporal más temprano.'
   },
   {
     id: 'asset-historia-de-la-planta-koehler',
     file: '/atlas/categories/real/category-fundamentos-real.jpg',
     type: 'illustration',
     categoryId: null,
+    entryId: null,
+    sourceId: 'visual-koehler-1887',
+    author: 'Walther Otto Müller',
+    license: 'Dominio público',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_sativa_Koehler_drawing.jpg',
+    alt: 'Lámina botánica histórica de Cannabis sativa (Köhler, 1887, dominio público) mostrando planta macho y hembra con detalle de flores, polen y semillas.',
+    credit: 'W. Müller, Köhler\'s Medizinal-Pflanzen (1887) — dominio público',
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-16: duplicaba exactamente la misma lámina ya usada como portada de "Historia" y de "Crecimiento". Reemplazado por `asset-historia-de-la-planta-1542` (xilografía de 1542, Füllmaurer/Fuchs) para dar a la entrada un material histórico propio y distinto.'
+  },
+  {
+    id: 'asset-historia-de-la-planta-1542',
+    file: '/atlas/categories/real/entry-historia-de-la-planta-real.jpg',
+    type: 'illustration',
+    categoryId: null,
     entryId: 'historia-de-la-planta',
+    sourceId: 'visual-cannabis-sativa-1542',
+    author: 'Heinrich Füllmaurer, para Leonhart Fuchs',
+    license: 'Dominio público',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_sativa_1542.jpg',
+    alt: 'Xilografía botánica histórica de Cannabis sativa publicada en "De Historia Stirpium" (Leonhart Fuchs, 1542), la ilustración europea impresa más temprana conocida de la planta (dominio público).',
+    credit: 'H. Füllmaurer, para L. Fuchs, "De Historia Stirpium" (1542) — dominio público',
+    status: 'ACTIVE',
+    knownIssues: 'Nuevo asset (2026-09-16), reemplaza la reutilización de la lámina de Köhler (1887) — aporta un punto histórico distinto (1542 vs. 1887) y evita repetir la misma imagen tres veces en el sitio.'
+  },
+  {
+    id: 'asset-genetica-y-tipos-photoperiodism',
+    file: '/atlas/categories/real/category-luz-y-clima-real.jpg',
+    type: 'diagram',
+    categoryId: null,
+    entryId: null,
+    sourceId: 'visual-photoperiodism-diagram',
+    author: 'Giovnnni pastrami',
+    license: 'CC BY-SA 4.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Photoperiodism_in_plants.jpg',
+    alt: 'Diagrama científico real del ciclo del fitocromo (Pr/Pfr) que explica cómo el fotoperiodo activa la floración en plantas de día largo y de día corto (CC BY-SA 4.0).',
+    credit: 'Giovnnni pastrami — CC BY-SA 4.0, vía Wikimedia Commons',
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-16: este diagrama describe el mecanismo de fotoperiodo/floración (ya usado correctamente en "luz-y-fotoperiodo"), no la clasificación taxonómica de "Genética y tipos" — era un desajuste temático, no un problema de licencia o calidad. Reemplazado por `asset-genetica-tipos-koehler`.'
+  },
+  {
+    id: 'asset-genetica-tipos-koehler',
+    file: '/atlas/categories/real/category-fundamentos-real.jpg',
+    type: 'illustration',
+    categoryId: 'genetica-tipos',
+    entryId: 'genetica-y-tipos',
     sourceId: 'visual-koehler-1887',
     author: 'Walther Otto Müller',
     license: 'Dominio público',
@@ -179,28 +398,13 @@ export const assets = [
     alt: 'Lámina botánica histórica de Cannabis sativa (Köhler, 1887, dominio público) mostrando planta macho y hembra con detalle de flores, polen y semillas.',
     credit: 'W. Müller, Köhler\'s Medizinal-Pflanzen (1887) — dominio público',
     status: 'ACTIVE',
-    knownIssues: 'Mismo archivo ya usado como portada de "Crecimiento" y de la categoría "Historia" (Loop 4.1) — reutilización deliberada de un asset histórico ya verificado, coherente con el tema de la entrada.'
-  },
-  {
-    id: 'asset-genetica-y-tipos-photoperiodism',
-    file: '/atlas/categories/real/category-luz-y-clima-real.jpg',
-    type: 'diagram',
-    categoryId: 'genetica-tipos',
-    entryId: 'genetica-y-tipos',
-    sourceId: 'visual-photoperiodism-diagram',
-    author: 'Giovnnni pastrami',
-    license: 'CC BY-SA 4.0',
-    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Photoperiodism_in_plants.jpg',
-    alt: 'Diagrama científico real del ciclo del fitocromo (Pr/Pfr) que explica cómo el fotoperiodo activa la floración en plantas de día largo y de día corto (CC BY-SA 4.0).',
-    credit: 'Giovnnni pastrami — CC BY-SA 4.0, vía Wikimedia Commons',
-    status: 'ACTIVE',
-    knownIssues: 'Mismo archivo ya usado en la entrada "luz-y-fotoperiodo" (Loop 4.1) — reutilización deliberada: esta entrada dedica una sección entera a explicar el mecanismo fotoperiódico, el mismo que ilustra el diagrama.'
+    knownIssues: 'Nuevo uso (2026-09-16) de un asset histórico ya verificado — reutilización deliberada: esta lámina ya muestra planta macho y hembra con detalle floral, directamente pertinente para una categoría sobre clasificación y tipos, a diferencia del diagrama de fotoperiodo que usaba antes.'
   },
   {
     id: 'asset-poda-hemp-field',
     file: '/atlas/categories/real/category-cultivo-real.jpg',
     type: 'photo',
-    categoryId: 'poda',
+    categoryId: null,
     entryId: null,
     sourceId: 'visual-industrial-hemp-field',
     author: 'Aleks',
@@ -208,8 +412,23 @@ export const assets = [
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Industrialhemp.jpg',
     alt: 'Fotografía documental de un cultivo exterior de cáñamo industrial (Cannabis sativa) en Francia (Aleks, CC BY-SA/GFDL).',
     credit: 'Aleks — CC BY-SA 3.0, vía Wikimedia Commons',
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-16: era un placeholder documentado ("no se buscó un asset nuevo específico de poda") — reemplazado por `asset-poda-topped`, un candidato real específico de topping/poda encontrado en esta ronda.'
+  },
+  {
+    id: 'asset-poda-topped',
+    file: '/atlas/categories/real/category-poda-real.jpg',
+    type: 'photo',
+    categoryId: 'poda',
+    entryId: 'poda',
+    sourceId: 'visual-bbmamatopped',
+    author: 'Big.thompson',
+    license: 'Dominio público',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:BBMamaTopped.jpg',
+    alt: 'Planta de cannabis "toppeada": varios brotes apicales co-dominantes tras la remoción del meristema principal, el resultado visible del despunte (dominio público).',
+    credit: 'Big.thompson — dominio público, vía Wikimedia Commons',
     status: 'ACTIVE',
-    knownIssues: 'Mismo archivo ya usado como portada de "Cultivo" (`asset-cultivo-hemp-field`) — reutilización deliberada de un asset ya verificado; no se buscó un asset nuevo específico de poda en esta fase (corrección de estructura, sin investigación de contenido nueva).'
+    knownIssues: 'Único candidato real encontrado que documenta específicamente el resultado del topping. Reserva de calidad documentada (resolución 640×512 del original, fondo doméstico con objetos sueltos) — se acepta porque muestra con claridad el patrón botánico correcto (varios brotes apicales iguales) y es la única alternativa real disponible frente a un placeholder sin relación temática (campo de cáñamo genérico). Ver ASSET_REGISTRY.md.'
   },
   {
     id: 'asset-fertilizacion-hemp-field',
@@ -223,14 +442,14 @@ export const assets = [
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Industrialhemp.jpg',
     alt: 'Fotografía documental de un cultivo exterior de cáñamo industrial (Cannabis sativa) en Francia (Aleks, CC BY-SA/GFDL).',
     credit: 'Aleks — CC BY-SA 3.0, vía Wikimedia Commons',
-    status: 'ACTIVE',
-    knownIssues: 'Ya no es la portada de "Fertilización" (Loop 8B) — se liberó el categoryId a favor de una ilustración propia del proyecto. Sigue activo como fallback/atribuible si se necesita.'
+    status: 'ARCHIVED',
+    knownIssues: 'Ya no es la portada de "Fertilización" desde Loop 8B (se liberó a favor de una ilustración propia del proyecto, luego reemplazada también). Sin uso activo — se deja como registro histórico, no se borra.'
   },
   {
     id: 'asset-fertilizacion-ia',
     file: '/atlas/categories/real/category-fertilizacion-ia.jpg',
     type: 'illustration',
-    categoryId: 'fertilizacion',
+    categoryId: null,
     entryId: null,
     sourceId: null,
     author: 'Proyecto Atlas del Cultivo Argentino (ilustración generada con IA — Gemini)',
@@ -238,23 +457,23 @@ export const assets = [
     sourceUrl: null,
     alt: 'Ilustración esquemática de Cannabis sativa mostrando el sistema radical con los macro y micronutrientes esenciales (N, P, K, Ca, Mg, S) y tres formas de aplicación de fertilizante: en el suelo (granular), líquida (riego) y foliar (pulverización).',
     credit: null,
-    status: 'ACTIVE',
-    knownIssues: 'Ilustración original generada con IA por el equipo del proyecto. El archivo fuente incluye un pie de imagen decorativo ("Plate XLIII... Köhler, Plantas Medicinales") que imita el estilo de una lámina botánica histórica — es una elección estética del autor, no una atribución real: la ilustración NO proviene de Köhler ni de ninguna publicación de 1887, y no debe citarse como tal. El `alt` y el `credit` de este registro son la descripción/atribución válidas.'
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-16: reemplazado como portada de "Fertilización" por `asset-fertilizacion-nutrient-deficiency` (fotografía real) — regla vigente de esta ronda: ninguna imagen de IA queda activa. El archivo fuente incluye además un pie de imagen decorativo que imita una lámina de Köhler de 1887 — no es una atribución real.'
   },
   {
-    id: 'asset-manejo-poscosecha-drying',
-    file: '/atlas/categories/real/category-cosecha-real.jpg',
+    id: 'asset-fertilizacion-nutrient-deficiency',
+    file: '/atlas/categories/real/category-fertilizacion-real.jpg',
     type: 'photo',
-    categoryId: 'manejo-poscosecha',
-    entryId: null,
-    sourceId: 'visual-cannabis-drying',
-    author: '"Cannabis Pictures"',
-    license: 'CC BY 2.0',
-    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_Drying_out_the_crop_(16558794823).jpg',
-    alt: 'Fotografía documental de inflorescencias de cannabis colgadas para su secado tras la cosecha (CC BY 2.0).',
-    credit: 'Cannabis Pictures — CC BY 2.0, vía Wikimedia Commons',
+    categoryId: 'fertilizacion',
+    entryId: 'fertilizacion-y-nutricion',
+    sourceId: 'visual-cannabis-nutrient-deficiency',
+    author: 'Cannabis Training University',
+    license: 'CC BY-SA 3.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_Nutrient_Deficiency.JPG',
+    alt: 'Hoja de cannabis con clorosis (amarillamiento) real por desequilibrio nutricional, el síntoma que describe la entrada de fertilización y nutrición (CC BY-SA 3.0).',
+    credit: 'Cannabis Training University — CC BY-SA 3.0, vía Wikimedia Commons',
     status: 'ACTIVE',
-    knownIssues: 'Mismo archivo ya usado como portada de "Cosecha" (`asset-cosecha-drying`) — reutilización deliberada de un asset ya verificado, temáticamente coherente con el secado/curado del manejo poscosecha.'
+    knownIssues: 'Nueva portada de categoría y de entrada (2026-09-16, mismo asset para ambas). Se usa deliberadamente como imagen de síntoma (coherente con el contenido real de "Fertilización y nutrición" sobre carencia/toxicidad), no como ilustración genérica de "nutrición vegetal" — no se encontró ningún candidato real que mostrara absorción de nutrientes o raíces específicamente en el contexto de fertilización sin duplicar la imagen ya asignada a "Suelo y agua".'
   },
   {
     id: 'asset-marco-legal-internal',
@@ -268,7 +487,8 @@ export const assets = [
     sourceUrl: null,
     alt: 'Ilustración editorial del marco legal.',
     credit: null,
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    knownIssues: 'Revisado de nuevo en 2026-09-16: se buscó material institucional argentino real (Boletín Oficial, INASE) — solo se encontró el isotipo/logo de INASE (no apto como imagen principal de portada/hero) y ninguna fotografía de archivo de un edificio institucional específicamente vinculada a estos organismos. Se mantiene el gráfico interno sin cambios, coherente con la política de no forzar una imagen genérica (tribunales, martillo, balanza) para este concepto.'
   }
 ];
 
@@ -277,15 +497,15 @@ export function assetById(id) {
 }
 
 export function assetsForEntry(entryId) {
-  return assets.filter((asset) => asset.entryId === entryId);
+  return assets.filter((asset) => asset.entryId === entryId && asset.status !== 'ARCHIVED');
 }
 
 export function assetForCategory(categoryId) {
-  return assets.find((asset) => asset.categoryId === categoryId && !asset.entryId)
-    ?? assets.find((asset) => asset.categoryId === categoryId)
+  return assets.find((asset) => asset.categoryId === categoryId && !asset.entryId && asset.status !== 'ARCHIVED')
+    ?? assets.find((asset) => asset.categoryId === categoryId && asset.status !== 'ARCHIVED')
     ?? null;
 }
 
 export function attributableAssets() {
-  return assets.filter((asset) => asset.license !== 'Interno');
+  return assets.filter((asset) => asset.license !== 'Interno' && asset.status !== 'ARCHIVED');
 }
