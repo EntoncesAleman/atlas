@@ -143,6 +143,51 @@ function buildForecastAlerts(forecast) {
   return alerts;
 }
 
+// Da forma a un `current`/`daily` crudo de Open-Meteo (misma forma sea cual sea el camino por el
+// que llegó: proxy `/api/climate` para el navegador, o pedido directo al proveedor para el motor
+// de acompañamiento server-side, ver `fetchProvinceWeatherServer` más abajo) — un único lugar que
+// define el contrato de datos, para que ambos caminos nunca puedan divergir en silencio.
+function shapeWeatherPayload({ location, rawCurrent, rawDaily, generatedAt }) {
+  const current = {
+    temperature: typeof rawCurrent?.temperature_2m === 'number' ? rawCurrent.temperature_2m : null,
+    humidity: typeof rawCurrent?.relative_humidity_2m === 'number' ? rawCurrent.relative_humidity_2m : null,
+    precipitation: typeof rawCurrent?.precipitation === 'number' ? rawCurrent.precipitation : null,
+    windSpeed: typeof rawCurrent?.wind_speed_10m === 'number' ? rawCurrent.wind_speed_10m : null,
+    // Campos agregados para el widget de clima del Atlas — opcionales, `null` si el proveedor no
+    // los trae (nunca un valor inventado en su lugar).
+    apparentTemperature: typeof rawCurrent?.apparent_temperature === 'number' ? rawCurrent.apparent_temperature : null,
+    weatherCode: typeof rawCurrent?.weather_code === 'number' ? rawCurrent.weather_code : null,
+    weatherLabel: describeWeatherCode(rawCurrent?.weather_code),
+  };
+
+  const forecast = Array.isArray(rawDaily?.time)
+    ? rawDaily.time.map((date, index) => ({
+        date,
+        tempMax: rawDaily.temperature_2m_max?.[index] ?? null,
+        tempMin: rawDaily.temperature_2m_min?.[index] ?? null,
+        precipitationSum: rawDaily.precipitation_sum?.[index] ?? null,
+        weatherCode: typeof rawDaily.weather_code?.[index] === 'number' ? rawDaily.weather_code[index] : null,
+        weatherLabel: describeWeatherCode(rawDaily.weather_code?.[index]),
+        sunrise: formatLocalTime(rawDaily.sunrise?.[index]),
+        sunset: formatLocalTime(rawDaily.sunset?.[index]),
+      }))
+    : [];
+
+  return {
+    ok: true,
+    locationName: location.name,
+    generatedAt: generatedAt ?? null,
+    current,
+    // Amanecer/atardecer de hoy, si el proveedor los trajo — atajo directo al primer día del
+    // pronóstico para no obligar al widget a indexar `forecast[0]` por su cuenta.
+    sunrise: forecast[0]?.sunrise ?? null,
+    sunset: forecast[0]?.sunset ?? null,
+    forecast,
+    todayReadings: buildTodayReadings(current),
+    alerts: buildForecastAlerts(forecast),
+  };
+}
+
 // Devuelve { ok: true, ... } con datos reales, o { ok: false, reason } — nunca
 // datos inventados ni un 0/valor por defecto disfrazado de dato real.
 export async function fetchProvinceWeather(provinceId) {
@@ -176,45 +221,66 @@ export async function fetchProvinceWeather(provinceId) {
     return { ok: false, reason: 'provider_unavailable', locationName: location.name };
   }
 
-  const rawCurrent = payload.current;
-  const rawDaily = payload.daily;
+  return shapeWeatherPayload({
+    location,
+    rawCurrent: payload.current,
+    rawDaily: payload.daily,
+    generatedAt: payload.generated_at
+  });
+}
 
-  const current = {
-    temperature: typeof rawCurrent.temperature_2m === 'number' ? rawCurrent.temperature_2m : null,
-    humidity: typeof rawCurrent.relative_humidity_2m === 'number' ? rawCurrent.relative_humidity_2m : null,
-    precipitation: typeof rawCurrent.precipitation === 'number' ? rawCurrent.precipitation : null,
-    windSpeed: typeof rawCurrent.wind_speed_10m === 'number' ? rawCurrent.wind_speed_10m : null,
-    // Campos agregados para el widget de clima del Atlas — opcionales, `null` si el proveedor no
-    // los trae (nunca un valor inventado en su lugar).
-    apparentTemperature: typeof rawCurrent.apparent_temperature === 'number' ? rawCurrent.apparent_temperature : null,
-    weatherCode: typeof rawCurrent.weather_code === 'number' ? rawCurrent.weather_code : null,
-    weatherLabel: describeWeatherCode(rawCurrent.weather_code),
-  };
+// Variante server-only para el motor de acompañamiento automático (§13): pega directo a
+// Open-Meteo en vez de pasar por `/api/climate` — ese proxy existe por y para el navegador
+// (encabezados de cache HTTP para `fetch` del cliente, no exponer nada del lado cliente), ninguna
+// de esas dos razones aplica a una revisión programada que ya corre en el servidor. Mismo
+// proveedor, mismos parámetros, mismo `shapeWeatherPayload` — no hay dos contratos de datos de
+// clima distintos, solo dos formas de llegar a Open-Meteo.
+export async function fetchProvinceWeatherServer(provinceId) {
+  const location = getProvinceLocation(provinceId);
+  if (!location) {
+    return { ok: false, reason: 'unknown_location' };
+  }
 
-  const forecast = Array.isArray(rawDaily?.time)
-    ? rawDaily.time.map((date, index) => ({
-        date,
-        tempMax: rawDaily.temperature_2m_max?.[index] ?? null,
-        tempMin: rawDaily.temperature_2m_min?.[index] ?? null,
-        precipitationSum: rawDaily.precipitation_sum?.[index] ?? null,
-        weatherCode: typeof rawDaily.weather_code?.[index] === 'number' ? rawDaily.weather_code[index] : null,
-        weatherLabel: describeWeatherCode(rawDaily.weather_code?.[index]),
-        sunrise: formatLocalTime(rawDaily.sunrise?.[index]),
-        sunset: formatLocalTime(rawDaily.sunset?.[index]),
-      }))
-    : [];
+  const providerUrl = new URL('https://api.open-meteo.com/v1/forecast');
+  providerUrl.searchParams.set('latitude', String(location.lat));
+  providerUrl.searchParams.set('longitude', String(location.lon));
+  providerUrl.searchParams.set(
+    'current',
+    'temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,apparent_temperature,weather_code'
+  );
+  providerUrl.searchParams.set(
+    'daily',
+    'temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code,sunrise,sunset'
+  );
+  providerUrl.searchParams.set('forecast_days', '3');
+  providerUrl.searchParams.set('timezone', 'auto');
 
-  return {
-    ok: true,
-    locationName: location.name,
-    generatedAt: payload.generated_at ?? null,
-    current,
-    // Amanecer/atardecer de hoy, si el proveedor los trajo — atajo directo al primer día del
-    // pronóstico para no obligar al widget a indexar `forecast[0]` por su cuenta.
-    sunrise: forecast[0]?.sunrise ?? null,
-    sunset: forecast[0]?.sunset ?? null,
-    forecast,
-    todayReadings: buildTodayReadings(current),
-    alerts: buildForecastAlerts(forecast),
-  };
+  let response;
+  try {
+    response = await fetch(providerUrl, { headers: { accept: 'application/json' } });
+  } catch {
+    return { ok: false, reason: 'network_error', locationName: location.name };
+  }
+
+  if (!response.ok) {
+    return { ok: false, reason: 'provider_unavailable', locationName: location.name };
+  }
+
+  let payload;
+  try {
+    payload = await response.json();
+  } catch {
+    return { ok: false, reason: 'invalid_response', locationName: location.name };
+  }
+
+  if (!payload?.current) {
+    return { ok: false, reason: 'provider_unavailable', locationName: location.name };
+  }
+
+  return shapeWeatherPayload({
+    location,
+    rawCurrent: payload.current,
+    rawDaily: payload.daily,
+    generatedAt: new Date().toISOString()
+  });
 }
