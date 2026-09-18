@@ -9,9 +9,11 @@ const PROVINCE_STORAGE_KEY = 'atlas:selectedProvince';
 const ZONE_STORAGE_KEY = 'atlas:selectedZone';
 
 // Única acción de "Quitar provincia" del Atlas (Loop de corrección de contexto provincial):
-// borra ambas claves y fuerza una recarga a `/atlas` para que todo componente que lee
-// localStorage en su propio mount (ProvinceProfileCard, ProvinceContextPanel) vuelva a
-// hidratar limpio, sin depender de un mecanismo de sincronización entre componentes nuevo.
+// borra ambas claves y recarga la página ACTUAL (nunca redirige a /atlas a la fuerza) para que
+// todo componente que lee localStorage en su propio mount (ProvinceProfileCard,
+// ProvinceContextPanel) vuelva a hidratar limpio, sin depender de un mecanismo de sincronización
+// entre componentes nuevo. Usar `location.href = '/atlas'` acá era el bug real: al quitar la
+// provincia desde una página de entrada, sacaba al usuario de esa página en vez de actualizarla.
 export default function ProvinceStatusBar() {
   // `null` = todavía no se hidrató desde localStorage; `''` = hidratado, sin provincia.
   const [provinceId, setProvinceId] = useState(null);
@@ -36,7 +38,8 @@ export default function ProvinceStatusBar() {
     } catch {
       // localStorage no disponible — nada que limpiar.
     }
-    window.location.href = '/atlas';
+    setProvinceId('');
+    window.location.reload();
   }
 
   return (

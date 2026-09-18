@@ -1,6 +1,19 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { atlasCategories, atlasEntries } from '../../lib/atlasData';
+import { getCategory, getRelatedCategories } from '../../lib/editorial/registry';
+
+export async function generateMetadata({ params }) {
+  const { category: categorySlug } = await params;
+  const category = getCategory(categorySlug);
+  if (!category) return {};
+
+  return {
+    title: category.metadata?.seoTitle ?? `${category.title} — Atlas del Cultivo Argentino`,
+    description: category.metadata?.seoDescription ?? category.description,
+    alternates: category.metadata?.canonical ? { canonical: category.metadata.canonical } : undefined
+  };
+}
 
 export default async function CategoryPage({ params }) {
   const { category: categorySlug } = await params;
@@ -11,6 +24,11 @@ export default async function CategoryPage({ params }) {
   }
 
   const entries = atlasEntries.filter((entry) => entry.categoryId === category.id && entry.state === 'PUBLISHED');
+  // Categorías relacionadas reales (Loop de cierre P1-4, auditoría 63) — se calculan sobre el
+  // objeto de categoría del registry (tiene `order`/`relatedEntryIds` de sus entradas), no sobre
+  // el adaptador legado que se usa para el resto del render de esta página.
+  const registryCategory = getCategory(categorySlug);
+  const relatedCategories = registryCategory ? getRelatedCategories(registryCategory, 3) : [];
 
   return (
     <main className="atlas-page category-page">
@@ -83,8 +101,8 @@ export default async function CategoryPage({ params }) {
           </div>
         </div>
         <div className="atlas-related-grid">
-          {atlasCategories.filter((item) => item.id !== category.id).slice(0, 3).map((related) => (
-            <Link key={related.id} className="atlas-related-card" href={`/atlas/${related.slug}`}> 
+          {relatedCategories.map((related) => (
+            <Link key={related.id} className="atlas-related-card" href={`/atlas/${related.slug}`}>
               <span className="atlas-related-type">{related.type}</span>
               <span className="atlas-related-title">{related.title}</span>
               <span className="atlas-related-arrow">↗</span>

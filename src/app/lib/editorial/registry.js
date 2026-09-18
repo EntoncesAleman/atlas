@@ -51,6 +51,44 @@ export function getRelatedEntries(entry) {
     .filter((candidate) => candidate && candidate.editorialStatus === 'PUBLISHED');
 }
 
+// Categorías relacionadas con una categoría dada (Loop de cierre de P1-4, auditoría 63).
+// Nunca arbitrario: prioriza categorías que aparecen de verdad en el modelo editorial —
+// las de las entradas que las propias entradas de esta categoría ya listan en
+// `relatedEntryIds` —, ordenadas por cuántas veces aparecen. Solo si eso no alcanza para
+// completar `limit` se rellena con las categorías más cercanas en `order` (criterio estable
+// y no aleatorio, nunca una relación inventada presentada como si fuera editorial).
+export function getRelatedCategories(category, limit = 3) {
+  const entries = getEntriesForCategory(category);
+  const frequency = new Map();
+
+  entries.forEach((entry) => {
+    getRelatedEntries(entry).forEach((related) => {
+      if (related.categoryId === category.id) return;
+      frequency.set(related.categoryId, (frequency.get(related.categoryId) ?? 0) + 1);
+    });
+  });
+
+  const byRelation = Array.from(frequency.entries())
+    .sort((a, b) => b[1] - a[1])
+    .map(([categoryId]) => getCategoryById(categoryId))
+    .filter((candidate) => candidate && candidate.status === 'PUBLISHED');
+
+  const result = [...byRelation];
+
+  if (result.length < limit) {
+    const usedIds = new Set([category.id, ...result.map((item) => item.id)]);
+    const byProximity = getCategories()
+      .filter((candidate) => !usedIds.has(candidate.id))
+      .sort((a, b) => Math.abs((a.order ?? 0) - (category.order ?? 0)) - Math.abs((b.order ?? 0) - (category.order ?? 0)));
+    for (const candidate of byProximity) {
+      if (result.length >= limit) break;
+      result.push(candidate);
+    }
+  }
+
+  return result.slice(0, limit);
+}
+
 export function getSourcesForEntry(entry) {
   return (entry.sourceIds ?? [])
     .map((id) => sourceById(id))

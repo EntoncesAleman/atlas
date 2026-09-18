@@ -2,6 +2,11 @@ import Link from 'next/link';
 import { getFeaturedClub } from '../lib/community/communityData';
 import CommunityEmptyState from '../components/CommunityEmptyState';
 
+export const metadata = {
+  title: 'Comunidad — Atlas del Cultivo Argentino',
+  description: 'Clubes, investigadores, universidades y educadores de distintas provincias: un directorio editorial y territorial aparte del contenido enciclopédico del Atlas.'
+};
+
 const SECTIONS = [
   {
     slug: 'clubes',

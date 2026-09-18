@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import { attributableAssets } from '../lib/editorial/assets';
 
+export const metadata = {
+  title: 'Créditos — Atlas del Cultivo Argentino',
+  description: 'Procedencia del material visual del Atlas que no es de producción interna: fuentes reales y verificadas, con su licencia y atribución.'
+};
+
 export default function CreditosPage() {
   const assets = attributableAssets();
 

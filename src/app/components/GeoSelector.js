@@ -73,6 +73,34 @@ const zoneExamples = {
 const CABA_ID = 'caba';
 const cabaGeometry = ARGENTINA_PROVINCES.find((item) => item.id === CABA_ID);
 
+// Cierre de P1-5B (MASTER_PACKAGE/63_AUDITORIA_GENERAL_ATLAS.md): a 375px de ancho, el <path>
+// real de Tucumán mide ~13×17px y el de Misiones ~19×21px en pantalla — muy por debajo del
+// mínimo táctil accesible. Mismo principio ya aplicado a CABA (radio 16 en unidades del
+// viewBox): un círculo invisible más grande, centrado en el centroide real de la provincia,
+// superpuesto sobre la geometría visible sin modificarla — solo amplía el área que responde al
+// toque/clic.
+// Bug Jujuy→Salta (verificación de P1-5B, MASTER_PACKAGE/63_AUDITORIA_GENERAL_ATLAS.md): a
+// diferencia de Tucumán/Misiones (provincias chicas que necesitan un área de toque más grande en
+// su propio centroide), Salta es grande pero muy irregular (un "gajo" largo hacia el este) — tanto
+// su `centroid` guardado como el centroide geométrico real (área-ponderada) caen FUERA de su
+// propio polígono y DENTRO del de Jujuy, así que un clic apuntado "al centro de Salta" terminaba
+// seleccionando Jujuy. Se calculó por separado un punto interior seguro — el más alejado de
+// cualquier borde ("pole of inaccessibility", la misma técnica que usan herramientas de mapas
+// reales para ubicar una etiqueta) — verificado fuera de los polígonos de las 6 provincias
+// vecinas de Salta. Se usa solo para el hitbox; la geometría visible no se tocó.
+const HITBOX_CENTROID_OVERRIDES = {
+  salta: [279.26, 80.25],
+};
+
+const SMALL_PROVINCE_HITBOX_IDS = ['tucuman', 'misiones', 'salta'];
+const smallProvinceGeometries = SMALL_PROVINCE_HITBOX_IDS
+  .map((id) => {
+    const geometry = ARGENTINA_PROVINCES.find((item) => item.id === id);
+    if (!geometry) return null;
+    return { ...geometry, centroid: HITBOX_CENTROID_OVERRIDES[id] ?? geometry.centroid };
+  })
+  .filter(Boolean);
+
 export default function GeoSelector() {
   const [province, setProvince] = useState('');
   const [zone, setZone] = useState('');
@@ -104,6 +132,23 @@ export default function GeoSelector() {
       // localStorage no disponible (modo privado, cuota, etc.) — la
       // exploración del Atlas no debe depender de que esto funcione.
     }
+  }
+
+  // Quitar provincia desde la Home: a diferencia de `ProvinceStatusBar` (que recarga la página
+  // porque vive en rutas ya montadas con datos derivados de la provincia), acá no hace falta
+  // recargar nada — el mapa y el resumen ya son estado de React, así que limpiarlo alcanza para
+  // que la Home vuelva a mostrarse sin selección, sin salir de la página.
+  function clearLocation() {
+    if (typeof window !== 'undefined') {
+      try {
+        window.localStorage.removeItem(PROVINCE_STORAGE_KEY);
+        window.localStorage.removeItem(ZONE_STORAGE_KEY);
+      } catch {
+        // localStorage no disponible — nada que limpiar.
+      }
+    }
+    setProvince('');
+    setZone('');
   }
 
   const provinceKeyHandler = (id) => (event) => {
@@ -159,6 +204,22 @@ export default function GeoSelector() {
                   />
                 );
               })}
+            </g>
+            <g className="map-small-province-hitboxes">
+              {smallProvinceGeometries.map((geometry) => (
+                <circle
+                  key={geometry.id}
+                  className="map-small-province-hitbox"
+                  cx={geometry.centroid[0]}
+                  cy={geometry.centroid[1]}
+                  r={52}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  onClick={() => selectProvince(geometry.id)}
+                  onMouseEnter={() => setHoveredProvince(geometry.id)}
+                  onMouseLeave={() => setHoveredProvince('')}
+                />
+              ))}
             </g>
             {cabaGeometry && (
               <g className="map-caba-marker">
@@ -239,6 +300,11 @@ export default function GeoSelector() {
           <Link className="primary-button geo-submit" href="/atlas" onClick={persistLocation}>
             Explorar {selectedProvince}
           </Link>
+          {province && (
+            <button type="button" className="secondary-button geo-clear" onClick={clearLocation}>
+              Quitar provincia
+            </button>
+          )}
         </div>
       </div>
     </section>

@@ -11,7 +11,43 @@ import {
   groupSourcesByScope
 } from '../../../lib/editorial/registry';
 import { SIGNAL_LEVEL_LABELS, MISTAKE_TYPE_LABELS, SOURCE_SCOPE_LABELS } from '../../../lib/editorial/tags';
+import { getEntryReferenceMatches } from '../../../lib/editorial/linkifyReferences';
 import ProvinceProfileCard from '../../../components/ProvinceProfileCard';
+
+// Cierre de P1-5A (MASTER_PACKAGE/63_AUDITORIA_GENERAL_ATLAS.md): envuelve en un <Link> real
+// los fragmentos de `text` que `getEntryReferenceMatches` identificó como una mención exacta a
+// otra entrada — el resto del texto se devuelve intacto, carácter por carácter.
+function renderTextWithReferences(text, currentEntryId, keyPrefix) {
+  const matches = getEntryReferenceMatches(text, currentEntryId);
+  if (matches.length === 0) return text;
+
+  const nodes = [];
+  let cursor = 0;
+  matches.forEach((match, index) => {
+    if (match.start > cursor) nodes.push(text.slice(cursor, match.start));
+    nodes.push(
+      <Link key={`${keyPrefix}-ref-${index}`} href={match.href} className="atlas-inline-reference">
+        {match.label}
+      </Link>
+    );
+    cursor = match.end;
+  });
+  if (cursor < text.length) nodes.push(text.slice(cursor));
+  return nodes;
+}
+
+export async function generateMetadata({ params }) {
+  const { category: categorySlug, entry: entrySlug } = await params;
+  const category = getCategory(categorySlug);
+  const entry = category ? getEntry(categorySlug, entrySlug) : null;
+  if (!category || !entry) return {};
+
+  return {
+    title: entry.metadata?.seoTitle ?? `${entry.title} — Atlas del Cultivo Argentino`,
+    description: entry.metadata?.seoDescription ?? entry.summary,
+    alternates: entry.metadata?.canonical ? { canonical: entry.metadata.canonical } : undefined
+  };
+}
 
 export default async function EntryPage({ params }) {
   const { category: categorySlug, entry: entrySlug } = await params;
@@ -83,7 +119,7 @@ export default async function EntryPage({ params }) {
               <div className="atlas-entry-section" key={section.id}>
                 <h2>{section.title}</h2>
                 {section.paragraphs?.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}>{renderTextWithReferences(paragraph, entry.id, `${section.id}-p${index}`)}</p>
                 ))}
                 {section.list?.length > 0 && (
                   <ul>
@@ -122,7 +158,7 @@ export default async function EntryPage({ params }) {
               <div className="atlas-entry-section">
                 <h2>Observaciones</h2>
                 {entry.observations.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}>{renderTextWithReferences(paragraph, entry.id, `obs-p${index}`)}</p>
                 ))}
               </div>
             )}
@@ -148,7 +184,7 @@ export default async function EntryPage({ params }) {
                   {entry.commonMistakes.map((mistake, index) => (
                     <li className="atlas-mistake" key={index}>
                       <span className="atlas-mistake-type">{MISTAKE_TYPE_LABELS[mistake.type] ?? mistake.type}</span>
-                      <span className="atlas-mistake-description">{mistake.description}</span>
+                      <span className="atlas-mistake-description">{renderTextWithReferences(mistake.description, entry.id, `mistake-${index}`)}</span>
                     </li>
                   ))}
                 </ul>
@@ -159,7 +195,7 @@ export default async function EntryPage({ params }) {
               <div className="atlas-entry-section">
                 <h2>Contexto ambiental</h2>
                 {entry.environmentContext.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p key={index}>{renderTextWithReferences(paragraph, entry.id, `env-p${index}`)}</p>
                 ))}
               </div>
             )}
@@ -182,7 +218,12 @@ export default async function EntryPage({ params }) {
                         {source.url ? (
                           <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>
                         ) : (
-                          <span>{source.title}</span>
+                          <span>
+                            {source.title}
+                            <span className="atlas-source-no-link" title="No se localizó una página pública verificable para enlazar esta fuente.">
+                              {' '}(sin enlace público disponible)
+                            </span>
+                          </span>
                         )}
                         {source.authorOrInstitution && (
                           <span className="atlas-source-meta"> — {source.authorOrInstitution}</span>
