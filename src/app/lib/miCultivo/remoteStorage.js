@@ -28,6 +28,7 @@ function mapCultivoRow(row, eventRows) {
     id: row.id,
     currentStageId: row.current_stage_id,
     provinceId: row.province_id ?? null,
+    seasonName: row.season_name ?? null,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
     events: eventRows.map(mapEventRow),

@@ -34,9 +34,21 @@ export function createCultivo() {
     id: generateId('cultivo'),
     currentStageId: STAGES[0].id,
     provinceId: null,
+    seasonName: null,
     events: [],
+    notes: [],
     createdAt: now,
     updatedAt: now,
+  };
+}
+
+// Forma de una nota de temporada en modo sin cuenta: { id, body, createdAt (ISO) }. En modo
+// cuenta, la misma forma conceptual vive en la tabla `cultivo_notes` (ver `notesRemote.js`).
+export function createNote(body) {
+  return {
+    id: generateId('note'),
+    body: (body ?? '').trim(),
+    createdAt: new Date().toISOString(),
   };
 }
 

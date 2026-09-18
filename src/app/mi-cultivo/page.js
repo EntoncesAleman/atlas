@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { STAGES, createCultivo, createEvent, updateEvent, stageIndex, stageLabel } from '../lib/miCultivo/model';
+import { STAGES, createCultivo, createEvent, createNote, updateEvent, stageIndex, stageLabel } from '../lib/miCultivo/model';
 import { loadCultivo, saveCultivo, resetCultivo } from '../lib/miCultivo/storage';
 import { getSupabaseClient } from '../lib/supabase/client';
 import {
@@ -16,6 +16,29 @@ import {
   resetCultivoRemote,
   bulkInsertEventsRemote,
 } from '../lib/miCultivo/remoteStorage';
+import { fetchNotesRemote, insertNoteRemote, deleteNoteRemote, deleteAllNotesRemote, setSeasonNameRemote } from '../lib/miCultivo/notesRemote';
+import {
+  fetchAlertsRemote,
+  syncAlertsRemote,
+  markAlertReadRemote,
+  markAllAlertsReadRemote,
+} from '../lib/miCultivo/alertsRemote';
+import {
+  fetchNotificationPreferencesRemote,
+  setNotificationPreferencesRemote,
+} from '../lib/miCultivo/notificationPreferencesRemote';
+import { buildAlertCandidates } from '../lib/miCultivo/alerts/engine';
+import { STAGE_ATLAS_LINKS } from '../lib/miCultivo/alerts/constants';
+import {
+  getSeasonStartDate,
+  daysSince,
+  daysInCurrentStage,
+  seasonProgressPercent,
+  nextStage as computeNextStage,
+  getLastEntry,
+  getAllPhotos,
+  getSeasonSummary,
+} from '../lib/miCultivo/season';
 import { uploadEventPhoto, fetchPhotosByEvent, deleteEventPhoto } from '../lib/miCultivo/photos';
 import { PhotoValidationError } from '../lib/miCultivo/photoProcessing';
 import { PROVINCE_OPTIONS } from '../lib/weather/locations';
@@ -49,26 +72,10 @@ function formatGeneratedAt(isoDateTime) {
   }
 }
 
-// "Inicio de temporada" (Fase 12): un único concepto de inicio, tomado de la
-// fecha del primer evento real (la más antigua entre los eventos cargados por
-// la persona) — nunca `createdAt` del registro (eso es cuándo se creó la fila
-// en la app, no cuándo empezó la temporada real) ni la fecha de hoy. Sin
-// eventos, no hay fecha de inicio todavía — se muestra el estado vacío.
-function getSeasonStartDate(events) {
-  if (!events.length) return null;
-  return events.reduce((earliest, item) => (item.date < earliest ? item.date : earliest), events[0].date);
-}
-
-function daysSince(isoDate) {
-  if (!isoDate) return null;
-  const start = new Date(`${isoDate}T00:00:00`);
-  if (Number.isNaN(start.getTime())) return null;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  start.setHours(0, 0, 0, 0);
-  return Math.round((today.getTime() - start.getTime()) / 86400000);
-}
-
+// "Inicio de temporada" (Fase 12) y "días desde" ahora viven en `lib/miCultivo/season.js`
+// (importados arriba) — se movieron ahí junto con el resto de los cálculos derivados nuevos
+// (días en la etapa actual, progreso visual, resumen) para no mezclar reglas de lectura de datos
+// con el componente de página (mismo criterio que el motor de avisos).
 function formatElapsed(days) {
   if (days === null) return '';
   if (days <= 0) return 'Empezó hoy';
@@ -145,6 +152,23 @@ export default function MiCultivoPage() {
   const [remoteBusy, setRemoteBusy] = useState(false);
   const [remoteError, setRemoteError] = useState('');
 
+  // --- Cabecera de temporada ---
+  const [seasonName, setSeasonName] = useState(null);
+  const [seasonNameDraft, setSeasonNameDraft] = useState('');
+  const [editingSeasonName, setEditingSeasonName] = useState(false);
+
+  // --- Notas de temporada ---
+  const [notes, setNotes] = useState([]);
+  const [noteDraft, setNoteDraft] = useState('');
+  const [noteBusy, setNoteBusy] = useState(false);
+
+  // --- Centro de alertas y notificaciones (solo modo con cuenta) ---
+  const [alerts, setAlerts] = useState([]);
+  const [alertsChecked, setAlertsChecked] = useState(false);
+  const [notificationPreferences, setNotificationPreferences] = useState(null);
+  const [preferencesSaving, setPreferencesSaving] = useState(false);
+  const [preferencesNotice, setPreferencesNotice] = useState('');
+
   // --- Contexto ambiental (Fase 11) ---
   const [provinceId, setProvinceId] = useState(null);
   const [weatherStatus, setWeatherStatus] = useState('idle'); // idle | loading | ready | error
@@ -190,7 +214,16 @@ export default function MiCultivoPage() {
     const chronological = a.date < b.date ? -1 : 1;
     return timelineOrder === 'chrono' ? chronological : -chronological;
   });
-  const nextStage = STAGES[currentIndex + 1] ?? null;
+  const nextStage = computeNextStage(currentStageId);
+  const currentStageAtlasLink = STAGE_ATLAS_LINKS[currentStageId] ?? null;
+  const nextStageAtlasLink = nextStage ? STAGE_ATLAS_LINKS[nextStage.id] ?? null : null;
+  const daysInStage = daysInCurrentStage(events, currentStageId);
+  const progressPercent = seasonProgressPercent(currentStageId);
+  const lastEntry = getLastEntry(events, photosByEvent);
+  const allSeasonPhotos = isAccountMode ? getAllPhotos(events, photosByEvent) : [];
+  const seasonSummary = getSeasonSummary(events, isAccountMode ? photosByEvent : {});
+  const unreadAlerts = alerts.filter((alert) => alert.status === 'unread');
+  const readAlerts = alerts.filter((alert) => alert.status === 'read');
 
   function adoptCultivo(cultivo) {
     setCultivoId(cultivo.id);
@@ -198,6 +231,11 @@ export default function MiCultivoPage() {
     setCurrentStageId(cultivo.currentStageId);
     setEvents(cultivo.events);
     setProvinceId(cultivo.provinceId ?? null);
+    setSeasonName(cultivo.seasonName ?? null);
+    // En modo cuenta, `cultivo.notes` no viene incluido acá (las notas remotas se cargan aparte,
+    // igual que las fotos) — el `?? []` solo cubre el instante entre adoptar el cultivo remoto y
+    // que termine esa carga separada.
+    setNotes(cultivo.notes ?? []);
   }
 
   function loadLocalIntoState() {
@@ -331,14 +369,84 @@ export default function MiCultivoPage() {
     };
   }, [isAccountMode, cultivoId, supabase, migrationChecked, pendingMigration]);
 
+  // Mismo guard que las fotos: notas remotas solo después de resolver la migración, para no
+  // consultar con un `cultivoId` que todavía es el id local.
+  useEffect(() => {
+    if (!isAccountMode || !cultivoId || !supabase || !migrationChecked || pendingMigration) {
+      return;
+    }
+    let cancelled = false;
+    fetchNotesRemote(supabase, cultivoId)
+      .then((remoteNotes) => {
+        if (!cancelled) setNotes(remoteNotes);
+      })
+      .catch(() => {
+        if (!cancelled) setNotes([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isAccountMode, cultivoId, supabase, migrationChecked, pendingMigration]);
+
+  // Centro de alertas + preferencias de notificación: solo modo cuenta (brief §7-9). Las
+  // preferencias se cargan una vez; los avisos se recalculan cuando cambian los datos de entrada
+  // reales (etapa, eventos, clima) — nunca en un intervalo/polling, solo cuando algo relevante
+  // efectivamente cambió.
+  useEffect(() => {
+    if (!isAccountMode || !supabase || !session) {
+      setNotificationPreferences(null);
+      return;
+    }
+    let cancelled = false;
+    fetchNotificationPreferencesRemote(supabase, session.user.id)
+      .then((prefs) => {
+        if (!cancelled) setNotificationPreferences(prefs);
+      })
+      .catch(() => {
+        if (!cancelled) setNotificationPreferences(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isAccountMode, supabase, session]);
+
+  useEffect(() => {
+    if (!isAccountMode || !cultivoId || !supabase || !session || !migrationChecked || pendingMigration) return;
+    if (weatherStatus !== 'ready' && weatherStatus !== 'error') return; // esperar a que el clima termine de resolverse (ok o no disponible), nunca generar avisos de clima con datos a medio cargar
+    let cancelled = false;
+    (async () => {
+      try {
+        const stageDays = daysInCurrentStage(events, currentStageId);
+        const candidates = buildAlertCandidates({
+          currentStageId,
+          daysInStage: stageDays,
+          weatherResult: weatherStatus === 'ready' ? weatherResult : null
+        });
+        await syncAlertsRemote(supabase, session.user.id, cultivoId, candidates);
+        if (cancelled) return;
+        const list = await fetchAlertsRemote(supabase, cultivoId);
+        if (!cancelled) setAlerts(list);
+      } catch {
+        // Si falla la generación/lectura de avisos, Mi Cultivo sigue funcionando igual — el
+        // Centro de Alertas simplemente no se actualiza en este ciclo, no es un error bloqueante.
+      } finally {
+        if (!cancelled) setAlertsChecked(true);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAccountMode, cultivoId, supabase, session, migrationChecked, pendingMigration, currentStageId, events, weatherStatus]);
+
   // Persistencia local: solo cuando NO hay sesión (modo sin cuenta). En modo
   // cuenta, cada acción persiste directamente contra Supabase (ver los
   // handlers), así que este efecto no debe pisar esos datos.
   useEffect(() => {
     if (!hydrated || isAccountMode) return;
-    saveCultivo({ id: cultivoId, currentStageId, provinceId, events, createdAt, updatedAt: new Date().toISOString() });
+    saveCultivo({ id: cultivoId, currentStageId, provinceId, seasonName, events, notes, createdAt, updatedAt: new Date().toISOString() });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hydrated, isAccountMode, cultivoId, currentStageId, provinceId, events, createdAt]);
+  }, [hydrated, isAccountMode, cultivoId, currentStageId, provinceId, seasonName, events, notes, createdAt]);
 
   // Contexto ambiental: solo consulta clima real cuando hay una provincia
   // elegida, y (en modo cuenta) recién después de que la migración terminó de
@@ -511,8 +619,15 @@ export default function MiCultivoPage() {
       setRemoteError('');
       try {
         await resetCultivoRemote(supabase, cultivoId);
+        // El nombre de temporada y las notas son datos de ESTA temporada, igual que los
+        // eventos (a diferencia de la provincia, que `resetCultivoRemote` preserva a propósito
+        // por ser un dato del dispositivo/cuenta, no de la temporada puntual).
+        await setSeasonNameRemote(supabase, cultivoId, null);
+        await deleteAllNotesRemote(supabase, cultivoId);
         setCurrentStageId(STAGES[0].id);
         setEvents([]);
+        setSeasonName(null);
+        setNotes([]);
       } catch {
         setRemoteError('No se pudo reiniciar tu cultivo en la cuenta.');
       } finally {
@@ -565,6 +680,86 @@ export default function MiCultivoPage() {
     if (!pendingMigration) return;
     adoptCultivo(pendingMigration.remote);
     setPendingMigration(null);
+  }
+
+  async function handleSaveSeasonName() {
+    const trimmed = seasonNameDraft.trim();
+    const value = trimmed || null;
+    setSeasonName(value);
+    setEditingSeasonName(false);
+    if (isAccountMode) {
+      try {
+        await setSeasonNameRemote(supabase, cultivoId, value);
+      } catch {
+        setRemoteError('No se pudo guardar el nombre de la temporada en tu cuenta.');
+      }
+    }
+  }
+
+  async function handleAddNote(domEvent) {
+    domEvent.preventDefault();
+    const body = noteDraft.trim();
+    if (!body) return;
+    setNoteBusy(true);
+    setRemoteError('');
+    try {
+      if (isAccountMode) {
+        const inserted = await insertNoteRemote(supabase, session.user.id, cultivoId, body);
+        setNotes((prev) => [inserted, ...prev]);
+      } else {
+        setNotes((prev) => [createNote(body), ...prev]);
+      }
+      setNoteDraft('');
+    } catch {
+      setRemoteError('No se pudo guardar la nota. Probá de nuevo.');
+    } finally {
+      setNoteBusy(false);
+    }
+  }
+
+  async function handleDeleteNote(note) {
+    setNotes((prev) => prev.filter((item) => item.id !== note.id));
+    if (isAccountMode) {
+      try {
+        await deleteNoteRemote(supabase, note.id);
+      } catch {
+        setRemoteError('No se pudo eliminar la nota. Probá de nuevo.');
+      }
+    }
+  }
+
+  async function handleMarkAlertRead(alertId) {
+    setAlerts((prev) => prev.map((alert) => (alert.id === alertId ? { ...alert, status: 'read' } : alert)));
+    try {
+      await markAlertReadRemote(supabase, alertId);
+    } catch {
+      // La lectura ya se refleja en la UI; si falla el guardado remoto, el próximo refresco de
+      // avisos vuelve a traer el estado real — no vale la pena bloquear al usuario por esto.
+    }
+  }
+
+  async function handleMarkAllAlertsRead() {
+    setAlerts((prev) => prev.map((alert) => ({ ...alert, status: 'read' })));
+    try {
+      await markAllAlertsReadRemote(supabase, cultivoId);
+    } catch {
+      // ver nota en handleMarkAlertRead
+    }
+  }
+
+  async function handleSavePreferences(domEvent) {
+    domEvent.preventDefault();
+    if (!notificationPreferences) return;
+    setPreferencesSaving(true);
+    setPreferencesNotice('');
+    try {
+      await setNotificationPreferencesRemote(supabase, session.user.id, notificationPreferences);
+      setPreferencesNotice('Preferencias guardadas.');
+    } catch {
+      setPreferencesNotice('No se pudieron guardar las preferencias. Probá de nuevo.');
+    } finally {
+      setPreferencesSaving(false);
+    }
   }
 
   async function handlePhotoUpload(eventId, file) {
@@ -878,198 +1073,167 @@ export default function MiCultivoPage() {
         </section>
       )}
 
-      <section className="atlas-section">
-        <div className="atlas-entry-section">
-          <h2>Estado actual</h2>
-          <p className="mi-cultivo-current-stage">Etapa actual: <strong>{STAGES[currentIndex].label}</strong></p>
-          <ol className="mi-cultivo-timeline">
-            {STAGES.map((stage, index) => {
-              const state = index < currentIndex ? 'done' : index === currentIndex ? 'current' : 'upcoming';
-              return (
-                <li className={`mi-cultivo-timeline-item mi-cultivo-timeline-${state}`} key={stage.id}>
+      <section className="atlas-section mi-cultivo-layout-section">
+        <div className="mi-cultivo-layout">
+          <div className="mi-cultivo-main-column">
+
+            <div className="atlas-entry-section mi-cultivo-season-header">
+              <div className="mi-cultivo-season-header-top">
+                {editingSeasonName ? (
+                  <form
+                    className="mi-cultivo-season-name-form"
+                    onSubmit={(domEvent) => { domEvent.preventDefault(); handleSaveSeasonName(); }}
+                  >
+                    <input
+                      type="text"
+                      value={seasonNameDraft}
+                      onChange={(event) => setSeasonNameDraft(event.target.value)}
+                      placeholder="Nombrá esta temporada"
+                      maxLength={80}
+                      autoFocus
+                    />
+                    <button type="submit" className="mi-cultivo-reset-link">Guardar</button>
+                    <button type="button" className="mi-cultivo-reset-link" onClick={() => setEditingSeasonName(false)}>Cancelar</button>
+                  </form>
+                ) : (
                   <button
                     type="button"
-                    className="mi-cultivo-timeline-dot"
-                    onClick={() => handleTimelineClick(stage.id)}
-                    aria-pressed={state === 'current'}
-                    aria-label={`Marcar "${stage.label}" como etapa actual`}
+                    className="mi-cultivo-season-name-button"
+                    onClick={() => { setSeasonNameDraft(seasonName ?? ''); setEditingSeasonName(true); }}
                   >
-                    <span aria-hidden="true">{index + 1}</span>
+                    <h2>{seasonName || 'Temporada sin nombre'}</h2>
+                    <span className="mi-cultivo-edit-hint">Editar</span>
                   </button>
-                  <span className="mi-cultivo-timeline-label">{stage.label}</span>
-                </li>
-              );
-            })}
-          </ol>
-          <p className="atlas-section-note">Tocá una etapa para marcarla como la etapa actual de tu planta. Las etapas siguientes quedan como próximas.</p>
-        </div>
-      </section>
+                )}
+                <span className="mi-cultivo-stage-badge">{STAGES[currentIndex].label}</span>
+              </div>
 
-      <section className="atlas-section">
-        <div className="atlas-entry-section mi-cultivo-season-section">
-          <h2>Mi temporada</h2>
-          {events.length === 0 ? (
-            <div className="photo-placeholder">
-              <span className="photo-placeholder-icon" aria-hidden="true">+</span>
-              <p>Todavía no registraste tu primer evento.</p>
-              <p className="atlas-section-note">Tu temporada va a empezar en cuanto cargues el primero, más abajo.</p>
-            </div>
-          ) : (
-            <div className="mi-cultivo-season-summary">
-              <div className="mi-cultivo-season-stat">
-                <span className="mi-cultivo-season-stat-label">Inicio</span>
-                <span className="mi-cultivo-season-stat-value">{formatDate(seasonStartDate)}</span>
+              <div className="mi-cultivo-season-progress">
+                <div className="mi-cultivo-season-progress-track">
+                  <div className="mi-cultivo-season-progress-fill" style={{ width: `${progressPercent}%` }} />
+                </div>
+                <span className="atlas-section-note">Etapa {currentIndex + 1} de {STAGES.length}</span>
               </div>
-              <div className="mi-cultivo-season-stat">
-                <span className="mi-cultivo-season-stat-label">Tiempo transcurrido</span>
-                <span className="mi-cultivo-season-stat-value">{formatElapsed(elapsedDays)}</span>
-              </div>
-              <div className="mi-cultivo-season-stat">
-                <span className="mi-cultivo-season-stat-label">Etapa actual</span>
-                <span className="mi-cultivo-season-stat-value">{STAGES[currentIndex].label}</span>
-              </div>
-              <div className="mi-cultivo-season-stat">
-                <span className="mi-cultivo-season-stat-label">Eventos</span>
-                <span className="mi-cultivo-season-stat-value">{events.length}</span>
-              </div>
-              {isAccountMode && (
-                <div className="mi-cultivo-season-stat">
-                  <span className="mi-cultivo-season-stat-label">Fotos</span>
-                  <span className="mi-cultivo-season-stat-value">{totalPhotos}</span>
+
+              {events.length === 0 ? (
+                <div className="photo-placeholder">
+                  <span className="photo-placeholder-icon" aria-hidden="true">+</span>
+                  <p>Todavía no registraste tu primer evento.</p>
+                  <p className="atlas-section-note">Tu temporada va a empezar en cuanto cargues el primero, más abajo.</p>
+                </div>
+              ) : (
+                <div className="mi-cultivo-season-summary">
+                  <div className="mi-cultivo-season-stat">
+                    <span className="mi-cultivo-season-stat-label">Inicio</span>
+                    <span className="mi-cultivo-season-stat-value">{formatDate(seasonStartDate)}</span>
+                  </div>
+                  <div className="mi-cultivo-season-stat">
+                    <span className="mi-cultivo-season-stat-label">Días desde el inicio</span>
+                    <span className="mi-cultivo-season-stat-value">{formatElapsed(elapsedDays)}</span>
+                  </div>
+                  <div className="mi-cultivo-season-stat">
+                    <span className="mi-cultivo-season-stat-label">En esta etapa</span>
+                    <span className="mi-cultivo-season-stat-value">{daysInStage !== null ? formatElapsed(daysInStage) : 'Sin registros en esta etapa'}</span>
+                  </div>
                 </div>
               )}
             </div>
-          )}
-        </div>
-      </section>
 
-      <section className="atlas-section">
-        <div className="atlas-entry-section mi-cultivo-weather-section">
-          <h2>Hoy</h2>
-          <span className="section-label mi-cultivo-weather-subtitle">Contexto ambiental</span>
-
-          <label className="mi-cultivo-field mi-cultivo-weather-location">
-            <span>Ubicación aproximada (provincia)</span>
-            <select value={provinceId ?? ''} onChange={handleProvinceChange} disabled={!locationReady}>
-              <option value="">Sin ubicación elegida</option>
-              {PROVINCE_OPTIONS.map((province) => (
-                <option key={province.id} value={province.id}>{province.name}</option>
-              ))}
-            </select>
-          </label>
-          <p className="atlas-section-note">
-            Solo a nivel provincia — nunca tu ubicación exacta ni GPS. Sirve para mostrar
-            condiciones ambientales de referencia junto a tu cultivo, no para calcular nada
-            sobre él. Es independiente de la provincia elegida en Inicio para explorar el Atlas —
-            la usamos como punto de partida acá si todavía no elegiste una para tu cultivo, pero
-            podés cambiarla en cualquier momento sin afectar tu navegación del Atlas.
-          </p>
-
-          {!locationReady && (
-            <p className="atlas-section-note">Cargando tu cultivo…</p>
-          )}
-
-          {locationReady && !provinceId && (
-            <p className="atlas-section-note">Elegí una provincia para ver el contexto ambiental de tu zona.</p>
-          )}
-
-          {provinceId && weatherStatus === 'loading' && (
-            <p className="atlas-section-note">Cargando datos ambientales…</p>
-          )}
-
-          {provinceId && weatherStatus === 'error' && (
-            <p className="mi-cultivo-weather-unavailable">Datos ambientales no disponibles en este momento.</p>
-          )}
-
-          {provinceId && weatherStatus === 'ready' && weatherResult?.ok && (
-            <div className="mi-cultivo-weather-body">
-              <p className="mi-cultivo-weather-context">
-                Tu cultivo está registrado en <strong>{weatherResult.locationName}</strong>, actualmente
-                en la etapa <strong>{STAGES[currentIndex].label}</strong>.
-              </p>
-
-              <div className="mi-cultivo-weather-current">
-                {weatherResult.current.temperature !== null && (
-                  <div className="mi-cultivo-weather-stat">
-                    <span className="mi-cultivo-weather-stat-label">Temperatura</span>
-                    <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.temperature)}°C</span>
+            <div className="atlas-entry-section mi-cultivo-last-entry">
+              <h2>Último registro</h2>
+              {lastEntry ? (
+                <div className="mi-cultivo-last-entry-card">
+                  {lastEntry.photo?.url && (
+                    <div className="mi-cultivo-last-entry-photo">
+                      <img src={lastEntry.photo.url} alt="Foto del último registro" />
+                    </div>
+                  )}
+                  <div className="mi-cultivo-last-entry-body">
+                    <div className="mi-cultivo-event-head">
+                      <span className="mi-cultivo-event-stage">{stageLabel(lastEntry.event.stageId)}</span>
+                      <span className="mi-cultivo-event-date">{formatDate(lastEntry.event.date)}</span>
+                    </div>
+                    {lastEntry.event.note ? (
+                      <p className="mi-cultivo-event-note">{lastEntry.event.note}</p>
+                    ) : (
+                      <p className="atlas-section-note">Sin nota en este registro.</p>
+                    )}
                   </div>
-                )}
-                {weatherResult.current.humidity !== null && (
-                  <div className="mi-cultivo-weather-stat">
-                    <span className="mi-cultivo-weather-stat-label">Humedad</span>
-                    <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.humidity)}%</span>
-                  </div>
-                )}
-                {weatherResult.current.precipitation !== null && (
-                  <div className="mi-cultivo-weather-stat">
-                    <span className="mi-cultivo-weather-stat-label">Lluvia</span>
-                    <span className="mi-cultivo-weather-stat-value">{weatherResult.current.precipitation} mm</span>
-                  </div>
-                )}
-                {weatherResult.current.windSpeed !== null && (
-                  <div className="mi-cultivo-weather-stat">
-                    <span className="mi-cultivo-weather-stat-label">Viento</span>
-                    <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.windSpeed)} km/h</span>
-                  </div>
-                )}
-              </div>
-
-              {weatherResult.todayReadings.length > 0 && (
-                <div className="mi-cultivo-weather-readings">
-                  <h3>Qué está pasando hoy</h3>
-                  <ul>
-                    {weatherResult.todayReadings.map((reading) => (
-                      <li key={reading.id}><strong>{reading.label}.</strong> {reading.detail}</li>
-                    ))}
-                  </ul>
+                </div>
+              ) : (
+                <div className="photo-placeholder">
+                  <span className="photo-placeholder-icon" aria-hidden="true">+</span>
+                  <p>Todavía no registraste ningún evento.</p>
                 </div>
               )}
-
-              {weatherResult.forecast.length > 0 && (
-                <div className="mi-cultivo-weather-forecast">
-                  <h3>Pronóstico corto</h3>
-                  <ol>
-                    {weatherResult.forecast.slice(0, 5).map((day) => (
-                      <li key={day.date}>
-                        <span>{formatShortDate(day.date)}</span>
-                        <span>
-                          {day.tempMin !== null ? Math.round(day.tempMin) : '—'}° / {day.tempMax !== null ? Math.round(day.tempMax) : '—'}°
-                        </span>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              )}
-
-              {weatherResult.alerts.length > 0 && (
-                <div className="mi-cultivo-weather-alerts">
-                  <h3>Alertas por umbral (cálculo propio, no oficiales)</h3>
-                  <ul>
-                    {weatherResult.alerts.map((alert) => (
-                      <li key={alert.id}><strong>{alert.label}.</strong> {alert.detail}</li>
-                    ))}
-                  </ul>
-                  <p className="atlas-section-note">
-                    Lecturas calculadas localmente a partir del pronóstico — no reemplazan los
-                    avisos oficiales. Para alertas oficiales, consultá el{' '}
-                    <a href="https://www.smn.gob.ar/avisos_a_muy_corto_plazo" target="_blank" rel="noreferrer">
-                      Servicio Meteorológico Nacional
-                    </a>.
-                  </p>
-                </div>
-              )}
-
-              <p className="atlas-section-note mi-cultivo-weather-source">
-                Fuente: Open-Meteo{weatherResult.generatedAt ? ` — datos generados el ${formatGeneratedAt(weatherResult.generatedAt)}` : ''}.
-              </p>
             </div>
-          )}
-        </div>
-      </section>
 
-      <section className="atlas-section">
-        <div className="atlas-entry-section">
+            <div className="atlas-entry-section mi-cultivo-gallery">
+              <h2>Registro visual</h2>
+              {!isAccountMode ? (
+                <p className="atlas-section-note">La galería de fotos de temporada está disponible con cuenta — creá una arriba para empezar a guardar fotos junto a tus registros.</p>
+              ) : allSeasonPhotos.length === 0 ? (
+                <div className="photo-placeholder">
+                  <span className="photo-placeholder-icon" aria-hidden="true">+</span>
+                  <p>Todavía no hay fotos en esta temporada.</p>
+                  <p className="atlas-section-note">Agregá una foto desde cualquier registro de la línea temporal, más abajo.</p>
+                </div>
+              ) : (
+                <div className="mi-cultivo-gallery-strip">
+                  {allSeasonPhotos.map((photo) => (
+                    <button
+                      type="button"
+                      key={photo.id}
+                      className="mi-cultivo-gallery-thumb"
+                      onClick={() => setExpandedPhotoId((current) => (current === photo.id ? null : photo.id))}
+                      disabled={!photo.url}
+                      aria-label="Ver foto más grande"
+                    >
+                      {photo.url ? <img src={photo.url} alt="Foto de la temporada" /> : <span className="mi-cultivo-photo-loading">…</span>}
+                      {photo.event?.date && <span className="mi-cultivo-gallery-thumb-date">{formatShortDate(photo.event.date)}</span>}
+                    </button>
+                  ))}
+                </div>
+              )}
+              {isAccountMode && allSeasonPhotos.some((photo) => photo.id === expandedPhotoId) && (
+                <div className="mi-cultivo-photo-expanded">
+                  <img
+                    src={allSeasonPhotos.find((photo) => photo.id === expandedPhotoId)?.url}
+                    alt="Foto de la temporada, tamaño ampliado"
+                  />
+                </div>
+              )}
+            </div>
+
+            <div className="atlas-entry-section mi-cultivo-notes">
+              <h2>Notas de temporada</h2>
+              <form className="mi-cultivo-note-form" onSubmit={handleAddNote}>
+                <textarea
+                  value={noteDraft}
+                  onChange={(event) => setNoteDraft(event.target.value)}
+                  placeholder="Anotá algo sobre esta temporada — una observación, una decisión, lo que quieras recordar más adelante."
+                  rows={2}
+                />
+                <button type="submit" className="secondary-button" disabled={noteBusy || !noteDraft.trim()}>Agregar nota</button>
+              </form>
+              {notes.length === 0 ? (
+                <p className="atlas-section-note">Todavía no agregaste ninguna nota.</p>
+              ) : (
+                <ul className="mi-cultivo-notes-list">
+                  {notes.map((note) => (
+                    <li className="mi-cultivo-note-item" key={note.id}>
+                      <div>
+                        <span className="mi-cultivo-note-date">{formatGeneratedAt(note.createdAt)}</span>
+                        <p>{note.body}</p>
+                      </div>
+                      <button type="button" className="mi-cultivo-reset-link" onClick={() => handleDeleteNote(note)}>Eliminar</button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <div className="atlas-entry-section">
           <h2>{editingEventId ? 'Editar evento' : 'Registrar un evento'}</h2>
           <form className="mi-cultivo-event-form" onSubmit={handleSubmit}>
             <label className="mi-cultivo-field">
@@ -1124,11 +1288,9 @@ export default function MiCultivoPage() {
               )}
             </div>
           </form>
-        </div>
-      </section>
+            </div>
 
-      <section className="atlas-section">
-        <div className="atlas-entry-section">
+            <div className="atlas-entry-section">
           <div className="mi-cultivo-events-head">
             <h2>Línea temporal</h2>
             {events.length > 0 && (
@@ -1263,23 +1425,300 @@ export default function MiCultivoPage() {
               </ol>
             </>
           )}
-        </div>
-      </section>
+            </div>
 
-      <section className="atlas-section">
-        <div className="atlas-entry-section mi-cultivo-next-stage-section">
-          <h2>Próxima etapa</h2>
-          {nextStage ? (
-            <p className="mi-cultivo-next-stage">
-              Próxima etapa: <strong>{nextStage.label}</strong>. Vos decidís cuándo marcarla como
-              etapa actual, arriba en "Estado actual" — no hay fechas automáticas ni calendario
-              fijo.
-            </p>
-          ) : (
-            <p className="mi-cultivo-next-stage">
-              Ya estás en la última etapa del recorrido (<strong>{STAGES[currentIndex].label}</strong>).
-            </p>
+          </div>
+
+          <aside className="mi-cultivo-aside-column">
+
+            <div className="atlas-entry-section">
+              <h2>Estado actual</h2>
+              <p className="mi-cultivo-current-stage">Etapa actual: <strong>{STAGES[currentIndex].label}</strong></p>
+              <ol className="mi-cultivo-timeline">
+                {STAGES.map((stage, index) => {
+                  const state = index < currentIndex ? 'done' : index === currentIndex ? 'current' : 'upcoming';
+                  return (
+                    <li className={`mi-cultivo-timeline-item mi-cultivo-timeline-${state}`} key={stage.id}>
+                      <button
+                        type="button"
+                        className="mi-cultivo-timeline-dot"
+                        onClick={() => handleTimelineClick(stage.id)}
+                        aria-pressed={state === 'current'}
+                        aria-label={`Marcar "${stage.label}" como etapa actual`}
+                      >
+                        <span aria-hidden="true">{index + 1}</span>
+                      </button>
+                      <span className="mi-cultivo-timeline-label">{stage.label}</span>
+                    </li>
+                  );
+                })}
+              </ol>
+              <p className="atlas-section-note">Tocá una etapa para marcarla como la etapa actual de tu planta. Las etapas siguientes quedan como próximas.</p>
+            </div>
+
+            <div className="atlas-entry-section mi-cultivo-weather-section">
+          <h2>Hoy</h2>
+          <span className="section-label mi-cultivo-weather-subtitle">Contexto ambiental</span>
+
+          <label className="mi-cultivo-field mi-cultivo-weather-location">
+            <span>Ubicación aproximada (provincia)</span>
+            <select value={provinceId ?? ''} onChange={handleProvinceChange} disabled={!locationReady}>
+              <option value="">Sin ubicación elegida</option>
+              {PROVINCE_OPTIONS.map((province) => (
+                <option key={province.id} value={province.id}>{province.name}</option>
+              ))}
+            </select>
+          </label>
+          <p className="atlas-section-note">
+            Solo a nivel provincia — nunca tu ubicación exacta ni GPS. Sirve para mostrar
+            condiciones ambientales de referencia junto a tu cultivo, no para calcular nada
+            sobre él. Es independiente de la provincia elegida en Inicio para explorar el Atlas —
+            la usamos como punto de partida acá si todavía no elegiste una para tu cultivo, pero
+            podés cambiarla en cualquier momento sin afectar tu navegación del Atlas.
+          </p>
+
+          {!locationReady && (
+            <p className="atlas-section-note">Cargando tu cultivo…</p>
           )}
+
+          {locationReady && !provinceId && (
+            <p className="atlas-section-note">Elegí una provincia para ver el contexto ambiental de tu zona.</p>
+          )}
+
+          {provinceId && weatherStatus === 'loading' && (
+            <p className="atlas-section-note">Cargando datos ambientales…</p>
+          )}
+
+          {provinceId && weatherStatus === 'error' && (
+            <p className="mi-cultivo-weather-unavailable">Datos ambientales no disponibles en este momento.</p>
+          )}
+
+          {provinceId && weatherStatus === 'ready' && weatherResult?.ok && (
+            <div className="mi-cultivo-weather-body">
+              <p className="mi-cultivo-weather-context">
+                Tu cultivo está registrado en <strong>{weatherResult.locationName}</strong>, actualmente
+                en la etapa <strong>{STAGES[currentIndex].label}</strong>.
+              </p>
+
+              <div className="mi-cultivo-weather-current">
+                {weatherResult.current.temperature !== null && (
+                  <div className="mi-cultivo-weather-stat">
+                    <span className="mi-cultivo-weather-stat-label">Temperatura</span>
+                    <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.temperature)}°C</span>
+                  </div>
+                )}
+                {weatherResult.current.humidity !== null && (
+                  <div className="mi-cultivo-weather-stat">
+                    <span className="mi-cultivo-weather-stat-label">Humedad</span>
+                    <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.humidity)}%</span>
+                  </div>
+                )}
+                {weatherResult.current.precipitation !== null && (
+                  <div className="mi-cultivo-weather-stat">
+                    <span className="mi-cultivo-weather-stat-label">Lluvia</span>
+                    <span className="mi-cultivo-weather-stat-value">{weatherResult.current.precipitation} mm</span>
+                  </div>
+                )}
+                {weatherResult.current.windSpeed !== null && (
+                  <div className="mi-cultivo-weather-stat">
+                    <span className="mi-cultivo-weather-stat-label">Viento</span>
+                    <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.windSpeed)} km/h</span>
+                  </div>
+                )}
+              </div>
+
+              {weatherResult.todayReadings.length > 0 && (
+                <div className="mi-cultivo-weather-readings">
+                  <h3>Qué está pasando hoy</h3>
+                  <ul>
+                    {weatherResult.todayReadings.map((reading) => (
+                      <li key={reading.id}><strong>{reading.label}.</strong> {reading.detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {weatherResult.forecast.length > 0 && (
+                <div className="mi-cultivo-weather-forecast">
+                  <h3>Pronóstico corto</h3>
+                  <ol>
+                    {weatherResult.forecast.slice(0, 5).map((day) => (
+                      <li key={day.date}>
+                        <span>{formatShortDate(day.date)}</span>
+                        <span>
+                          {day.tempMin !== null ? Math.round(day.tempMin) : '—'}° / {day.tempMax !== null ? Math.round(day.tempMax) : '—'}°
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+
+              {weatherResult.alerts.length > 0 && (
+                <div className="mi-cultivo-weather-alerts">
+                  <h3>Alertas por umbral (cálculo propio, no oficiales)</h3>
+                  <ul>
+                    {weatherResult.alerts.map((alert) => (
+                      <li key={alert.id}><strong>{alert.label}.</strong> {alert.detail}</li>
+                    ))}
+                  </ul>
+                  <p className="atlas-section-note">
+                    Lecturas calculadas localmente a partir del pronóstico — no reemplazan los
+                    avisos oficiales. Para alertas oficiales, consultá el{' '}
+                    <a href="https://www.smn.gob.ar/avisos_a_muy_corto_plazo" target="_blank" rel="noreferrer">
+                      Servicio Meteorológico Nacional
+                    </a>.
+                  </p>
+                </div>
+              )}
+
+              <p className="atlas-section-note mi-cultivo-weather-source">
+                Fuente: Open-Meteo{weatherResult.generatedAt ? ` — datos generados el ${formatGeneratedAt(weatherResult.generatedAt)}` : ''}.
+              </p>
+            </div>
+          )}
+            </div>
+
+            <div className="atlas-entry-section mi-cultivo-next-stage-section">
+              <h2>Siguiente etapa</h2>
+              {nextStage ? (
+                <p className="mi-cultivo-next-stage">
+                  Próxima etapa: <strong>{nextStage.label}</strong>. Vos decidís cuándo marcarla
+                  como etapa actual, en &quot;Estado actual&quot; — no hay fechas automáticas ni
+                  calendario fijo.
+                </p>
+              ) : (
+                <p className="mi-cultivo-next-stage">
+                  Ya estás en la última etapa del recorrido (<strong>{STAGES[currentIndex].label}</strong>).
+                </p>
+              )}
+              {nextStageAtlasLink && (
+                <Link className="mi-cultivo-atlas-link" href={`/atlas/${nextStageAtlasLink.categorySlug}/${nextStageAtlasLink.entrySlug}`}>
+                  Leer en el Atlas: {nextStageAtlasLink.label} ↗
+                </Link>
+              )}
+              {currentStageAtlasLink && (
+                <Link className="mi-cultivo-atlas-link" href={`/atlas/${currentStageAtlasLink.categorySlug}/${currentStageAtlasLink.entrySlug}`}>
+                  Sobre tu etapa actual: {currentStageAtlasLink.label} ↗
+                </Link>
+              )}
+            </div>
+
+            <div className="atlas-entry-section mi-cultivo-summary-widget">
+              <h2>Resumen de temporada</h2>
+              <ul className="mi-cultivo-summary-list">
+                <li><span>Registros</span><strong>{seasonSummary.totalEvents}</strong></li>
+                <li><span>Fotos</span><strong>{isAccountMode ? seasonSummary.totalPhotos : '—'}</strong></li>
+                <li><span>Días con registro</span><strong>{seasonSummary.distinctDaysRegistered}</strong></li>
+                <li><span>Última actividad</span><strong>{seasonSummary.lastActivityDate ? formatDate(seasonSummary.lastActivityDate) : 'Sin actividad'}</strong></li>
+              </ul>
+            </div>
+
+            <div className="atlas-entry-section mi-cultivo-alerts-widget">
+              <div className="mi-cultivo-events-head">
+                <h2>Alertas</h2>
+                {unreadAlerts.length > 0 && (
+                  <button type="button" className="mi-cultivo-reset-link" onClick={handleMarkAllAlertsRead}>Marcar todas leídas</button>
+                )}
+              </div>
+              {!isAccountMode ? (
+                <p className="atlas-section-note">El acompañamiento activo (clima, etapa, sanidad) está disponible con cuenta.</p>
+              ) : !alertsChecked ? (
+                <p className="atlas-section-note">Evaluando avisos…</p>
+              ) : alerts.length === 0 ? (
+                <p className="atlas-section-note">Sin avisos por ahora.</p>
+              ) : (
+                <>
+                  {unreadAlerts.length > 0 ? (
+                    <ul className="mi-cultivo-alerts-list">
+                      {unreadAlerts.map((alert) => (
+                        <li className={`mi-cultivo-alert-item mi-cultivo-alert-${alert.category}`} key={alert.id}>
+                          <div className="mi-cultivo-alert-head">
+                            <span className={`mi-cultivo-alert-category mi-cultivo-alert-category-${alert.category}`}>
+                              {alert.category === 'clima' ? 'Clima' : alert.category === 'etapa' ? 'Etapa' : 'Sanidad'}
+                            </span>
+                            <span className="mi-cultivo-alert-date">{formatGeneratedAt(alert.createdAt)}</span>
+                          </div>
+                          <p className="mi-cultivo-alert-title">{alert.title}</p>
+                          <p className="mi-cultivo-alert-body">{alert.body}</p>
+                          <div className="mi-cultivo-alert-actions">
+                            {alert.relatedHref && <Link href={alert.relatedHref}>Ver en el Atlas ↗</Link>}
+                            <button type="button" className="mi-cultivo-reset-link" onClick={() => handleMarkAlertRead(alert.id)}>Marcar leída</button>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="atlas-section-note">Sin avisos nuevos.</p>
+                  )}
+                  {readAlerts.length > 0 && (
+                    <details className="mi-cultivo-alerts-history">
+                      <summary>Anteriores ({readAlerts.length})</summary>
+                      <ul className="mi-cultivo-alerts-list">
+                        {readAlerts.map((alert) => (
+                          <li className={`mi-cultivo-alert-item mi-cultivo-alert-read mi-cultivo-alert-${alert.category}`} key={alert.id}>
+                            <div className="mi-cultivo-alert-head">
+                              <span className={`mi-cultivo-alert-category mi-cultivo-alert-category-${alert.category}`}>
+                                {alert.category === 'clima' ? 'Clima' : alert.category === 'etapa' ? 'Etapa' : 'Sanidad'}
+                              </span>
+                              <span className="mi-cultivo-alert-date">{formatGeneratedAt(alert.createdAt)}</span>
+                            </div>
+                            <p className="mi-cultivo-alert-title">{alert.title}</p>
+                            <p className="mi-cultivo-alert-body">{alert.body}</p>
+                            {alert.relatedHref && <Link href={alert.relatedHref}>Ver en el Atlas ↗</Link>}
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                </>
+              )}
+            </div>
+
+            {isAccountMode && (
+              <div className="atlas-entry-section mi-cultivo-preferences-widget">
+                <h2>Notificaciones</h2>
+                {!notificationPreferences ? (
+                  <p className="atlas-section-note">Cargando preferencias…</p>
+                ) : (
+                  <form className="mi-cultivo-preferences-form" onSubmit={handleSavePreferences}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={notificationPreferences.emailClima}
+                        onChange={(event) => setNotificationPreferences((prev) => ({ ...prev, emailClima: event.target.checked }))}
+                      />
+                      Alertas de clima por email
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={notificationPreferences.emailEtapa}
+                        onChange={(event) => setNotificationPreferences((prev) => ({ ...prev, emailEtapa: event.target.checked }))}
+                      />
+                      Avisos de etapa por email
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={notificationPreferences.emailSanidad}
+                        onChange={(event) => setNotificationPreferences((prev) => ({ ...prev, emailSanidad: event.target.checked }))}
+                      />
+                      Avisos de sanidad/plagas por email
+                    </label>
+                    <label className="mi-cultivo-preference-disabled">
+                      <input type="checkbox" checked={false} disabled readOnly />
+                      Notificaciones web (requiere configuración técnica adicional — todavía no disponible)
+                    </label>
+                    <p className="atlas-section-note">El envío de emails todavía no está activo en este sitio — tu preferencia queda guardada para cuando se habilite.</p>
+                    {preferencesNotice && <p className="atlas-section-note">{preferencesNotice}</p>}
+                    <button type="submit" className="secondary-button" disabled={preferencesSaving}>Guardar preferencias</button>
+                  </form>
+                )}
+              </div>
+            )}
+
+          </aside>
         </div>
       </section>
 

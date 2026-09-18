@@ -1785,6 +1785,386 @@ body::before {
   color: var(--sage-dark);
 }
 
+/* Layout de dos columnas: columna principal = bitácora, columna secundaria = contexto/resumen —
+   mismo patrón de grid que .atlas-entry-content-wrap (Atlas), para consistencia visual con el
+   resto del sitio. Colapsa a una columna en mobile (ver media query 980px, más abajo). */
+.mi-cultivo-layout {
+  display: grid;
+  grid-template-columns: minmax(520px, 2fr) minmax(260px, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.mi-cultivo-main-column,
+.mi-cultivo-aside-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.mi-cultivo-aside-column .atlas-entry-section,
+.mi-cultivo-main-column .atlas-entry-section {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper-soft);
+}
+
+/* --- Cabecera de temporada --- */
+.mi-cultivo-season-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mi-cultivo-season-name-button {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mi-cultivo-season-name-button h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 1.8vw, 26px);
+  color: var(--sage-dark);
+}
+
+.mi-cultivo-edit-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+
+.mi-cultivo-season-name-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mi-cultivo-season-name-form input {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  min-width: 200px;
+}
+
+.mi-cultivo-stage-badge {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--sage-glass);
+  color: var(--sage-deep);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mi-cultivo-season-progress {
+  margin-top: 14px;
+}
+
+.mi-cultivo-season-progress-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.mi-cultivo-season-progress-fill {
+  height: 100%;
+  background: var(--sage-deep);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.mi-cultivo-season-progress .atlas-section-note {
+  margin: 6px 0 0;
+}
+
+/* --- Último registro --- */
+.mi-cultivo-last-entry-card {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  align-items: flex-start;
+}
+
+.mi-cultivo-last-entry-photo {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.mi-cultivo-last-entry-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mi-cultivo-last-entry-body {
+  flex: 1;
+  min-width: 0;
+}
+
+/* --- Registro visual (galería) --- */
+.mi-cultivo-gallery-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-top: 10px;
+}
+
+.mi-cultivo-gallery-thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  padding: 0;
+  cursor: pointer;
+  background: var(--paper);
+}
+
+.mi-cultivo-gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mi-cultivo-gallery-thumb-date {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2px 6px;
+  font-size: 10px;
+  color: #fff;
+  background: rgba(33, 53, 31, 0.65);
+  text-align: center;
+}
+
+/* --- Notas de temporada --- */
+.mi-cultivo-note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 480px;
+  margin-bottom: 14px;
+}
+
+.mi-cultivo-note-form textarea {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font-family: inherit;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.mi-cultivo-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mi-cultivo-note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+
+.mi-cultivo-note-item p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text-soft);
+  white-space: pre-wrap;
+}
+
+.mi-cultivo-note-date {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* --- Enlace al Atlas (Siguiente etapa) --- */
+.mi-cultivo-atlas-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sage-deep);
+}
+
+/* --- Resumen de temporada (aside) --- */
+.mi-cultivo-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mi-cultivo-summary-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-soft);
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.mi-cultivo-summary-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.mi-cultivo-summary-list strong {
+  color: var(--sage-dark);
+}
+
+/* --- Centro de alertas --- */
+.mi-cultivo-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mi-cultivo-alert-item {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--sage-deep);
+  background: var(--paper);
+}
+
+.mi-cultivo-alert-item.mi-cultivo-alert-read {
+  opacity: 0.7;
+}
+
+.mi-cultivo-alert-clima { border-left-color: #4a7fb5; }
+.mi-cultivo-alert-etapa { border-left-color: var(--sage-deep); }
+.mi-cultivo-alert-sanidad { border-left-color: var(--clay); }
+
+.mi-cultivo-alert-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.mi-cultivo-alert-category {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.mi-cultivo-alert-category-clima { color: #4a7fb5; }
+.mi-cultivo-alert-category-etapa { color: var(--sage-deep); }
+.mi-cultivo-alert-category-sanidad { color: var(--clay); }
+
+.mi-cultivo-alert-date {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.mi-cultivo-alert-title {
+  margin: 6px 0 2px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sage-dark);
+}
+
+.mi-cultivo-alert-body {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.mi-cultivo-alert-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  gap: 10px;
+}
+
+.mi-cultivo-alert-actions a {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sage-deep);
+}
+
+.mi-cultivo-alerts-history {
+  margin-top: 12px;
+}
+
+.mi-cultivo-alerts-history summary {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* --- Preferencias de notificación --- */
+.mi-cultivo-preferences-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.mi-cultivo-preferences-form label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.mi-cultivo-preference-disabled {
+  opacity: 0.6;
+}
+
 .mi-cultivo-weather-location {
   max-width: 320px;
   margin-top: 14px;
@@ -2219,7 +2599,8 @@ body::before {
 @media (max-width: 980px) {
   .atlas-category-hero,
   .atlas-entry-hero,
-  .atlas-entry-content-wrap {
+  .atlas-entry-content-wrap,
+  .mi-cultivo-layout {
     grid-template-columns: 1fr;
   }
 
@@ -2229,7 +2610,10 @@ body::before {
      overflow horizontal real medido a 768px/375px. Con min-width: 0 el item puede encogerse
      hasta el ancho disponible: el texto vuelve a hacer wrap normal y el scroll horizontal
      contenido de .atlas-entry-table-wrap (ya existía) puede activarse como estaba pensado, en
-     vez de que la columna entera crezca más allá del viewport. */
+     vez de que la columna entera crezca más allá del viewport. Mismo criterio para
+     .mi-cultivo-layout: en una columna, la bitácora (columna principal) queda primero en el
+     recorrido mobile y el contexto/resumen (columna secundaria) después — orden simple, sin
+     reordenar nada por CSS. */
   .atlas-category-hero > *,
   .atlas-entry-hero > *,
   .atlas-entry-content-wrap > * {
