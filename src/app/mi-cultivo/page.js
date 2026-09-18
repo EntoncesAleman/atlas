@@ -94,6 +94,21 @@ function readAtlasSelectedProvince() {
   }
 }
 
+// A dónde ir después de iniciar sesión (no de crear cuenta: una cuenta recién creada siempre
+// empieza en rol 'user', ver `handleAuthSubmit`) — según el rol real leído de `profiles`, la
+// misma tabla que hace cumplir `proxy.js`/`requireRole` del lado servidor. Si la consulta
+// falla por lo que sea, el destino por defecto sigue siendo el Atlas (comportamiento previo).
+async function destinationForUser(supabase, userId) {
+  try {
+    const { data: profile } = await supabase.from('profiles').select('role').eq('id', userId).maybeSingle();
+    if (profile?.role === 'admin') return '/admin';
+    if (profile?.role === 'club') return '/club';
+  } catch {
+    // sigue al valor por defecto de abajo
+  }
+  return '/atlas';
+}
+
 function translateAuthError(error) {
   const message = error?.message ?? '';
   if (/invalid login credentials/i.test(message)) return 'Email o contraseña incorrectos.';
@@ -111,11 +126,14 @@ export default function MiCultivoPage() {
   const [authLoading, setAuthLoading] = useState(true);
   const [session, setSession] = useState(null);
   const [authMode, setAuthMode] = useState('signin');
+  const [authRole, setAuthRole] = useState('user'); // 'user' | 'club' — solo aplica al alta por email (ver nota en handleAuthSubmit)
   const [authEmail, setAuthEmail] = useState('');
   const [authPassword, setAuthPassword] = useState('');
+  const [authClubName, setAuthClubName] = useState('');
   const [authError, setAuthError] = useState('');
   const [authNotice, setAuthNotice] = useState('');
   const [authSubmitting, setAuthSubmitting] = useState(false);
+  const [authGoogleSubmitting, setAuthGoogleSubmitting] = useState(false);
   const previousSessionRef = useRef(null);
 
   // --- Cultivo (local o remoto, según haya sesión) ---
@@ -202,6 +220,26 @@ export default function MiCultivoPage() {
     loadLocalIntoState();
     setHydrated(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Avisos redirigidos desde el middleware (`/admin` sin sesión o sin rol suficiente) o desde
+  // `/auth/callback` (Google). Se lee `window.location.search` directo en vez de
+  // `useSearchParams()` para no forzar un boundary de Suspense en una página que ya es 100%
+  // cliente — se limpia de la URL enseguida para que no persista al recargar.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const authParam = params.get('auth');
+    const accesoParam = params.get('acceso');
+    if (authParam === 'requerido') setAuthNotice('Necesitás iniciar sesión para acceder a esa sección.');
+    else if (authParam === 'error') setAuthError('No se pudo completar el ingreso con Google. Probá de nuevo.');
+    else if (accesoParam === 'denegado') setAuthError('Tu cuenta no tiene permiso para acceder a esa sección.');
+    if (authParam || accesoParam) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('auth');
+      url.searchParams.delete('acceso');
+      window.history.replaceState({}, '', url.pathname + url.search);
+    }
   }, []);
 
   // Sesión de Supabase.
@@ -575,14 +613,35 @@ export default function MiCultivoPage() {
     setAuthSubmitting(true);
     try {
       if (authMode === 'signup') {
-        const { data, error } = await supabase.auth.signUp({ email: authEmail, password: authPassword });
+        // `requested_role`/`club_name` viajan en `options.data` (user_metadata) y los lee el
+        // trigger `handle_new_user` en la base: el rol real que queda asignado sigue siendo
+        // 'user' hasta que un admin aprueba la solicitud de club (`club_status: 'pending'`) — acá
+        // nunca se autoconcede el rol 'club' ni mucho menos 'admin'. Ver
+        // MASTER_PACKAGE / migración `roles_profiles_newsletter_audit`.
+        const { data, error } = await supabase.auth.signUp({
+          email: authEmail,
+          password: authPassword,
+          options: {
+            data: {
+              requested_role: authRole,
+              club_name: authRole === 'club' ? authClubName : null
+            }
+          }
+        });
         if (error) {
           setAuthError(translateAuthError(error));
           return;
         }
+        const clubNotice = authRole === 'club'
+          ? ' Pediste una cuenta de club: queda pendiente de aprobación — mientras tanto podés usar la cuenta como usuario normal.'
+          : '';
         if (!data.session) {
-          setAuthNotice('Te enviamos un email para confirmar tu cuenta. Confirmalo y después iniciá sesión acá.');
+          setAuthNotice(`Te enviamos un email para confirmar tu cuenta. Confirmalo y después iniciá sesión acá.${clubNotice}`);
           setAuthMode('signin');
+        } else if (clubNotice) {
+          // Con solicitud de club, nos quedamos en Mi Cultivo (no al Atlas) para que el aviso de
+          // "pendiente de aprobación" quede visible en vez de perderse en la navegación.
+          setAuthNotice(clubNotice.trim());
         } else {
           // Sesión inmediata (confirmación de email desactivada en este proyecto): el ingreso
           // lleva al Atlas completo, no directo a Mi Cultivo (Loop 4.1) — la sesión ya quedó
@@ -590,16 +649,43 @@ export default function MiCultivoPage() {
           router.push('/atlas');
         }
       } else {
-        const { error } = await supabase.auth.signInWithPassword({ email: authEmail, password: authPassword });
+        const { data, error } = await supabase.auth.signInWithPassword({ email: authEmail, password: authPassword });
         if (error) {
           setAuthError(translateAuthError(error));
           return;
         }
-        router.push('/atlas');
+        router.push(await destinationForUser(supabase, data.user.id));
       }
       setAuthPassword('');
     } finally {
       setAuthSubmitting(false);
+    }
+  }
+
+  // "Continuar con Google": usa el proveedor OAuth de Supabase Auth (misma cuenta, mismo
+  // `auth.users` — no es un sistema de login paralelo). Siempre crea/ingresa como rol 'user': a
+  // diferencia del alta por email, acá no hay forma de adjuntar `requested_role` (el perfil lo
+  // completa Google, no este formulario) — una cuenta creada así que necesite ser de club se
+  // promueve pidiéndolo aparte, igual que cualquier otra solicitud de club. Ver
+  // `docs/GOOGLE_OAUTH_SETUP.md` para la configuración pendiente en Google Cloud Console.
+  async function handleGoogleSignIn() {
+    if (!supabase) {
+      setAuthError('La conexión con la cuenta no está disponible ahora mismo.');
+      return;
+    }
+    setAuthError('');
+    setAuthNotice('');
+    setAuthGoogleSubmitting(true);
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: `${window.location.origin}/auth/callback?next=/atlas` }
+    });
+    // En éxito, `signInWithOAuth` redirige el navegador a Google de inmediato — este código
+    // después de la llamada solo se alcanza a ejecutar en caso de error (ej. proveedor Google
+    // sin habilitar todavía del lado de Supabase).
+    if (error) {
+      setAuthError('No se pudo iniciar el ingreso con Google. Probá de nuevo en unos segundos.');
+      setAuthGoogleSubmitting(false);
     }
   }
 
@@ -657,83 +743,133 @@ export default function MiCultivoPage() {
       )}
 
       <section className="atlas-section mi-cultivo-mode-section">
-        <div className="mi-cultivo-mode-grid">
-          <article className={`mi-cultivo-mode-card ${isAccountMode ? 'mi-cultivo-mode-disabled' : 'mi-cultivo-mode-active'}`}>
-            <span className="mi-cultivo-mode-tag">{isAccountMode ? 'Inactivo' : 'Modo actual'}</span>
-            <h2>Sin cuenta</h2>
-            <p>Podés marcar la etapa actual y cargar eventos con fecha y notas sin registrarte.</p>
-            <p className="atlas-section-note">Se guarda automáticamente en este navegador: no hay cuenta ni sincronización entre dispositivos — si cambiás de navegador, usás modo privado, o borrás los datos del sitio, el historial no va a estar disponible.</p>
-          </article>
+        {authLoading ? (
+          <p className="atlas-section-note">Comprobando sesión…</p>
+        ) : isAccountMode ? (
+          <div className="mi-cultivo-account-bar">
+            <div>
+              <span className="mi-cultivo-mode-tag">Con cuenta</span>
+              <p>Iniciaste sesión como <strong>{session.user.email}</strong>. Tu historial queda asociado a esta cuenta — no depende de este dispositivo.</p>
+            </div>
+            <button type="button" className="secondary-button" onClick={handleSignOut}>Cerrar sesión</button>
+          </div>
+        ) : (
+          <div className="mi-cultivo-login-card">
+            <span className="mi-cultivo-mode-tag">Ingresar</span>
+            <h2>{authMode === 'signup' ? 'Creá tu cuenta' : 'Iniciá sesión'}</h2>
+            <p>Con cuenta, tu historial deja de depender de este navegador: se guarda en la nube, con fotos y sincronización entre dispositivos.</p>
 
-          <article className={`mi-cultivo-mode-card ${isAccountMode ? 'mi-cultivo-mode-active' : 'mi-cultivo-mode-disabled'}`}>
-            <span className="mi-cultivo-mode-tag">{isAccountMode ? 'Modo actual' : 'Disponible'}</span>
-            <h2>Con cuenta</h2>
-
-            {authLoading ? (
-              <p className="atlas-section-note">Comprobando sesión…</p>
-            ) : isAccountMode ? (
-              <>
-                <p>Iniciaste sesión como <strong>{session.user.email}</strong>. Tu historial queda asociado a esta cuenta — no depende de este dispositivo.</p>
-                <button type="button" className="secondary-button" onClick={handleSignOut}>Cerrar sesión</button>
-              </>
-            ) : (
-              <>
-                <p>Creá una cuenta o iniciá sesión para que tu historial deje de depender de este navegador.</p>
-                <div className="mi-cultivo-auth-benefits">
-                  <span className="mi-cultivo-auth-benefits-title">¿Qué gano al ingresar?</span>
-                  <ul>
-                    <li>Guardar Mi Cultivo en la nube, no solo en este navegador.</li>
-                    <li>Registrar etapas y eventos con fecha y notas, con historial completo.</li>
-                    <li>Guardar fotos privadas de tu cultivo, asociadas a tu cuenta.</li>
-                    <li>Mantener guardado el contexto de tu provincia entre visitas.</li>
-                    <li>Consultar tu historial completo en "Mi Temporada".</li>
-                    <li>Usar el Buscador del Atlas con contexto de tu propio cultivo.</li>
-                    <li>Conservar tu información si cambiás de dispositivo o de navegador.</li>
-                  </ul>
-                </div>
-                <form className="mi-cultivo-auth-form" onSubmit={handleAuthSubmit}>
-                  <label className="mi-cultivo-field">
-                    <span>Email</span>
-                    <input
-                      type="email"
-                      value={authEmail}
-                      onChange={(event) => setAuthEmail(event.target.value)}
-                      required
-                    />
-                  </label>
-                  <label className="mi-cultivo-field">
-                    <span>Contraseña</span>
-                    <input
-                      type="password"
-                      value={authPassword}
-                      onChange={(event) => setAuthPassword(event.target.value)}
-                      minLength={6}
-                      required
-                    />
-                  </label>
-                  {authError && <p className="mi-cultivo-auth-error">{authError}</p>}
-                  {authNotice && <p className="atlas-section-note">{authNotice}</p>}
-                  <div className="mi-cultivo-form-actions">
-                    <button type="submit" className="primary-button" disabled={authSubmitting}>
-                      {authMode === 'signup' ? 'Crear cuenta' : 'Iniciar sesión'}
-                    </button>
-                    <button
-                      type="button"
-                      className="mi-cultivo-reset-link"
-                      onClick={() => {
-                        setAuthMode((mode) => (mode === 'signup' ? 'signin' : 'signup'));
-                        setAuthError('');
-                        setAuthNotice('');
-                      }}
-                    >
-                      {authMode === 'signup' ? 'Ya tengo cuenta' : 'Crear una cuenta nueva'}
-                    </button>
-                  </div>
-                </form>
-              </>
+            {authMode === 'signup' && (
+              <div className="mi-cultivo-role-tabs" role="group" aria-label="Tipo de cuenta">
+                <button
+                  type="button"
+                  className={`mi-cultivo-role-tab ${authRole === 'user' ? 'mi-cultivo-role-tab-active' : ''}`}
+                  aria-pressed={authRole === 'user'}
+                  onClick={() => setAuthRole('user')}
+                >
+                  Usuario
+                </button>
+                <button
+                  type="button"
+                  className={`mi-cultivo-role-tab ${authRole === 'club' ? 'mi-cultivo-role-tab-active' : ''}`}
+                  aria-pressed={authRole === 'club'}
+                  onClick={() => setAuthRole('club')}
+                >
+                  Club
+                </button>
+              </div>
             )}
-          </article>
-        </div>
+
+            <button
+              type="button"
+              className="mi-cultivo-google-button"
+              onClick={handleGoogleSignIn}
+              disabled={authGoogleSubmitting}
+            >
+              <svg aria-hidden="true" viewBox="0 0 18 18" width="18" height="18">
+                <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.9c1.7-1.57 2.7-3.88 2.7-6.62Z" />
+                <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.26c-.8.54-1.84.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.95v2.33A9 9 0 0 0 9 18Z" />
+                <path fill="#FBBC05" d="M3.95 10.7A5.4 5.4 0 0 1 3.67 9c0-.59.1-1.17.28-1.7V4.97H.95A9 9 0 0 0 0 9c0 1.45.35 2.83.95 4.03l3-2.33Z" />
+                <path fill="#EA4335" d="M9 3.58c1.32 0 2.51.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .95 4.97l3 2.33C4.66 5.17 6.65 3.58 9 3.58Z" />
+              </svg>
+              {authGoogleSubmitting ? 'Redirigiendo a Google…' : 'Continuar con Google'}
+            </button>
+
+            <div className="mi-cultivo-auth-divider" role="separator"><span>o con email</span></div>
+
+            <form className="mi-cultivo-auth-form" onSubmit={handleAuthSubmit}>
+              <label className="mi-cultivo-field">
+                <span>Email</span>
+                <input
+                  type="email"
+                  value={authEmail}
+                  onChange={(event) => setAuthEmail(event.target.value)}
+                  required
+                />
+              </label>
+              <label className="mi-cultivo-field">
+                <span>Contraseña</span>
+                <input
+                  type="password"
+                  value={authPassword}
+                  onChange={(event) => setAuthPassword(event.target.value)}
+                  minLength={6}
+                  required
+                />
+              </label>
+              {authMode === 'signup' && authRole === 'club' && (
+                <label className="mi-cultivo-field">
+                  <span>Nombre del club</span>
+                  <input
+                    type="text"
+                    value={authClubName}
+                    onChange={(event) => setAuthClubName(event.target.value)}
+                    required
+                  />
+                </label>
+              )}
+              {authMode === 'signup' && authRole === 'club' && (
+                <p className="atlas-section-note">Las cuentas de club quedan pendientes de aprobación por el equipo del Atlas antes de tener el panel de club habilitado.</p>
+              )}
+              {authError && <p className="mi-cultivo-auth-error">{authError}</p>}
+              {authNotice && <p className="atlas-section-note">{authNotice}</p>}
+              <div className="mi-cultivo-form-actions">
+                <button type="submit" className="primary-button" disabled={authSubmitting}>
+                  {authMode === 'signup' ? 'Crear cuenta' : 'Iniciar sesión'}
+                </button>
+                <button
+                  type="button"
+                  className="mi-cultivo-reset-link"
+                  onClick={() => {
+                    setAuthMode((mode) => (mode === 'signup' ? 'signin' : 'signup'));
+                    setAuthError('');
+                    setAuthNotice('');
+                  }}
+                >
+                  {authMode === 'signup' ? 'Ya tengo cuenta' : 'Crear una cuenta nueva'}
+                </button>
+              </div>
+            </form>
+
+            <details className="mi-cultivo-auth-benefits">
+              <summary className="mi-cultivo-auth-benefits-title">¿Qué gano al ingresar?</summary>
+              <ul>
+                <li>Guardar Mi Cultivo en la nube, no solo en este navegador.</li>
+                <li>Registrar etapas y eventos con fecha y notas, con historial completo.</li>
+                <li>Guardar fotos privadas de tu cultivo, asociadas a tu cuenta.</li>
+                <li>Mantener guardado el contexto de tu provincia entre visitas.</li>
+                <li>Consultar tu historial completo en "Mi Temporada".</li>
+                <li>Usar el Buscador del Atlas con contexto de tu propio cultivo.</li>
+                <li>Conservar tu información si cambiás de dispositivo o de navegador.</li>
+              </ul>
+            </details>
+
+            <p className="mi-cultivo-guest-note">
+              ¿Preferís no crear una cuenta todavía? Podés seguir usando Mi Cultivo igual: se
+              guarda automáticamente en este navegador (sin sincronización entre dispositivos).
+            </p>
+          </div>
+        )}
       </section>
 
       {remoteError && (

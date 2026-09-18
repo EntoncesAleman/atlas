@@ -1152,34 +1152,6 @@ body::before {
   }
 }
 
-.mi-cultivo-mode-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.mi-cultivo-mode-card {
-  padding: 18px 20px;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background: var(--paper-soft);
-}
-
-.mi-cultivo-mode-card h2 {
-  margin: 6px 0 8px;
-  font-family: var(--font-serif);
-  font-size: clamp(20px, 1.6vw, 24px);
-  color: var(--sage-dark);
-}
-
-.mi-cultivo-mode-card p {
-  margin: 0 0 8px;
-  color: var(--text-soft);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
 .mi-cultivo-mode-tag {
   display: inline-block;
   font-size: 10px;
@@ -1189,18 +1161,126 @@ body::before {
   color: var(--sage-deep);
 }
 
-.mi-cultivo-mode-active {
+/* Login-first: el login es el único elemento de la sección cuando no hay sesión — "sin cuenta"
+   pasó a ser una sola línea al final (`.mi-cultivo-guest-note`), no una tarjeta que compite en
+   igualdad de tamaño con el login. */
+.mi-cultivo-login-card {
+  max-width: 420px;
+  margin-top: 16px;
+  padding: 24px 26px;
+  border-radius: 16px;
+  border: 1px solid var(--sage-deep);
+  background: var(--paper-soft);
+}
+
+.mi-cultivo-login-card h2 {
+  margin: 6px 0 8px;
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 1.6vw, 24px);
+  color: var(--sage-dark);
+}
+
+.mi-cultivo-login-card > p {
+  margin: 0 0 16px;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.mi-cultivo-role-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mi-cultivo-role-tab {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mi-cultivo-role-tab-active {
   border-color: var(--sage-deep);
+  background: var(--sage-glass);
+  color: var(--sage-dark);
+}
+
+.mi-cultivo-google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mi-cultivo-google-button:hover {
+  border-color: var(--sage-deep);
+}
+
+.mi-cultivo-google-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.mi-cultivo-auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mi-cultivo-auth-divider::before,
+.mi-cultivo-auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.mi-cultivo-guest-note {
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.mi-cultivo-account-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--sage-deep);
   background: var(--sage-glass);
 }
 
-.mi-cultivo-mode-disabled {
-  border-style: dashed;
-  opacity: 0.8;
-}
-
-.mi-cultivo-mode-disabled .mi-cultivo-mode-tag {
-  color: var(--text-muted);
+.mi-cultivo-account-bar p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text-soft);
 }
 
 .mi-cultivo-auth-form {
@@ -1826,8 +1906,8 @@ body::before {
 }
 
 @media (max-width: 640px) {
-  .mi-cultivo-mode-grid {
-    grid-template-columns: 1fr;
+  .mi-cultivo-login-card {
+    padding: 20px;
   }
 
   .mi-cultivo-timeline {
