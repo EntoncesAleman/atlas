@@ -10,12 +10,6 @@ export default function AtlasVisualCard({ category, index }) {
         <div className="atlas-card-media">
           <span className="atlas-card-scrim" />
           <img src={category.asset} alt={category.alt} className={imageClassName} />
-          <span className="atlas-card-structure" aria-hidden="true">
-            <span className="atlas-card-grid" />
-            <span className="atlas-card-line atlas-line-one" />
-            <span className="atlas-card-line atlas-line-two" />
-            <span className="atlas-card-line atlas-line-three" />
-          </span>
           <span className="atlas-card-number">0{index + 1}</span>
           <span className="atlas-card-region">{category.regionLabel}</span>
         </div>

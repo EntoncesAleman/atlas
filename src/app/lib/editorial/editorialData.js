@@ -292,6 +292,72 @@ export const editorialCategories = [
       ogImage: null
     },
     status: 'PUBLISHED'
+  },
+
+  // --- Bloques nuevos del atlas (2026-09-18): recursos externos curados, distintos del
+  // contenido enciclopédico propio de las categorías anteriores ---
+  {
+    id: 'material-de-lectura',
+    order: 14,
+    slug: 'material-de-lectura',
+    title: 'Material de lectura',
+    tag: 'Lectura',
+    type: 'RECURSOS',
+    regionLabel: 'Biblioteca',
+    cta: 'Explorar',
+    description: 'Informes, guías y artículos recomendados para profundizar.',
+    shortDescription: 'Una selección curada de lectura externa, oficial y académica.',
+    editorialDescription: 'El atlas no reemplaza a sus fuentes: esta sección reúne informes oficiales, guías académicas y artículos científicos de acceso abierto para quien quiera leer directamente el material original.',
+    tags: ['lectura'],
+    metadata: {
+      seoTitle: 'Material de lectura — Atlas del Cultivo Argentino',
+      seoDescription: 'Informes, guías y artículos recomendados sobre Cannabis, cultivo y su marco regulatorio, con enlace directo a la fuente original.',
+      canonical: null,
+      ogImage: null
+    },
+    status: 'PUBLISHED'
+  },
+  {
+    id: 'documentales',
+    order: 15,
+    slug: 'documentales',
+    title: 'Documentales',
+    tag: 'Documentales',
+    type: 'RECURSOS',
+    regionLabel: 'Cine',
+    cta: 'Explorar',
+    description: 'Documentales argentinos sobre cannabis medicinal y autocultivo.',
+    shortDescription: 'Una selección de documentales reales, con dirección y fecha de estreno verificadas.',
+    editorialDescription: 'Una selección de documentales argentinos —con dirección, año y fuente de verificación— sobre cannabis medicinal, autocultivo y las personas detrás de esas historias.',
+    tags: ['documental'],
+    metadata: {
+      seoTitle: 'Documentales — Atlas del Cultivo Argentino',
+      seoDescription: 'Documentales argentinos sobre cannabis medicinal y autocultivo, con dirección, año de estreno y fuente de verificación.',
+      canonical: null,
+      ogImage: null
+    },
+    status: 'PUBLISHED'
+  },
+  {
+    id: 'noticias',
+    order: 16,
+    slug: 'noticias',
+    title: 'Noticias',
+    tag: 'Noticias',
+    type: 'RECURSOS',
+    regionLabel: 'Actualidad',
+    cta: 'Explorar',
+    description: 'Cambios regulatorios recientes, con fuente oficial verificada.',
+    shortDescription: 'Novedades regulatorias e institucionales recientes sobre cannabis en Argentina.',
+    editorialDescription: 'Un registro de cambios regulatorios e institucionales recientes sobre cannabis y cáñamo en Argentina, siempre con fuente oficial o periodística verificable y fecha de publicación.',
+    tags: ['noticia', 'contexto'],
+    metadata: {
+      seoTitle: 'Noticias — Atlas del Cultivo Argentino',
+      seoDescription: 'Cambios regulatorios e institucionales recientes sobre cannabis y cáñamo en Argentina, con fuente oficial o periodística verificada.',
+      canonical: null,
+      ogImage: null
+    },
+    status: 'PUBLISHED'
   }
 ];
 
@@ -649,7 +715,7 @@ export const editorialEntries = [
       'Esta entrada no fija un ritmo de riego ni una frecuencia — depende de demasiadas variables locales (tipo de sustrato, tamaño de contenedor, clima) como para dar un número único sin convertirlo en una receta arbitraria.'
     ],
     tags: ['suelo', 'agua', 'drenaje'],
-    relatedEntryIds: ['germinacion', 'cultivo-en-secuencia'],
+    relatedEntryIds: ['germinacion', 'cultivo-en-secuencia', 'evaluacion-visual-del-suelo'],
     sourceIds: [
       'oficial-inta-relacion-suelo-planta-agua',
       'academica-unlpam-inta-guia-evaluacion-visual-suelo',
@@ -745,7 +811,7 @@ export const editorialEntries = [
       'Esta entrada no describe instalaciones de iluminación artificial ni parámetros técnicos de equipos: se limita al concepto de fotoperiodo como señal biológica, que es la base común a cualquier ambiente, protegido o exterior.'
     ],
     tags: ['luz', 'fotoperiodo', 'ambiente'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'cosecha-y-maduracion', 'genetica-y-tipos'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'cosecha-y-maduracion', 'genetica-y-tipos', 'intensidad-de-luz'],
     sourceIds: ['academica-unne-fitocromos-desarrollo-vegetal', 'cientifica-hesami-2023-cannabis-life-cycle', 'cientifica-alter-2024-cannabis-fotoperiodo-giberelina'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-12',
@@ -825,7 +891,7 @@ export const editorialEntries = [
       'En un ambiente protegido, con menos variables externas, suele ser más simple relacionar un cambio con un evento reciente puntual (un ajuste de riego, un cambio de ubicación). Al aire libre, el número de variables posibles es mayor —clima, viento, organismos del entorno—, lo que hace que el patrón completo (no un síntoma aislado) sea todavía más necesario para orientar la lectura.'
     ],
     tags: ['sanidad', 'riesgo'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'marco-editorial'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'marco-editorial', 'chupadera-fungosa-damping-off'],
     sourceIds: ['oficial-inta-sintomatologia-diagnostico-diferencial'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-10',
@@ -905,7 +971,7 @@ export const editorialEntries = [
       'Esta entrada no fija un calendario ni una duración esperada para cada etapa — depende de demasiadas variables (genética, ambiente, manejo) como para dar una cifra única sin volverla arbitraria.'
     ],
     tags: ['cultivo', 'ciclo'],
-    relatedEntryIds: ['germinacion', 'luz-y-fotoperiodo', 'poda', 'fertilizacion-y-nutricion', 'ciclo-de-vida'],
+    relatedEntryIds: ['germinacion', 'luz-y-fotoperiodo', 'poda', 'fertilizacion-y-nutricion', 'ciclo-de-vida', 'interior-y-exterior'],
     sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle', 'academica-uncuyo-guia-crecimiento'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-10',
@@ -985,7 +1051,7 @@ export const editorialEntries = [
       'No se fija ningún momento del ciclo como "el momento correcto" para podar — depende de la etapa de desarrollo de la planta (ver "Cultivo en secuencia") y de variables que esta entrada no cuantifica.'
     ],
     tags: ['cultivo', 'poda'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'fertilizacion-y-nutricion'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'fertilizacion-y-nutricion', 'entrenamiento-de-bajo-estres-lst'],
     sourceIds: [
       'cientifica-chavalina-2026-hemp-topping-morphology',
       'academica-beveridge-2023-apical-dominance-review'
@@ -1078,7 +1144,7 @@ export const editorialEntries = [
       'Esta entrada no da una tabla de dosificación ni un calendario de fertilización para ningún contexto: describe la fisiología general de la nutrición mineral, no una receta aplicable sin considerar el sustrato, el agua y la etapa de desarrollo de cada planta en particular.'
     ],
     tags: ['cultivo', 'fertilización', 'nutrición'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'lectura-de-senales', 'poda'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'lectura-de-senales', 'poda', 'ph-y-disponibilidad-de-nutrientes'],
     sourceIds: [
       'academica-unne-nutricion-mineral-dabrio-2020',
       'academica-kirkby-romheld-2007-micronutrientes-fisiologia'
@@ -1338,7 +1404,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['marco', 'legal', 'contexto'],
-    relatedEntryIds: ['lectura-de-senales', 'germinacion'],
+    relatedEntryIds: ['lectura-de-senales', 'germinacion', 'reprocann-modalidades', 'industria-cannabis-argentina-actual'],
     // Único caso de esta migración con fuentes de contenido reales asociadas desde Fase 7A: el
     // tema de la entrada (marco legal/responsabilidad) coincide exactamente con fuentes ya
     // registradas y verificadas en 19_SOURCE_REGISTRY.md — no se inventó ninguna. En 7B2 se
@@ -1438,7 +1504,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['historia', 'domesticación', 'argentina'],
-    relatedEntryIds: ['genetica-y-tipos', 'germinacion', 'marco-editorial'],
+    relatedEntryIds: ['genetica-y-tipos', 'germinacion', 'marco-editorial', 'industria-cannabis-argentina-actual'],
     sourceIds: [
       'cientifica-ren-2021-cannabis-domestication-genomics',
       'cientifica-dalmartello-2023-haimenkou-cannabis-archaeobotany',
@@ -1526,7 +1592,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['historia', 'genética', 'taxonomía', 'fotoperiodo'],
-    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'quimica-de-la-maduracion'],
+    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'quimica-de-la-maduracion', 'canamo-industrial-frontera-thc'],
     sourceIds: [
       'cientifica-pollio-2016-nombre-cannabis-taxonomia',
       'cientifica-garner-allard-1920-photoperiodism-discovery',
@@ -1881,7 +1947,7 @@ export const editorialEntries = [
       'Las condiciones óptimas de secado y curado dependen del ambiente disponible: en regiones con alta humedad ambiental (como el NEA o Buenos Aires en verano) puede ser más difícil mantener la humedad relativa en rango sin equipamiento específico (deshumidificador). En regiones con baja humedad ambiental (Cuyo, Patagonia) puede ocurrir lo contrario. Esta entrada no da una recomendación específica por provincia porque no existe evidencia directa de campo en Argentina que la respalde para esta etapa — se describe el principio general.'
     ],
     tags: ['cosecha', 'maduración', 'cultivo'],
-    relatedEntryIds: ['cosecha-y-maduracion', 'ciclo-de-vida'],
+    relatedEntryIds: ['cosecha-y-maduracion', 'ciclo-de-vida', 'almacenamiento'],
     sourceIds: [
       'cientifica-hesami-2023-cannabis-life-cycle'
     ],
@@ -1890,6 +1956,921 @@ export const editorialEntries = [
     metadata: {
       seoTitle: 'Manejo poscosecha: secado y curado — Atlas del Cultivo Argentino',
       seoDescription: 'El secado y el curado como procesos de manejo poscosecha separados del ciclo fisiológico de la planta, con sus rangos de referencia y la distinción respecto de prácticas sin evidencia.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+
+  // ============================================================================================
+  // Ronda 2026-09-18 — segunda entrada para cada categoría que tenía una sola (ninguna categoría
+  // debe abrir en una pantalla con un único recurso). Cada entrada nueva cubre un ángulo distinto
+  // del ya cubierto por la entrada existente de la misma categoría, documentado en su propio
+  // `intro`, y usa fuentes ya verificadas en el registro (`sources.js`) o verificadas en esta
+  // misma ronda antes de citarlas — ninguna cifra ni afirmación nueva sin respaldo.
+  // ============================================================================================
+  {
+    id: 'evaluacion-visual-del-suelo',
+    slug: 'evaluacion-visual-del-suelo',
+    categoryId: 'suelo-y-agua',
+    title: 'Evaluación visual del suelo',
+    summary: 'Antes de que exista un análisis de laboratorio, el propio suelo ya muestra señales visuales y táctiles —estructura, porosidad, olor, presencia de raíces— que orientan sobre su calidad.',
+    intro: '"Sustrato, agua y drenaje" describe la relación física entre agua y aire dentro de un sustrato de maceta. Esta entrada mira un paso anterior, más relevante para quien cultiva directo en tierra: cómo leer la calidad de un suelo real a simple vista y al tacto, sin instrumental de laboratorio, antes incluso de decidir si ese suelo necesita alguna enmienda.',
+    sections: [
+      {
+        id: 'por-que-evaluar-a-simple-vista',
+        title: 'Por qué una evaluación visual, no solo un análisis de laboratorio',
+        paragraphs: [
+          'Un análisis de laboratorio da valores precisos, pero no siempre está disponible ni es lo primero que se necesita: una guía de evaluación visual —elaborada por la Facultad de Agronomía de la Universidad Nacional de La Pampa junto con la EEA INTA Anguil— sistematiza indicadores que cualquier persona puede observar y sentir en el propio suelo, como referencia previa o complementaria a un análisis de laboratorio, no como su reemplazo.',
+          'El principio de fondo es el mismo que ya describe "Sustrato, agua y drenaje" para una maceta: la estructura física del suelo —cómo se agrupan sus partículas— determina cuánto espacio poroso hay disponible para que convivan agua y aire, algo que también puede observarse en tierra directa, a otra escala.'
+        ]
+      },
+      {
+        id: 'que-mirar-y-que-sentir',
+        title: 'Qué mirar y qué sentir',
+        paragraphs: [
+          'Entre los indicadores visuales y táctiles que este tipo de guías documenta están la estructura del suelo (si se agrega en terrones porosos o se compacta en bloques macizos), la facilidad con la que el agua se infiltra tras un riego o una lluvia, la presencia de raíces y de actividad biológica visible (como lombrices o galerías), y el color y el olor del suelo húmedo —un suelo con buena aireación suele oler "a tierra"; un olor a estancado o azufrado es compatible con condiciones de anegamiento prolongado, el mismo estado de hipoxia radicular que describe "Sustrato, agua y drenaje".',
+          'Ninguno de estos indicadores, por separado, cierra una conclusión: son señales que, leídas en conjunto, orientan sobre si el suelo sostiene bien la relación agua-aire-raíz, o si tiene una limitación física (compactación, encharcamiento) que conviene atender antes de cultivar.'
+        ]
+      }
+    ],
+    observations: [
+      'Notar que un puñado de suelo húmedo se desarma en terrones porosos al apretarlo y soltarlo es una observación directa de estructura. Concluir de inmediato "este suelo es excelente para cualquier cultivo" es una interpretación que todavía no considera otras variables (nutrientes, pH, historia de uso) que esta entrada no evalúa.',
+      'Un suelo compactado y uno anegado pueden mostrar señales distintas (el primero se resiste al tacto y al riego se infiltra lento; el segundo huele a estancado) aunque ambos terminen limitando el oxígeno disponible para la raíz por caminos distintos.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'Suelo que se agrega en terrones porosos al tacto, con infiltración de agua visible en minutos tras un riego, y presencia de raíces o actividad biológica (lombrices, galerías) en los primeros centímetros.'
+      },
+      {
+        level: 'ATTENTION',
+        description: 'Suelo que se compacta en bloques macizos sin estructura granular, agua que queda estancada en superficie mucho tiempo después de un riego, u olor a estancado en profundidad son señales que ameritan revisar compactación o drenaje antes de cultivar directo en ese lugar.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Un suelo seco y duro en superficie durante una sequía prolongada no necesariamente indica mala estructura de fondo — la sequedad superficial es esperable en esas condiciones climáticas y no sustituye a una evaluación con el suelo en un estado de humedad más representativo.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'OBSERVATION',
+        description: 'Evaluar el suelo solo por su aspecto seco en superficie, sin cavar unos centímetros para ver su estructura real en profundidad.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar un solo indicador favorable (por ejemplo, buen olor) como si garantizara por sí solo que el suelo es apto, sin considerar el resto de los indicadores en conjunto.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar los mismos indicadores visuales de un suelo de campo abierto a un sustrato de maceta sin ajustar la lectura — son sistemas físicamente distintos, como ya señala "Sustrato, agua y drenaje".'
+      }
+    ],
+    environmentContext: [
+      'Esta evaluación tiene más sentido para quien cultiva en tierra directa (exterior) que para quien usa un sustrato preparado en maceta, donde la estructura ya fue definida por la mezcla elegida. En ambos casos, los indicadores generales —estructura, infiltración, olor, actividad biológica— describen el mismo principio físico de fondo.'
+    ],
+    tags: ['suelo', 'agua', 'drenaje'],
+    relatedEntryIds: ['sustrato-y-drenaje'],
+    sourceIds: [
+      'academica-unlpam-inta-guia-evaluacion-visual-suelo',
+      'oficial-inta-relacion-suelo-planta-agua'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Evaluación visual del suelo — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué indicadores visuales y táctiles —estructura, infiltración, olor, actividad biológica— ayudan a leer la calidad de un suelo real antes de cultivar en tierra directa.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'intensidad-de-luz',
+    slug: 'intensidad-de-luz',
+    categoryId: 'luz-y-clima',
+    title: 'Intensidad de luz: la otra variable',
+    summary: '"Luz como señal temporal" distingue la duración de la luz (fotoperiodo) de su intensidad, y se enfoca en la primera. Esta entrada mira la segunda: qué hace la intensidad y qué señal da su falta.',
+    intro: '"Luz como señal temporal" abre con una distinción explícita: la intensidad de luz se relaciona con la energía disponible para fotosíntesis, mientras que la duración funciona como señal de tiempo — y esa entrada se enfoca en la segunda. Esta entrada completa la primera: qué hace la intensidad de luz y cuál es la señal más documentada, y mejor conocida, de que hay poca.',
+    sections: [
+      {
+        id: 'energia-no-solo-senal',
+        title: 'Energía para fotosíntesis, no una señal de tiempo',
+        paragraphs: [
+          'A diferencia de la duración del período de luz (que funciona como señal de fotoperiodo), la intensidad de luz que recibe una planta se relaciona con cuánta energía tiene disponible para la fotosíntesis: el proceso por el cual convierte luz, agua y dióxido de carbono en los azúcares que sostienen su crecimiento. Más intensidad, dentro de un rango que la planta puede aprovechar, generalmente significa más energía disponible — pero es una variable distinta de "cuánto dura" ese período de luz, que es lo que trata la entrada sobre fotoperiodo.'
+        ]
+      },
+      {
+        id: 'la-senal-de-poca-luz-etiolacion',
+        title: 'La señal más documentada de que falta intensidad: la etiolación',
+        paragraphs: [
+          'Cuando una plántula recibe menos intensidad de luz de la que necesita, una respuesta bien documentada en horticultura general es la etiolación: el tallo se alarga de forma desproporcionada, buscando alcanzar una fuente de luz más intensa, a costa de un tallo más fino y más débil que el de una plántula con luz suficiente. Es la causa más común de "plántulas estiradas" que documenta la literatura de horticultura general, no un fenómeno exclusivo de ninguna especie en particular.',
+          'La corrección documentada para ese caso es acercar la fuente de luz (dentro de límites seguros para no quemar el follaje) o aumentar la intensidad disponible, y revisar también la densidad de siembra —plántulas demasiado juntas compiten por luz entre sí y favorecen el mismo efecto—.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una plántula tiene el tallo notablemente más largo y fino que sus vecinas del mismo lote es una observación compatible con etiolación por falta de intensidad de luz. Concluir de inmediato que la genética de esa plántula es "débil" sin revisar antes la distancia a la fuente de luz y la densidad de siembra es una interpretación apresurada.',
+      'La intensidad de luz y la duración del período de luz pueden variar de forma independiente: una planta puede recibir muchas horas de luz de baja intensidad, o pocas horas de luz muy intensa — son dos variables que no se sustituyen entre sí.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OBSERVATION',
+        description: 'Confundir la etiolación (tallo alargado y débil por falta de intensidad de luz) con una etapa normal de crecimiento acelerado, sin comparar contra plántulas del mismo lote en mejores condiciones de luz.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Atribuir un tallo estirado únicamente a la distancia de la fuente de luz sin considerar la densidad de siembra, que produce el mismo efecto por competencia entre plántulas vecinas.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar "intensidad de luz" y "duración del período de luz" como si fueran la misma variable — son dos aspectos distintos de la luz, con efectos distintos, tal como ya distingue "Luz como señal temporal".'
+      }
+    ],
+    environmentContext: [
+      'En exterior, la intensidad de luz disponible varía con la hora del día, la estación y la nubosidad, sin que quien cultiva tenga control directo sobre ella. En un ambiente protegido con luz artificial, la intensidad pasa a depender del equipo elegido y de la distancia a la fuente — un control más directo, pero que exige revisar esa distancia activamente. Esta entrada no describe equipos ni parámetros técnicos de iluminación artificial: se limita al concepto general de intensidad como variable distinta del fotoperiodo.'
+    ],
+    tags: ['luz', 'ambiente'],
+    relatedEntryIds: ['luz-y-fotoperiodo', 'cuidado-de-la-plantula'],
+    sourceIds: [
+      'agricultural-illinois-extension-2022-leggy-seedlings'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Intensidad de luz: la otra variable — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué hace la intensidad de luz, en qué se distingue del fotoperiodo, y por qué la etiolación (tallo alargado y débil) es la señal más documentada de que falta.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'chupadera-fungosa-damping-off',
+    slug: 'chupadera-fungosa-damping-off',
+    categoryId: 'sanidad',
+    title: 'Chupadera fungosa (damping-off)',
+    summary: 'El exceso de humedad alrededor de una plántula recién emergida puede favorecer hongos que la matan en cuestión de días — la causa más documentada de pérdida de plántulas en horticultura general.',
+    intro: '"Lectura de señales y sanidad" describe el marco general para no saltar de un síntoma a una causa. Esta entrada aplica ese marco a un caso concreto y bien documentado en horticultura: la chupadera fungosa (damping-off), una de las causas más frecuentes de pérdida de plántulas recién emergidas.',
+    sections: [
+      {
+        id: 'que-es',
+        title: 'Qué es la chupadera fungosa',
+        paragraphs: [
+          'La chupadera fungosa (damping-off, en la literatura en inglés) es una enfermedad causada por distintos hongos y organismos afines a los hongos (entre ellos géneros como Rhizoctonia, Fusarium, Pythium y Phytophthora, documentados por la extensión agrícola de Penn State) que atacan la semilla o la plántula recién emergida. Puede ocurrir antes de que la plántula emerja del sustrato (y entonces se lee como "la semilla nunca germinó") o después de emerger, con el tallo debilitándose justo a nivel del sustrato hasta que la plántula se cae.',
+          'El factor ambiental más documentado que favorece esta enfermedad es el exceso de humedad: un sustrato saturado, con poca circulación de aire, ofrece exactamente las condiciones que esos organismos necesitan para desarrollarse — el mismo estado de saturación que "Sustrato, agua y drenaje" describe como perjudicial para la raíz por falta de oxígeno, favorece acá, además, el desarrollo de estos organismos.'
+        ]
+      },
+      {
+        id: 'prevencion',
+        title: 'Qué describe la literatura de horticultura general sobre prevención',
+        paragraphs: [
+          'Las prácticas culturales que la extensión agrícola documenta como preventivas incluyen: evitar el riego excesivo (regar solo cuando el sustrato lo necesita, no en un calendario fijo), favorecer la circulación de aire alrededor de las plántulas, usar un sustrato con buen drenaje desde el inicio, y evitar la siembra demasiado densa —que, además de favorecer etiolación (ver "Intensidad de luz"), reduce la circulación de aire entre plántulas—.',
+          'Esta entrada describe el fenómeno general y los factores de riesgo documentados en horticultura, sin ser evidencia específica de Cannabis sativa: es información general de fisiología/patología vegetal, coherente con la forma en que el resto del atlas distingue evidencia específica de la especie de evidencia general aplicada por analogía.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que varias plántulas de un mismo semillero se caen en pocos días, con el tallo visiblemente afinado justo a nivel del sustrato, es una observación compatible con chupadera fungosa. Concluir sin más que "las semillas eran de mala calidad" sin revisar la humedad y la circulación de aire del semillero es una interpretación que ignora la causa ambiental más documentada de este cuadro.',
+      'Que una plántula nunca llegue a emerger, sin ninguna otra señal visible en superficie, es compatible con una infección de preemergencia — un caso donde, igual que ya señala "Germinación y primera lectura del material" para la falta de viabilidad, la ausencia de cambio visible no permite por sí sola identificar la causa exacta sin revisar el resto del entorno.'
+    ],
+    signals: [
+      {
+        level: 'ATTENTION',
+        description: 'Plántulas que se caen en pocos días con el tallo afinado y oscurecido justo a nivel del sustrato, especialmente si ocurre en varias plántulas del mismo semillero de forma simultánea.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Que una sola semilla, aislada, nunca emerja no alcanza por sí sola para atribuirlo a chupadera fungosa — la falta de viabilidad de esa semilla en particular (ver "Germinación y primera lectura del material") es una causa igualmente posible sin más señales.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Atribuir la pérdida de plántulas únicamente a la calidad de la semilla sin revisar primero la humedad y la circulación de aire del semillero, el factor de riesgo más documentado para esta enfermedad.'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'No revisar el tallo a nivel del sustrato (el punto típico donde se debilita en la chupadera fungosa) y quedarse solo con la observación de que "la plántula se cayó".'
+      }
+    ],
+    environmentContext: [
+      'El riesgo de chupadera fungosa aumenta en cualquier ambiente donde la humedad se mantenga alta y el aire circule poco alrededor de las plántulas — una condición más fácil de generar sin querer en un espacio protegido cerrado que al aire libre, aunque también puede ocurrir en exterior con riego excesivo o mala circulación.'
+    ],
+    tags: ['sanidad', 'riesgo'],
+    relatedEntryIds: ['lectura-de-senales', 'germinacion', 'cuidado-de-la-plantula'],
+    sourceIds: [
+      'agricultural-psu-extension-2026-damping-off'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Chupadera fungosa (damping-off) — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la chupadera fungosa, por qué el exceso de humedad es el factor de riesgo más documentado, y qué prácticas culturales generales la previenen.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'interior-y-exterior',
+    slug: 'interior-y-exterior',
+    categoryId: 'cultivo',
+    title: 'Interior y exterior: las mismas variables, un contexto distinto',
+    summary: 'Cultivar en un ambiente protegido o al aire libre no cambia qué variables importan —agua, luz, sustrato, temperatura—, cambia quién las controla y cuánto pueden fluctuar.',
+    intro: '"Cultivo en secuencia" describe la ontogenia de la planta como un proceso continuo, sin distinguir todavía el ambiente en el que ocurre. Esta entrada mira esa variable: qué cambia, y qué no cambia, entre cultivar en un ambiente protegido (interior) y cultivar al aire libre (exterior) — sin tomar partido por ninguno de los dos.',
+    sections: [
+      {
+        id: 'lo-que-no-cambia',
+        title: 'Lo que no cambia entre ambos sistemas',
+        paragraphs: [
+          'Ninguna de las variables fisiológicas que describe el resto del atlas deja de aplicar según el sistema: la planta sigue necesitando agua y aire disponibles en el sustrato (ver "Sustrato, agua y drenaje"), sigue respondiendo al fotoperiodo como señal de floración (ver "Luz como señal temporal"), y sigue atravesando la misma secuencia de desarrollo descripta en "Cultivo en secuencia". Interior y exterior no son dos fisiologías distintas de la misma especie — son dos contextos distintos para la misma fisiología.'
+        ]
+      },
+      {
+        id: 'lo-que-si-cambia-control-y-fuente',
+        title: 'Lo que sí cambia: quién controla cada variable, y de dónde viene la señal',
+        paragraphs: [
+          'En un ambiente protegido con luz artificial, la señal de fotoperiodo puede desacoplarse por completo del ciclo estacional externo, tal como ya señala "Luz como señal temporal" — quien cultiva decide cuándo cambia la duración de luz, en vez de que la decida la estación del año. Al aire libre, esa señal la da el propio ciclo estacional, sin que nadie la controle directamente.',
+          'Algo parecido ocurre con el agua: en interior, el riego suele ser la única fuente de agua, un factor bajo control directo; en exterior, se le suma la lluvia, que puede sumarse al riego sin que quien cultiva lo decida —tal como ya señala "Sustrato, agua y drenaje"—. Y con la temperatura: un espacio protegido tiende a ofrecer condiciones más estables y controlables; el exterior sigue el clima real de la zona y la estación, con toda su variabilidad.',
+          'Esta diferencia no es solo técnica: cambia qué tan predecible es la secuencia de desarrollo que describe "Cultivo en secuencia" — más predecible cuanto más controlado esté el ambiente, más sujeta a la variabilidad del clima real cuanto más expuesta esté la planta al exterior.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una planta de exterior crece a un ritmo distinto que una de interior no es, por sí solo, evidencia de que un sistema sea "mejor" que el otro — es evidencia de que están respondiendo a contextos ambientales distintos, con distinto grado de control sobre las mismas variables.',
+      'Que la señal de fotoperiodo esté desacoplada del calendario estacional en un cultivo de interior es una consecuencia esperable del control artificial de la luz, no una anomalía ni un error de manejo.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar interior y exterior como si fueran dos formas distintas de responder biológicamente, en vez de un mismo organismo respondiendo a las mismas variables con distinto grado de control externo sobre ellas.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar una lectura pensada para un ambiente protegido (por ejemplo, sobre el desacople del fotoperiodo) a una planta de exterior sin ajustar que, ahí, esa señal la sigue dando el ciclo estacional real.'
+      }
+    ],
+    environmentContext: [
+      'Esta entrada no recomienda un sistema por sobre otro para ningún contexto: describe la diferencia estructural entre ambos (qué controla cada uno de las mismas variables) para que la elección, si existe, sea informada.'
+    ],
+    tags: ['cultivo', 'ciclo'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'luz-y-fotoperiodo', 'sustrato-y-drenaje'],
+    sourceIds: [
+      'cientifica-hesami-2023-cannabis-life-cycle'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Interior y exterior: las mismas variables, un contexto distinto — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué cambia y qué no cambia entre cultivar en un ambiente protegido o al aire libre: las mismas variables fisiológicas, con distinto grado de control sobre ellas.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'reprocann-modalidades',
+    slug: 'reprocann-modalidades',
+    categoryId: 'marco-legal',
+    title: 'REPROCANN: las tres modalidades de inscripción',
+    summary: '"Marco editorial y responsable" nombra el autocultivo, el cultivo solidario y la inscripción vía ONG como las tres vías del REPROCANN. Esta entrada describe qué distingue a cada una, sin entrar en requisitos que cambian con el tiempo.',
+    intro: 'El Decreto 883/2020 reglamentó por primera vez el registro del Programa de Cannabis (REPROCANN), habilitando tres modalidades distintas de inscripción. "Marco editorial y responsable" ya las nombra al resumir el marco legal vigente; esta entrada se detiene en qué distingue conceptualmente a cada una, sin listar requisitos puntuales —que cambian con las sucesivas reglamentaciones, la más reciente de ellas la Resolución 1780/2025—, para lo cual la fuente oficial vale más que cualquier resumen editorial.',
+    sections: [
+      {
+        id: 'tres-modalidades',
+        title: 'Tres modalidades, una misma inscripción',
+        paragraphs: [
+          'El Decreto 883/2020 habilita tres formas distintas de acceder al cultivo registrado dentro del REPROCANN: el autocultivo (la persona cultiva para sí misma), el cultivo solidario —también descripto como "tercero cultivador"— (una persona distinta a quien usa el cannabis se registra para cultivarlo en su nombre), y la inscripción a través de una organización no gubernamental o asociación civil autorizada. Las tres modalidades habilitan el cultivo dentro del mismo marco regulatorio; lo que cambia es quién realiza materialmente el cultivo en relación a quien lo necesita.'
+        ]
+      },
+      {
+        id: 'por-que-existen-tres-y-no-una',
+        title: 'Por qué existen tres modalidades y no una sola',
+        paragraphs: [
+          'La distinción entre las tres modalidades responde a una situación práctica: no toda persona que necesita acceder a cannabis con fines terapéuticos está en condiciones de cultivarlo por sí misma —por salud, por falta de espacio o conocimiento, o por otras razones—. El cultivo solidario y la inscripción vía ONG existen, precisamente, para cubrir esa distancia entre quien necesita el acceso y quien puede sostener el cultivo, sin que eso implique una relación comercial entre ambos dentro del marco del programa.',
+          'Esta entrada no detalla los requisitos documentales, los plazos ni los límites de plantas de ninguna de las tres modalidades: esos datos están sujetos a la reglamentación vigente en cada momento (la última revisión general, al momento de esta entrada, es la Resolución 1780/2025) y consultarlos directamente en la fuente oficial es más confiable que cualquier resumen que pueda desactualizarse.'
+        ]
+      }
+    ],
+    observations: [
+      'Que existan tres modalidades de inscripción es un hecho verificable en el propio texto del Decreto 883/2020. Cuáles son los requisitos exactos vigentes hoy para cada una es una pregunta distinta, que depende de la reglamentación actualizada — esta entrada responde la primera, no la segunda.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Asumir que "cultivo solidario" implica una relación comercial entre quien cultiva y quien usa el cannabis — el marco regulatorio distingue esta figura precisamente de una transacción comercial.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Tomar los requisitos de alguna de las tres modalidades descriptos en una fuente no oficial o desactualizada como si fueran los vigentes hoy, sin confirmarlos contra la reglamentación actual.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['marco', 'legal', 'contexto'],
+    relatedEntryIds: ['marco-editorial'],
+    sourceIds: [
+      'decreto-883-2020-reprocann',
+      'ley-27350-reprocann'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'REPROCANN: las tres modalidades de inscripción — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué distingue al autocultivo, el cultivo solidario y la inscripción vía ONG dentro del REPROCANN, creadas por el Decreto 883/2020.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'industria-cannabis-argentina-actual',
+    slug: 'industria-cannabis-argentina-actual',
+    categoryId: 'historia',
+    title: 'La industria del cannabis en la Argentina actual (2017-2026)',
+    summary: '"Historia de la planta" documenta un vacío entre los intentos coloniales y la actualidad, y remite el marco legal moderno a "Marco editorial y responsable". Esta entrada llena ese vacío desde otro ángulo: qué pasó realmente, con qué actores y qué evidencia.',
+    intro: '"Historia de la planta" señala explícitamente que no encontró, dentro de su alcance de investigación, evidencia de un cultivo argentino exitoso y sostenido entre la memoria de Belgrano (1797) y la actualidad — y remite el marco legal moderno a "Marco editorial y responsable", sin repetirlo. Esta entrada cubre el tramo que ninguna de las dos desarrolla: qué pasó, concretamente, desde que la Ley 27.350 (2017) reabrió la posibilidad de cultivo registrado en Argentina, con los hechos y las fuentes oficiales que los documentan — no el texto de la norma en sí, que ya está en la otra entrada.',
+    sections: [
+      {
+        id: 'cultivares-propios-conicet',
+        title: 'Los primeros cultivares argentinos registrados',
+        paragraphs: [
+          'En abril de 2023, el Instituto Nacional de Semillas (INASE) resolvió, a pedido de CONICET, inscribir en el Registro Nacional de la Propiedad de Cultivares seis creaciones fitogenéticas de Cannabis sativa L. desarrolladas por CONICET-CENPAT (Puerto Madryn, Chubut): Malvina, Ballena Franca, Cenpat, Pachamama, Conicet y Mariquita. Es, según la evidencia disponible para este atlas, el primer registro oficial de cultivares de Cannabis desarrollados en el país.',
+          'Ese registro dejó de ser solo propiedad intelectual sobre el papel al mes siguiente: CONICET confirmó que, durante el verano 2022-2023, se había cultivado a campo abierto en Puerto Madryn un ensayo de 1200 semillas feminizadas del cultivar Malvina (alto en THC) y del cultivar Pachamama (alto en CBD), con la licencia de comercialización otorgada a la empresa Whale Leaf Farm. Es la primera evidencia de cultivo real —no solo de registro— que este atlas documenta para la etapa posterior a la Ley 27.350.'
+        ]
+      },
+      {
+        id: 'jujuy-y-la-escala-industrial',
+        title: 'Jujuy y la escala industrial',
+        paragraphs: [
+          'En octubre de 2022, el Gobierno de la Provincia de Jujuy confirmó que Cannava S.E. operaba la primera planta industrial de producción y procesamiento farmacéutico de cannabis medicinal habilitada por ANMAT en el país, con un invernadero automatizado (control computarizado de humedad, temperatura, luz y riego), una primera cosecha de 35 hectáreas y capacidad productiva anual declarada de 80 toneladas de inflorescencias medicinales.',
+          'En abril de 2023, la misma provincia anunció un sistema de franquicias biotecnológicas para producción privada: un parque de incubación de más de 70 hectáreas con 66 invernaderos tecnificados de 2500 m² cada uno, con capacidad para 2000 plantas por ciclo en 3 o 4 ciclos anuales, bajo manuales de calidad y estándares de farmacopea alemana y normas GACP/GMP. Ninguna fuente oficial pública consultada para este atlas detalla condiciones técnicas exactas (fotoperiodo, temperatura, humedad relativa) de esa operación — esta entrada no las inventa donde la fuente no las da.'
+        ]
+      },
+      {
+        id: 'no-toda-iniciativa-provincial-continuo',
+        title: 'No toda iniciativa provincial continuó',
+        paragraphs: [
+          'La historia reciente no es de crecimiento lineal en todas las jurisdicciones: en abril de 2026, el gobierno de Misiones disolvió MisioPharma (Biofábrica Misiones S.A.), la empresa provincial que producía cannabis medicinal bajo una modalidad híbrida de invernadero y cielo abierto, con el objetivo declarado de "apuntalar la eficiencia del Estado". Documentar este cierre, junto a los casos de continuidad de Jujuy y CONICET-Chubut, evita presentar la industria argentina de cannabis como una trayectoria uniforme de expansión — la evidencia disponible muestra provincias con desarrollos sostenidos y al menos una con una iniciativa discontinuada.'
+        ]
+      }
+    ],
+    observations: [
+      'Que INASE haya registrado seis cultivares de Cannabis a pedido de CONICET es un hecho documentado en el propio Boletín Oficial. Que ese registro se haya traducido en cultivo real a campo es un hecho distinto, confirmado en este caso por un comunicado posterior de la propia CONICET — sin ese segundo dato, el primero solo demostraría propiedad intelectual, no producción efectiva.',
+      'Que Jujuy y Chubut tengan desarrollos documentados no permite generalizar que todas las provincias argentinas tengan una industria de cannabis medicinal en curso — la disolución de MisioPharma en Misiones es evidencia directa de lo contrario para esa jurisdicción en particular.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Presentar el registro de un cultivar en el INASE como si fuera, por sí solo, evidencia de cultivo real a escala — son dos hechos distintos que, en el caso de Malvina y Pachamama, coincidieron, pero que no se implican automáticamente uno al otro.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Generalizar el desarrollo industrial de una provincia (Jujuy) o de un organismo (CONICET-Chubut) como si describiera el estado de la industria en todo el país, sin considerar casos documentados de discontinuidad como el de Misiones.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Repetir condiciones técnicas de cultivo (fotoperiodo, temperatura, humedad) atribuidas a Cannava o a cualquier otro proyecto provincial sin una fuente oficial pública que las respalde — ninguna de las fuentes consultadas para esta entrada las publica.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['historia', 'argentina', 'industria'],
+    relatedEntryIds: ['historia-de-la-planta', 'marco-editorial'],
+    sourceIds: [
+      'oficial-inase-resolucion-238-2023-cultivares-cannabis',
+      'oficial-conicet-2023-comercializacion-semillas-cannabis',
+      'oficial-cannava-jujuy-planta-anmat-2022',
+      'oficial-cannava-jujuy-franquicias-2023',
+      'periodistica-misiones-biofabrica-disolucion-2026'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'La industria del cannabis en la Argentina actual (2017-2026) — Atlas del Cultivo Argentino',
+      seoDescription: 'Los cultivares argentinos registrados por INASE a pedido de CONICET, la escala industrial de Jujuy (Cannava) y la disolución de MisioPharma en Misiones: qué pasó, con qué fuentes.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'entrenamiento-de-bajo-estres-lst',
+    slug: 'entrenamiento-de-bajo-estres-lst',
+    categoryId: 'poda',
+    title: 'Entrenamiento de bajo estrés (LST): doblar en vez de cortar',
+    summary: 'La poda remueve tejido para liberar la dominancia apical. El entrenamiento de bajo estrés (LST) persigue un resultado de forma parecido —más puntos de crecimiento expuestos a la luz— sin remover ningún tejido.',
+    intro: '"Poda" describe qué ocurre cuando se remueve el meristema apical: se elimina la fuente de la señal que inhibía las yemas laterales. Esta entrada describe una intervención distinta, que persigue un objetivo de forma parecido —una planta menos dominada por un único eje vertical— sin remover tejido: el entrenamiento de bajo estrés, conocido por su sigla en inglés, LST (low-stress training).',
+    sections: [
+      {
+        id: 'que-es-lst',
+        title: 'Qué es el LST',
+        paragraphs: [
+          'El entrenamiento de bajo estrés consiste en doblar y sujetar (con ataduras blandas u otro método similar) el tallo y las ramas de la planta, sin cortar ningún tejido, para cambiar la orientación de su crecimiento y exponer más puntos de la planta a la luz disponible —en vez de que un único eje vertical concentre la mayor parte de esa exposición—. Es una intervención mecánica sobre la forma, distinta de la intervención fisiológica directa sobre la dominancia apical que describe "Poda".'
+        ]
+      },
+      {
+        id: 'por-que-doblar-cambia-el-crecimiento',
+        title: 'Por qué doblar un tallo cambia su crecimiento',
+        paragraphs: [
+          'El transporte de auxina —la misma hormona que, según describe "Poda", viaja desde el meristema apical hacia abajo para inhibir yemas laterales— no es uniforme en todas direcciones dentro del tallo: la orientación del tallo influye en cómo se distribuye esa señal, un fenómeno relacionado con lo que la fisiología vegetal general describe como canalización del transporte de auxina. Esta entrada no desarrolla el mecanismo molecular completo de ese fenómeno —sigue siendo objeto de investigación activa, como ya señala "Poda" sobre la dominancia apical en general— pero es la base fisiológica general por la que cambiar la orientación de un tallo, sin cortarlo, puede modificar qué yemas se desarrollan más.',
+          'A diferencia del topping, que sí cuenta con un estudio directo sobre Cannabis sativa citado en "Poda", esta entrada no tiene, dentro de las fuentes consultadas, un estudio específico de LST en Cannabis — se describe el mecanismo general de orientación del tallo y transporte hormonal, sin presentarlo como evidencia directa de la especie.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una rama doblada y sujeta cambia su dirección de crecimiento en los días siguientes es una observación directa de la respuesta de la planta. Concluir que esa técnica produce necesariamente más producción final es una interpretación distinta, que depende de variables (luz disponible para las ramas expuestas, tiempo restante del ciclo) que esta entrada no evalúa — el mismo límite que ya señala "Poda" para el topping.',
+      'Que el LST no remueva tejido no significa que esté libre de riesgo: un tallo doblado con demasiada fuerza o de forma repentina puede quebrarse, un daño físico distinto del que describe "Poda" para un corte mal hecho, pero un daño real de todos modos.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Presentar el LST como una alternativa "sin riesgo" al topping por no remover tejido — el riesgo cambia de naturaleza (quiebre del tallo por doblado brusco), no desaparece.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar conclusiones del estudio de topping en cáñamo industrial (citado en "Poda") como si fueran evidencia directa también del LST — son dos intervenciones mecánicas distintas sobre el mismo mecanismo general de dominancia apical, no la misma técnica con otro nombre.'
+      }
+    ],
+    environmentContext: [
+      'El espacio físico disponible alrededor de la planta condiciona cuánto se puede doblar y sujetar un tallo sin dañarlo — una variable que depende del contenedor y del espacio del cultivo, no del ambiente climático en sí. Esta entrada no fija un ángulo, un momento del ciclo ni un método de sujeción específico.'
+    ],
+    tags: ['cultivo', 'poda'],
+    relatedEntryIds: ['poda', 'cultivo-en-secuencia'],
+    sourceIds: [
+      'academica-beveridge-2023-apical-dominance-review'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Entrenamiento de bajo estrés (LST) — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es el LST, en qué se distingue de la poda por remoción de tejido, y qué base fisiológica general —no evidencia directa de Cannabis— explica por qué doblar un tallo cambia su crecimiento.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'ph-y-disponibilidad-de-nutrientes',
+    slug: 'ph-y-disponibilidad-de-nutrientes',
+    categoryId: 'fertilizacion',
+    title: 'pH y disponibilidad: por qué un nutriente presente no siempre está disponible',
+    summary: '"Fertilización y nutrición" señala que la disponibilidad real de un nutriente depende de más que su sola presencia en el sustrato, sin desarrollarlo. Esta entrada retoma exactamente ese punto.',
+    intro: '"Fertilización y nutrición" cierra su última sección señalando que un síntoma de carencia visible no siempre significa que el nutriente falte en términos absolutos en el sustrato, y que esa entrada no desarrolla esa relación "por depender de demasiadas variables específicas de cada sustrato". Esta entrada retoma ese punto dejado abierto, con una de esas variables: el pH del sustrato.',
+    sections: [
+      {
+        id: 'forma-quimica-no-solo-cantidad',
+        title: 'La forma química importa tanto como la cantidad',
+        paragraphs: [
+          'Que un nutriente esté presente en el sustrato no significa que esté en una forma química que la raíz pueda absorber. El pH del sustrato —qué tan ácido o alcalino es— influye directamente en la forma química en la que se encuentra cada nutriente disuelto en la solución del sustrato, y esa forma es la que determina si la raíz puede tomarlo o no.'
+        ]
+      },
+      {
+        id: 'el-hierro-como-caso-documentado',
+        title: 'El hierro como caso documentado de baja movilidad y sensibilidad al pH',
+        paragraphs: [
+          'Una guía de fisiología vegetal sobre micronutrientes documenta al hierro como un caso concreto de nutriente con movilidad baja dentro de la planta —su deficiencia se expresa primero en las hojas jóvenes, el patrón opuesto al del nitrógeno o el fósforo que ya describe "Fertilización y nutrición"—. La disponibilidad del hierro en el sustrato es, además, muy sensible a la forma química en la que se encuentra, algo que varía con las condiciones del sustrato: un suelo o sustrato con pH fuera del rango adecuado para ese nutriente puede tener hierro presente en cantidad, pero en una forma poco disponible para la raíz.',
+          'Esto es exactamente el caso que "Fertilización y nutrición" advierte al final: un síntoma de carencia (clorosis en hojas jóvenes, compatible con falta de hierro) puede aparecer sin que el nutriente falte en el sustrato en términos absolutos — puede estar presente pero no disponible, por una condición del sustrato distinta de la cantidad aplicada.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver clorosis en las hojas jóvenes de una planta es una observación compatible con carencia de hierro (ver "Fertilización y nutrición"). Concluir de inmediato que "falta agregar hierro" sin considerar que el sustrato podría tener el nutriente en una forma poco disponible es una interpretación que puede llevar a corregir la variable equivocada.',
+      'Agregar más de un nutriente que ya está presente pero poco disponible no resuelve el problema de disponibilidad — puede, incluso, generar un exceso una vez que la condición que limitaba la disponibilidad se corrija por otra vía.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que todo síntoma de carencia se resuelve agregando más del nutriente correspondiente, sin considerar que el problema puede ser de disponibilidad (forma química) y no de cantidad presente.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Corregir un síntoma de carencia sin revisar antes si hay una condición del sustrato (como el pH) que esté limitando la disponibilidad del nutriente ya presente.'
+      }
+    ],
+    environmentContext: [
+      'Esta entrada no da un rango de pH de referencia para Cannabis sativa ni para ningún sustrato en particular — depende de la especie, del sustrato y del nutriente puntual en cuestión, y esta entrada se limita al principio general de que el pH modifica la disponibilidad, no a una cifra prescriptiva.'
+    ],
+    tags: ['fertilización', 'nutrición'],
+    relatedEntryIds: ['fertilizacion-y-nutricion', 'sustrato-y-drenaje'],
+    sourceIds: [
+      'academica-kirkby-romheld-2007-micronutrientes-fisiologia',
+      'academica-unne-nutricion-mineral-dabrio-2020'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'pH y disponibilidad de nutrientes — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué la presencia de un nutriente en el sustrato no garantiza su disponibilidad para la raíz, con el hierro como caso documentado de sensibilidad al pH.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'almacenamiento',
+    slug: 'almacenamiento',
+    categoryId: 'manejo-poscosecha',
+    title: 'Almacenamiento: qué pasa después del curado',
+    summary: 'El curado estabiliza el perfil organoléptico del material seco. Lo que ocurre después —cómo se guarda, con qué luz, qué temperatura y qué exposición al aire— sigue afectando su composición con el paso del tiempo.',
+    intro: '"Manejo poscosecha: secado y curado" describe el secado y el curado como los dos procesos centrales de manejo del material ya cosechado. Esta entrada mira el paso siguiente, distinto de ambos: qué pasa con ese material una vez guardado, y por qué las condiciones de almacenamiento siguen importando después de terminado el curado.',
+    sections: [
+      {
+        id: 'la-degradacion-no-se-detiene',
+        title: 'La composición sigue cambiando después del curado',
+        paragraphs: [
+          'Un estudio de estabilidad de cannabinoides en material vegetal y productos derivados de Cannabis sativa, bajo distintas condiciones de almacenamiento prolongado, encontró que la temperatura ambiente acelera la degradación del THC hacia cannabinol (CBN) —un cannabinoide distinto, con propiedades distintas—, mientras que el almacenamiento a −20 °C preserva mejor el perfil de cannabinoides original a lo largo del tiempo.',
+          'El mismo trabajo encontró una diferencia notable entre cannabinoides: los productos dominados por CBD mostraron estabilidad robusta incluso a temperatura ambiente, mientras que los dominados por THC resultaron mucho más sensibles a la degradación ambiental — es decir, "cuánto importa" la temperatura de almacenamiento depende también de qué cannabinoide predomina en el material, no es una regla única para cualquier planta.'
+        ]
+      },
+      {
+        id: 'que-no-afirma-esta-entrada',
+        title: 'Qué no afirma esta entrada',
+        paragraphs: [
+          'El estudio citado no se pudo leer en su versión completa en esta sesión —el acceso a la revista está restringido—, por lo que esta entrada se limita a lo que su resumen público respalda: la dirección general del efecto (temperatura ambiente acelera la conversión de THC a CBN; frío la retrasa) y la diferencia entre productos dominados por THC y por CBD. No se cita ninguna cifra exacta de porcentaje de degradación ni un plazo específico, por no estar verificados por lectura directa.',
+          'Tampoco se deriva de acá ninguna recomendación de temperatura de guarda doméstica: el estudio trabajó con condiciones de temperatura ambiente, refrigeración y freezer (−20 °C) como puntos de comparación experimental, no como una escala de recomendaciones de uso cotidiano.'
+        ]
+      }
+    ],
+    observations: [
+      'Que el estudio haya medido una conversión de THC a CBN más rápida a temperatura ambiente que a −20 °C es un hallazgo reportado en su resumen. Convertir eso en la instrucción "hay que guardar todo en el freezer" sería una recomendación que esta entrada no hace, porque el propio resumen no evalúa el efecto práctico de eso sobre el uso cotidiano del material, ni compara contra condiciones intermedias más habituales (como un lugar oscuro y fresco a temperatura ambiente).',
+      'Que un producto dominado por CBD haya mostrado más estabilidad a temperatura ambiente que uno dominado por THC es un dato sobre el material, no sobre el método de guarda — cambia qué tan sensible es un material dado al paso del tiempo, no invalida la observación general de que la temperatura influye en la degradación.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Extraer una recomendación operativa concreta (por ejemplo, "guardar en el freezer") de un hallazgo de laboratorio que comparó condiciones experimentales, sin que el estudio citado evalúe esa recomendación específicamente.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar la misma expectativa de estabilidad a un material dominado por THC que a uno dominado por CBD, cuando el propio estudio documenta una diferencia real entre ambos.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Presentar una cifra exacta de degradación o un plazo específico atribuido a este estudio sin haber podido verificarlo por lectura directa del texto completo — esta entrada evita hacerlo explícitamente.'
+      }
+    ],
+    environmentContext: [
+      'Esta entrada no fija una condición de almacenamiento única ni recomendada para ningún contexto argentino en particular: describe el hallazgo general de un estudio internacional sobre la dirección del efecto de la temperatura, no una guía de guarda doméstica.'
+    ],
+    tags: ['cosecha', 'maduración'],
+    relatedEntryIds: ['poscosecha'],
+    sourceIds: [
+      'cientifica-majumdar-2026-cannabinoid-storage-stability'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Almacenamiento: qué pasa después del curado — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué el perfil de cannabinoides sigue cambiando después del curado, y qué encontró un estudio reciente sobre el efecto de la temperatura de almacenamiento en la conversión de THC a CBN.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'canamo-industrial-frontera-thc',
+    slug: 'canamo-industrial-frontera-thc',
+    categoryId: 'genetica-tipos',
+    title: 'Cáñamo industrial: la frontera genética y legal del 1% de THC',
+    summary: '"Genética y tipos" describe el quimiotipo como una clasificación química, no botánica. Esta entrada mira un caso concreto de esa clasificación con consecuencias legales directas en Argentina: el cáñamo industrial.',
+    intro: '"Genética y tipos: sativa, indica, ruderalis" ya distingue el quimiotipo —la proporción entre THCA y CBDA— de la clasificación taxonómica tradicional. Esta entrada aplica esa distinción a un caso concreto, con consecuencias legales directas en Argentina: la frontera del 1 % de THC que separa, en la Ley 27.669, al cáñamo industrial del resto de Cannabis sativa.',
+    sections: [
+      {
+        id: 'una-frontera-legal-sobre-una-base-genetica',
+        title: 'Una frontera legal trazada sobre una base genética',
+        paragraphs: [
+          'La Ley 27.669 excluye explícitamente del alcance penal de la Ley 23.737 a las plantas de Cannabis sativa con no más de 1 % de THC en peso seco, categoría que la norma llama cáñamo industrial —destinado a fibra, semilla u otros usos no psicoactivos—. Esa cifra no es un umbral arbitrario en términos botánicos: coincide, en términos generales, con el rango de plantas cuyo quimiotipo (ver "Genética y tipos") está dominado por CBDA en vez de THCA — la misma clasificación química que esa entrada ya describe, aplicada acá como criterio legal, no solo académico.',
+          'Esta entrada no repite el detalle institucional de ARICCAME ni el trámite de licencias industriales, ya descriptos en "Marco editorial y responsable" — se enfoca en la base genética/química de la distinción entre cáñamo industrial y el resto de Cannabis sativa.'
+        ]
+      },
+      {
+        id: 'diversidad-genetica-del-canamo',
+        title: 'El cáñamo no es genéticamente uniforme',
+        paragraphs: [
+          'Un estudio con 27 cultivares de cáñamo industrial —15 de aceite esencial y 12 de fibra/grano— encontró que el umbral fotoperiódico crítico (la duración de oscuridad necesaria para disparar la floración, ver "Luz como señal temporal") varía sustancialmente entre cultivares, de forma más marcada entre los de aceite esencial que entre los de fibra/grano. Es evidencia directa de Cannabis sativa —no una analogía con otra especie— de que "cáñamo industrial" no describe una única variedad genética uniforme, sino un conjunto de cultivares distintos que comparten el criterio legal del bajo THC, no necesariamente el resto de sus características.',
+          'Esto es coherente con la advertencia general que ya hace "Genética y tipos" sobre los nombres comerciales de Cannabis: "cáñamo industrial" es, ante todo, una categoría legal y química (definida por el THC), no una descripción completa de la genética de la planta que la cumple.'
+        ]
+      }
+    ],
+    observations: [
+      'Que una planta tenga 1 % o menos de THC en peso seco es una medición química verificable, la misma base que define el quimiotipo dominado por CBDA que ya describe "Genética y tipos". Que esa planta sea además fotoperiódicamente similar a cualquier otro cultivar de cáñamo es una suposición que el estudio de 27 cultivares no respalda — el umbral fotoperiódico varía entre ellos.',
+      'Cumplir el criterio legal de cáñamo industrial (≤ 1 % THC) no dice nada, por sí solo, sobre si esa planta es de fibra, de grano o de aceite esencial — son categorías de uso agronómico distintas del criterio de THC que define la categoría legal.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar "cáñamo industrial" como si fuera una única variedad genética homogénea, cuando la evidencia directa de Cannabis sativa muestra diversidad real de umbral fotoperiódico (y, por extensión, de otras características) entre cultivares que cumplen igualmente el criterio legal de bajo THC.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Confundir el criterio legal argentino (≤ 1 % THC en peso seco, Ley 27.669) con el criterio botánico de "sativa/indica" que ya describe "Genética y tipos" como sin validez taxonómica formal — son clasificaciones de naturaleza distinta.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['genética', 'taxonomía', 'legal'],
+    relatedEntryIds: ['genetica-y-tipos', 'marco-editorial', 'luz-y-fotoperiodo'],
+    sourceIds: [
+      'ley-27669-marco-industrial',
+      'cientifica-zhang-2021-hemp-photoperiod-cultivars'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Cáñamo industrial: la frontera genética y legal del 1% de THC — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué el umbral legal argentino de 1% de THC (Ley 27.669) coincide con una distinción de quimiotipo, y por qué el cáñamo industrial no es una única variedad genética uniforme.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+
+  // ============================================================================================
+  // Ronda 2026-09-18 — recursos de los 3 bloques nuevos: Material de lectura, Documentales,
+  // Noticias. Cada "entrada" acá es un recurso externo curado, no un artículo propio del atlas:
+  // `intro`/`sections` describen el recurso, y `sourceIds` apunta a la fuente real (enlace,
+  // autor/institución y fecha viven en el registro de fuentes, ver sources.js).
+  // ============================================================================================
+  {
+    id: 'lectura-oms-informe-critico-cannabis',
+    slug: 'informe-critico-oms-cannabis',
+    categoryId: 'material-de-lectura',
+    title: 'Cannabis and cannabis resin: informe crítico de la OMS',
+    summary: 'La primera revisión científica completa de la Organización Mundial de la Salud sobre Cannabis desde 1935, preparada para su Comité de Expertos en Farmacodependencia.',
+    intro: 'En agosto de 2018, la Organización Mundial de la Salud publicó "Cannabis and cannabis resin", el informe de revisión crítica preparado para la 41ª reunión de su Comité de Expertos en Farmacodependencia (ECDD) — la primera revisión científica de la OMS sobre esta planta desde 1935. El documento completo está disponible de forma gratuita en el sitio institucional de la OMS.',
+    sections: [
+      {
+        id: 'por-que-se-recomienda',
+        title: 'Por qué se incluye en esta selección',
+        paragraphs: [
+          'Es un documento oficial, de acceso abierto y con metodología de revisión por comité de expertos declarada — un punto de partida de referencia internacional para quien quiera leer una revisión científica institucional sobre la planta, más allá del contenido propio de este atlas. Esta entrada no resume sus conclusiones ni las usa para respaldar ninguna afirmación puntual de otra parte del atlas: se lo incluye como material de lectura recomendado, a leer en su fuente original.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['lectura'],
+    relatedEntryIds: [],
+    sourceIds: ['oficial-oms-2018-cannabis-critical-review'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Cannabis and cannabis resin: informe crítico de la OMS — Atlas del Cultivo Argentino',
+      seoDescription: 'La revisión científica de la Organización Mundial de la Salud sobre Cannabis (2018), preparada para su Comité de Expertos en Farmacodependencia. Acceso libre al documento original.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'lectura-ariccame-preguntas-frecuentes',
+    slug: 'preguntas-frecuentes-ariccame',
+    categoryId: 'material-de-lectura',
+    title: 'Preguntas frecuentes sobre la regulación del cáñamo y cannabis en Argentina',
+    summary: 'El recurso oficial de referencia de ARICCAME para entender el marco regulatorio argentino del cáñamo y el cannabis medicinal, en formato de preguntas y respuestas.',
+    intro: 'ARICCAME, la Agencia Regulatoria de la Industria del Cáñamo y del Cannabis Medicinal, publica en el portal argentina.gob.ar una guía de preguntas frecuentes sobre el marco regulatorio vigente. Es un recurso oficial y de acceso directo, complementario del resumen ya disponible en "Marco editorial y responsable" de este atlas.',
+    sections: [
+      {
+        id: 'como-usar-este-recurso',
+        title: 'Cómo se usa este recurso',
+        paragraphs: [
+          'Al tratarse de una página oficial mantenida por el propio organismo regulador, es la referencia más directa para consultar el estado vigente de requisitos y trámites — que, como ya advierte "Marco editorial y responsable", cambian con el tiempo. Esta entrada no reproduce su contenido: enlaza a la fuente para que se consulte actualizada.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['lectura', 'legal'],
+    relatedEntryIds: ['marco-editorial', 'reprocann-modalidades'],
+    sourceIds: ['oficial-ariccame-preguntas-frecuentes'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Preguntas frecuentes sobre la regulación del cáñamo y cannabis en Argentina — Atlas del Cultivo Argentino',
+      seoDescription: 'El recurso oficial de ARICCAME, en formato de preguntas y respuestas, para consultar el estado vigente del marco regulatorio argentino.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'lectura-guia-evaluacion-visual-suelo',
+    slug: 'guia-evaluacion-visual-del-suelo',
+    categoryId: 'material-de-lectura',
+    title: 'Guía para la evaluación visual de la calidad del suelo',
+    summary: 'Un manual académico de acceso abierto, elaborado por la Facultad de Agronomía de la UNLPam junto con el INTA, para leer la calidad del suelo con indicadores visuales y táctiles.',
+    intro: 'Esta guía, editada por la Universidad Nacional de La Pampa junto con la EEA INTA Anguil, es la fuente central de la entrada "Evaluación visual del suelo" de este atlas. Se incluye acá también como lectura recomendada completa, para quien quiera ir más allá del recorte específico que hace esa entrada.',
+    sections: [],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['lectura', 'suelo'],
+    relatedEntryIds: ['evaluacion-visual-del-suelo', 'sustrato-y-drenaje'],
+    sourceIds: ['academica-unlpam-inta-guia-evaluacion-visual-suelo'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Guía para la evaluación visual de la calidad del suelo — Atlas del Cultivo Argentino',
+      seoDescription: 'Manual académico de acceso abierto (UNLPam / INTA Anguil) sobre indicadores visuales y táctiles de calidad de suelo.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'lectura-pollio-nombre-cannabis',
+    slug: 'el-nombre-del-cannabis-pollio',
+    categoryId: 'material-de-lectura',
+    title: 'The Name of Cannabis: A Short Guide for Nonbotanists',
+    summary: 'Un artículo académico breve y de acceso abierto que reconstruye la historia taxonómica real detrás de los nombres "sativa", "indica" y "ruderalis".',
+    intro: 'El artículo de Antonio Pollio, publicado en Cannabis and Cannabinoid Research (2016), es la fuente central de la sección histórica de "Genética y tipos: sativa, indica, ruderalis" en este atlas. Se incluye acá completo como lectura recomendada: es corto, de acceso abierto, y está escrito explícitamente para un público no especializado en botánica.',
+    sections: [],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['lectura', 'genética', 'taxonomía'],
+    relatedEntryIds: ['genetica-y-tipos'],
+    sourceIds: ['cientifica-pollio-2016-nombre-cannabis-taxonomia'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'The Name of Cannabis: A Short Guide for Nonbotanists — Atlas del Cultivo Argentino',
+      seoDescription: 'Artículo académico de acceso abierto (Pollio, 2016) sobre el origen histórico de los nombres sativa, indica y ruderalis.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'documental-cannabis-medicinal',
+    slug: 'cannabis-medicinal-documental',
+    categoryId: 'documentales',
+    title: 'Cannabis medicinal (2023)',
+    summary: 'Dirigido por la neurocientífica de CONICET Silvia Kochen junto a Emiliano Serra, recorre cómo ciencia, medicina, pacientes, familias, ONGs y cultivadores confluyeron en el marco regulatorio argentino actual.',
+    intro: 'Estrenado el 11 de mayo de 2023 en el cine Gaumont de Buenos Aires, "Cannabis medicinal" es un documental de 61 minutos producido por Duermevela con el sello CONICET Documental y apoyo del INCAA. Incluye testimonios de José Mujica y de Raphael Mechoulam, el investigador que aisló el THC por primera vez.',
+    sections: [
+      {
+        id: 'quien-lo-dirige',
+        title: 'Quién lo dirige',
+        paragraphs: [
+          'Silvia Kochen es neurocientífica de CONICET, coordinadora de la Red de Cannabis Medicinal e Industrial (RACME) y co-dirige Cannabis CONICET — no es una producción externa al ecosistema científico argentino que investiga el tema, sino uno de sus propios investigadores documentando ese proceso desde adentro.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['documental', 'argentina'],
+    relatedEntryIds: ['industria-cannabis-argentina-actual', 'marco-editorial'],
+    sourceIds: ['documental-cannabis-medicinal-2023'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Cannabis medicinal (2023) — Atlas del Cultivo Argentino',
+      seoDescription: 'Documental argentino (2023) dirigido por Silvia Kochen (CONICET) y Emiliano Serra sobre el camino hacia el marco regulatorio actual del cannabis medicinal.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'documental-madre-planta',
+    slug: 'madre-planta-documental',
+    categoryId: 'documentales',
+    title: 'Madre Planta (2022)',
+    summary: 'Un documental de varios años de rodaje en Argentina, Chile e Israel sobre familias que recurrieron al aceite de cannabis para tratar patologías de sus hijos o nietos.',
+    intro: 'Dirigido por Lisandro Costa, Alejandro Espolsino y Francisco López, "Madre Planta" se estrenó el 14 de abril de 2022 en el cine Gaumont, con emisión posterior por Canal Encuentro. Entre las historias que documenta está la de María Eugenia Sar y su nieto Joaquín, una de las familias que impulsó uno de los primeros amparos judiciales del país para el autocultivo de cannabis con fines medicinales.',
+    sections: [],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['documental', 'argentina'],
+    relatedEntryIds: ['industria-cannabis-argentina-actual'],
+    sourceIds: ['documental-madre-planta-2022'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'Madre Planta (2022) — Atlas del Cultivo Argentino',
+      seoDescription: 'Documental argentino (2022) sobre familias que recurrieron al aceite de cannabis medicinal, dirigido por Lisandro Costa, Alejandro Espolsino y Francisco López.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'documental-el-profe',
+    slug: 'el-profe-documental',
+    categoryId: 'documentales',
+    title: 'El Profe (2021)',
+    summary: 'Un cortometraje documental sobre Daniel Loza, cultivador solidario que difundió el autocultivo en Argentina a través de su serie web "Quinto Elemento".',
+    intro: 'Dirigido por Julián Cáneva, "El Profe" es un cortometraje documental de 25 minutos sobre Daniel Loza, quien elaboraba aceite de cannabis y formó a numerosos cultivadores a través de su serie web "Quinto Elemento" —nombre que también dio a la cepa que creó—. Loza falleció en 2018, tras un allanamiento; sus materiales de elaboración fueron donados al CONICET en 2020.',
+    sections: [],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['documental', 'argentina'],
+    relatedEntryIds: ['industria-cannabis-argentina-actual'],
+    sourceIds: ['documental-el-profe-2021'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'El Profe (2021) — Atlas del Cultivo Argentino',
+      seoDescription: 'Cortometraje documental (2021) sobre Daniel Loza, cultivador solidario y creador de la serie web "Quinto Elemento", dirigido por Julián Cáneva.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'noticia-decreto-27-2026-sedronar',
+    slug: 'reprocann-pasa-a-sedronar',
+    categoryId: 'noticias',
+    title: 'El REPROCANN pasa a depender de la SEDRONAR',
+    summary: 'El Decreto 27/2026, publicado el 26 de enero de 2026, traspasó la gestión del registro de cultivo medicinal desde el Ministerio de Salud hacia la Secretaría de Políticas Integrales sobre Drogas.',
+    intro: 'El 26 de enero de 2026, el Boletín Oficial publicó el Decreto 27/2026, que reorganiza competencias dentro del Ministerio de Salud y traspasa el registro, control y evaluación del REPROCANN a la SEDRONAR (Secretaría de Políticas Integrales sobre Drogas de la Nación) — organismo que hasta entonces no tenía a su cargo la gestión operativa del programa.',
+    sections: [
+      {
+        id: 'que-cambia-y-que-no',
+        title: 'Qué cambia y qué no',
+        paragraphs: [
+          'Según la cobertura periodística consultada para esta entrada, convergente entre distintos medios, el decreto no deroga la Ley 27.350 ni elimina el REPROCANN: el uso medicinal de cannabis sigue vigente en el marco de salud nacional. Lo que cambia es el organismo responsable de la gestión operativa del registro. Esta entrada no verificó el texto completo del decreto por lectura directa —solo el aviso de publicación en el Boletín Oficial y la cobertura periodística convergente— y no describe en detalle los procedimientos operativos nuevos, que exceden lo que esas fuentes permiten confirmar con precisión.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['noticia', 'legal', 'contexto'],
+    relatedEntryIds: ['marco-editorial', 'reprocann-modalidades'],
+    sourceIds: ['legal-decreto-27-2026-reprocann-sedronar'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'El REPROCANN pasa a depender de la SEDRONAR — Atlas del Cultivo Argentino',
+      seoDescription: 'El Decreto 27/2026 traspasó la gestión operativa del REPROCANN del Ministerio de Salud a la SEDRONAR, sin derogar la Ley 27.350.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'noticia-ariccame-resolucion-41-propagacion',
+    slug: 'ariccame-regimen-propagacion-2026',
+    categoryId: 'noticias',
+    title: 'ARICCAME abre un régimen especial para semillas, plantines y esquejes',
+    summary: 'La Resolución 41/2026 habilita, hasta marzo de 2027, un trámite de adecuación para licenciar material de propagación de cannabis ya registrado en el Registro Nacional de Semillas.',
+    intro: 'El 24 de junio de 2026, ARICCAME anunció, a través de un comunicado oficial en argentina.gob.ar, la Resolución 41/2026: un régimen especial de adecuación para licenciar semillas, plantines y esquejes de cannabis ya inscriptos en el Registro Nacional de Semillas.',
+    sections: [
+      {
+        id: 'que-habilita-y-que-no',
+        title: 'Qué habilita y qué no',
+        paragraphs: [
+          'El trámite está abierto hasta el 1º de marzo de 2027, y otorga licencias de cinco años con validación anual — pero esas licencias habilitan únicamente material de propagación (semillas, plantines, esquejes), no la producción ni la venta de flores o derivados. El comunicado enmarca la medida como un paso hacia "mayor previsibilidad jurídica" mientras se implementa el régimen general de licencias de la Ley 27.669.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['noticia', 'legal'],
+    relatedEntryIds: ['marco-editorial'],
+    sourceIds: ['oficial-ariccame-resolucion-41-2026-noticia', 'resolucion-ariccame-41-2026-organos-propagacion'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'ARICCAME abre un régimen especial para semillas, plantines y esquejes — Atlas del Cultivo Argentino',
+      seoDescription: 'La Resolución 41/2026 de ARICCAME habilita, hasta marzo de 2027, licencias de adecuación para material de propagación de cannabis ya registrado.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'noticia-ariccame-canamo-horticola',
+    slug: 'ariccame-canamo-hortícola-2026',
+    categoryId: 'noticias',
+    title: 'ARICCAME habilita la producción de cáñamo con fines hortícolas',
+    summary: 'Un nuevo régimen de licencias permite, por primera vez, producir y comercializar flores, inflorescencias y biomasa de cáñamo no psicoactivo (hasta 1% de THC).',
+    intro: 'En septiembre de 2026, ARICCAME publicó en el Boletín Oficial la Resolución 69/2026, que crea el régimen de licencias para producción, comercialización y actividades vinculadas al cáñamo con fines hortícolas — la cobertura de Bichos de Campo, un medio especializado en agro, es la fuente principal de esta entrada.',
+    sections: [
+      {
+        id: 'alcance-de-la-resolucion',
+        title: 'Alcance de la resolución',
+        paragraphs: [
+          'La medida aplica a plantas de Cannabis sativa L. consideradas no psicoactivas (hasta 1 % de THC, el mismo umbral que describe "Cáñamo industrial: la frontera genética y legal del 1% de THC" en este atlas) y contempla cuatro tipos de licencia: producción agrícola, elaboración de derivados, servicios vinculados y comercio exterior, todas de cinco años con validación anual. Entra en vigencia 30 días hábiles después de su publicación en el Boletín Oficial. Esta entrada no verificó el texto completo de la resolución por lectura directa, solo la cobertura periodística citada.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [],
+    environmentContext: null,
+    tags: ['noticia', 'legal', 'genética'],
+    relatedEntryIds: ['canamo-industrial-frontera-thc', 'marco-editorial'],
+    sourceIds: ['periodistica-bichosdecampo-2026-resolucion-69-canamo-horticola'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-18',
+    metadata: {
+      seoTitle: 'ARICCAME habilita la producción de cáñamo con fines hortícolas — Atlas del Cultivo Argentino',
+      seoDescription: 'La Resolución 69/2026 de ARICCAME crea licencias para producir y comercializar flores, inflorescencias y biomasa de cáñamo no psicoactivo (hasta 1% de THC).',
       canonical: null,
       ogImage: null
     }

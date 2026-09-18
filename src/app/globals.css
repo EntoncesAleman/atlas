@@ -236,9 +236,6 @@ body::before {
   background-size: 18px 18px, auto;
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .atlas-card-image {
@@ -260,35 +257,6 @@ body::before {
   inset: 0;
   background: linear-gradient(135deg, var(--sage-glass), transparent);
 }
-
-.atlas-card-structure {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid var(--sage-deep);
-  position: relative;
-  opacity: 0.84;
-}
-
-.atlas-card-grid {
-  position: absolute;
-  inset: 5px;
-  border-radius: 50% 50% 50% 50%;
-  border: 1px dashed var(--sage-deep);
-}
-
-.atlas-card-line {
-  position: absolute;
-  display: block;
-  width: 1px;
-  height: 44px;
-  background: var(--sage-deep);
-  opacity: 0.8;
-}
-
-.atlas-line-one { transform: rotate(20deg); left: 25px; top: -6px; }
-.atlas-line-two { transform: rotate(70deg); left: 12px; top: 1px; }
-.atlas-line-three { transform: rotate(-50deg); right: 12px; top: 5px; }
 
 .atlas-card-number {
   position: absolute;

@@ -1007,6 +1007,180 @@ export const sources = [
     accessedAt: '2026-09-16',
     notes: 'PARCIAL — autoría completa, revista y DOI verificados directamente vía Crossref; el texto completo no se pudo leer (acceso bloqueado por el editor, HTTP 403), se usa el resumen/hallazgos reportados en múltiples fuentes secundarias convergentes. Describe los tres tipos de tricoma glandular de Cannabis sativa (bulboso y capitado-sésil en hojas vegetativas; capitado-pedunculado asociado a la inflorescencia) y diferencias documentadas de contenido de cannabinoides/terpenos entre ellos (los capitado-pedunculados como principal reservorio).'
   },
+
+  // --- Fuentes visuales — ronda 2026-09-18 (renovación de imágenes del Atlas: Genética y
+  // tipos, Suelo y agua, Marco legal) ---
+  {
+    id: 'visual-cannabis-indica-oshaughnessy-1839',
+    scope: 'CANNABIS',
+    title: 'Cannabis Indica (Gunjah) — lámina de W. B. O\'Shaughnessy, 1839',
+    authorOrInstitution: 'George Wallich (dibujante, según Roxburgh), en O\'Shaughnessy (1839) — Wellcome Collection',
+    url: 'https://commons.wikimedia.org/wiki/File:Cannabis_Indica_(Gunjah)._Wellcome_L0005752.jpg',
+    type: 'VISUAL',
+    publicationDate: '1839',
+    accessedAt: '2026-09-18',
+    notes: 'CC BY 4.0 (licencia declarada por Wellcome Collection en Wikimedia Commons). Verificado por lectura directa de la página de archivo. Ilustra Cannabis indica, distinta de la lámina de Köhler (Cannabis sativa, 1887) que hasta esta ronda duplicaba la portada de "Historia".'
+  },
+  {
+    id: 'visual-cannabis-sativa-plant-garden-sevela',
+    scope: 'CANNABIS',
+    title: 'Fotografía de Cannabis sativa creciendo en suelo de huerta',
+    authorOrInstitution: 'Sevela.p (Pavel Ševela)',
+    url: 'https://commons.wikimedia.org/wiki/File:Cannabis_sativa_plant_(16).jpg',
+    type: 'VISUAL',
+    publicationDate: '2011-08-16',
+    accessedAt: '2026-09-18',
+    notes: 'CC BY-SA 3.0. Verificado por lectura directa de la página de archivo (metadatos EXIF y extmetadata consultados vía API de Wikimedia). Reemplaza como portada de "Suelo y agua" una fotografía previa (raíces sobre arcilla expandida) documentada como visualmente poco atractiva.'
+  },
+  {
+    id: 'visual-palacio-congreso-argentina-2019',
+    scope: null,
+    title: 'Palacio del Congreso de la Nación Argentina (2019)',
+    authorOrInstitution: 'Felipe Restrepo Acosta',
+    url: 'https://commons.wikimedia.org/wiki/File:2019_Buenos_Aires_-_Palacio_del_Congreso_de_la_Naci%C3%B3n_Argentina.jpg',
+    type: 'VISUAL',
+    publicationDate: '2019-03-27',
+    accessedAt: '2026-09-18',
+    notes: 'CC BY-SA 4.0. Verificado por lectura directa de la página de archivo. Reemplaza el gráfico interno genérico usado hasta esta ronda como portada de "Marco legal" por una fotografía institucional real del cuerpo legislativo argentino.'
+  },
+
+  // --- Fuentes visuales — ronda 2026-09-18 (portadas de los 3 bloques nuevos: Material de
+  // lectura, Documentales, Noticias) ---
+  {
+    id: 'visual-open-book-benwhite',
+    scope: null,
+    title: 'Fotografía de un libro abierto',
+    authorOrInstitution: 'Ben White (Unsplash)',
+    url: 'https://commons.wikimedia.org/wiki/File:Open_book_(Unsplash).jpg',
+    type: 'VISUAL',
+    publicationDate: '2016-09-03',
+    accessedAt: '2026-09-18',
+    notes: 'CC0. Verificado por lectura directa de la página de archivo (metadatos extmetadata consultados vía API de Wikimedia).'
+  },
+  {
+    id: 'visual-clapperboard-mrgandy',
+    scope: null,
+    title: 'Fotografía de una claqueta de cine tradicional',
+    authorOrInstitution: 'MrGandy',
+    url: 'https://commons.wikimedia.org/wiki/File:A_Traditional_Wooden_Slate_Clapperboard.jpg',
+    type: 'VISUAL',
+    publicationDate: null,
+    accessedAt: '2026-09-18',
+    notes: 'Dominio público (licencia declarada por el autor en Wikimedia Commons). Verificado por lectura directa de la página de archivo.'
+  },
+  {
+    id: 'visual-newspaper-stack-blume',
+    scope: null,
+    title: 'Fotografía de una pila de diarios',
+    authorOrInstitution: 'Daniel R. Blume',
+    url: 'https://commons.wikimedia.org/wiki/File:A_stack_of_newspapers.jpg',
+    type: 'VISUAL',
+    publicationDate: null,
+    accessedAt: '2026-09-18',
+    notes: 'CC BY-SA 2.0. Verificado por lectura directa de la página de archivo.'
+  },
+
+  // --- Fuentes de contenido — ronda 2026-09-18 (bloques nuevos: Material de lectura,
+  // Documentales, Noticias) ---
+  {
+    id: 'oficial-oms-2018-cannabis-critical-review',
+    scope: 'CANNABIS',
+    title: 'Cannabis and cannabis resin — Critical Review Report',
+    authorOrInstitution: 'World Health Organization (WHO), Expert Committee on Drug Dependence (ECDD)',
+    url: 'https://cdn.who.int/media/docs/default-source/controlled-substances/cannabis-and-cannabis-resin.pdf',
+    type: 'OFFICIAL',
+    publicationDate: '2018-08-01',
+    accessedAt: '2026-09-18',
+    notes: 'VERIFICADO por búsqueda directa (documento oficial alojado en el CDN institucional de la OMS, cdn.who.int). Primera revisión científica de la OMS sobre Cannabis desde 1935, preparada para el 41º Comité de Expertos en Farmacodependencia (ECDD). Se incluye como material de lectura recomendado, no como fuente de una afirmación puntual de ninguna entrada del atlas.'
+  },
+  {
+    id: 'oficial-ariccame-preguntas-frecuentes',
+    scope: null,
+    title: 'Preguntas frecuentes sobre la regulación del cáñamo y cannabis en Argentina',
+    authorOrInstitution: 'ARICCAME (Agencia Regulatoria de la Industria del Cáñamo y del Cannabis Medicinal) — Argentina.gob.ar',
+    url: 'https://www.argentina.gob.ar/ariccame/preguntas-frecuentes-sobre-la-regulacion-del-canamo-y-cannabis-en-argentina',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-18',
+    notes: 'VERIFICADO por búsqueda directa (página oficial de argentina.gob.ar). Recurso de lectura oficial y de referencia práctica sobre el marco regulatorio argentino, complementario del resumen ya citado en "Marco editorial y responsable".'
+  },
+  {
+    id: 'documental-cannabis-medicinal-2023',
+    scope: 'CANNABIS',
+    title: 'Cannabis medicinal (documental, 2023)',
+    authorOrInstitution: 'Silvia Kochen y Emiliano Serra (dirección) — producción de Duermevela, CONICET Documental, con apoyo del INCAA',
+    url: 'https://www.conicet.gov.ar/estreno-del-documental-cannabis-medicinal/',
+    type: 'OTHER',
+    publicationDate: '2023-05-11',
+    accessedAt: '2026-09-18',
+    notes: 'VERIFICADO por lectura directa de la página oficial de CONICET. Estrenado el 11 de mayo de 2023 en el cine Gaumont (Buenos Aires), 61 minutos. Recorre cómo se tendieron puentes entre ciencia, medicina, pacientes, familias, ONGs y cultivadores en el proceso que llevó a la Ley 27.669; incluye testimonios de José Mujica y Raphael Mechoulam. Dirigido por Silvia Kochen, neurocientífica de CONICET y coordinadora de la Red de Cannabis Medicinal e Industrial (RACME).'
+  },
+  {
+    id: 'documental-madre-planta-2022',
+    scope: 'CANNABIS',
+    title: 'Madre Planta (documental, 2022)',
+    authorOrInstitution: 'Lisandro Costa, Alejandro Espolsino y Francisco López (dirección)',
+    url: 'https://revistathc.com/2022/04/14/un-documental-argentino-sobre-el-cannabis-medicinal-llega-al-canal-encuentro/',
+    type: 'OTHER',
+    publicationDate: '2022-04-14',
+    accessedAt: '2026-09-18',
+    notes: 'VERIFICADO por lectura directa (Revista THC). Estrenado el 14 de abril de 2022 en el cine Gaumont, con emisión posterior por Canal Encuentro. Documenta, a lo largo de un rodaje de varios años en Argentina, Chile e Israel, las experiencias de familias (entre ellas la de María Eugenia Sar y su nieto Joaquín) que recurrieron al aceite de cannabis para tratar patologías de sus hijos o nietos, con entrevistas a Raphael Mechoulam.'
+  },
+  {
+    id: 'documental-el-profe-2021',
+    scope: 'CANNABIS',
+    title: 'El Profe (documental, 2021)',
+    authorOrInstitution: 'Julián Cáneva (dirección)',
+    url: 'https://cinenacional.com/pelicula/el-profe',
+    type: 'OTHER',
+    publicationDate: '2021',
+    accessedAt: '2026-09-18',
+    notes: 'VERIFICADO por búsqueda directa (cinenacional.com y cobertura periodística convergente en Revista THC, 0221, El Día). Cortometraje documental (25 minutos) sobre Daniel Loza, cultivador solidario que difundió el autocultivo a través de su serie web "Quinto Elemento" y creó la cepa del mismo nombre; falleció en 2018 tras un allanamiento. Sus materiales de elaboración de aceite fueron donados al CONICET en 2020.'
+  },
+  {
+    id: 'legal-decreto-27-2026-reprocann-sedronar',
+    title: 'Decreto 27/2026 — Traspaso de la gestión del REPROCANN a la SEDRONAR',
+    authorOrInstitution: 'Boletín Oficial de la República Argentina',
+    url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/337707/20260126',
+    type: 'LEGAL',
+    publicationDate: '2026-01-26',
+    accessedAt: '2026-09-18',
+    notes: 'VERIFICADO por búsqueda directa (aviso real en boletinoficial.gob.ar, corroborado de forma convergente por múltiples coberturas periodísticas — Revista THC, El Planteo, Marimba). Reorganiza competencias dentro del Ministerio de Salud y traspasa el registro, control y evaluación del REPROCANN a la SEDRONAR (Secretaría de Políticas Integrales sobre Drogas), que hasta entonces dependía directamente del Ministerio de Salud. Las coberturas periodísticas consultadas coinciden en que el decreto no deroga la Ley 27.350 ni el REPROCANN, solo cambia el organismo de gestión — no se verificó el texto completo del decreto por lectura directa en esta sesión, solo el aviso de publicación y las coberturas convergentes.'
+  },
+  {
+    id: 'oficial-ariccame-resolucion-41-2026-noticia',
+    title: 'ARICCAME avanza en la regulación de órganos de propagación de cáñamo y cannabis medicinal',
+    authorOrInstitution: 'Argentina.gob.ar (Presidencia de la Nación)',
+    url: 'https://www.argentina.gob.ar/noticias/ariccame-avanza-en-la-regulacion-de-organos-de-propagacion-de-canamo-y-cannabis-medicinal',
+    type: 'OFFICIAL',
+    publicationDate: '2026-06-24',
+    accessedAt: '2026-09-18',
+    notes: 'VERIFICADO por lectura directa. Anuncio oficial de la Resolución ARICCAME 41/2026 (ver también `resolucion-ariccame-41-2026-organos-propagacion`, el aviso de Boletín Oficial): régimen especial de adecuación para licenciar semillas, plantines y esquejes de cannabis ya inscriptos en el Registro Nacional de Semillas, abierto hasta el 1º de marzo de 2027, con licencias de 5 años renovables anualmente que no habilitan producción ni venta de flores o derivados — solo material de propagación.'
+  },
+  {
+    id: 'periodistica-bichosdecampo-2026-resolucion-69-canamo-horticola',
+    title: 'La cadena del cáñamo completa otro tramo pendiente: el gobierno habilitó licencias para producir y comercializar flores, inflorescencias y biomasa no psicoactiva',
+    authorOrInstitution: 'Bichos de Campo',
+    url: 'https://bichosdecampo.com/la-cadena-del-canamo-completa-otro-tramo-pendiente-el-gobierno-habilito-licencias-para-producir-y-comercializar-flores-inflorescencias-y-biomasa-no-psicoactiva/',
+    type: 'OTHER',
+    publicationDate: '2026-09',
+    accessedAt: '2026-09-18',
+    notes: 'Nota periodística verificada por búsqueda directa (medio especializado en agro). Reporta la Resolución ARICCAME 69/2026, que crea un régimen de licencias (producción agrícola, elaboración de derivados, servicios vinculados y comercio exterior, todas de 5 años con validación anual) para cáñamo con fines hortícolas: plantas de Cannabis sativa L. no psicoactivas (hasta 1 % de THC), habilitando por primera vez la producción y comercialización de inflorescencias, biomasa y material vegetal de cáñamo con ese fin. Entra en vigencia 30 días hábiles después de su publicación en el Boletín Oficial. No se verificó el texto completo de la resolución en el Boletín Oficial por lectura directa en esta sesión, solo la cobertura periodística.'
+  },
+
+  // --- Fuente de contenido — ronda 2026-09-18 (entrada nueva "Almacenamiento", Manejo y
+  // poscosecha) ---
+  {
+    id: 'cientifica-majumdar-2026-cannabinoid-storage-stability',
+    scope: 'CANNABIS',
+    title: 'Stability of Cannabinoids in Cannabis: Plant Material, Extracts, Oil Formulations, and Isolates (CBD and Δ9-THC) Under Different Storage Conditions',
+    authorOrInstitution: 'Majumdar, C. G.; Radwan, M. M.; Chandra, S.; Wanas, A. S.; Elhendawy, M. A.; Ibrahim, E. A.; Geweda, M. M.; Lata, H.; ElSohly, M. A. — Cannabis & Cannabinoid Research',
+    url: 'https://doi.org/10.1177/25785125261478275',
+    type: 'SCIENTIFIC',
+    publicationDate: '2026-08-11',
+    accessedAt: '2026-09-18',
+    notes: 'Título, autoría completa, revista, fecha y resumen verificados vía Crossref (DOI real, incluye abstract estructurado). El texto completo no se pudo leer directamente en esta sesión (acceso institucional/paywall de SAGE). Según el resumen: en material vegetal y productos derivados de Cannabis sativa, la temperatura ambiente acelera la degradación de THC a cannabinol (CBN), mientras que el almacenamiento a −20 °C preserva mejor el perfil de cannabinoides; los productos dominados por CBD muestran más estabilidad a temperatura ambiente que los dominados por THC. Se cita únicamente para ese hallazgo general de estabilidad, no para ninguna cifra cuantitativa interna del estudio que no figure en el resumen.'
+  },
 ];
 
 export function sourceById(id) {

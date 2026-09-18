@@ -27,7 +27,11 @@ export const CONTROLLED_TAGS = [
   'taxonomía',
   'poda',
   'fertilización',
-  'nutrición'
+  'nutrición',
+  'lectura',
+  'documental',
+  'noticia',
+  'industria'
 ];
 
 export function isControlledTag(tag) {

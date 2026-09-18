@@ -149,7 +149,7 @@ export const assets = [
     id: 'asset-suelo-agua-roots-clay',
     file: '/atlas/categories/real/category-suelo-y-agua-roots-real.jpg',
     type: 'photo',
-    categoryId: 'suelo-y-agua',
+    categoryId: null,
     entryId: null,
     sourceId: 'visual-stem-root-clay',
     author: 'Beeblebrox',
@@ -157,8 +157,23 @@ export const assets = [
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Stem_root_and_clay.jpg',
     alt: 'Tallo y raíces de una planta de cannabis junto al volumen de sustrato de arcilla expandida usado para cultivarla en un sistema hidropónico (CC BY-SA 4.0).',
     credit: 'Beeblebrox — CC BY-SA 4.0, vía Wikimedia Commons',
+    status: 'ARCHIVED',
+    knownIssues: 'ARCHIVADO 2026-09-18: es una fotografía real y correctamente licenciada, pero documentada como visualmente poco atractiva (encuadre cerrado sobre bolitas de arcilla expandida y un tallo cortado, sin contexto). Reemplazada como portada de "Suelo y agua" por `asset-suelo-agua-garden-sevela`.'
+  },
+  {
+    id: 'asset-suelo-agua-garden-sevela',
+    file: '/atlas/categories/real/category-suelo-y-agua-garden-real.jpg',
+    type: 'photo',
+    categoryId: 'suelo-y-agua',
+    entryId: null,
+    sourceId: 'visual-cannabis-sativa-plant-garden-sevela',
+    author: 'Sevela.p (Pavel Ševela)',
+    license: 'CC BY-SA 3.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_sativa_plant_(16).jpg',
+    alt: 'Planta de Cannabis sativa creciendo a pleno sol directamente en el suelo cultivado de una huerta, entre plantas de tomate, con la tierra oscura y removida visible alrededor del tallo (CC BY-SA 3.0).',
+    credit: 'Sevela.p (Pavel Ševela) — CC BY-SA 3.0, vía Wikimedia Commons',
     status: 'ACTIVE',
-    knownIssues: 'Nueva portada de "Suelo y agua" (2026-09-16), reemplaza una fotografía de suelo genérico sin planta.'
+    knownIssues: 'Nueva portada de "Suelo y agua" (2026-09-18), reemplaza `asset-suelo-agua-roots-clay` por una imagen con mejor composición y luz: muestra la planta arraigada directamente en tierra de cultivo visible, en un entorno de huerta real (no un estudio ni un primer plano técnico).'
   },
   {
     id: 'asset-sustrato-raices-ia',
@@ -389,7 +404,7 @@ export const assets = [
     id: 'asset-genetica-tipos-koehler',
     file: '/atlas/categories/real/category-fundamentos-real.jpg',
     type: 'illustration',
-    categoryId: 'genetica-tipos',
+    categoryId: null,
     entryId: 'genetica-y-tipos',
     sourceId: 'visual-koehler-1887',
     author: 'Walther Otto Müller',
@@ -398,7 +413,22 @@ export const assets = [
     alt: 'Lámina botánica histórica de Cannabis sativa (Köhler, 1887, dominio público) mostrando planta macho y hembra con detalle de flores, polen y semillas.',
     credit: 'W. Müller, Köhler\'s Medizinal-Pflanzen (1887) — dominio público',
     status: 'ACTIVE',
-    knownIssues: 'Nuevo uso (2026-09-16) de un asset histórico ya verificado — reutilización deliberada: esta lámina ya muestra planta macho y hembra con detalle floral, directamente pertinente para una categoría sobre clasificación y tipos, a diferencia del diagrama de fotoperiodo que usaba antes.'
+    knownIssues: 'Ya no es la portada de la categoría "Genética y tipos" (2026-09-18) — se liberó el categoryId porque esta lámina es exactamente el mismo archivo ya usado como portada de "Historia" (`asset-historia-koehler`), una duplicación visual entre ambas categorías en el grid. Reemplazada como portada de categoría por `asset-genetica-tipos-indica-oshaughnessy`. Sigue activa como imagen propia de la entrada "genetica-y-tipos" (no compite ahí con ninguna portada de categoría).'
+  },
+  {
+    id: 'asset-genetica-tipos-indica-oshaughnessy',
+    file: '/atlas/categories/real/category-genetica-tipos-indica-real.jpg',
+    type: 'illustration',
+    categoryId: 'genetica-tipos',
+    entryId: null,
+    sourceId: 'visual-cannabis-indica-oshaughnessy-1839',
+    author: 'George Wallich (dibujante, según las láminas originales de Roxburgh), publicado en O\'Shaughnessy (1839) — Wellcome Collection',
+    license: 'CC BY 4.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Cannabis_Indica_(Gunjah)._Wellcome_L0005752.jpg',
+    alt: 'Lámina botánica histórica de Cannabis indica ("Gunjah"), dibujada por George Wallich a partir de las láminas originales de Roxburgh, publicada en el trabajo de W. B. O\'Shaughnessy de 1839 sobre las preparaciones del cáñamo índico (Wellcome Collection, CC BY 4.0).',
+    credit: 'Wellcome Collection (ilustración de George Wallich, según Roxburgh, en O\'Shaughnessy, 1839) — CC BY 4.0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Nueva portada de "Genética y tipos" (2026-09-18), reemplaza la lámina de Köhler que duplicaba exactamente la portada de "Historia". A diferencia de esa lámina (Cannabis sativa, 1887), esta ilustra específicamente el otro tipo históricamente reconocido de la especie (Cannabis indica), lo que la hace más pertinente para una categoría sobre clasificación y tipos, no solo distinta de archivo. Licencia verificada por lectura directa de la página del archivo en Wikimedia Commons: campo "Author" registrado como "Wellcome Library, London", autoría original (Wallich/Roxburgh/O\'Shaughnessy) documentada en la descripción de la propia lámina, y plantilla de licencia "Cc-by-4.0" declarada en el archivo — se usa esa licencia declarada, no una inferencia de dominio público por antigüedad de la obra original.'
   },
   {
     id: 'asset-poda-hemp-field',
@@ -479,7 +509,7 @@ export const assets = [
     id: 'asset-marco-legal-internal',
     file: '/atlas/categories/category-marco-legal.svg',
     type: 'internal-illustration',
-    categoryId: 'marco-legal',
+    categoryId: null,
     entryId: 'marco-editorial',
     sourceId: null,
     author: 'Proyecto Atlas del Cultivo Argentino',
@@ -488,7 +518,70 @@ export const assets = [
     alt: 'Ilustración editorial del marco legal.',
     credit: null,
     status: 'ACTIVE',
-    knownIssues: 'Revisado de nuevo en 2026-09-16: se buscó material institucional argentino real (Boletín Oficial, INASE) — solo se encontró el isotipo/logo de INASE (no apto como imagen principal de portada/hero) y ninguna fotografía de archivo de un edificio institucional específicamente vinculada a estos organismos. Se mantiene el gráfico interno sin cambios, coherente con la política de no forzar una imagen genérica (tribunales, martillo, balanza) para este concepto.'
+    knownIssues: 'Ya no es la portada de la categoría "Marco legal" (2026-09-18) — se liberó el categoryId a favor de una fotografía institucional real (`asset-marco-legal-congreso`). Sigue activo como imagen propia de la entrada "marco-editorial", donde el gráfico esquemático sigue siendo pertinente.'
+  },
+  {
+    id: 'asset-marco-legal-congreso',
+    file: '/atlas/categories/real/category-marco-legal-congreso-real.jpg',
+    type: 'photo',
+    categoryId: 'marco-legal',
+    entryId: null,
+    sourceId: 'visual-palacio-congreso-argentina-2019',
+    author: 'Felipe Restrepo Acosta',
+    license: 'CC BY-SA 4.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:2019_Buenos_Aires_-_Palacio_del_Congreso_de_la_Naci%C3%B3n_Argentina.jpg',
+    alt: 'Fachada del Palacio del Congreso de la Nación Argentina en Buenos Aires, el edificio del cuerpo legislativo que sanciona las leyes del país, bajo un cielo despejado (CC BY-SA 4.0).',
+    credit: 'Felipe Restrepo Acosta — CC BY-SA 4.0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: 'Nueva portada de "Marco legal" (2026-09-18), reemplaza el gráfico SVG interno genérico. No es una imagen de cannabis (regla del brief editorial para esta categoría) ni un símbolo genérico de justicia (tribunales, martillo, balanza) — es una fotografía institucional real y específicamente argentina del cuerpo legislativo, coherente con el resto del atlas.'
+  },
+
+  // --- Portadas de los 3 bloques nuevos del atlas (2026-09-18): Material de lectura,
+  // Documentales, Noticias ---
+  {
+    id: 'asset-material-de-lectura-openbook',
+    file: '/atlas/categories/real/category-material-de-lectura-real.jpg',
+    type: 'photo',
+    categoryId: 'material-de-lectura',
+    entryId: null,
+    sourceId: 'visual-open-book-benwhite',
+    author: 'Ben White',
+    license: 'CC0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Open_book_(Unsplash).jpg',
+    alt: 'Fotografía en primer plano de un libro abierto de páginas envejecidas, con las hojas curvándose hacia ambos lados (CC0).',
+    credit: 'Ben White — CC0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: null
+  },
+  {
+    id: 'asset-documentales-clapperboard',
+    file: '/atlas/categories/real/category-documentales-real.jpg',
+    type: 'photo',
+    categoryId: 'documentales',
+    entryId: null,
+    sourceId: 'visual-clapperboard-mrgandy',
+    author: 'MrGandy',
+    license: 'Dominio público',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:A_Traditional_Wooden_Slate_Clapperboard.jpg',
+    alt: 'Fotografía de una claqueta de cine tradicional de madera, con los datos de producción escritos a mano (dominio público).',
+    credit: 'MrGandy — dominio público, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: null
+  },
+  {
+    id: 'asset-noticias-newspapers',
+    file: '/atlas/categories/real/category-noticias-real.jpg',
+    type: 'photo',
+    categoryId: 'noticias',
+    entryId: null,
+    sourceId: 'visual-newspaper-stack-blume',
+    author: 'Daniel R. Blume',
+    license: 'CC BY-SA 2.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:A_stack_of_newspapers.jpg',
+    alt: 'Fotografía en primer plano de una pila de diarios doblados (CC BY-SA 2.0).',
+    credit: 'Daniel R. Blume — CC BY-SA 2.0, vía Wikimedia Commons',
+    status: 'ACTIVE',
+    knownIssues: null
   }
 ];
 
