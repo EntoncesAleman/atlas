@@ -1181,6 +1181,61 @@ export const sources = [
     accessedAt: '2026-09-18',
     notes: 'Título, autoría completa, revista, fecha y resumen verificados vía Crossref (DOI real, incluye abstract estructurado). El texto completo no se pudo leer directamente en esta sesión (acceso institucional/paywall de SAGE). Según el resumen: en material vegetal y productos derivados de Cannabis sativa, la temperatura ambiente acelera la degradación de THC a cannabinol (CBN), mientras que el almacenamiento a −20 °C preserva mejor el perfil de cannabinoides; los productos dominados por CBD muestran más estabilidad a temperatura ambiente que los dominados por THC. Se cita únicamente para ese hallazgo general de estabilidad, no para ninguna cifra cuantitativa interna del estudio que no figure en el resumen.'
   },
+
+  {
+    id: 'academica-jedrzejuk-2025-tigmomorfogenesis-review',
+    scope: 'GENERAL',
+    title: 'Plant Perception of Mechanical Stress: A Review of Thigmomorphogenesis',
+    authorOrInstitution: 'Jędrzejuk, A.; Kuźma, N. — International Journal of Molecular Sciences (MDPI)',
+    url: 'https://doi.org/10.3390/ijms262211120',
+    type: 'ACADEMIC',
+    publicationDate: '2025-11-14',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO vía Crossref (título, autoría, revista y fecha confirmados por DOI). Revisión general de fisiología vegetal sobre tigmomorfogénesis (respuesta de la planta al estrés mecánico: viento, roce, flexión), no específica de Cannabis. Se cita solo como marco general del mecanismo biológico detrás de técnicas de estrés mecánico como el super cropping — no contiene ningún dato cuantitativo específico de Cannabis sativa.'
+  },
+  {
+    id: 'cientifica-danziger-2021-shape-matters-defoliacion',
+    scope: 'CANNABIS',
+    title: 'Shape Matters: Plant Architecture Affects Chemical Uniformity in Cannabis sativa Inflorescences',
+    authorOrInstitution: 'Danziger, N.; Bernstein, N. — Plants (MDPI)',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8468686',
+    type: 'SCIENTIFIC',
+    publicationDate: '2021-09-02',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa del texto completo vía PMC (el acceso directo a mdpi.com devolvió error 403 en esta sesión; se usó el espejo PMC, que es el mismo artículo). Estudio en Cannabis sativa real: la falta de penetración de luz hacia las inflorescencias inferiores se asocia con hasta ~40% menos cannabinoides que en las superiores; podas de arquitectura (remoción de brotes/ramas bajas, tipo BBLR, y defoliación de hojas grandes) mejoraron la uniformidad del perfil químico entre inflorescencias de la misma planta al mejorar la penetración de luz. Se cita únicamente para estos hallazgos descritos explícitamente en el texto, no para cifras de rendimiento total no reportadas en el artículo.'
+  },
+  {
+    id: 'cientifica-sandoval-2024-defoliacion-estres-mecanico',
+    scope: 'CANNABIS',
+    title: 'Effects of Simulated Hail Damage (Defoliation) at Different Growth Stages on Cannabis sativa Yield and Quality',
+    authorOrInstitution: 'Sandoval, N. et al. — Industrial Crops and Products',
+    url: 'https://doi.org/10.1016/j.indcrop.2024.118226',
+    type: 'SCIENTIFIC',
+    publicationDate: '2024-05-01',
+    accessedAt: '2026-09-19',
+    notes: 'Título, autoría y revista verificados vía Crossref (DOI real). El texto completo NO se pudo verificar por lectura directa en esta sesión: el artículo en ScienceDirect devolvió error 403, y una tesis universitaria de acceso abierto que incluye el mismo estudio como capítulo (mountainscholar.org) se descargó pero no pudo procesarse como texto (limitación técnica de esta sesión, sin herramienta de renderizado de PDF disponible). Resúmenes secundarios encontrados durante la búsqueda resultaron mutuamente inconsistentes sobre los resultados específicos por etapa de crecimiento. Por esa razón, esta fuente se cita solo para el hecho verificado de que el estudio existe y aborda defoliación simulada (por granizo) en distintas etapas de Cannabis sativa, sin afirmar ningún resultado cuantitativo puntual que no haya podido confirmarse por lectura directa.'
+  },
+  {
+    id: 'cientifica-mahmoud-2023-botrytis-cinerea-cannabis-podredumbre-flor',
+    scope: 'CANNABIS',
+    title: 'Understanding bud rot development, caused by Botrytis cinerea, on cannabis (Cannabis sativa L.) plants grown under greenhouse conditions',
+    authorOrInstitution: 'Mahmoud, M.; BenRejeb, I.; Punja, Z. K.; Buirs, L.; Jabaji, S. — Botany',
+    url: 'https://doi.org/10.1139/cjb-2022-0139',
+    type: 'SCIENTIFIC',
+    publicationDate: '2023-07-01',
+    accessedAt: '2026-09-19',
+    notes: 'Título, autoría completa, revista y fecha verificados vía Crossref (DOI real). El texto completo no se pudo verificar por lectura directa en esta sesión: el acceso directo devolvió error 403 tanto en la página de la revista (cdnsciencepub.com) como en un espejo abierto en Zenodo (tiempo de espera agotado). Las cifras citadas en esta investigación (humedad relativa superior a 70%, temperatura moderada de 17–24 °C como condiciones favorables para el hongo; mejora de la circulación de aire asociada a una reducción del 66–92% en la incidencia de la enfermedad) provienen de caracterizaciones del estudio indexadas por motores de búsqueda, consistentes entre sí en más de una búsqueda independiente, pero no confirmadas por lectura directa del artículo original — se citan con esa salvedad explícita.'
+  },
+  {
+    id: 'institucional-iowa-state-extension-2026-higiene-herramientas-poda',
+    title: 'How Do I Sanitize My Pruning Shears?',
+    authorOrInstitution: 'Steil, A. (Consumer Horticulture Specialist) — Iowa State University Extension and Outreach',
+    url: 'https://yardandgarden.extension.iastate.edu/faq/how-do-i-sanitize-my-pruning-shears',
+    type: 'AGRICULTURAL',
+    publicationDate: '2026-04-20',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa. Guía institucional general de horticultura (no específica de Cannabis) sobre desinfección de herramientas de poda para prevenir la transmisión de enfermedades entre plantas: alcohol isopropílico o etílico al 70% (recomendado para uso general, sin necesidad de remojo prolongado) o solución de lavandina al 10% (9 partes de agua por 1 de lavandina, remojo mínimo de 10 minutos, con enjuague posterior para evitar corrosión) para casos de patógenos más resistentes. Se aplica por analogía a herramientas de poda de Cannabis, igual que otras fuentes generales de horticultura ya usadas en el Atlas.'
+  },
 ];
 
 export function sourceById(id) {

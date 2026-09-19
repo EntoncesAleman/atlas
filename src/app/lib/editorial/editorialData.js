@@ -891,7 +891,7 @@ export const editorialEntries = [
       'En un ambiente protegido, con menos variables externas, suele ser más simple relacionar un cambio con un evento reciente puntual (un ajuste de riego, un cambio de ubicación). Al aire libre, el número de variables posibles es mayor —clima, viento, organismos del entorno—, lo que hace que el patrón completo (no un síntoma aislado) sea todavía más necesario para orientar la lectura.'
     ],
     tags: ['sanidad', 'riesgo'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'marco-editorial', 'chupadera-fungosa-damping-off'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'marco-editorial', 'chupadera-fungosa-damping-off', 'moho-gris-botrytis-cinerea'],
     sourceIds: ['oficial-inta-sintomatologia-diagnostico-diferencial'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-10',
@@ -1051,13 +1051,13 @@ export const editorialEntries = [
       'No se fija ningún momento del ciclo como "el momento correcto" para podar — depende de la etapa de desarrollo de la planta (ver "Cultivo en secuencia") y de variables que esta entrada no cuantifica.'
     ],
     tags: ['cultivo', 'poda'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'fertilizacion-y-nutricion', 'entrenamiento-de-bajo-estres-lst'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'fertilizacion-y-nutricion', 'entrenamiento-de-bajo-estres-lst', 'defoliacion', 'poda-de-bajos-bblr', 'super-cropping', 'fim', 'herramientas-e-higiene-de-poda'],
     sourceIds: [
       'cientifica-chavalina-2026-hemp-topping-morphology',
       'academica-beveridge-2023-apical-dominance-review'
     ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-13',
+    lastReviewed: '2026-09-19',
     metadata: {
       seoTitle: 'Poda — Atlas del Cultivo Argentino',
       seoDescription: 'Qué es la dominancia apical, qué hace la poda sobre ese mecanismo, y qué muestra la evidencia científica directa de Cannabis sativa sobre sus efectos.',
@@ -1234,10 +1234,10 @@ export const editorialEntries = [
       'Esta entrada no fija una duración ni una fecha de cosecha: describe el proceso observable, coherente con el resto del atlas, que no convierte información botánica general en un calendario prescriptivo.'
     ],
     tags: ['cosecha', 'maduración'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'marco-editorial', 'poscosecha', 'quimica-de-la-maduracion'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'marco-editorial', 'poscosecha', 'quimica-de-la-maduracion', 'moho-gris-botrytis-cinerea'],
     sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle', 'cientifica-bernstein-2019-cannabis-npk-cannabinoide-canopia'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-15',
+    lastReviewed: '2026-09-19',
     metadata: {
       seoTitle: 'Cosecha y maduración — Atlas del Cultivo Argentino',
       seoDescription: 'Qué cambia visiblemente en la inflorescencia durante la maduración, por qué es un proceso gradual y no un punto fijo, y qué errores de lectura son frecuentes.',
@@ -1431,7 +1431,7 @@ export const editorialEntries = [
     categoryId: 'historia',
     title: 'Historia de la planta',
     summary: 'De un pasto silvestre euroasiático a un cultivo intercontinental: una línea de tiempo que separa lo que hay evidencia de probar, de lo que todavía es hipótesis.',
-    intro: 'Contar la historia de Cannabis sativa exige la misma disciplina que el resto del atlas aplica a la observación de una planta viva: distinguir qué es evidencia directa (un resto arqueológico fechado, un documento de archivo), qué es interpretación razonable sobre esa evidencia, y qué sigue siendo hipótesis abierta. Esta entrada recorre esa historia como una línea de tiempo — desde el origen de la especie hasta las primeras huellas documentales de su cultivo en el territorio que hoy es Argentina — sin convertir ningún tramo en un relato más cerrado del que la evidencia permite.',
+    intro: 'Contar la historia de Cannabis sativa exige la misma disciplina que el resto del atlas aplica a la observación de una planta viva: distinguir qué es evidencia directa (un resto arqueológico fechado, un documento de archivo), qué es interpretación razonable sobre esa evidencia, y qué sigue siendo hipótesis abierta. Esta entrada recorre esa historia como una línea de tiempo global — desde el origen de la especie hasta su llegada a América — sin convertir ningún tramo en un relato más cerrado del que la evidencia permite. La continuación específica de esa historia en el territorio que hoy es Argentina tiene su propia entrada ("Historia de la planta en Argentina"), separada a propósito para no mezclar dos escalas de evidencia distintas (global vs. regional) en un mismo texto.',
     sections: [
       {
         id: 'origen-y-domesticacion',
@@ -1455,15 +1455,53 @@ export const editorialEntries = [
         paragraphs: [
           'La llegada de la planta a América no fue un único evento — fueron procesos distintos en el norte y en el sur del continente, con actores y cronologías propias.',
           'En América del Norte, el cáñamo llegó con los colonos ingleses a Virginia: en Jamestown se cultivó cáñamo traído desde Inglaterra para cuerdas, velas y tela, y ya en 1616 el colono John Rolfe podía afirmar que el cáñamo cultivado ahí no era peor que el de Inglaterra u Holanda. Varias colonias inglesas llegaron a estar obligadas por ley a cultivarlo, como insumo para la marina.',
-          'En América del Sur, el proceso fue más temprano y más disperso de lo que suele repetirse: las primeras remisiones documentadas de semilla de cáñamo hacia "las Indias" datan de 1513-1520 (dos arrobas de cañamones y cuatro de lino en 1513, según el Archivo General de Indias), y llegaron primero a asentamientos en Mesoamérica, no a Chile. La Real Cédula de Carlos V de 1545 —la fecha que la mayoría de los sitios de divulgación repiten como "el momento en que el cáñamo llegó a Chile"— en realidad fue una orden general dirigida a "las Indias" en su conjunto, no una medida específica para Chile; para esa fecha ya se habían hecho intentos de siembra en el Caribe, Mesoamérica, Ecuador, Perú, Venezuela y el propio Río de la Plata. Lo que sí es cierto es que Chile terminó siendo, hacia 1577-1605, la única región donde el cultivo se volvió rentable y sostenido a gran escala (valles de Quillota y La Ligua) — probablemente por tener un clima mediterráneo similar al de origen de la semilla, no por haber sido el primer lugar de siembra.'
+          'En América del Sur, el proceso fue más temprano y más disperso de lo que suele repetirse: las primeras remisiones documentadas de semilla de cáñamo hacia "las Indias" datan de 1513-1520 (dos arrobas de cañamones y cuatro de lino en 1513, según el Archivo General de Indias), y llegaron primero a asentamientos en Mesoamérica, no a Chile. La Real Cédula de Carlos V de 1545 —la fecha que la mayoría de los sitios de divulgación repiten como "el momento en que el cáñamo llegó a Chile"— en realidad fue una orden general dirigida a "las Indias" en su conjunto, no una medida específica para Chile; para esa fecha ya se habían hecho intentos de siembra en el Caribe, Mesoamérica, Ecuador, Perú, Venezuela y el propio Río de la Plata. Lo que sí es cierto es que Chile terminó siendo, hacia 1577-1605, la única región donde el cultivo se volvió rentable y sostenido a gran escala (valles de Quillota y La Ligua) — probablemente por tener un clima mediterráneo similar al de origen de la semilla, no por haber sido el primer lugar de siembra. Qué pasó específicamente en el territorio que hoy es Argentina, dentro de ese mismo proceso sudamericano, es el tema de "Historia de la planta en Argentina".'
         ]
-      },
+      }
+    ],
+    observations: [
+      'Un fitolito fechado o un documento de archivo con su fecha y su institución de origen es evidencia directa. Que una fecha se repita en muchos sitios web sin ninguna cita no la vuelve más cierta — el caso de "1545, Chile" es exactamente ese patrón: una simplificación repetida durante un siglo que la propia investigación histórica reciente cuestiona con documentos primarios.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Tratar una fecha ampliamente repetida en sitios de divulgación (como "1545, Quillota, Chile") como si fuera un hecho verificado, sin revisar si esa repetición proviene de una fuente primaria o de una simplificación heredada de un solo texto de principios del siglo XX.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['historia', 'domesticación'],
+    relatedEntryIds: ['genetica-y-tipos', 'germinacion', 'historia-de-la-planta-argentina'],
+    sourceIds: [
+      'cientifica-ren-2021-cannabis-domestication-genomics',
+      'cientifica-dalmartello-2023-haimenkou-cannabis-archaeobotany',
+      'cientifica-liu-2026-shandong-cannabis-phytolith',
+      'cientifica-mcpartland-2018-cannabis-europa-polen',
+      'academica-diaz-ordonez-2017-cannabis-chile-colonial'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Historia de la planta — Atlas del Cultivo Argentino',
+      seoDescription: 'Origen, domesticación y expansión de Cannabis sativa desde Asia hacia Europa y América — una línea de tiempo global, separada de su continuación en Argentina.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'historia-de-la-planta-argentina',
+    slug: 'historia-de-la-planta-en-argentina',
+    categoryId: 'historia',
+    title: 'Historia de la planta en Argentina',
+    summary: 'Del Río de la Plata colonial a Manuel Belgrano: la evidencia documental muestra intentos de fomento reales, pero ninguna fuente confirma un cultivo exitoso y sostenido antes del siglo XXI.',
+    intro: '"Historia de la planta" sigue la línea de tiempo global hasta la llegada del cáñamo a América. Esta entrada retoma ese hilo específicamente en el territorio que hoy es Argentina: qué órdenes coloniales llegaron acá, qué escribió realmente Manuel Belgrano sobre el tema, y qué vacío documental separa esos episodios de la industria argentina actual (ver "La industria del cannabis en la Argentina actual").',
+    sections: [
       {
         id: 'rio-de-la-plata-y-tucuman',
         title: 'El Río de la Plata y Tucumán: intentos coloniales, sin evidencia de éxito',
         paragraphs: [
           'Documentos primarios del Archivo General de Indias muestran que la Corona española no ignoró la región que hoy es Argentina: una real cédula de 1619 se dirigió específicamente al gobernador del Río de la Plata, y otra de 1626 se envió a los gobernadores del Río de la Plata, Cartagena, Tucumán y Paraguay, entre otros, instruyendo fomentar el cultivo de cáñamo en sus jurisdicciones — casi 180 años antes de que Manuel Belgrano escribiera sobre el mismo tema.',
-          'No hay, en la fuente consultada para esta entrada, evidencia de que esas órdenes se hayan traducido en un cultivo exitoso y sostenido en el Río de la Plata o Tucumán: los propios funcionarios reales fueron confirmando, con el correr de las décadas, que el cáñamo no podía cultivarse de forma rentable en ninguna jurisdicción americana salvo Chile. Lo que sí queda documentado es un vínculo económico indirecto: hacia 1644-1648, la escasez de mano de obra que limitaba ampliar los cultivos chilenos se atribuye, en los propios documentos de la época, en parte al cierre del puerto de Buenos Aires — el Río de la Plata aparece conectado a la cadena de suministro del cáñamo colonial como nudo logístico, no como zona de cultivo.'
+          'No hay, en la fuente consultada para esta entrada, evidencia de que esas órdenes se hayan traducido en un cultivo exitoso y sostenido en el Río de la Plata o Tucumán: los propios funcionarios reales fueron confirmando, con el correr de las décadas, que el cáñamo no podía cultivarse de forma rentable en ninguna jurisdicción americana salvo Chile (ver "Historia de la planta"). Lo que sí queda documentado es un vínculo económico indirecto: hacia 1644-1648, la escasez de mano de obra que limitaba ampliar los cultivos chilenos se atribuye, en los propios documentos de la época, en parte al cierre del puerto de Buenos Aires — el Río de la Plata aparece conectado a la cadena de suministro del cáñamo colonial como nudo logístico, no como zona de cultivo.'
         ]
       },
       {
@@ -1476,15 +1514,14 @@ export const editorialEntries = [
       },
       {
         id: 'siglo-xx-y-actualidad',
-        title: 'Siglo XX y actualidad',
+        title: 'Un vacío documental, no un capítulo perdido',
         paragraphs: [
           'Entre los intentos coloniales del siglo XVII y la actualidad, esta entrada no encontró, dentro de su alcance de investigación, una fuente primaria verificada que documente una plantación argentina exitosa y sostenida posterior a Belgrano — lo que hay son órdenes, memorias y proyectos de fomento, no evidencia confirmada de cultivo a escala. Se documenta esa ausencia en vez de rellenarla con una "primera plantación" que ninguna fuente consultada respalda.',
-          'El marco legal y regulatorio moderno de Cannabis en Argentina —la Ley 23.737 (que tipifica el cultivo no autorizado), el fallo "Arriola" de la Corte Suprema (2009) y la Ley 27.350/REPROCANN (uso medicinal y autocultivo registrado)— ya está descripto con sus fuentes oficiales en la entrada "Marco editorial y responsable" de este atlas; esta entrada no repite ese contenido, solo señala la continuidad histórica hacia él.'
+          'El marco legal y regulatorio moderno de Cannabis en Argentina —la Ley 23.737 (que tipifica el cultivo no autorizado), el fallo "Arriola" de la Corte Suprema (2009) y la Ley 27.350/REPROCANN (uso medicinal y autocultivo registrado)— ya está descripto con sus fuentes oficiales en la entrada "Marco editorial y responsable" de este atlas, y el desarrollo industrial posterior a 2017 en "La industria del cannabis en la Argentina actual" — esta entrada no repite ese contenido, solo señala la continuidad histórica hacia él.'
         ]
       }
     ],
     observations: [
-      'Un fitolito fechado o un documento de archivo con su fecha y su institución de origen es evidencia directa. Que una fecha se repita en muchos sitios web sin ninguna cita no la vuelve más cierta — el caso de "1545, Chile" es exactamente ese patrón: una simplificación repetida durante un siglo que la propia investigación histórica reciente cuestiona con documentos primarios.',
       'Que la Corona española haya ordenado fomentar el cultivo de cáñamo en el Río de la Plata en 1619 y 1626 es un hecho documentado. Que ese cultivo se haya concretado ahí es, con la evidencia disponible, una afirmación que no se puede hacer — la ausencia de evidencia de éxito no es lo mismo que evidencia de fracaso, pero tampoco permite dar por hecho lo primero.'
     ],
     signals: null,
@@ -1498,26 +1535,22 @@ export const editorialEntries = [
         description: 'Repetir la frase "Belgrano promovía el cultivo de cannabis" sin la aclaración de que su memoria de 1797 trataba sobre lino y cáñamo como insumo textil/naval, en el marco de una política general de fomento agrícola — no sobre la planta en el sentido en que hoy se la discute.'
       },
       {
-        type: 'OTHER',
-        description: 'Tratar una fecha ampliamente repetida en sitios de divulgación (como "1545, Quillota, Chile") como si fuera un hecho verificado, sin revisar si esa repetición proviene de una fuente primaria o de una simplificación heredada de un solo texto de principios del siglo XX.'
+        type: 'CONTEXT',
+        description: 'Tratar el vacío documental entre Belgrano y la actualidad como si fuera evidencia de que no pasó nada, en vez de una ausencia de fuentes verificadas dentro del alcance de esta investigación — son dos afirmaciones distintas.'
       }
     ],
     environmentContext: null,
     tags: ['historia', 'domesticación', 'argentina'],
-    relatedEntryIds: ['genetica-y-tipos', 'germinacion', 'marco-editorial', 'industria-cannabis-argentina-actual'],
+    relatedEntryIds: ['historia-de-la-planta', 'marco-editorial', 'industria-cannabis-argentina-actual'],
     sourceIds: [
-      'cientifica-ren-2021-cannabis-domestication-genomics',
-      'cientifica-dalmartello-2023-haimenkou-cannabis-archaeobotany',
-      'cientifica-liu-2026-shandong-cannabis-phytolith',
-      'cientifica-mcpartland-2018-cannabis-europa-polen',
       'academica-diaz-ordonez-2017-cannabis-chile-colonial',
       'historica-belgrano-1797-memoria-lino-canamo'
     ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-12',
+    lastReviewed: '2026-09-19',
     metadata: {
-      seoTitle: 'Historia de la planta — Atlas del Cultivo Argentino',
-      seoDescription: 'Origen, domesticación, llegada a Europa y a América, los intentos coloniales en el Río de la Plata y Tucumán, y qué escribió realmente Belgrano sobre el cáñamo.',
+      seoTitle: 'Historia de la planta en Argentina — Atlas del Cultivo Argentino',
+      seoDescription: 'Las reales cédulas coloniales de 1619 y 1626, la memoria de Belgrano de 1797 sobre lino y cáñamo, y el vacío documental hasta la industria argentina actual.',
       canonical: null,
       ogImage: null
     }
@@ -2156,15 +2189,90 @@ export const editorialEntries = [
       'El riesgo de chupadera fungosa aumenta en cualquier ambiente donde la humedad se mantenga alta y el aire circule poco alrededor de las plántulas — una condición más fácil de generar sin querer en un espacio protegido cerrado que al aire libre, aunque también puede ocurrir en exterior con riego excesivo o mala circulación.'
     ],
     tags: ['sanidad', 'riesgo'],
-    relatedEntryIds: ['lectura-de-senales', 'germinacion', 'cuidado-de-la-plantula'],
+    relatedEntryIds: ['lectura-de-senales', 'germinacion', 'cuidado-de-la-plantula', 'herramientas-e-higiene-de-poda', 'moho-gris-botrytis-cinerea'],
     sourceIds: [
       'agricultural-psu-extension-2026-damping-off'
     ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-18',
+    lastReviewed: '2026-09-19',
     metadata: {
       seoTitle: 'Chupadera fungosa (damping-off) — Atlas del Cultivo Argentino',
       seoDescription: 'Qué es la chupadera fungosa, por qué el exceso de humedad es el factor de riesgo más documentado, y qué prácticas culturales generales la previenen.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'moho-gris-botrytis-cinerea',
+    slug: 'moho-gris-botrytis-cinerea',
+    categoryId: 'sanidad',
+    title: 'Moho gris / podredumbre de la flor (Botrytis cinerea)',
+    summary: 'A diferencia de la chupadera fungosa, que ataca en la etapa de plántula, el moho gris ataca la flor durante la floración —y lo hace por dentro, donde puede pasar desapercibido hasta que el daño ya es grande.',
+    intro: '"Chupadera fungosa (damping-off)" describe la enfermedad fúngica más documentada en la etapa de plántula. Esta entrada describe una enfermedad fúngica distinta, específica de una etapa distinta del ciclo: el moho gris o podredumbre de la flor, causado por Botrytis cinerea, que ataca las inflorescencias durante la floración. A diferencia de la chupadera fungosa, para esta enfermedad sí existe evidencia científica directa sobre Cannabis sativa.',
+    sections: [
+      {
+        id: 'que-es',
+        title: 'Qué es el moho gris y por qué es difícil de detectar a tiempo',
+        paragraphs: [
+          'Botrytis cinerea es un hongo necrotrófico (que mata el tejido que coloniza) documentado en más de mil especies vegetales, no exclusivo de Cannabis sativa. En la planta, causa una podredumbre de la inflorescencia que suele desarrollarse en el interior de flores densas —donde el aire circula menos— antes de volverse visible desde afuera, lo que significa que, para cuando el daño se nota a simple vista, puede llevar ya un tiempo desarrollándose por dentro.',
+          'Un estudio científico de 2023 sobre Cannabis sativa cultivada en invernadero investigó específicamente el desarrollo de esta enfermedad en la especie, a diferencia de la chupadera fungosa —que esta entrada trata como evidencia general de horticultura, no específica de Cannabis—.'
+        ]
+      },
+      {
+        id: 'condiciones-ambientales',
+        title: 'Condiciones ambientales asociadas',
+        paragraphs: [
+          'La humedad relativa alta (por encima del 70%) combinada con una temperatura moderada (entre 17 y 24 °C aproximadamente) aparece descrita como favorable para el desarrollo de este hongo sobre Cannabis sativa. Esta entrada señala una salvedad importante sobre esta cifra: no pudo verificarse por lectura directa del artículo científico original (ver la ficha de la fuente), por lo que se cita como una caracterización consistente encontrada en más de una búsqueda, no como una lectura confirmada del texto completo.'
+        ]
+      },
+      {
+        id: 'manejo',
+        title: 'Qué describe la evidencia sobre manejo',
+        paragraphs: [
+          'La misma investigación asocia una mejora en la circulación de aire alrededor de las inflorescencias con una reducción notable en la incidencia de la enfermedad. Igual que con las cifras de humedad y temperatura, esta entrada no pudo confirmar el valor exacto por lectura directa del artículo original, así que no fija acá una cifra puntual — el punto editorial que sí puede sostenerse con esa salvedad es la dirección del efecto: más circulación de aire, menos incidencia reportada.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no da un protocolo de manejo paso a paso, ni fija un umbral exacto de humedad o temperatura como "el límite seguro" — las cifras disponibles no pudieron confirmarse por lectura directa del artículo original, y aun si lo hubieran sido, un estudio en condiciones de invernadero no necesariamente representa todos los sistemas de cultivo posibles (ver "Interior y exterior").'
+        ]
+      }
+    ],
+    observations: [
+      'Ver zonas oscurecidas o con aspecto acuoso dentro de una inflorescencia densa, al abrirla, es una observación compatible con moho gris en desarrollo. No revisar el interior de flores densas durante la floración, y confiar solo en el aspecto externo, es la razón documentada por la que esta enfermedad suele notarse tarde.',
+      'Que el moho gris comparta con la chupadera fungosa el hecho de ser causado por un hongo no significa que compartan factores de riesgo idénticos — una ataca en la etapa de plántula por exceso de humedad en el sustrato, la otra ataca la flor en floración por humedad relativa y circulación de aire alrededor de la inflorescencia.'
+    ],
+    signals: [
+      {
+        level: 'ATTENTION',
+        description: 'Zonas oscurecidas, blandas o con aspecto acuoso dentro de una inflorescencia densa durante la floración, especialmente en un ambiente con humedad relativa alta y poca circulación de aire.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'OBSERVATION',
+        description: 'Evaluar el estado de una inflorescencia densa solo por su aspecto externo durante la floración, sin abrirla para revisar el interior, que es donde esta enfermedad suele desarrollarse primero según la literatura citada.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Citar como confirmado un umbral exacto de humedad, temperatura o porcentaje de reducción de la enfermedad de este estudio — esta entrada no pudo verificar esas cifras por lectura directa del artículo original y las presenta con esa salvedad explícita.'
+      }
+    ],
+    environmentContext: [
+      'El riesgo de moho gris aumenta con la densidad del follaje y de las inflorescencias (menos circulación de aire interna, ver "Poda" y "Defoliación") y con la humedad relativa del ambiente —una combinación más probable en un espacio protegido mal ventilado, aunque el exterior no está exento si la humedad ambiental es alta.'
+    ],
+    tags: ['sanidad', 'riesgo'],
+    relatedEntryIds: ['lectura-de-senales', 'chupadera-fungosa-damping-off', 'cosecha-y-maduracion', 'herramientas-e-higiene-de-poda', 'defoliacion'],
+    sourceIds: [
+      'cientifica-mahmoud-2023-botrytis-cinerea-cannabis-podredumbre-flor'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Moho gris / podredumbre de la flor (Botrytis cinerea) — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es el moho gris (Botrytis cinerea) en Cannabis sativa, por qué es difícil de detectar a tiempo dentro de flores densas, y qué condiciones ambientales y de manejo describe la evidencia científica disponible.',
       canonical: null,
       ogImage: null
     }
@@ -2333,7 +2441,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['historia', 'argentina', 'industria'],
-    relatedEntryIds: ['historia-de-la-planta', 'marco-editorial'],
+    relatedEntryIds: ['historia-de-la-planta-argentina', 'marco-editorial'],
     sourceIds: [
       'oficial-inase-resolucion-238-2023-cultivares-cannabis',
       'oficial-conicet-2023-comercializacion-semillas-cannabis',
@@ -2393,15 +2501,332 @@ export const editorialEntries = [
       'El espacio físico disponible alrededor de la planta condiciona cuánto se puede doblar y sujetar un tallo sin dañarlo — una variable que depende del contenedor y del espacio del cultivo, no del ambiente climático en sí. Esta entrada no fija un ángulo, un momento del ciclo ni un método de sujeción específico.'
     ],
     tags: ['cultivo', 'poda'],
-    relatedEntryIds: ['poda', 'cultivo-en-secuencia'],
+    relatedEntryIds: ['poda', 'cultivo-en-secuencia', 'super-cropping'],
     sourceIds: [
       'academica-beveridge-2023-apical-dominance-review'
     ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-18',
+    lastReviewed: '2026-09-19',
     metadata: {
       seoTitle: 'Entrenamiento de bajo estrés (LST) — Atlas del Cultivo Argentino',
       seoDescription: 'Qué es el LST, en qué se distingue de la poda por remoción de tejido, y qué base fisiológica general —no evidencia directa de Cannabis— explica por qué doblar un tallo cambia su crecimiento.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'defoliacion',
+    slug: 'defoliacion',
+    categoryId: 'poda',
+    title: 'Defoliación',
+    summary: 'Remover hojas grandes que sombrean las inflorescencias inferiores no es lo mismo que remover ramas —y un estudio directo en Cannabis sativa muestra que ese sombreado, no la genética, explica buena parte de por qué las flores de abajo suelen tener menos cannabinoides.',
+    intro: '"Poda" describe la remoción del meristema apical y su efecto sobre la dominancia apical. La defoliación es una intervención distinta: remover hojas grandes (típicamente las hojas de abanico que más sombra proyectan) sin tocar ramas ni meristemas, con el objetivo de mejorar cuánta luz llega a los sitios de floración que esas hojas cubren. Esta entrada describe esa intervención y qué encontró, de forma directa sobre Cannabis sativa, un estudio dedicado al tema.',
+    sections: [
+      {
+        id: 'que-es-la-defoliacion',
+        title: 'Qué es la defoliación',
+        paragraphs: [
+          'La defoliación consiste en remover selectivamente hojas grandes —principalmente las hojas de abanico (fan leaves) que, por su tamaño, proyectan sombra sobre las inflorescencias y hojas más pequeñas ubicadas debajo suyo— sin remover ramas ni brotes. Es una intervención distinta de "Poda de bajos", que remueve ramas o brotes enteros en vez de solo hojas, aunque ambas persiguen un objetivo relacionado: mejorar la penetración de luz hacia la parte inferior de la planta.'
+        ]
+      },
+      {
+        id: 'evidencia-de-penetracion-de-luz-y-uniformidad',
+        title: 'Qué encontró un estudio directo sobre Cannabis sativa',
+        paragraphs: [
+          'Un estudio publicado en 2021 evaluó cómo la arquitectura de la planta afecta la uniformidad química entre inflorescencias de una misma planta de Cannabis sativa. Encontró que la falta de penetración de luz hacia las inflorescencias ubicadas más abajo en la planta se asocia con una concentración de cannabinoides hasta un 40% menor que en las inflorescencias superiores, mejor iluminadas.',
+          'El mismo estudio encontró que intervenciones de arquitectura —remoción de ramas/brotes bajos y defoliación de hojas grandes— mejoraron la uniformidad del perfil químico entre las distintas inflorescencias de una misma planta, atribuible a la mejora en la penetración de luz que esas intervenciones permiten. Es evidencia directa de la especie, no una analogía de otro cultivo.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no da un momento del ciclo, una cantidad de hojas ni un porcentaje de follaje a remover como "la técnica correcta" — el estudio citado muestra un efecto general de la penetración de luz sobre la uniformidad química, no un protocolo de defoliación paso a paso.',
+          'Existe además un estudio que evaluó defoliación simulando daño por granizo en distintas etapas de crecimiento de Cannabis sativa. Esta entrada no puede citar sus resultados específicos por etapa: el artículo completo no pudo verificarse por lectura directa en esta investigación (ver la ficha de la fuente), y los resúmenes disponibles eran contradictorios entre sí sobre esos resultados puntuales. Se menciona su existencia como línea de evidencia relevante, sin afirmar ningún hallazgo cuantitativo de ese estudio en particular.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver menos desarrollo en las inflorescencias inferiores de una planta con mucho follaje superior es una observación compatible con el mecanismo de sombreado que describe el estudio citado. Concluir que defoliar automáticamente "arregla" esa diferencia en cualquier contexto es una interpretación que ese mismo estudio no sostiene de forma universal.',
+      'Que una hoja grande empiece a amarillear y caerse de forma natural hacia el final del ciclo (ver "Cultivo en secuencia") no es lo mismo que una defoliación activa — son dos procesos distintos, uno fisiológico y espontáneo, el otro una intervención deliberada.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Tratar la defoliación como intercambiable con "Poda de bajos" — el estudio citado evaluó ambas intervenciones de arquitectura, pero remover hojas y remover ramas/brotes no son la misma acción ni tienen necesariamente el mismo efecto individual.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Presentar un porcentaje específico de mejora, un momento exacto del ciclo o una cantidad de hojas a remover como si fuera un protocolo validado — el estudio citado documenta un efecto general de la penetración de luz, no una receta cuantificada de defoliación.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Citar resultados específicos por etapa de crecimiento del estudio de defoliación simulada por granizo como si estuvieran confirmados — esta entrada no pudo verificarlos por lectura directa y los resúmenes secundarios disponibles eran inconsistentes entre sí.'
+      }
+    ],
+    environmentContext: [
+      'Cuánto sombrea el follaje superior a las inflorescencias inferiores depende de la densidad de la planta, su arquitectura y cómo esté distribuida la fuente de luz (ver "Poda") — el mismo mecanismo de sombreado puede ser más o menos marcado según el ambiente y la genética.'
+    ],
+    tags: ['cultivo', 'poda'],
+    relatedEntryIds: ['poda', 'poda-de-bajos-bblr', 'entrenamiento-de-bajo-estres-lst', 'moho-gris-botrytis-cinerea'],
+    sourceIds: [
+      'cientifica-danziger-2021-shape-matters-defoliacion',
+      'cientifica-sandoval-2024-defoliacion-estres-mecanico'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Defoliación — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la defoliación, en qué se distingue de la poda de bajos, y qué encontró un estudio directo sobre Cannabis sativa acerca de la penetración de luz y la uniformidad química entre inflorescencias.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'poda-de-bajos-bblr',
+    slug: 'poda-de-bajos',
+    categoryId: 'poda',
+    title: 'Poda de bajos (BBLR)',
+    summary: 'Remover ramas y brotes que quedan atrapados en la sombra de la parte superior de la planta —conocido en inglés como bud site/branch removal (BBLR)— es una intervención distinta de la defoliación, aunque ambas comparten un mismo objetivo de fondo.',
+    intro: '"Defoliación" describe la remoción de hojas grandes para mejorar la penetración de luz. Esta entrada describe una intervención relacionada pero distinta: remover ramas o brotes enteros —generalmente los ubicados más abajo en la planta, donde la sombra del follaje superior deja menos luz disponible— conocida en inglés como bud site removal o branch removal (BBLR).',
+    sections: [
+      {
+        id: 'que-es-la-poda-de-bajos',
+        title: 'Qué es la poda de bajos',
+        paragraphs: [
+          'La poda de bajos remueve ramas o brotes de floración completos, no solo hojas, generalmente los ubicados en la parte inferior de la planta. La lógica de la intervención parte de que esos sitios, al recibir menos luz por el sombreado del follaje superior, tienden a desarrollar inflorescencias más pequeñas y con menor concentración de cannabinoides — removerlos redirige los recursos de la planta hacia los sitios mejor iluminados, en lugar de mantener crecimiento en puntos con luz insuficiente.'
+        ]
+      },
+      {
+        id: 'misma-evidencia-que-defoliacion',
+        title: 'La misma base de evidencia que "Defoliación"',
+        paragraphs: [
+          'El estudio de 2021 citado en "Defoliación" —que encontró hasta un 40% menos cannabinoides en inflorescencias inferiores peor iluminadas de Cannabis sativa— evaluó la remoción de ramas/brotes bajos como una de las intervenciones de arquitectura que mejoraron la uniformidad química entre inflorescencias de una misma planta. Es la misma fuente y el mismo mecanismo de fondo (penetración de luz) que sustenta "Defoliación"; esta entrada lo aplica a una acción distinta sobre la planta (remover ramas, no solo hojas).'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no fija qué proporción de la planta o qué altura debe removerse — el estudio citado muestra el efecto general de mejorar la penetración de luz, no un umbral cuantificado de cuánto remover en cada caso.'
+        ]
+      }
+    ],
+    observations: [
+      'Que una inflorescencia inferior se vea visiblemente menos desarrollada que las superiores es una observación compatible con el mecanismo de sombreado descrito en el estudio citado. No implica, por sí sola, que remover esa rama sea la mejor decisión en cualquier contexto — depende de cuánto tiempo de ciclo resta y de cuánta luz recibiría esa rama si se dejara.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Tratar "Poda de bajos" y "Defoliación" como la misma técnica con dos nombres — comparten el mismo objetivo de fondo (mejorar penetración de luz) y la misma fuente de evidencia, pero una remueve ramas/brotes y la otra remueve hojas.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que remover más ramas bajas siempre mejora el resultado final — el estudio citado documenta una mejora en la uniformidad química, no una relación donde "más remoción" sea proporcionalmente mejor sin límite.'
+      }
+    ],
+    environmentContext: [
+      'Cuánta luz efectivamente pierde una rama baja por sombreado depende de la densidad del follaje superior y de cómo está distribuida la fuente de luz (ver "Poda" y "Defoliación") — el mismo mecanismo puede ser más o menos marcado según el ambiente y la arquitectura de cada planta.'
+    ],
+    tags: ['cultivo', 'poda'],
+    relatedEntryIds: ['poda', 'defoliacion', 'entrenamiento-de-bajo-estres-lst'],
+    sourceIds: [
+      'cientifica-danziger-2021-shape-matters-defoliacion'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Poda de bajos (BBLR) — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la poda de bajos o BBLR, en qué se distingue de la defoliación, y qué evidencia directa sobre Cannabis sativa comparten ambas intervenciones de arquitectura.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'super-cropping',
+    slug: 'super-cropping',
+    categoryId: 'poda',
+    title: 'Super cropping y tigmomorfogénesis',
+    summary: 'Doblar un tallo hasta dañar sus tejidos internos, sin romper la corteza, se apoya en un mecanismo vegetal real y bien documentado —la respuesta al estrés mecánico—, pero sin un estudio dedicado a Cannabis sativa que lo confirme de forma directa.',
+    intro: '"Entrenamiento de bajo estrés (LST)" describe doblar tallos y ramas sin dañar ningún tejido. El super cropping es una técnica relacionada pero distinta: doblar el tallo con más fuerza, de forma deliberada, hasta dañar los tejidos internos (fibras) mientras la corteza externa permanece intacta — con el objetivo buscado de que la planta responda engrosando esa zona. Esta entrada describe el mecanismo vegetal general en el que se apoya esa lógica, y es explícita sobre el límite de la evidencia disponible.',
+    sections: [
+      {
+        id: 'que-es-el-super-cropping',
+        title: 'Qué es el super cropping',
+        paragraphs: [
+          'El super cropping consiste en presionar y doblar un tallo o rama entre los dedos hasta sentir que las fibras internas ceden, sin que la corteza externa se rompa —a diferencia de un quiebre completo, que sí seccionaría el tallo—. El resultado buscado es que la planta, en respuesta a ese daño interno controlado, desarrolle un tallo más grueso y resistente en esa zona.'
+        ]
+      },
+      {
+        id: 'tigmomorfogenesis-el-mecanismo-general',
+        title: 'Tigmomorfogénesis: el mecanismo vegetal general detrás de la idea',
+        paragraphs: [
+          'La tigmomorfogénesis es el nombre que la fisiología vegetal general da a los cambios de crecimiento y desarrollo que las plantas experimentan en respuesta a un estímulo mecánico repetido —viento, roce, flexión—. Una revisión académica reciente sobre el tema describe que ese tipo de estrés mecánico puede inducir, en plantas en general, tallos más cortos y gruesos como parte de la respuesta adaptativa. Es el mecanismo general en el que se apoya conceptualmente la lógica del super cropping.',
+          'Esa revisión no es un estudio de Cannabis sativa: es una síntesis de fisiología vegetal general, sin datos propios de ninguna especie en particular. Se cita acá exactamente en ese rol —el marco biológico general del que la técnica toma su lógica—, no como evidencia directa de que el super cropping produce ese efecto en Cannabis.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Dentro de las fuentes consultadas para esta investigación no se encontró un estudio dedicado a evaluar el super cropping de forma directa en Cannabis sativa —a diferencia del topping, que sí cuenta con el estudio directo citado en "Poda". Esta entrada no presenta ninguna cifra de engrosamiento, rendimiento o resistencia como resultado confirmado de la técnica: describe el mecanismo general y señala explícitamente esa ausencia de evidencia específica.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una zona doblada de un tallo se engrosa en las semanas siguientes es una observación compatible con la respuesta general a estrés mecánico que describe la tigmomorfogénesis. Concluir que ese engrosamiento se traduce en mayor producción final es una interpretación adicional que esta entrada no puede respaldar con un estudio directo de la especie.'
+    ],
+    signals: [
+      {
+        level: 'ATTENTION',
+        description: 'Un tallo que se quiebra por completo (corteza incluida), en vez de doblarse con daño interno controlado, es un resultado distinto del buscado por la técnica y amerita evaluar si la planta puede sostener esa rama o si conviene removerla.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Presentar el super cropping como una técnica con evidencia directa de Cannabis sativa equivalente a la del topping — el mecanismo general (tigmomorfogénesis) está bien documentado en fisiología vegetal, pero esta entrada no encontró un estudio dedicado a la técnica en esta especie.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Confundir un tallo quebrado por completo con un super cropping "exitoso" — la técnica busca dañar fibras internas sin romper la corteza; un quiebre total es un resultado distinto, con más riesgo para esa rama.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['cultivo', 'poda'],
+    relatedEntryIds: ['poda', 'entrenamiento-de-bajo-estres-lst'],
+    sourceIds: [
+      'academica-jedrzejuk-2025-tigmomorfogenesis-review'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Super cropping y tigmomorfogénesis — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es el super cropping, qué mecanismo general de fisiología vegetal (tigmomorfogénesis) sustenta su lógica, y por qué no existe, en las fuentes consultadas, un estudio dedicado a la técnica en Cannabis sativa.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'fim',
+    slug: 'fim',
+    categoryId: 'poda',
+    title: 'FIM',
+    summary: 'FIM remueve una porción del meristema apical en vez de la totalidad que remueve el topping — una diferencia real y descriptible, aunque, a diferencia del topping, sin un estudio dedicado que confirme sus efectos específicos en Cannabis sativa.',
+    intro: '"Poda" describe el topping: la remoción completa del meristema apical, respaldada por un estudio directo en cáñamo industrial. El FIM es una variante surgida de la comunidad de cultivo que remueve solo una parte de esa punta de crecimiento. Esta entrada describe la técnica y es explícita sobre una diferencia importante con el topping: el nivel de evidencia disponible.',
+    sections: [
+      {
+        id: 'que-es-el-fim',
+        title: 'Qué es el FIM',
+        paragraphs: [
+          'El FIM (comúnmente descrito como sigla de una frase informal en inglés, sin una fuente científica que fije su origen exacto) consiste en remover aproximadamente entre un 75% y un 80% del meristema apical, en vez del 100% que remueve un topping típico. La descripción de la técnica en la comunidad de cultivo sostiene que, al dejar una porción de tejido meristemático dañado pero no eliminado por completo, pueden desarrollarse más puntos de crecimiento nuevos que los que libera un topping limpio —donde típicamente se desarrollan dos ramas principales a partir de las yemas inmediatamente inferiores—.'
+        ]
+      },
+      {
+        id: 'misma-logica-fisiologica-que-poda',
+        title: 'La misma lógica fisiológica de fondo que "Poda"',
+        paragraphs: [
+          'El mecanismo de fondo es el mismo que describe "Poda": dañar o remover el meristema apical reduce la señal (auxina) que inhibe a las yemas laterales, liberándolas para desarrollarse. Una remoción parcial, en principio, plantea la misma lógica que una remoción total, pero de forma menos completa y con daño distribuido de forma menos definida en el tejido restante que un corte limpio.'
+        ]
+      },
+      {
+        id: 'la-diferencia-de-evidencia-con-el-topping',
+        title: 'La diferencia de evidencia con el topping',
+        paragraphs: [
+          'El topping cuenta, según describe "Poda", con un estudio directo en dos cultivares de cáñamo industrial (Cannabis sativa L.) que midió cambios en morfología, fisiología y composición bioquímica. Dentro de las fuentes consultadas para esta investigación, no se encontró un estudio equivalente dedicado específicamente al FIM en Cannabis sativa: la descripción de sus efectos —incluida la idea de que produce más puntos de crecimiento que el topping— proviene de documentación de la comunidad de cultivo, no de una fuente académica o científica revisada por pares.',
+          'Esto no significa que la técnica no tenga ningún efecto —remover tejido meristemático, aunque sea parcialmente, es consistente con el mecanismo general de dominancia apical—, sino que esta entrada no puede citar una cifra o un resultado específico de FIM en Cannabis con el mismo respaldo que "Poda" cita para el topping. Es, en sí mismo, un dato editorial relevante: la ausencia de evidencia dedicada no es lo mismo que evidencia de que la técnica no funciona.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver el desarrollo de más de dos puntos de crecimiento nuevos tras un corte de FIM es una observación reportada de forma consistente por la comunidad de cultivo. Presentarla como un resultado científicamente cuantificado y garantizado es una interpretación que esta entrada no puede respaldar sin un estudio dedicado a la técnica.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Presentar el FIM como una técnica con el mismo nivel de evidencia que el topping — "Poda" cita un estudio directo en Cannabis sativa para el topping; para el FIM, dentro de las fuentes consultadas, solo se encontró documentación de comunidad de cultivo, no un estudio científico dedicado.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Afirmar un número fijo de nuevos puntos de crecimiento ("siempre salen cuatro colas") como si fuera una regla biológica —la respuesta depende de dónde y cuánto tejido meristemático quede dañado, algo que varía según cómo se ejecute el corte.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['cultivo', 'poda'],
+    relatedEntryIds: ['poda', 'entrenamiento-de-bajo-estres-lst'],
+    sourceIds: [
+      'cientifica-chavalina-2026-hemp-topping-morphology',
+      'academica-beveridge-2023-apical-dominance-review'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'FIM — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es el FIM, en qué se diferencia técnicamente del topping, y por qué, a diferencia del topping, no existe dentro de las fuentes consultadas un estudio científico dedicado a sus efectos en Cannabis sativa.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'herramientas-e-higiene-de-poda',
+    slug: 'herramientas-e-higiene',
+    categoryId: 'poda',
+    title: 'Herramientas e higiene de poda',
+    summary: 'Cada corte es una herida abierta en la planta, y una herramienta contaminada puede transformar una poda de rutina en la vía de entrada de un patógeno — una práctica de higiene general de horticultura, no específica de Cannabis.',
+    intro: 'Ninguna de las entradas de esta categoría —"Poda", "Entrenamiento de bajo estrés (LST)", "Defoliación", "Poda de bajos" o "FIM"— trata la higiene de las herramientas usadas para intervenir. Esta entrada cubre ese punto en común: por qué desinfectar herramientas de corte importa, y cómo hacerlo según una guía institucional de horticultura general.',
+    sections: [
+      {
+        id: 'por-que-importa',
+        title: 'Por qué importa: cada corte es una vía de entrada',
+        paragraphs: [
+          'Cualquier corte —sea un topping, una defoliación o la remoción de una rama baja— abre una herida en el tejido de la planta. Una guía institucional de extensión agrícola señala que la limpieza y desinfección de herramientas de poda es importante para prevenir la propagación de enfermedades: una herramienta que tocó tejido enfermo (u otra planta enferma) puede transportar el patógeno hacia el corte siguiente si no se desinfecta entre uso y uso.',
+          'Es un principio de higiene general de horticultura, no un hallazgo específico de Cannabis sativa —el mismo tipo de evidencia general que ya sustenta, por ejemplo, la sección de prevención de "Chupadera fungosa (damping-off)" en la categoría Sanidad.'
+        ]
+      },
+      {
+        id: 'como-desinfectar',
+        title: 'Cómo desinfectar: dos métodos según el caso',
+        paragraphs: [
+          'La misma guía describe dos métodos según la situación. Para uso general —desinfectar entre plantas o antes de remover tejido potencialmente enfermo— recomienda alcohol isopropílico o etílico al 70%, aplicado por inmersión breve o frotado sobre la herramienta, sin necesidad de un remojo prolongado.',
+          'Para patógenos más resistentes (la guía cita específicamente el caso del fuego bacteriano en manzanos, para el cual el alcohol no es efectivo) recomienda en cambio una solución de lavandina al 10% (nueve partes de agua por una parte de lavandina), con un remojo de al menos diez minutos y un enjuague posterior de la herramienta para evitar que la lavandina la corroa.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no evalúa qué patógenos específicos de Cannabis sativa se transmiten por herramientas contaminadas —esa evidencia, si existe, corresponde a la categoría Sanidad, no a esta entrada sobre higiene general de herramientas de poda.'
+        ]
+      }
+    ],
+    observations: [
+      'Que una planta desarrolle síntomas de enfermedad después de una poda no prueba, por sí solo, que la herramienta estuviera contaminada — hay otras vías de contagio y otros orígenes posibles (ver "Lectura de señales y sanidad"). Es un factor de riesgo a controlar, no la única causa posible.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OBSERVATION',
+        description: 'Asumir que una herramienta "se ve limpia" significa que está desinfectada — la guía citada distingue limpieza visible (remover restos de tejido o tierra) de desinfección (eliminar patógenos), que requiere alcohol o una solución específica, no solo un paño.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Usar lavandina sin diluir o sin enjuague posterior pensando que "más fuerte es mejor" — la guía citada especifica una dilución concreta y un enjuague, precisamente porque la lavandina sin diluir puede corroer la herramienta.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['cultivo', 'poda', 'sanidad'],
+    relatedEntryIds: ['poda', 'lectura-de-senales', 'chupadera-fungosa-damping-off', 'moho-gris-botrytis-cinerea'],
+    sourceIds: [
+      'institucional-iowa-state-extension-2026-higiene-herramientas-poda'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Herramientas e higiene de poda — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué desinfectar herramientas de poda entre cortes previene la transmisión de enfermedades, y cómo hacerlo según una guía institucional de horticultura general.',
       canonical: null,
       ogImage: null
     }
