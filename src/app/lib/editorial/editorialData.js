@@ -715,7 +715,7 @@ export const editorialEntries = [
       'Esta entrada no fija un ritmo de riego ni una frecuencia — depende de demasiadas variables locales (tipo de sustrato, tamaño de contenedor, clima) como para dar un número único sin convertirlo en una receta arbitraria.'
     ],
     tags: ['suelo', 'agua', 'drenaje'],
-    relatedEntryIds: ['germinacion', 'cultivo-en-secuencia', 'evaluacion-visual-del-suelo'],
+    relatedEntryIds: ['germinacion', 'cultivo-en-secuencia', 'evaluacion-visual-del-suelo', 'textura-estructura-porosidad', 'capacidad-de-campo-agua-disponible', 'componentes-de-sustrato', 'suelo-vivo-y-microbiologia', 'calidad-del-agua-de-riego'],
     sourceIds: [
       'oficial-inta-relacion-suelo-planta-agua',
       'academica-unlpam-inta-guia-evaluacion-visual-suelo',
@@ -1144,7 +1144,7 @@ export const editorialEntries = [
       'Esta entrada no da una tabla de dosificación ni un calendario de fertilización para ningún contexto: describe la fisiología general de la nutrición mineral, no una receta aplicable sin considerar el sustrato, el agua y la etapa de desarrollo de cada planta en particular.'
     ],
     tags: ['cultivo', 'fertilización', 'nutrición'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'lectura-de-senales', 'poda', 'ph-y-disponibilidad-de-nutrientes'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'lectura-de-senales', 'poda', 'ph-y-disponibilidad-de-nutrientes', 'suelo-vivo-y-microbiologia', 'conductividad-electrica-y-sales'],
     sourceIds: [
       'academica-unne-nutricion-mineral-dabrio-2020',
       'academica-kirkby-romheld-2007-micronutrientes-fisiologia'
@@ -2062,7 +2062,7 @@ export const editorialEntries = [
       'Esta evaluación tiene más sentido para quien cultiva en tierra directa (exterior) que para quien usa un sustrato preparado en maceta, donde la estructura ya fue definida por la mezcla elegida. En ambos casos, los indicadores generales —estructura, infiltración, olor, actividad biológica— describen el mismo principio físico de fondo.'
     ],
     tags: ['suelo', 'agua', 'drenaje'],
-    relatedEntryIds: ['sustrato-y-drenaje'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'textura-estructura-porosidad', 'materia-organica-actividad-biologica'],
     sourceIds: [
       'academica-unlpam-inta-guia-evaluacion-visual-suelo',
       'oficial-inta-relacion-suelo-planta-agua'
@@ -2072,6 +2072,469 @@ export const editorialEntries = [
     metadata: {
       seoTitle: 'Evaluación visual del suelo — Atlas del Cultivo Argentino',
       seoDescription: 'Qué indicadores visuales y táctiles —estructura, infiltración, olor, actividad biológica— ayudan a leer la calidad de un suelo real antes de cultivar en tierra directa.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'textura-estructura-porosidad',
+    slug: 'textura-estructura-porosidad',
+    categoryId: 'suelo-y-agua',
+    title: 'Textura, estructura y porosidad',
+    summary: 'Tres palabras que suelen usarse como sinónimos vagos de "buena tierra" describen en realidad tres propiedades físicas distintas y medibles — y ninguna de las tres, por sí sola, garantiza un buen desarrollo radicular.',
+    intro: '"Sustrato, agua y drenaje" describe cómo un sustrato reparte agua y aire para la raíz, sin detenerse en qué hace, físicamente, que reparta esas dos cosas de una forma u otra. Esta entrada retoma exactamente ese punto: qué es la textura, qué es la estructura y qué es la porosidad de un suelo o sustrato — tres conceptos de la física de suelos, no específicos de Cannabis, que explican el mecanismo detrás de esa relación agua-aire.',
+    sections: [
+      {
+        id: 'que-es-la-textura',
+        title: 'Qué es la textura',
+        paragraphs: [
+          'La textura describe la proporción relativa de partículas minerales de distinto tamaño —arena, limo y arcilla— que componen un suelo. Es, en un suelo mineral natural, una propiedad relativamente fija: no cambia de un día para el otro con el manejo, a diferencia de la estructura.',
+          'Esta propiedad, en el sentido estricto de la física de suelos, describe un suelo mineral natural. Un sustrato de cultivo en contenedor —armado a partir de turba, fibra de coco, perlita u otros componentes— no se clasifica de la misma manera: esa composición se trata en "Componentes de sustrato para cultivo en contenedor", una pregunta relacionada pero distinta.'
+        ]
+      },
+      {
+        id: 'que-es-la-estructura',
+        title: 'Qué es la estructura',
+        paragraphs: [
+          'La estructura describe cómo esas partículas se agrupan en agregados (a veces llamados "peds" en la literatura de suelos) y cómo esos agregados se asocian en unidades mayores. A diferencia de la textura, la estructura sí puede modificarse por manejo: la FAO señala al agua como el factor con mayor efecto sobre la estructura del suelo — trabajar o compactar un suelo cuando está muy húmedo puede dañar esa estructura de forma medible.',
+          'La estructura es la que determina, en la práctica, cuánto espacio poroso hay disponible y cómo se reparte entre agua y aire — el mismo principio físico que "Sustrato, agua y drenaje" describe a partir de su efecto (retención y drenaje), no de su causa.'
+        ]
+      },
+      {
+        id: 'que-es-la-porosidad',
+        title: 'Qué es la porosidad',
+        paragraphs: [
+          'La porosidad es el espacio del volumen total del suelo que no está ocupado por materia mineral ni orgánica: es el espacio disponible para que lo ocupen el aire o el agua. La FAO da una referencia general para ese espacio poroso total: "idealmente, debería ser un 50% del volumen del suelo".',
+          'Esa cifra es una referencia orientativa de agronomía general, publicada por la propia FAO como un ideal de referencia —no un mínimo obligatorio para que un suelo o sustrato funcione, ni una cifra validada específicamente para Cannabis sativa—. Un suelo o sustrato real puede apartarse de ese 50% y seguir sosteniendo una planta sana; esta entrada no fija un umbral por debajo del cual algo "falla".'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que un suelo o sustrato se desarma en agregados porosos al tacto (ver "Evaluación visual del suelo") es una observación compatible con buena estructura. Concluir de esa sola observación un porcentaje exacto de porosidad es una interpretación que excede lo que permite ver o sentir a simple vista.',
+      'Que la textura de un suelo no cambie con el manejo no significa que su comportamiento tampoco cambie: la misma textura puede comportarse mejor o peor según el estado de su estructura, que sí es sensible al manejo.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar la cifra de "50% de espacio poroso" como un umbral estricto que hay que alcanzar o medir — la propia FAO la presenta como una referencia ideal de agronomía general, no como un mínimo obligatorio ni una cifra validada para Cannabis.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Confundir textura (composición mineral, relativamente fija) con estructura (agregación de esas partículas, sensible al manejo) — son dos propiedades distintas, y solo la segunda cambia según cómo se trabaje el suelo.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar el concepto de "textura" (arena/limo/arcilla) directamente a un sustrato de cultivo en contenedor sin ajustar la lectura — un sustrato armado con turba, fibra de coco o perlita no es un suelo mineral natural y se describe mejor por sus componentes (ver "Componentes de sustrato para cultivo en contenedor").'
+      }
+    ],
+    environmentContext: [
+      'La textura de un suelo de campo (exterior) depende de su origen geológico y no se elige; la composición de un sustrato de contenedor (interior o exterior) sí se elige, combinando materiales distintos — la lógica de "textura fija" no aplica de la misma manera a ambos casos, aunque el principio de fondo (partículas, agregación, espacio poroso) sea el mismo.'
+    ],
+    tags: ['suelo', 'interior', 'exterior'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'evaluacion-visual-del-suelo', 'componentes-de-sustrato'],
+    sourceIds: ['oficial-fao-soils-portal-propiedades-fisicas'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Textura, estructura y porosidad — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la textura, qué es la estructura y qué es la porosidad de un suelo o sustrato, y por qué la referencia de "50% de espacio poroso" de la FAO es orientativa, no una regla estricta.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'capacidad-de-campo-agua-disponible',
+    slug: 'capacidad-de-campo-agua-disponible',
+    categoryId: 'suelo-y-agua',
+    title: 'Capacidad de campo, punto de marchitez y agua disponible',
+    summary: 'No toda el agua que un suelo o sustrato retiene está disponible para la raíz: hay un rango medible entre "saturado de agua" y "seco al punto de matar a la planta", y ese rango varía —a veces mucho— según el tipo de suelo.',
+    intro: '"Sustrato, agua y drenaje" describe, en términos generales, que el sustrato retiene agua y deja drenar el exceso. Esta entrada precisa esa idea con tres conceptos de la física de suelos que dan un vocabulario más exacto: capacidad de campo, punto de marchitez permanente y agua disponible.',
+    sections: [
+      {
+        id: 'capacidad-de-campo',
+        title: 'Capacidad de campo',
+        paragraphs: [
+          'Después de saturar un suelo con agua y dejar que el exceso drene por gravedad, el agua que queda retenida es lo que se llama capacidad de campo: un estado en el que los poros grandes ya tienen aire y agua a la vez, mientras los poros chicos siguen llenos de agua. Un manual de riego de la FAO describe ese estado como "ideal para el crecimiento del cultivo" —una referencia general de agronomía, no una cifra específica medida en Cannabis sativa—.'
+        ]
+      },
+      {
+        id: 'punto-de-marchitez',
+        title: 'Punto de marchitez permanente',
+        paragraphs: [
+          'A medida que un suelo sigue secándose más allá de la capacidad de campo, llega un punto en el que el agua que queda está retenida con demasiada fuerza como para que la raíz pueda extraerla — ese es el punto de marchitez permanente. La planta no muere ahí porque "no queda agua" en términos absolutos: muere porque el agua que queda ya no está disponible para ella.'
+        ]
+      },
+      {
+        id: 'agua-disponible-y-por-que-varia',
+        title: 'Agua disponible: por qué varía según el suelo',
+        paragraphs: [
+          'El agua disponible es la diferencia entre la capacidad de campo y el punto de marchitez permanente — el rango real de agua que la planta puede usar entre esos dos extremos. La misma fuente de la FAO da valores de referencia según la textura del suelo: entre 25 y 100 mm de agua por metro en suelos arenosos, entre 100 y 175 mm/m en suelos francos, y entre 175 y 250 mm/m en suelos arcillosos.',
+          'La propia fuente aclara, de forma explícita, que estos valores "son constantes para un suelo dado, pero varían ampliamente de un tipo de suelo a otro" — es la fuente misma la que descarta una cifra única aplicable a cualquier suelo, y con más razón a cualquier sustrato de cultivo en contenedor, que es un sistema físico distinto al suelo de campo (ver "Textura, estructura y porosidad").'
+        ]
+      }
+    ],
+    observations: [
+      'Que un sustrato recién regado se sienta pesado y húmedo no significa necesariamente que esté en capacidad de campo: ese estado se alcanza recién después de que el exceso drenó, no en el momento mismo del riego.',
+      'Ver una planta marchita no distingue por sí solo si el sustrato llegó al punto de marchitez permanente o si se trata de un marchitamiento temporario por otra causa (calor, por ejemplo) — esta entrada no desarrolla esa distinción, que depende de si el marchitamiento se revierte al bajar la temperatura sin regar.'
+    ],
+    signals: [
+      {
+        level: 'AMBIGUOUS',
+        description: 'Una planta marchita que se recupera sola, sin riego, al bajar la temperatura ambiente, es compatible con un marchitamiento temporario por calor, no con haber alcanzado el punto de marchitez permanente — esta entrada no evalúa ese fenómeno en detalle.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Tomar los valores de agua disponible por textura (arena, franco, arcilla) que da esta fuente y aplicarlos directamente, sin ajuste, a un sustrato de cultivo en contenedor — son valores de referencia para suelo de campo, un sistema físico distinto.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que llegar a capacidad de campo es lo mismo que "sustrato recién regado" — la capacidad de campo es el estado posterior al drenaje del exceso, no el momento del riego en sí.'
+      }
+    ],
+    environmentContext: [
+      'El concepto de capacidad de campo, punto de marchitez y agua disponible aplica tanto a un suelo de campo (exterior) como a un sustrato de contenedor (interior o exterior), aunque los valores de referencia citados en esta entrada son específicos de suelo de campo por textura, no de sustratos de maceta.'
+    ],
+    tags: ['suelo', 'agua', 'interior', 'exterior'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'textura-estructura-porosidad'],
+    sourceIds: ['oficial-fao-brouwer-heibloem-1985-capacidad-campo-agua-disponible'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Capacidad de campo, punto de marchitez y agua disponible — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la capacidad de campo, qué es el punto de marchitez permanente, y por qué el agua disponible entre ambos varía ampliamente según el tipo de suelo, según una guía de riego de la FAO.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'materia-organica-actividad-biologica',
+    slug: 'materia-organica-y-actividad-biologica',
+    categoryId: 'suelo-y-agua',
+    title: 'Materia orgánica y actividad biológica del suelo',
+    summary: '"Evaluación visual del suelo" nombra la actividad biológica como uno de varios indicadores a simple vista. Esta entrada explica qué hay detrás de esa actividad: la materia orgánica, y por qué cumple varias funciones a la vez, no solo la de "nutrir".',
+    intro: '"Evaluación visual del suelo" menciona la presencia de lombrices y galerías como un indicador observable de actividad biológica, sin desarrollar por qué esa actividad ocurre. Esta entrada retoma ese punto: qué es la materia orgánica del suelo, qué funciones cumple, y qué prácticas documentadas la reducen.',
+    sections: [
+      {
+        id: 'que-es-y-cuanta-hay',
+        title: 'Qué es la materia orgánica y cuánta hay, en general',
+        paragraphs: [
+          'La materia orgánica del suelo es el conjunto de residuos vegetales y animales en distintos grados de descomposición, junto con los organismos vivos que la producen y la procesan. Una publicación de la FAO da una referencia general: "la mayoría de los suelos contienen 2-10 por ciento de materia orgánica" — presentada explícitamente como una referencia para "la mayoría de los suelos", no como una cifra universal ni como un dato medido en sustratos de cultivo en contenedor, donde el compost puede representar una proporción deliberadamente mucho mayor (ver "Componentes de sustrato para cultivo en contenedor").'
+        ]
+      },
+      {
+        id: 'que-funciones-cumple',
+        title: 'Qué funciones cumple, más allá de nutrir',
+        paragraphs: [
+          'La misma fuente describe varias funciones a la vez: la materia orgánica ayuda a unir partículas del suelo en agregados (la estructura que describe "Textura, estructura y porosidad"), mejora la infiltración y retención de agua, y ofrece hábitat y alimento a los organismos del suelo que, a su vez, ciclan nutrientes y modifican la estructura física. Ninguna de estas funciones depende únicamente de la cantidad total de materia orgánica: incluso en proporciones bajas, la fuente señala que "es muy importante".'
+        ]
+      },
+      {
+        id: 'que-la-reduce',
+        title: 'Qué prácticas documentadas la reducen',
+        paragraphs: [
+          'La misma fuente de la FAO documenta tres tipos de prácticas que reducen la materia orgánica del suelo con el tiempo: las que reducen la producción de biomasa vegetal (monocultivo, barbecho desnudo), las que reducen el aporte de residuos orgánicos (quema de rastrojos, sobrepastoreo, remoción de residuos de cosecha) y las que aumentan la velocidad de descomposición —el laboreo del suelo es, según la fuente, "una de las prácticas principales que reduce el nivel de materia orgánica"—. Esta descripción corresponde a manejo de suelo de campo (exterior); esta entrada no evalúa cómo se traduce, si es que se traduce, a un sustrato de contenedor.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver actividad biológica visible —lombrices, galerías, olor "a tierra"— es una observación compatible con materia orgánica activa (ver "Evaluación visual del suelo"). No permite, por sí sola, estimar un porcentaje de materia orgánica sin un análisis específico.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que "más materia orgánica siempre es mejor" sin límite — la fuente citada no sostiene una relación lineal ilimitada, solo que incluso una proporción baja ya cumple funciones importantes.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Tratar toda la conversación sobre "suelo vivo" o microbiología como si fuera lo mismo que materia orgánica — la materia orgánica es el sustento físico y nutricional de esa actividad biológica, pero son dos conceptos distintos (ver "Suelo vivo y microbiología").'
+      }
+    ],
+    environmentContext: [
+      'Las prácticas que reducen materia orgánica citadas en esta entrada (laboreo, quema de rastrojos, monocultivo) corresponden a manejo de suelo de campo (exterior). En un sustrato de contenedor (interior o exterior), la materia orgánica suele incorporarse de forma deliberada como componente de la mezcla (compost), un proceso distinto al de acumulación o pérdida natural en un suelo de campo.'
+    ],
+    tags: ['suelo', 'interior', 'exterior'],
+    relatedEntryIds: ['evaluacion-visual-del-suelo', 'componentes-de-sustrato', 'suelo-vivo-y-microbiologia'],
+    sourceIds: ['oficial-fao-a0100e-materia-organica-suelo'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Materia orgánica y actividad biológica del suelo — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la materia orgánica del suelo, qué funciones cumple más allá de nutrir, y qué prácticas documentadas por la FAO la reducen con el tiempo.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'componentes-de-sustrato',
+    slug: 'componentes-de-sustrato',
+    categoryId: 'suelo-y-agua',
+    title: 'Componentes de sustrato para cultivo en contenedor',
+    summary: 'Turba, fibra de coco, perlita, vermiculita y compost no son intercambiables: cada uno aporta una combinación distinta de retención de agua, aireación y aporte de nutrientes, y las mezclas más usadas combinan varios en vez de depender de uno solo.',
+    intro: '"Sustrato, agua y drenaje" describe el sustrato de cultivo en contenedor por su función física (retener agua y dejar espacio para el aire), sin detenerse en de qué está hecho. Esta entrada mira esa otra pregunta: qué materiales se usan habitualmente para armar un sustrato de contenedor, y qué aporta cada uno por separado.',
+    sections: [
+      {
+        id: 'turba',
+        title: 'Turba (peat moss)',
+        paragraphs: [
+          'La turba de Sphagnum retiene una gran cantidad de agua y aire a la vez, y se descompone muy lentamente en comparación con otros componentes orgánicos. Es naturalmente ácida (pH aproximado 3.5–4.0 según una guía de extensión agrícola), por lo que las mezclas que la usan como base suelen necesitar una corrección de pH (encalado) para no partir de un sustrato demasiado ácido.'
+        ]
+      },
+      {
+        id: 'fibra-de-coco-perlita-vermiculita',
+        title: 'Fibra de coco, perlita y vermiculita',
+        paragraphs: [
+          'La fibra de coco tiene un pH menos ácido que la turba (aproximadamente 5.5–6.8), es más duradera y más fácil de rehumedecer una vez seca, pero según la misma fuente suele traer más conductividad eléctrica y sales solubles que la turba —una variable relevante para quien mida CE en su sustrato (ver "Conductividad eléctrica y sales")—.',
+          'La perlita mejora la aireación y es prácticamente estéril y de pH neutro, sin aportar nutrientes por sí misma. La vermiculita cumple una función de aireación parecida, pero retiene más agua que la perlita y puede aportar algo de potasio, magnesio y otros minerales traza — dos materiales que suelen agruparse como "aireantes" pero que no se comportan igual.'
+        ]
+      },
+      {
+        id: 'compost-y-mezclas',
+        title: 'Compost y proporciones de mezcla',
+        paragraphs: [
+          'El compost retiene agua y aporta nutrientes de forma directa, con un pH generalmente entre 6.5 y 8. La misma guía de extensión da proporciones de mezcla habituales para estos componentes, pero aclara de forma explícita que son "guía general, no reglas fijas": cada productor suele ajustar su propia receta según el material disponible y el cultivo.',
+          'Un estudio del INTA (2015) ilustra ese tipo de ajuste con un caso concreto, aunque no de Cannabis: comparó ceniza volcánica contra perlita expandida como aireante, mezcladas con turba al 20% o 50%, y encontró que ambos materiales dieron una conductividad eléctrica baja (0.01 y 0.02 dS/m) y una porosidad de aireación alta (63% y 55%), con mejor desarrollo de los plantines en las mezclas al 20% que al 50%. Es evidencia de que estas propiedades se pueden medir y comparar entre materiales — no una receta a copiar para Cannabis.'
+        ]
+      }
+    ],
+    observations: [
+      'El ciclo de oscurecimiento y aclarado del sustrato al regar y secarse, que ya describe "Sustrato, agua y drenaje", refleja sobre todo el comportamiento de los componentes que retienen agua (turba, fibra de coco, compost) más que el de los aireantes (perlita, vermiculita) — los distintos componentes de una misma mezcla no contribuyen por igual a esa señal visual.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tomar una proporción de mezcla específica (por ejemplo, encontrada en un sitio comercial o de cultivo) como una receta validada universalmente, en vez de un punto de partida habitual que cada productor suele ajustar.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Tratar perlita y vermiculita como intercambiables por cumplir ambas una función de "aireación" — retienen agua de forma distinta, y esa diferencia puede importar según qué tan seguido se riegue.'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'No considerar la acidez natural de la turba al armar una mezcla nueva, y atribuir después un síntoma de pH a otra causa sin haber revisado primero el componente de base (ver "pH y disponibilidad de nutrientes").'
+      }
+    ],
+    environmentContext: [
+      'La elección de componentes de sustrato no depende de si el cultivo es en interior o en exterior —un contenedor con la misma mezcla puede usarse en cualquiera de los dos ambientes—; lo que sí cambia entre ambos es cuánto se seca esa mezcla entre riegos, un punto que ya desarrolla "Sustrato, agua y drenaje".'
+    ],
+    tags: ['suelo', 'interior', 'exterior'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'textura-estructura-porosidad', 'materia-organica-actividad-biologica'],
+    sourceIds: [
+      'institucional-eorganic-componentes-sustrato-organico',
+      'cientifica-barbaro-2015-ceniza-volcanica-perlita-sustrato',
+      'oficial-inta-sustrato-maceta-rubio-karlanian'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Componentes de sustrato para cultivo en contenedor — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué aporta cada componente habitual de un sustrato de maceta —turba, fibra de coco, perlita, vermiculita, compost— y por qué las proporciones de mezcla son guía general, no una receta fija.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'suelo-vivo-y-microbiologia',
+    slug: 'suelo-vivo-y-microbiologia',
+    categoryId: 'suelo-y-agua',
+    title: 'Suelo vivo y microbiología: el caso de las micorrizas',
+    summary: '"Suelo vivo" describe un ecosistema real de organismos que interactúan con la raíz — y, a diferencia de buena parte del resto de esta categoría, existe evidencia científica directa sobre Cannabis sativa para al menos un grupo de esos organismos: los hongos micorrícicos arbusculares.',
+    intro: 'Las entradas anteriores de esta categoría describen el sustrato y el suelo como un sistema físico: agua, aire, partículas, materia orgánica. Esta entrada agrega una dimensión distinta: ese mismo sistema también aloja organismos vivos que interactúan activamente con la raíz. Se enfoca en el grupo mejor documentado para Cannabis sativa entre las fuentes consultadas para esta investigación: los hongos micorrícicos arbusculares (AMF, por su sigla en inglés).',
+    sections: [
+      {
+        id: 'que-son-las-micorrizas',
+        title: 'Qué son, en términos generales',
+        paragraphs: [
+          'Los hongos micorrícicos arbusculares son uno de los grupos de microorganismos de suelo más estudiados en agronomía general por su asociación con la raíz: colonizan el tejido radicular y extienden, en los términos generales en que se los describe, el alcance efectivo de la raíz para la absorción de agua y nutrientes. Esta entrada no desarrolla el mecanismo bioquímico completo de esa asociación — se enfoca en qué evidencia existe, específicamente, sobre Cannabis sativa.'
+        ]
+      },
+      {
+        id: 'evidencia-directa-en-cannabis',
+        title: 'Evidencia directa en Cannabis sativa',
+        paragraphs: [
+          'Un estudio de 2022 evaluó la inoculación con dos especies de AMF (Rhizophagus aggregatus y R. prolifer) en un cultivar de cáñamo, comparado contra un control sin fertilizar y un control con fertilizante NPK sintético, en macetas bajo invernadero durante 60 días. La inoculación con R. aggregatus dio los mejores resultados: 80 cm de altura de planta contra 43 cm del control sin fertilizar, 11.8 g de peso seco de inflorescencia contra 5.83 g, 32.28 mg/g de CBD contra 24.56 mg/g, y 1.65 mg/g de THC contra 1.20 mg/g, con una colonización radicular del 21%.',
+          'Es evidencia directa de Cannabis sativa, no una analogía de otro cultivo — pero es un único estudio, con un único cultivar, en condiciones de maceta bajo invernadero y en una sola localidad. Los propios autores señalan la necesidad de validación a campo y en otros cultivares antes de generalizar el resultado.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no recomienda ningún producto comercial de inoculación ni una dosis — el estudio citado evaluó especies puntuales de laboratorio, no un producto disponible en el mercado. Tampoco cubre otras prácticas que suelen agruparse bajo la idea de "suelo vivo" (té de compost, inoculantes bacterianos específicos): dentro de las fuentes consultadas para esta investigación, no se encontró para ellas el mismo tipo de evidencia directa sobre Cannabis que sí existe para las micorrizas arbusculares.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver mejor desarrollo en una planta inoculada, en un cultivo doméstico sin grupo de control real, no aísla a la micorriza como causa de esa diferencia — el mismo principio que limita cualquier comparación sin control aplica acá.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Presentar la microbiología de suelo o el "suelo vivo" en general como si tuviera el mismo nivel de evidencia sobre Cannabis que el estudio específico de micorrizas citado acá — esta entrada solo verificó evidencia directa para ese grupo puntual de organismos, no para la categoría completa.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Generalizar el resultado de un estudio de 60 días, un cultivar y una localidad como si aplicara a cualquier cultivar, clima o sistema de cultivo — los propios autores señalan esa limitación.'
+      }
+    ],
+    environmentContext: [
+      'La colonización por micorrizas ocurre en condiciones distintas según el ambiente: un suelo de campo sin disturbar (exterior) puede alojar poblaciones nativas de estos hongos, mientras que un sustrato de contenedor estéril o comercial (interior o exterior) suele partir sin ellas, salvo que se inoculen de forma deliberada — una diferencia real entre ambos contextos que esta entrada no cuantifica.'
+    ],
+    tags: ['suelo', 'interior', 'exterior'],
+    relatedEntryIds: ['materia-organica-actividad-biologica', 'sustrato-y-drenaje', 'fertilizacion-y-nutricion'],
+    sourceIds: ['cientifica-seemakram-2022-micorrizas-cannabis-cbd-thc'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Suelo vivo y microbiología: micorrizas en Cannabis — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué son los hongos micorrícicos arbusculares y qué encontró, de forma directa sobre Cannabis sativa, un estudio de inoculación en cáñamo — con sus límites explícitos de generalización.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'calidad-del-agua-de-riego',
+    slug: 'calidad-del-agua-de-riego',
+    categoryId: 'suelo-y-agua',
+    title: 'Calidad del agua de riego',
+    summary: 'El agua de riego no es un insumo neutro: su pH, dureza y contenido de sales pueden importar tanto como el propio sustrato — y al menos una creencia extendida sobre el agua de red no resiste la evidencia institucional disponible.',
+    intro: 'Ninguna entrada de esta categoría trata todavía el agua misma como variable, más allá de cuánta se aplica. Esta entrada describe qué parámetros de calidad del agua de riego documenta la horticultura general —pH, alcalinidad, dureza, conductividad eléctrica, cloro y cloramina— y revisa, con evidencia institucional, dos ideas muy difundidas entre quienes cultivan: que el agua de red siempre necesita reposo antes de regar, y que el agua fría es mala para la raíz.',
+    sections: [
+      {
+        id: 'parametros-basicos',
+        title: 'Parámetros básicos de calidad del agua de riego',
+        paragraphs: [
+          'Una guía institucional de horticultura de invernadero y vivero recomienda un pH del agua de riego entre 5.4 y 7.0 "según el cultivo" —un rango explícitamente dependiente del cultivo, no una cifra fija—, una alcalinidad de hasta 100 mg/L, una dureza de hasta 150 mg/L de carbonato de calcio, y señala una conductividad eléctrica del agua mayor a 1.0 mmhos/cm como umbral de advertencia de riesgo de salinidad. Es evidencia general de horticultura, no un estándar validado específicamente para Cannabis sativa.'
+        ]
+      },
+      {
+        id: 'cloro-y-cloramina',
+        title: 'Cloro y cloramina: una creencia a revisar',
+        paragraphs: [
+          'Una respuesta institucional de un servicio de extensión agrícola, citando a la agencia de protección ambiental de Estados Unidos (EPA) y a una universidad, sostiene que los niveles bajos de cloramina presentes en el agua potable de red "no son tóxicos para las plantas" y que el agua clorada o cloraminada, a las concentraciones municipales habituales, es "segura para árboles, césped, hortalizas, etc." — un dato que contradice directamente la creencia extendida de que el agua de red siempre necesita reposo antes de regar.',
+          'La misma fuente señala una excepción puntual encontrada en la bibliografía: un estudio detectó oscurecimiento de raíz en lechuga cultivada en hidroponía con cloramina. También aclara algo importante: mientras el cloro libre sí se evapora del agua dejada reposar, la cloramina —que hoy usan muchas redes de agua potable— no se elimina de la misma manera solo por dejar reposar el agua.'
+        ]
+      },
+      {
+        id: 'temperatura-del-agua',
+        title: 'Temperatura del agua: otra idea a revisar',
+        paragraphs: [
+          'Un estudio científico sobre tabaco cultivado en sistemas de flotación de invernadero —no Cannabis— probó agua a temperatura constante de 15, 20, 25 y 30 °C y encontró que la enfermedad radicular por un patógeno del género Pythium se correlacionó con la temperatura del agua, con el nivel MÁS BAJO de daño radicular a 15 °C, la temperatura más fría de las probadas.',
+          'Este resultado es el opuesto al que asume la idea difundida de que el agua fría "shockea" la raíz y favorece enfermedad. Tampoco establece lo contrario como regla universal: es una sola especie de Pythium, en una sola especie vegetal, y otras especies del mismo género se comportan de forma distinta según la bibliografía general de fitopatología. El punto que sí puede sostenerse es que la relación entre temperatura del agua y enfermedad radicular no es simple ni unidireccional — no alcanza con asumir que "más frío es peor".'
+        ]
+      }
+    ],
+    observations: [
+      'Ver depósitos blancos en la superficie del sustrato o en el borde de una maceta es una observación compatible con acumulación de sales del agua de riego (ver "Conductividad eléctrica y sales"). No identifica, por sí sola, cuál de los parámetros de calidad del agua está detrás.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que dejar reposar el agua de red 24 horas siempre elimina el cloro o cloramina — es efectivo para el cloro libre, pero la fuente citada señala explícitamente que no funciona igual para la cloramina.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar "agua fría es mala para la raíz" como un hecho establecido — el único estudio directo revisado acá sobre temperatura del agua y enfermedad radicular encontró el patrón opuesto, en una especie distinta de Cannabis, sin que eso alcance tampoco para fijar una regla contraria.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar los rangos de pH, alcalinidad y dureza citados —de horticultura general de invernadero/vivero— como si fueran un estándar validado específicamente para Cannabis sativa.'
+      }
+    ],
+    environmentContext: [
+      'La fuente de agua disponible suele diferir entre interior y exterior: en interior, el agua de riego suele ser agua de red municipal (con cloro o cloramina); en exterior, puede sumarse agua de pozo o de lluvia, con un perfil de calidad distinto que esta entrada no desarrolla.'
+    ],
+    tags: ['suelo', 'agua', 'interior', 'exterior'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'ph-y-disponibilidad-de-nutrientes', 'conductividad-electrica-y-sales'],
+    sourceIds: [
+      'institucional-pennstate-2025-calidad-agua-riego',
+      'institucional-ask-extension-2018-cloramina-agua-riego',
+      'cientifica-fortnum-2000-temperatura-agua-pythium'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Calidad del agua de riego — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué parámetros de calidad del agua de riego documenta la horticultura general, y qué dice la evidencia institucional sobre dos creencias difundidas: el reposo del agua de red y la temperatura del agua.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'conductividad-electrica-y-sales',
+    slug: 'conductividad-electrica-y-sales',
+    categoryId: 'suelo-y-agua',
+    title: 'Conductividad eléctrica y sales',
+    summary: 'La conductividad eléctrica (CE) mide la concentración de sales disueltas, no un nutriente en particular — y un mismo número de CE puede significar cosas muy distintas según si viene del agua de origen sin fertilizar o de una solución ya fertilizada a propósito.',
+    intro: '"Calidad del agua de riego" menciona la conductividad eléctrica como uno de varios parámetros del agua de origen. Esta entrada la desarrolla en particular, porque es una de las mediciones más citadas —y, dentro de las fuentes consultadas para esta investigación, una de las pocas de esta categoría con evidencia directa sobre Cannabis sativa—.',
+    sections: [
+      {
+        id: 'que-mide-la-ce',
+        title: 'Qué mide la conductividad eléctrica',
+        paragraphs: [
+          'La conductividad eléctrica es una medida de cuánta corriente eléctrica puede transportar el agua o la solución del sustrato — y esa capacidad depende de la concentración total de iones (sales) disueltos, sin distinguir de qué sal en particular se trata. Un número de CE más alto significa más iones disueltos en total, no necesariamente más de un nutriente específico.'
+        ]
+      },
+      {
+        id: 'dos-escalas-que-no-hay-que-confundir',
+        title: 'Dos escalas distintas que no hay que confundir',
+        paragraphs: [
+          'Una guía clásica de la FAO sobre calidad de agua para riego clasifica el agua de origen —sin fertilizar— por su conductividad eléctrica: sin restricción de uso por debajo de 0.7 dS/m, restricción leve a moderada entre 0.7 y 3.0 dS/m, y restricción severa por encima de 3.0 dS/m. La propia guía aclara que son valores orientativos, no un estándar rígido, y que la tolerancia real depende del cultivo.',
+          'Esa escala describe la calidad del agua de origen, antes de agregar ningún fertilizante — es una escala distinta de la conductividad eléctrica de una solución nutritiva ya fertilizada a propósito, que un cultivador eleva de forma deliberada para nutrir la planta. Confundir ambas escalas —evaluar una solución fertilizada con el criterio pensado para agua sin fertilizar— es un error de categoría, no solo de cifra.'
+        ]
+      },
+      {
+        id: 'evidencia-directa-en-cannabis',
+        title: 'Evidencia directa en Cannabis sativa',
+        paragraphs: [
+          'Un estudio de 2020 evaluó Cannabis sativa (variedad de tipo droga) en hidroponía y acuaponía, agregando cloruro de sodio (NaCl) en concentraciones de 1 a 40 mM para elevar la conductividad eléctrica de la solución. En hidroponía, la fitotoxicidad fue clara a 40 mM (hasta 150% menos biomasa seca de inflorescencia que en el tratamiento de 1 mM), y el contenido de cannabinoides ya empezó a bajar con concentraciones de NaCl relativamente bajas, a partir de 5 mM, a un ritmo medido de -0.037% de THCA por cada mM de NaCl agregado.',
+          'En acuaponía, con una conductividad eléctrica de base similar (entre 1.8 y 1.94 mS/cm), la tolerancia fue mayor: solo se redujo la concentración de cannabinoides, sin el mismo daño de crecimiento observado en hidroponía. El propio estudio distingue el origen del aumento de conductividad eléctrica —por NaCl agregado versus por nutrientes— como una variable relevante en sí misma, no intercambiable.'
+        ]
+      }
+    ],
+    observations: [
+      'Un depósito de sales visible en la superficie del sustrato o en el borde de una maceta (ver "Calidad del agua de riego") es una observación compatible con acumulación de sales, sin que eso identifique por sí solo si el origen es el agua, el fertilizante, o ambos.'
+    ],
+    signals: [
+      {
+        level: 'ATTENTION',
+        description: 'Un aumento notorio y sostenido de la conductividad eléctrica de la solución de riego o del sustrato, sin que se haya agregado más fertilizante, amerita revisar la calidad del agua de origen (ver "Calidad del agua de riego") antes de asumir que el sustrato "concentró" sales por sí solo.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar la escala de calidad de agua de la FAO (pensada para agua de origen sin fertilizar) para evaluar si una solución nutritiva ya fertilizada tiene "demasiada CE" — son dos marcos de referencia distintos, no la misma escala con otro nombre.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Generalizar el hallazgo del estudio de NaCl en Cannabis sativa citado acá a cualquier aumento de conductividad eléctrica, sin importar el origen — el propio estudio distingue el efecto de la sal agregada (NaCl) del efecto de una solución nutritiva bien formulada con más nutrientes.'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'Tratar la conductividad eléctrica como si identificara qué nutriente en particular está en exceso o en falta — es una medida de la concentración iónica total, no una composición nutriente por nutriente.'
+      }
+    ],
+    environmentContext: [
+      'Un suelo de campo (exterior) puede lavar parte de sus sales acumuladas con lluvia a lo largo del tiempo; un sustrato de contenedor sin ese aporte de agua adicional (más marcado en interior, donde no llueve) depende enteramente del riego para esa función de lavado — una diferencia real entre ambos contextos que esta entrada no cuantifica.'
+    ],
+    tags: ['suelo', 'agua', 'interior', 'exterior'],
+    relatedEntryIds: ['calidad-del-agua-de-riego', 'ph-y-disponibilidad-de-nutrientes', 'fertilizacion-y-nutricion'],
+    sourceIds: [
+      'oficial-fao-ayers-westcot-1985-calidad-agua-riego-ec',
+      'cientifica-yep-2020-nacl-ec-cannabis-hidroponia'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Conductividad eléctrica y sales — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué mide la conductividad eléctrica, por qué no hay que confundir la escala de calidad del agua de origen con la de una solución nutritiva fertilizada, y qué encontró un estudio directo sobre Cannabis sativa y NaCl.',
       canonical: null,
       ogImage: null
     }
@@ -2874,7 +3337,7 @@ export const editorialEntries = [
       'Esta entrada no da un rango de pH de referencia para Cannabis sativa ni para ningún sustrato en particular — depende de la especie, del sustrato y del nutriente puntual en cuestión, y esta entrada se limita al principio general de que el pH modifica la disponibilidad, no a una cifra prescriptiva.'
     ],
     tags: ['fertilización', 'nutrición'],
-    relatedEntryIds: ['fertilizacion-y-nutricion', 'sustrato-y-drenaje'],
+    relatedEntryIds: ['fertilizacion-y-nutricion', 'sustrato-y-drenaje', 'calidad-del-agua-de-riego', 'conductividad-electrica-y-sales'],
     sourceIds: [
       'academica-kirkby-romheld-2007-micronutrientes-fisiologia',
       'academica-unne-nutricion-mineral-dabrio-2020'

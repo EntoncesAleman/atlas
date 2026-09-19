@@ -31,12 +31,20 @@ export const CONTROLLED_TAGS = [
   'lectura',
   'documental',
   'noticia',
-  'industria'
+  'industria',
+  'interior',
+  'exterior'
 ];
 
 export function isControlledTag(tag) {
   return CONTROLLED_TAGS.includes(tag);
 }
+
+// `interior`/`exterior` (agregados en la expansión de "Suelo y agua", 2026-09-19) son el
+// atributo transversal de contexto de cultivo: una entrada con ambos tags aplica a los dos
+// ambientes por igual (o la diferencia no es relevante); con uno solo, el contenido es
+// específico de ese ambiente; sin ninguno de los dos, la entrada no depende del ambiente de
+// cultivo (igual que la mayoría de las entradas ya publicadas antes de este atributo).
 
 // Vocabulario controlado de niveles de señal (`signals[].level`) y tipos de error
 // (`commonMistakes[].type`) — formalizado en Fase 7B2 a partir del piloto de Fase 7B1.

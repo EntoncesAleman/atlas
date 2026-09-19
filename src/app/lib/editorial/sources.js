@@ -1236,6 +1236,127 @@ export const sources = [
     accessedAt: '2026-09-19',
     notes: 'VERIFICADO por lectura directa. Guía institucional general de horticultura (no específica de Cannabis) sobre desinfección de herramientas de poda para prevenir la transmisión de enfermedades entre plantas: alcohol isopropílico o etílico al 70% (recomendado para uso general, sin necesidad de remojo prolongado) o solución de lavandina al 10% (9 partes de agua por 1 de lavandina, remojo mínimo de 10 minutos, con enjuague posterior para evitar corrosión) para casos de patógenos más resistentes. Se aplica por analogía a herramientas de poda de Cannabis, igual que otras fuentes generales de horticultura ya usadas en el Atlas.'
   },
+  {
+    id: 'oficial-fao-soils-portal-propiedades-fisicas',
+    scope: 'GENERAL',
+    title: 'Physical properties — FAO Soils Portal',
+    authorOrInstitution: 'FAO — Soils Portal, Soil Survey / Soil Properties',
+    url: 'https://www.fao.org/soils-portal/soil-survey/soil-properties/physical-properties/en/',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa. Define textura (proporción de arena/limo/arcilla), estructura (agregación en "peds" que afecta aireación, movimiento de agua, conducción de calor y crecimiento radicular) y porosidad ("el espacio poroso no ocupado por materia mineral u orgánica, ocupado por aire o agua"). Cita textualmente: "Idealmente, el espacio poroso total debería ser un 50% del volumen del suelo" — presentado por la propia FAO como un ideal de referencia general de agronomía, no una cifra específica de Cannabis ni un mínimo obligatorio para que un sustrato funcione.'
+  },
+  {
+    id: 'oficial-fao-brouwer-heibloem-1985-capacidad-campo-agua-disponible',
+    scope: 'GENERAL',
+    title: 'Irrigation Water Management: Training Manual No. 1 — Introduction to Irrigation (Cap. 2: Soil and water)',
+    authorOrInstitution: 'Brouwer, C. (ILRI); Goffeau, A.; Heibloem, M. (FAO Land and Water Development Division)',
+    url: 'https://www.fao.org/4/r4082e/r4082e03.htm',
+    type: 'OFFICIAL',
+    publicationDate: '1985',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa. Define capacidad de campo (agua retenida tras el drenaje del exceso; "ideal para el crecimiento del cultivo"), punto de marchitez permanente (agua remanente que la raíz ya no puede extraer) y agua disponible (= capacidad de campo − punto de marchitez). Da valores de agua disponible por textura —arena 25–100 mm/m, franco 100–175 mm/m, arcilla 175–250 mm/m— aclarando textualmente que "son constantes para un suelo dado, pero varían ampliamente de un tipo de suelo a otro": es la propia fuente la que descarta una cifra universal. Fisiología/física de suelo general, no específica de Cannabis.'
+  },
+  {
+    id: 'oficial-fao-a0100e-materia-organica-suelo',
+    scope: 'GENERAL',
+    title: 'The Importance of Soil Organic Matter — Key to Drought-Resistant Soil and Sustained Food and Production',
+    authorOrInstitution: 'FAO — Soils Bulletin 80',
+    url: 'https://www.fao.org/4/a0100e/a0100e02.htm',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (páginas a0100e02.htm y a0100e07.htm). Cita textual: "La mayoría de los suelos contienen 2-10 por ciento de materia orgánica" —presentado como referencia general de "la mayoría de los suelos", no como cifra universal ni específica de sustratos de cultivo en maceta—. Describe funciones generales (retención de agua, agregación de partículas, hábitat para organismos del suelo, ciclado de nutrientes) y prácticas que reducen la materia orgánica (laboreo, quema de rastrojos, monocultivo). Agronomía general, no evidencia de Cannabis.'
+  },
+  {
+    id: 'institucional-eorganic-componentes-sustrato-organico',
+    scope: 'GENERAL',
+    title: 'Aspectos básicos del sustrato orgánico para macetas',
+    authorOrInstitution: 'eOrganic (red de extensión universitaria, eXtension Foundation)',
+    url: 'https://eorganic.org/node/35264',
+    type: 'AGRICULTURAL',
+    publicationDate: null,
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa. Describe propiedades generales de turba (pH 3.5–4.0, retiene mucha agua y aire), fibra de coco (pH 5.5–6.8, más EC/sales disueltas que la turba, más durable), perlita y vermiculita (aireación, sin aporte nutricional relevante salvo algo de K/Mg/Ca en vermiculita) y compost (retiene agua y aporta nutrientes, pH 6.5–8). Da proporciones de mezcla habituales (ej. perlita/vermiculita 30-50%) pero el propio texto aclara explícitamente que son "guía general, no reglas fijas" y que cada productor suele ajustar su propia receta — no se citan como estándar para Cannabis.'
+  },
+  {
+    id: 'cientifica-barbaro-2015-ceniza-volcanica-perlita-sustrato',
+    scope: 'GENERAL',
+    title: 'Ceniza volcánica como alternativa a la perlita en la formulación de sustratos para plantines florales',
+    authorOrInstitution: 'Barbaro, L. A.; Illa Healy, V.; Karlanián, M. A.; Mazzoni, A. — INTA / Universidad de Morón, revista Ciencia del Suelo, vol. 33, n.º 2',
+    url: 'https://www.scielo.org.ar/scielo.php?script=sci_arttext&pid=S1850-20672015000200005',
+    type: 'SCIENTIFIC',
+    publicationDate: '2015-12',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (SciELO Argentina, acceso abierto). Estudio con pensamiento (pansy) e impatiens (no Cannabis): compara ceniza volcánica (erupción Puyehue 2011) contra perlita expandida, mezcladas con turba de Sphagnum al 20% o 50%, midiendo pH, CE, densidad aparente, porosidad de aireación, capacidad de retención de agua y desarrollo de plantines. CE baja en ambos materiales (0.01 y 0.02 dS/m) y alta porosidad de aireación (63% y 55% respectivamente); las mezclas al 20% dieron mejor desarrollo que al 50%. Se cita como condición de ese estudio puntual —mismo grupo de investigación que ya cita la entrada "Sustrato, agua y drenaje"—, no como cifra aplicable a Cannabis ni a cualquier mezcla de sustrato.'
+  },
+  {
+    id: 'cientifica-seemakram-2022-micorrizas-cannabis-cbd-thc',
+    scope: 'CANNABIS',
+    title: 'Enhancement of Growth and Cannabinoids Content of Hemp (Cannabis sativa) Using Arbuscular Mycorrhizal Fungi',
+    authorOrInstitution: 'Seemakram, W.; Paluka, J.; Suebrasri, T.; Lapjit, C.; Kanokmedhakul, S.; Kuyper, T. W.; Ekprasert, J.; Boonlue, S. — Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9360772/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2022-07-26',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2022.845794, confirmado vía Crossref). Ensayo en maceta bajo invernadero (no a campo), 60 días, un solo cultivar de cáñamo (KKU05) en Tailandia, 6 repeticiones. Inoculación con Rhizophagus aggregatus BM-3 g3 dio mejores resultados que R. prolifer PC2-2, control sin fertilizar y control con NPK sintético: altura de planta 80 cm vs. 43 cm (control sin fertilizar), peso seco de inflorescencia 11.8 g vs. 5.83 g, CBD 32.28 mg/g vs. 24.56 mg/g, THC 1.65 mg/g vs. 1.20 mg/g, colonización radicular 21%. Es evidencia directa de Cannabis sativa, pero de un único estudio, un único cultivar, condiciones de maceta y una sola localidad — el propio estudio señala la necesidad de validación a campo y en otros cultivares antes de generalizar.'
+  },
+  {
+    id: 'institucional-pennstate-2025-calidad-agua-riego',
+    scope: 'GENERAL',
+    title: 'A Water Quality Toolkit for Greenhouse and Nursery Production',
+    authorOrInstitution: 'Boser, S.; Rizzo, D. (Water Resources Extension Educators) — Penn State Extension',
+    url: 'https://extension.psu.edu/a-water-quality-toolkit-for-greenhouse-and-nursery-production',
+    type: 'AGRICULTURAL',
+    publicationDate: '2025-10-13',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa. Guía institucional general de horticultura de invernadero/vivero (no específica de Cannabis): pH del agua de riego recomendado entre 5.4 y 7.0 "según el cultivo" (explícitamente dependiente del cultivo, no un número fijo); alcalinidad recomendada hasta 100 mg/L; dureza hasta 150 mg/L de CaCO3; conductividad eléctrica del agua de riego mayor a 1.0 mmhos/cm como umbral de advertencia de riesgo de salinidad. Se cita como referencia general de horticultura, no como estándar validado para Cannabis.'
+  },
+  {
+    id: 'institucional-ask-extension-2018-cloramina-agua-riego',
+    scope: 'GENERAL',
+    title: 'Chloramine in Tap Water and Its Effects on Houseplants and Gardens',
+    authorOrInstitution: 'Ask Extension (Sistema de Extensión Cooperativa de EE. UU., citando EPA y University of Nebraska Extension)',
+    url: 'https://ask.extension.org/kb/faq.php?id=460986',
+    type: 'AGRICULTURAL',
+    publicationDate: '2018-06-19',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa. Respuesta institucional que cita a la EPA y a University of Nebraska Extension: "los niveles bajos de cloramina en el agua potable no son tóxicos para las plantas" y que el agua clorada/cloraminada es "segura para árboles, césped, hortalizas, etc." a las concentraciones municipales habituales — contradice la idea difundida de que el agua de red siempre necesita reposo o dechloración antes de regar. Señala una excepción puntual: un estudio encontró oscurecimiento de raíz en lechuga cultivada en hidroponía con cloramina. No es evidencia específica de Cannabis, y no aborda si dejar reposar el agua elimina la cloramina (a diferencia del cloro libre, que sí se evapora con el tiempo).'
+  },
+  {
+    id: 'cientifica-fortnum-2000-temperatura-agua-pythium',
+    scope: 'GENERAL',
+    title: 'Nutrient Solution Temperature Affects Pythium Root Rot of Tobacco in Greenhouse Float Systems',
+    authorOrInstitution: 'Fortnum, B. A.; Rideout, J.; Martin, S. B.; Gooden, D. — Plant Disease',
+    url: 'https://doi.org/10.1094/PDIS.2000.84.3.289',
+    type: 'SCIENTIFIC',
+    publicationDate: '2000-03',
+    accessedAt: '2026-09-19',
+    notes: 'Título, autoría, revista y fecha verificados vía Crossref (DOI real) y por el resumen público del artículo (acceso al texto completo bloqueado por la revista, error 403). Según el resumen: en tabaco cultivado en sistemas de flotación de invernadero, con temperatura del agua constante a 15, 20, 25 o 30 °C, la enfermedad por Pythium myriotylum se correlacionó con la temperatura del agua, con el nivel MÁS BAJO de necrosis radicular a 15 °C (la temperatura más fría probada) — el patrón opuesto al que asume la idea difundida de que el agua fría "shockea" la raíz y favorece enfermedad. Es tabaco (Solanaceae), no Cannabis, y un solo patógeno/especie de Pythium entre varias con comportamientos distintos — se cita para mostrar que la relación temperatura del agua/enfermedad radicular no es universal ni unidireccional, no para fijar una temperatura de riego recomendada.'
+  },
+  {
+    id: 'oficial-fao-ayers-westcot-1985-calidad-agua-riego-ec',
+    scope: 'GENERAL',
+    title: 'Water Quality for Agriculture — FAO Irrigation and Drainage Paper 29 (Rev. 1), Tabla 1',
+    authorOrInstitution: 'Ayers, R. S.; Westcot, D. W. — FAO',
+    url: 'https://www.fao.org/4/t0234e/t0234e01.htm',
+    type: 'OFFICIAL',
+    publicationDate: '1985',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa. Tabla 1 ("Guidelines for interpretation of water quality for irrigation") clasifica el agua de riego por conductividad eléctrica (ECw): sin restricción de uso <0.7 dS/m, restricción leve a moderada 0.7–3.0 dS/m, restricción severa >3.0 dS/m (equivalentes en sólidos disueltos totales: <450, 450–2000 y >2000 mg/L). El propio documento aclara: "estas guías pueden indicar problemas potenciales... pero la aptitud real de un agua depende de las condiciones específicas de uso y de la capacidad de manejo del usuario" — explícitamente no un estándar rígido, y varía según tolerancia de cada cultivo (tablas aparte). Es la escala de calidad de la fuente de agua, distinta de la CE de una solución nutritiva ya fertilizada en la zona radicular.'
+  },
+  {
+    id: 'cientifica-yep-2020-nacl-ec-cannabis-hidroponia',
+    scope: 'CANNABIS',
+    title: 'Aquaponic and Hydroponic Solutions Modulate NaCl-Induced Stress in Drug-Type Cannabis sativa L.',
+    authorOrInstitution: 'Yep, B.; Gale, N. V.; Zheng, Y. — Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7424260/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2020-08-05',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2020.01169, confirmado vía Crossref). Cannabis sativa (tipo droga) en hidroponía y acuaponía con NaCl agregado (1 a 40 mM). En hidroponía, fitotoxicidad clara a 40 mM (hasta 150% menos biomasa de inflorescencia seca que en 1 mM); el contenido de cannabinoides empezó a bajar con concentraciones de NaCl bajas ("por encima de 5 mM"), a una tasa de -0.037% THCA por mM de NaCl. En acuaponía, con EC basal similar (~1.8-1.94 mS/cm), la tolerancia fue mayor: solo se redujo la concentración de cannabinoides, sin el mismo daño de crecimiento. Es evidencia directa de Cannabis sativa sobre sal agregada (NaCl), no una equivalencia directa con "conductividad eléctrica alta por fertilización" en general — el propio estudio distingue el origen del aumento de CE (nutrientes vs. NaCl) como una variable relevante en sí misma.'
+  },
 ];
 
 export function sourceById(id) {
