@@ -2542,7 +2542,7 @@ export const editorialEntries = [
         title: 'Lo que esta entrada no hace',
         paragraphs: [
           'Esta entrada no da un momento del ciclo, una cantidad de hojas ni un porcentaje de follaje a remover como "la técnica correcta" — el estudio citado muestra un efecto general de la penetración de luz sobre la uniformidad química, no un protocolo de defoliación paso a paso.',
-          'Existe además un estudio que evaluó defoliación simulando daño por granizo en distintas etapas de crecimiento de Cannabis sativa. Esta entrada no puede citar sus resultados específicos por etapa: el artículo completo no pudo verificarse por lectura directa en esta investigación (ver la ficha de la fuente), y los resúmenes disponibles eran contradictorios entre sí sobre esos resultados puntuales. Se menciona su existencia como línea de evidencia relevante, sin afirmar ningún hallazgo cuantitativo de ese estudio en particular.'
+          'Existe además un estudio que evaluó defoliación simulando daño por granizo en distintas etapas de crecimiento de Cannabis sativa (verificado por lectura directa del texto completo; ver la ficha de la fuente). Esa fuente describe un efecto que depende de la etapa en la que ocurre la defoliación, no un resultado único aplicable a cualquier momento del ciclo. Esta entrada no reproduce las cifras específicas de cada etapa acá, para no convertirse en un desglose estadístico separado de la fuente original.'
         ]
       }
     ],
@@ -2562,7 +2562,7 @@ export const editorialEntries = [
       },
       {
         type: 'OTHER',
-        description: 'Citar resultados específicos por etapa de crecimiento del estudio de defoliación simulada por granizo como si estuvieran confirmados — esta entrada no pudo verificarlos por lectura directa y los resúmenes secundarios disponibles eran inconsistentes entre sí.'
+        description: 'Asumir que esta entrada no menciona cifras por etapa del estudio de defoliación simulada por granizo porque esas cifras no existen o son dudosas — el estudio fue verificado por lectura directa y sí describe un efecto dependiente de la etapa; esta entrada simplemente no las reproduce acá (ver la ficha de la fuente).'
       }
     ],
     environmentContext: [
