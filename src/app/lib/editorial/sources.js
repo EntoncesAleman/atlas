@@ -931,7 +931,7 @@ export const sources = [
     type: 'SCIENTIFIC',
     publicationDate: '2019-06-11',
     accessedAt: '2026-09-15',
-    notes: 'VERIFICADO por lectura directa (Frontiers, acceso abierto). Reemplaza la cita sin URL de `documentacion/Informe Tecnico y Guia Practica.docx`, que atribuía este hallazgo a "Bernstein et al. (2019) / University of Haifa" — la afiliación real de los autores es Volcani Center, Hebrew University of Jerusalem, un centro I+D en Kiryat Arba y Shenkar College, no University of Haifa. Hallazgo clave: existe un gradiente espacial natural de cannabinoides según la altura de la planta — THC, CBD, CBG, THCV y CBC se concentran más en las regiones superiores; CBT y CBN se concentran más en flores medias/inferiores. La suplementación con ácido húmico reduce esa variabilidad espacial natural, pero a costa de menor concentración de cannabinoides en las regiones superiores.'
+    notes: 'VERIFICADO por lectura directa (Frontiers, acceso abierto). Reemplaza la cita sin URL de `documentacion/Informe Tecnico y Guia Practica.docx`, que atribuía este hallazgo a "Bernstein et al. (2019) / University of Haifa" — la afiliación real de los autores es Volcani Center, Hebrew University of Jerusalem, un centro I+D en Kiryat Arba y Shenkar College, no University of Haifa. Hallazgo clave sobre canopia: existe un gradiente espacial natural de cannabinoides según la altura de la planta — THC, CBD, CBG, THCV y CBC se concentran más en las regiones superiores; CBT y CBN se concentran más en flores medias/inferiores. La suplementación con ácido húmico reduce esa variabilidad espacial natural, pero a costa de menor concentración de cannabinoides en las regiones superiores. Hallazgos adicionales sobre nutrición (verificados por lectura directa en una relectura posterior, 2026-09-19): el ensayo no aisló N, P y K por separado — comparó una mezcla control (65 ppm N, 17 ppm P, 90 ppm K) contra un tratamiento con 15% más de los tres juntos ([+NPK]) y un tratamiento con fósforo agregado por separado ([+P]), en un único cultivar (NB100, alto THC/bajo CBD tipo indica), en maceta con fibra de coco, en invernadero comercial. El tratamiento [+NPK] aumentó la biomasa aérea total un 41%, pero varios de los tratamientos con más nutrientes redujeron la concentración de cannabinoides en vez de aumentarla — concentración y biomasa no se movieron en la misma dirección. El fósforo agregado no tuvo efecto sobre THC, CBD, CBN ni CBG en las flores superiores (sí redujo THC un 16% en las hojas de la inflorescencia). Los propios autores concluyen textualmente que "la relación entre el contenido de cannabinoides y la suplementación nutricional no es clara" y señalan que "solo un número pequeño de estudios científicos se han hecho sobre nutrición de Cannabis, y la mayoría se enfocó en variedades de cáñamo cultivadas para fibra... esta información es solo levemente relevante para el cannabis medicinal" — y piden explícitamente evaluar otros quimiotipos (alto-CBD/bajo-THC, alto-THC/alto-CBD) antes de generalizar.'
   },
   {
     id: 'cientifica-vergara-2016-cannabis-quimiotipo-evolucion-cultivo',
@@ -1509,6 +1509,116 @@ export const sources = [
     publicationDate: '2021-12',
     accessedAt: '2026-09-19',
     notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.1186/s43897-021-00006-9, confirmado vía Crossref). Revisión general de fisiología vegetal (usa Arabidopsis thaliana como organismo modelo principal, con comparaciones en arroz, trigo y tomate) — no específica de Cannabis. Define la senescencia como "la etapa final del desarrollo de la planta", una "transición funcional de la asimilación de nutrientes a la removilización de nutrientes". Documenta tres tipos de disparadores: desarrollo (la edad como factor interno principal), hormonales (etileno, ácido jasmónico, ácido salicílico y ácido abscísico la promueven; citoquininas y giberelinas la retrasan) y ambientales (sequía, estrés salino, oscuridad, temperaturas extremas, deficiencia de nutrientes, patógenos). Durante la senescencia, los nutrientes liberados se exportan hacia órganos en desarrollo (brotes nuevos, hojas jóvenes, flores o semillas). No se encontró, dentro de las fuentes consultadas para esta investigación, un estudio específico de senescencia en Cannabis sativa revisado por pares — se cita como marco general aplicado por analogía, no como evidencia directa de la especie.'
+  },
+  {
+    id: 'academica-unne-suelo-planta-integracion',
+    scope: 'GENERAL',
+    title: 'Integración del Sistema Suelo-Planta (Capítulo 6)',
+    authorOrInstitution: 'Cátedra de Fisiología Vegetal, Facultad de Ciencias Exactas y Naturales y Agrimensura, Universidad Nacional del Nordeste (UNNE)',
+    url: 'https://exa.unne.edu.ar/biologia/fisiologia.vegetal/8_integracion_sistema_suelo-planta.pdf',
+    type: 'ACADEMIC',
+    publicationDate: null,
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (extracción local con PyMuPDF; misma cátedra argentina ya usada como fuente en otras entradas del atlas). Fisiología/edafología general, no específica de Cannabis. Describe los tres procesos físicos que gobiernan la llegada de nutrientes a la raíz (citando a Junk, 2002): intercepción radical (para iones de baja movilidad en el suelo, como el fósforo y algunos micronutrientes), flujo de masas (convección de nutrientes disueltos arrastrados por la corriente transpiratoria) y difusión (por gradiente de concentración, según la ley de Fick). Incluye el modelo cinético de Michaelis-Menten para la tasa de absorción radicular y un cuadro (Claassen y Steingrobe, 1999) de los factores que determinan la transferencia de nutrientes del suelo a la planta: desarrollo radical, cinética de absorción, transpiración, exudados radicales y asociación con micorrizas y bacterias.'
+  },
+  {
+    id: 'academica-unne-absorcion-iones-raiz-benavides',
+    scope: 'GENERAL',
+    title: 'Absorción de Iones en la Raíz',
+    authorOrInstitution: 'Benavides Mendoza, A. — Departamento de Horticultura, Universidad Autónoma Agraria Antonio Narro (México); publicado vía Cátedra de Fisiología Vegetal, UNNE',
+    url: 'https://exa.unne.edu.ar/biologia/fisiologia.vegetal/absorcion_de_iones_en_la_raiz.pdf',
+    type: 'ACADEMIC',
+    publicationDate: '2011-08',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (extracción local con PyMuPDF). Fisiología vegetal general, no específica de Cannabis. Documenta que el calcio, magnesio, sulfato, nitrato, cobre, boro, manganeso y molibdeno tienen buena movilidad en la solución del suelo y llegan a la raíz principalmente por flujo de masas; en cambio el fosfato, el potasio y el amonio, de baja movilidad, dependen principalmente de difusión (el zinc y el hierro tienen comportamiento intermedio). Describe además el aumento de ramificación fina de raíces y densidad de pelos radicales como respuesta a baja disponibilidad de fósforo, y la acidificación de la rizosfera por extrusión de protones (bombas H+-ATPasa) como mecanismo activo de la raíz para aumentar la solubilidad de P y de metales.'
+  },
+  {
+    id: 'academica-hachiya-2017-nitrato-amonio-rizosfera-ph',
+    scope: 'GENERAL',
+    title: 'Interactions Between Nitrate and Ammonium in Their Uptake, Allocation, Assimilation, and Signaling in Plants',
+    authorOrInstitution: 'Hachiya, T.; Sakakibara, H. — Journal of Experimental Botany',
+    url: 'https://academic.oup.com/jxb/article/68/10/2501/2731728',
+    type: 'SCIENTIFIC',
+    publicationDate: '2016-12-21',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (DOI 10.1093/jxb/erw449, confirmado vía Crossref). Revisión de fisiología vegetal general (evidencia de arroz, cebada, Arabidopsis thaliana y Brassica napus), no específica de Cannabis. Explica el mecanismo por el cual la forma de nitrógeno absorbida modifica el pH de la rizosfera: la absorción de nitrato se acopla al cotransporte de protones hacia el interior de la raíz, lo que alcaliniza el entorno radicular; la absorción de amonio se acompaña de extrusión de protones vía la H+-ATPasa de membrana para mantener el balance de carga, lo que acidifica el entorno. Es un principio fisiológico general documentado en múltiples especies, no un hallazgo puntual de una sola planta.'
+  },
+  {
+    id: 'cientifica-westmoreland-2022-fosforo-cannabis-sin-efecto',
+    scope: 'CANNABIS',
+    title: 'Sustainable Cannabis Nutrition: Elevated Root-Zone Phosphorus Significantly Increases Leachate P and Does Not Improve Yield or Quality',
+    authorOrInstitution: 'Westmoreland, F. M.; Bugbee, B. — Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9724152/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2022-11-17',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2022.1015652, confirmado vía Crossref). Probó tres niveles de fósforo (25, 50 y 75 mg/L) en fertirriego continuo sobre el cultivar medicinal alto-CBD "Trump" (cultivo compacto), en contenedores con turba/vermiculita/cáscara de arroz, en ambiente controlado. El rendimiento de flor seca no se vio afectado por el nivel de P (p=0.20; ~649 g/m² en todos los tratamientos) y no hubo diferencias relevantes en concentración de cannabinoides (CBD equivalente, THC equivalente, CBG equivalente similares entre tratamientos). En cambio, el fósforo lixiviado (perdido, no absorbido) aumentó de forma muy pronunciada: un incremento de 3 veces en el P aplicado produjo un aumento de 12 veces en el P lixiviado acumulado. Los autores concluyen que 25 mg/L de P fue suficiente para rendimiento y concentración de cannabinoides máximos, y que aplicar más solo aumenta el desperdicio ambiental sin beneficio productivo. Es evidencia directa de Cannabis sativa, pero de un único cultivar en un sistema de contenedor específico.'
+  },
+  {
+    id: 'cientifica-crispim-massuela-2023-organico-mineral-cannabis',
+    scope: 'CANNABIS',
+    title: 'Cannabis Hunger Games: Nutrient Stress Induction in Flowering Stage – Impact of Organic and Mineral Fertilizer Levels on Biomass, Cannabidiol (CBD) Yield and Nutrient Use Efficiency',
+    authorOrInstitution: 'Crispim Massuela, D.; Munz, S.; Hartung, J.; Nkebiwe, P. M.; Graeff-Hönninger, S. — Frontiers in Plant Science',
+    url: 'https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2023.1233232/full',
+    type: 'SCIENTIFIC',
+    publicationDate: '2023-09-19',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (Frontiers, acceso abierto; DOI confirmado vía Crossref). Comparó fertilizante orgánico y mineral en tres niveles de nitrógeno (80, 160 y 240 mg N/L) durante las 9 semanas de floración de un único genotipo de quimiotipo III (alto CBD), en maceta con sustrato turba-coco/perlita, en invernadero con fertirriego. A cosecha, el tratamiento mineral produjo más biomasa de inflorescencia (23.7 g/planta contra 19.6 g/planta del orgánico), pero el orgánico logró mayor concentración de CBD (6.5% contra 5.8%) — resultados en direcciones opuestas, ninguno de los dos métodos superior en todo. El tratamiento de nitrógeno intermedio (160) produjo 95% del rendimiento de CBD del tratamiento alto (240) usando un tercio menos de nutrientes. La eficiencia de uso de fósforo fue menor con orgánico (~24%) que con mineral (30-39%), atribuible a menor disponibilidad en el sustrato de turba. Los propios autores aclaran que el estudio se basó en un único genotipo de Cannabis de quimiotipo III (alto CBD), y que los resultados podrían no generalizarse a cultivares dominantes en THC, otros genotipos, u otros sistemas de cultivo (hidroponía, cultivo en cama).'
+  },
+  {
+    id: 'cientifica-kpai-2024-npk-optimizacion-vegetativo-cannabis',
+    scope: 'CANNABIS',
+    title: 'Mineral Nutrition for Cannabis sativa in the Vegetative Stage Using Response Surface Analysis',
+    authorOrInstitution: 'Kpai, P. Y.; Adaramola, O.; Addo, P. W.; MacPherson, S.; Lefsrud, M. — Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11650207/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2024-12-03',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2024.1501484, confirmado vía Crossref). Usó un diseño experimental de superficie de respuesta (20 combinaciones de N, P y K en rangos de 132.7-267.3, 9.6-110.5 y 20.8-214.2 mg/L respectivamente) sobre un único genotipo medicinal ("The New", esqueje, Montreal) durante 2 semanas de etapa vegetativa en hidroponía de cultivo en agua profunda. Recomienda, para esa etapa y ese genotipo puntual, 160-200 mg/L de N, 30 mg/L de P y 60 mg/L de K — una combinación que NO coincide con los ratios NPK de tipo "3:1:1" difundidos comercialmente (esta recomendación es más cercana a proporciones de 5:1:2 o 6.7:1:2 según el extremo del rango de N usado). Los propios autores señalan que "pocos estudios han investigado la respuesta del cannabis a N, P y K durante la etapa vegetativa" y que los resultados corresponden a un único cultivar, dos semanas de vegetativo, y cultivo hidropónico — no necesariamente aplicable a floración ni a cultivo en sustrato o suelo.'
+  },
+  {
+    id: 'cientifica-powell-2026-absorcion-nutrientes-cultivares-cannabis',
+    scope: 'CANNABIS',
+    title: 'Predicting Vegetative Phase Nutrient Uptake in Cannabis sativa L. via Transpiration-Driven Mass-Balance',
+    authorOrInstitution: 'Powell, K.; Bauerle, W. L. — Colorado State University, Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12872892/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2026-01-22',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2025.1753553, confirmado vía Crossref). Midió la absorción real de N, P y K (por balance de masa ligado a la transpiración, método "pour-through") en dos cultivares de Cannabis sativa ("First Light" y "CJ2") durante la etapa vegetativa. Encontró rangos de absorción claramente distintos entre cultivares (N: 97-155 mg/L en First Light contra 78-145 mg/L en CJ2; P: 14-48 contra 13-49 mg/L; K: 112-216 contra 111-205 mg/L) y variación temporal marcada dentro de la misma etapa vegetativa — "CJ2 mostró una absorción de N y K significativamente mayor en la primera semana". Los autores concluyen que la absorción de nutrientes NO es constante ni universal, y proponen ligar la entrega de nutrientes directamente a la transpiración medida en tiempo real (fertirriego dinámico específico por cultivar) en vez de recetas de concentración fija.'
+  },
+  {
+    id: 'cientifica-xie-2021-antagonismo-potasio-magnesio',
+    scope: 'GENERAL',
+    title: 'Synergistic and Antagonistic Interactions Between Potassium and Magnesium in Higher Plants',
+    authorOrInstitution: 'Xie, K.; Cakmak, I.; Wang, S.; Zhang, F.; Guo, S. — The Crop Journal',
+    url: 'https://www.sciencedirect.com/science/article/pii/S2214514120301732',
+    type: 'SCIENTIFIC',
+    publicationDate: '2021-04',
+    accessedAt: '2026-09-19',
+    notes: 'Título, autoría, revista y fecha verificados vía Crossref (DOI 10.1016/j.cj.2020.10.005) y por consistencia entre múltiples fuentes secundarias independientes (bases de datos universitarias, SciEngine, ResearchGate). El texto completo no se pudo verificar por lectura directa en esta sesión (ScienceDirect bloqueó el acceso, error 403). Según las caracterizaciones disponibles: revisión de fisiología vegetal general (no específica de Cannabis) sobre la interacción potasio-magnesio; el antagonismo del K sobre la absorción de Mg es más fuerte que el antagonismo del Mg sobre el K (una relación asimétrica, no simétrica), atribuible a que el potasio se absorbe por transportadores específicos y no específicos, mientras que el magnesio depende exclusivamente de transportadores no específicos que compiten con el potasio. Se cita con esta salvedad explícita de verificación.'
+  },
+  {
+    id: 'cientifica-dixon-2022-silicio-oidio-canamo',
+    scope: 'CANNABIS',
+    title: 'Suppression of Hemp Powdery Mildew Using Root-Applied Silicon',
+    authorOrInstitution: 'Dixon, E.; Leonberger, K.; Amsden, B.; Szarka, D.; Munir, M.; Payee, W.; Datnoff, L.; Tubana, B.; Gauthier, N. — Plant Health Progress',
+    url: 'https://repository.lsu.edu/plantcrop_pubs/68/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2022-01-01',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa del resumen (repositorio institucional de Louisiana State University; DOI 10.1094/PHP-01-22-0005-SC, confirmado vía Crossref). El texto completo de la revista (apsjournals.apsnet.org) devolvió error 403; se verificó mediante el resumen alojado en el repositorio institucional de LSU. Aplicó silicio a la raíz de cáñamo en invernadero, en un sustrato sin suelo a base de turba, durante 6 semanas: encontró una relación lineal negativa entre el porcentaje de silicio acumulado en el tejido foliar y el porcentaje de oídio (Golovinomyces spadiceus) por área foliar. La severidad del oídio se redujo de forma significativa en el dosel superior con 300 kg/ha de silicio, y se necesitaron 600 kg/ha para lograr el mismo efecto en el dosel medio. El resumen verificado NO menciona ningún efecto sobre biomasa, cannabinoides ni terpenos — cualquier cifra de aumento de biomasa (como "1.2 veces") que circule atribuida a este u otros estudios de silicio en Cannabis no pudo confirmarse dentro de esta investigación.'
+  },
+  {
+    id: 'cientifica-haghighi-2021-silicio-tricomas-cannabis',
+    scope: 'CANNABIS',
+    title: 'Silica Accumulates in Non-Glandular Trichomes and Sites of Powdery Mildew Infection in Cannabis sativa L.',
+    authorOrInstitution: 'Haghighi, M.; Livingston, S. J.; Constabel, M. A.; Gilchrist, E. J. — Journal of Food, Agriculture & Environment, vol. 19, n.º 1, pp. 52-57',
+    url: 'https://www.researchgate.net/publication/353305540_WFL_Publisher_Silica_accumulates_in_non-glandular_trichomes_and_sites_of_powdery_mildew_infection_in_Cannabis_sativa_L',
+    type: 'SCIENTIFIC',
+    publicationDate: '2021',
+    accessedAt: '2026-09-19',
+    notes: 'NO se pudo verificar por lectura directa en esta sesión (ResearchGate devolvió error 403 al intento de acceso directo); título, autoría, revista, volumen y páginas confirmados por resultados de búsqueda convergentes, sin DOI localizado (revista con indexación limitada en Crossref). Según las caracterizaciones disponibles: usando microscopía electrónica de barrido (SEM-EDX), encontró que el silicio se deposita en tricomas NO glandulares (no en los tricomas glandulares productores de resina/cannabinoides) de cálices y hojas, y que esos depósitos se concentran alrededor de los puntos de penetración fúngica tras una infección de oídio — sugiriendo que la localización del silicio responde a un estímulo biótico (la enfermedad), no es una acumulación pasiva y constante. Se cita con la salvedad explícita de no haber sido verificada por lectura directa.'
   },
 ];
 

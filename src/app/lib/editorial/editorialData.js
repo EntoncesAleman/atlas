@@ -715,7 +715,7 @@ export const editorialEntries = [
       'Esta entrada no fija un ritmo de riego ni una frecuencia — depende de demasiadas variables locales (tipo de sustrato, tamaño de contenedor, clima) como para dar un número único sin convertirlo en una receta arbitraria.'
     ],
     tags: ['suelo', 'agua', 'drenaje'],
-    relatedEntryIds: ['germinacion', 'cultivo-en-secuencia', 'evaluacion-visual-del-suelo', 'textura-estructura-porosidad', 'capacidad-de-campo-agua-disponible', 'componentes-de-sustrato', 'suelo-vivo-y-microbiologia', 'calidad-del-agua-de-riego', 'agua-y-expansion-celular'],
+    relatedEntryIds: ['germinacion', 'cultivo-en-secuencia', 'evaluacion-visual-del-suelo', 'textura-estructura-porosidad', 'capacidad-de-campo-agua-disponible', 'componentes-de-sustrato', 'suelo-vivo-y-microbiologia', 'calidad-del-agua-de-riego', 'agua-y-expansion-celular', 'como-llegan-nutrientes-a-la-raiz'],
     sourceIds: [
       'oficial-inta-relacion-suelo-planta-agua',
       'academica-unlpam-inta-guia-evaluacion-visual-suelo',
@@ -891,7 +891,7 @@ export const editorialEntries = [
       'En un ambiente protegido, con menos variables externas, suele ser más simple relacionar un cambio con un evento reciente puntual (un ajuste de riego, un cambio de ubicación). Al aire libre, el número de variables posibles es mayor —clima, viento, organismos del entorno—, lo que hace que el patrón completo (no un síntoma aislado) sea todavía más necesario para orientar la lectura.'
     ],
     tags: ['sanidad', 'riesgo'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'marco-editorial', 'chupadera-fungosa-damping-off', 'moho-gris-botrytis-cinerea'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'marco-editorial', 'chupadera-fungosa-damping-off', 'moho-gris-botrytis-cinerea', 'deficiencias-toxicidades-interpretacion'],
     sourceIds: ['oficial-inta-sintomatologia-diagnostico-diferencial'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-10',
@@ -1144,7 +1144,7 @@ export const editorialEntries = [
       'Esta entrada no da una tabla de dosificación ni un calendario de fertilización para ningún contexto: describe la fisiología general de la nutrición mineral, no una receta aplicable sin considerar el sustrato, el agua y la etapa de desarrollo de cada planta en particular.'
     ],
     tags: ['cultivo', 'fertilización', 'nutrición'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'lectura-de-senales', 'poda', 'ph-y-disponibilidad-de-nutrientes', 'suelo-vivo-y-microbiologia', 'conductividad-electrica-y-sales', 'arquitectura-y-asignacion-de-recursos', 'senescencia-y-final-del-desarrollo'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'lectura-de-senales', 'poda', 'ph-y-disponibilidad-de-nutrientes', 'suelo-vivo-y-microbiologia', 'conductividad-electrica-y-sales', 'arquitectura-y-asignacion-de-recursos', 'senescencia-y-final-del-desarrollo', 'elementos-esenciales-criterios-clasificacion', 'nitrogeno-fosforo-potasio-funcion', 'calcio-magnesio-azufre-funcion-movilidad', 'deficiencias-toxicidades-interpretacion'],
     sourceIds: [
       'academica-unne-nutricion-mineral-dabrio-2020',
       'academica-kirkby-romheld-2007-micronutrientes-fisiologia'
@@ -1315,7 +1315,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['cosecha', 'maduración', 'genética'],
-    relatedEntryIds: ['cosecha-y-maduracion', 'genetica-y-tipos'],
+    relatedEntryIds: ['cosecha-y-maduracion', 'genetica-y-tipos', 'fertilizacion-y-cannabinoides-evidencia'],
     sourceIds: [
       'cientifica-walsh-2021-minor-cannabinoids-biosynthesis',
       'cientifica-livingston-2019-trichome-morphology-maturation',
@@ -2073,7 +2073,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['fundamentos', 'ciclo'],
-    relatedEntryIds: ['division-celular-elongacion-diferenciacion', 'arquitectura-y-asignacion-de-recursos', 'poda'],
+    relatedEntryIds: ['division-celular-elongacion-diferenciacion', 'arquitectura-y-asignacion-de-recursos', 'poda', 'calcio-magnesio-azufre-funcion-movilidad'],
     sourceIds: ['academica-unne-crecimiento-y-desarrollo'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-19',
@@ -2316,7 +2316,7 @@ export const editorialEntries = [
       'La variación genética que describe esta entrada es independiente del ambiente de cultivo (interior o exterior): es una propiedad del material vegetal, aunque su expresión final —cuánto crece realmente una planta— sí depende de la interacción entre esa genética y el ambiente específico en el que se cultive.'
     ],
     tags: ['fundamentos', 'genética'],
-    relatedEntryIds: ['arquitectura-y-asignacion-de-recursos', 'variacion-genetica-fotoperiodo', 'genetica-y-tipos'],
+    relatedEntryIds: ['arquitectura-y-asignacion-de-recursos', 'variacion-genetica-fotoperiodo', 'genetica-y-tipos', 'nutricion-de-cannabis-variacion-genotipica'],
     sourceIds: [
       'cientifica-morales-2026-arquitectura-raiz-canamo',
       'academica-toth-2022-genetica-fotoperiodo-cannabis',
@@ -2373,7 +2373,7 @@ export const editorialEntries = [
       'La exposición a la mayoría de los tipos de estrés ambiental que describe esta entrada suele ser más variable y menos controlable en exterior (clima real, sin control directo) que en un ambiente protegido, donde muchas de esas variables pueden mantenerse dentro de un rango elegido.'
     ],
     tags: ['fundamentos', 'ambiente', 'riesgo'],
-    relatedEntryIds: ['humedad-relativa-transpiracion-vpd', 'conductividad-electrica-y-sales', 'super-cropping', 'fotosintesis-respiracion-y-biomasa'],
+    relatedEntryIds: ['humedad-relativa-transpiracion-vpd', 'conductividad-electrica-y-sales', 'super-cropping', 'fotosintesis-respiracion-y-biomasa', 'nutricion-organica-y-mineral'],
     sourceIds: ['academica-unne-crecimiento-y-desarrollo'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-19',
@@ -2935,7 +2935,7 @@ export const editorialEntries = [
       'La elección de componentes de sustrato no depende de si el cultivo es en interior o en exterior —un contenedor con la misma mezcla puede usarse en cualquiera de los dos ambientes—; lo que sí cambia entre ambos es cuánto se seca esa mezcla entre riegos, un punto que ya desarrolla "Sustrato, agua y drenaje".'
     ],
     tags: ['suelo', 'interior', 'exterior'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'textura-estructura-porosidad', 'materia-organica-actividad-biologica'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'textura-estructura-porosidad', 'materia-organica-actividad-biologica', 'nutricion-suelo-sustrato-hidroponia'],
     sourceIds: [
       'institucional-eorganic-componentes-sustrato-organico',
       'cientifica-barbaro-2015-ceniza-volcanica-perlita-sustrato',
@@ -2999,7 +2999,7 @@ export const editorialEntries = [
       'La colonización por micorrizas ocurre en condiciones distintas según el ambiente: un suelo de campo sin disturbar (exterior) puede alojar poblaciones nativas de estos hongos, mientras que un sustrato de contenedor estéril o comercial (interior o exterior) suele partir sin ellas, salvo que se inoculen de forma deliberada — una diferencia real entre ambos contextos que esta entrada no cuantifica.'
     ],
     tags: ['suelo', 'interior', 'exterior'],
-    relatedEntryIds: ['materia-organica-actividad-biologica', 'sustrato-y-drenaje', 'fertilizacion-y-nutricion'],
+    relatedEntryIds: ['materia-organica-actividad-biologica', 'sustrato-y-drenaje', 'fertilizacion-y-nutricion', 'como-llegan-nutrientes-a-la-raiz'],
     sourceIds: ['cientifica-seemakram-2022-micorrizas-cannabis-cbd-thc'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-19',
@@ -4556,7 +4556,7 @@ export const editorialEntries = [
       'Esta entrada no da un rango de pH de referencia para Cannabis sativa ni para ningún sustrato en particular — depende de la especie, del sustrato y del nutriente puntual en cuestión, y esta entrada se limita al principio general de que el pH modifica la disponibilidad, no a una cifra prescriptiva.'
     ],
     tags: ['fertilización', 'nutrición'],
-    relatedEntryIds: ['fertilizacion-y-nutricion', 'sustrato-y-drenaje', 'calidad-del-agua-de-riego', 'conductividad-electrica-y-sales'],
+    relatedEntryIds: ['fertilizacion-y-nutricion', 'sustrato-y-drenaje', 'calidad-del-agua-de-riego', 'conductividad-electrica-y-sales', 'como-llegan-nutrientes-a-la-raiz', 'micronutrientes-funciones'],
     sourceIds: [
       'academica-kirkby-romheld-2007-micronutrientes-fisiologia',
       'academica-unne-nutricion-mineral-dabrio-2020'
@@ -4566,6 +4566,768 @@ export const editorialEntries = [
     metadata: {
       seoTitle: 'pH y disponibilidad de nutrientes — Atlas del Cultivo Argentino',
       seoDescription: 'Por qué la presencia de un nutriente en el sustrato no garantiza su disponibilidad para la raíz, con el hierro como caso documentado de sensibilidad al pH.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'elementos-esenciales-criterios-clasificacion',
+    slug: 'elementos-esenciales-criterios-y-clasificacion',
+    categoryId: 'fertilizacion',
+    title: 'Los elementos esenciales: criterios y clasificación',
+    summary: 'Que una planta contenga un elemento no significa que lo necesite — la esencialidad se estableció con un criterio experimental concreto en 1934, y ese mismo criterio es el que separa a los nutrientes esenciales de los "beneficiosos".',
+    intro: '"Fertilización y nutrición" ya distingue macro y micronutrientes por concentración, no por importancia. Esta entrada retoma un paso anterior: qué convierte a un elemento en "esencial" en primer lugar, cuántos elementos cumplen ese criterio, y por qué elementos como el silicio, el sodio o el cobalto no entran en esa lista pese a tener efectos reales sobre algunas plantas.',
+    sections: [
+      {
+        id: 'el-criterio-de-esencialidad',
+        title: 'El criterio de esencialidad de 1934',
+        paragraphs: [
+          'Las plantas absorben del sustrato elementos que no necesitan, y a veces hasta elementos tóxicos — por eso la sola presencia de un elemento dentro del tejido vegetal no alcanza para llamarlo esencial. El criterio que sigue usándose hoy fue propuesto por Arnon y Stout en 1934: un elemento es esencial cuando (1) su ausencia impide que la planta complete su ciclo de vida o su desarrollo normal, (2) su función no puede ser reemplazada por ningún otro elemento, y (3) participa directamente en el metabolismo primario de la planta.'
+        ]
+      },
+      {
+        id: 'cuantos-elementos-y-como-se-agrupan',
+        title: 'Cuántos elementos, y cómo se agrupan',
+        paragraphs: [
+          'Bajo ese criterio, la fisiología vegetal reconoce diecisiete elementos esenciales: carbono, hidrógeno y oxígeno (que la planta obtiene del aire y el agua, no del sustrato) más catorce elementos minerales. De esos catorce, seis se clasifican como macronutrientes —nitrógeno, fósforo, potasio, calcio, magnesio y azufre— porque están presentes en los tejidos en concentraciones relativamente altas (por encima del 0.1% del peso seco). Los otros ocho —hierro, manganeso, cobre, zinc, molibdeno, boro, cloro y níquel— son micronutrientes, necesarios en concentraciones mucho menores.',
+          'Esta clasificación es por cantidad requerida, no por importancia: un micronutriente en concentración insuficiente limita el desarrollo de la planta exactamente igual que un macronutriente insuficiente — la diferencia es cuánto de cada uno hace falta, no cuán esencial es cada función.'
+        ]
+      },
+      {
+        id: 'esencial-no-es-lo-mismo-que-beneficioso',
+        title: '"Esencial" no es lo mismo que "beneficioso"',
+        paragraphs: [
+          'Existen elementos —el silicio, el sodio, el cobalto, el yodo y posiblemente el vanadio— que resultan beneficiosos para muchas especies vegetales sin cumplir el criterio de esencialidad de Arnon y Stout: ninguna especie conocida es incapaz de completar su ciclo de vida sin ellos. Esta distinción importa para leer con cuidado cualquier afirmación sobre el silicio en Cannabis (ver "Silicio y otros elementos beneficiosos"): que un elemento tenga un efecto positivo documentado no lo convierte, por sí solo, en un nutriente esencial de la especie.'
+        ]
+      }
+    ],
+    observations: [
+      'Que un análisis de tejido vegetal detecte la presencia de un elemento no es, por sí solo, evidencia de que ese elemento sea esencial — las plantas absorben elementos no esenciales, e incluso tóxicos, sin capacidad de selección estricta.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Presentar el silicio (o cualquier otro elemento "beneficioso") como un nutriente esencial de Cannabis sativa sin que exista evidencia de que la especie sea incapaz de completar su ciclo de vida sin él.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Confundir la clasificación macro/micronutriente con una jerarquía de importancia — ambos grupos son igualmente esenciales; la diferencia es la concentración requerida, no la relevancia de la función.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición'],
+    relatedEntryIds: ['fertilizacion-y-nutricion', 'nitrogeno-fosforo-potasio-funcion', 'micronutrientes-funciones', 'silicio-y-elementos-beneficiosos'],
+    sourceIds: ['academica-unne-nutricion-mineral-dabrio-2020'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Los elementos esenciales: criterios y clasificación — Atlas del Cultivo Argentino',
+      seoDescription: 'El criterio de esencialidad de Arnon y Stout (1934), los diecisiete elementos esenciales reconocidos en fisiología vegetal, y por qué "esencial" no es lo mismo que "beneficioso".',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'nitrogeno-fosforo-potasio-funcion',
+    slug: 'nitrogeno-fosforo-y-potasio-funcion-fisiologica',
+    categoryId: 'fertilizacion',
+    title: 'Nitrógeno, fósforo y potasio: función fisiológica',
+    summary: 'El fósforo no "promueve directamente las flores" y el potasio no regula la "densidad" de la inflorescencia — son afirmaciones repetidas en guías de cultivo que no coinciden con la función real de estos elementos en la planta.',
+    intro: 'Nitrógeno, fósforo y potasio son los tres nutrientes que dan nombre a la mayoría de los fertilizantes comerciales (NPK). Esta entrada describe qué hace cada uno realmente en la fisiología de la planta, en contraste con dos afirmaciones muy repetidas sobre P y K que la evidencia no respalda de la forma en que suelen presentarse.',
+    sections: [
+      {
+        id: 'nitrogeno',
+        title: 'Nitrógeno: estructura de proteínas y ácidos nucleicos',
+        paragraphs: [
+          'El nitrógeno forma parte obligada de los aminoácidos y, por lo tanto, de la estructura de las proteínas —tanto las estructurales como las funcionales (enzimas)—. También es un componente de las purinas y pirimidinas de los ácidos nucleicos (ADN y ARN), y de la estructura porfirínica presente en la clorofila y los citocromos, moléculas centrales en la fotosíntesis y la respiración celular.'
+        ]
+      },
+      {
+        id: 'fosforo',
+        title: 'Fósforo: energía, membranas y ácidos nucleicos — no "promotor directo de flores"',
+        paragraphs: [
+          'El fósforo cumple un papel estructural en los ácidos nucleicos y en los fosfolípidos de las membranas celulares, y forma parte de los compuestos de alta energía (ADP, ATP) centrales en la fotosíntesis, la respiración y el metabolismo energético en general. Ninguna de estas funciones implica un mecanismo específico de "promoción de floración" — es un componente estructural y energético de uso general en toda la planta, en todas sus etapas, no una señal reproductiva.',
+          'Un estudio directo sobre Cannabis sativa (cultivar de alto CBD) probó tres niveles de fósforo en fertirriego continuo y no encontró efecto del fósforo sobre el rendimiento de flor seca ni sobre la concentración de cannabinoides — mientras que el fósforo no absorbido (lixiviado) aumentó de forma muy pronunciada al aumentar la dosis aplicada. Los propios autores concluyeron que la dosis más baja probada ya era suficiente para rendimiento y calidad máximos, y que aplicar más fósforo del necesario solo aumenta el desperdicio, sin beneficio productivo — un hallazgo específico de ese cultivar y ese sistema de cultivo, no necesariamente generalizable a cualquier Cannabis, pero que contradice directamente la idea de que "más fósforo siempre ayuda a la flor".'
+        ]
+      },
+      {
+        id: 'potasio',
+        title: 'Potasio: regulación osmótica — no "densidad de flores"',
+        paragraphs: [
+          'A diferencia del nitrógeno y el fósforo, el potasio no forma parte de la estructura de ninguna molécula: su función es mantener el potencial osmótico celular, regular la turgencia y participar en la apertura y cierre de los estomas durante la transpiración. También activa numerosas enzimas del metabolismo (oxidorreductasas, deshidrogenasas, la enzima que sintetiza almidón) y participa en el transporte de los productos de la fotosíntesis desde las hojas hacia el resto de la planta.',
+          'Ninguna de estas funciones corresponde a lo que las guías de cultivo comerciales suelen describir como "el potasio aumenta la densidad de las flores" — esa formulación no se corresponde con ningún mecanismo fisiológico documentado en las fuentes consultadas para esta investigación. La función real del potasio (regulación osmótica y activación enzimática) es igual de importante durante todo el ciclo, no una función exclusiva ni intensificada durante la floración.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no recomienda aumentar o reducir ninguno de estos tres elementos en ninguna etapa del ciclo: describe su función fisiológica, no un programa de fertilización. Un estudio directo sobre Cannabis sativa que probó una mezcla con 15% más de N, P y K juntos encontró un aumento real de biomasa (41% más biomasa aérea), pero al mismo tiempo una reducción de la concentración de cannabinoides en varios de los tratamientos con más nutrientes — biomasa y concentración de cannabinoides no se movieron en la misma dirección, y los propios autores señalan que "la relación entre el contenido de cannabinoides y la suplementación nutricional no es clara" (ver "Fertilización y cannabinoides: qué muestra la evidencia").'
+        ]
+      }
+    ],
+    observations: [
+      'Ver una planta con buen desarrollo de tallos y hojas es compatible con una nutrición nitrogenada adecuada. No implica, por sí solo, nada específico sobre el fósforo o el potasio disponibles — cada elemento cumple una función distinta, y no hay una única señal visual que resuma el estado de los tres a la vez.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Afirmar que el fósforo "promueve directamente" el desarrollo de flores — su función documentada es estructural (ácidos nucleicos, membranas) y energética (ATP), de uso general en toda la planta, no un mecanismo reproductivo específico.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Afirmar que el potasio regula la "densidad" de las flores — su función documentada es la regulación osmótica y la activación enzimática, sin relación establecida con ese concepto tal como se usa en la cultura de cultivo.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que "más NPK" siempre mejora el resultado final — el estudio citado encontró más biomasa pero, en varios casos, menor concentración de cannabinoides con más fertilización, mostrando que ambas variables pueden moverse en direcciones opuestas.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición'],
+    relatedEntryIds: ['elementos-esenciales-criterios-clasificacion', 'fertilizacion-y-nutricion', 'fertilizacion-y-cannabinoides-evidencia', 'nutricion-de-cannabis-variacion-genotipica'],
+    sourceIds: [
+      'academica-unne-nutricion-mineral-dabrio-2020',
+      'cientifica-westmoreland-2022-fosforo-cannabis-sin-efecto',
+      'cientifica-bernstein-2019-cannabis-npk-cannabinoide-canopia'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Nitrógeno, fósforo y potasio: función fisiológica — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué hacen realmente el nitrógeno, el fósforo y el potasio en la planta, y por qué "el fósforo promueve las flores" y "el potasio da densidad" no coinciden con su función fisiológica documentada.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'calcio-magnesio-azufre-funcion-movilidad',
+    slug: 'calcio-magnesio-y-azufre-funcion-y-movilidad',
+    categoryId: 'fertilizacion',
+    title: 'Calcio, magnesio y azufre: función y movilidad',
+    summary: 'El calcio apenas se mueve dentro de la planta una vez fijado en la pared celular — por eso un síntoma de carencia de calcio no se "cura" moviendo calcio ya presente en otra parte, a diferencia de otros nutrientes.',
+    intro: '"Fertilización y nutrición" ya explica que la movilidad interna de un nutriente determina dónde aparece primero un síntoma de carencia, usando nitrógeno y azufre como ejemplos de movilidad alta y baja respectivamente. Esta entrada agrega calcio y magnesio a ese panorama, con foco en un punto poco intuitivo: la muy baja movilidad del calcio dentro de la planta, una vez que ya fue incorporado a un tejido.',
+    sections: [
+      {
+        id: 'calcio',
+        title: 'Calcio: estructura de la pared celular y división en meristemos',
+        paragraphs: [
+          'El calcio participa activamente en la división celular de las zonas meristemáticas —los ápices de crecimiento, ver "Meristemos: crecimiento primario y secundario"— y forma parte de la pared celular como pectato de calcio, un componente estructural de la lámina media que mantiene unidas a las células vegetales entre sí. También activa algunas enzimas y cumple, junto con el potasio, una función en el mantenimiento de la turgencia celular.',
+          'Una vez que el calcio queda fijado en la pared celular de un tejido, prácticamente no se redistribuye desde ahí hacia otras partes de la planta que lo necesiten después —a diferencia del nitrógeno o el fósforo, que sí pueden movilizarse desde tejido viejo hacia tejido nuevo—. Esto explica por qué los síntomas de deficiencia de calcio afectan característicamente al tejido nuevo en crecimiento activo (puntas de crecimiento, tejido meristemático), incluso si hay calcio disponible en tejido más viejo de la misma planta: ese calcio ya fijado no puede "prestarse" al tejido nuevo.'
+        ]
+      },
+      {
+        id: 'magnesio',
+        title: 'Magnesio: el átomo central de la clorofila',
+        paragraphs: [
+          'Cada molécula de clorofila contiene un átomo de magnesio en su centro — es, literalmente, un componente estructural del pigmento que capta luz para la fotosíntesis. El magnesio también activa una gran cantidad de enzimas del metabolismo (carboxilasas, glutamino sintetasa, entre otras) y participa en la translocación del fósforo dentro de la planta.'
+        ]
+      },
+      {
+        id: 'azufre',
+        title: 'Azufre: aminoácidos y coenzimas',
+        paragraphs: [
+          'El azufre forma parte de tres aminoácidos (cistina, cisteína y metionina) que son, a su vez, precursores de coenzimas importantes (tiamina, biotina, coenzima A) y de la hormona etileno. Como ya describe "Fertilización y nutrición", el azufre tiene movilidad baja dentro de la planta, por lo que su carencia —cuando ocurre— tiende a manifestarse de forma generalizada en las hojas jóvenes, de forma similar al patrón del calcio, aunque por un mecanismo de baja movilidad distinto (el azufre no queda fijado estructuralmente como el calcio; simplemente se redistribuye poco).'
+        ]
+      },
+      {
+        id: 'sobre-el-aumento-de-calcio-magnesio-durante-el-stretch',
+        title: 'Sobre "aumentar calcio y magnesio durante el stretch"',
+        paragraphs: [
+          'Es una recomendación difundida en la cultura de cultivo aumentar el aporte de calcio y magnesio específicamente durante la elongación asociada al inicio de floración (ver "Elongación (stretch) en la transición a floración", en Crecimiento). Dentro de las fuentes consultadas para esta investigación no se encontró un estudio que mida un requerimiento de calcio o magnesio específicamente elevado durante esa fase puntual del ciclo de Cannabis sativa. Lo que sí está documentado, en fisiología vegetal general, es que el calcio participa activamente en la división celular de los meristemos activos — y durante una fase de crecimiento acelerado hay, en términos generales, más tejido nuevo formándose. Esto es compatible con la idea de que la demanda total de calcio podría ser mayor en ese período, pero es una inferencia a partir del mecanismo general, no una cifra ni una recomendación de dosis verificada específicamente para esa etapa en Cannabis.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver una deformación o necrosis en el tejido nuevo de crecimiento (puntas de brotes, hojas más jóvenes) es compatible con una carencia de calcio, dada su muy baja movilidad interna. No permite, por sí solo, descartar otras causas con un patrón similar en tejido joven (ver "Fertilización y nutrición" sobre el patrón de movilidad).'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que el calcio presente en una parte de la planta puede "redistribuirse" para resolver una carencia en tejido nuevo — a diferencia del nitrógeno o el fósforo, el calcio ya fijado en la pared celular prácticamente no se remueve para reubicarse.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Presentar el aumento de calcio y magnesio durante el "stretch" como una recomendación validada por un estudio específico de Cannabis sativa — dentro de las fuentes consultadas, no se encontró ese estudio puntual; solo el mecanismo general (calcio y división celular en meristemos activos) que permite la inferencia, no la confirma con una cifra.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición'],
+    relatedEntryIds: ['fertilizacion-y-nutricion', 'elementos-esenciales-criterios-clasificacion', 'meristemos-crecimiento-primario-secundario', 'elongacion-stretch-floracion'],
+    sourceIds: ['academica-unne-nutricion-mineral-dabrio-2020'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Calcio, magnesio y azufre: función y movilidad — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué el calcio, una vez fijado en la pared celular, prácticamente no se redistribuye dentro de la planta, y qué función cumplen realmente el magnesio y el azufre.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'micronutrientes-funciones',
+    slug: 'micronutrientes-funciones-y-particularidades',
+    categoryId: 'fertilizacion',
+    title: 'Micronutrientes: funciones y particularidades',
+    summary: 'Ocho elementos, en cantidades mínimas, sostienen funciones que van desde la fotosíntesis hasta la síntesis de hormonas — la baja cantidad requerida no significa baja importancia.',
+    intro: '"Los elementos esenciales" ya identifica ocho micronutrientes: hierro, manganeso, cobre, zinc, molibdeno, boro, cloro y níquel. Esta entrada describe qué función cumple cada uno, complementando lo que "Fertilización y nutrición" y "pH y disponibilidad de nutrientes" ya desarrollan sobre el hierro en particular.',
+    sections: [
+      {
+        id: 'funcion-catalitica-de-la-mayoria',
+        title: 'Una función predominantemente catalítica',
+        paragraphs: [
+          'A diferencia de los macronutrientes —que en su mayoría forman parte de la estructura de moléculas grandes—, los micronutrientes actúan sobre todo como cofactores o componentes de enzimas, con un rol catalítico: hierro, manganeso, cobre, zinc y molibdeno participan, cada uno con enzimas y sistemas distintos, en reacciones de óxido-reducción centrales para la fotosíntesis y la respiración celular. El hierro, por ejemplo, forma parte de los citocromos y de la ferredoxina, agente de transferencia de electrones en la fotosíntesis; el manganeso participa en la reacción del fotosistema II que descompone la molécula de agua; el cobre forma parte de la plastocianina, involucrada en el transporte de electrones fotosintético; el zinc interviene en el metabolismo de las auxinas, al ser necesario para sintetizar su precursor.'
+        ]
+      },
+      {
+        id: 'boro-cloro-niquel',
+        title: 'Boro, cloro y níquel: funciones más específicas',
+        paragraphs: [
+          'El boro tiene un papel estructural en la pared celular, facilita el transporte de azúcares y es necesario tanto para la división como para la elongación celular. El cloro participa en la fotólisis del agua durante la fotosíntesis y en el mantenimiento del gradiente de pH entre el citosol y la vacuola. El níquel es un componente de la enzima ureasa (que descompone la urea) y de una enzima implicada en la fijación de nitrógeno.'
+        ]
+      },
+      {
+        id: 'requerimiento-a-lo-largo-del-ciclo',
+        title: 'El requerimiento no es constante a lo largo del ciclo',
+        paragraphs: [
+          'Una guía de fisiología vegetal documenta que la demanda de micronutrientes varía según la etapa del ciclo de crecimiento —germinación y establecimiento, crecimiento vegetativo, floración y reproducción, madurez y senescencia— sin fijar, para ninguna de esas etapas, una cifra universal aplicable a cualquier especie. Esta entrada no traduce esa variación general en una tabla de dosis para Cannabis sativa: no se encontró, dentro de las fuentes consultadas, un estudio que cuantifique esa variación específicamente para la especie.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver clorosis en las hojas jóvenes con las venas todavía verdes es compatible con carencia de hierro o de otro micronutriente de baja movilidad (ver "pH y disponibilidad de nutrientes"). No identifica, por sí sola, cuál de los micronutrientes en particular, sin un análisis más específico.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que, por necesitarse en cantidades mínimas, los micronutrientes son menos importantes que los macronutrientes — su carencia limita el desarrollo de la planta igual que la de un macronutriente, cambia solo cuánto se necesita.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición'],
+    relatedEntryIds: ['elementos-esenciales-criterios-clasificacion', 'fertilizacion-y-nutricion', 'ph-y-disponibilidad-de-nutrientes'],
+    sourceIds: ['academica-kirkby-romheld-2007-micronutrientes-fisiologia', 'academica-unne-nutricion-mineral-dabrio-2020'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Micronutrientes: funciones y particularidades — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué función cumple cada uno de los ocho micronutrientes esenciales —hierro, manganeso, cobre, zinc, molibdeno, boro, cloro y níquel— en la fisiología de la planta.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'como-llegan-nutrientes-a-la-raiz',
+    slug: 'como-llegan-los-nutrientes-a-la-raiz',
+    categoryId: 'fertilizacion',
+    title: 'Cómo llegan los nutrientes a la raíz: transporte y rizosfera',
+    summary: 'Un nutriente disuelto en el sustrato no viaja solo hacia la raíz por casualidad: llega por uno de tres mecanismos físicos distintos, y la propia raíz puede modificar activamente su entorno inmediato para conseguir más de lo que necesita.',
+    intro: '"Fertilización y nutrición" señala que la disponibilidad de un nutriente depende de que "esté disuelto en la solución del sustrato y de que la raíz pueda acceder a él", sin desarrollar el mecanismo. Esta entrada cubre ese mecanismo: cómo llega físicamente un nutriente disuelto hasta la superficie de la raíz, y cómo la raíz misma modifica el entorno inmediato —la rizosfera— para favorecer esa llegada.',
+    sections: [
+      {
+        id: 'tres-mecanismos-fisicos',
+        title: 'Tres mecanismos físicos de llegada',
+        paragraphs: [
+          'La fisiología vegetal describe tres procesos físicos que gobiernan cómo un nutriente disuelto en la solución del sustrato llega hasta la raíz: intercepción radical (la raíz, al crecer, entra en contacto directo con nutrientes ya presentes en su camino — relevante sobre todo para nutrientes de baja movilidad), flujo de masas (el nutriente disuelto es arrastrado hacia la raíz por la misma corriente de agua que la planta absorbe por transpiración) y difusión (el nutriente se mueve por sí solo desde una zona de mayor concentración hacia una de menor concentración, generada porque la raíz ya absorbió lo que había cerca).',
+          'Estos mecanismos no compiten entre sí: normalmente actúan en simultáneo, aunque su importancia relativa cambia según el nutriente. El calcio, el magnesio, el sulfato, el nitrato, el cobre, el boro, el manganeso y el molibdeno tienen buena movilidad en la solución del sustrato y llegan a la raíz principalmente por flujo de masas. El fosfato, el potasio y el amonio, de movilidad baja, dependen principalmente de la difusión —un proceso mucho más lento— para reponerse cerca de la raíz. El zinc y el hierro tienen un comportamiento intermedio entre ambos grupos.'
+        ]
+      },
+      {
+        id: 'la-raiz-no-es-pasiva',
+        title: 'La raíz no es un receptor pasivo',
+        paragraphs: [
+          'Además de estos mecanismos físicos, la raíz puede modificar activamente su entorno inmediato —la rizosfera— para aumentar la disponibilidad de nutrientes: expulsa protones (H+) mediante bombas activas en su membrana para acidificar la zona y solubilizar fósforo y otros elementos, y responde a la baja disponibilidad de fósforo aumentando la ramificación fina de raíces y la densidad de pelos radicales, ampliando así la superficie de contacto disponible para la intercepción y la difusión.',
+          'La forma química del nitrógeno absorbido también modifica el pH de la rizosfera, en un sentido documentado y general: la absorción de nitrato se acompaña de un cotransporte de protones hacia el interior de la raíz, lo que alcaliniza la zona; la absorción de amonio se acompaña de la extrusión de protones para mantener el balance de carga, lo que la acidifica. Es un mecanismo de fisiología vegetal general, verificado en varias especies, no un hallazgo específico de Cannabis sativa — pero es relevante para cualquier sistema de fertirriego que combine ambas formas de nitrógeno.'
+        ]
+      }
+    ],
+    observations: [
+      'Que una raíz desarrolle más ramificación fina y más pelos radicales en una zona del sustrato es compatible con una respuesta a baja disponibilidad de fósforo en esa zona particular — un comportamiento adaptativo documentado, no necesariamente un signo de estrés generalizado de la planta.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Tratar la llegada de nutrientes a la raíz como un proceso pasivo de "estar ahí disponible" — la raíz participa activamente modificando el pH y la química de su entorno inmediato para aumentar esa disponibilidad.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que todos los nutrientes llegan a la raíz por el mismo mecanismo y a la misma velocidad — el fósforo y el potasio, de baja movilidad, dependen de un proceso (difusión) mucho más lento que el calcio o el nitrato, que llegan sobre todo por flujo de masas.'
+      }
+    ],
+    environmentContext: [
+      'Esta entrada describe mecanismos válidos tanto en suelo de campo como en sustrato de contenedor —la física de fondo (flujo de masas, difusión, intercepción) es la misma—, aunque la velocidad de reposición de nutrientes puede diferir entre un volumen de sustrato acotado y un suelo de campo con reservas mucho mayores.'
+    ],
+    tags: ['fertilización', 'nutrición'],
+    relatedEntryIds: ['fertilizacion-y-nutricion', 'ph-y-disponibilidad-de-nutrientes', 'suelo-vivo-y-microbiologia', 'nutricion-suelo-sustrato-hidroponia'],
+    sourceIds: [
+      'academica-unne-suelo-planta-integracion',
+      'academica-unne-absorcion-iones-raiz-benavides',
+      'academica-hachiya-2017-nitrato-amonio-rizosfera-ph'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Cómo llegan los nutrientes a la raíz — Atlas del Cultivo Argentino',
+      seoDescription: 'Los tres mecanismos físicos —flujo de masas, difusión e intercepción radicular— por los que un nutriente disuelto llega a la raíz, y cómo la raíz modifica activamente el pH de su entorno inmediato.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'interacciones-antagonismos-nutricionales',
+    slug: 'interacciones-y-antagonismos-nutricionales',
+    categoryId: 'fertilizacion',
+    title: 'Interacciones y antagonismos entre nutrientes',
+    summary: 'Un exceso de un nutriente puede dificultar la absorción de otro, aunque este último esté disponible en cantidad suficiente — los nutrientes no se absorben de forma completamente independiente entre sí.',
+    intro: 'Las entradas anteriores de esta categoría describen la función de cada nutriente por separado. Esta entrada cubre un punto distinto: que la absorción de un nutriente puede verse afectada por la concentración de otro, un fenómeno documentado en fisiología vegetal general como antagonismo nutricional.',
+    sections: [
+      {
+        id: 'que-es-un-antagonismo-nutricional',
+        title: 'Qué es un antagonismo nutricional',
+        paragraphs: [
+          'Un antagonismo nutricional ocurre cuando una concentración alta de un nutriente inhibe la absorción de otro, generalmente porque ambos comparten mecanismos de transporte hacia el interior de la raíz o compiten por los mismos sitios de intercambio en el sustrato. No es un fenómeno exclusivo de ninguna especie: es una consecuencia de que la raíz tiene un número limitado de transportadores y de sitios de intercambio disponibles en un momento dado.'
+        ]
+      },
+      {
+        id: 'potasio-magnesio-un-caso-documentado',
+        title: 'Potasio y magnesio: un caso documentado y asimétrico',
+        paragraphs: [
+          'Una revisión de fisiología vegetal general describe el antagonismo entre potasio y magnesio como un caso particularmente bien documentado, y señala un detalle importante: no es simétrico. Una concentración alta de potasio inhibe la absorción de magnesio de forma más marcada que al revés —una concentración alta de magnesio no inhibe tanto la absorción de potasio—. La explicación propuesta es que el potasio se absorbe tanto por transportadores específicos como por otros no específicos, mientras que el magnesio depende exclusivamente de los no específicos, que quedan ocupados preferentemente por el potasio cuando este está en exceso.',
+          'El calcio en exceso puede producir un efecto similar sobre la absorción de magnesio, aunque ese efecto no se manifiesta con concentraciones bajas de calcio en la solución del sustrato — es, otra vez, una cuestión de exceso relativo entre nutrientes, no de la sola presencia de uno de ellos.'
+        ]
+      },
+      {
+        id: 'que-implica-esto-en-la-practica',
+        title: 'Qué implica esto, sin convertirlo en receta',
+        paragraphs: [
+          'Esta entrada no fija proporciones ni límites de concentración para evitar antagonismos en Cannabis sativa — no se encontró, dentro de las fuentes consultadas, un estudio que cuantifique estos antagonismos específicamente para la especie. El punto editorial relevante es otro: un síntoma de carencia de magnesio, por ejemplo, puede aparecer incluso con magnesio disponible en cantidad suficiente en el sustrato, si el potasio (u otro catión competidor) está en una concentración desproporcionadamente alta — el mismo principio de "disponibilidad no es lo mismo que presencia" que ya describe "pH y disponibilidad de nutrientes", pero por una causa distinta (competencia entre nutrientes, no forma química).'
+        ]
+      }
+    ],
+    observations: [
+      'Ver un síntoma de carencia de magnesio en una planta cuyo sustrato o solución nutritiva contiene magnesio en cantidad aparentemente suficiente es compatible con un antagonismo por exceso de otro catión (potasio o calcio) — no implica necesariamente que el análisis de magnesio disponible esté mal, sino que la absorción puede estar limitada por otra causa.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Responder a un síntoma de carencia agregando más del nutriente aparentemente faltante, sin considerar que el problema puede ser un exceso de otro nutriente que está compitiendo por su absorción.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Tratar el antagonismo potasio-magnesio como simétrico — la evidencia disponible describe una relación asimétrica, donde el exceso de potasio afecta al magnesio de forma más marcada que a la inversa.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición'],
+    relatedEntryIds: ['fertilizacion-y-nutricion', 'calcio-magnesio-azufre-funcion-movilidad', 'deficiencias-toxicidades-interpretacion'],
+    sourceIds: ['cientifica-xie-2021-antagonismo-potasio-magnesio'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Interacciones y antagonismos entre nutrientes — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué un exceso de un nutriente puede dificultar la absorción de otro, con el antagonismo (asimétrico) entre potasio y magnesio como caso documentado.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'deficiencias-toxicidades-interpretacion',
+    slug: 'deficiencias-y-toxicidades-como-interpretar-un-sintoma',
+    categoryId: 'fertilizacion',
+    title: 'Deficiencias y toxicidades: cómo interpretar un síntoma nutricional',
+    summary: 'Una foto de una hoja amarilla no es un diagnóstico — es el punto de partida de una pregunta que todavía tiene varias respuestas posibles, incluso después de considerar la nutrición.',
+    intro: '"Lectura de señales y sanidad", en la categoría Sanidad, ya establece el marco general para no saltar de un síntoma a una causa. Esta entrada aplica ese mismo criterio, en detalle, al caso específico de los síntomas de origen nutricional: qué información da un síntoma visual, y qué no.',
+    sections: [
+      {
+        id: 'un-sintoma-no-es-un-diagnostico',
+        title: 'Un síntoma visual no es un diagnóstico',
+        paragraphs: [
+          'Como ya describe "Fertilización y nutrición", el patrón de aparición de un síntoma (en hojas viejas o en hojas jóvenes) orienta sobre qué nutriente podría estar involucrado, según su movilidad interna. Pero ese patrón acota el campo de posibilidades, no lo cierra: carencia, toxicidad (exceso del mismo nutriente o de otro que lo antagoniza), y estrés puramente ambiental (agua, temperatura, luz, salinidad) pueden producir apariencias externas parecidas, incluso idénticas en fotografía.',
+          'A esto se suma que enfermedades de origen biótico (hongos, bacterias, virus) pueden imitar síntomas nutricionales cuando afectan el transporte interno de agua o nutrientes de la planta, sin que el sustrato tenga ningún desequilibrio real — el mismo punto que ya señala "Lectura de señales y sanidad" sobre organismos que invaden el sistema vascular.'
+        ]
+      },
+      {
+        id: 'por-que-una-foto-no-alcanza',
+        title: 'Por qué una fotografía aislada no alcanza',
+        paragraphs: [
+          'Convertir una imagen de un síntoma en un diagnóstico cerrado ignora, como mínimo, tres preguntas que la fotografía sola no responde: ¿el patrón se repite en varias plantas del mismo lote, o es un caso aislado? ¿avanza progresivamente o se mantiene estable? ¿coincide con algún cambio reciente de riego, pH, sustrato o ambiente? Ninguna de estas preguntas se responde con una sola imagen — requieren observar el patrón en el tiempo y en el conjunto de plantas, no un único punto.'
+        ]
+      },
+      {
+        id: 'carencia-y-toxicidad-mecanismos-opuestos-apariencia-similar',
+        title: 'Carencia y toxicidad: mecanismos opuestos, apariencia similar',
+        paragraphs: [
+          'La carencia (falta de un nutriente) y la toxicidad (exceso del mismo nutriente, o de otro que antagoniza su absorción — ver "Interacciones y antagonismos nutricionales") limitan el desarrollo por mecanismos fisiológicos opuestos, pero pueden producir un aspecto externo igualmente empobrecido: crecimiento reducido, hojas de aspecto alterado. Distinguir entre ambas situaciones a partir de la sola apariencia visual, sin revisar la historia reciente de fertilización y riego, es exactamente el tipo de atajo que produce correcciones equivocadas —agregar más de un nutriente que en realidad está en exceso, empeorando el cuadro—.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver un patrón de síntoma que coincide con la descripción de un nutriente específico (por ejemplo, clorosis en hojas jóvenes con venas verdes, compatible con hierro) es una observación que acota razonablemente el campo de causas. Nombrar ese nutriente como diagnóstico confirmado, sin revisar pH, salinidad, riego reciente ni la posibilidad de un antagonismo, es una interpretación que se adelanta a la evidencia disponible.'
+    ],
+    signals: [
+      {
+        level: 'ATTENTION',
+        description: 'Un patrón de síntoma que se repite de forma consistente en varias plantas del mismo lote, con un patrón claro de progresión, amerita revisar nutrición, pH y salinidad de forma conjunta — no alcanza con mirar un único factor de forma aislada.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Un síntoma aislado, en una sola planta o una sola hoja, sin patrón de avance ni repetición, sigue siendo compatible con carencia, toxicidad, estrés ambiental o un origen biótico — no alcanza, por sí solo, para orientar hacia ninguna de esas causas en particular.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar una fotografía de un síntoma como diagnóstico confirmado, sin considerar el patrón temporal, la repetición en el lote, ni la historia reciente de riego y fertilización.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Corregir un supuesto síntoma de carencia agregando el nutriente aparentemente faltante sin descartar antes toxicidad, antagonismo con otro nutriente, o un origen puramente ambiental o biótico.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición', 'sanidad'],
+    relatedEntryIds: ['fertilizacion-y-nutricion', 'lectura-de-senales', 'interacciones-antagonismos-nutricionales', 'ph-y-disponibilidad-de-nutrientes'],
+    sourceIds: ['academica-unne-nutricion-mineral-dabrio-2020'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Deficiencias y toxicidades: cómo interpretar un síntoma — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué un síntoma nutricional visible no es un diagnóstico cerrado, y qué preguntas hay que responder antes de nombrar una causa.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'nutricion-suelo-sustrato-hidroponia',
+    slug: 'nutricion-en-suelo-sustrato-e-hidroponia',
+    categoryId: 'fertilizacion',
+    title: 'Nutrición en suelo, sustrato e hidroponía',
+    summary: 'El mismo nutriente, en la misma cantidad, se comporta de forma distinta según si hay suelo con capacidad de amortiguar cambios, un sustrato inerte, o directamente agua con nutrientes disueltos.',
+    intro: '"Suelo y agua" ya describe las propiedades físicas de distintos sistemas de cultivo. Esta entrada mira ese mismo contraste desde el ángulo de la nutrición: cómo cambia la entrega y la estabilidad de los nutrientes según el sistema, sin repetir las propiedades físicas (textura, porosidad, retención de agua) que ya desarrolla esa categoría.',
+    sections: [
+      {
+        id: 'capacidad-buffer-del-suelo',
+        title: 'La capacidad amortiguadora (buffer) del suelo',
+        paragraphs: [
+          'Un suelo con presencia real de arcilla y materia orgánica tiene una capacidad de intercambio catiónico —la capacidad de retener nutrientes con carga positiva (cationes) en superficies cargadas negativamente, liberándolos gradualmente hacia la solución del suelo—. Esa capacidad actúa como un amortiguador: un exceso puntual de fertilizante tiende a quedar retenido en esos sitios de intercambio en vez de concentrarse de inmediato en la solución que rodea a la raíz, reduciendo el riesgo de un salto brusco de disponibilidad o de salinidad.',
+          'Un sustrato de contenedor sin esa capacidad de intercambio (por ejemplo, perlita o roca volcánica pura) y, más aún, un sistema hidropónico sin ningún medio sólido, carecen de ese amortiguador: el nutriente disuelto en la solución está disponible de inmediato, para bien (control más preciso y rápido) y para mal (un error de concentración también se traduce de inmediato en la raíz, sin nada que lo suavice).'
+        ]
+      },
+      {
+        id: 'fertirriego-entregar-nutrientes-con-el-agua',
+        title: 'Fertirriego: entregar nutrientes junto con el agua',
+        paragraphs: [
+          'El fertirriego consiste en disolver los nutrientes directamente en el agua de riego, entregándolos junto con cada riego en vez de aplicarlos por separado. Es el método dominante tanto en sustrato de contenedor como en hidroponía, precisamente porque permite ajustar la concentración de forma más directa y frecuente que aplicar un fertilizante sólido al suelo.',
+          'Un estudio directo sobre Cannabis sativa que midió la absorción real de nitrógeno, fósforo y potasio en dos cultivares distintos encontró variación temporal marcada incluso dentro de la misma etapa vegetativa, y propuso ligar la entrega de nutrientes directamente a la transpiración medida en tiempo real, en vez de aplicar una concentración fija durante todo el ciclo — una ilustración concreta de que la demanda real cambia más de lo que una receta fija asume (ver "Nutrición de Cannabis: variación genotípica").'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no recomienda un sistema por sobre otro, ni da una concentración de referencia para ninguno: describe el mecanismo por el cual cada sistema cambia la relación entre "cuánto nutriente se aplicó" y "cuánto nutriente está realmente disponible en cada momento" para la raíz.'
+        ]
+      }
+    ],
+    observations: [
+      'Que un error de dosificación tenga un efecto más rápido y más marcado en un sistema hidropónico que en un suelo con buena capacidad de intercambio catiónico es compatible con la ausencia de un amortiguador en el primer caso — no implica que la hidroponía sea, en sí misma, un sistema más riesgoso en todos los sentidos, solo que responde de forma más inmediata a los cambios.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar el mismo margen de tolerancia a errores de concentración en un sistema hidropónico que en un suelo con capacidad de intercambio catiónico real — la ausencia de amortiguación en el primero hace que los mismos errores se manifiesten más rápido y con más intensidad.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Asumir que una concentración fija de fertirriego, mantenida durante todo un ciclo, se ajusta igual de bien a la demanda real de la planta en todas sus etapas — la evidencia directa de Cannabis sativa muestra variación temporal marcada incluso dentro de una sola etapa.'
+      }
+    ],
+    environmentContext: [
+      'Esta entrada no repite las propiedades físicas de suelo y sustrato (textura, porosidad, retención de agua) que ya desarrolla en detalle la categoría "Suelo y agua" — se limita a cómo esas diferencias físicas afectan específicamente la disponibilidad y estabilidad de los nutrientes.'
+    ],
+    tags: ['fertilización', 'nutrición', 'interior', 'exterior'],
+    relatedEntryIds: ['como-llegan-nutrientes-a-la-raiz', 'sustrato-y-drenaje', 'componentes-de-sustrato', 'nutricion-de-cannabis-variacion-genotipica'],
+    sourceIds: ['cientifica-powell-2026-absorcion-nutrientes-cultivares-cannabis'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Nutrición en suelo, sustrato e hidroponía — Atlas del Cultivo Argentino',
+      seoDescription: 'Cómo cambia la estabilidad y la disponibilidad de los nutrientes según el sistema de cultivo, y por qué la ausencia de capacidad amortiguadora en hidroponía exige más precisión, no más riesgo inherente.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'nutricion-organica-y-mineral',
+    slug: 'nutricion-organica-y-mineral',
+    categoryId: 'fertilizacion',
+    title: 'Nutrición orgánica y mineral',
+    summary: 'Un estudio directo que comparó ambos métodos en el mismo cultivar encontró resultados en direcciones opuestas —más biomasa con mineral, más concentración de CBD con orgánico—: ninguno de los dos fue superior en todo.',
+    intro: 'Es común escuchar que la nutrición orgánica o la mineral son, en abstracto, "mejores" para Cannabis. Esta entrada describe los mecanismos que realmente distinguen a ambos métodos y qué encontró, de forma directa sobre la especie, un estudio que los comparó bajo las mismas condiciones.',
+    sections: [
+      {
+        id: 'la-diferencia-de-mecanismo-no-de-jerarquia',
+        title: 'La diferencia real: mineralización, no jerarquía',
+        paragraphs: [
+          'Un fertilizante mineral entrega los nutrientes ya en forma iónica, directamente disponible para la absorción radicular. Un fertilizante orgánico entrega los nutrientes unidos a moléculas orgánicas complejas, que deben ser descompuestas por microorganismos del sustrato o del suelo —un proceso llamado mineralización— antes de quedar disponibles en forma iónica para la raíz. Esta diferencia de mecanismo, no una jerarquía de calidad, es la que explica la mayoría de las diferencias prácticas entre ambos métodos: la nutrición mineral responde más rápido y de forma más previsible; la orgánica depende de la actividad biológica del sustrato, más lenta y menos inmediatamente controlable, pero con la capacidad de sostener nutrientes disponibles durante más tiempo a medida que se van mineralizando.'
+        ]
+      },
+      {
+        id: 'evidencia-directa-un-estudio-con-resultados-en-direcciones-opuestas',
+        title: 'Evidencia directa: resultados en direcciones opuestas',
+        paragraphs: [
+          'Un estudio de 2023 comparó fertilización orgánica y mineral, en tres niveles de nitrógeno, durante toda la floración de un mismo genotipo de Cannabis sativa de alto CBD. A cosecha, el tratamiento mineral produjo más biomasa de inflorescencia que el orgánico (23.7 contra 19.6 g/planta), pero el orgánico logró una concentración de CBD más alta (6.5% contra 5.8%) — dos resultados en direcciones opuestas, ninguno de los dos método superior en ambas variables a la vez.',
+          'El mismo estudio encontró que la eficiencia de absorción de fósforo fue menor con fertilización orgánica que con mineral, atribuible a menor disponibilidad de ese nutriente en el sustrato de turba usado — un resultado específico de ese sustrato y ese tipo de fertilizante orgánico, no necesariamente válido para cualquier combinación de sustrato y fuente orgánica.'
+        ]
+      },
+      {
+        id: 'por-que-la-concentracion-de-cbd-pudo-ser-mas-alta-con-menos-nitrogeno',
+        title: 'Una hipótesis razonable, no una certeza: estrés y metabolitos secundarios',
+        paragraphs: [
+          'Una posible explicación de que el tratamiento orgánico —con menor disponibilidad efectiva de nitrógeno— haya logrado mayor concentración de CBD es el principio general, ya descrito en "Estrés ambiental y crecimiento vegetal" (categoría Crecimiento), de que cierto grado de estrés puede redirigir recursos de la planta hacia la producción de metabolitos secundarios en lugar de biomasa. Esta entrada presenta esa conexión como una hipótesis razonable a partir de un patrón general de fisiología vegetal, no como una conclusión que el estudio citado confirme de forma directa —el propio estudio no midió el mecanismo, solo el resultado final—.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no recomienda un método por sobre otro: el estudio citado trabajó con un único genotipo de quimiotipo alto-CBD, y los propios autores señalan que los resultados podrían no generalizarse a cultivares dominantes en THC, otros genotipos, u otros sistemas de cultivo. Tampoco valida ninguna afirmación comercial sobre que un método produzca, de por sí, mejor sabor o más terpenos — no se encontró, dentro de las fuentes consultadas, un estudio comparativo que mida esas variables específicamente entre nutrición orgánica y mineral en Cannabis.'
+        ]
+      }
+    ],
+    observations: [
+      'Que dos cultivos de la misma genética, uno con nutrición orgánica y otro con mineral, muestren diferencias de biomasa o de concentración de cannabinoides es compatible con el patrón que documenta el estudio citado. No permite, por sí solo, generalizar cuál método es "mejor" sin especificar mejor en qué variable y bajo qué condiciones.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Afirmar que la nutrición orgánica o la mineral es, en general, superior para Cannabis — la evidencia directa disponible muestra resultados en direcciones opuestas según qué variable se mida (biomasa contra concentración de CBD).'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Generalizar el resultado de un estudio con un único genotipo de alto CBD a cualquier cultivar, incluyendo variedades dominantes en THC — los propios autores señalan esa limitación de forma explícita.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Presentar afirmaciones comerciales sobre mejor sabor o más terpenos asociadas a un método de nutrición como si tuvieran respaldo científico comparativo — no se encontró ese respaldo dentro de las fuentes consultadas para esta investigación.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición'],
+    relatedEntryIds: ['como-llegan-nutrientes-a-la-raiz', 'fertilizacion-y-cannabinoides-evidencia', 'estres-ambiental-y-crecimiento', 'suelo-vivo-y-microbiologia'],
+    sourceIds: ['cientifica-crispim-massuela-2023-organico-mineral-cannabis'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Nutrición orgánica y mineral — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué diferencia realmente a la nutrición orgánica de la mineral (mineralización, no jerarquía), y qué encontró un estudio directo sobre Cannabis con resultados en direcciones opuestas.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'nutricion-de-cannabis-variacion-genotipica',
+    slug: 'nutricion-de-cannabis-variacion-genotipica',
+    categoryId: 'fertilizacion',
+    title: 'Nutrición de Cannabis: variación genotípica y por qué no hay una curva universal',
+    summary: 'Dos cultivares de Cannabis, medidos con el mismo método, absorbieron cantidades distintas de nitrógeno, fósforo y potasio en las mismas condiciones — y ningún estudio disponible respalda los ratios NPK que circulan como "los que necesita" la especie.',
+    intro: 'Es común encontrar tablas que presentan una "curva de demanda nutricional" fija para Cannabis, con ratios NPK específicos por etapa (por ejemplo, 3:1:1 en vegetativo, 1:3:2 en floración). Esta entrada investiga de dónde salen esos ratios y qué muestra la evidencia directa sobre variación genotípica en la nutrición de la especie.',
+    sections: [
+      {
+        id: 'de-donde-salen-los-ratios-npk-difundidos',
+        title: 'De dónde salen los ratios NPK difundidos',
+        paragraphs: [
+          'Dentro de las fuentes consultadas para esta investigación, los ratios NPK del tipo "3:1:1" o "1:3:2" atribuidos a distintas etapas del ciclo de Cannabis aparecen únicamente en guías de cultivo comerciales, blogs de marcas de fertilizantes y foros de cultivadores — ninguna de esas fuentes cita, a su vez, un estudio científico que haya determinado esos ratios de forma experimental. No se encontró tampoco, en la búsqueda realizada, ningún estudio revisado por pares que establezca esos ratios específicos como óptimos para Cannabis sativa.',
+          'Un estudio de 2024 que sí optimizó experimentalmente concentraciones de N, P y K —mediante un diseño de superficie de respuesta, en un único genotipo medicinal durante dos semanas de etapa vegetativa en hidroponía— llegó a una combinación recomendada (160-200 mg/L de N, 30 mg/L de P, 60 mg/L de K) que no coincide con esos ratios comerciales: la proporción resultante se acerca más a 5:1:2 o 6:1:2, según el extremo de nitrógeno usado. Es un dato aislado de un único estudio, un único genotipo y una única etapa —no reemplaza a los ratios comerciales con una cifra alternativa universal—, pero sí demuestra que la optimización experimental real, cuando existe, no reproduce los ratios más difundidos.'
+        ]
+      },
+      {
+        id: 'absorcion-no-es-lo-mismo-que-aplicacion',
+        title: '"La planta absorbe más de X" no es lo mismo que "hay que aplicar más X"',
+        paragraphs: [
+          'Un estudio de 2026 midió la absorción real de nitrógeno, fósforo y potasio —no la cantidad aplicada, sino la que la planta efectivamente tomó de la solución— en dos cultivares de Cannabis sativa durante la etapa vegetativa. Encontró rangos de absorción distintos entre ambos cultivares para los tres nutrientes, y variación temporal marcada incluso dentro de la misma etapa vegetativa: uno de los cultivares mostró una absorción de nitrógeno y potasio notablemente mayor durante la primera semana que el otro.',
+          'Este es precisamente el punto que separa "absorción" de "recomendación de aplicación": que una planta absorba más de un nutriente en un momento dado no significa que agregar más de ese nutriente mejore el resultado — la absorción medida refleja lo que la planta tomó de una concentración ya disponible, no establece cuál sería la concentración ideal a ofrecer. Los propios autores proponen, en lugar de una receta fija, ligar la entrega de nutrientes a la transpiración medida en tiempo real, específica para cada cultivar.'
+        ]
+      },
+      {
+        id: 'por-que-no-existe-una-curva-universal',
+        title: 'Por qué no existe una curva de demanda universal',
+        paragraphs: [
+          'La combinación de estos dos hallazgos —variación real entre cultivares en cuánto absorben, y ausencia de un estudio que respalde los ratios NPK más difundidos— sostiene una conclusión editorial directa: no existe, dentro de la evidencia científica revisada por pares disponible, una curva de demanda nutricional única y válida para "Cannabis sativa" en general. Cualquier tabla que presente una curva así debería leerse, como mínimo, como una síntesis de prácticas comerciales y experiencia de cultivo, no como un hallazgo experimental validado para la especie completa.'
+        ]
+      }
+    ],
+    observations: [
+      'Que dos cultivares, cultivados en las mismas condiciones, muestren necesidades o respuestas nutricionales distintas es una observación compatible con la variación genotípica documentada — no requiere, por sí sola, una explicación de manejo o de error de cultivo.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Presentar un ratio NPK específico (3:1:1, 1:3:2 u otro) como "el que necesita Cannabis" en una etapa dada — dentro de las fuentes consultadas, esos ratios no tienen origen en un estudio científico que los haya determinado experimentalmente para la especie.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Confundir un dato de absorción medida (cuánto tomó la planta de una solución ya disponible) con una recomendación de cuánto aplicar — son dos preguntas distintas, y la evidencia de absorción no responde automáticamente a la segunda.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar una "curva de demanda" única a cualquier cultivar de Cannabis sativa, ignorando la variación genotípica real documentada en estudios directos de absorción de nutrientes.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición', 'genética'],
+    relatedEntryIds: ['nitrogeno-fosforo-potasio-funcion', 'diferencias-geneticas-crecimiento-cultivares', 'nutricion-suelo-sustrato-hidroponia', 'fertilizacion-y-cannabinoides-evidencia'],
+    sourceIds: [
+      'cientifica-kpai-2024-npk-optimizacion-vegetativo-cannabis',
+      'cientifica-powell-2026-absorcion-nutrientes-cultivares-cannabis'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Nutrición de Cannabis: variación genotípica — Atlas del Cultivo Argentino',
+      seoDescription: 'De dónde salen realmente los ratios NPK difundidos para Cannabis, por qué no tienen origen científico verificable, y qué muestra la evidencia directa sobre variación genotípica en la absorción de nutrientes.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'fertilizacion-y-cannabinoides-evidencia',
+    slug: 'fertilizacion-y-cannabinoides-que-muestra-la-evidencia',
+    categoryId: 'fertilizacion',
+    title: 'Fertilización y cannabinoides: qué muestra (y qué no muestra) la evidencia',
+    summary: 'Más fertilizante produjo más biomasa en un estudio directo, pero al mismo tiempo redujo la concentración de cannabinoides en varios de los tratamientos — el propio equipo de investigación admite que la relación no está clara.',
+    intro: 'Es una de las afirmaciones más repetidas en la cultura de cultivo: que ajustar la fertilización aumenta la producción de cannabinoides o terpenos. Esta entrada reúne la evidencia directa disponible sobre Cannabis sativa, que resulta más matizada —y en partes contradictoria— de lo que esa afirmación sugiere.',
+    sections: [
+      {
+        id: 'mas-nutrientes-no-es-igual-a-mas-concentracion',
+        title: 'Más nutrientes no es igual a más concentración',
+        paragraphs: [
+          'Un estudio de 2019 sobre Cannabis sativa medicinal probó una mezcla con 15% más de nitrógeno, fósforo y potasio que un control, y encontró que esa mezcla aumentó la biomasa aérea total en un 41% — pero, en varios de los tratamientos con más nutrientes, la concentración de cannabinoides bajó en vez de subir. Biomasa y concentración de cannabinoides no se movieron en la misma dirección: más planta no fue, en ese estudio, sinónimo de flor más potente.',
+          'El fósforo agregado por separado, en el mismo estudio, no tuvo efecto sobre la concentración de THC, CBD, CBN ni CBG en las flores superiores — y llegó a reducir el THC un 16% en las hojas de la inflorescencia. Un estudio posterior, de 2022, que probó tres niveles de fósforo sobre otro cultivar, tampoco encontró efecto del fósforo sobre la concentración de cannabinoides ni sobre el rendimiento de flor, mientras que el fósforo no absorbido (lixiviado) aumentó de forma desproporcionada con la dosis — ambos estudios, con cultivares y condiciones distintas, coinciden en que agregar más fósforo del necesario no mejoró la calidad de la flor.'
+        ]
+      },
+      {
+        id: 'organico-vs-mineral-y-el-rol-del-estres',
+        title: 'Orgánico contra mineral, y el posible rol del estrés',
+        paragraphs: [
+          'Un estudio de 2023 que comparó nutrición orgánica y mineral en el mismo genotipo durante floración (ver "Nutrición orgánica y mineral") encontró que el tratamiento con menor disponibilidad efectiva de nitrógeno (el orgánico) logró mayor concentración de CBD, aunque con menos biomasa total. Es compatible con el principio general de que cierto grado de estrés nutricional puede redirigir recursos hacia metabolitos secundarios en vez de crecimiento —pero, otra vez, es una hipótesis razonable a partir de un patrón general, no un mecanismo que ese estudio haya confirmado de forma directa—.'
+        ]
+      },
+      {
+        id: 'lo-que-dicen-los-propios-autores',
+        title: 'Lo que dicen los propios autores de la evidencia disponible',
+        paragraphs: [
+          'Los autores del estudio de 2019 son explícitos sobre el estado de esta evidencia: "la relación entre el contenido de cannabinoides y la suplementación nutricional no es clara" y señalan que "solo un número pequeño de estudios científicos se han hecho sobre nutrición de Cannabis, y la mayoría se enfocó en variedades de cáñamo cultivadas para fibra... esta información es solo levemente relevante para el cannabis medicinal". Piden explícitamente evaluar distintos quimiotipos (alto-CBD/bajo-THC, alto-THC/alto-CBD) antes de generalizar cualquier conclusión.',
+          'Esta entrada no resuelve esa falta de claridad inventando una relación más simple de la que la evidencia permite: reúne lo que sí está documentado (más nutrientes no garantiza más concentración; el exceso de fósforo no mejora cannabinoides; el tipo de fertilización puede correlacionarse con diferencias de concentración, posiblemente vía estrés) sin presentarlo como una fórmula cerrada de "fertilizar así para lograr tal perfil".'
+        ]
+      }
+    ],
+    observations: [
+      'Ver una planta con más biomasa después de aumentar la fertilización es una observación compatible con el hallazgo de mayor crecimiento del estudio de 2019. Concluir de ahí que la flor también va a tener mayor concentración de cannabinoides es una extrapolación que ese mismo estudio contradice directamente — biomasa y concentración se movieron en direcciones distintas.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que "más fertilización" o "más de un nutriente específico" aumenta automáticamente la concentración de cannabinoides o terpenos — la evidencia directa disponible muestra el patrón contrario en varios casos, y los propios investigadores describen la relación como no clara.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Presentar una relación de causa-efecto simple entre un tipo de fertilización (orgánica o mineral) y un perfil de cannabinoides deseado, cuando la evidencia disponible es de un único genotipo y no aísla el mecanismo (posible estrés nutricional) del resultado observado.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición'],
+    relatedEntryIds: ['nitrogeno-fosforo-potasio-funcion', 'nutricion-organica-y-mineral', 'nutricion-de-cannabis-variacion-genotipica', 'quimica-de-la-maduracion'],
+    sourceIds: [
+      'cientifica-bernstein-2019-cannabis-npk-cannabinoide-canopia',
+      'cientifica-westmoreland-2022-fosforo-cannabis-sin-efecto',
+      'cientifica-crispim-massuela-2023-organico-mineral-cannabis'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Fertilización y cannabinoides: qué muestra la evidencia — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué encontraron, de forma directa sobre Cannabis sativa, los estudios que probaron si más fertilización o más fósforo aumentan la concentración de cannabinoides — y por qué los propios investigadores describen esa relación como no clara.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'silicio-y-elementos-beneficiosos',
+    slug: 'silicio-y-otros-elementos-beneficiosos',
+    categoryId: 'fertilizacion',
+    title: 'Silicio y otros elementos beneficiosos',
+    summary: 'El silicio no es un nutriente esencial de Cannabis según ningún criterio científico aceptado — pero eso no significa que no tenga ningún efecto real: un estudio directo sobre cáñamo encontró una reducción medible de oídio dependiente de la dosis aplicada.',
+    intro: '"Los elementos esenciales" ya distingue entre nutrientes esenciales y elementos "beneficiosos" como el silicio. Esta entrada desarrolla ese caso concreto: qué evidencia directa existe sobre Cannabis sativa y cáñamo, y qué afirmaciones difundidas sobre el silicio no pudieron verificarse dentro de esta investigación.',
+    sections: [
+      {
+        id: 'beneficioso-no-esencial',
+        title: 'Beneficioso, no esencial',
+        paragraphs: [
+          'Ninguna variedad conocida de Cannabis sativa es incapaz de completar su ciclo de vida sin silicio —por eso no cumple el criterio de esencialidad de Arnon y Stout (ver "Los elementos esenciales")—. Esto no excluye que el silicio tenga efectos reales y medibles: varias especies vegetales, entre ellas Cannabis, muestran beneficios documentados frente a ciertos tipos de estrés, sin que eso las convierta en dependientes del elemento para completar su desarrollo.'
+        ]
+      },
+      {
+        id: 'evidencia-directa-oidio',
+        title: 'Evidencia directa: silicio y oídio en cáñamo',
+        paragraphs: [
+          'Un estudio de 2022 aplicó silicio a la raíz de plantas de cáñamo cultivadas en invernadero, en un sustrato de turba sin suelo, durante seis semanas. Encontró una relación lineal negativa entre el porcentaje de silicio acumulado en el tejido foliar y la severidad del oídio (causado por Golovinomyces spadiceus) por área foliar: la reducción fue significativa en el dosel superior con una dosis de 300 kg/ha, y se necesitó el doble (600 kg/ha) para lograr el mismo efecto en el dosel medio, más protegido de la aplicación.',
+          'El resumen verificado de ese estudio no incluye ninguna medición de biomasa, cannabinoides ni terpenos — cualquier cifra específica de aumento de biomasa (como "1.2 veces") que circule atribuida a estudios de silicio en Cannabis no pudo confirmarse dentro de esta investigación, y no se incorpora a esta entrada por esa razón.'
+        ]
+      },
+      {
+        id: 'donde-se-deposita-el-silicio',
+        title: 'Dónde se deposita el silicio, y por qué importa la precisión',
+        paragraphs: [
+          'Otro estudio, usando microscopía electrónica de barrido, encontró que el silicio en Cannabis sativa se deposita en tricomas no glandulares —no en los tricomas glandulares que producen la resina cargada de cannabinoides— y que esos depósitos se concentran alrededor de los puntos de penetración de hongos causantes de oídio tras una infección, sugiriendo que la localización responde a un estímulo biótico (la presencia de la enfermedad), no a una acumulación pasiva y constante independiente del contexto. Este hallazgo no pudo verificarse por lectura directa del texto completo en esta investigación (solo por caracterizaciones de búsqueda), por lo que se cita con esa salvedad explícita.',
+          'La distinción entre tricomas glandulares y no glandulares es relevante: una afirmación del tipo "el silicio se acumula en los tricomas" puede sonar, sin esa precisión, como si reforzara directamente la producción de resina y cannabinoides — cuando la evidencia disponible ubica ese depósito en una estructura distinta, con una función distinta (defensiva, no de producción de cannabinoides).'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no recomienda una dosis de silicio para Cannabis con fines medicinales o recreativos: los datos de dosis citados corresponden a un ensayo de cáñamo a escala de invernadero, medidos en kg/ha, una unidad de aplicación a campo que no se traduce de forma directa a una concentración de fertirriego doméstico. Tampoco confirma ni descarta ningún efecto del silicio sobre la rigidez del tallo o la resistencia mecánica en Cannabis sativa —no se encontró, dentro de las fuentes consultadas, un estudio directo sobre ese punto específico en la especie—.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver menor severidad de oídio en plantas de cáñamo tratadas con silicio, en las condiciones del estudio citado, es una observación directa de ese ensayo. Extrapolar esa reducción a cualquier dosis, sustrato o variedad de Cannabis sin ese mismo ensayo es una generalización que la fuente no respalda.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Presentar al silicio como un nutriente esencial de Cannabis — no cumple el criterio de esencialidad, aunque tenga efectos beneficiosos documentados frente a ciertos tipos de estrés.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Afirmar que el silicio "se deposita en los tricomas" sin precisar que la evidencia disponible ubica ese depósito en tricomas no glandulares, distintos de los tricomas glandulares productores de cannabinoides.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Citar una cifra específica de aumento de biomasa (como "1.2 veces") atribuida a la suplementación con silicio en Cannabis — esta investigación no pudo verificar esa cifra en ninguna fuente accesible por lectura directa.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fertilización', 'nutrición', 'sanidad'],
+    relatedEntryIds: ['elementos-esenciales-criterios-clasificacion', 'micronutrientes-funciones', 'moho-gris-botrytis-cinerea'],
+    sourceIds: ['cientifica-dixon-2022-silicio-oidio-canamo', 'cientifica-haghighi-2021-silicio-tricomas-cannabis'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Silicio y otros elementos beneficiosos — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué el silicio no es un nutriente esencial de Cannabis, qué encontró un estudio directo sobre reducción de oídio en cáñamo, y qué afirmaciones difundidas sobre biomasa y tricomas no pudieron verificarse.',
       canonical: null,
       ogImage: null
     }
