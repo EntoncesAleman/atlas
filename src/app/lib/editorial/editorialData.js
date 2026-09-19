@@ -811,7 +811,7 @@ export const editorialEntries = [
       'Esta entrada no describe instalaciones de iluminación artificial ni parámetros técnicos de equipos: se limita al concepto de fotoperiodo como señal biológica, que es la base común a cualquier ambiente, protegido o exterior.'
     ],
     tags: ['luz', 'fotoperiodo', 'ambiente'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'cosecha-y-maduracion', 'genetica-y-tipos', 'intensidad-de-luz'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'cosecha-y-maduracion', 'genetica-y-tipos', 'intensidad-de-luz', 'variacion-genetica-fotoperiodo', 'fotoperiodo-segun-latitud-argentina', 'espectro-de-luz-azul-rojo-rojo-lejano'],
     sourceIds: ['academica-unne-fitocromos-desarrollo-vegetal', 'cientifica-hesami-2023-cannabis-life-cycle', 'cientifica-alter-2024-cannabis-fotoperiodo-giberelina'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-12',
@@ -1404,7 +1404,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['marco', 'legal', 'contexto'],
-    relatedEntryIds: ['lectura-de-senales', 'germinacion', 'reprocann-modalidades', 'industria-cannabis-argentina-actual'],
+    relatedEntryIds: ['lectura-de-senales', 'germinacion', 'reprocann-modalidades', 'industria-cannabis-argentina-actual', 'aptitud-agroclimatica-argentina-canamo'],
     // Único caso de esta migración con fuentes de contenido reales asociadas desde Fase 7A: el
     // tema de la entrada (marco legal/responsabilidad) coincide exactamente con fuentes ya
     // registradas y verificadas en 19_SOURCE_REGISTRY.md — no se inventó ninguna. En 7B2 se
@@ -1625,7 +1625,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['historia', 'genética', 'taxonomía', 'fotoperiodo'],
-    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'quimica-de-la-maduracion', 'canamo-industrial-frontera-thc'],
+    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'quimica-de-la-maduracion', 'canamo-industrial-frontera-thc', 'variacion-genetica-fotoperiodo'],
     sourceIds: [
       'cientifica-pollio-2016-nombre-cannabis-taxonomia',
       'cientifica-garner-allard-1920-photoperiodism-discovery',
@@ -1798,7 +1798,7 @@ export const editorialEntries = [
       'La Ficha Provincial del Atlas refleja la evidencia disponible por jurisdicción. Chubut cuenta con evidencia directa de nivel A de cultivo real de Cannabis sativa al aire libre (CONICET-CENPAT, cultivares Malvina y Pachamama, verano 2022-2023) y Jujuy cuenta con evidencia directa de nivel A de producción industrial bajo invernadero automatizado (Cannava S.E., habilitada por ANMAT) — sin que ninguna de las dos evidencias se generalice a otras provincias. Misiones tuvo una producción real documentada (MisioPharma/Biofábrica) que ya no está activa. Para el resto de las provincias, la información disponible combina datos ambientales verificables con principios fisiológicos generales, sin evidencia de campo local directa todavía.'
     ],
     tags: ['cultivo', 'ciclo', 'fotoperiodo', 'ambiente'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'poscosecha', 'cuidado-de-la-plantula'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'poscosecha', 'cuidado-de-la-plantula', 'temperatura-y-desarrollo'],
     sourceIds: [
       'cientifica-ahrens-2023-photoperiod-flowering-indoor',
       'cientifica-hesami-2023-cannabis-life-cycle',
@@ -2451,7 +2451,7 @@ export const editorialEntries = [
       'La fuente de agua disponible suele diferir entre interior y exterior: en interior, el agua de riego suele ser agua de red municipal (con cloro o cloramina); en exterior, puede sumarse agua de pozo o de lluvia, con un perfil de calidad distinto que esta entrada no desarrolla.'
     ],
     tags: ['suelo', 'agua', 'interior', 'exterior'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'ph-y-disponibilidad-de-nutrientes', 'conductividad-electrica-y-sales'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'ph-y-disponibilidad-de-nutrientes', 'conductividad-electrica-y-sales', 'humedad-relativa-transpiracion-vpd'],
     sourceIds: [
       'institucional-pennstate-2025-calidad-agua-riego',
       'institucional-ask-extension-2018-cloramina-agua-riego',
@@ -2586,7 +2586,7 @@ export const editorialEntries = [
       'En exterior, la intensidad de luz disponible varía con la hora del día, la estación y la nubosidad, sin que quien cultiva tenga control directo sobre ella. En un ambiente protegido con luz artificial, la intensidad pasa a depender del equipo elegido y de la distancia a la fuente — un control más directo, pero que exige revisar esa distancia activamente. Esta entrada no describe equipos ni parámetros técnicos de iluminación artificial: se limita al concepto general de intensidad como variable distinta del fotoperiodo.'
     ],
     tags: ['luz', 'ambiente'],
-    relatedEntryIds: ['luz-y-fotoperiodo', 'cuidado-de-la-plantula'],
+    relatedEntryIds: ['luz-y-fotoperiodo', 'cuidado-de-la-plantula', 'par-ppfd-medicion-de-luz'],
     sourceIds: [
       'agricultural-illinois-extension-2022-leggy-seedlings'
     ],
@@ -2595,6 +2595,612 @@ export const editorialEntries = [
     metadata: {
       seoTitle: 'Intensidad de luz: la otra variable — Atlas del Cultivo Argentino',
       seoDescription: 'Qué hace la intensidad de luz, en qué se distingue del fotoperiodo, y por qué la etiolación (tallo alargado y débil) es la señal más documentada de que falta.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'par-ppfd-medicion-de-luz',
+    slug: 'par-ppfd-medicion-de-luz',
+    categoryId: 'luz-y-clima',
+    title: 'PAR, PPFD y medición de luz',
+    summary: '"Intensidad de luz" describe el concepto en términos generales. Esta entrada agrega el vocabulario técnico para medirla —PAR, PPFD, DLI— y qué encontró, de forma directa sobre Cannabis sativa, un estudio que probó un rango de intensidad mucho más amplio que el habitual en otros cultivos.',
+    intro: '"Intensidad de luz: la otra variable" describe la intensidad como la energía disponible para fotosíntesis, sin entrar en cómo se mide. Esta entrada cubre ese punto: qué es la radiación fotosintéticamente activa (PAR), cómo se mide (PPFD) y cómo se acumula en un día (DLI) — y qué mostró, de forma directa sobre Cannabis sativa, un estudio reciente sobre el efecto de intensidades muy altas.',
+    sections: [
+      {
+        id: 'que-es-par-ppfd-dli',
+        title: 'Qué es PAR, PPFD y DLI',
+        paragraphs: [
+          'La radiación fotosintéticamente activa (PAR) es la porción del espectro de luz, entre 400 y 700 nanómetros, que la planta puede usar para fotosíntesis. La densidad de flujo de fotones fotosintéticos (PPFD) mide cuántos fotones de esa franja llegan a una superficie por segundo, en micromoles por metro cuadrado por segundo (µmol·m⁻²·s⁻¹) — es, en términos simples, la intensidad de luz instantánea.',
+          'El integral de luz diaria (DLI) acumula esa intensidad a lo largo de un día completo, en mol·m⁻²·día⁻¹. Una guía de extensión universitaria da rangos de referencia de DLI según el cultivo (por ejemplo, 5-10 para plantines, 20-30 para tomate), aclarando explícitamente que son "recomendaciones específicas de cultivo" que "pueden necesitar ajuste" — no valores universales, y ninguno de ellos específico de Cannabis.'
+        ]
+      },
+      {
+        id: 'evidencia-directa-en-cannabis',
+        title: 'Qué encontró un estudio directo sobre Cannabis sativa',
+        paragraphs: [
+          'Un estudio de 2021 probó PPFD a nivel de dosel entre 120 y 1800 µmol·m⁻²·s⁻¹ durante toda la floración de Cannabis sativa en interior. El rendimiento de inflorescencia seca aumentó de forma lineal en todo ese rango —4.5 veces más al pasar del extremo más bajo al más alto— sin mostrar una meseta de saturación ni siquiera en la intensidad más alta probada, a diferencia de la mayoría de los cultivos de invernadero, que sí alcanzan un techo antes.',
+          'El mismo estudio no encontró efecto de la intensidad de luz sobre la concentración de THC ni de CBD: más luz produjo más flor, no flor con mayor potencia. Además, la fotosíntesis medida en una hoja individual saturó a intensidades mucho menores que la respuesta de toda la planta — un dato que advierte contra medir una sola hoja y extrapolar esa lectura al cultivo completo.'
+        ]
+      }
+    ],
+    observations: [
+      'Que una hoja individual deje de aumentar su tasa fotosintética a cierta intensidad no significa que el rendimiento de toda la planta también haya llegado a su techo — el estudio citado encontró exactamente esa disociación entre ambos niveles.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que existe una intensidad de luz "de saturación" fija para Cannabis, más allá de la cual dar más luz no sirve — el estudio citado no encontró ese techo dentro del rango probado, algo inusual frente a otros cultivos.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Usar los rangos de DLI de referencia de otros cultivos (lechuga, tomate) como si fueran aplicables a Cannabis sin ajuste — son valores de cultivos distintos, no una cifra transferible sin evidencia propia.'
+      }
+    ],
+    environmentContext: [
+      'En exterior, el PPFD depende del sol, la hora del día, la estación y la nubosidad, sin control directo de quien cultiva. En interior, depende del equipo de iluminación elegido, algo que si se puede ajustar de forma directa — pero el estudio citado se hizo en interior, y esta entrada no evalúa si el mismo patrón (sin saturación) aplica de igual forma a la luz solar en exterior.'
+    ],
+    tags: ['luz', 'interior', 'exterior'],
+    relatedEntryIds: ['intensidad-de-luz', 'espectro-de-luz-azul-rojo-rojo-lejano'],
+    sourceIds: ['institucional-virginia-tech-2025-par-ppfd-dli', 'cientifica-rodriguez-morrison-2021-ppfd-cannabis'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'PAR, PPFD y medición de luz — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué son PAR, PPFD y DLI, y qué encontró un estudio directo sobre Cannabis sativa al probar intensidades de luz mucho más altas que las habituales en otros cultivos.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'espectro-de-luz-azul-rojo-rojo-lejano',
+    slug: 'espectro-de-luz-azul-rojo-y-rojo-lejano',
+    categoryId: 'luz-y-clima',
+    title: 'Espectro de luz: azul, rojo y rojo lejano',
+    summary: 'No toda la luz dentro del rango que la planta puede usar para fotosíntesis tiene el mismo efecto — el color de esa luz también importa, y la evidencia directa sobre Cannabis muestra respuestas distintas según el cultivar.',
+    intro: '"Luz como señal temporal" ya presenta al fitocromo como receptor sensible a luz roja y roja lejana, en el contexto del fotoperiodo. Esta entrada amplía esa idea: qué hace cada franja del espectro —azul, rojo, rojo lejano— sobre la forma de la planta y, según evidencia directa de Cannabis sativa, sobre su rendimiento y su perfil de cannabinoides.',
+    sections: [
+      {
+        id: 'que-hace-cada-franja',
+        title: 'Qué hace cada franja del espectro, en términos generales',
+        paragraphs: [
+          'La luz azul, en fisiología vegetal general, tiende a favorecer plantas más compactas. La luz roja lejana, en cambio, puede alargar los entrenudos y expandir las hojas —un efecto asociado a cómo la planta interpreta la sombra de otras plantas cercanas—. Esta entrada no desarrolla el mecanismo fotorreceptor completo (fitocromo para rojo/rojo lejano, criptocromo para azul): se enfoca en qué encontró la evidencia directa de Cannabis sativa sobre estos efectos.'
+        ]
+      },
+      {
+        id: 'evidencia-directa-fraccion-azul',
+        title: 'Evidencia directa: la fracción de luz azul',
+        paragraphs: [
+          'Un estudio de 2021 probó cinco espectros con distinta fracción de fotones azules (entre 4% y 20% del total) sobre un único cultivar de Cannabis. El rendimiento de flor bajó de forma lineal, un 12.3% en total, al aumentar la fracción de azul de 4% a 20%. La fracción de azul, en cambio, no tuvo efecto estadísticamente significativo sobre la concentración final de cannabinoides.',
+          'Los propios autores del estudio advierten sobre su propio límite: probaron un único cultivar, y señalan explícitamente que "es posible que cultivares de Cannabis con morfologías y días a floración distintos respondan de forma diferente a la fracción de fotones azules" — el resultado no debería tratarse como una regla aplicable a cualquier genotipo sin más evidencia.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver una planta más compacta bajo una fuente de luz con más proporción de azul es una observación compatible con el efecto general descripto en fisiología vegetal. Concluir que esa misma proporción de azul también va a reducir el rendimiento en cualquier cultivar es una extrapolación que el estudio citado no respalda de forma genérica — lo probó en un solo cultivar.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Generalizar el resultado de rendimiento y fracción de azul, obtenido en un único cultivar, como si aplicara a cualquier genotipo de Cannabis — los propios autores señalan esa limitación de forma explícita.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Tratar "más azul reduce el rendimiento" como equivalente a "el azul es malo para la planta" — el estudio mide un efecto cuantitativo sobre el rendimiento final, no una valoración general de la franja espectral.'
+      }
+    ],
+    environmentContext: [
+      'La composición espectral de la luz solar en exterior no se elige ni se ajusta; en un ambiente protegido con luz artificial, la fracción de cada color sí puede elegirse según el equipo instalado — un control que el estudio citado usó específicamente para su experimento en interior.'
+    ],
+    tags: ['luz', 'interior', 'exterior'],
+    relatedEntryIds: ['luz-y-fotoperiodo', 'par-ppfd-medicion-de-luz', 'radiacion-uv-y-cannabinoides'],
+    sourceIds: ['cientifica-westmoreland-2021-espectro-azul-cannabis', 'academica-unne-fitocromos-desarrollo-vegetal'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Espectro de luz: azul, rojo y rojo lejano — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué hace cada franja del espectro de luz sobre la forma de la planta, y qué encontró un estudio directo sobre Cannabis sativa acerca de la fracción de luz azul, el rendimiento y los cannabinoides.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'radiacion-uv-y-cannabinoides',
+    slug: 'radiacion-uv-y-cannabinoides',
+    categoryId: 'luz-y-clima',
+    title: 'Radiación UV y cannabinoides: una controversia científica',
+    summary: 'Que la radiación ultravioleta aumenta el THC es una de las afirmaciones más repetidas sobre Cannabis — y un estudio reciente, más controlado que los que originaron esa idea, no encontró el mismo efecto.',
+    intro: 'Esta entrada trata específicamente una afirmación puntual y muy citada: que exponer a Cannabis sativa a radiación ultravioleta (UV), sobre todo UV-B, aumenta la producción de THC. En vez de repetirla como un hecho establecido, describe de dónde viene esa idea y qué encontró la evidencia más reciente al ponerla a prueba de nuevo.',
+    sections: [
+      {
+        id: 'de-donde-viene-la-idea',
+        title: 'De dónde viene la idea',
+        paragraphs: [
+          'La relación entre radiación UV-B y mayor concentración de THC fue reportada por trabajos de las décadas de 1980 (Lydon, 1986; Lydon et al., 1987) y de 2009 (Zhang & Björn), que encontraron una relación lineal entre exposición a UV-B y THC en hojas jóvenes e inflorescencias. Una hipótesis propuesta para explicar ese patrón es que el THC actuaría como un mecanismo de protección contra el daño que la radiación UV-B causa a nivel celular.'
+        ]
+      },
+      {
+        id: 'lo-que-encontro-un-estudio-mas-reciente',
+        title: 'Lo que encontró un estudio más reciente y controlado',
+        paragraphs: [
+          'Un estudio de 2022 aplicó UV-A y UV-B sobre Cannabis cultivado en interior durante los últimos 20 días de floración, y no encontró efecto ni sobre el peso seco de la inflorescencia ni sobre la concentración de cannabinoides en ella —las hojas de azúcar sí mostraron más THC, pero es un tejido de bajo valor comercial, no la inflorescencia misma—.',
+          'Los propios autores señalan que este resultado contradice los estudios más antiguos, y plantean que las diferencias podrían deberse a factores genéticos de los cultivares modernos, que podrían limitar esa respuesta de aumento de metabolitos secundarios frente al estrés UV. Concluyen, en sus propias palabras, que no encontraron "beneficios comercialmente relevantes de agregar UV a la producción de cannabis en interior".'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no resuelve la contradicción entre ambos grupos de estudios ni afirma cuál tiene razón: describe que existe, con fechas, para que quede claro que "la radiación UV aumenta los cannabinoides" es una afirmación con evidencia a favor y evidencia en contra, no un hecho cerrado.'
+        ]
+      }
+    ],
+    observations: [
+      'Que un estudio antiguo haya encontrado un efecto y uno más reciente no lo haya encontrado no significa automáticamente que el primero estuviera mal —puede deberse a diferencias reales entre los cultivares evaluados en cada época, algo que ninguno de los dos estudios controla por el otro—.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Presentar "la radiación UV aumenta los cannabinoides" como un hecho establecido y cerrado — la evidencia disponible incluye un estudio reciente y controlado que no encontró ese efecto en la inflorescencia, y cuyos autores señalan la contradicción de forma explícita.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Extrapolar un aumento de THC observado en hojas jóvenes o en hojas de azúcar (tejido de bajo valor comercial) a la inflorescencia, que es el tejido que en la práctica importa para rendimiento y potencia.'
+      }
+    ],
+    environmentContext: [
+      'La radiación UV solar está siempre presente en exterior, en una cantidad que no se elige. En un ambiente protegido, la exposición a UV depende exclusivamente de si se instala un equipo de iluminación que la agregue de forma deliberada — sin ese agregado, un cultivo en interior recibe muy poca o ninguna UV.'
+    ],
+    tags: ['luz', 'interior', 'exterior'],
+    relatedEntryIds: ['espectro-de-luz-azul-rojo-rojo-lejano', 'aptitud-agroclimatica-argentina-canamo'],
+    sourceIds: ['cientifica-llewellyn-2022-uvb-cannabis-sin-efecto', 'academica-mora-2019-aptitud-agroclimatica-canamo-uba'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Radiación UV y cannabinoides: una controversia científica — Atlas del Cultivo Argentino',
+      seoDescription: 'De dónde viene la idea de que la radiación UV aumenta el THC, y por qué un estudio reciente y controlado sobre Cannabis sativa no encontró ese efecto en la inflorescencia.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'variacion-genetica-fotoperiodo',
+    slug: 'variacion-genetica-de-la-respuesta-fotoperiodica',
+    categoryId: 'luz-y-clima',
+    title: 'Variación genética de la respuesta fotoperiódica',
+    summary: 'No todos los cultivares de Cannabis responden al mismo umbral de oscuridad para florecer — y esa variación tiene, hoy, una base genética identificada, no solo observaciones de campo.',
+    intro: '"Luz como señal temporal" describe a Cannabis sativa como una planta de día corto, sin detenerse en que ese umbral de oscuridad no es idéntico entre cultivares. Esta entrada cubre exactamente ese punto, con evidencia genética directa: la variación de la respuesta fotoperiódica entre distintos materiales de la misma especie.',
+    sections: [
+      {
+        id: 'un-umbral-que-varia',
+        title: 'Un umbral que varía, no un número único',
+        paragraphs: [
+          'Distintos trabajos ubican el umbral fotoperiódico de floración de Cannabis sativa alrededor de las 14 horas de luz para buena parte de las variedades de cáñamo industrial y medicinal criadas en Europa y América del Norte, con un retraso considerable en fotoperiodos mayores a 16 horas. Esa cifra describe ese conjunto particular de variedades, no a la especie completa: existen cultivares seleccionados en países nórdicos que son insensibles al fotoperíodo y completan su ciclo con cualquier duración de luz, precisamente porque el umbral de 14 horas no les sirve a esas latitudes.'
+        ]
+      },
+      {
+        id: 'la-base-genetica-identificada',
+        title: 'La base genética identificada',
+        paragraphs: [
+          'Un estudio de 2022 identificó dos genes de efecto mayor sobre el momento de floración en Cannabis sativa: Autoflower1 (AF1), un gen recesivo que hace que la planta sea insensible al fotoperíodo —las plantas con dos copias de esta variante florecen incluso con luz continua—, y Early1 (E1), que adelanta la floración entre 2 y 4 semanas en cultivares que sí responden al fotoperíodo.',
+          'El mismo estudio señala que la variación en el momento de floración que ya se observaba entre cultivares en cultivos a campo, antes de identificar estos genes, probablemente corresponde a diferencias genéticas reales en el umbral de duración de noche crítica — es decir, la variabilidad que ya se observaba informalmente tiene ahora un correlato genético identificado, no es solo una impresión de campo.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que dos cultivares sembrados el mismo día, en el mismo lugar, entran en floración en momentos distintos es una observación compatible con una diferencia genética real en el umbral fotoperiódico de cada uno — no necesariamente un error de manejo o una anomalía.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Tratar "12 horas de oscuridad" o "14 horas de luz" como un umbral universal de floración para cualquier cultivar de Cannabis — la evidencia genética muestra variación real entre genotipos, incluyendo cultivares completamente insensibles al fotoperíodo.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que un cultivar que tarda más o menos que otro en florecer bajo el mismo fotoperiodo tiene algún problema — puede ser, simplemente, una diferencia genética esperable en el umbral fotoperiódico de cada material.'
+      }
+    ],
+    environmentContext: [
+      'En interior, con fotoperiodo controlado, esta variación genética se traduce en distintos tiempos de floración entre cultivares bajo el mismo esquema de luz. En exterior, se traduce además en distintas fechas de floración natural según la latitud y la genética combinadas — ver "Fotoperiodo según latitud argentina".'
+    ],
+    tags: ['luz', 'fotoperiodo', 'genética', 'interior', 'exterior'],
+    relatedEntryIds: ['luz-y-fotoperiodo', 'genetica-y-tipos', 'fotoperiodo-segun-latitud-argentina'],
+    sourceIds: ['academica-toth-2022-genetica-fotoperiodo-cannabis', 'academica-mora-2019-aptitud-agroclimatica-canamo-uba'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Variación genética de la respuesta fotoperiódica — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué el umbral de oscuridad necesario para que Cannabis sativa florezca varía entre cultivares, con evidencia genética directa de dos genes identificados que controlan esa diferencia.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'fotoperiodo-segun-latitud-argentina',
+    slug: 'fotoperiodo-segun-latitud-argentina',
+    categoryId: 'luz-y-clima',
+    title: 'Fotoperiodo según latitud argentina',
+    summary: 'Argentina se extiende por más de 30 grados de latitud — la diferencia en duración del día entre el norte y el sur del país, en la misma fecha, es real y considerable, no un matiz menor.',
+    intro: '"Luz como señal temporal" describe el fotoperiodo como señal biológica sin cuantificar cómo varía geográficamente. Esta entrada cubre ese punto para el caso argentino: cómo cambia la duración del día según la latitud, un dato relevante para cualquier cultivo de exterior sensible al fotoperiodo, no solo Cannabis.',
+    sections: [
+      {
+        id: 'por-que-varia-con-la-latitud',
+        title: 'Por qué la duración del día varía con la latitud',
+        paragraphs: [
+          'La duración del día en una fecha dada depende de la latitud del lugar: cuanto más lejos del ecuador, mayor es la diferencia entre la duración del día en verano y en invierno. Argentina se extiende aproximadamente entre los 22° y los 55° de latitud sur —desde el extremo norte de Jujuy hasta Tierra del Fuego—, un rango de más de 30 grados que produce diferencias reales de fotoperiodo entre el norte y el sur del país en la misma fecha del año.'
+        ]
+      },
+      {
+        id: 'que-tan-grande-es-la-diferencia',
+        title: 'Qué tan grande es esa diferencia',
+        paragraphs: [
+          'Una tesis de la UBA que calculó el fotoperiodo diario entre los 22° y 55° de latitud sur —el rango que cubre el territorio argentino— usando la fórmula astronómica estándar de duración del día según declinación solar, encontró que, durante el semestre cálido (octubre a marzo), el fotoperiodo se mantiene siempre por debajo de las 15 horas en el extremo norte del país (entre 22° y 30°S), mientras que en el extremo sur (42° a 55°S) hay un período de 3 a 4 meses con más de 16 horas de luz por día.',
+          'Esa diferencia no es un matiz: significa que una misma variedad fotoperiódica, sembrada en el norte y en el sur del país en la misma fecha, puede atravesar fotoperiodos inductivos de floración muy distintos según dónde esté — un dato que conecta directamente con la variación genética de la respuesta fotoperiódica entre cultivares.'
+        ]
+      }
+    ],
+    observations: [
+      'Que una misma variedad florezca en fechas distintas cultivada en el norte y en el sur del país es una observación compatible con la diferencia real de fotoperiodo entre esas latitudes — no necesariamente una anomalía de la planta ni del manejo.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Aplicar una misma fecha de siembra o de floración esperada a cualquier punto del país sin considerar la latitud — el fotoperiodo en la misma fecha calendario es marcadamente distinto entre el norte y el sur de Argentina.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Confundir esta variación geográfica del fotoperiodo natural con el fotoperiodo de un cultivo en interior con luz artificial — en interior, el fotoperiodo se define por el equipo de control, no por la latitud del lugar (ver "Luz como señal temporal").'
+      }
+    ],
+    environmentContext: [
+      'Esta variación de fotoperiodo por latitud es, por definición, un fenómeno de exterior: depende de la posición geográfica real del cultivo bajo el sol. En un ambiente protegido con luz artificial, el fotoperiodo se desacopla de la latitud por completo.'
+    ],
+    tags: ['luz', 'fotoperiodo', 'argentina', 'exterior'],
+    relatedEntryIds: ['luz-y-fotoperiodo', 'variacion-genetica-fotoperiodo', 'aptitud-agroclimatica-argentina-canamo'],
+    sourceIds: ['academica-mora-2019-aptitud-agroclimatica-canamo-uba'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Fotoperiodo según latitud argentina — Atlas del Cultivo Argentino',
+      seoDescription: 'Cómo varía la duración del día entre el norte y el sur de Argentina en la misma fecha, y por qué esa diferencia de más de 30 grados de latitud es relevante para cualquier cultivo de exterior sensible al fotoperiodo.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'temperatura-y-desarrollo',
+    slug: 'temperatura-y-desarrollo',
+    categoryId: 'luz-y-clima',
+    title: 'Temperatura y desarrollo',
+    summary: 'La temperatura no solo determina si una planta crece rápido o lento: define, a través del "tiempo térmico", cuántos días necesita cada etapa — y los límites de calor y frío que se citan como universales, en la bibliografía real, son cifras de cultivares y estudios puntuales.',
+    intro: 'Ninguna entrada de esta categoría trata todavía la temperatura como variable propia, más allá de mencionarla de paso. Esta entrada cubre el concepto de tiempo térmico y revisa, contra la bibliografía citada por una tesis de la UBA sobre cáñamo, dos afirmaciones muy repetidas: que existe un rango térmico universal de 20 a 30 °C, y que hay límites fijos de frío y calor extremo.',
+    sections: [
+      {
+        id: 'tiempo-termico',
+        title: 'Tiempo térmico: por qué "días" no alcanza',
+        paragraphs: [
+          'El desarrollo de una planta no avanza al mismo ritmo cada día del año: avanza más rápido con más calor (dentro de un rango) y más lento con menos. El tiempo térmico —también llamado grados-día— acumula la temperatura por encima de una temperatura base a lo largo del tiempo, en vez de contar días de calendario, para predecir mejor cuándo termina una etapa de desarrollo.',
+          'Una tesis de la UBA sobre cáñamo cita, de la bibliografía internacional, un requerimiento de aproximadamente 100 °C-día (base 0 °C) entre siembra y emergencia, y de aproximadamente 500 °C-día entre emergencia y cobertura total del terreno — cifras que provienen de estudios sobre cáñamo fibra europeo, no verificadas de forma independiente sobre cultivares argentinos ni sobre variedades de uso medicinal.'
+        ]
+      },
+      {
+        id: 'el-rango-de-20-a-30-grados',
+        title: 'El rango de 20 a 30 °C: de dónde sale y qué tan sólido es',
+        paragraphs: [
+          'La misma tesis cita ese rango (20 a 30 °C) de trabajos de las décadas de 1970 y 2000 sobre tasa de fotosíntesis y producción de cannabinoides, aclarando explícitamente que depende "de la variedad de origen" —no es un número fijo—. Para acotarlo más, cita observaciones de cultivos ilegales de interior en Países Bajos y Bélgica, que mantuvieron temperaturas constantes entre 25 y 30 °C, y un trabajo sobre producción de grado medicinal en Estados Unidos y Reino Unido que fijó 25 °C como referencia — pero esas últimas dos fuentes son observaciones de manejo de cultivadores, no ensayos experimentales controlados que prueben distintas temperaturas y midan el resultado.',
+          'En síntesis: el rango de 20-30 °C existe en la bibliografía, pero como una síntesis de estudios y prácticas heterogéneas, sesgada hacia condiciones de interior y hacia variedades europeas y norteamericanas — no como un óptimo experimentalmente validado y aplicable, sin más, a cualquier cultivar o ambiente.'
+        ]
+      },
+      {
+        id: 'limites-de-frio-y-calor',
+        title: 'Límites de frío y calor: cifras de estudios puntuales, no reglas fijas',
+        paragraphs: [
+          'La misma tesis cita una "temperatura máxima vital" cercana a los 40 °C —definida en 40.7 °C por un estudio y en 41.3 °C por otro, ambos sobre cáñamo fibra europeo—, por encima de la cual la producción de biomasa y la duración del ciclo se vuelven muy heterogéneas. También cita que plántulas de hasta 4 a 5 pares de hojas toleran heladas breves de hasta -5 °C, y que existen cultivares seleccionados en Finlandia y Rusia que resisten heladas de hasta -6 °C en cualquier momento de su ciclo —aunque aclara que la mayoría de las variedades de clima templado no resisten heladas durante la floración—.',
+          'Estas cifras describen los cultivares y las condiciones de los estudios que las midieron, no un límite universal de la especie: la propia existencia de variedades resistentes al frío contradice la idea de un límite fijo aplicable a cualquier genotipo.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que dos plantas de cultivares distintos, expuestas a la misma temperatura, se desarrollan a ritmos distintos es compatible con diferencias genéticas reales en sus requerimientos térmicos — no necesariamente un error de manejo.'
+    ],
+    signals: [
+      {
+        level: 'ATTENTION',
+        description: 'Temperaturas sostenidas por encima de los 40 °C, o heladas durante la etapa de floración en variedades no seleccionadas para resistirlas, son condiciones que la bibliografía citada asocia con daño significativo — ameritan atención, no solo observación pasiva.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Presentar el rango 20-30 °C como un óptimo experimentalmente demostrado para cualquier Cannabis sativa — la bibliografía que lo sostiene mezcla ensayos científicos con observaciones de cultivos ilegales de interior, y aclara explícitamente que depende de la variedad.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar los límites de 40 °C o de -5/-6 °C como umbrales fijos de la especie completa — son cifras medidas en cultivares puntuales (mayormente cáñamo fibra europeo), y existen variedades seleccionadas específicamente por resistir condiciones más extremas.'
+      }
+    ],
+    environmentContext: [
+      'En un ambiente protegido, la temperatura puede mantenerse dentro de un rango elegido con equipamiento; en exterior, depende del clima de cada región y estación, sin control directo — ver "Heladas" para el caso específico de temperaturas bajo cero, y "Aptitud agroclimática de Argentina para cáñamo" para cómo se traduce esto en un análisis regional.'
+    ],
+    tags: ['ambiente', 'interior', 'exterior'],
+    relatedEntryIds: ['heladas', 'aptitud-agroclimatica-argentina-canamo', 'ciclo-de-vida'],
+    sourceIds: ['academica-mora-2019-aptitud-agroclimatica-canamo-uba'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Temperatura y desarrollo — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es el tiempo térmico, de dónde sale realmente el rango de 20 a 30 °C tan citado para Cannabis, y por qué los límites de frío y calor extremo son cifras de estudios puntuales, no reglas universales.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'heladas',
+    slug: 'heladas',
+    categoryId: 'luz-y-clima',
+    title: 'Heladas',
+    summary: 'No todas las heladas son iguales para una planta: importa la intensidad, la duración y —sobre todo— en qué etapa del ciclo ocurren. Una helada que una plántula tolera puede ser letal en plena floración.',
+    intro: '"Temperatura y desarrollo" menciona de paso la tolerancia a heladas según cifras citadas por una tesis de la UBA sobre cáñamo. Esta entrada desarrolla ese punto en particular, porque las heladas son uno de los riesgos climáticos más relevantes para un cultivo de exterior en gran parte de Argentina.',
+    sections: [
+      {
+        id: 'tolerancia-segun-etapa',
+        title: 'La tolerancia depende de la etapa del ciclo',
+        paragraphs: [
+          'Según la bibliografía citada por esa tesis, plántulas de cáñamo de hasta 4 a 5 pares de hojas pueden tolerar heladas breves de hasta -5 °C sin daño letal, aunque períodos largos de temperaturas muy bajas en esa etapa sí pueden afectar negativamente el desarrollo final de la planta. La situación es muy distinta en floración: la gran mayoría de las variedades de clima templado no resisten heladas en esa etapa, y varios ensayos a campo citados en la misma tesis se vieron directamente interrumpidos por daño de helada durante la floración.',
+          'Existen, de todos modos, cultivares seleccionados específicamente en Finlandia y Rusia que resisten heladas de hasta -6 °C en cualquier momento del ciclo, incluida la floración — evidencia de que la resistencia a heladas no es una propiedad fija de la especie, sino que varía según la genética seleccionada.'
+        ]
+      },
+      {
+        id: 'como-se-usa-esto-para-planificar-un-ciclo',
+        title: 'Cómo se usa esto para planificar un ciclo, en teoría',
+        paragraphs: [
+          'La misma tesis define, para su propio análisis de zonificación, una ventana libre de heladas de seis meses (helada tardía antes del 1 de octubre, primera helada temprana con 20% de probabilidad después del 31 de marzo) para variedades de ciclo largo, y una ventana de tres a cuatro meses (helada tardía antes del 1 de noviembre, primera helada temprana después del 28 de febrero) para variedades de ciclo corto. Son criterios usados para un análisis climático de gabinete, no una recomendación de siembra verificada a campo en Argentina — ver "Aptitud agroclimática de Argentina para cáñamo" para el contexto completo de ese trabajo y sus límites explícitos.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver daño por frío en una plántula joven no permite predecir automáticamente qué tan vulnerable sería esa misma planta a una helada de la misma intensidad en floración — la tolerancia cambia con la etapa, no es una propiedad fija de la planta durante todo el ciclo.'
+    ],
+    signals: [
+      {
+        level: 'ATTENTION',
+        description: 'Una helada durante la etapa de floración, en una variedad no seleccionada específicamente por resistencia al frío, es una condición que la bibliografía citada asocia con daño severo o interrupción del ciclo — no una condición menor comparable a una helada en etapa de plántula.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Una helada breve y de poca intensidad en una plántula de hasta 4-5 pares de hojas no necesariamente indica un problema serio, según la tolerancia citada — el contexto (intensidad, duración, etapa exacta) es lo que decide, no la sola ocurrencia de temperaturas bajo cero.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Tratar la tolerancia a heladas como un valor único para toda la planta, sin distinguir que la tolerancia en etapa de plántula y en floración son datos completamente distintos, citados por separado en la bibliografía.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que ninguna variedad de Cannabis resiste heladas en floración porque la mayoría no lo hace — existen cultivares seleccionados específicamente para eso, aunque no sean los típicos de uso medicinal en Argentina.'
+      }
+    ],
+    environmentContext: [
+      'Las heladas son, por definición, un riesgo de cultivo en exterior — un ambiente protegido con control de temperatura elimina este riesgo por completo, independientemente de la variedad cultivada.'
+    ],
+    tags: ['ambiente', 'riesgo', 'exterior'],
+    relatedEntryIds: ['temperatura-y-desarrollo', 'aptitud-agroclimatica-argentina-canamo'],
+    sourceIds: ['academica-mora-2019-aptitud-agroclimatica-canamo-uba'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Heladas — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué la tolerancia a heladas de Cannabis depende de la etapa del ciclo, qué cifras de tolerancia documenta la bibliografía internacional, y por qué no son un límite fijo de la especie.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'humedad-relativa-transpiracion-vpd',
+    slug: 'humedad-relativa-transpiracion-y-vpd',
+    categoryId: 'luz-y-clima',
+    title: 'Humedad relativa, transpiración y déficit de presión de vapor (VPD)',
+    summary: 'El VPD combina temperatura y humedad en un solo número, y una humedad demasiado alta tiene efectos medidos y reales sobre Cannabis — pero la "tabla de VPD ideal" que circula ampliamente entre cultivadores no viene de un experimento científico revisado por pares.',
+    intro: 'Ninguna entrada de esta categoría trata todavía la humedad relativa como variable propia de desarrollo (más allá de su rol en enfermedades, ver "Moho gris" en Sanidad). Esta entrada cubre la relación entre humedad relativa, transpiración y déficit de presión de vapor (VPD), con evidencia directa de Cannabis sativa sobre los efectos de la humedad alta, y una revisión explícita del origen de la "tabla de VPD" tan citada en cultivo.',
+    sections: [
+      {
+        id: 'que-es-el-vpd',
+        title: 'Qué es el VPD',
+        paragraphs: [
+          'El déficit de presión de vapor (VPD) mide qué tan "seco" está el aire en relación a su capacidad máxima de contener vapor de agua a una temperatura dada, combinando temperatura y humedad relativa en un solo número (en kilopascales, kPa). Un VPD más alto significa un aire con más capacidad de "absorber" agua, lo que tiende a acelerar la transpiración de la planta; un VPD muy bajo (aire casi saturado de humedad) la enlentece.'
+        ]
+      },
+      {
+        id: 'evidencia-directa-humedad-alta',
+        title: 'Evidencia directa: qué pasa con humedad relativa alta',
+        paragraphs: [
+          'Un estudio de 2025 comparó Cannabis sativa cultivada con humedad relativa de dosel baja (37-58%) contra alta (78-98%). Los VPD resultantes fueron muy distintos: en floración, 0.92 kPa con humedad baja contra apenas 0.25 kPa con humedad alta. Los efectos medidos con humedad alta fueron claros: la floración se retrasó tres semanas, la biomasa seca total fue menos de la mitad, y varios cannabinoides bajaron notablemente (el ácido cannabidiólico, por ejemplo, casi 5 veces menos).',
+          'Es evidencia directa de que un VPD muy bajo (por humedad excesiva) perjudica a Cannabis sativa de forma medible. No es, sin embargo, evidencia de que exista un rango de VPD "ideal" preciso: el estudio comparó dos condiciones bastante extremas entre sí, no una serie de valores intermedios que permita afirmar dónde está el óptimo exacto.'
+        ]
+      },
+      {
+        id: 'la-tabla-de-vpd-de-donde-sale',
+        title: 'La "tabla de VPD ideal": de dónde sale realmente',
+        paragraphs: [
+          'Los rangos de VPD "ideal" que circulan ampliamente en sitios y foros de cultivo (aproximadamente 0.5-1 kPa en esquejes, 0.7-1.2 en vegetativo, 1.0-1.5 en floración) se originan en un artículo de 2019 publicado en Cannabis Science and Technology —una publicación de la industria orientada a cultivadores y procesadores, no una revista científica revisada por pares—. Incluso el estudio científico de 2025 mencionado arriba, al citar esos rangos, lo hace como referencia de otra fuente, sin haberlos validado experimentalmente ellos mismos.',
+          'Esto no significa que esos rangos sean necesariamente incorrectos — significa que, hasta donde permite verificar esta investigación, no provienen de un experimento controlado y revisado por pares que haya probado esos valores específicos y medido el resultado. Es una distinción importante entre una guía de industria y un hallazgo científico validado.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una planta transpira visiblemente menos (por ejemplo, sustrato que tarda mucho más en secarse de lo habitual) en un ambiente muy húmedo es una observación compatible con VPD bajo. Concluir de ahí un valor exacto de VPD sin medir temperatura y humedad relativa reales es una interpretación que excede lo que permite ver a simple vista.'
+    ],
+    signals: [
+      {
+        level: 'ATTENTION',
+        description: 'Humedad relativa sostenida por encima del 78-80% durante la floración es la condición que el estudio citado asoció con retraso de floración, pérdida de biomasa y caída de cannabinoides — además del riesgo de moho gris que ya describe esa entrada en Sanidad.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Citar una tabla de VPD "ideal" por etapa como si fuera un hallazgo científico validado — su origen documentado es un artículo de una publicación de industria, no un experimento controlado revisado por pares.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que, porque la humedad muy alta perjudica claramente a la planta, existe por lo tanto un rango estrecho y preciso de VPD "óptimo" — la evidencia directa disponible compara extremos, no establece un óptimo fino.'
+      }
+    ],
+    environmentContext: [
+      'En un ambiente protegido, la humedad relativa y por lo tanto el VPD pueden controlarse con equipamiento (deshumidificadores, ventilación). En exterior, dependen del clima de cada región y estación —ver "Calidad del agua de riego" en Suelo y agua para la relación entre humedad y otros parámetros ambientales, y "Moho gris (Botrytis cinerea)" en Sanidad para el riesgo de enfermedad asociado a humedad alta en floración.'
+    ],
+    tags: ['ambiente', 'interior', 'exterior'],
+    relatedEntryIds: ['moho-gris-botrytis-cinerea', 'calidad-del-agua-de-riego'],
+    sourceIds: ['cientifica-corredor-perilla-2025-humedad-vpd-cannabis', 'otra-breit-2019-vpd-cannabis-tabla-comercial'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Humedad relativa, transpiración y VPD — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es el déficit de presión de vapor (VPD), qué encontró un estudio directo sobre Cannabis y humedad alta, y por qué la "tabla de VPD ideal" tan citada viene de una publicación de industria, no de un experimento científico revisado por pares.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'aptitud-agroclimatica-argentina-canamo',
+    slug: 'aptitud-agroclimatica-de-argentina-para-canamo',
+    categoryId: 'luz-y-clima',
+    title: 'Aptitud agroclimática de Argentina para cáñamo: qué estudió realmente la tesis de Mora',
+    summary: 'Una tesis de maestría de la UBA (2019) es, hasta donde permite verificar esta investigación, el único trabajo de zonificación agroclimática de cáñamo para Argentina — pero es un estudio de gabinete basado en clima comparado internacionalmente, no un ensayo de campo con cultivares plantados en el país.',
+    intro: 'Esta entrada describe qué hizo realmente la tesis de Francisco Mora, dirigida por Daniel Sorlino, "Aptitud agroclimática del territorio argentino para el cultivo de cáñamo (Cannabis sativa) y la producción de principios activos de interés medicinal" (Maestría en Meteorología Agrícola, UBA, 2019) — qué datos usó, qué encontró, y sobre todo, cuáles son los límites que el propio autor reconoce. No es una recomendación de dónde cultivar hoy: es la descripción de un trabajo académico específico, con su alcance y sus huecos.',
+    sections: [
+      {
+        id: 'que-hizo-realmente-el-estudio',
+        title: 'Qué hizo realmente el estudio',
+        paragraphs: [
+          'El trabajo no plantó cáñamo en ningún lugar de Argentina ni usó un cultivar propio: es un estudio de gabinete que recopiló datos climáticos mensuales de 153 sitios en 53 países donde el cultivo de Cannabis prospera en el mundo (de forma legal, ilegal, industrial o tradicional), de los cuales 92 caen dentro del rango de latitudes que ocupa Argentina (22° a 55° sur). Combinó esa información con requerimientos bioclimáticos publicados en la literatura científica internacional —mayormente estudios sobre cáñamo fibra de Europa y América del Norte— y con el Atlas agroclimático digital de la Argentina para el período 1981-2010, aplicando una metodología de clasificación agroclimática publicada en 1958 (Burgos).',
+          'A partir de esa combinación, delimitó regiones térmicas (según requerimientos de tiempo térmico y riesgo de heladas y calor extremo), regiones hídricas (según qué porcentaje de la demanda de agua del cultivo cubre la lluvia) y regiones fotoperiódicas (según cuánto tiempo el fotoperiodo del semestre cálido supera el umbral de floración) — y superpuso las tres para obtener siete "tipos agroclimáticos" de aptitud (óptima, apta o marginal) para ciclos largos o cortos de cultivo.'
+        ]
+      },
+      {
+        id: 'los-resultados-principales',
+        title: 'Los resultados principales, con sus condiciones',
+        paragraphs: [
+          'Para cultivo extensivo de cáñamo en general (no específicamente medicinal), el área óptima resultante abarca centro y este de San Luis, Córdoba, Santa Fe, Entre Ríos, suroeste de Corrientes, noreste de La Pampa y norte y sudeste de Buenos Aires, con la frontera entre variedades de ciclo largo y corto ubicada aproximadamente en los 40° de latitud sur.',
+          'Sobre esa base, el estudio agregó una zonificación adicional —explícitamente descripta como "sin precedente"— orientada a la producción de principios activos de interés medicinal, combinando estudios de fotosíntesis y producción de cannabinoides con observaciones de cultivos ilegales de interior en Países Bajos y Bélgica para fijar un rango térmico de floración de 20 a 30 °C y una humedad relativa de 45 a 65% durante febrero y marzo. Esa zona más acotada abarca este de Córdoba, centro y sur de Santa Fe, centro y sur de Entre Ríos, noreste de La Pampa y norte de Buenos Aires.'
+        ]
+      },
+      {
+        id: 'los-limites-que-el-propio-autor-reconoce',
+        title: 'Los límites que el propio autor reconoce',
+        paragraphs: [
+          'El propio trabajo dedica una sección final ("Reflexiones para futuros estudios") a enumerar sus propias limitaciones, de forma explícita: la zonificación "resulta necesario evaluar" con "estudios de ensayos geográficos y siembras continuadas a lo largo del territorio argentino" —es decir, nunca se hizo ese ensayo de campo—; la zonificación específica para producción de principios activos "no tiene precedente" y necesita un ensayo in situ para saber si "los supuestos teóricos tienen un vínculo real con la práctica".',
+          'A esto se suman otras limitaciones que el propio autor detalla: la densidad de estaciones meteorológicas es baja en Patagonia y el noroeste argentino, por lo que esos límites deberían tratarse como "zonas de transición", no fronteras precisas; el estudio excluye por completo el territorio por encima de los 1000 metros sobre el nivel del mar (dejando sin evaluar, por ejemplo, las sierras de Córdoba y San Luis, rodeadas en el mapa por zonas "óptimas"); los datos son promedios de 30 años (1981-2010) y no incorporan cambio climático; el análisis es exclusivamente climático, sin evaluación de suelo; y usó como referencia variedades europeas de cáñamo fibra, por lo que el propio autor advierte que cultivares con resistencia a heladas, a sequía, o insensibles al fotoperíodo "es muy probable" que amplíen los límites propuestos.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no convierte este mapa de aptitud teórica en una recomendación de dónde cultivar hoy: describe qué estudió un trabajo académico específico, con qué método y con qué huecos reconocidos por su propio autor. Tampoco evalúa el marco legal vigente para el cultivo de Cannabis en Argentina (ver "Marco editorial y responsable" y "REPROCANN: modalidades"), que es un tema completamente aparte de la aptitud climática del territorio.'
+        ]
+      }
+    ],
+    observations: [
+      'Que un lugar aparezca clasificado como "zona óptima" en el mapa de esta tesis es una observación sobre el resultado de un modelo climático comparado internacionalmente. Concluir que un cultivo real en ese lugar, hoy, con un cultivar y un manejo específicos, va a tener éxito es una extrapolación que el propio estudio no respalda —de hecho, señala explícitamente la falta de validación a campo—.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Presentar el mapa de zonas óptimas de esta tesis como una recomendación de cultivo validada, en vez de un resultado teórico de un modelo climático comparado que el propio autor señala como pendiente de validación a campo.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar los límites de latitud o provincia de este trabajo como fronteras precisas — el propio autor los describe como "zonas de transición" en las regiones con menos estaciones meteorológicas (Patagonia, NOA), no líneas exactas en el mapa.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Ignorar que el estudio se basó en variedades europeas de cáñamo fibra como referencia — cultivares con otra genética (resistentes a heladas, insensibles al fotoperíodo) podrían tener una aptitud territorial distinta a la calculada acá, según el propio autor.'
+      }
+    ],
+    environmentContext: [
+      'Todo el análisis de esta tesis corresponde a cultivo extensivo de exterior: el propio trabajo señala que, si la producción se hiciera de forma intensiva con riego o invernadero, el área a considerar "podría ser varias veces superior" a la calculada para condiciones puramente de secano y clima natural.'
+    ],
+    tags: ['ambiente', 'argentina', 'exterior'],
+    relatedEntryIds: ['temperatura-y-desarrollo', 'heladas', 'fotoperiodo-segun-latitud-argentina', 'diferencias-agroclimaticas-regiones-argentinas', 'marco-editorial'],
+    sourceIds: ['academica-mora-2019-aptitud-agroclimatica-canamo-uba'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Aptitud agroclimática de Argentina para cáñamo — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué estudió realmente la tesis de Francisco Mora (UBA, 2019) sobre zonificación agroclimática de cáñamo en Argentina, qué método usó, y cuáles son los límites que el propio autor reconoce explícitamente.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'diferencias-agroclimaticas-regiones-argentinas',
+    slug: 'diferencias-agroclimaticas-entre-regiones-argentinas',
+    categoryId: 'luz-y-clima',
+    title: 'Diferencias agroclimáticas entre regiones argentinas',
+    summary: '"NOA", "Cuyo", "Pampeana" y "Patagonia" son categorías reales, usadas por organismos como la FAO — pero son agrupaciones productivas y administrativas, no clasificaciones climáticas de precisión, y una misma provincia puede contener climas muy distintos.',
+    intro: 'Es común escuchar que Argentina se divide en unas pocas "regiones" con clima homogéneo. Esta entrada revisa qué tan sólida es esa idea: de dónde salen esas categorías, qué usan de verdad los organismos oficiales para clasificar el territorio, y por qué no equivalen a un mapa climático preciso.',
+    sections: [
+      {
+        id: 'de-donde-salen-noa-cuyo-pampeana-patagonia',
+        title: 'De dónde salen "NOA", "Cuyo", "Pampeana" y "Patagonia"',
+        paragraphs: [
+          'Un documento de la FAO sobre agricultura de secano en América Latina sí usa estas categorías, asociadas a provincias y a sistemas productivos dominantes: "Pampeana" (Buenos Aires, Córdoba, Santa Fe, orientada a granos), "NOA" (Salta, Jujuy, Tucumán, Santiago del Estero, Catamarca), "NEA" (Corrientes, Chaco, Misiones, Formosa) y "Cuyo"/"Comahue" (valles bajo riego, fruticultura y vitivinicultura). El mismo documento aclara explícitamente que "Patagonia no se cubre en este informe" por su actividad agrícola limitada —es decir, ni siquiera la fuente que usa estas categorías las trata como una clasificación climática completa y uniforme del país—.',
+          'Estas categorías existen y se usan de forma real, pero agrupan provincias por su producción dominante, no por límites de temperatura, precipitación o fotoperiodo. Una misma provincia incluida en "NOA", por ejemplo, puede contener tanto puna de altura como selva subtropical de yungas —climas radicalmente distintos dentro de la misma etiqueta regional—.'
+        ]
+      },
+      {
+        id: 'un-esquema-oficial-mas-especifico',
+        title: 'Un esquema oficial más específico: RIAN de INTA',
+        paragraphs: [
+          'INTA cuenta con un sistema propio de regionalización, llamado RIAN (Regiones Agroecológicas de la República Argentina), que delimita el país en "zonas" (identificadas con números romanos) y "subzonas" (con letras) según criterios de suelo, aptitud de uso de la tierra, agroclima, tipo y estructura de la vegetación y sistemas productivos característicos, siguiendo límites de departamentos provinciales. Es un esquema mucho más granular que "NOA/Cuyo/Pampeana/Patagonia", pensado específicamente para análisis agropecuario.',
+          'Esta entrada no pudo verificar los límites exactos de ese sistema por lectura directa —el dominio de INTA no respondió al intentar el acceso en esta investigación—, así que no describe subzonas puntuales. Lo relevante acá es que existe, del lado de un organismo técnico argentino, un esquema alternativo y más preciso que las cuatro categorías populares, lo que por sí solo ya muestra que esas cuatro categorías no son "la" clasificación agroclimática oficial del país.'
+        ]
+      },
+      {
+        id: 'la-alternativa-que-usa-esta-misma-categoria',
+        title: 'La alternativa que ya usa esta categoría del atlas',
+        paragraphs: [
+          'La forma más precisa de tratar la variabilidad climática argentina que ya aplica este atlas no son las cuatro regiones populares, sino análisis por latitud y por variable climática específica: ver "Fotoperiodo según latitud argentina" y "Aptitud agroclimática de Argentina para cáñamo", que trabajan con rangos de latitud y umbrales térmicos/hídricos concretos en vez de nombres de región.'
+        ]
+      }
+    ],
+    observations: [
+      'Escuchar que "en el NOA se puede cultivar todo el año" no distingue, por sí solo, entre las distintas condiciones reales que existen dentro de esa etiqueta —altura, humedad, temperatura— que pueden variar enormemente entre un valle y una zona de puna, ambos dentro de la misma región nombrada.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Afirmar que una provincia entera tiene "un clima" a partir de la región popular en la que se la agrupa (NOA, Cuyo, Pampeana, Patagonia) — estas categorías son agrupaciones productivas/administrativas, y dentro de una misma provincia puede haber climas muy distintos según la zona y la altura.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Tratar "NOA/Cuyo/Pampeana/Patagonia" como si fuera la única o la oficial clasificación agroclimática argentina — INTA mantiene un esquema propio (RIAN) más granular y basado en criterios técnicos distintos.'
+      }
+    ],
+    environmentContext: [
+      'Esta entrada trata variabilidad climática de exterior por definición — un ambiente protegido controla sus propias condiciones independientemente de en qué región del país esté ubicado.'
+    ],
+    tags: ['ambiente', 'argentina', 'exterior'],
+    relatedEntryIds: ['aptitud-agroclimatica-argentina-canamo', 'fotoperiodo-segun-latitud-argentina'],
+    sourceIds: [
+      'oficial-fao-y5210s-regiones-agroecologicas-argentina',
+      'oficial-inta-rian-regiones-agroecologicas',
+      'academica-mora-2019-aptitud-agroclimatica-canamo-uba'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Diferencias agroclimáticas entre regiones argentinas — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué "NOA", "Cuyo", "Pampeana" y "Patagonia" son agrupaciones productivas y administrativas, no una clasificación climática de precisión, y qué esquema más específico usa INTA.',
       canonical: null,
       ogImage: null
     }
@@ -2727,7 +3333,7 @@ export const editorialEntries = [
       'El riesgo de moho gris aumenta con la densidad del follaje y de las inflorescencias (menos circulación de aire interna, ver "Poda" y "Defoliación") y con la humedad relativa del ambiente —una combinación más probable en un espacio protegido mal ventilado, aunque el exterior no está exento si la humedad ambiental es alta.'
     ],
     tags: ['sanidad', 'riesgo'],
-    relatedEntryIds: ['lectura-de-senales', 'chupadera-fungosa-damping-off', 'cosecha-y-maduracion', 'herramientas-e-higiene-de-poda', 'defoliacion'],
+    relatedEntryIds: ['lectura-de-senales', 'chupadera-fungosa-damping-off', 'cosecha-y-maduracion', 'herramientas-e-higiene-de-poda', 'defoliacion', 'humedad-relativa-transpiracion-vpd'],
     sourceIds: [
       'cientifica-mahmoud-2023-botrytis-cinerea-cannabis-podredumbre-flor'
     ],

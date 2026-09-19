@@ -1357,6 +1357,115 @@ export const sources = [
     accessedAt: '2026-09-19',
     notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2020.01169, confirmado vía Crossref). Cannabis sativa (tipo droga) en hidroponía y acuaponía con NaCl agregado (1 a 40 mM). En hidroponía, fitotoxicidad clara a 40 mM (hasta 150% menos biomasa de inflorescencia seca que en 1 mM); el contenido de cannabinoides empezó a bajar con concentraciones de NaCl bajas ("por encima de 5 mM"), a una tasa de -0.037% THCA por mM de NaCl. En acuaponía, con EC basal similar (~1.8-1.94 mS/cm), la tolerancia fue mayor: solo se redujo la concentración de cannabinoides, sin el mismo daño de crecimiento. Es evidencia directa de Cannabis sativa sobre sal agregada (NaCl), no una equivalencia directa con "conductividad eléctrica alta por fertilización" en general — el propio estudio distingue el origen del aumento de CE (nutrientes vs. NaCl) como una variable relevante en sí misma.'
   },
+  {
+    id: 'academica-mora-2019-aptitud-agroclimatica-canamo-uba',
+    scope: 'CANNABIS',
+    title: 'Aptitud agroclimática del territorio argentino para el cultivo de cáñamo (Cannabis sativa) y la producción de principios activos de interés medicinal',
+    authorOrInstitution: 'Mora, Francisco (Maestrando); Sorlino, Daniel (Director) — Universidad de Buenos Aires, Facultad de Agronomía y Facultad de Ciencias Exactas y Naturales, Maestría en Meteorología Agrícola',
+    url: 'http://ri.agro.uba.ar/files/download/tesis/maestria/2019tesismorafrancisco.pdf',
+    type: 'ACADEMIC',
+    publicationDate: '2019-12-17',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa del texto completo (80 páginas, extracción local con PyMuPDF; repositorio institucional oficial de la Facultad de Agronomía de la UBA). Es un ESTUDIO DE GABINETE/MODELADO, no un ensayo de campo con cultivares plantados en Argentina: usa datos climáticos mensuales de 153 sitios en 53 países donde prospera Cannabis en el mundo (92 de ellos dentro del rango de latitudes argentino, 22-55°S), combinados con requerimientos bioclimáticos de trabajos científicos internacionales (mayormente cáñamo fibra europeo/norteamericano) y con el Atlas agroclimático digital de la Argentina 1981-2010 (Murphy, comunicación personal), aplicando la clasificación agroclimática de Burgos (1958). Determina regiones térmicas (tiempo térmico ~100°Cd siembra-emergencia, ~500°Cd emergencia-cobertura total, base 0°C; temperatura máxima vital ~40-41.3°C citada de Lisson et al. 2000a y Amaducci et al. 2012; plántulas hasta 4-5 pares de hojas toleran heladas breves de hasta -5°C, cultivares nórdicos/rusos seleccionados toleran hasta -6°C en cualquier etapa, pero la mayoría de las variedades de clima templado no resisten heladas en floración), hídricas (Índice de Satisfacción Hídrica, ETm cubierta ≥50% por precipitación como umbral, según Cosentino et al. 2013) y fotoperiódicas (umbral de floración ~14 horas para "la mayoría de las variedades de cáñamo industrial/medicinal criadas en Europa y América del Norte", con retraso considerable por encima de 16 horas según Borthwick & Scally 1954 — EXPLÍCITAMENTE no universal, existen cultivares insensibles al fotoperíodo seleccionados en países nórdicos, citando a Pahkala et al. 2008). Superponiendo estas tres regiones define 7 "tipos agroclimáticos" (óptimo/apto/marginal, para ciclo largo o corto) y, sobre esa base, una zonificación adicional y más especulativa para "producción de principios activos de interés medicinal" combinando estudios muy heterogéneos (ensayos científicos controlados junto con observaciones de cultivos ilegales indoor en Países Bajos/Bélgica) para justificar un rango térmico de floración de 20-30°C (refinado a 25°C como referencia) y de humedad relativa de 45-65% — sin que esa combinación específica haya sido validada experimentalmente como conjunto. El propio autor declara explícitamente, en la sección "Reflexiones para futuros estudios": que la zonificación completa "resulta necesario evaluar los resultados a través de estudios de ensayos geográficos y siembras continuadas a lo largo del territorio argentino" (nunca se hizo un ensayo de campo en Argentina para este trabajo); que la zonificación para producción de principios activos "no tiene precedente" y necesita un ensayo in situ para saber si "los supuestos teóricos tienen un vínculo real con la práctica"; que la densidad de estaciones meteorológicas es baja en Patagonia y el NOA, por lo que esos límites deben tratarse como "zonas de transición"; que el estudio excluye por completo el territorio por encima de los 1000 msnm (sierras de Córdoba/San Luis quedan sin evaluar aunque rodeadas de zonas "óptimas"); que los límites son promedios de 30 años (1981-2010) y no contemplan cambio climático; que el estudio es exclusivamente climático, sin evaluación edafológica; y que usó como referencia variedades europeas de cáñamo, por lo que cultivares con resistencia a heladas/sequía o insensibles al fotoperíodo podrían ampliar los límites propuestos.'
+  },
+  {
+    id: 'academica-toth-2022-genetica-fotoperiodo-cannabis',
+    scope: 'CANNABIS',
+    title: 'Identification and Mapping of Major-Effect Flowering Time Loci Autoflower1 and Early1 in Cannabis sativa L.',
+    authorOrInstitution: 'Toth, J. A.; Stack, G. M.; Carlson, C. H.; Smart, L. B. — Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9533707/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2022-09-21',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2022.991680, confirmado vía Crossref). Identifica dos loci genéticos de efecto mayor sobre el momento de floración en Cannabis sativa: Autoflower1 (AF1), recesivo, que confiere insensibilidad al fotoperíodo (las plantas homocigotas florecen incluso con luz continua) en germoplasma diverso de la especie; y Early1 (E1), que adelanta la floración de 2 a 4 semanas en cultivares fotoperiódicos. El propio estudio señala que la variación en el momento de floración dentro de y entre cultivares, en poblaciones cultivadas a campo, probablemente corresponde a diferencias genéticas reales en el umbral de duración de noche crítica — evidencia genética directa de que ese umbral NO es un valor único ni universal para la especie.'
+  },
+  {
+    id: 'cientifica-rodriguez-morrison-2021-ppfd-cannabis',
+    scope: 'CANNABIS',
+    title: 'Cannabis Yield, Potency, and Leaf Photosynthesis Respond Differently to Increasing Light Levels in an Indoor Environment',
+    authorOrInstitution: 'Rodriguez-Morrison, V.; Llewellyn, D.; Zheng, Y. — Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8144505/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2021-05-11',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2021.646020, confirmado vía Crossref). Probó PPFD a nivel de dosel entre 120 y 1800 µmol·m⁻²·s⁻¹ durante floración (81 días). El rendimiento de inflorescencia seca aumentó de forma lineal en todo ese rango (116 a 519 g/m², un aumento de 4.5 veces) SIN mostrar saturación hasta el valor más alto probado —a diferencia de la mayoría de los cultivos de invernadero, que sí saturan—. No se detectó efecto de la intensidad de luz sobre la concentración de THC, CBD ni otros cannabinoides; los terpenos totales mostraron un aumento lineal menor (de 8.85 a 12.7 mg/g). La fotosíntesis medida a nivel de hoja individual saturó a intensidades mucho menores que la respuesta de rendimiento de toda la planta — la fotosíntesis foliar no predice, por sí sola, la respuesta de rendimiento del cultivo completo.'
+  },
+  {
+    id: 'institucional-virginia-tech-2025-par-ppfd-dli',
+    scope: 'GENERAL',
+    title: 'Calculating and Using Daily Light Integral (DLI): An Introductory Guide',
+    authorOrInstitution: 'Stallknecht, E. (Assistant Professor and Greenhouse Specialist) — Virginia Tech Extension, School of Plant and Environmental Sciences',
+    url: 'https://www.pubs.ext.vt.edu/SPES/spes-720/spes-720.html',
+    type: 'AGRICULTURAL',
+    publicationDate: '2025-08-13',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa. Define PPFD (µmol·m⁻²·s⁻¹, fotones fotosintéticamente activos por superficie y tiempo) y DLI (mol·m⁻²·día⁻¹, luz fotosintética acumulada en 24 horas) y su fórmula de relación. Da rangos de DLI de referencia por tipo de cultivo (plantines/esquejes 5-10; lechuga 12-17; tomate 20-30 mol·m⁻²·d⁻¹), aclarando explícitamente que son "recomendaciones específicas de cultivo" que "pueden necesitar ajuste según las condiciones específicas" — no valores universales. Guía general de horticultura de invernadero, no específica de Cannabis.'
+  },
+  {
+    id: 'cientifica-westmoreland-2021-espectro-azul-cannabis',
+    scope: 'CANNABIS',
+    title: 'Cannabis Lighting: Decreasing Blue Photon Fraction Increases Yield but Efficacy Is More Important for Cost-Effective Production of Cannabinoids',
+    authorOrInstitution: 'Westmoreland, F. M.; Kusuma, P.; Bugbee, B. — PLOS ONE',
+    url: 'https://doi.org/10.1371/journal.pone.0248988',
+    type: 'SCIENTIFIC',
+    publicationDate: '2021-03-23',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (acceso abierto, DOI confirmado vía Crossref). Probó cinco espectros con distinta fracción de fotones azules (4% a 20%) sobre un único cultivar ("Trump"). El rendimiento de flor bajó de forma lineal un 12.3% al aumentar el azul de 4% a 20% (p=0.04); la fracción de azul NO tuvo efecto estadísticamente significativo sobre la concentración final de cannabinoides (CBD equivalente p=0.32; THC equivalente p=0.51). Los propios autores señalan explícitamente que solo probaron un cultivar y que "es posible que cultivares de Cannabis con morfologías y días a floración distintos respondan de forma diferente a la fracción de fotones azules" — no se puede generalizar sin más a cualquier genotipo.'
+  },
+  {
+    id: 'cientifica-llewellyn-2022-uvb-cannabis-sin-efecto',
+    scope: 'CANNABIS',
+    title: 'Indoor Grown Cannabis Yield Increased Proportionally With Light Intensity, But Ultraviolet Radiation Did Not Affect Yield or Cannabinoid Content',
+    authorOrInstitution: 'Llewellyn, D.; Golem, S.; Foley, E.; Dinka, S.; Jones, A. M. P.; Zheng, Y. — Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9551646/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2022-09-27',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2022.974018, confirmado vía Crossref). Aplicó UVA+UVB (3.0 µmol·m⁻²·s⁻¹, 5 horas/día durante los últimos 20 días de floración) sobre Cannabis cultivado en interior: no encontró efecto sobre el peso seco de inflorescencia ni sobre la concentración de cannabinoides en la inflorescencia (las hojas de azúcar sí mostraron ~30% más THC foliar, un tejido de bajo valor comercial). Los propios autores señalan que esto contradice estudios más antiguos (Lydon et al. 1987; Pate 1983) que habían sugerido que la radiación UV-B aumenta el THC, y concluyen que "no encontramos beneficios comercialmente relevantes de agregar UV a la producción de cannabis en interior" — una de las afirmaciones más citadas sobre luz y cannabinoides no se sostuvo en este estudio más reciente y controlado.'
+  },
+  {
+    id: 'cientifica-corredor-perilla-2025-humedad-vpd-cannabis',
+    scope: 'CANNABIS',
+    title: 'Elevated Relative Humidity Significantly Decreases Cannabinoid Concentrations While Delaying Flowering Development in Cannabis sativa L.',
+    authorOrInstitution: 'Corredor-Perilla, I. C.; Kwon, T.-H.; Park, S.-H. — Frontiers in Plant Science',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12666426/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2025-11-17',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.3389/fpls.2025.1678142, confirmado vía Crossref). Comparó humedad relativa de dosel baja (37-58%) contra alta (78-98%), con los siguientes VPD resultantes medidos: vegetativo 1.29 kPa (baja HR) vs. 0.05 kPa (alta HR); floración 0.92 kPa (baja HR) vs. 0.25 kPa (alta HR). La HR alta retrasó la floración 3 semanas, redujo la biomasa seca total a menos de la mitad (biomasa floral -71%) y redujo notablemente varios cannabinoides (CBDA ~4.9 veces menos, CBC-A ~13 veces menos) respecto de HR baja. El propio estudio, al mencionar "rangos óptimos de VPD" (0.50-1, 0.70-1.20, 1.00-1.50 kPa según etapa), los atribuye a Breit et al. (2019) sin validarlos experimentalmente ellos mismos — es una cita de referencia ajena, no un hallazgo propio de este estudio.'
+  },
+  {
+    id: 'otra-breit-2019-vpd-cannabis-tabla-comercial',
+    title: 'Cannabis Science and Technology, vol. 2, n.º 2, pp. 52-61 (artículo sobre rangos de VPD para Cannabis)',
+    authorOrInstitution: 'Breit, L.; Leavitt, M.; Boyd, A. — Cannabis Science and Technology',
+    url: null,
+    type: 'OTHER',
+    publicationDate: '2019',
+    accessedAt: '2026-09-19',
+    notes: 'SIN URL verificable de acceso directo al artículo original — identificado solo por la cita bibliográfica (volumen/número/páginas) que reproducen fuentes secundarias, entre ellas el estudio revisado por pares de Corredor-Perilla et al. (2025), que es como se detectó esta fuente. Cannabis Science and Technology es una revista/publicación de la industria orientada a cultivadores y procesadores, NO una revista científica revisada por pares como las demás fuentes "SCIENTIFIC" de este atlas — se incluye acá exactamente para documentar el origen real de la "tabla de VPD ideal" (0.50-1 / 0.70-1.20 / 1.00-1.50 kPa según etapa) que circula ampliamente en sitios de cultivo: es una recomendación de una publicación de industria, no un hallazgo validado por un experimento controlado y revisado por pares.'
+  },
+  {
+    id: 'oficial-fao-y5210s-regiones-agroecologicas-argentina',
+    scope: 'GENERAL',
+    title: 'Capítulo 1: Regiones Agroecológicas — informe sobre agricultura de secano en América Latina',
+    authorOrInstitution: 'FAO',
+    url: 'https://www.fao.org/4/y5210s/y5210s05.htm',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa. Divide a la Argentina en tres regiones amplias según precipitación/necesidad de riego (húmeda, semiárida, árida) y también usa las categorías populares "Pampeana" (Buenos Aires, Córdoba, Santa Fe, orientada a granos), "NOA" (Salta, Jujuy, Tucumán, Santiago del Estero, Catamarca), "NEA" (Corrientes, Chaco, Misiones, Formosa) y "Cuyo"/"Comahue" (valles bajo riego, fruticultura/vitivinicultura) — asociadas a provincias y sistemas productivos dominantes, no a isotermas o límites climáticos estrictos. El propio documento aclara que "Patagonia no se cubre en este informe" por su actividad agrícola limitada. Se cita para mostrar que estas categorías existen como agrupación institucional real (FAO las usa), pero como agrupación productiva/administrativa, no como clasificación agroclimática de precisión.'
+  },
+  {
+    id: 'oficial-inta-rian-regiones-agroecologicas',
+    scope: 'GENERAL',
+    title: 'RIAN — Regiones Agroecológicas de la República Argentina',
+    authorOrInstitution: 'INTA — Red de Información Agropecuaria y Agroindustrial Nacional (RIAN)',
+    url: 'http://agroregionesrian.inta.gob.ar/inicio',
+    type: 'OFFICIAL',
+    publicationDate: null,
+    accessedAt: '2026-09-19',
+    notes: 'NO verificado por lectura directa: el dominio agroregionesrian.inta.gob.ar no resolvió (error de DNS) al intentar el acceso directo en esta sesión — el mismo tipo de bloqueo de dominios INTA ya documentado repetidamente en otras fuentes de este atlas. La existencia y el criterio general de este sistema se documentan a partir de resultados de motor de búsqueda que citan al propio sitio (no lectura directa): INTA delimita "zonas" (numeración romana) y "subzonas" (letras, ej. XVI-A) por criterios de suelo, aptitud de uso de la tierra, agroclima, fisonomía y estructura de la vegetación y sistemas productivos característicos, siguiendo límites de departamentos provinciales — un esquema real pero distinto del popular "NOA/Cuyo/Pampeana/Patagonia", y más granular que él. Se cita únicamente para mostrar que existe un esquema oficial alternativo y más específico, sin afirmar ningún detalle puntual de sus límites que no haya podido verificarse por lectura directa.'
+  },
 ];
 
 export function sourceById(id) {
