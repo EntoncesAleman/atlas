@@ -29,45 +29,127 @@ function mapCultivoRow(row, eventRows) {
     currentStageId: row.current_stage_id,
     provinceId: row.province_id ?? null,
     seasonName: row.season_name ?? null,
+    plantCount: row.plant_count ?? 1,
+    plantMode: row.plant_mode ?? 'simple',
+    variety: row.variety ?? null,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
     events: eventRows.map(mapEventRow),
   };
 }
 
-export async function fetchCultivo(supabase, userId) {
+function mapCultivoSummaryRow(row) {
+  return {
+    id: row.id,
+    seasonName: row.season_name ?? null,
+    currentStageId: row.current_stage_id,
+    plantCount: row.plant_count ?? 1,
+    plantMode: row.plant_mode ?? 'simple',
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  };
+}
+
+async function fetchCultivoEvents(supabase, cultivoId) {
+  const { data, error } = await supabase
+    .from('cultivo_events')
+    .select('*')
+    .eq('cultivo_id', cultivoId)
+    .order('created_at', { ascending: false });
+  if (error) throw error;
+  return data ?? [];
+}
+
+// Un cultivo puntual por id (brief §14: un usuario puede tener más de uno) — usado por el
+// selector de cultivo/temporada para cargar el que la persona elige. El filtro por `userId`
+// además de RLS es puro cinturón y tiradores: no cambia qué se puede leer, documenta la
+// intención.
+export async function fetchCultivoById(supabase, userId, cultivoId) {
   const { data: cultivoRow, error: cultivoError } = await supabase
     .from('cultivos')
     .select('*')
+    .eq('id', cultivoId)
     .eq('user_id', userId)
     .maybeSingle();
 
   if (cultivoError) throw cultivoError;
   if (!cultivoRow) return null;
 
-  const { data: eventRows, error: eventsError } = await supabase
-    .from('cultivo_events')
-    .select('*')
-    .eq('cultivo_id', cultivoRow.id)
-    .order('created_at', { ascending: false });
-
-  if (eventsError) throw eventsError;
-  return mapCultivoRow(cultivoRow, eventRows ?? []);
+  const eventRows = await fetchCultivoEvents(supabase, cultivoRow.id);
+  return mapCultivoRow(cultivoRow, eventRows);
 }
 
-// Devuelve el cultivo del usuario, creándolo (vacío) si todavía no existe.
-export async function ensureCultivo(supabase, userId) {
-  const existing = await fetchCultivo(supabase, userId);
-  if (existing) return existing;
+// El cultivo "por defecto" de una persona: el que se abre al iniciar sesión si no hay uno ya
+// elegido explícitamente (ver `selectedCultivoId` en mi-cultivo/page.js) — el más recientemente
+// actualizado, no el primero creado, para retomar donde quedó la última vez.
+async function fetchDefaultCultivo(supabase, userId) {
+  const { data: cultivoRow, error: cultivoError } = await supabase
+    .from('cultivos')
+    .select('*')
+    .eq('user_id', userId)
+    .order('updated_at', { ascending: false })
+    .limit(1)
+    .maybeSingle();
 
+  if (cultivoError) throw cultivoError;
+  if (!cultivoRow) return null;
+
+  const eventRows = await fetchCultivoEvents(supabase, cultivoRow.id);
+  return mapCultivoRow(cultivoRow, eventRows);
+}
+
+// Devuelve el cultivo por defecto de la persona, creando uno (vacío) si todavía no tiene
+// ninguno. Se mantiene el mismo nombre/firma que antes de soportar varios cultivos por usuario
+// (Fase 10B) para no tener que tocar el efecto de login/migración que ya la usa.
+export async function ensureCultivo(supabase, userId) {
+  const existing = await fetchDefaultCultivo(supabase, userId);
+  if (existing) return existing;
+  return createCultivoRemote(supabase, userId, {});
+}
+
+// Alias de compatibilidad: antes de soportar varios cultivos por usuario (brief §14), "el
+// cultivo" de una persona era inequívoco. `lib/chatbot/context.js` sigue esperando exactamente
+// esa firma (un cultivo, no una lista) — acá "el cultivo" pasa a significar, de forma explícita,
+// su cultivo por defecto (el más recientemente actualizado). No se tocó `context.js`: sigue
+// funcionando igual, ahora sobre una base de datos que admite más de un cultivo por persona.
+export async function fetchCultivo(supabase, userId) {
+  return fetchDefaultCultivo(supabase, userId);
+}
+
+// Listado liviano (sin eventos) de todos los cultivos/temporadas de la persona, para el
+// selector — brief: "La interfaz debe permitir cambiar entre cultivos/temporadas sin perder
+// información".
+export async function listCultivosRemote(supabase, userId) {
   const { data, error } = await supabase
     .from('cultivos')
-    .insert({ user_id: userId })
+    .select('id, season_name, current_stage_id, plant_count, plant_mode, created_at, updated_at')
+    .eq('user_id', userId)
+    .order('updated_at', { ascending: false });
+  if (error) throw error;
+  return (data ?? []).map(mapCultivoSummaryRow);
+}
+
+export async function createCultivoRemote(supabase, userId, { seasonName } = {}) {
+  const { data, error } = await supabase
+    .from('cultivos')
+    .insert({ user_id: userId, season_name: seasonName || null })
     .select()
     .single();
-
   if (error) throw error;
   return mapCultivoRow(data, []);
+}
+
+export async function setPlantInfoRemote(supabase, cultivoId, { plantCount, plantMode, variety }) {
+  const { error } = await supabase
+    .from('cultivos')
+    .update({
+      plant_count: plantCount,
+      plant_mode: plantMode,
+      variety: variety || null,
+      updated_at: new Date().toISOString()
+    })
+    .eq('id', cultivoId);
+  if (error) throw error;
 }
 
 export async function setCurrentStageRemote(supabase, cultivoId, stageId) {

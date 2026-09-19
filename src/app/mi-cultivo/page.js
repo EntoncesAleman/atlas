@@ -8,6 +8,10 @@ import { loadCultivo, saveCultivo, resetCultivo } from '../lib/miCultivo/storage
 import { getSupabaseClient } from '../lib/supabase/client';
 import {
   ensureCultivo,
+  fetchCultivoById,
+  listCultivosRemote,
+  createCultivoRemote,
+  setPlantInfoRemote,
   setCurrentStageRemote,
   setProvinceRemote,
   insertEventRemote,
@@ -16,6 +20,12 @@ import {
   resetCultivoRemote,
   bulkInsertEventsRemote,
 } from '../lib/miCultivo/remoteStorage';
+import {
+  fetchPlantasRemote,
+  insertPlantaRemote,
+  updatePlantaRemote,
+  deletePlantaRemote,
+} from '../lib/miCultivo/plantasRemote';
 import { fetchNotesRemote, insertNoteRemote, deleteNoteRemote, deleteAllNotesRemote, setSeasonNameRemote } from '../lib/miCultivo/notesRemote';
 import {
   fetchAlertsRemote,
@@ -101,6 +111,32 @@ function readAtlasSelectedProvince() {
   }
 }
 
+// Qué cultivo/temporada eligió ver la persona por última vez (brief §14: "cambiar entre
+// cultivos/temporadas sin perder información") — solo tiene sentido en modo cuenta, ver nota en
+// el selector de cultivo más abajo. Mismo patrón de persistencia liviana que la provincia
+// elegida en Inicio, ninguna tabla nueva para esto.
+const SELECTED_CULTIVO_KEY = 'atlas:miCultivo:selectedCultivoId';
+
+function readSelectedCultivoId() {
+  if (typeof window === 'undefined') return null;
+  try {
+    return window.localStorage.getItem(SELECTED_CULTIVO_KEY) || null;
+  } catch {
+    return null;
+  }
+}
+
+function writeSelectedCultivoId(cultivoId) {
+  if (typeof window === 'undefined') return;
+  try {
+    if (cultivoId) window.localStorage.setItem(SELECTED_CULTIVO_KEY, cultivoId);
+    else window.localStorage.removeItem(SELECTED_CULTIVO_KEY);
+  } catch {
+    // no-op: preferencia de UI, no un dato crítico — si no se puede guardar, simplemente la
+    // próxima visita vuelve a abrir el cultivo por defecto.
+  }
+}
+
 // A dónde ir después de iniciar sesión (no de crear cuenta: una cuenta recién creada siempre
 // empieza en rol 'user', ver `handleAuthSubmit`) — según el rol real leído de `profiles`, la
 // misma tabla que hace cumplir `proxy.js`/`requireRole` del lado servidor. Si la consulta
@@ -169,6 +205,20 @@ export default function MiCultivoPage() {
   const [preferencesSaving, setPreferencesSaving] = useState(false);
   const [preferencesNotice, setPreferencesNotice] = useState('');
 
+  // --- Varios cultivos/temporadas por cuenta (brief §14, solo modo con cuenta) ---
+  const [cultivosList, setCultivosList] = useState([]);
+  const [cultivoSwitchBusy, setCultivoSwitchBusy] = useState(false);
+
+  // --- Plantas dentro del cultivo actual (modo simple por cantidad, o detallado) ---
+  const [plantCount, setPlantCount] = useState(1);
+  const [plantMode, setPlantMode] = useState('simple'); // 'simple' | 'detailed'
+  const [variety, setVariety] = useState('');
+  const [plantas, setPlantas] = useState([]);
+  const [plantFormOpen, setPlantFormOpen] = useState(false);
+  const [plantDraft, setPlantDraft] = useState({ label: '', variety: '', stageId: '', notes: '' });
+  const [editingPlantaId, setEditingPlantaId] = useState(null);
+  const [plantBusy, setPlantBusy] = useState(false);
+
   // --- Contexto ambiental (Fase 11) ---
   const [provinceId, setProvinceId] = useState(null);
   const [weatherStatus, setWeatherStatus] = useState('idle'); // idle | loading | ready | error
@@ -225,6 +275,16 @@ export default function MiCultivoPage() {
   const unreadAlerts = alerts.filter((alert) => alert.status === 'unread');
   const readAlerts = alerts.filter((alert) => alert.status === 'read');
 
+  // Brief §14: una alerta se asocia al cultivo completo por defecto — solo se etiqueta con una
+  // planta puntual cuando la propia alerta trae `plantaId` (hoy el motor de reglas nunca lo
+  // pone: evalúa a nivel del cultivo completo, ver `alerts/engine.js`). Queda listo para cuando
+  // una regla futura tenga información suficiente de una planta individual.
+  function alertTargetLabel(alert) {
+    if (!alert.plantaId) return 'Para tu cultivo';
+    const planta = plantas.find((item) => item.id === alert.plantaId);
+    return planta ? `Para ${planta.label}` : 'Para una planta';
+  }
+
   function adoptCultivo(cultivo) {
     setCultivoId(cultivo.id);
     setCreatedAt(cultivo.createdAt);
@@ -232,10 +292,15 @@ export default function MiCultivoPage() {
     setEvents(cultivo.events);
     setProvinceId(cultivo.provinceId ?? null);
     setSeasonName(cultivo.seasonName ?? null);
+    setPlantCount(cultivo.plantCount ?? 1);
+    setPlantMode(cultivo.plantMode ?? 'simple');
+    setVariety(cultivo.variety ?? '');
     // En modo cuenta, `cultivo.notes` no viene incluido acá (las notas remotas se cargan aparte,
     // igual que las fotos) — el `?? []` solo cubre el instante entre adoptar el cultivo remoto y
-    // que termine esa carga separada.
+    // que termine esa carga separada. Lo mismo aplica a `plantas` (modo detallado): se cargan en
+    // su propio efecto, no acá.
     setNotes(cultivo.notes ?? []);
+    setPlantas([]);
   }
 
   function loadLocalIntoState() {
@@ -328,6 +393,29 @@ export default function MiCultivoPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session, authLoading, hydrated, migrationChecked, supabase]);
 
+  // Una vez resuelta la migración (ver el efecto de arriba, que no se toca para no arriesgar esa
+  // lógica ya probada): si la persona había elegido un cultivo/temporada distinto del que abre
+  // por defecto en una visita anterior, lo retoma acá — brief §14: "cambiar entre cultivos/
+  // temporadas sin perder información" también significa recordar cuál se estaba viendo.
+  useEffect(() => {
+    if (!isAccountMode || !supabase || !session || !migrationChecked || pendingMigration) return;
+    const savedId = readSelectedCultivoId();
+    if (!savedId || savedId === cultivoId) return;
+    let cancelled = false;
+    fetchCultivoById(supabase, session.user.id, savedId)
+      .then((found) => {
+        if (!cancelled && found) adoptCultivo(found);
+      })
+      .catch(() => {
+        // Si el cultivo guardado ya no existe (se borró desde otro dispositivo, por ejemplo), se
+        // deja el cultivo por defecto que ya se adoptó — no es un error que deba interrumpir nada.
+      });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAccountMode, supabase, session, migrationChecked, pendingMigration]);
+
   // Al cerrar sesión: vuelve a mostrar el cultivo local.
   useEffect(() => {
     if (authLoading) return;
@@ -382,6 +470,45 @@ export default function MiCultivoPage() {
       })
       .catch(() => {
         if (!cancelled) setNotes([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isAccountMode, cultivoId, supabase, migrationChecked, pendingMigration]);
+
+  // Listado de cultivos/temporadas para el selector (brief §14) — liviano (sin eventos), se
+  // recarga cada vez que cambia cuál está activo para que el nombre/etapa mostrados en el propio
+  // selector no queden desactualizados después de editar la temporada actual.
+  useEffect(() => {
+    if (!isAccountMode || !supabase || !session) {
+      setCultivosList([]);
+      return;
+    }
+    let cancelled = false;
+    listCultivosRemote(supabase, session.user.id)
+      .then((list) => {
+        if (!cancelled) setCultivosList(list);
+      })
+      .catch(() => {
+        if (!cancelled) setCultivosList([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isAccountMode, supabase, session, cultivoId, seasonName, currentStageId]);
+
+  // Plantas individuales (modo detallado) del cultivo activo — mismo guard que fotos/notas.
+  useEffect(() => {
+    if (!isAccountMode || !cultivoId || !supabase || !migrationChecked || pendingMigration) {
+      return;
+    }
+    let cancelled = false;
+    fetchPlantasRemote(supabase, cultivoId)
+      .then((list) => {
+        if (!cancelled) setPlantas(list);
+      })
+      .catch(() => {
+        if (!cancelled) setPlantas([]);
       });
     return () => {
       cancelled = true;
@@ -444,9 +571,9 @@ export default function MiCultivoPage() {
   // handlers), así que este efecto no debe pisar esos datos.
   useEffect(() => {
     if (!hydrated || isAccountMode) return;
-    saveCultivo({ id: cultivoId, currentStageId, provinceId, seasonName, events, notes, createdAt, updatedAt: new Date().toISOString() });
+    saveCultivo({ id: cultivoId, currentStageId, provinceId, seasonName, plantCount, variety, events, notes, createdAt, updatedAt: new Date().toISOString() });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hydrated, isAccountMode, cultivoId, currentStageId, provinceId, seasonName, events, notes, createdAt]);
+  }, [hydrated, isAccountMode, cultivoId, currentStageId, provinceId, seasonName, plantCount, variety, events, notes, createdAt]);
 
   // Contexto ambiental: solo consulta clima real cuando hay una provincia
   // elegida, y (en modo cuenta) recién después de que la migración terminó de
@@ -725,6 +852,113 @@ export default function MiCultivoPage() {
       } catch {
         setRemoteError('No se pudo eliminar la nota. Probá de nuevo.');
       }
+    }
+  }
+
+  // --- Varios cultivos/temporadas (brief §14, solo modo cuenta) ---
+
+  async function handleSwitchCultivo(newCultivoId) {
+    if (!newCultivoId || newCultivoId === cultivoId) return;
+    setCultivoSwitchBusy(true);
+    setRemoteError('');
+    try {
+      const found = await fetchCultivoById(supabase, session.user.id, newCultivoId);
+      if (found) {
+        adoptCultivo(found);
+        writeSelectedCultivoId(found.id);
+        // Estado transitorio de UI del cultivo anterior — no tiene sentido arrastrarlo al nuevo.
+        resetForm();
+        setExpandedPhotoId(null);
+        setConfirmingReset(false);
+        setConfirmingDeleteEventId(null);
+        setPlantFormOpen(false);
+        setEditingPlantaId(null);
+      }
+    } catch {
+      setRemoteError('No se pudo cambiar de cultivo. Probá de nuevo.');
+    } finally {
+      setCultivoSwitchBusy(false);
+    }
+  }
+
+  async function handleCreateCultivo() {
+    setCultivoSwitchBusy(true);
+    setRemoteError('');
+    try {
+      const created = await createCultivoRemote(supabase, session.user.id, {});
+      adoptCultivo(created);
+      writeSelectedCultivoId(created.id);
+      resetForm();
+      setExpandedPhotoId(null);
+    } catch {
+      setRemoteError('No se pudo crear un nuevo cultivo. Probá de nuevo.');
+    } finally {
+      setCultivoSwitchBusy(false);
+    }
+  }
+
+  // --- Plantas: modo simple (cantidad) o detallado (brief §14) ---
+
+  async function handleSavePlantBasics(nextPlantCount, nextVariety) {
+    setPlantCount(nextPlantCount);
+    setVariety(nextVariety);
+    if (isAccountMode) {
+      try {
+        await setPlantInfoRemote(supabase, cultivoId, { plantCount: nextPlantCount, plantMode, variety: nextVariety });
+      } catch {
+        setRemoteError('No se pudo guardar la información de plantas.');
+      }
+    }
+  }
+
+  async function handleSetPlantMode(mode) {
+    setPlantMode(mode);
+    if (isAccountMode) {
+      try {
+        await setPlantInfoRemote(supabase, cultivoId, { plantCount, plantMode: mode, variety });
+      } catch {
+        setRemoteError('No se pudo guardar el modo de gestión de plantas.');
+      }
+    }
+  }
+
+  async function handleAddPlanta(domEvent) {
+    domEvent.preventDefault();
+    if (!plantDraft.label.trim()) return;
+    setPlantBusy(true);
+    setRemoteError('');
+    try {
+      const created = await insertPlantaRemote(supabase, session.user.id, cultivoId, plantDraft);
+      setPlantas((prev) => [...prev, created]);
+      setPlantDraft({ label: '', variety: '', stageId: '', notes: '' });
+      setPlantFormOpen(false);
+    } catch {
+      setRemoteError('No se pudo agregar la planta. Probá de nuevo.');
+    } finally {
+      setPlantBusy(false);
+    }
+  }
+
+  async function handleUpdatePlanta(planta, changes) {
+    setPlantBusy(true);
+    setRemoteError('');
+    try {
+      const updated = await updatePlantaRemote(supabase, planta.id, { ...planta, ...changes });
+      setPlantas((prev) => prev.map((item) => (item.id === planta.id ? updated : item)));
+      setEditingPlantaId(null);
+    } catch {
+      setRemoteError('No se pudo actualizar la planta. Probá de nuevo.');
+    } finally {
+      setPlantBusy(false);
+    }
+  }
+
+  async function handleDeletePlanta(planta) {
+    setPlantas((prev) => prev.filter((item) => item.id !== planta.id));
+    try {
+      await deletePlantaRemote(supabase, planta.id);
+    } catch {
+      setRemoteError('No se pudo eliminar la planta. Probá de nuevo.');
     }
   }
 
@@ -1067,6 +1301,28 @@ export default function MiCultivoPage() {
         )}
       </section>
 
+      {isAccountMode && cultivoId && (
+        <section className="atlas-section mi-cultivo-switcher-section">
+          <label className="mi-cultivo-switcher">
+            <span>Cultivo / temporada</span>
+            <select
+              value={cultivoId}
+              onChange={(event) => handleSwitchCultivo(event.target.value)}
+              disabled={cultivoSwitchBusy}
+            >
+              {cultivosList.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.seasonName || `Temporada sin nombre (${formatDate(item.createdAt.slice(0, 10))})`}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="button" className="mi-cultivo-reset-link" onClick={handleCreateCultivo} disabled={cultivoSwitchBusy}>
+            + Nuevo cultivo
+          </button>
+        </section>
+      )}
+
       {remoteError && (
         <section className="atlas-section">
           <p className="mi-cultivo-auth-error">{remoteError}</p>
@@ -1135,6 +1391,143 @@ export default function MiCultivoPage() {
                     <span className="mi-cultivo-season-stat-label">En esta etapa</span>
                     <span className="mi-cultivo-season-stat-value">{daysInStage !== null ? formatElapsed(daysInStage) : 'Sin registros en esta etapa'}</span>
                   </div>
+                </div>
+              )}
+            </div>
+
+            <div className="atlas-entry-section mi-cultivo-plants">
+              <div className="mi-cultivo-events-head">
+                <h2>Plantas</h2>
+                {isAccountMode && (
+                  <button
+                    type="button"
+                    className="mi-cultivo-reset-link"
+                    onClick={() => handleSetPlantMode(plantMode === 'simple' ? 'detailed' : 'simple')}
+                  >
+                    {plantMode === 'simple' ? 'Gestionar plantas individualmente' : 'Volver a modo simple (cantidad)'}
+                  </button>
+                )}
+              </div>
+
+              {(!isAccountMode || plantMode === 'simple') ? (
+                <form
+                  className="mi-cultivo-plant-basics-form"
+                  onSubmit={(domEvent) => {
+                    domEvent.preventDefault();
+                    handleSavePlantBasics(plantCount, variety);
+                  }}
+                >
+                  <label className="mi-cultivo-field">
+                    <span>Cantidad de plantas</span>
+                    <input
+                      type="number"
+                      min={1}
+                      value={plantCount}
+                      onChange={(event) => setPlantCount(Math.max(1, Number(event.target.value) || 1))}
+                    />
+                  </label>
+                  <label className="mi-cultivo-field">
+                    <span>Variedad (opcional)</span>
+                    <input
+                      type="text"
+                      value={variety}
+                      onChange={(event) => setVariety(event.target.value)}
+                      placeholder="Ej. autofloreciente, White Widow..."
+                    />
+                  </label>
+                  <button type="submit" className="secondary-button">Guardar</button>
+                </form>
+              ) : (
+                <div className="mi-cultivo-plantas-detail">
+                  {plantas.length === 0 ? (
+                    <p className="atlas-section-note">Todavía no agregaste ninguna planta individual.</p>
+                  ) : (
+                    <ul className="mi-cultivo-plantas-list">
+                      {plantas.map((planta) => (
+                        <li className="mi-cultivo-planta-item" key={planta.id}>
+                          {editingPlantaId === planta.id ? (
+                            <form
+                              className="mi-cultivo-plant-edit-form"
+                              onSubmit={(domEvent) => {
+                                domEvent.preventDefault();
+                                handleUpdatePlanta(planta, plantDraft);
+                              }}
+                            >
+                              <input
+                                type="text"
+                                value={plantDraft.label}
+                                onChange={(event) => setPlantDraft((prev) => ({ ...prev, label: event.target.value }))}
+                                placeholder="Nombre/identificador"
+                                required
+                              />
+                              <input
+                                type="text"
+                                value={plantDraft.variety}
+                                onChange={(event) => setPlantDraft((prev) => ({ ...prev, variety: event.target.value }))}
+                                placeholder="Variedad"
+                              />
+                              <select
+                                value={plantDraft.stageId}
+                                onChange={(event) => setPlantDraft((prev) => ({ ...prev, stageId: event.target.value }))}
+                              >
+                                <option value="">Sigue la etapa del cultivo</option>
+                                {STAGES.map((stage) => (
+                                  <option key={stage.id} value={stage.id}>{stage.label}</option>
+                                ))}
+                              </select>
+                              <button type="submit" className="mi-cultivo-reset-link" disabled={plantBusy}>Guardar</button>
+                              <button type="button" className="mi-cultivo-reset-link" onClick={() => setEditingPlantaId(null)}>Cancelar</button>
+                            </form>
+                          ) : (
+                            <>
+                              <div>
+                                <span className="mi-cultivo-planta-label">{planta.label}</span>
+                                {planta.variety && <span className="mi-cultivo-planta-variety"> · {planta.variety}</span>}
+                                {planta.stageId && <span className="mi-cultivo-planta-variety"> · {stageLabel(planta.stageId)}</span>}
+                              </div>
+                              <div className="mi-cultivo-planta-actions">
+                                <button
+                                  type="button"
+                                  className="mi-cultivo-reset-link"
+                                  onClick={() => {
+                                    setEditingPlantaId(planta.id);
+                                    setPlantDraft({ label: planta.label, variety: planta.variety ?? '', stageId: planta.stageId ?? '', notes: planta.notes ?? '' });
+                                  }}
+                                >
+                                  Editar
+                                </button>
+                                <button type="button" className="mi-cultivo-reset-link" onClick={() => handleDeletePlanta(planta)}>Eliminar</button>
+                              </div>
+                            </>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {plantFormOpen ? (
+                    <form className="mi-cultivo-plant-edit-form" onSubmit={handleAddPlanta}>
+                      <input
+                        type="text"
+                        value={plantDraft.label}
+                        onChange={(event) => setPlantDraft((prev) => ({ ...prev, label: event.target.value }))}
+                        placeholder={`Planta ${String(plantas.length + 1).padStart(2, '0')}`}
+                        required
+                      />
+                      <input
+                        type="text"
+                        value={plantDraft.variety}
+                        onChange={(event) => setPlantDraft((prev) => ({ ...prev, variety: event.target.value }))}
+                        placeholder="Variedad (opcional)"
+                      />
+                      <button type="submit" className="secondary-button" disabled={plantBusy}>Agregar</button>
+                      <button type="button" className="mi-cultivo-reset-link" onClick={() => setPlantFormOpen(false)}>Cancelar</button>
+                    </form>
+                  ) : (
+                    <button type="button" className="secondary-button" onClick={() => setPlantFormOpen(true)}>
+                      + Agregar planta
+                    </button>
+                  )}
                 </div>
               )}
             </div>
@@ -1639,6 +2032,7 @@ export default function MiCultivoPage() {
                             </span>
                             <span className="mi-cultivo-alert-date">{formatGeneratedAt(alert.createdAt)}</span>
                           </div>
+                          <span className="mi-cultivo-alert-target">{alertTargetLabel(alert)}</span>
                           <p className="mi-cultivo-alert-title">{alert.title}</p>
                           <p className="mi-cultivo-alert-body">{alert.body}</p>
                           <div className="mi-cultivo-alert-actions">
@@ -1663,6 +2057,7 @@ export default function MiCultivoPage() {
                               </span>
                               <span className="mi-cultivo-alert-date">{formatGeneratedAt(alert.createdAt)}</span>
                             </div>
+                            <span className="mi-cultivo-alert-target">{alertTargetLabel(alert)}</span>
                             <p className="mi-cultivo-alert-title">{alert.title}</p>
                             <p className="mi-cultivo-alert-body">{alert.body}</p>
                             {alert.relatedHref && <Link href={alert.relatedHref}>Ver en el Atlas ↗</Link>}

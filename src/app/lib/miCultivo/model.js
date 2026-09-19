@@ -35,6 +35,12 @@ export function createCultivo() {
     currentStageId: STAGES[0].id,
     provinceId: null,
     seasonName: null,
+    // Modo simple por cantidad (brief §14) — el modo detallado (plantas individuales con su
+    // propia ficha) necesita una tabla propia y por eso es solo con cuenta (ver
+    // `lib/miCultivo/plantasRemote.js`); el conteo simple y la variedad sí tienen sentido sin
+    // cuenta, así que viajan en el mismo objeto local que el resto de Mi Cultivo.
+    plantCount: 1,
+    variety: null,
     events: [],
     notes: [],
     createdAt: now,

@@ -2106,6 +2106,15 @@ body::before {
   color: var(--text-muted);
 }
 
+.mi-cultivo-alert-target {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
 .mi-cultivo-alert-title {
   margin: 6px 0 2px;
   font-size: 13px;
@@ -2163,6 +2172,108 @@ body::before {
 
 .mi-cultivo-preference-disabled {
   opacity: 0.6;
+}
+
+/* --- Selector de cultivo/temporada (brief §14) --- */
+.mi-cultivo-switcher-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.mi-cultivo-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.mi-cultivo-switcher select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-size: 13px;
+  color: var(--text);
+  max-width: 260px;
+}
+
+/* --- Plantas --- */
+.mi-cultivo-plant-basics-form {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.mi-cultivo-plant-basics-form input {
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.mi-cultivo-plant-basics-form input[type="number"] {
+  width: 90px;
+}
+
+.mi-cultivo-plantas-detail {
+  margin-top: 10px;
+}
+
+.mi-cultivo-plantas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.mi-cultivo-planta-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  flex-wrap: wrap;
+}
+
+.mi-cultivo-planta-label {
+  font-weight: 700;
+  color: var(--sage-dark);
+  font-size: 13px;
+}
+
+.mi-cultivo-planta-variety {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.mi-cultivo-planta-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.mi-cultivo-plant-edit-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.mi-cultivo-plant-edit-form input,
+.mi-cultivo-plant-edit-form select {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font-size: 12px;
 }
 
 .mi-cultivo-weather-location {

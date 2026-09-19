@@ -16,7 +16,12 @@ function mapAlertRow(row) {
     body: row.body,
     relatedHref: row.related_href,
     status: row.status,
-    createdAt: row.created_at
+    createdAt: row.created_at,
+    // `null` en todas las alertas que genera hoy el motor de reglas (evalúa a nivel del
+    // cultivo completo, brief §7) — la columna existe para cuando una regla futura tenga
+    // suficiente información propia de una planta puntual como para asociarla ahí en vez de al
+    // cultivo en general (brief §14: "cuando exista información suficiente").
+    plantaId: row.planta_id ?? null
   };
 }
 
