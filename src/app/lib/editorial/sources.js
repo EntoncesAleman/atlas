@@ -1466,6 +1466,50 @@ export const sources = [
     accessedAt: '2026-09-19',
     notes: 'NO verificado por lectura directa: el dominio agroregionesrian.inta.gob.ar no resolvió (error de DNS) al intentar el acceso directo en esta sesión — el mismo tipo de bloqueo de dominios INTA ya documentado repetidamente en otras fuentes de este atlas. La existencia y el criterio general de este sistema se documentan a partir de resultados de motor de búsqueda que citan al propio sitio (no lectura directa): INTA delimita "zonas" (numeración romana) y "subzonas" (letras, ej. XVI-A) por criterios de suelo, aptitud de uso de la tierra, agroclima, fisonomía y estructura de la vegetación y sistemas productivos característicos, siguiendo límites de departamentos provinciales — un esquema real pero distinto del popular "NOA/Cuyo/Pampeana/Patagonia", y más granular que él. Se cita únicamente para mostrar que existe un esquema oficial alternativo y más específico, sin afirmar ningún detalle puntual de sus límites que no haya podido verificarse por lectura directa.'
   },
+  {
+    id: 'academica-unne-crecimiento-y-desarrollo',
+    scope: 'GENERAL',
+    title: 'Guía de Estudio: Crecimiento y Desarrollo',
+    authorOrInstitution: 'Cátedra de Fisiología Vegetal, Facultad de Ciencias Exactas y Naturales y Agrimensura, Universidad Nacional del Nordeste (UNNE) — Courtis, A. (corrección: Marassi, M. A.)',
+    url: 'https://exa.unne.edu.ar/biologia/fisiologia.vegetal/Gu%C3%ADa%20de%20Estudio-Crecimientoydesarrollo.pdf',
+    type: 'ACADEMIC',
+    publicationDate: '2014',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (extracción local con PyMuPDF; misma cátedra argentina —UNNE— ya usada como fuente en otras entradas del atlas para germinación, fitocromos y nutrición mineral). Fisiología vegetal general, no específica de Cannabis. Define crecimiento como "aumento irreversible de volumen... generalmente acompañado de un aumento de masa" (distinto de la sola división celular) y desarrollo como "la serie de cambios cualitativos" del ciclo ontogénico completo. Describe las tres fases del crecimiento (división celular, elongación/expansión celular, diferenciación), los meristemas (apicales/laterales, primarios/secundarios, e intercalares en gramíneas) como fuente localizada y autoperpetuada de crecimiento, el mecanismo de elongación celular por relajación de la tensión de la pared mediada por auxina y turgencia (entrada de agua a la vacuola), y la curva sigmoidea de crecimiento (fases exponencial, lineal y de senescencia) junto con índices cuantitativos de crecimiento que vinculan directamente el área foliar con la tasa de asimilación neta (fotosíntesis) y la ganancia de biomasa.'
+  },
+  {
+    id: 'cientifica-morales-2026-arquitectura-raiz-canamo',
+    scope: 'CANNABIS',
+    title: 'Diversity of Root System Architecture and Root-Shoot Biomass Allocation in Industrial Hemp (Cannabis sativa L.)',
+    authorOrInstitution: 'Morales, E. Y.; Griffiths, M.; Mankar, S. P.; Bagnall, G. C.; Dowd, T. G.; Fletcher, R.; McKay, J. K.; Topp, C. N. — PLOS One',
+    url: 'https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0339929',
+    type: 'SCIENTIFIC',
+    publicationDate: '2026-02-06',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI confirmado vía Crossref). Fenotipó 46 genotipos de cáñamo industrial (variedades europeas de doble propósito, canadienses de semilla oleaginosa, chinas de fibra y estadounidenses de alto CBD) en invernadero (fotoperiodo de 12 h, 30-35 °C, sustrato sin suelo). Encontró una correlación fuerte entre biomasa de raíz y de parte aérea (R=0.93, p<0.01) y una variación considerable entre genotipos: 175% de diferencia en longitud total de raíz y en biomasa de parte aérea entre el genotipo más grande y el más chico, con heredabilidad en sentido amplio de 0.45 a 0.78 según el rasgo. Es evidencia directa de Cannabis sativa (cáñamo industrial, incluye variedades de alto CBD), pero los propios autores aclaran que las condiciones de invernadero con sustrato sin suelo "no replican completamente la resistencia mecánica, los gradientes de nutrientes ni la complejidad microbiana de los suelos de campo" — no se generaliza sin más a cultivo en tierra ni a variedades de uso exclusivamente medicinal/recreativo no incluidas en el panel.'
+  },
+  {
+    id: 'cientifica-farnisa-2023-nitrogeno-canamo-floral-biomasa',
+    scope: 'CANNABIS',
+    title: 'Floral Hemp (Cannabis sativa L.) Responses to Nitrogen Fertilization Under Field Conditions in the High Desert',
+    authorOrInstitution: 'Farnisa, M. M.; Miller, G. C.; Solomon, J. K. Q.; Barrios-Masias, F. H. — PLOS One',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10198490/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2023-05-19',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.1371/journal.pone.0284537, confirmado vía Crossref). Cáñamo floral (orientado a cannabinoides, no a fibra ni grano) a campo en el desierto de Nevada, 3 cultivares (Berry Blossom, Red Bordeaux, Tahoe Cinco), comparando un tratamiento con nitrógeno suplementario (90 kg/ha) contra un control sin agregado. El tratamiento con nitrógeno tuvo más del doble de cobertura de canopia a los 37 días, mayor altura final (109-145 cm contra 92-113 cm a los 102 días), mayor diámetro de tallo (31 mm contra 22 mm) y más del doble de biomasa aérea (930 g/planta contra 393 g/planta). Es evidencia directa de Cannabis sativa de tipo floral, con 3 cultivares y en un clima de desierto de altura muy particular (temporada de cultivo corta) — los propios autores señalan que los resultados podrían no transferirse a otros climas o suelos. Se cita para el mecanismo general (disponibilidad de nitrógeno asociada a mayor biomasa/altura/canopia), no como recomendación de dosis.'
+  },
+  {
+    id: 'academica-guo-2021-senescencia-foliar-revision',
+    scope: 'GENERAL',
+    title: 'Leaf Senescence: Progression, Regulation, and Application',
+    authorOrInstitution: 'Guo, Y.; Ren, G.; Zhang, K.; Li, Z.; Miao, Y.; Guo, H. — Molecular Horticulture',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10509828/',
+    type: 'SCIENTIFIC',
+    publicationDate: '2021-12',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa (PMC, acceso abierto; DOI 10.1186/s43897-021-00006-9, confirmado vía Crossref). Revisión general de fisiología vegetal (usa Arabidopsis thaliana como organismo modelo principal, con comparaciones en arroz, trigo y tomate) — no específica de Cannabis. Define la senescencia como "la etapa final del desarrollo de la planta", una "transición funcional de la asimilación de nutrientes a la removilización de nutrientes". Documenta tres tipos de disparadores: desarrollo (la edad como factor interno principal), hormonales (etileno, ácido jasmónico, ácido salicílico y ácido abscísico la promueven; citoquininas y giberelinas la retrasan) y ambientales (sequía, estrés salino, oscuridad, temperaturas extremas, deficiencia de nutrientes, patógenos). Durante la senescencia, los nutrientes liberados se exportan hacia órganos en desarrollo (brotes nuevos, hojas jóvenes, flores o semillas). No se encontró, dentro de las fuentes consultadas para esta investigación, un estudio específico de senescencia en Cannabis sativa revisado por pares — se cita como marco general aplicado por analogía, no como evidencia directa de la especie.'
+  },
 ];
 
 export function sourceById(id) {

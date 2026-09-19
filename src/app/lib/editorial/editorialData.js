@@ -715,7 +715,7 @@ export const editorialEntries = [
       'Esta entrada no fija un ritmo de riego ni una frecuencia — depende de demasiadas variables locales (tipo de sustrato, tamaño de contenedor, clima) como para dar un número único sin convertirlo en una receta arbitraria.'
     ],
     tags: ['suelo', 'agua', 'drenaje'],
-    relatedEntryIds: ['germinacion', 'cultivo-en-secuencia', 'evaluacion-visual-del-suelo', 'textura-estructura-porosidad', 'capacidad-de-campo-agua-disponible', 'componentes-de-sustrato', 'suelo-vivo-y-microbiologia', 'calidad-del-agua-de-riego'],
+    relatedEntryIds: ['germinacion', 'cultivo-en-secuencia', 'evaluacion-visual-del-suelo', 'textura-estructura-porosidad', 'capacidad-de-campo-agua-disponible', 'componentes-de-sustrato', 'suelo-vivo-y-microbiologia', 'calidad-del-agua-de-riego', 'agua-y-expansion-celular'],
     sourceIds: [
       'oficial-inta-relacion-suelo-planta-agua',
       'academica-unlpam-inta-guia-evaluacion-visual-suelo',
@@ -1051,7 +1051,7 @@ export const editorialEntries = [
       'No se fija ningún momento del ciclo como "el momento correcto" para podar — depende de la etapa de desarrollo de la planta (ver "Cultivo en secuencia") y de variables que esta entrada no cuantifica.'
     ],
     tags: ['cultivo', 'poda'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'fertilizacion-y-nutricion', 'entrenamiento-de-bajo-estres-lst', 'defoliacion', 'poda-de-bajos-bblr', 'super-cropping', 'fim', 'herramientas-e-higiene-de-poda'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'fertilizacion-y-nutricion', 'entrenamiento-de-bajo-estres-lst', 'defoliacion', 'poda-de-bajos-bblr', 'super-cropping', 'fim', 'herramientas-e-higiene-de-poda', 'meristemos-crecimiento-primario-secundario', 'arquitectura-y-asignacion-de-recursos'],
     sourceIds: [
       'cientifica-chavalina-2026-hemp-topping-morphology',
       'academica-beveridge-2023-apical-dominance-review'
@@ -1144,7 +1144,7 @@ export const editorialEntries = [
       'Esta entrada no da una tabla de dosificación ni un calendario de fertilización para ningún contexto: describe la fisiología general de la nutrición mineral, no una receta aplicable sin considerar el sustrato, el agua y la etapa de desarrollo de cada planta en particular.'
     ],
     tags: ['cultivo', 'fertilización', 'nutrición'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'lectura-de-senales', 'poda', 'ph-y-disponibilidad-de-nutrientes', 'suelo-vivo-y-microbiologia', 'conductividad-electrica-y-sales'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'lectura-de-senales', 'poda', 'ph-y-disponibilidad-de-nutrientes', 'suelo-vivo-y-microbiologia', 'conductividad-electrica-y-sales', 'arquitectura-y-asignacion-de-recursos', 'senescencia-y-final-del-desarrollo'],
     sourceIds: [
       'academica-unne-nutricion-mineral-dabrio-2020',
       'academica-kirkby-romheld-2007-micronutrientes-fisiologia'
@@ -1234,7 +1234,7 @@ export const editorialEntries = [
       'Esta entrada no fija una duración ni una fecha de cosecha: describe el proceso observable, coherente con el resto del atlas, que no convierte información botánica general en un calendario prescriptivo.'
     ],
     tags: ['cosecha', 'maduración'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'marco-editorial', 'poscosecha', 'quimica-de-la-maduracion', 'moho-gris-botrytis-cinerea'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'marco-editorial', 'poscosecha', 'quimica-de-la-maduracion', 'moho-gris-botrytis-cinerea', 'senescencia-y-final-del-desarrollo'],
     sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle', 'cientifica-bernstein-2019-cannabis-npk-cannabinoide-canopia'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-19',
@@ -1625,7 +1625,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['historia', 'genética', 'taxonomía', 'fotoperiodo'],
-    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'quimica-de-la-maduracion', 'canamo-industrial-frontera-thc', 'variacion-genetica-fotoperiodo'],
+    relatedEntryIds: ['historia-de-la-planta', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'quimica-de-la-maduracion', 'canamo-industrial-frontera-thc', 'variacion-genetica-fotoperiodo', 'diferencias-geneticas-crecimiento-cultivares'],
     sourceIds: [
       'cientifica-pollio-2016-nombre-cannabis-taxonomia',
       'cientifica-garner-allard-1920-photoperiodism-discovery',
@@ -1798,7 +1798,7 @@ export const editorialEntries = [
       'La Ficha Provincial del Atlas refleja la evidencia disponible por jurisdicción. Chubut cuenta con evidencia directa de nivel A de cultivo real de Cannabis sativa al aire libre (CONICET-CENPAT, cultivares Malvina y Pachamama, verano 2022-2023) y Jujuy cuenta con evidencia directa de nivel A de producción industrial bajo invernadero automatizado (Cannava S.E., habilitada por ANMAT) — sin que ninguna de las dos evidencias se generalice a otras provincias. Misiones tuvo una producción real documentada (MisioPharma/Biofábrica) que ya no está activa. Para el resto de las provincias, la información disponible combina datos ambientales verificables con principios fisiológicos generales, sin evidencia de campo local directa todavía.'
     ],
     tags: ['cultivo', 'ciclo', 'fotoperiodo', 'ambiente'],
-    relatedEntryIds: ['cultivo-en-secuencia', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'poscosecha', 'cuidado-de-la-plantula', 'temperatura-y-desarrollo'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'luz-y-fotoperiodo', 'cosecha-y-maduracion', 'poscosecha', 'cuidado-de-la-plantula', 'temperatura-y-desarrollo', 'crecimiento-vegetal-y-desarrollo', 'elongacion-stretch-floracion', 'senescencia-y-final-del-desarrollo'],
     sourceIds: [
       'cientifica-ahrens-2023-photoperiod-flowering-indoor',
       'cientifica-hesami-2023-cannabis-life-cycle',
@@ -1909,6 +1909,619 @@ export const editorialEntries = [
       ogImage: null
     }
   },
+  {
+    id: 'crecimiento-vegetal-y-desarrollo',
+    slug: 'que-es-el-crecimiento-vegetal',
+    categoryId: 'fundamentos',
+    title: 'Qué es el crecimiento vegetal: crecimiento y desarrollo no son lo mismo',
+    summary: '"Crecimiento" y "desarrollo" se usan como sinónimos en el lenguaje cotidiano de cultivo, pero en fisiología vegetal describen dos procesos distintos —uno cuantitativo, el otro cualitativo— que suelen ocurrir juntos sin ser lo mismo.',
+    intro: 'Antes de describir etapas puntuales del ciclo de Cannabis sativa, esta entrada fija el vocabulario de base: qué es, en fisiología vegetal, "crecimiento", qué es "desarrollo", y por qué la distinción importa para leer el resto de esta categoría sin confundir un aumento de tamaño con un cambio de etapa.',
+    sections: [
+      {
+        id: 'definicion-de-crecimiento',
+        title: 'Crecimiento: un aumento irreversible de volumen o masa',
+        paragraphs: [
+          'En fisiología vegetal, el crecimiento se define como el aumento irreversible de volumen de una célula, tejido, órgano o planta completa, generalmente acompañado de un aumento de masa. Es una definición más precisa de lo que parece: que se haya producido división celular no alcanza, por sí solo, para decir que hubo crecimiento — dividir una célula en dos no aumenta el volumen ni la masa total hasta que esas células nuevas se expanden.'
+        ]
+      },
+      {
+        id: 'definicion-de-desarrollo',
+        title: 'Desarrollo: cambios cualitativos a lo largo del ciclo',
+        paragraphs: [
+          'El desarrollo, en cambio, es la serie de cambios cualitativos por los que pasa una planta a lo largo de su ciclo completo, desde el cigoto hasta la muerte del individuo (lo que en fisiología vegetal se llama ciclo ontogénico). La transición de la etapa vegetativa a la floración, por ejemplo, es un cambio de desarrollo —un cambio de programa, no solo de tamaño—, aunque suele venir acompañada de cambios de crecimiento (como la elongación de entrenudos).',
+          'En la mayoría de los casos, crecimiento y desarrollo ocurren de forma paralela y coordinada — por eso es fácil tratarlos como sinónimos en el uso cotidiano. Pero distinguirlos ayuda a leer mejor una planta: una que crece mucho en tamaño no necesariamente cambió de etapa de desarrollo, y una que cambió de etapa (por ejemplo, inició floración) no necesariamente está creciendo más rápido en ese momento.'
+        ]
+      },
+      {
+        id: 'por-que-esta-distincion-importa-para-cannabis',
+        title: 'Por qué esta distinción importa para leer Cannabis sativa',
+        paragraphs: [
+          'Un ejemplo concreto que desarrolla otra entrada de este atlas: durante la transición a floración, Cannabis sativa atraviesa primero un cambio de desarrollo (la señal fotoperiódica que dispara la floración, ver "Luz como señal temporal") y, asociado a eso pero no idéntico, un cambio de crecimiento particular (la elongación acelerada de entrenudos conocida como "stretch", ver "Elongación (stretch) en la transición a floración"). Son dos fenómenos relacionados pero distintos: uno es la señal de cambio de programa, el otro es un patrón de crecimiento que ese cambio de programa dispara temporalmente.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una planta aumentó de altura es una observación de crecimiento. Concluir de eso que "cambió de etapa" es una interpretación que puede o no ser correcta — el crecimiento y el cambio de etapa (desarrollo) no son la misma variable, aunque a menudo coincidan en el tiempo.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar "crecimiento" y "desarrollo" como sinónimos intercambiables — son dos procesos distintos (uno cuantitativo, otro cualitativo) que suelen ocurrir juntos pero no son la misma cosa.'
+      },
+      {
+        type: 'OBSERVATION',
+        description: 'Asumir que división celular por sí sola constituye crecimiento — según la definición fisiológica, hace falta además el aumento de volumen o masa que sigue a esa división.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fundamentos', 'ciclo'],
+    relatedEntryIds: ['division-celular-elongacion-diferenciacion', 'ciclo-de-vida', 'elongacion-stretch-floracion'],
+    sourceIds: ['academica-unne-crecimiento-y-desarrollo'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Qué es el crecimiento vegetal — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué crecimiento (aumento irreversible de volumen o masa) y desarrollo (cambios cualitativos del ciclo) son dos conceptos distintos en fisiología vegetal, aunque suelan ocurrir juntos.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'division-celular-elongacion-diferenciacion',
+    slug: 'division-celular-elongacion-y-diferenciacion',
+    categoryId: 'fundamentos',
+    title: 'División celular, elongación y diferenciación: la base celular del crecimiento',
+    summary: 'Todo crecimiento vegetal, sin excepción, se arma con la misma secuencia de tres procesos celulares — la planta no tiene un atajo distinto para crecer más rápido, solo puede repetir o acelerar esta misma secuencia.',
+    intro: '"Qué es el crecimiento vegetal" define el crecimiento como un aumento irreversible de volumen o masa. Esta entrada describe, a nivel celular, cómo ocurre ese aumento: la secuencia de división, elongación y diferenciación celular que subyace a cualquier forma de crecimiento vegetal, incluido el de Cannabis sativa.',
+    sections: [
+      {
+        id: 'las-tres-fases',
+        title: 'Las tres fases del crecimiento celular',
+        paragraphs: [
+          'El proceso de crecimiento incluye tres fases sucesivas: división celular (mitosis y citocinesis), expansión o elongación de las células resultantes, y diferenciación. La sola división celular no aumenta el volumen ni la masa —produce más células, no células más grandes—; es la elongación de esas células nuevas la que realmente incrementa el tamaño de la planta. La diferenciación, por su parte, son los cambios permanentes de forma y organización interna que convierten a una célula genérica en un tipo celular especializado (una célula de la epidermis, del xilema, etc.).'
+        ]
+      },
+      {
+        id: 'el-mecanismo-de-elongacion',
+        title: 'Cómo elonga una célula vegetal: pared, turgencia y agua',
+        paragraphs: [
+          'La célula vegetal está rodeada por una pared celular que le da forma definida y le impide desplazarse o cambiar de forma libremente. Para que una célula se alargue, esa pared debe "aflojarse" de forma controlada —un proceso llamado relajación de la tensión de la pared, mediado en parte por enzimas activadas por la hormona auxina—. Esa relajación, junto con la entrada de agua a la vacuola central de la célula (que genera la presión de turgencia), es lo que permite que la célula se expanda de forma irreversible.',
+          'Este mecanismo explica por qué el agua no es solo "un recurso que la planta consume": es, literalmente, parte del motor físico de la elongación celular — un punto que desarrolla en más detalle "Agua y expansión celular".'
+        ]
+      },
+      {
+        id: 'diferenciacion-y-especializacion',
+        title: 'Diferenciación: de célula genérica a tejido especializado',
+        paragraphs: [
+          'Una vez que una célula terminó de elongarse, puede diferenciarse: cambiar de forma y de organización interna para cumplir una función específica dentro de un tejido. Esta diferenciación es la razón por la que una planta madura está compuesta por muchos tipos de células distintas —de raíz, de tallo, de hoja, de tejido conductor— a pesar de que todas provienen, en última instancia, de la misma división celular original en los meristemas (ver "Meristemos: crecimiento primario y secundario").'
+        ]
+      }
+    ],
+    observations: [
+      'Que una planta crezca más rápido bajo ciertas condiciones (más luz, más agua disponible) no implica un mecanismo celular distinto — implica que esas mismas tres fases (división, elongación, diferenciación) ocurren con mayor velocidad o en más puntos de la planta a la vez, no que exista un atajo biológico alternativo.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que "más división celular" es sinónimo de "más crecimiento" — el aumento de tamaño real depende de la elongación de las células ya divididas, no solo de cuántas veces se dividieron.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Tratar la falta de agua como un problema exclusivamente nutricional o de "sed" de la planta, sin considerar que el agua participa directamente, a nivel mecánico, en el proceso físico de elongación celular.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fundamentos', 'ciclo'],
+    relatedEntryIds: ['crecimiento-vegetal-y-desarrollo', 'meristemos-crecimiento-primario-secundario', 'agua-y-expansion-celular'],
+    sourceIds: ['academica-unne-crecimiento-y-desarrollo'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'División celular, elongación y diferenciación — Atlas del Cultivo Argentino',
+      seoDescription: 'Las tres fases celulares que componen todo crecimiento vegetal, y cómo la pared celular, la turgencia y el agua hacen posible la elongación celular.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'meristemos-crecimiento-primario-secundario',
+    slug: 'meristemos-crecimiento-primario-y-secundario',
+    categoryId: 'fundamentos',
+    title: 'Meristemos: de dónde sale todo el crecimiento nuevo',
+    summary: 'A diferencia de un animal, una planta no crece "en todos lados a la vez": todo su crecimiento nuevo sale de un puñado de zonas localizadas y permanentes, los meristemos — entenderlos explica por qué cortar una punta de crecimiento tiene el efecto que tiene.',
+    intro: '"División celular, elongación y diferenciación" describe el mecanismo celular del crecimiento sin decir dónde ocurre. Esta entrada cubre ese punto: los meristemos, las zonas localizadas de tejido embrionario que sostienen el crecimiento indefinido de una planta durante toda su vida.',
+    sections: [
+      {
+        id: 'que-son-los-meristemos',
+        title: 'Qué son los meristemos',
+        paragraphs: [
+          'Los meristemos son grupos de células pequeñas, de paredes delgadas, núcleos grandes y vacuolas pequeñas o ausentes, con una gran capacidad de división. A diferencia de la mayoría de las células vegetales maduras (que ya no se dividen), los meristemos se autoperpetúan: parte de sus células permanece siempre en estado embrionario (células iniciales), mientras otra parte se diferencia y forma los tejidos del cuerpo de la planta (células derivadas).',
+          'Esta es una diferencia real con el crecimiento animal: en la mayoría de los animales, el número de células se fija al llegar a la adultez, y las divisiones posteriores solo reemplazan células muertas. En una planta, en cambio, el crecimiento es indefinido y se sostiene en estas zonas localizadas durante toda su vida.'
+        ]
+      },
+      {
+        id: 'tipos-de-meristemos',
+        title: 'Tipos de meristemos: apicales, laterales e intercalares',
+        paragraphs: [
+          'Los meristemos apicales están en las puntas de tallos y raíces, y su actividad produce el crecimiento primario: el alargamiento del cuerpo de la planta, el aumento de su superficie de contacto con el aire y el suelo, y eventualmente los órganos reproductivos. Los meristemos laterales —el cámbium vascular y el felógeno— están dispuestos en paralelo a los costados de tallos y raíces, y producen el crecimiento secundario: el aumento en grosor. Los meristemos apicales se forman durante el desarrollo del embrión (meristemos primarios); el cámbium vascular se diferencia recién después de la germinación (meristemo secundario).',
+          'Existe además un tercer tipo, el meristemo intercalar, ubicado entre regiones ya diferenciadas —típico de los entrenudos de las gramíneas—, de actividad limitada en el tiempo, responsable de que las zonas de inserción de hojas o nudos se separen entre sí a medida que el entrenudo se alarga.'
+        ]
+      },
+      {
+        id: 'por-que-esto-explica-la-poda',
+        title: 'Por qué esto explica lo que pasa al remover una punta de crecimiento',
+        paragraphs: [
+          'El hecho de que el crecimiento en longitud dependa de meristemos apicales puntuales —no de toda la planta a la vez— es la base fisiológica de por qué remover uno de esos meristemos (la práctica que describe "Poda") tiene un efecto tan marcado: se elimina una fuente localizada y autoperpetuada de crecimiento y de señal hormonal, no solo "una parte" de la planta en un sentido genérico. Esta entrada no desarrolla el mecanismo hormonal de la dominancia apical en sí —eso ya lo hace "Poda" en detalle— y se limita a la base de tejido meristemático que hace posible ese fenómeno.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una rama sigue creciendo en longitud mucho después de haber emergido es compatible con la actividad continua de un meristemo apical en su punta — no es una anomalía, es el modo de crecimiento indefinido característico de las plantas.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Pensar en el crecimiento vegetal como algo distribuido de manera uniforme por toda la planta, similar al crecimiento animal — en una planta, el crecimiento en longitud depende de zonas puntuales (meristemos apicales), no de la totalidad del tejido.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Confundir el crecimiento primario (en longitud, por meristemos apicales) con el crecimiento secundario (en grosor, por meristemos laterales) — son dos procesos distintos, sostenidos por tejidos meristemáticos distintos.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fundamentos', 'ciclo'],
+    relatedEntryIds: ['division-celular-elongacion-diferenciacion', 'arquitectura-y-asignacion-de-recursos', 'poda'],
+    sourceIds: ['academica-unne-crecimiento-y-desarrollo'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Meristemos: crecimiento primario y secundario — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué son los meristemos, la diferencia entre meristemos apicales, laterales e intercalares, y por qué el crecimiento primario y secundario dependen de tejidos distintos.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'agua-y-expansion-celular',
+    slug: 'agua-y-expansion-celular',
+    categoryId: 'fundamentos',
+    title: 'Agua y expansión celular',
+    summary: 'La falta de agua no solo "estresa" a la planta en un sentido general: frena el crecimiento por un mecanismo físico concreto, porque el agua es parte directa del motor que expande cada célula nueva.',
+    intro: '"División celular, elongación y diferenciación" menciona que el agua participa del mecanismo físico de elongación celular. Esta entrada desarrolla ese punto en particular: por qué el agua es, literalmente, uno de los componentes del crecimiento, no solo un recurso que la planta consume aparte.',
+    sections: [
+      {
+        id: 'turgencia-como-motor',
+        title: 'La presión de turgencia como motor de la elongación',
+        paragraphs: [
+          'Cuando una célula vegetal se expande, lo hace porque entra agua a su vacuola central, generando una presión interna (turgencia) que empuja contra la pared celular. Para que esa presión se traduzca en un aumento de tamaño real —y no solo en una célula "hinchada" pero del mismo tamaño—, la pared celular debe aflojarse de forma controlada al mismo tiempo (relajación de la tensión de la pared, ver "División celular, elongación y diferenciación"). Sin esa entrada de agua, no hay presión de turgencia suficiente para estirar la pared, y la elongación celular se frena, incluso si el resto de las condiciones (luz, temperatura, nutrientes) son favorables.'
+        ]
+      },
+      {
+        id: 'por-que-la-elongacion-es-mas-sensible-que-la-fotosintesis',
+        title: 'Por qué el crecimiento suele frenarse antes que la fotosíntesis',
+        paragraphs: [
+          'Este mecanismo explica un patrón general de fisiología vegetal: la expansión celular por elongación es, en general, más sensible a la falta de agua que la fotosíntesis. Una planta con déficit hídrico moderado puede seguir fotosintetizando de forma casi normal mientras su crecimiento en tamaño ya se frenó — porque el mecanismo de elongación depende de una presión de turgencia concreta que se pierde antes de que la maquinaria fotosintética deje de funcionar.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no fija un umbral de riego ni una frecuencia — depende del sustrato, el sistema de cultivo y el ambiente, variables que ya desarrollan "Sustrato, agua y drenaje" y "Capacidad de campo, punto de marchitez y agua disponible" en la categoría Suelo y agua. El aporte específico de esta entrada es el mecanismo fisiológico: por qué el agua importa para el crecimiento en sí, más allá de su rol en fotosíntesis o en el transporte de nutrientes.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una planta con sustrato algo seco crece más lento en altura, sin mostrar todavía marchitez ni otros síntomas visibles, es compatible con este mecanismo: el crecimiento por elongación puede frenarse antes de que aparezcan señales más evidentes de estrés hídrico.'
+    ],
+    signals: [
+      {
+        level: 'AMBIGUOUS',
+        description: 'Un ritmo de crecimiento en altura más lento que en días anteriores, sin otros síntomas visibles (color, turgencia de las hojas), es compatible con una ligera limitación hídrica en la elongación celular — pero también con otras variables (temperatura, luz, etapa del ciclo) que esta entrada no aísla por sí sola.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que si la planta no muestra marchitez, el agua disponible es necesariamente suficiente para un crecimiento óptimo — el mecanismo de elongación celular puede verse limitado por disponibilidad hídrica antes de que aparezcan síntomas visibles de estrés.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Tratar el agua únicamente como un vehículo de nutrientes o como materia prima de la fotosíntesis, sin considerar su rol mecánico directo en la expansión celular.'
+      }
+    ],
+    environmentContext: [
+      'Esta entrada describe un mecanismo fisiológico general, válido tanto en cultivo de contenedor como en suelo directo, en interior o en exterior — la disponibilidad real de agua en cada sistema es un tema aparte, que desarrollan las entradas correspondientes de "Suelo y agua".'
+    ],
+    tags: ['fundamentos', 'agua'],
+    relatedEntryIds: ['division-celular-elongacion-diferenciacion', 'sustrato-y-drenaje', 'capacidad-de-campo-agua-disponible'],
+    sourceIds: ['academica-unne-crecimiento-y-desarrollo'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Agua y expansión celular — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué el agua es parte directa del mecanismo físico de elongación celular, y por qué el crecimiento en tamaño suele frenarse por falta de agua antes que la fotosíntesis.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'fotosintesis-respiracion-y-biomasa',
+    slug: 'fotosintesis-respiracion-y-produccion-de-biomasa',
+    categoryId: 'fundamentos',
+    title: 'Fotosíntesis, respiración y producción de biomasa',
+    summary: '"Luz y clima" describe qué es la luz y cómo medirla. Esta entrada mira la otra mitad de la ecuación: qué hace la planta con esa luz para convertirla, efectivamente, en más planta.',
+    intro: 'Las entradas de "Luz y clima" (PAR, PPFD, espectro) describen el factor ambiental —la luz— en sí mismo. Esta entrada cambia el eje: cómo responde la planta a esa luz en términos de crecimiento, a través de la relación entre fotosíntesis (ganancia de carbono), respiración (su costo) y la biomasa que efectivamente queda disponible para crecer.',
+    sections: [
+      {
+        id: 'ganancia-neta-de-carbono',
+        title: 'Fotosíntesis y respiración: una ganancia neta, no bruta',
+        paragraphs: [
+          'La fotosíntesis captura energía lumínica para producir azúcares a partir de agua y dióxido de carbono — es la fuente de casi todo el carbono que termina formando parte del cuerpo de la planta. Pero no todo ese carbono fijado se convierte en crecimiento: la respiración, el proceso por el cual la planta libera parte de esa energía para sus propias funciones metabólicas, consume una porción de lo que la fotosíntesis produjo. El crecimiento real depende del balance neto entre ambos procesos, no de la fotosíntesis bruta por sí sola.'
+        ]
+      },
+      {
+        id: 'de-la-hoja-a-la-biomasa',
+        title: 'De la superficie foliar a la biomasa: un índice cuantitativo',
+        paragraphs: [
+          'Un principio bien documentado en fisiología de cultivos vincula directamente la superficie foliar de una planta con su ganancia de biomasa: como las hojas son el principal órgano fotosintético, la relación entre el área foliar y el peso seco acumulado por unidad de tiempo (un índice llamado tasa de asimilación neta) funciona como una medida de la eficiencia productiva de la planta. Esto es coherente con un patrón general de fisiología de cultivos: las especies cultivadas invierten buena parte de su crecimiento inicial en expandir su superficie foliar, precisamente porque esa superficie es la que después sostiene la ganancia de biomasa del resto del ciclo.'
+        ]
+      },
+      {
+        id: 'la-curva-de-crecimiento',
+        title: 'La curva de crecimiento: no es una línea recta',
+        paragraphs: [
+          'Al graficar el tamaño de una planta contra el tiempo, se obtiene típicamente una curva en forma de "S" (sigmoidea), con tres fases de velocidad distinta: una fase exponencial inicial (crecimiento lento en términos absolutos, pero acelerado en proporción, cuando hay pocas células con capacidad de dividirse), una fase lineal (incrementos similares en períodos iguales de tiempo) y una fase final de desaceleración que confluye con la senescencia. Esta forma de curva es un patrón general documentado en muchas especies vegetales, con variaciones reales según la especie —en algunas la fase lineal es apenas perceptible; en otras, se extiende mucho—.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una planta joven, con poca superficie foliar, crece más lento en términos absolutos que la misma planta semanas después, con más hojas desarrolladas, es compatible con la fase exponencial de la curva de crecimiento — no indica necesariamente un problema en la etapa temprana.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Esperar un ritmo de crecimiento constante a lo largo de todo el ciclo — la curva de crecimiento de la mayoría de las especies vegetales tiene fases con velocidades claramente distintas, no es una línea recta.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Tratar la fotosíntesis medida en una sola hoja como equivalente a la ganancia de biomasa de toda la planta — la producción neta depende del balance con la respiración y de la superficie foliar total, no de la actividad de un único punto.'
+      }
+    ],
+    environmentContext: [
+      'Esta entrada no repite los factores ambientales que afectan la fotosíntesis (intensidad y espectro de luz, temperatura) — esos ya están desarrollados en la categoría "Luz y clima". El aporte de esta entrada es la respuesta de la planta: qué hace con esa luz en términos de biomasa, no qué es la luz en sí.'
+    ],
+    tags: ['fundamentos', 'luz'],
+    relatedEntryIds: ['agua-y-expansion-celular', 'par-ppfd-medicion-de-luz', 'arquitectura-y-asignacion-de-recursos'],
+    sourceIds: ['academica-unne-crecimiento-y-desarrollo'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Fotosíntesis, respiración y producción de biomasa — Atlas del Cultivo Argentino',
+      seoDescription: 'Cómo se relacionan fotosíntesis, respiración y superficie foliar con la ganancia real de biomasa, y por qué la curva de crecimiento vegetal tiene forma de "S", no de línea recta.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'arquitectura-y-asignacion-de-recursos',
+    slug: 'arquitectura-y-asignacion-de-recursos',
+    categoryId: 'fundamentos',
+    title: 'Arquitectura de la planta y asignación de recursos: raíz, tallo y biomasa',
+    summary: 'Una planta no reparte su crecimiento al azar entre raíz y parte aérea: existe una correlación real y medible entre ambas, y un estudio directo sobre cáñamo la cuantificó con 46 genotipos distintos.',
+    intro: '"Meristemos" describe de dónde sale el crecimiento nuevo. Esta entrada mira hacia dónde va ese crecimiento: cómo la planta reparte sus recursos entre raíz y parte aérea, qué papel juega la disponibilidad de nitrógeno en ese reparto, y qué tan distinto puede ser ese patrón entre genotipos de la misma especie.',
+    sections: [
+      {
+        id: 'relacion-raiz-parte-aerea',
+        title: 'La relación entre biomasa de raíz y de parte aérea',
+        paragraphs: [
+          'Un estudio de 2026 fenotipó 46 genotipos de cáñamo industrial (incluyendo variedades europeas, canadienses, chinas y estadounidenses de alto CBD) bajo condiciones controladas de invernadero, y encontró una correlación fuerte entre la biomasa de raíz y la de parte aérea (R=0.93): en términos generales, una planta con más biomasa de raíz también tiende a tener más biomasa aérea, y viceversa — un patrón de asignación de recursos coordinada, no independiente entre ambas partes de la planta.',
+          'El mismo estudio encontró una variación considerable entre genotipos: 175% de diferencia en longitud total de raíz y en biomasa aérea entre el genotipo más grande y el más chico del panel, con una heredabilidad (proporción de esa variación explicada por la genética) de moderada a alta según el rasgo. Es evidencia directa de Cannabis sativa —aunque de cáñamo industrial en condiciones de invernadero con sustrato sin suelo, no necesariamente representativa de cultivo en tierra ni de todas las variedades de uso medicinal o recreativo—.'
+        ]
+      },
+      {
+        id: 'nitrogeno-y-biomasa-el-mecanismo-no-la-dosis',
+        title: 'Nitrógeno y biomasa: el mecanismo, no una dosis',
+        paragraphs: [
+          'El nitrógeno es un componente estructural de proteínas y otras moléculas necesarias para formar tejido nuevo — por eso su disponibilidad se asocia, de forma bien documentada, con la cantidad de biomasa que una planta puede generar. Un estudio de 2023 con cáñamo floral (orientado a cannabinoides) a campo, en tres cultivares distintos, encontró que las plantas con nitrógeno suplementario alcanzaron más del doble de biomasa aérea, mayor altura final, mayor diámetro de tallo y más cobertura de canopia que las plantas sin ese agregado.',
+          'Esta entrada no convierte ese hallazgo en una recomendación de dosis: la disponibilidad de nitrógeno participa en procesos fundamentales para la formación de biomasa, pero la respuesta real depende del cultivar, la etapa fisiológica, el resto de las condiciones ambientales y la disponibilidad de otros recursos — el mecanismo y la aplicación práctica (tablas, dosis, programas de fertilización) son temas de la categoría "Fertilización", no de esta entrada.'
+        ]
+      },
+      {
+        id: 'ramificacion-y-dominancia-apical',
+        title: 'Ramificación: una nota, no un desarrollo completo',
+        paragraphs: [
+          'Parte de la arquitectura de una planta —cuántas ramas desarrolla y con qué vigor— depende del mecanismo de dominancia apical, ya descrito en detalle en la categoría Poda: mientras el meristemo apical del tallo principal está activo, inhibe el desarrollo de yemas laterales; remover ese meristemo (o doblar el tallo, en el caso del entrenamiento de bajo estrés) libera esa inhibición. Esta entrada no repite ese mecanismo — se limita a señalar que la arquitectura final de una planta es, en parte, resultado de esa dinámica hormonal, además de la asignación de biomasa entre raíz y parte aérea que describen las secciones anteriores.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que dos plantas del mismo cultivar, con el mismo manejo, desarrollan sistemas de raíces de tamaño visiblemente distinto (por ejemplo, al trasplantar) es compatible con la variabilidad individual normal dentro de una misma genética — la correlación raíz-parte aérea es un patrón general, no una proporción fija idéntica en cada planta.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Convertir la asociación entre nitrógeno y biomasa en una regla de "más nitrógeno siempre es mejor" — la evidencia citada muestra una asociación en condiciones experimentales puntuales (cáñamo floral, tres cultivares, clima de desierto), no una relación ilimitada ni universal.'
+      },
+      {
+        type: 'CONTEXT',
+        description: 'Generalizar la variación genética de 175% en biomasa/raíz encontrada en cáñamo industrial de invernadero a cualquier comparación entre cultivares de Cannabis, incluyendo variedades no incluidas en ese panel ni evaluadas en esas condiciones.'
+      }
+    ],
+    environmentContext: [
+      'Un sistema radicular en contenedor (interior o exterior) tiene un volumen físico limitado por el tamaño de la maceta, algo que no ocurre en tierra directa — una restricción que puede modificar la relación raíz/parte aérea observada, sin que eso implique un problema de la planta en sí.'
+    ],
+    tags: ['fundamentos', 'cultivo', 'interior', 'exterior'],
+    relatedEntryIds: ['meristemos-crecimiento-primario-secundario', 'diferencias-geneticas-crecimiento-cultivares', 'fertilizacion-y-nutricion', 'poda'],
+    sourceIds: ['cientifica-morales-2026-arquitectura-raiz-canamo', 'cientifica-farnisa-2023-nitrogeno-canamo-floral-biomasa'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Arquitectura de la planta y asignación de recursos — Atlas del Cultivo Argentino',
+      seoDescription: 'Cómo se relacionan la biomasa de raíz y de parte aérea, qué encontró un estudio directo sobre 46 genotipos de cáñamo, y qué mecanismo general conecta al nitrógeno con la producción de biomasa.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'diferencias-geneticas-crecimiento-cultivares',
+    slug: 'diferencias-geneticas-en-el-crecimiento-entre-cultivares',
+    categoryId: 'fundamentos',
+    title: 'Diferencias genéticas en el crecimiento entre cultivares',
+    summary: 'Preguntar "cuánto crece Cannabis" no tiene una sola respuesta: la evidencia genética muestra diferencias reales y cuantificadas en arquitectura de raíz, biomasa y umbral de floración entre genotipos de la misma especie.',
+    intro: '"Arquitectura de la planta y asignación de recursos" ya muestra que existe variación genética real en cómo una planta reparte su crecimiento entre raíz y parte aérea. Esta entrada reúne esa evidencia de variación genética con la de otras entradas del atlas, para dejar explícito un punto editorial de fondo: ningún parámetro de crecimiento de Cannabis sativa debería presentarse como un valor único para "la especie".',
+    sections: [
+      {
+        id: 'variacion-en-arquitectura-de-raiz-y-biomasa',
+        title: 'Variación en arquitectura de raíz y biomasa',
+        paragraphs: [
+          'El estudio de 46 genotipos de cáñamo industrial ya citado en "Arquitectura de la planta y asignación de recursos" encontró una diferencia de 175% en longitud total de raíz y en biomasa aérea entre el genotipo más grande y el más chico del panel, con una heredabilidad de moderada a alta (0.45 a 0.78 según el rasgo) — es decir, buena parte de esa diferencia responde a la genética, no solo al ambiente en el que se midió.'
+        ]
+      },
+      {
+        id: 'variacion-en-umbral-fotoperiodico-y-tiempo-de-floracion',
+        title: 'Variación en el umbral fotoperiódico y el tiempo hasta floración',
+        paragraphs: [
+          'La categoría "Luz y clima" ya documenta, con evidencia genética directa, que el umbral de duración de oscuridad necesario para disparar la floración varía entre cultivares —al punto de existir genes identificados (Autoflower1, Early1) que producen cultivares insensibles al fotoperíodo o que florecen antes que otros—. Un estudio con 10 cultivares drug-type bajo distintos fotoperiodos de floración encontró además que, incluso entre cultivares que sí responden al fotoperiodo, la demora hasta el inicio de floración varía de 0 a 4 días según el cultivar bajo el mismo régimen de luz.'
+        ]
+      },
+      {
+        id: 'por-que-esto-es-un-punto-editorial-de-fondo',
+        title: 'Por qué esto es un punto editorial de fondo para todo el atlas',
+        paragraphs: [
+          'La consecuencia práctica de esta evidencia es que cualquier cifra puntual sobre crecimiento, biomasa, tiempo hasta floración o arquitectura de Cannabis sativa —en esta entrada o en cualquier otra del atlas— debería leerse como el resultado de un estudio con un material genético concreto, no como una constante de la especie. Cuando dos fuentes distintas dan cifras diferentes para lo aparentemente "lo mismo", una explicación real y documentada es que evaluaron genotipos distintos, no que una de las dos fuentes esté necesariamente equivocada.'
+        ]
+      }
+    ],
+    observations: [
+      'Que dos plantas de distinta genética, cultivadas en las mismas condiciones, difieran notablemente en tamaño de raíz, biomasa total o tiempo hasta floración es una observación compatible con la variación genética documentada — no requiere, por sí sola, una explicación de manejo o de error de cultivo.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Presentar una cifra de crecimiento, biomasa o tiempo de floración obtenida con un cultivar o panel de genotipos puntual como si fuera una constante aplicable a "Cannabis sativa" en general.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Descartar una fuente por dar una cifra distinta a otra sobre el mismo tema, sin considerar primero si ambas evaluaron el mismo material genético en las mismas condiciones — la diferencia puede ser real y explicable por genotipo, no un error.'
+      }
+    ],
+    environmentContext: [
+      'La variación genética que describe esta entrada es independiente del ambiente de cultivo (interior o exterior): es una propiedad del material vegetal, aunque su expresión final —cuánto crece realmente una planta— sí depende de la interacción entre esa genética y el ambiente específico en el que se cultive.'
+    ],
+    tags: ['fundamentos', 'genética'],
+    relatedEntryIds: ['arquitectura-y-asignacion-de-recursos', 'variacion-genetica-fotoperiodo', 'genetica-y-tipos'],
+    sourceIds: [
+      'cientifica-morales-2026-arquitectura-raiz-canamo',
+      'academica-toth-2022-genetica-fotoperiodo-cannabis',
+      'cientifica-ahrens-2023-photoperiod-flowering-indoor'
+    ],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Diferencias genéticas en el crecimiento entre cultivares — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué no existe un valor único de crecimiento, biomasa o tiempo de floración para Cannabis sativa: evidencia genética directa de variación real entre cultivares y genotipos.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'estres-ambiental-y-crecimiento',
+    slug: 'estres-ambiental-y-crecimiento-vegetal',
+    categoryId: 'fundamentos',
+    title: 'Estrés ambiental y crecimiento vegetal',
+    summary: 'Frente a una condición desfavorable, una planta no solo "sufre": redirige recursos, y ese redireccionamiento casi siempre implica menos crecimiento en tamaño a cambio de otra cosa —defensa, supervivencia o reproducción—.',
+    intro: 'Varias entradas de este atlas documentan, por separado, casos concretos de estrés ambiental afectando a Cannabis sativa: humedad relativa alta retrasando la floración (ver "Humedad relativa, transpiración y VPD"), sal agregada reduciendo biomasa (ver "Conductividad eléctrica y sales"), daño mecánico deliberado como el super cropping (ver Poda). Esta entrada conecta esos casos con un principio general de fisiología vegetal: por qué el estrés, en términos generales, tiende a limitar el crecimiento.',
+    sections: [
+      {
+        id: 'el-costo-energetico-de-responder-al-estres',
+        title: 'El costo energético de responder al estrés',
+        paragraphs: [
+          'Cuando una planta enfrenta una condición desfavorable —sequía, salinidad, daño físico, temperatura extrema—, activa respuestas fisiológicas y bioquímicas que tienen un costo energético real. Esa energía y esos recursos (agua, carbono, nitrógeno) que se destinan a responder al estrés no están disponibles, al mismo tiempo, para el crecimiento en tamaño. Este principio general —a veces descrito como un balance entre crecimiento y defensa— no es específico de Cannabis: es un patrón documentado en fisiología vegetal general, que las entradas específicas de este atlas ilustran con casos concretos de la especie.'
+        ]
+      },
+      {
+        id: 'no-todo-estres-es-igual',
+        title: 'No todo estrés es igual, ni todos los efectos son iguales',
+        paragraphs: [
+          'El tipo de estrés y el momento del ciclo en que ocurre determinan qué se ve afectado. La humedad relativa alta durante floración, por ejemplo, retrasó la floración y redujo la biomasa en un estudio directo sobre Cannabis (ver "Humedad relativa, transpiración y VPD"); la sal agregada en concentraciones altas redujo el crecimiento de forma medible en otro estudio directo (ver "Conductividad eléctrica y sales"); el daño mecánico deliberado del super cropping se apoya en la lógica opuesta —un estrés controlado que, según la fisiología vegetal general, puede inducir un tallo más grueso, aunque sin evidencia directa de Cannabis que confirme ese resultado puntual—.',
+          'Esta entrada no unifica esos casos en una única regla cuantitativa: los reúne bajo el mismo principio general (el estrés redirige recursos, casi siempre a costa del crecimiento en tamaño), remitiendo a cada entrada específica para el detalle y las condiciones exactas de cada estudio.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una planta bajo una condición adversa puntual crece más lento que una planta sin esa condición es una observación coherente con este principio general. No permite, por sí sola, anticipar cuánto se reducirá el crecimiento ni si el efecto será reversible — eso depende del tipo de estrés, su intensidad y el momento del ciclo, variables que cada entrada específica de este atlas desarrolla por separado.'
+    ],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Tratar "estrés" como una sola variable con un único efecto esperable — distintos tipos de estrés (hídrico, salino, mecánico, térmico) actúan por mecanismos distintos y con resultados distintos, documentados por separado en otras entradas de este atlas.'
+      },
+      {
+        type: 'INTERPRETATION',
+        description: 'Asumir que todo estrés reduce el crecimiento de forma directamente proporcional a su intensidad — la relación real depende del tipo de estrés, la etapa del ciclo y el margen de tolerancia del cultivar, no es una función lineal simple.'
+      }
+    ],
+    environmentContext: [
+      'La exposición a la mayoría de los tipos de estrés ambiental que describe esta entrada suele ser más variable y menos controlable en exterior (clima real, sin control directo) que en un ambiente protegido, donde muchas de esas variables pueden mantenerse dentro de un rango elegido.'
+    ],
+    tags: ['fundamentos', 'ambiente', 'riesgo'],
+    relatedEntryIds: ['humedad-relativa-transpiracion-vpd', 'conductividad-electrica-y-sales', 'super-cropping', 'fotosintesis-respiracion-y-biomasa'],
+    sourceIds: ['academica-unne-crecimiento-y-desarrollo'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Estrés ambiental y crecimiento vegetal — Atlas del Cultivo Argentino',
+      seoDescription: 'Por qué el estrés ambiental tiende a limitar el crecimiento en tamaño de una planta, y cómo se conectan los casos específicos de Cannabis sativa ya documentados en otras entradas del atlas.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'elongacion-stretch-floracion',
+    slug: 'elongacion-stretch-en-la-transicion-a-floracion',
+    categoryId: 'fundamentos',
+    title: 'Elongación ("stretch") en la transición a floración',
+    summary: 'El "stretch" no dura un número fijo de semanas ni implica que la planta vaya a duplicar o triplicar su tamaño en cualquier caso: un estudio directo sobre Cannabis sativa muestra un patrón mucho más acotado en el tiempo, y con un límite explícito de cuánto se puede generalizar.',
+    intro: 'Es común escuchar que, al iniciar floración, Cannabis sativa atraviesa un "estirón" (stretch) de duración fija, o que su tamaño se duplica o triplica. Esta entrada revisa esas dos afirmaciones puntuales contra un estudio directo sobre la especie que midió la elongación de entrenudos día por día tras el cambio de fotoperiodo.',
+    sections: [
+      {
+        id: 'que-encontro-el-estudio-directo',
+        title: 'Qué encontró un estudio directo sobre Cannabis sativa',
+        paragraphs: [
+          'Un estudio de 2024 sobre Cannabis sativa siguió el desarrollo de la inflorescencia después de cambiar a fotoperiodo de día corto, y describió dos fases: una primera fase de elongación rápida de entrenudos y del tallo principal, concentrada entre los días 5 y 10 después del cambio de fotoperiodo; y una segunda fase en la que esa elongación de entrenudos nuevos se detiene y se forma la inflorescencia condensada.',
+          'Esto contradice la idea de un "stretch" que dura de forma pareja dos o tres semanas completas: en este estudio, el grueso de la elongación ocurrió en una ventana bastante más acotada (unos 5 días), seguida por un freno relativamente abrupto — no una desaceleración lenta y pareja a lo largo de varias semanas.'
+        ]
+      },
+      {
+        id: 'el-limite-explicito-del-estudio',
+        title: 'El límite explícito del estudio: un solo cultivar',
+        paragraphs: [
+          'Los propios autores del estudio señalan una limitación importante: trabajaron con un único cultivar medicinal comercial, y advierten explícitamente que "vale la pena considerar la posibilidad de que estos hallazgos varíen entre diferentes cultivares de Cannabis". Esto es coherente con lo que ya describe "Diferencias genéticas en el crecimiento entre cultivares": no hay razón para asumir que la duración exacta o la magnitud de esta elongación sea idéntica en cualquier genotipo.'
+        ]
+      },
+      {
+        id: 'sobre-duplicar-o-triplicar-el-tamano',
+        title: 'Sobre "duplicar o triplicar" el tamaño',
+        paragraphs: [
+          'La afirmación de que la planta "puede duplicar o triplicar su tamaño" durante el stretch, y que eso depende de si la genética es de tipo "indica" o "sativa", circula ampliamente en guías de cultivo comerciales, pero dentro de las fuentes consultadas para esta investigación no se encontró un estudio científico revisado por pares que mida específicamente ese porcentaje de aumento de altura ni que lo asocie de forma validada a esas dos categorías —que, además, "Genética y tipos" ya describe como clasificaciones de origen histórico y comercial, no botánicas—. El estudio directo citado arriba documenta que hubo una diferencia de altura entre plantas de día largo y día corto medida a los 30 días, sin dar una cifra de "veces" de aumento ni asociarla a esa distinción indica/sativa.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que una planta elonga notablemente sus entrenudos en los primeros días después de reducir el fotoperiodo es una observación compatible con el patrón documentado en el estudio citado. Fijar una fecha exacta de "fin del stretch" a partir de una regla de semanas es una interpretación que ese mismo estudio no respalda —el patrón que encontró depende del cultivar, y la ventana medida fue de días, no de semanas—.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'Elongación notable de entrenudos y del tallo principal en los primeros días tras el cambio a fotoperiodo de día corto, seguida de una desaceleración y la aparición de inflorescencias más compactas — el patrón general que describe el estudio citado, aunque su duración exacta puede variar según el cultivar.'
+      },
+      {
+        level: 'AMBIGUOUS',
+        description: 'Que la elongación se prolongue más o menos días que en otra planta o en otro cultivo previo no alcanza, por sí sola, para concluir un problema — la duración de esta fase varía según la genética, según reconocen los propios autores del estudio citado.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Presentar una duración fija de dos o tres semanas para el "stretch" como si fuera una regla biológica — el estudio directo disponible describe una fase de elongación rápida mucho más acotada en el tiempo (días, no semanas), aunque advierte que puede variar por cultivar.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Afirmar que la planta "duplica o triplica" su tamaño según sea de tipo indica o sativa — esa cifra y esa asociación no tienen, dentro de las fuentes consultadas, respaldo de un estudio científico revisado por pares.'
+      }
+    ],
+    environmentContext: [
+      'En un ambiente protegido, el cambio de fotoperiodo que dispara esta fase de elongación lo decide el cultivador en el momento que elige; en exterior, lo dispara el acortamiento natural de los días, en una fecha que depende de la estación y la latitud (ver "Fotoperiodo según latitud argentina").'
+    ],
+    tags: ['fundamentos', 'fotoperiodo'],
+    relatedEntryIds: ['crecimiento-vegetal-y-desarrollo', 'diferencias-geneticas-crecimiento-cultivares', 'luz-y-fotoperiodo', 'genetica-y-tipos'],
+    sourceIds: ['cientifica-alter-2024-cannabis-fotoperiodo-giberelina'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Elongación (stretch) en la transición a floración — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué encontró un estudio directo sobre Cannabis sativa al medir la elongación de entrenudos tras el cambio de fotoperiodo, y por qué no existe evidencia de una duración fija de semanas ni de que la planta "duplique o triplique" su tamaño.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'senescencia-y-final-del-desarrollo',
+    slug: 'senescencia-y-final-del-desarrollo',
+    categoryId: 'fundamentos',
+    title: 'Senescencia y final del desarrollo',
+    summary: 'La senescencia no es que la planta "se muera de a poco sin motivo": es una etapa final activa y regulada, en la que la planta redirige sus propios nutrientes hacia las partes que todavía se están desarrollando.',
+    intro: 'El "ciclo de vida" de Cannabis sativa que describe otra entrada de esta categoría termina en la cosecha, un punto de manejo decidido por quien cultiva. Pero la biología de la planta tiene su propio final: la senescencia. Esta entrada describe qué es ese proceso, en términos de fisiología vegetal general, dado que no se encontró, dentro de las fuentes consultadas para esta investigación, un estudio de senescencia dedicado específicamente a Cannabis sativa.',
+    sections: [
+      {
+        id: 'que-es-la-senescencia',
+        title: 'Qué es la senescencia',
+        paragraphs: [
+          'La senescencia es la etapa final del desarrollo de una planta o de uno de sus órganos (una hoja, por ejemplo), descrita en fisiología vegetal como una transición funcional: la planta deja de priorizar la asimilación de nutrientes y pasa a movilizarlos hacia otras partes. Lejos de ser un simple "apagado", es un proceso activo y regulado por la propia planta.'
+        ]
+      },
+      {
+        id: 'que-la-dispara',
+        title: 'Qué dispara la senescencia',
+        paragraphs: [
+          'Una revisión de fisiología vegetal general documenta tres tipos de factores que disparan la senescencia: el desarrollo (la edad es el factor interno principal), hormonales (hormonas como el etileno, el ácido jasmónico, el ácido salicílico y el ácido abscísico la promueven; las citoquininas y las giberelinas la retrasan) y ambientales (sequía, estrés salino, oscuridad, temperaturas extremas, deficiencia de nutrientes, patógenos). Ya que varios de estos factores hormonales y ambientales aparecen también en otras entradas de este atlas —giberelinas y fotoperiodo en "Luz como señal temporal", estrés hídrico y salino en las entradas correspondientes—, es razonable esperar que la senescencia de Cannabis sativa responda a mecanismos similares, aunque esta entrada no puede citar un estudio que lo confirme directamente en la especie.'
+        ]
+      },
+      {
+        id: 'hacia-donde-van-los-nutrientes',
+        title: 'Hacia dónde van los nutrientes durante la senescencia',
+        paragraphs: [
+          'Durante la senescencia, los nutrientes que la planta moviliza desde el tejido que está envejeciendo se exportan hacia órganos en desarrollo activo: brotes nuevos, hojas jóvenes, flores o semillas. Es el mismo principio general de movilidad de nutrientes que ya describe "Fertilización y nutrición" para explicar por qué un síntoma de carencia aparece primero en hojas viejas o jóvenes según el nutriente — la senescencia es, en cierto sentido, ese mismo mecanismo de movilidad llevado a su versión más completa al final de la vida de un órgano.'
+        ]
+      },
+      {
+        id: 'lo-que-esta-entrada-no-hace',
+        title: 'Lo que esta entrada no hace',
+        paragraphs: [
+          'Esta entrada no valida ni recomienda la práctica difundida de "lavado de raíces" o suspensión del riego con nutrientes en los días previos a la cosecha, presentada a veces como una forma de "forzar" a la planta a movilizar sus reservas. Esa práctica ya se documenta, sin evidencia científica que la respalde para Cannabis sativa, en "Manejo poscosecha: secado y curado" — esta entrada no agrega evidencia nueva sobre ese punto puntual, solo señala que el mecanismo general de movilización de nutrientes durante la senescencia es real en fisiología vegetal, lo cual no confirma, por sí solo, que esa práctica puntual tenga el efecto que se le atribuye.'
+        ]
+      }
+    ],
+    observations: [
+      'Ver que las hojas más viejas de una planta amarillean y mueren hacia el final del ciclo, mientras las inflorescencias siguen desarrollándose, es compatible con el proceso general de senescencia y movilización de nutrientes — no es, por sí solo, evidencia de una carencia nutricional que deba corregirse.'
+    ],
+    signals: [
+      {
+        level: 'EXPECTED',
+        description: 'Amarillamiento progresivo y muerte de las hojas más viejas hacia el final del ciclo, mientras las estructuras reproductivas (inflorescencias) continúan su desarrollo — compatible con el proceso general de senescencia, no necesariamente una señal de problema.'
+      }
+    ],
+    commonMistakes: [
+      {
+        type: 'INTERPRETATION',
+        description: 'Tratar el amarillamiento de hojas viejas al final del ciclo como un síntoma de carencia nutricional a corregir, sin considerar que puede corresponder al proceso normal de senescencia y removilización de nutrientes hacia las inflorescencias en desarrollo.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Presentar una práctica de manejo de fin de ciclo (como la suspensión de nutrientes) como validada por la evidencia general de senescencia — el mecanismo general es real, pero eso no confirma automáticamente que una práctica puntual de manejo tenga el efecto que se le atribuye en Cannabis sativa.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['fundamentos', 'ciclo'],
+    relatedEntryIds: ['ciclo-de-vida', 'fertilizacion-y-nutricion', 'poscosecha', 'cosecha-y-maduracion'],
+    sourceIds: ['academica-guo-2021-senescencia-foliar-revision'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Senescencia y final del desarrollo — Atlas del Cultivo Argentino',
+      seoDescription: 'Qué es la senescencia vegetal, qué la dispara, y por qué el amarillamiento de hojas viejas al final del ciclo no es necesariamente un síntoma de carencia nutricional.',
+      canonical: null,
+      ogImage: null
+    }
+  },
 
   // --- Loop 4.4.1 — Manejo poscosecha ---
   {
@@ -1980,7 +2593,7 @@ export const editorialEntries = [
       'Las condiciones óptimas de secado y curado dependen del ambiente disponible: en regiones con alta humedad ambiental (como el NEA o Buenos Aires en verano) puede ser más difícil mantener la humedad relativa en rango sin equipamiento específico (deshumidificador). En regiones con baja humedad ambiental (Cuyo, Patagonia) puede ocurrir lo contrario. Esta entrada no da una recomendación específica por provincia porque no existe evidencia directa de campo en Argentina que la respalde para esta etapa — se describe el principio general.'
     ],
     tags: ['cosecha', 'maduración', 'cultivo'],
-    relatedEntryIds: ['cosecha-y-maduracion', 'ciclo-de-vida', 'almacenamiento'],
+    relatedEntryIds: ['cosecha-y-maduracion', 'ciclo-de-vida', 'almacenamiento', 'senescencia-y-final-del-desarrollo'],
     sourceIds: [
       'cientifica-hesami-2023-cannabis-life-cycle'
     ],
@@ -2198,7 +2811,7 @@ export const editorialEntries = [
       'El concepto de capacidad de campo, punto de marchitez y agua disponible aplica tanto a un suelo de campo (exterior) como a un sustrato de contenedor (interior o exterior), aunque los valores de referencia citados en esta entrada son específicos de suelo de campo por textura, no de sustratos de maceta.'
     ],
     tags: ['suelo', 'agua', 'interior', 'exterior'],
-    relatedEntryIds: ['sustrato-y-drenaje', 'textura-estructura-porosidad'],
+    relatedEntryIds: ['sustrato-y-drenaje', 'textura-estructura-porosidad', 'agua-y-expansion-celular'],
     sourceIds: ['oficial-fao-brouwer-heibloem-1985-capacidad-campo-agua-disponible'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-19',
@@ -2525,7 +3138,7 @@ export const editorialEntries = [
       'Un suelo de campo (exterior) puede lavar parte de sus sales acumuladas con lluvia a lo largo del tiempo; un sustrato de contenedor sin ese aporte de agua adicional (más marcado en interior, donde no llueve) depende enteramente del riego para esa función de lavado — una diferencia real entre ambos contextos que esta entrada no cuantifica.'
     ],
     tags: ['suelo', 'agua', 'interior', 'exterior'],
-    relatedEntryIds: ['calidad-del-agua-de-riego', 'ph-y-disponibilidad-de-nutrientes', 'fertilizacion-y-nutricion'],
+    relatedEntryIds: ['calidad-del-agua-de-riego', 'ph-y-disponibilidad-de-nutrientes', 'fertilizacion-y-nutricion', 'estres-ambiental-y-crecimiento'],
     sourceIds: [
       'oficial-fao-ayers-westcot-1985-calidad-agua-riego-ec',
       'cientifica-yep-2020-nacl-ec-cannabis-hidroponia'
@@ -2642,7 +3255,7 @@ export const editorialEntries = [
       'En exterior, el PPFD depende del sol, la hora del día, la estación y la nubosidad, sin control directo de quien cultiva. En interior, depende del equipo de iluminación elegido, algo que si se puede ajustar de forma directa — pero el estudio citado se hizo en interior, y esta entrada no evalúa si el mismo patrón (sin saturación) aplica de igual forma a la luz solar en exterior.'
     ],
     tags: ['luz', 'interior', 'exterior'],
-    relatedEntryIds: ['intensidad-de-luz', 'espectro-de-luz-azul-rojo-rojo-lejano'],
+    relatedEntryIds: ['intensidad-de-luz', 'espectro-de-luz-azul-rojo-rojo-lejano', 'fotosintesis-respiracion-y-biomasa'],
     sourceIds: ['institucional-virginia-tech-2025-par-ppfd-dli', 'cientifica-rodriguez-morrison-2021-ppfd-cannabis'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-19',
@@ -2808,7 +3421,7 @@ export const editorialEntries = [
       'En interior, con fotoperiodo controlado, esta variación genética se traduce en distintos tiempos de floración entre cultivares bajo el mismo esquema de luz. En exterior, se traduce además en distintas fechas de floración natural según la latitud y la genética combinadas — ver "Fotoperiodo según latitud argentina".'
     ],
     tags: ['luz', 'fotoperiodo', 'genética', 'interior', 'exterior'],
-    relatedEntryIds: ['luz-y-fotoperiodo', 'genetica-y-tipos', 'fotoperiodo-segun-latitud-argentina'],
+    relatedEntryIds: ['luz-y-fotoperiodo', 'genetica-y-tipos', 'fotoperiodo-segun-latitud-argentina', 'diferencias-geneticas-crecimiento-cultivares', 'elongacion-stretch-floracion'],
     sourceIds: ['academica-toth-2022-genetica-fotoperiodo-cannabis', 'academica-mora-2019-aptitud-agroclimatica-canamo-uba'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-19',
@@ -3056,7 +3669,7 @@ export const editorialEntries = [
       'En un ambiente protegido, la humedad relativa y por lo tanto el VPD pueden controlarse con equipamiento (deshumidificadores, ventilación). En exterior, dependen del clima de cada región y estación —ver "Calidad del agua de riego" en Suelo y agua para la relación entre humedad y otros parámetros ambientales, y "Moho gris (Botrytis cinerea)" en Sanidad para el riesgo de enfermedad asociado a humedad alta en floración.'
     ],
     tags: ['ambiente', 'interior', 'exterior'],
-    relatedEntryIds: ['moho-gris-botrytis-cinerea', 'calidad-del-agua-de-riego'],
+    relatedEntryIds: ['moho-gris-botrytis-cinerea', 'calidad-del-agua-de-riego', 'estres-ambiental-y-crecimiento'],
     sourceIds: ['cientifica-corredor-perilla-2025-humedad-vpd-cannabis', 'otra-breit-2019-vpd-cannabis-tabla-comercial'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-19',
@@ -3765,7 +4378,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['cultivo', 'poda'],
-    relatedEntryIds: ['poda', 'entrenamiento-de-bajo-estres-lst'],
+    relatedEntryIds: ['poda', 'entrenamiento-de-bajo-estres-lst', 'estres-ambiental-y-crecimiento'],
     sourceIds: [
       'academica-jedrzejuk-2025-tigmomorfogenesis-review'
     ],
