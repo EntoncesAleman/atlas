@@ -971,7 +971,7 @@ export const editorialEntries = [
       'Esta entrada no fija un calendario ni una duración esperada para cada etapa — depende de demasiadas variables (genética, ambiente, manejo) como para dar una cifra única sin volverla arbitraria.'
     ],
     tags: ['cultivo', 'ciclo'],
-    relatedEntryIds: ['germinacion', 'luz-y-fotoperiodo', 'poda', 'fertilizacion-y-nutricion', 'ciclo-de-vida', 'interior-y-exterior'],
+    relatedEntryIds: ['germinacion', 'luz-y-fotoperiodo', 'poda', 'fertilizacion-y-nutricion', 'ciclo-de-vida', 'interior-y-exterior', 'lectura-frank-rosenthal-marijuana-growers-guide'],
     sourceIds: ['cientifica-hesami-2023-cannabis-life-cycle', 'academica-uncuyo-guia-crecimiento'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-10',
@@ -1315,7 +1315,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['cosecha', 'maduración', 'genética'],
-    relatedEntryIds: ['cosecha-y-maduracion', 'genetica-y-tipos', 'fertilizacion-y-cannabinoides-evidencia'],
+    relatedEntryIds: ['cosecha-y-maduracion', 'genetica-y-tipos', 'fertilizacion-y-cannabinoides-evidencia', 'lectura-gaoni-mechoulam-aislamiento-thc', 'lectura-starks-marijuana-potency'],
     sourceIds: [
       'cientifica-walsh-2021-minor-cannabinoids-biosynthesis',
       'cientifica-livingston-2019-trichome-morphology-maturation',
@@ -1471,7 +1471,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['historia', 'domesticación'],
-    relatedEntryIds: ['genetica-y-tipos', 'germinacion', 'historia-de-la-planta-argentina'],
+    relatedEntryIds: ['genetica-y-tipos', 'germinacion', 'historia-de-la-planta-argentina', 'lectura-dewey-1910-cultivo-canamo-usda'],
     sourceIds: [
       'cientifica-ren-2021-cannabis-domestication-genomics',
       'cientifica-dalmartello-2023-haimenkou-cannabis-archaeobotany',
@@ -3421,7 +3421,7 @@ export const editorialEntries = [
       'En interior, con fotoperiodo controlado, esta variación genética se traduce en distintos tiempos de floración entre cultivares bajo el mismo esquema de luz. En exterior, se traduce además en distintas fechas de floración natural según la latitud y la genética combinadas — ver "Fotoperiodo según latitud argentina".'
     ],
     tags: ['luz', 'fotoperiodo', 'genética', 'interior', 'exterior'],
-    relatedEntryIds: ['luz-y-fotoperiodo', 'genetica-y-tipos', 'fotoperiodo-segun-latitud-argentina', 'diferencias-geneticas-crecimiento-cultivares', 'elongacion-stretch-floracion'],
+    relatedEntryIds: ['luz-y-fotoperiodo', 'genetica-y-tipos', 'fotoperiodo-segun-latitud-argentina', 'diferencias-geneticas-crecimiento-cultivares', 'elongacion-stretch-floracion', 'lectura-drake-cultivators-handbook'],
     sourceIds: ['academica-toth-2022-genetica-fotoperiodo-cannabis', 'academica-mora-2019-aptitud-agroclimatica-canamo-uba'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-19',
@@ -5435,7 +5435,7 @@ export const editorialEntries = [
     ],
     environmentContext: null,
     tags: ['genética', 'taxonomía', 'legal'],
-    relatedEntryIds: ['genetica-y-tipos', 'marco-editorial', 'luz-y-fotoperiodo'],
+    relatedEntryIds: ['genetica-y-tipos', 'marco-editorial', 'luz-y-fotoperiodo', 'lectura-dewey-1910-cultivo-canamo-usda'],
     sourceIds: [
       'ley-27669-marco-industrial',
       'cientifica-zhang-2021-hemp-photoperiod-cultivars'
@@ -5569,6 +5569,322 @@ export const editorialEntries = [
     }
   },
   {
+    id: 'lectura-frank-rosenthal-marijuana-growers-guide',
+    slug: 'marijuana-growers-guide-frank-rosenthal',
+    categoryId: 'material-de-lectura',
+    title: 'Marijuana Grower\'s Guide (Mel Frank y Ed Rosenthal)',
+    summary: 'Uno de los manuales de cultivo casero más difundidos de la contracultura estadounidense de los años 70 — pero el título "Marijuana Grower\'s Guide" corresponde en realidad a dos obras publicadas distintas, no a una sola.',
+    intro: 'Tipo de obra: manual / divulgativo. Estado del conocimiento: histórico — describe prácticas y creencias de cultivo de su época, no evidencia científica actual. Este material no reemplaza a las entradas de fisiología y cultivo de este atlas: se incluye como documento histórico para quien quiera estudiar cómo se transmitía el conocimiento práctico de cultivo antes de la investigación científica moderna sobre Cannabis sativa.',
+    sections: [
+      {
+        id: 'que-es-y-que-ediciones-existen',
+        title: 'Qué es, y por qué "una obra" son en realidad dos',
+        paragraphs: [
+          'Bajo el nombre de Mel Frank y Ed Rosenthal circulan al menos dos obras publicadas distintas, con títulos parecidos pero no idénticos, algo que las descripciones de venta y las referencias informales suelen mezclar. La primera, "The Indoor/Outdoor Highest Quality Marijuana Grower\'s Guide", según el registro catalográfico de la Wellcome Collection (Londres), fue publicada por Level Press en San Francisco hacia 1974, con 94 páginas. La segunda, "Marijuana Grower\'s Guide", apareció en 1978 por And/Or Press (Berkeley) como una obra bastante más extensa (330 páginas) — no una reimpresión, sino un trabajo posterior y ampliado, publicado tres años después del primero. Existe además una reedición de 1990 (Red Eye Press). Esta entrada trata a ambas como lo que fueron: publicaciones relacionadas de los mismos autores, en momentos distintos, no una sola obra con dos nombres.'
+        ]
+      },
+      {
+        id: 'contexto-historico',
+        title: 'Contexto histórico',
+        paragraphs: [
+          'And/Or Press operó en el área de la bahía de San Francisco entre 1974 y 1983, especializada en temas de contracultura, y estos títulos de cultivo de Cannabis estuvieron entre sus obras de mayor venta durante esa década, distribuidas sobre todo a través de "head shops" y canales no tradicionales de venta de libros. Es el contexto en el que aparece esta obra: no una editorial académica ni una imprenta agronómica establecida, sino una editorial contracultural pequeña, en un momento en que el cultivo doméstico de Cannabis en Estados Unidos operaba fuera de cualquier marco legal o institucional.'
+        ]
+      },
+      {
+        id: 'que-aporta-y-que-temas-trata',
+        title: 'Qué aporta y qué temas trata',
+        paragraphs: [
+          'Según las propias descripciones editoriales de estas ediciones, el contenido cubre germinación, sexado de plantas, técnicas de cultivo en interior y exterior, y consideraciones de luz y ambiente para el cultivo doméstico de la época — presentado como guía práctica para cultivadores sin formación técnica previa, no como un tratado académico de botánica.'
+        ]
+      },
+      {
+        id: 'que-sigue-siendo-interesante-y-que-requiere-contexto',
+        title: 'Qué sigue siendo interesante, y qué requiere contextualizarse',
+        paragraphs: [
+          'Como documento histórico, permite ver qué sabía —y qué creía saber— la cultura de cultivo doméstico antes de que existiera investigación científica revisada por pares sobre Cannabis sativa en cantidad significativa (la mayoría de los estudios directos sobre la especie citados en el resto de este atlas son de las últimas dos décadas). Cualquier afirmación técnica puntual de esta obra —sobre nutrición, luz, o rendimiento— debe leerse como práctica de cultivo de su época, no contrastarse ni presentarse como equivalente a la evidencia científica que sí cita el resto del atlas.'
+        ]
+      },
+      {
+        id: 'disponibilidad',
+        title: 'Disponibilidad',
+        paragraphs: [
+          'No se localizó, al momento de esta investigación, una copia de acceso gratuito legal de ninguna de las ediciones mencionadas en Internet Archive ni en otro repositorio institucional. El acceso disponible actualmente es a través del mercado de ejemplares usados y librerías anticuarias especializadas. El registro catalográfico de la Wellcome Collection (enlazado como fuente) permite consultar la ficha bibliográfica de la primera edición conocida.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Tratar "Marijuana Grower\'s Guide" y "The Indoor/Outdoor Highest Quality Marijuana Grower\'s Guide" como el mismo libro con dos nombres — son dos publicaciones distintas, de años y extensión distintos, aunque de los mismos autores.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Presentar cualquier afirmación técnica de esta obra (nutrición, luz, técnicas de cultivo) como evidencia científica vigente — es un documento histórico de práctica de cultivo de los años 70, no una fuente científica revisada por pares.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['lectura', 'historia', 'cultivo'],
+    relatedEntryIds: ['cultivo-en-secuencia', 'lectura-drake-cultivators-handbook'],
+    sourceIds: ['historica-frank-rosenthal-marijuana-growers-guide'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Marijuana Grower\'s Guide (Frank y Rosenthal) — Atlas del Cultivo Argentino',
+      seoDescription: 'Reseña histórica y bibliográfica de "Marijuana Grower\'s Guide" y su antecedente de los años 70, aclarando que son dos obras publicadas distintas, no una sola.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'lectura-drake-cultivators-handbook',
+    slug: 'cultivators-handbook-of-marijuana-drake',
+    categoryId: 'material-de-lectura',
+    title: 'The Cultivator\'s Handbook of Marijuana (Bill Drake)',
+    summary: 'Un folleto autoeditado de 1970, con bibliografía propia y contenido sobre fotoperiodo y luz — uno de los primeros manuales de cultivo de la contracultura estadounidense, aunque las afirmaciones de que fue "el primero" provienen de descripciones comerciales, no de una fuente histórica independiente.',
+    intro: 'Tipo de obra: manual / divulgativo. Estado del conocimiento: histórico. Esta entrada documenta la obra con la evidencia bibliográfica disponible, sin repetir afirmaciones de "primer libro" que no pudieron verificarse de forma independiente.',
+    sections: [
+      {
+        id: 'que-es',
+        title: 'Qué es',
+        paragraphs: [
+          'Un folleto (formato "staplebound", es decir, cosido con grapas, no encuadernado como libro convencional) publicado en Eugene, Oregon, en 1970, con ilustraciones de Terry Rutledge y caligrafía de Jim Drake. Según el registro catalográfico de Internet Archive —que incluye el número de control de la Library of Congress y el número OCLC—, tiene 88 páginas e incluye una bibliografía propia de 8 páginas (81-88), un detalle que sugiere una intención de respaldo documental poco común en publicaciones autoeditadas de esa época.'
+        ]
+      },
+      {
+        id: 'contexto-historico-y-una-discrepancia-real',
+        title: 'Contexto histórico, y una discrepancia real entre fuentes',
+        paragraphs: [
+          'William Daniel Drake Jr. autoeditó esta obra en un contexto muy similar al de "Marijuana Grower\'s Guide": la contracultura estadounidense de comienzos de los 70, con canales de distribución al margen de la industria editorial convencional. Existe una discrepancia real entre las fuentes consultadas sobre el nombre exacto de la editorial: el catálogo de Internet Archive y la Library of Congress indican "Augur Publishing Company", mientras que descripciones de libreros anticuarios indican "Agrarian Reform Company" para lo que describen como una "primera edición revisada". Esta investigación no pudo resolver esa discrepancia con una fuente adicional independiente — es posible que correspondan a sellos distintos usados en tiradas distintas de una misma publicación autoeditada, una práctica documentada en la prensa contracultural de la época.'
+        ]
+      },
+      {
+        id: 'que-aporta-y-que-temas-trata',
+        title: 'Qué aporta y qué temas trata',
+        paragraphs: [
+          'Según la descripción bibliográfica disponible, cubre requerimientos de agua, efectos del calor de fondo del sustrato, efectos de la duración del día y la respuesta de la planta a la luz — es decir, incluye contenido sobre fotoperiodo, en un momento (1970) anterior a que existiera investigación científica publicada que caracterizara con precisión el umbral fotoperiódico de floración de Cannabis sativa (ver "Variación genética de la respuesta fotoperiódica", con evidencia de décadas posteriores). El propio autor incluye también comentario personal sobre política de drogas, fuera del contenido técnico de cultivo.'
+        ]
+      },
+      {
+        id: 'sobre-la-afirmacion-de-ser-el-primer-manual',
+        title: 'Sobre la afirmación de ser "el primer manual"',
+        paragraphs: [
+          'Descripciones de venta de libreros anticuarios especializados presentan esta obra como "el primer manual de cultivo casero de Cannabis publicado en Estados Unidos". Esta investigación no encontró una fuente histórica independiente (bibliotecaria, académica o periodística) que confirme esa afirmación de forma verificable — proviene de descripciones comerciales de venta de ejemplares, cuyo interés es distinto al de establecer un hecho histórico con rigor. Por esa razón, esta entrada no repite la afirmación como un hecho verificado, aunque la fecha de 1970 sí la ubica entre las primeras publicaciones documentadas de este tipo en el país.'
+        ]
+      },
+      {
+        id: 'disponibilidad',
+        title: 'Disponibilidad',
+        paragraphs: [
+          'Existe un registro catalográfico completo en Internet Archive, pero el ítem figura como "access-restricted": no hay copia de lectura ni de préstamo disponible actualmente a través de esa plataforma. No se localizó otra copia de acceso gratuito legal. El acceso disponible es a través de librerías anticuarias y mercado de ejemplares usados.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Repetir la afirmación de que esta obra fue "el primer manual de cultivo casero de Cannabis en Estados Unidos" como un hecho histórico verificado — esa afirmación proviene de descripciones comerciales de venta de ejemplares, no de una fuente histórica independiente confirmada en esta investigación.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Presentar el contenido sobre fotoperiodo de esta obra (1970) como evidencia científica sobre el umbral de floración de Cannabis sativa — es una observación de cultivo de su época, muy anterior a los estudios genéticos y experimentales que sí caracterizan ese umbral con evidencia directa (ver "Variación genética de la respuesta fotoperiódica").'
+      }
+    ],
+    environmentContext: null,
+    tags: ['lectura', 'historia', 'cultivo'],
+    relatedEntryIds: ['variacion-genetica-fotoperiodo', 'lectura-frank-rosenthal-marijuana-growers-guide'],
+    sourceIds: ['historica-drake-1970-cultivators-handbook'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'The Cultivator\'s Handbook of Marijuana (Bill Drake) — Atlas del Cultivo Argentino',
+      seoDescription: 'Reseña histórica y bibliográfica del folleto autoeditado de 1970 de William Daniel Drake Jr., con la evidencia bibliográfica real detrás de su historia editorial.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'lectura-starks-marijuana-potency',
+    slug: 'marijuana-potency-starks',
+    categoryId: 'material-de-lectura',
+    title: 'Marijuana Potency / Marijuana Chemistry (Michael Starks)',
+    summary: 'Publicado en 1977 y reeditado y ampliado en 1990 bajo un título distinto, este libro se enfocó específicamente en la química de la potencia del Cannabis — un ángulo más técnico que los manuales de cultivo generalistas de la misma época.',
+    intro: 'Tipo de obra: técnico / divulgativo. Estado del conocimiento: histórico, con contenido que requiere contextualización frente a la química analítica actual de cannabinoides.',
+    sections: [
+      {
+        id: 'que-es-y-su-reedicion',
+        title: 'Qué es, y su reedición bajo otro título',
+        paragraphs: [
+          'Michael Starks publicó "Marijuana Potency" en 1977 con And/Or Press (Berkeley), 198 páginas. Según el propio registro catalográfico de Internet Archive, esta obra fue posteriormente reeditada y ampliada en 1990 por Ronin Publishing bajo el título "Marijuana Chemistry: Genetics, Processing & Potency" (199 páginas) — el catálogo de esa segunda edición identifica explícitamente a "Marijuana potency" como su título original, confirmando que se trata de la misma obra revisada, no de un libro distinto.'
+        ]
+      },
+      {
+        id: 'que-aporta-y-que-temas-trata',
+        title: 'Qué aporta y qué temas trata',
+        paragraphs: [
+          'A diferencia de los manuales de cultivo generalistas de la misma década, esta obra se enfocó específicamente en los factores que afectan la potencia del Cannabis: genética, condiciones de cultivo, momento de cosecha y procesamiento poscosecha, con atención a las diferencias entre THC y CBD. Es, dentro de la literatura de esa época, uno de los intentos más tempranos de tratar la química de los cannabinoides como tema central de un libro dirigido a cultivadores, no solo como una mención de paso dentro de una guía de cultivo general.'
+        ]
+      },
+      {
+        id: 'que-requiere-contextualizarse',
+        title: 'Qué requiere contextualizarse hoy',
+        paragraphs: [
+          'Esta entrada no pudo verificar por lectura directa el contenido interno del libro —solo su registro catalográfico—, por lo que no confirma ni descarta afirmaciones puntuales que pudiera contener sobre métodos de análisis casero de cannabinoides (por ejemplo, cromatografía en capa fina, una técnica de laboratorio real y ya existente en los años 70, pero cuya aplicación casera y su precisión en ese contexto esta investigación no pudo verificar en esta obra en particular). Cualquier afirmación de ese tipo, si aparece en el libro, debería leerse como una técnica de época, y contrastarse con los métodos analíticos actuales (cromatografía líquida de alta resolución, espectrometría de masas) que son los que respaldan las cifras de cannabinoides citadas en el resto de este atlas.'
+        ]
+      },
+      {
+        id: 'disponibilidad',
+        title: 'Disponibilidad',
+        paragraphs: [
+          'Ambas ediciones —la de 1977 y la de 1990— están disponibles para préstamo digital (lectura, no descarga libre) a través del programa de préstamo controlado de Internet Archive, previo registro de una cuenta gratuita en esa plataforma.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'OTHER',
+        description: 'Tratar "Marijuana Potency" y "Marijuana Chemistry: Genetics, Processing & Potency" como dos libros distintos — el propio catálogo de la segunda edición identifica a la primera como su título original.'
+      },
+      {
+        type: 'OTHER',
+        description: 'Presentar un método de análisis casero de cannabinoides descrito en un libro de los años 70 como equivalente en precisión a los métodos analíticos actuales (HPLC, espectrometría de masas) que respaldan la evidencia científica citada en el resto de este atlas.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['lectura', 'historia', 'genética'],
+    relatedEntryIds: ['quimica-de-la-maduracion', 'fertilizacion-y-cannabinoides-evidencia'],
+    sourceIds: ['historica-starks-1977-marijuana-potency'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Marijuana Potency / Marijuana Chemistry (Michael Starks) — Atlas del Cultivo Argentino',
+      seoDescription: 'Reseña histórica y bibliográfica de "Marijuana Potency" (1977) y su reedición ampliada de 1990, con acceso legítimo por préstamo digital en Internet Archive.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'lectura-gaoni-mechoulam-aislamiento-thc',
+    slug: 'aislamiento-del-thc-gaoni-mechoulam-1964',
+    categoryId: 'material-de-lectura',
+    title: 'Isolation, Structure, and Partial Synthesis of an Active Constituent of Hashish (Gaoni y Mechoulam, 1964)',
+    summary: 'Dos páginas que reportaron, por primera vez, el aislamiento en forma pura y la estructura del delta-9-tetrahidrocannabinol — el punto de partida de toda la química de cannabinoides que cita el resto de este atlas.',
+    intro: 'Tipo de obra: científico. Estado del conocimiento: histórico en su forma (una comunicación breve de 1964), pero su hallazgo central —la estructura del THC— sigue vigente como base de la química de cannabinoides actual.',
+    sections: [
+      {
+        id: 'que-es',
+        title: 'Qué es',
+        paragraphs: [
+          'Una comunicación científica breve —dos páginas— publicada en 1964 en el Journal of the American Chemical Society por Yechiel Gaoni y Raphael Mechoulam, ambos del Instituto Weizmann de Ciencia (Israel). Reportó el aislamiento en forma pura y la elucidación estructural del delta-9-tetrahidrocannabinol (THC), el principal componente psicoactivo de Cannabis sativa.'
+        ]
+      },
+      {
+        id: 'importancia-historica',
+        title: 'Importancia histórica',
+        paragraphs: [
+          'Es, según fuentes académicas convergentes sobre la biografía de Mechoulam (incluida la que documenta el propio Atlas en la sección de Documentales), el punto de partida de la química moderna de cannabinoides: antes de este trabajo no existía una estructura química confirmada para el THC, lo que limitaba cualquier investigación posterior sobre su mecanismo de acción, su farmacología o su detección analítica. Toda la evidencia científica que este atlas cita sobre THC, CBD y otros cannabinoides —en Cosecha, Fertilización y otras categorías— presupone, en última instancia, esta identificación estructural.'
+        ]
+      },
+      {
+        id: 'que-sigue-vigente',
+        title: 'Qué sigue vigente',
+        paragraphs: [
+          'La identificación estructural del THC reportada en este trabajo sigue siendo la base aceptada de la química de cannabinoides: no es un hallazgo histórico superado, sino el punto de partida de un campo que continuó desarrollándose durante seis décadas. Lo que sí cambió enormemente desde 1964 son los métodos analíticos disponibles (ver "Marijuana Potency (Michael Starks)" para un antecedente de mitad de camino) y el volumen de investigación sobre otros cannabinoides además del THC.'
+        ]
+      },
+      {
+        id: 'disponibilidad',
+        title: 'Disponibilidad',
+        paragraphs: [
+          'El artículo original está publicado en una revista de acceso pago (ACS Publications) y no se localizó, al momento de esta investigación, una versión de acceso abierto legítima. El registro bibliográfico completo (DOI, cita exacta) está disponible de forma gratuita a través del sistema de identificadores DOI, aunque el texto completo requiere acceso institucional o compra.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Tratar este trabajo de 1964 como si fuera reciente o como si representara el estado actual de la química analítica de cannabinoides — es el punto de partida histórico del campo, no una referencia metodológica actual.'
+      }
+    ],
+    environmentContext: null,
+    tags: ['lectura', 'historia', 'genética'],
+    relatedEntryIds: ['quimica-de-la-maduracion', 'documental-cannabis-medicinal', 'lectura-starks-marijuana-potency'],
+    sourceIds: ['cientifica-gaoni-mechoulam-1964-aislamiento-thc'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'Aislamiento del THC (Gaoni y Mechoulam, 1964) — Atlas del Cultivo Argentino',
+      seoDescription: 'Reseña histórica del artículo científico de 1964 que reportó por primera vez el aislamiento y la estructura del THC, punto de partida de la química moderna de cannabinoides.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
+    id: 'lectura-dewey-1910-cultivo-canamo-usda',
+    slug: 'cultivo-de-canamo-en-estados-unidos-dewey-1910',
+    categoryId: 'material-de-lectura',
+    title: 'The Cultivation of Hemp in the United States (Lyster H. Dewey, USDA, 1910)',
+    summary: 'Un documento oficial de dominio público, de más de un siglo de antigüedad, que muestra cómo el gobierno de Estados Unidos promovía técnicamente el cultivo de cáñamo mucho antes de cualquier prohibición.',
+    intro: 'Tipo de obra: técnico / manual oficial. Estado del conocimiento: histórico, de agronomía general de cáñamo de comienzos del siglo XX. Este documento no trata a Cannabis sativa como sustancia psicoactiva ni menciona cannabinoides: es agronomía de fibra, redactada más de cinco décadas antes de la identificación del THC.',
+    sections: [
+      {
+        id: 'que-es',
+        title: 'Qué es',
+        paragraphs: [
+          'Una circular oficial de 12 páginas del Bureau of Plant Industry del Departamento de Agricultura de Estados Unidos (USDA), publicada el 23 de mayo de 1910, escrita por Lyster H. Dewey, botánico especializado en cáñamo de esa institución. Es un documento de dominio público: la propia institución que lo digitalizó (Internet Archive, con el fondo de la biblioteca nacional de agricultura del USDA) indica explícitamente que no está sujeto a derechos de autor.'
+        ]
+      },
+      {
+        id: 'contexto-historico',
+        title: 'Contexto histórico',
+        paragraphs: [
+          'Se incluye en esta colección precisamente porque contrasta con la literatura de cultivo de los años 70 reseñada en esta misma sección: es un documento oficial del gobierno estadounidense, redactado varias décadas antes del prohibicionismo, que promovía activamente el cultivo de cáñamo con fines agrícolas e industriales (fibra), un capítulo de la historia de la especie que "Historia de la planta" ya menciona de forma más general para el caso argentino y que este documento permite estudiar de forma directa para el caso estadounidense.'
+        ]
+      },
+      {
+        id: 'que-aporta-y-que-temas-trata',
+        title: 'Qué aporta y qué temas trata',
+        paragraphs: [
+          'Cubre recomendaciones agronómicas de la época para el cultivo de cáñamo con fines de fibra: preparación del suelo, densidad de siembra, momento de cosecha y aspectos económicos del cultivo en el contexto agrícola estadounidense de 1910. No aborda en absoluto la planta como fuente de compuestos psicoactivos —un tema que, en esa fecha, todavía no formaba parte de la agenda de investigación agronómica oficial de la manera en que después sí lo sería la prohibición.'
+        ]
+      },
+      {
+        id: 'disponibilidad',
+        title: 'Disponibilidad',
+        paragraphs: [
+          'Descarga y lectura completamente libres y gratuitas, sin necesidad de préstamo ni registro, a través de Internet Archive.'
+        ]
+      }
+    ],
+    observations: [],
+    signals: null,
+    commonMistakes: [
+      {
+        type: 'CONTEXT',
+        description: 'Leer este documento como si tratara sobre Cannabis con fines medicinales o psicoactivos — es agronomía de cáñamo fibra de comienzos del siglo XX, de una época en la que ni siquiera existía la identificación química del THC (ver "Aislamiento del THC").'
+      }
+    ],
+    environmentContext: null,
+    tags: ['lectura', 'historia', 'industria'],
+    relatedEntryIds: ['historia-de-la-planta', 'canamo-industrial-frontera-thc'],
+    sourceIds: ['historica-dewey-1910-usda-cultivo-canamo'],
+    editorialStatus: 'PUBLISHED',
+    lastReviewed: '2026-09-19',
+    metadata: {
+      seoTitle: 'The Cultivation of Hemp in the United States (Dewey, USDA, 1910) — Atlas del Cultivo Argentino',
+      seoDescription: 'Documento oficial de dominio público de 1910 sobre agronomía del cáñamo en Estados Unidos, de descarga completamente libre en Internet Archive.',
+      canonical: null,
+      ogImage: null
+    }
+  },
+  {
     id: 'documental-cannabis-medicinal',
     slug: 'cannabis-medicinal-documental',
     categoryId: 'documentales',
@@ -5589,7 +5905,7 @@ export const editorialEntries = [
     commonMistakes: [],
     environmentContext: null,
     tags: ['documental', 'argentina'],
-    relatedEntryIds: ['industria-cannabis-argentina-actual', 'marco-editorial'],
+    relatedEntryIds: ['industria-cannabis-argentina-actual', 'marco-editorial', 'lectura-gaoni-mechoulam-aislamiento-thc'],
     sourceIds: ['documental-cannabis-medicinal-2023'],
     editorialStatus: 'PUBLISHED',
     lastReviewed: '2026-09-18',

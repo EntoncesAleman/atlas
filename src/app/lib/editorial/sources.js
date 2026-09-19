@@ -1620,6 +1620,58 @@ export const sources = [
     accessedAt: '2026-09-19',
     notes: 'NO se pudo verificar por lectura directa en esta sesión (ResearchGate devolvió error 403 al intento de acceso directo); título, autoría, revista, volumen y páginas confirmados por resultados de búsqueda convergentes, sin DOI localizado (revista con indexación limitada en Crossref). Según las caracterizaciones disponibles: usando microscopía electrónica de barrido (SEM-EDX), encontró que el silicio se deposita en tricomas NO glandulares (no en los tricomas glandulares productores de resina/cannabinoides) de cálices y hojas, y que esos depósitos se concentran alrededor de los puntos de penetración fúngica tras una infección de oídio — sugiriendo que la localización del silicio responde a un estímulo biótico (la enfermedad), no es una acumulación pasiva y constante. Se cita con la salvedad explícita de no haber sido verificada por lectura directa.'
   },
+  {
+    id: 'historica-frank-rosenthal-marijuana-growers-guide',
+    title: 'Marijuana Grower\'s Guide (y su antecedente, The Indoor/Outdoor Highest Quality Marijuana Grower\'s Guide)',
+    authorOrInstitution: 'Frank, Mel; Rosenthal, Ed — ilustraciones de Larry Todd',
+    url: 'https://wellcomecollection.org/works/hvrnh7fj',
+    type: 'OTHER',
+    publicationDate: '1978',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa del registro catalográfico de Wellcome Collection (Londres, institución de archivo real, fondo DrugScope) para la obra antecedente, y por consistencia entre resultados de búsqueda convergentes (Wikipedia, listados de libreros anticuarios, Google Books) para el resto. Son DOS obras publicadas relacionadas, no una sola con dos nombres, algo que el informe original mezclaba: (1) "The Indoor/Outdoor Highest Quality Marijuana Grower\'s Guide" (según Wellcome Collection: Level Press, San Francisco, [1974], 94 páginas; la propia página de Wikipedia sobre And/Or Press la fecha en 1975 y le atribuye "14 impresiones" comerciales, un dato de esa fuente terciaria no verificado de forma independiente en esta investigación); y (2) "Marijuana Grower\'s Guide" (And/Or Press, Berkeley, 1978, 330 páginas, ISBN 0915904268/9780915904266), una obra posterior, más extensa, publicada tres años después. Existe además una reedición de 1990 (Red Eye Press/Quick American, ISBN 0929349016/9780929349015). No se localizó copia de acceso gratuito legal de ninguna de estas ediciones en Internet Archive ni en otro repositorio institucional al momento de esta investigación — el acceso disponible es de mercado de ejemplares usados/anticuarios.'
+  },
+  {
+    id: 'historica-drake-1970-cultivators-handbook',
+    title: 'The Cultivator\'s Handbook of Marijuana',
+    authorOrInstitution: 'Drake, William Daniel (Bill Drake) — ilustraciones de Terry Rutledge, caligrafía de Jim Drake',
+    url: 'https://archive.org/details/cultivatorshandb0000unse',
+    type: 'OTHER',
+    publicationDate: '1970',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa del registro catalográfico de Internet Archive (identificador cultivatorshandb0000unse, con número de control de la Library of Congress 74152569 y OCLC 1153315519 — dato bibliográfico verificable de forma independiente). El ítem figura como "access-restricted" en Internet Archive: existe el registro catalográfico, pero no hay copia de lectura o préstamo disponible actualmente. Datos de publicación con una discrepancia real entre fuentes: el catálogo de Internet Archive/LC indica editorial "Augur Publishing Company" (Eugene, Oregon, 1970, 88 páginas), mientras que descripciones de libreros anticuarios (no usadas acá como autoridad histórica, solo para el dato físico del ejemplar) indican "Agrarian Reform Company" y 91 páginas para lo que describen como "primera edición revisada" — es posible que ambos nombres correspondan a imprentas/sellos distintos usados por el propio autor en distintas tiradas de una publicación autoeditada, algo común en la prensa contracultural de la época; esta investigación no pudo resolver esa discrepancia con una fuente adicional independiente. La afirmación de libreros de que es "el primer manual de cultivo casero de Cannabis en EE. UU." proviene de descripciones comerciales de venta de ejemplares, no de una fuente histórica independiente, y no se reproduce como hecho verificado.'
+  },
+  {
+    id: 'historica-starks-1977-marijuana-potency',
+    title: 'Marijuana Potency (reeditado en 1990 como Marijuana Chemistry: Genetics, Processing & Potency)',
+    authorOrInstitution: 'Starks, Michael',
+    url: 'https://archive.org/details/marijuanapotency00star',
+    type: 'OTHER',
+    publicationDate: '1977',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa del registro catalográfico de Internet Archive (identificador marijuanapotency00star; ISBN 0915904276/9780915904273; LCCN 77082454 — datos verificables de forma independiente). And/Or Press, Berkeley, 1977, 198 páginas. El ítem está disponible para préstamo digital (lectura, no descarga libre) a través del programa de préstamo controlado de Internet Archive. La misma obra fue reeditada y ampliada en 1990 por Ronin Publishing con el título "Marijuana Chemistry: Genetics, Processing & Potency" (identificador de Internet Archive marijuanachemist0000star, que registra explícitamente "Marijuana potency" como su título original — ISBN 0914171399, 199 páginas), también disponible para préstamo digital. No se pudo verificar por lectura directa del contenido interno (solo se accedió al registro catalográfico, no al texto completo) ninguna afirmación específica sobre métodos de laboratorio (por ejemplo, cromatografía en capa fina) que el libro pudiera describir — esta investigación no confirma ni descarta ese contenido puntual.'
+  },
+  {
+    id: 'cientifica-gaoni-mechoulam-1964-aislamiento-thc',
+    scope: 'CANNABIS',
+    title: 'Isolation, Structure, and Partial Synthesis of an Active Constituent of Hashish',
+    authorOrInstitution: 'Gaoni, Y.; Mechoulam, R. — Journal of the American Chemical Society, vol. 86, n.º 8, pp. 1646-1647',
+    url: 'https://doi.org/10.1021/ja01062a046',
+    type: 'SCIENTIFIC',
+    publicationDate: '1964-04',
+    accessedAt: '2026-09-19',
+    notes: 'Título, autoría, revista, volumen y páginas verificados vía Crossref (DOI real). El texto completo NO se pudo verificar por lectura directa en esta sesión (ACS Publications devolvió error 403; es una revista con acceso pago, sin versión de libre acceso localizada para este artículo de 1964). Es la comunicación científica en la que Raphael Mechoulam y Yechiel Gaoni reportaron el aislamiento en forma pura y la elucidación estructural del delta-9-tetrahidrocannabinol (THC) — un hecho histórico ampliamente documentado y consistente con múltiples fuentes secundarias académicas (incluida una nota biográfica de Mechoulam ya usada en este atlas), aunque el detalle experimental interno del artículo no pudo confirmarse por lectura directa del texto completo.'
+  },
+  {
+    id: 'historica-dewey-1910-usda-cultivo-canamo',
+    scope: 'GENERAL',
+    title: 'The Cultivation of Hemp in the United States (Circular n.º 57, Bureau of Plant Industry)',
+    authorOrInstitution: 'Dewey, Lyster H. — United States Department of Agriculture, Bureau of Plant Industry',
+    url: 'https://archive.org/details/cultivationofhem57dewe',
+    type: 'OFFICIAL',
+    publicationDate: '1910-05-23',
+    accessedAt: '2026-09-19',
+    notes: 'VERIFICADO por lectura directa del registro catalográfico de Internet Archive (identificador cultivationofhem57dewe). Documento de dominio público (obra del gobierno de Estados Unidos; la propia institución que lo digitalizó indica explícitamente "no está bajo derechos de autor"), de descarga y lectura completamente libres. Circular oficial del Bureau of Plant Industry del USDA, 12 páginas, con recomendaciones agronómicas para el cultivo de cáñamo en Estados Unidos vigentes en 1910. Lyster H. Dewey fue un botánico real del USDA especializado en cáñamo, con archivo documental propio conservado por esa institución.'
+  },
 ];
 
 export function sourceById(id) {
