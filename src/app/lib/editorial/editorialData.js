@@ -379,13 +379,6 @@ export const editorialEntries = [
         ]
       },
       {
-        id: 'historia',
-        title: 'Historia',
-        paragraphs: [
-          'Los estudios genómicos más recientes ubican el comienzo de la domesticación de Cannabis sativa hace unos 12.000 años, en el este de Asia: una comparación de 110 genomas de variedades de todo el mundo encontró que los cultivares actuales de fibra y de uso psicoactivo derivan de un mismo fondo genético ancestral, representado hoy por poblaciones silvestres y variedades locales de China. Es una fecha estimada por métodos genéticos —no una medición directa sobre un resto físico— y el origen geográfico exacto sigue en discusión académica. La evidencia física más concreta es más tardía: fitolitos (microestructuras vegetales que se conservan mejor que una semilla) hallados en Shandong, norte de China, ubican a la planta dentro del conjunto de cultivos manejados entre hace 4.500 y 3.400 años, y en el sitio de la Edad del Bronce de Haimenkou (Yunnan, suroeste de China) se recuperaron más de 800 semillas fechadas entre 1650 y 400 a.C. — el registro arqueobotánico más directo que existe hoy de que la planta ya se manejaba y probablemente se propagaba de forma activa por semilla, mucho antes de que existiera ningún conocimiento escrito sobre cómo hacerla germinar.'
-        ]
-      },
-      {
         id: 'antes-de-empezar-estado-semilla',
         title: 'El estado de la semilla, antes de que empiece todo',
         paragraphs: [
@@ -413,14 +406,6 @@ export const editorialEntries = [
         ]
       },
       {
-        id: 'primeras-senales',
-        title: 'Primeras señales',
-        paragraphs: [
-          'Lo primero que suele hacerse visible es un leve hinchamiento de la semilla y, después, una apertura de la testa por donde asoma la radícula: una raíz pálida, fina, que crece hacia abajo y se ancla al sustrato. Poco después aparece el hipocótilo, arqueado, empujando hacia la superficie. Al emerger, ese arco se endereza y arrastra consigo los dos cotiledones, que se abren y —con exposición a la luz— empiezan a tomar color verde.',
-          'Ninguna de estas señales, por sí sola, permite anticipar cómo va a seguir el desarrollo posterior de la planta: son indicadores de que el proceso está en curso, no un pronóstico.'
-        ]
-      },
-      {
         id: 'condiciones-ambientales',
         title: 'Condiciones ambientales',
         paragraphs: [
@@ -434,6 +419,14 @@ export const editorialEntries = [
         title: 'Lectura de la plántula',
         paragraphs: [
           'Una vez que los cotiledones se abren y verdean, la plántula empieza a generar su propia energía por fotosíntesis en lugar de depender solo de las reservas de la semilla. La aparición de las primeras hojas verdaderas —distintas en forma a los cotiledones, ya con los bordes serrados característicos de la especie— suele tomarse como la señal de que la etapa de germinación, en sentido estricto, quedó atrás y empieza la etapa de crecimiento vegetativo.'
+        ]
+      },
+      {
+        id: 'historia',
+        title: 'Una germinación mucho más antigua que su explicación',
+        paragraphs: [
+          'La domesticación de Cannabis sativa se estima, por métodos genómicos, en unos 12.000 años, en el este de Asia — una fecha calculada comparando genomas de variedades actuales de todo el mundo, no medida de forma directa sobre un resto físico, y con el origen geográfico exacto todavía en discusión académica. El registro arqueológico directo es más tardío pero más concreto: fitolitos hallados en Shandong (norte de China) ubican a la planta entre los cultivos ya manejados hace entre 4.500 y 3.400 años, y en el sitio de la Edad del Bronce de Haimenkou (Yunnan) se recuperaron más de 800 semillas fechadas entre 1650 y 400 a.C.',
+          'Nada de eso implica que alguien entendiera entonces qué es la imbibición o por qué importa el oxígeno: la especie se propagó por semilla, con éxito suficiente para dejar ese registro, miles de años antes de que existiera ningún conocimiento escrito sobre cómo germinarla. Esta entrada no desarrolla esa historia completa —tiene su propio recorrido, con más detalle y su propia línea de tiempo, en "Historia de la planta".'
         ]
       },
       {
@@ -494,7 +487,7 @@ export const editorialEntries = [
       'cientifica-liu-2026-shandong-cannabis-phytolith'
     ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-11',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Germinación y primera lectura del material — Atlas del Cultivo Argentino',
       seoDescription: 'Qué es la germinación, qué ocurre biológicamente, qué señales observar y qué errores de interpretación son frecuentes en esta primera etapa.',
@@ -631,7 +624,8 @@ export const editorialEntries = [
         id: 'historia',
         title: 'Historia',
         paragraphs: [
-          'La idea de que un sustrato en maceta se comporta distinto que el mismo suelo en el campo abierto se formalizó recién a mediados del siglo XX. Un trabajo clave fue el de White y Mastalerz (1966), que describieron el concepto de "capacidad de contenedor": después de regar a saturación y dejar drenar, un sustrato dentro de una maceta retiene más agua en su parte inferior que la misma mezcla en el suelo abierto, por una acumulación de agua que se forma en el fondo del recipiente —un efecto físico ligado a la altura del contenedor, no a un exceso de riego—. Antes de esa formalización, la práctica hortícola ya distinguía, de forma empírica, entre un sustrato "que retenga humedad" y uno "que no encharque", pero sin explicar por qué esas dos necesidades a veces entran en tensión dentro de un contenedor chico. Desde entonces, la investigación pasó de esa descripción cualitativa a cuantificar la relación entre porosidad de aireación y capacidad de retención de agua: en Argentina, un estudio del INTA (2020) evaluó cómo distintas proporciones de compost y turba en una mezcla modifican esa relación y el desarrollo de plantines florales, dentro de una línea de investigación que sigue activa.'
+          'La idea de que un sustrato en maceta se comporta distinto que el mismo suelo en el campo abierto se formalizó recién a mediados del siglo XX. Un trabajo clave fue el de White y Mastalerz (1966), que describieron el concepto de "capacidad de contenedor": después de regar a saturación y dejar drenar, un sustrato dentro de una maceta retiene más agua en su parte inferior que la misma mezcla en el suelo abierto, por una acumulación de agua que se forma en el fondo del recipiente —un efecto físico ligado a la altura del contenedor, no a un exceso de riego—.',
+          'Antes de esa formalización, la práctica hortícola ya distinguía, de forma empírica, entre un sustrato "que retenga humedad" y uno "que no encharque", pero sin explicar por qué esas dos necesidades a veces entran en tensión dentro de un contenedor chico. Desde entonces, la investigación pasó de esa descripción cualitativa a cuantificar la relación entre porosidad de aireación y capacidad de retención de agua: en Argentina, un estudio del INTA (2020) evaluó cómo distintas proporciones de compost y turba en una mezcla modifican esa relación y el desarrollo de plantines florales, dentro de una línea de investigación que sigue activa.'
         ]
       },
       {
@@ -725,7 +719,7 @@ export const editorialEntries = [
       'cientifica-loreti-perata-2020-hypoxia-plants'
     ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-11',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Sustrato, agua y drenaje — Atlas del Cultivo Argentino',
       seoDescription: 'Qué función cumple el sustrato, cómo se relacionan agua y aire en la raíz, y qué señales observar antes de concluir que falta o sobra riego.',
@@ -1455,7 +1449,8 @@ export const editorialEntries = [
         paragraphs: [
           'La llegada de la planta a América no fue un único evento — fueron procesos distintos en el norte y en el sur del continente, con actores y cronologías propias.',
           'En América del Norte, el cáñamo llegó con los colonos ingleses a Virginia: en Jamestown se cultivó cáñamo traído desde Inglaterra para cuerdas, velas y tela, y ya en 1616 el colono John Rolfe podía afirmar que el cáñamo cultivado ahí no era peor que el de Inglaterra u Holanda. Varias colonias inglesas llegaron a estar obligadas por ley a cultivarlo, como insumo para la marina.',
-          'En América del Sur, el proceso fue más temprano y más disperso de lo que suele repetirse: las primeras remisiones documentadas de semilla de cáñamo hacia "las Indias" datan de 1513-1520 (dos arrobas de cañamones y cuatro de lino en 1513, según el Archivo General de Indias), y llegaron primero a asentamientos en Mesoamérica, no a Chile. La Real Cédula de Carlos V de 1545 —la fecha que la mayoría de los sitios de divulgación repiten como "el momento en que el cáñamo llegó a Chile"— en realidad fue una orden general dirigida a "las Indias" en su conjunto, no una medida específica para Chile; para esa fecha ya se habían hecho intentos de siembra en el Caribe, Mesoamérica, Ecuador, Perú, Venezuela y el propio Río de la Plata. Lo que sí es cierto es que Chile terminó siendo, hacia 1577-1605, la única región donde el cultivo se volvió rentable y sostenido a gran escala (valles de Quillota y La Ligua) — probablemente por tener un clima mediterráneo similar al de origen de la semilla, no por haber sido el primer lugar de siembra. Qué pasó específicamente en el territorio que hoy es Argentina, dentro de ese mismo proceso sudamericano, es el tema de "Historia de la planta en Argentina".'
+          'En América del Sur, el proceso fue más temprano y más disperso de lo que suele repetirse: las primeras remisiones documentadas de semilla de cáñamo hacia "las Indias" datan de 1513-1520 (dos arrobas de cañamones y cuatro de lino en 1513, según el Archivo General de Indias), y llegaron primero a asentamientos en Mesoamérica, no a Chile. La Real Cédula de Carlos V de 1545 —la fecha que la mayoría de los sitios de divulgación repiten como "el momento en que el cáñamo llegó a Chile"— en realidad fue una orden general dirigida a "las Indias" en su conjunto, no una medida específica para Chile; para esa fecha ya se habían hecho intentos de siembra en el Caribe, Mesoamérica, Ecuador, Perú, Venezuela y el propio Río de la Plata.',
+          'Lo que sí es cierto es que Chile terminó siendo, hacia 1577-1605, la única región donde el cultivo se volvió rentable y sostenido a gran escala (valles de Quillota y La Ligua) — probablemente por tener un clima mediterráneo similar al de origen de la semilla, no por haber sido el primer lugar de siembra. Qué pasó específicamente en el territorio que hoy es Argentina, dentro de ese mismo proceso sudamericano, es el tema de "Historia de la planta en Argentina".'
         ]
       }
     ],
@@ -1480,7 +1475,7 @@ export const editorialEntries = [
       'academica-diaz-ordonez-2017-cannabis-chile-colonial'
     ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-19',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Historia de la planta — Atlas del Cultivo Argentino',
       seoDescription: 'Origen, domesticación y expansión de Cannabis sativa desde Asia hacia Europa y América — una línea de tiempo global, separada de su continuación en Argentina.',
@@ -1841,9 +1836,8 @@ export const editorialEntries = [
         id: 'damping-off',
         title: 'Damping-off: el colapso de la plántula recién emergida',
         paragraphs: [
-          'El "damping-off" (o "mal de almácigo") es el nombre general para el colapso de plántulas causado por hongos y mohos de agua del suelo — géneros como Rhizoctonia, Fusarium, Pythium y Phytophthora son los más documentados. Se distingue una forma pre-emergencia, que destruye la radícula y el hipocótilo antes de que la plántula asome sobre el sustrato, de una forma post-emergencia, que se manifiesta como pudrición del tallo justo en la línea del sustrato o por debajo, y que suele terminar en el volcado y la muerte de la plántula ya emergida.',
-          'La condición ambiental más asociada a esta enfermedad es el exceso de humedad: un sustrato saturado o mal drenado, combinado con humedad relativa alta, favorece a estos patógenos. Esto conecta directamente con lo que "Sustrato, agua y drenaje" ya describe sobre la doble función del sustrato (retener agua y alojar aire): un sustrato que no drena no solo limita el oxígeno de la raíz, también crea las condiciones que estos patógenos necesitan.',
-          'Las prácticas generales documentadas para reducirlo incluyen partir de semilla y sustrato sanos, evitar el riego excesivo, favorecer la circulación de aire y evitar el hacinamiento de plántulas — ninguna es una receta cerrada ni específica de Cannabis, son principios generales de manejo de almácigo.'
+          'El "damping-off" (o "mal de almácigo", descrito en detalle en "Chupadera fungosa (damping-off)", en Sanidad) es el colapso de plántulas causado por hongos y mohos de agua del suelo —géneros como Rhizoctonia, Fusarium, Pythium y Phytophthora son los más documentados—, favorecido sobre todo por el exceso de humedad: un sustrato saturado o mal drenado crea exactamente las condiciones que esos patógenos necesitan, el mismo estado que "Sustrato, agua y drenaje" ya describe como perjudicial para la raíz por falta de oxígeno.',
+          'Esta entrada no repite acá sus dos formas (pre y post-emergencia) ni el detalle de las prácticas preventivas documentadas — eso ya lo desarrolla la entrada dedicada de Sanidad. Lo que interesa señalar en este tramo puntual es que el riesgo es real justo en esta ventana, entre la emergencia y el desarrollo pleno de la plántula.'
         ]
       },
       {
@@ -1901,7 +1895,7 @@ export const editorialEntries = [
     relatedEntryIds: ['germinacion', 'ciclo-de-vida', 'lectura-de-senales', 'sustrato-y-drenaje'],
     sourceIds: ['agricultural-psu-extension-2026-damping-off', 'agricultural-illinois-extension-2022-leggy-seedlings'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-16',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Cuidado de la plántula post-emergencia — Atlas del Cultivo Argentino',
       seoDescription: 'El tramo entre la germinación y la etapa vegetativa: damping-off y etiolación por luz insuficiente, los dos riesgos mejor documentados de esta etapa.',
@@ -2459,7 +2453,7 @@ export const editorialEntries = [
     categoryId: 'fundamentos',
     title: 'Senescencia y final del desarrollo',
     summary: 'La senescencia no es que la planta "se muera de a poco sin motivo": es una etapa final activa y regulada, en la que la planta redirige sus propios nutrientes hacia las partes que todavía se están desarrollando.',
-    intro: 'El "ciclo de vida" de Cannabis sativa que describe otra entrada de esta categoría termina en la cosecha, un punto de manejo decidido por quien cultiva. Pero la biología de la planta tiene su propio final: la senescencia. Esta entrada describe qué es ese proceso, en términos de fisiología vegetal general, dado que no se encontró, dentro de las fuentes consultadas para esta investigación, un estudio de senescencia dedicado específicamente a Cannabis sativa.',
+    intro: 'El "ciclo de vida" de Cannabis sativa que describe otra entrada de esta categoría termina en la cosecha, un punto de manejo decidido por quien cultiva. Pero la biología de la planta tiene su propio final: la senescencia. No existe, hasta donde permite verificar este atlas, un estudio de senescencia dedicado específicamente a Cannabis sativa — así que esta entrada describe el proceso en términos de fisiología vegetal general, la misma base que ya usan otras entradas de esta categoría cuando la evidencia disponible es genérica y no propia de la especie.',
     sections: [
       {
         id: 'que-es-la-senescencia',
@@ -2514,7 +2508,7 @@ export const editorialEntries = [
     relatedEntryIds: ['ciclo-de-vida', 'fertilizacion-y-nutricion', 'poscosecha', 'cosecha-y-maduracion'],
     sourceIds: ['academica-guo-2021-senescencia-foliar-revision'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-19',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Senescencia y final del desarrollo — Atlas del Cultivo Argentino',
       seoDescription: 'Qué es la senescencia vegetal, qué la dispara, y por qué el amarillamiento de hojas viejas al final del ciclo no es necesariamente un síntoma de carencia nutricional.',
@@ -3085,7 +3079,7 @@ export const editorialEntries = [
     categoryId: 'suelo-y-agua',
     title: 'Conductividad eléctrica y sales',
     summary: 'La conductividad eléctrica (CE) mide la concentración de sales disueltas, no un nutriente en particular — y un mismo número de CE puede significar cosas muy distintas según si viene del agua de origen sin fertilizar o de una solución ya fertilizada a propósito.',
-    intro: '"Calidad del agua de riego" menciona la conductividad eléctrica como uno de varios parámetros del agua de origen. Esta entrada la desarrolla en particular, porque es una de las mediciones más citadas —y, dentro de las fuentes consultadas para esta investigación, una de las pocas de esta categoría con evidencia directa sobre Cannabis sativa—.',
+    intro: '"Calidad del agua de riego" menciona la conductividad eléctrica como uno de varios parámetros del agua de origen. Esta entrada la desarrolla en particular, porque es una de las mediciones más citadas y una de las pocas de esta categoría con evidencia directa sobre Cannabis sativa, no solo por analogía con otra especie.',
     sections: [
       {
         id: 'que-mide-la-ce',
@@ -3144,7 +3138,7 @@ export const editorialEntries = [
       'cientifica-yep-2020-nacl-ec-cannabis-hidroponia'
     ],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-19',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Conductividad eléctrica y sales — Atlas del Cultivo Argentino',
       seoDescription: 'Qué mide la conductividad eléctrica, por qué no hay que confundir la escala de calidad del agua de origen con la de una solución nutritiva fertilizada, y qué encontró un estudio directo sobre Cannabis sativa y NaCl.',
@@ -5470,6 +5464,13 @@ export const editorialEntries = [
         paragraphs: [
           'Es un documento oficial, de acceso abierto y con metodología de revisión por comité de expertos declarada — un punto de partida de referencia internacional para quien quiera leer una revisión científica institucional sobre la planta, más allá del contenido propio de este atlas. Esta entrada no resume sus conclusiones ni las usa para respaldar ninguna afirmación puntual de otra parte del atlas: se lo incluye como material de lectura recomendado, a leer en su fuente original.'
         ]
+      },
+      {
+        id: 'para-quien-es',
+        title: 'Para quién es esta lectura',
+        paragraphs: [
+          'No es un manual de cultivo ni una guía práctica: es una revisión científica institucional, escrita en primer lugar para el propio comité de expertos que asesora a la OMS en políticas de fiscalización de sustancias. Tiene sentido para quien busque una mirada de conjunto —salud, farmacología, uso terapéutico y riesgo— más amplia que la que cualquier entrada puntual de este atlas puede ofrecer, y prefiera leerla directamente de la fuente institucional que la escribió.'
+        ]
       }
     ],
     observations: [],
@@ -5480,7 +5481,7 @@ export const editorialEntries = [
     relatedEntryIds: [],
     sourceIds: ['oficial-oms-2018-cannabis-critical-review'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-18',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Cannabis and cannabis resin: informe crítico de la OMS — Atlas del Cultivo Argentino',
       seoDescription: 'La revisión científica de la Organización Mundial de la Salud sobre Cannabis (2018), preparada para su Comité de Expertos en Farmacodependencia. Acceso libre al documento original.',
@@ -5502,6 +5503,13 @@ export const editorialEntries = [
         paragraphs: [
           'Al tratarse de una página oficial mantenida por el propio organismo regulador, es la referencia más directa para consultar el estado vigente de requisitos y trámites — que, como ya advierte "Marco editorial y responsable", cambian con el tiempo. Esta entrada no reproduce su contenido: enlaza a la fuente para que se consulte actualizada.'
         ]
+      },
+      {
+        id: 'para-quien-es',
+        title: 'Para quién es esta lectura',
+        paragraphs: [
+          'Sirve sobre todo a quien ya leyó "Marco editorial y responsable" o "REPROCANN: las tres modalidades de inscripción" en este atlas y necesita el paso siguiente: confirmar un requisito concreto y vigente directamente en la fuente que lo regula, en vez de en un resumen editorial que, como advierten esas mismas entradas, puede desactualizarse.'
+        ]
       }
     ],
     observations: [],
@@ -5512,7 +5520,7 @@ export const editorialEntries = [
     relatedEntryIds: ['marco-editorial', 'reprocann-modalidades'],
     sourceIds: ['oficial-ariccame-preguntas-frecuentes'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-18',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Preguntas frecuentes sobre la regulación del cáñamo y cannabis en Argentina — Atlas del Cultivo Argentino',
       seoDescription: 'El recurso oficial de ARICCAME, en formato de preguntas y respuestas, para consultar el estado vigente del marco regulatorio argentino.',
@@ -5527,7 +5535,36 @@ export const editorialEntries = [
     title: 'Guía para la evaluación visual de la calidad del suelo',
     summary: 'Un manual académico de acceso abierto, elaborado por la Facultad de Agronomía de la UNLPam junto con el INTA, para leer la calidad del suelo con indicadores visuales y táctiles.',
     intro: 'Esta guía, editada por la Universidad Nacional de La Pampa junto con la EEA INTA Anguil, es la fuente central de la entrada "Evaluación visual del suelo" de este atlas. Se incluye acá también como lectura recomendada completa, para quien quiera ir más allá del recorte específico que hace esa entrada.',
-    sections: [],
+    sections: [
+      {
+        id: 'que-aporta',
+        title: 'Qué aporta',
+        paragraphs: [
+          'Es la fuente completa detrás de "Evaluación visual del suelo": ese resumen toma de acá los indicadores —estructura, infiltración, actividad biológica, color y olor— que cualquiera puede observar sin instrumental de laboratorio. La guía desarrolla esos mismos criterios con más ejemplos y más detalle del que una sola entrada de este atlas puede darles, sin dejar nunca el terreno de la evaluación visual y táctil por el del análisis instrumental.'
+        ]
+      },
+      {
+        id: 'para-quien-es',
+        title: 'Para quién es esta lectura',
+        paragraphs: [
+          'Para quien cultiva directo en tierra —no en sustrato de maceta— y quiere aprender a leer su propio suelo antes de decidir si necesita corregirlo. Es un manual de extensión agropecuaria general, no específico de Cannabis: útil en la medida en que la física del suelo (estructura, porosidad, actividad biológica) es la misma para cualquier cultivo.'
+        ]
+      },
+      {
+        id: 'lecturas-relacionadas',
+        title: 'Cómo se conecta con el resto del atlas',
+        paragraphs: [
+          'Se relaciona en primer lugar con "Evaluación visual del suelo", la entrada que resume su contenido, y con "Sustrato, agua y drenaje", que describe el mismo principio físico —el reparto entre agua y aire— pero para el caso de un contenedor, no de un suelo de campo abierto.'
+        ]
+      },
+      {
+        id: 'disponibilidad',
+        title: 'Disponibilidad',
+        paragraphs: [
+          'Es un documento institucional de acceso abierto: se puede leer y descargar libremente desde su fuente original.'
+        ]
+      }
+    ],
     observations: [],
     signals: null,
     commonMistakes: [],
@@ -5536,7 +5573,7 @@ export const editorialEntries = [
     relatedEntryIds: ['evaluacion-visual-del-suelo', 'sustrato-y-drenaje'],
     sourceIds: ['academica-unlpam-inta-guia-evaluacion-visual-suelo'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-18',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Guía para la evaluación visual de la calidad del suelo — Atlas del Cultivo Argentino',
       seoDescription: 'Manual académico de acceso abierto (UNLPam / INTA Anguil) sobre indicadores visuales y táctiles de calidad de suelo.',
@@ -5551,7 +5588,36 @@ export const editorialEntries = [
     title: 'The Name of Cannabis: A Short Guide for Nonbotanists',
     summary: 'Un artículo académico breve y de acceso abierto que reconstruye la historia taxonómica real detrás de los nombres "sativa", "indica" y "ruderalis".',
     intro: 'El artículo de Antonio Pollio, publicado en Cannabis and Cannabinoid Research (2016), es la fuente central de la sección histórica de "Genética y tipos: sativa, indica, ruderalis" en este atlas. Se incluye acá completo como lectura recomendada: es corto, de acceso abierto, y está escrito explícitamente para un público no especializado en botánica.',
-    sections: [],
+    sections: [
+      {
+        id: 'que-aporta',
+        title: 'Qué aporta',
+        paragraphs: [
+          'Reconstruye, con el rigor de un artículo académico pero el lenguaje pensado para "no botánicos" que anuncia su propio título, de dónde salen realmente los nombres "sativa", "indica" y "ruderalis": quién los propuso, en qué año y con qué criterio, y por qué nada de eso tiene que ver con el clima de origen de la planta ni con las variedades comerciales que hoy llevan esos mismos nombres. Es la fuente detrás de la sección histórica de "Genética y tipos: sativa, indica, ruderalis" en este atlas.'
+        ]
+      },
+      {
+        id: 'para-quien-es',
+        title: 'Para quién es esta lectura',
+        paragraphs: [
+          'Para quien alguna vez usó "sativa" o "indica" para describir una planta y quiere entender, de primera mano y en un texto corto, por qué esa distinción tiene menos base botánica de la que parece. No requiere formación previa en botánica —el propio título lo aclara— y se lee en poco tiempo.'
+        ]
+      },
+      {
+        id: 'lecturas-relacionadas',
+        title: 'Cómo se conecta con el resto del atlas',
+        paragraphs: [
+          'Es la base de "Genética y tipos: sativa, indica, ruderalis", que retoma su reconstrucción histórica y la combina con categorías más útiles para leer cómo responde la planta al ambiente (fotoperiódica/autofloreciente, quimiotipo).'
+        ]
+      },
+      {
+        id: 'disponibilidad',
+        title: 'Disponibilidad',
+        paragraphs: [
+          'De acceso abierto y gratuito en PMC (PubMed Central), sin necesidad de suscripción ni registro.'
+        ]
+      }
+    ],
     observations: [],
     signals: null,
     commonMistakes: [],
@@ -5560,7 +5626,7 @@ export const editorialEntries = [
     relatedEntryIds: ['genetica-y-tipos'],
     sourceIds: ['cientifica-pollio-2016-nombre-cannabis-taxonomia'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-18',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'The Name of Cannabis: A Short Guide for Nonbotanists — Atlas del Cultivo Argentino',
       seoDescription: 'Artículo académico de acceso abierto (Pollio, 2016) sobre el origen histórico de los nombres sativa, indica y ruderalis.',
@@ -5605,6 +5671,14 @@ export const editorialEntries = [
         ]
       },
       {
+        id: 'para-quien-es',
+        title: 'Para quién es esta lectura',
+        paragraphs: [
+          'No para quien busca una guía de cultivo vigente —esta misma entrada ya advierte que su contenido técnico es de otra época, sin la investigación científica revisada por pares que sí cita el resto del atlas—. Tiene sentido para quien le interesa la historia del cultivo doméstico como fenómeno cultural: cómo se transmitía este conocimiento antes de que existiera evidencia científica directa sobre Cannabis sativa, y a través de qué canales circulaba.',
+          'Se relaciona con "The Cultivator\'s Handbook of Marijuana (Bill Drake)", contemporáneo casi exacto y de un contexto editorial parecido, y con "Cultivo en secuencia", la entrada de este atlas que desarrolla con evidencia actual lo que esta obra describía con el conocimiento de los años 70.'
+        ]
+      },
+      {
         id: 'disponibilidad',
         title: 'Disponibilidad',
         paragraphs: [
@@ -5629,7 +5703,7 @@ export const editorialEntries = [
     relatedEntryIds: ['cultivo-en-secuencia', 'lectura-drake-cultivators-handbook'],
     sourceIds: ['historica-frank-rosenthal-marijuana-growers-guide'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-19',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Marijuana Grower\'s Guide (Frank y Rosenthal) — Atlas del Cultivo Argentino',
       seoDescription: 'Reseña histórica y bibliográfica de "Marijuana Grower\'s Guide" y su antecedente de los años 70, aclarando que son dos obras publicadas distintas, no una sola.',
@@ -5674,6 +5748,13 @@ export const editorialEntries = [
         ]
       },
       {
+        id: 'para-quien-es',
+        title: 'Para quién es esta lectura',
+        paragraphs: [
+          'Como con "Marijuana Grower\'s Guide", no es una fuente técnica vigente: es un documento de historia del cultivo, útil para quien quiera ver qué se sabía —y qué se creía saber— sobre el fotoperiodo antes de que existiera evidencia genética directa como la que hoy reúne "Variación genética de la respuesta fotoperiódica". Sirve también como contraste directo con "Marijuana Grower\'s Guide", publicado apenas unos años después en un contexto editorial casi idéntico.'
+        ]
+      },
+      {
         id: 'disponibilidad',
         title: 'Disponibilidad',
         paragraphs: [
@@ -5698,7 +5779,7 @@ export const editorialEntries = [
     relatedEntryIds: ['variacion-genetica-fotoperiodo', 'lectura-frank-rosenthal-marijuana-growers-guide'],
     sourceIds: ['historica-drake-1970-cultivators-handbook'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-19',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'The Cultivator\'s Handbook of Marijuana (Bill Drake) — Atlas del Cultivo Argentino',
       seoDescription: 'Reseña histórica y bibliográfica del folleto autoeditado de 1970 de William Daniel Drake Jr., con la evidencia bibliográfica real detrás de su historia editorial.',
@@ -5736,6 +5817,13 @@ export const editorialEntries = [
         ]
       },
       {
+        id: 'para-quien-es',
+        title: 'Para quién es esta lectura',
+        paragraphs: [
+          'Para quien ya leyó "Química de la maduración: tricomas y cannabinoides" o "Fertilización y cannabinoides: qué muestra la evidencia" en este atlas y le interesa ver cómo se pensaba esa misma pregunta —qué determina la potencia de una planta— antes de que existieran los métodos analíticos (cromatografía líquida, espectrometría de masas) que hoy respaldan esas dos entradas. Es, dentro de la literatura de cultivo de los años 70, uno de los pocos títulos centrados específicamente en esa pregunta, y no solo en técnica de cultivo general.'
+        ]
+      },
+      {
         id: 'disponibilidad',
         title: 'Disponibilidad',
         paragraphs: [
@@ -5760,7 +5848,7 @@ export const editorialEntries = [
     relatedEntryIds: ['quimica-de-la-maduracion', 'fertilizacion-y-cannabinoides-evidencia'],
     sourceIds: ['historica-starks-1977-marijuana-potency'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-19',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Marijuana Potency / Marijuana Chemistry (Michael Starks) — Atlas del Cultivo Argentino',
       seoDescription: 'Reseña histórica y bibliográfica de "Marijuana Potency" (1977) y su reedición ampliada de 1990, con acceso legítimo por préstamo digital en Internet Archive.',
@@ -5798,6 +5886,13 @@ export const editorialEntries = [
         ]
       },
       {
+        id: 'para-quien-es',
+        title: 'Para quién es esta lectura',
+        paragraphs: [
+          'Son dos páginas, no un libro: se puede leer su cita y su contexto en minutos. Vale la pena para quien quiera ver, en la fuente original, el punto exacto donde empieza la química de cannabinoides que el resto de este atlas da por sentada —la misma identificación estructural que hace posible, por ejemplo, todo lo que describe "Química de la maduración: tricomas y cannabinoides"—, y que unos años más tarde retomaría, ya orientada a la potencia y no solo a la estructura, "Marijuana Potency / Marijuana Chemistry (Michael Starks)". El documental "Cannabis medicinal" (2023), reseñado en la sección de Documentales de este atlas, incluye un testimonio directo de uno de los dos autores, Raphael Mechoulam.'
+        ]
+      },
+      {
         id: 'disponibilidad',
         title: 'Disponibilidad',
         paragraphs: [
@@ -5818,7 +5913,7 @@ export const editorialEntries = [
     relatedEntryIds: ['quimica-de-la-maduracion', 'documental-cannabis-medicinal', 'lectura-starks-marijuana-potency'],
     sourceIds: ['cientifica-gaoni-mechoulam-1964-aislamiento-thc'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-19',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'Aislamiento del THC (Gaoni y Mechoulam, 1964) — Atlas del Cultivo Argentino',
       seoDescription: 'Reseña histórica del artículo científico de 1964 que reportó por primera vez el aislamiento y la estructura del THC, punto de partida de la química moderna de cannabinoides.',
@@ -5856,6 +5951,13 @@ export const editorialEntries = [
         ]
       },
       {
+        id: 'para-quien-es',
+        title: 'Para quién es esta lectura',
+        paragraphs: [
+          'Interesa a quien quiera ver, de primera mano, cómo el propio Estado que después lideró la prohibición promovía técnicamente el cultivo de cáñamo apenas unas décadas antes. Conecta con el vacío documental que "Historia de la planta" describe para el mismo período en el caso argentino, y con el marco legal actual del cáñamo industrial que retoma "Cáñamo industrial: la frontera genética y legal del 1% de THC" — la misma distinción entre fibra/industria y uso psicoactivo que atraviesa a las tres entradas.'
+        ]
+      },
+      {
         id: 'disponibilidad',
         title: 'Disponibilidad',
         paragraphs: [
@@ -5876,7 +5978,7 @@ export const editorialEntries = [
     relatedEntryIds: ['historia-de-la-planta', 'canamo-industrial-frontera-thc'],
     sourceIds: ['historica-dewey-1910-usda-cultivo-canamo'],
     editorialStatus: 'PUBLISHED',
-    lastReviewed: '2026-09-19',
+    lastReviewed: '2026-09-22',
     metadata: {
       seoTitle: 'The Cultivation of Hemp in the United States (Dewey, USDA, 1910) — Atlas del Cultivo Argentino',
       seoDescription: 'Documento oficial de dominio público de 1910 sobre agronomía del cáñamo en Estados Unidos, de descarga completamente libre en Internet Archive.',
