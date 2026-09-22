@@ -2019,13 +2019,25 @@ body::before {
   color: var(--text-muted);
 }
 
-/* --- Enlace al Atlas (Siguiente etapa) --- */
+/* --- Enlace al Atlas (Siguiente etapa / Contenido de interés) --- */
 .mi-cultivo-atlas-link {
   display: inline-block;
   margin-top: 10px;
   font-size: 13px;
   font-weight: 700;
   color: var(--sage-deep);
+}
+
+.mi-cultivo-interest-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mi-cultivo-interest-list .mi-cultivo-atlas-link {
+  margin-top: 0;
 }
 
 /* --- Resumen de temporada (aside) --- */
@@ -4354,7 +4366,6 @@ body::before {
 .environmental-panel {
   background: var(--paper-soft);
   border: 1px solid var(--line);
-  border-radius: 4px;
   padding: 28px;
 }
 
@@ -4365,6 +4376,8 @@ body::before {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
 }
 
 .environmental-message p {
@@ -4404,7 +4417,6 @@ body::before {
   gap: 4px;
   padding: 12px 14px;
   border: 1px solid var(--line);
-  border-radius: 12px;
   background: var(--paper);
 }
 
@@ -4431,6 +4443,8 @@ body::before {
 
 .environmental-forecast {
   margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
 }
 
 .environmental-subheading {
@@ -4460,7 +4474,6 @@ body::before {
   min-width: 78px;
   padding: 10px 12px;
   border: 1px solid var(--line);
-  border-radius: 10px;
   font-size: 12px;
   color: var(--text-soft);
   background: var(--paper);
@@ -4478,6 +4491,8 @@ body::before {
 
 .environmental-alerts {
   margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
 }
 
 .environmental-alerts ul {
@@ -4496,7 +4511,6 @@ body::before {
   padding: 10px 12px;
   border-left: 2px solid var(--clay);
   background: var(--sage-glass);
-  border-radius: 0 10px 10px 0;
 }
 
 .environmental-source {
@@ -4542,6 +4556,112 @@ body::before {
 .news-widget-empty {
   color: var(--text-muted);
   font-size: 13px;
+}
+
+/* Widget de portada (Atlas + Mi Cultivo compacto): dos columnas editoriales, Argentina primero,
+   en vez de una grilla uniforme de tarjetas — ver nota en NewsWidget.js. Separado a propósito de
+   `.news-card`/`.news-widget-list` (grilla), que sigue siendo el historial en `/noticias`. */
+
+.news-widget-columns {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 32px;
+}
+
+.news-widget-compact .news-widget-columns {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.news-widget-column {
+  min-width: 0;
+}
+
+.news-widget-column-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.news-row-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-row {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.news-row-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.news-row-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  margin-bottom: 4px;
+}
+
+.news-row-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  color: var(--sage-dark);
+  line-height: 1.3;
+}
+
+.news-row-lead .news-row-title {
+  font-size: 22px;
+}
+
+.news-row:not(.news-row-lead) .news-row-title {
+  font-size: 15px;
+}
+
+.news-row-summary {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.news-row-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.news-row-meta a {
+  color: var(--sage-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.news-widget-compact .news-row-title {
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .news-widget-columns {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 .news-widget-list {

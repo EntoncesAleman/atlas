@@ -53,6 +53,7 @@ import { uploadEventPhoto, fetchPhotosByEvent, deleteEventPhoto } from '../lib/m
 import { PhotoValidationError } from '../lib/miCultivo/photoProcessing';
 import { PROVINCE_OPTIONS } from '../lib/weather/locations';
 import { fetchProvinceWeather } from '../lib/weather/service';
+import NewsWidgetCompact from '../components/NewsWidgetCompact';
 
 function formatDate(isoDate) {
   if (!isoDate) return '';
@@ -1985,17 +1986,40 @@ export default function MiCultivoPage() {
                   Ya estás en la última etapa del recorrido (<strong>{STAGES[currentIndex].label}</strong>).
                 </p>
               )}
-              {nextStageAtlasLink && (
-                <Link className="mi-cultivo-atlas-link" href={`/atlas/${nextStageAtlasLink.categorySlug}/${nextStageAtlasLink.entrySlug}`}>
-                  Leer en el Atlas: {nextStageAtlasLink.label} ↗
-                </Link>
-              )}
-              {currentStageAtlasLink && (
-                <Link className="mi-cultivo-atlas-link" href={`/atlas/${currentStageAtlasLink.categorySlug}/${currentStageAtlasLink.entrySlug}`}>
-                  Sobre tu etapa actual: {currentStageAtlasLink.label} ↗
-                </Link>
-              )}
             </div>
+
+            {(currentStageAtlasLink || nextStageAtlasLink) && (
+              <div className="atlas-entry-section mi-cultivo-interest-section">
+                <h2>Contenido de interés</h2>
+                <span className="section-label mi-cultivo-weather-subtitle">Según tu etapa actual</span>
+                <ul className="mi-cultivo-interest-list">
+                  {currentStageAtlasLink && (
+                    <li>
+                      <Link className="mi-cultivo-atlas-link" href={`/atlas/${currentStageAtlasLink.categorySlug}/${currentStageAtlasLink.entrySlug}`}>
+                        Sobre tu etapa actual: {currentStageAtlasLink.label} ↗
+                      </Link>
+                    </li>
+                  )}
+                  {nextStageAtlasLink && (
+                    <li>
+                      <Link className="mi-cultivo-atlas-link" href={`/atlas/${nextStageAtlasLink.categorySlug}/${nextStageAtlasLink.entrySlug}`}>
+                        Para lo que sigue: {nextStageAtlasLink.label} ↗
+                      </Link>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
+
+            <div className="atlas-entry-section mi-cultivo-saved-readings-section">
+              <h2>Lecturas guardadas</h2>
+              <p className="atlas-section-note">
+                Todavía no existe una forma de guardar artículos del Atlas para leer después — este
+                espacio queda reservado para cuando esa función esté disponible.
+              </p>
+            </div>
+
+            <NewsWidgetCompact supabase={supabase} />
 
             <div className="atlas-entry-section mi-cultivo-summary-widget">
               <h2>Resumen de temporada</h2>
@@ -2103,9 +2127,9 @@ export default function MiCultivoPage() {
                     </label>
                     <label className="mi-cultivo-preference-disabled">
                       <input type="checkbox" checked={false} disabled readOnly />
-                      Notificaciones web (requiere configuración técnica adicional — todavía no disponible)
+                      Notificaciones web (próximamente)
                     </label>
-                    <p className="atlas-section-note">El envío de emails todavía no está activo en este sitio — tu preferencia queda guardada para cuando se habilite.</p>
+                    <p className="atlas-section-note">El envío de emails todavía no está activo — tu preferencia queda guardada para cuando se habilite.</p>
                     {preferencesNotice && <p className="atlas-section-note">{preferencesNotice}</p>}
                     <button type="submit" className="secondary-button" disabled={preferencesSaving}>Guardar preferencias</button>
                   </form>
@@ -2118,8 +2142,8 @@ export default function MiCultivoPage() {
       </section>
 
       <section className="atlas-section mi-cultivo-cta-section">
-        <p className="atlas-section-note">Este espacio se sigue construyendo. Mientras tanto, el resto del Atlas ya está disponible para explorar.</p>
-        <Link className="primary-button" href="/atlas">Volver al Atlas</Link>
+        <p className="atlas-section-note">¿Buscás algo puntual? El resto del Atlas está organizado por categoría de cultivo.</p>
+        <Link className="primary-button" href="/atlas">Explorar el Atlas</Link>
       </section>
     </main>
   );
