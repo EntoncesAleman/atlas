@@ -5469,7 +5469,7 @@ export const editorialEntries = [
         id: 'para-quien-es',
         title: 'Para quién es esta lectura',
         paragraphs: [
-          'No es un manual de cultivo ni una guía práctica: es una revisión científica institucional, escrita en primer lugar para el propio comité de expertos que asesora a la OMS en políticas de fiscalización de sustancias. Tiene sentido para quien busque una mirada de conjunto —salud, farmacología, uso terapéutico y riesgo— más amplia que la que cualquier entrada puntual de este atlas puede ofrecer, y prefiera leerla directamente de la fuente institucional que la escribió.'
+          'Es una revisión científica institucional, escrita en primer lugar para el propio comité de expertos que asesora a la OMS en políticas de fiscalización de sustancias, no un manual de cultivo ni una guía práctica. Tiene sentido para quien busque una mirada de conjunto sobre salud, farmacología, uso terapéutico y riesgo, más amplia que la que cualquier entrada puntual de este atlas puede ofrecer, y prefiera leerla directamente de la fuente institucional que la escribió.'
         ]
       }
     ],
@@ -5674,7 +5674,7 @@ export const editorialEntries = [
         id: 'para-quien-es',
         title: 'Para quién es esta lectura',
         paragraphs: [
-          'No para quien busca una guía de cultivo vigente —esta misma entrada ya advierte que su contenido técnico es de otra época, sin la investigación científica revisada por pares que sí cita el resto del atlas—. Tiene sentido para quien le interesa la historia del cultivo doméstico como fenómeno cultural: cómo se transmitía este conocimiento antes de que existiera evidencia científica directa sobre Cannabis sativa, y a través de qué canales circulaba.',
+          'Tiene sentido sobre todo para quien le interesa la historia del cultivo doméstico como fenómeno cultural —cómo se transmitía este conocimiento antes de que existiera evidencia científica directa sobre Cannabis sativa, y a través de qué canales circulaba—, no para quien busca una guía de cultivo vigente: esta misma entrada ya advierte que su contenido técnico es de otra época, sin la investigación revisada por pares que sí cita el resto del atlas.',
           'Se relaciona con "The Cultivator\'s Handbook of Marijuana (Bill Drake)", contemporáneo casi exacto y de un contexto editorial parecido, y con "Cultivo en secuencia", la entrada de este atlas que desarrolla con evidencia actual lo que esta obra describía con el conocimiento de los años 70.'
         ]
       },
@@ -5751,7 +5751,7 @@ export const editorialEntries = [
         id: 'para-quien-es',
         title: 'Para quién es esta lectura',
         paragraphs: [
-          'Como con "Marijuana Grower\'s Guide", no es una fuente técnica vigente: es un documento de historia del cultivo, útil para quien quiera ver qué se sabía —y qué se creía saber— sobre el fotoperiodo antes de que existiera evidencia genética directa como la que hoy reúne "Variación genética de la respuesta fotoperiódica". Sirve también como contraste directo con "Marijuana Grower\'s Guide", publicado apenas unos años después en un contexto editorial casi idéntico.'
+          'Como "Marijuana Grower\'s Guide", es un documento de historia del cultivo antes que una fuente técnica vigente: útil para quien quiera ver qué se sabía —y qué se creía saber— sobre el fotoperiodo, antes de que existiera evidencia genética directa como la que hoy reúne "Variación genética de la respuesta fotoperiódica". Sirve también como contraste directo con "Marijuana Grower\'s Guide", publicado apenas unos años después en un contexto editorial casi idéntico.'
         ]
       },
       {

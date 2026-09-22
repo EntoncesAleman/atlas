@@ -5,3 +5,10 @@ node_modules
 *.log
 .DS_Store
 .claude
+
+# Skills instaladas de terceros (npx skills add) — herramientas locales de edición, no código del
+# proyecto; cada paquete trae su propio repo completo (CI, tests, docs), no solo el SKILL.md.
+# La skill propia del Atlas (atlas-editorial-voice) sí se versiona: es contenido real del proyecto.
+.agents/skills/*
+!.agents/skills/atlas-editorial-voice
+skills-lock.json
