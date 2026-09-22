@@ -3,6 +3,10 @@
     {
       "path": "/api/notifications/scheduled-run",
       "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/news/weekly-sync",
+      "schedule": "0 13 * * 1"
     }
   ]
 }

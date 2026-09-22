@@ -3,6 +3,7 @@ import CategoryShowcase from '../components/CategoryShowcase';
 import PartnersStrip from '../components/PartnersStrip';
 import ProvinceStatusBar from '../components/ProvinceStatusBar';
 import EnvironmentalPanel from '../components/EnvironmentalPanel';
+import NewsWidget from '../components/NewsWidget';
 
 export const metadata = {
   title: 'El Atlas — Atlas del Cultivo Argentino',
@@ -37,6 +38,8 @@ export default function AtlasIndexPage() {
       <section className="atlas-section">
         <CategoryShowcase showHeading={false} />
       </section>
+
+      <NewsWidget />
 
       <section className="atlas-section community-promo-section">
         <Link className="community-promo-card" href="/comunidad">
