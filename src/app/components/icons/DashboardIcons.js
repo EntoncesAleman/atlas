@@ -134,6 +134,73 @@ export function IconBook(props) {
   );
 }
 
+// Íconos de condición de cielo para el mini-calendario (mapean el `weather_code` WMO real que ya
+// devuelve Open-Meteo — ver `lib/weather/wmoIcon.js` — nunca un dato inventado, solo una
+// traducción visual del mismo código que ya se traduce a texto en `lib/weather/service.js`).
+
+export function IconSun(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+    </svg>
+  );
+}
+
+export function IconCloudSun(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M8 5v1.6M4.6 8.4 5.8 9.4M2.6 12.8H4.2" />
+      <circle cx="8" cy="9" r="2.4" />
+      <path d="M9 20h7.5a3.5 3.5 0 0 0 .5-6.96A5 5 0 0 0 7.3 15.2 3 3 0 0 0 8 20Z" />
+    </svg>
+  );
+}
+
+export function IconCloud(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M7 19h10.5a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.5-2A4 4 0 0 0 7 19Z" />
+    </svg>
+  );
+}
+
+export function IconCloudRain(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6.5 16h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.5-2A4 4 0 0 0 6.5 16Z" />
+      <path d="M8 19v1.5M12 19v1.5M16 19v1.5" />
+    </svg>
+  );
+}
+
+export function IconCloudSnow(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6.5 15h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.5-2A4 4 0 0 0 6.5 15Z" />
+      <path d="M8 18.5v.01M12 19.5v.01M16 18.5v.01M8 21v.01M16 21v.01" />
+    </svg>
+  );
+}
+
+export function IconCloudLightning(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6.5 14h10a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.5-2A4 4 0 0 0 6.5 14Z" />
+      <path d="M13 15.5 10.5 19h2.5l-1.5 3.5" />
+    </svg>
+  );
+}
+
+export function IconFog(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M7 12h10M5 15h14M7 18h10" />
+      <path d="M8 9a4 4 0 0 1 7.5-2" />
+    </svg>
+  );
+}
+
 export function IconChevronRight(props) {
   return (
     <svg {...base} {...props}>

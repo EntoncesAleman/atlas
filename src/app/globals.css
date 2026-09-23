@@ -4944,6 +4944,24 @@ body::before {
   color: var(--sage-deep);
 }
 
+.dashboard-quick-search {
+  margin-bottom: 4px;
+}
+
+.dashboard-quick-search input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.dashboard-quick-search input::placeholder {
+  color: var(--text-muted);
+}
+
 /* --- Contenido principal --- */
 
 .dashboard-main {
@@ -5270,5 +5288,184 @@ body::before {
   .dashboard-fab {
     right: 18px;
     bottom: 18px;
+  }
+}
+
+/* --- Portada de temporada (foto del último registro, si existe) --- */
+
+.mi-cultivo-season-cover {
+  margin: -22px -0px 18px;
+  height: 180px;
+  overflow: hidden;
+}
+
+.mi-cultivo-season-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Recordatorio suave de inactividad --- */
+
+.mi-cultivo-inactivity-note {
+  margin: 18px 0 0;
+  padding: 10px 14px;
+  border-left: 2px solid var(--soil);
+  background: var(--sage-glass);
+  color: var(--text-soft);
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* --- Botón de impresión y vista de impresión del resumen de temporada --- */
+
+.mi-cultivo-print-button {
+  white-space: nowrap;
+}
+
+.mi-cultivo-print-only-note {
+  display: none;
+}
+
+@media print {
+  .atlas-topbar,
+  .atlas-category-hero,
+  .mi-cultivo-mode-section,
+  .mi-cultivo-switcher-section,
+  .dashboard-sidebar,
+  .dashboard-activity,
+  .dashboard-fab,
+  .mi-cultivo-cta-section,
+  .mi-cultivo-print-button {
+    display: none !important;
+  }
+
+  .dashboard-main > *:not(.mi-cultivo-printable) {
+    display: none !important;
+  }
+
+  .mi-cultivo-print-only-note {
+    display: block;
+  }
+
+  .dashboard-shell {
+    display: block;
+  }
+}
+
+/* --- Mini-calendario (Diario y bitácora) --- */
+
+.mini-calendar-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.mini-calendar-title {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--sage-dark);
+  min-width: 140px;
+  text-align: center;
+}
+
+.mini-calendar-nav {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--sage-deep);
+  width: 26px;
+  height: 26px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mini-calendar-nav:hover {
+  background: var(--sage-glass);
+}
+
+.mini-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.mini-calendar-weekdays span {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.mini-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.mini-calendar-cell {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.mini-calendar-cell-blank {
+  border-color: transparent;
+  background: transparent;
+}
+
+.mini-calendar-cell-today {
+  border-color: var(--sage-deep);
+  border-width: 2px;
+  font-weight: 700;
+  color: var(--sage-dark);
+}
+
+.mini-calendar-weather-icon {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  color: var(--sage-deep);
+}
+
+.mini-calendar-event-dot {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--clay);
+}
+
+.mini-calendar-legend {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mini-calendar-legend .mini-calendar-event-dot {
+  position: static;
+  transform: none;
+  display: inline-block;
+}
+
+@media (max-width: 480px) {
+  .mini-calendar-cell {
+    font-size: 10px;
   }
 }

@@ -25,7 +25,11 @@ export async function GET(request) {
     'daily',
     'temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code,sunrise,sunset'
   );
-  providerUrl.searchParams.set('forecast_days', '3');
+  // 7 días (antes 3): el mini-calendario de "Diario y bitácora" muestra un ícono de clima por
+  // día para hoy y los próximos — mismo contrato de datos, Open-Meteo ya lo da gratis en su tier
+  // no comercial (hasta 16 días). `fetchProvinceWeather` no cambia de forma, solo recibe más
+  // elementos en `daily.*`.
+  providerUrl.searchParams.set('forecast_days', '7');
   providerUrl.searchParams.set('timezone', 'auto');
 
   try {

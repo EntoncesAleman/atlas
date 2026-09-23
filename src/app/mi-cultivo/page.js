@@ -54,6 +54,7 @@ import { PhotoValidationError } from '../lib/miCultivo/photoProcessing';
 import { PROVINCE_OPTIONS } from '../lib/weather/locations';
 import { fetchProvinceWeather } from '../lib/weather/service';
 import NewsWidgetCompact from '../components/NewsWidgetCompact';
+import MiniCalendar from '../components/MiniCalendar';
 import {
   IconOverview,
   IconPlant,
@@ -244,6 +245,14 @@ export default function MiCultivoPage() {
   // --- Panel del dashboard (pestañas de navegación, ver referencia visual en documentacion/) ---
   const [activeTab, setActiveTab] = useState('overview'); // overview | plantas | bitacora | ambiente | ajustes
   const eventFormSectionRef = useRef(null);
+  const [quickQuestion, setQuickQuestion] = useState('');
+
+  function handleQuickSearch(domEvent) {
+    domEvent.preventDefault();
+    const trimmed = quickQuestion.trim();
+    if (!trimmed) return;
+    router.push(`/chatbot?q=${encodeURIComponent(trimmed)}`);
+  }
 
   // --- Migración local -> cuenta ---
   const [migrationChecked, setMigrationChecked] = useState(false);
@@ -302,6 +311,9 @@ export default function MiCultivoPage() {
   const lastEntry = getLastEntry(events, photosByEvent);
   const allSeasonPhotos = isAccountMode ? getAllPhotos(events, photosByEvent) : [];
   const seasonSummary = getSeasonSummary(events, isAccountMode ? photosByEvent : {});
+  // Recordatorio suave (nunca una alerta): cuántos días pasaron desde el último registro real
+  // (evento o nota, lo que sea más reciente — mismo dato que ya arma `getSeasonSummary`).
+  const daysSinceLastActivity = seasonSummary.lastActivityDate ? daysSince(seasonSummary.lastActivityDate) : null;
   const unreadAlerts = alerts.filter((alert) => alert.status === 'unread');
   const readAlerts = alerts.filter((alert) => alert.status === 'read');
 
@@ -1377,6 +1389,16 @@ export default function MiCultivoPage() {
               )}
             </div>
 
+            <form className="dashboard-quick-search" onSubmit={handleQuickSearch}>
+              <input
+                type="search"
+                value={quickQuestion}
+                onChange={(event) => setQuickQuestion(event.target.value)}
+                placeholder="Preguntale al Atlas…"
+                aria-label="Buscar en el Atlas"
+              />
+            </form>
+
             <ul className="dashboard-nav">
               {[
                 { id: 'overview', label: 'Vista general', Icon: IconOverview },
@@ -1413,6 +1435,11 @@ export default function MiCultivoPage() {
               <>
                 <div className="dashboard-hero-row">
                   <div className="atlas-entry-section mi-cultivo-season-header dashboard-hero-main">
+                    {lastEntry?.photo?.url && (
+                      <div className="mi-cultivo-season-cover">
+                        <img src={lastEntry.photo.url} alt="" />
+                      </div>
+                    )}
                     <div className="mi-cultivo-season-header-top">
                       {editingSeasonName ? (
                         <form
@@ -1539,6 +1566,12 @@ export default function MiCultivoPage() {
                     </div>
                   </div>
                 </div>
+
+                {daysSinceLastActivity !== null && daysSinceLastActivity >= 3 && (
+                  <p className="mi-cultivo-inactivity-note">
+                    Hace {formatElapsed(daysSinceLastActivity).toLowerCase()} que no registrás nada en esta temporada — sin apuro, es solo un recordatorio.
+                  </p>
+                )}
 
                 <div className="atlas-entry-section mi-cultivo-last-entry">
                   <h2>Último registro</h2>
@@ -1906,6 +1939,13 @@ export default function MiCultivoPage() {
                   </form>
                 </div>
 
+                {events.length > 0 && (
+                  <div className="atlas-entry-section">
+                    <h2>Calendario</h2>
+                    <MiniCalendar events={events} forecast={weatherResult?.ok ? weatherResult.forecast : []} />
+                  </div>
+                )}
+
                 <div className="atlas-entry-section">
                   <div className="mi-cultivo-events-head">
                     <h2>Línea temporal</h2>
@@ -2194,14 +2234,21 @@ export default function MiCultivoPage() {
                   </div>
                 )}
 
-                <div className="atlas-entry-section mi-cultivo-summary-widget">
-                  <h2>Resumen de temporada</h2>
+                <div className="atlas-entry-section mi-cultivo-summary-widget mi-cultivo-printable">
+                  <div className="mi-cultivo-events-head">
+                    <h2>{seasonName || 'Temporada sin nombre'} — Resumen</h2>
+                    <button type="button" className="mi-cultivo-reset-link mi-cultivo-print-button" onClick={() => window.print()}>
+                      Imprimir / guardar como PDF
+                    </button>
+                  </div>
                   <ul className="mi-cultivo-summary-list">
+                    <li><span>Etapa actual</span><strong>{STAGES[currentIndex].label}</strong></li>
                     <li><span>Registros</span><strong>{seasonSummary.totalEvents}</strong></li>
                     <li><span>Fotos</span><strong>{isAccountMode ? seasonSummary.totalPhotos : '—'}</strong></li>
                     <li><span>Días con registro</span><strong>{seasonSummary.distinctDaysRegistered}</strong></li>
                     <li><span>Última actividad</span><strong>{seasonSummary.lastActivityDate ? formatDate(seasonSummary.lastActivityDate) : 'Sin actividad'}</strong></li>
                   </ul>
+                  <p className="atlas-section-note mi-cultivo-print-only-note">Usá el diálogo de impresión del navegador para guardar esta página como PDF o compartirla.</p>
                 </div>
 
                 <div className="atlas-entry-section mi-cultivo-alerts-widget">

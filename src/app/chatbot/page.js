@@ -80,9 +80,8 @@ export default function ChatbotPage() {
 
   const isAuthenticated = Boolean(session);
 
-  async function handleSearch(domEvent) {
-    domEvent.preventDefault();
-    const trimmed = question.trim();
+  async function runSearch(text) {
+    const trimmed = text.trim();
     if (!trimmed || !isAuthenticated) return;
     setSearchState('loading');
     try {
@@ -101,6 +100,34 @@ export default function ChatbotPage() {
       setSearchState('error');
     }
   }
+
+  function handleSearch(domEvent) {
+    domEvent.preventDefault();
+    runSearch(question);
+  }
+
+  // Pregunta precargada desde el buscador rápido de Mi Cultivo (`/chatbot?q=...`) — se lee de
+  // `window.location.search` directo, mismo criterio que `mi-cultivo/page.js` para no forzar un
+  // boundary de Suspense en una página 100% cliente. Solo se autoejecuta una vez, y solo si ya
+  // hay sesión (si todavía no la hay, la pregunta queda precargada en el campo para cuando
+  // inicie sesión, sin buscar sola).
+  const [prefillHandled, setPrefillHandled] = useState(false);
+  useEffect(() => {
+    if (prefillHandled || authLoading) return;
+    const params = new URLSearchParams(window.location.search);
+    const prefilled = params.get('q');
+    if (!prefilled) {
+      setPrefillHandled(true);
+      return;
+    }
+    setQuestion(prefilled);
+    setPrefillHandled(true);
+    if (isAuthenticated) runSearch(prefilled);
+    const url = new URL(window.location.href);
+    url.searchParams.delete('q');
+    window.history.replaceState({}, '', url.pathname + url.search);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authLoading, isAuthenticated, prefillHandled]);
 
   return (
     <main className="atlas-page chatbot-page">
