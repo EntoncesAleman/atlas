@@ -68,6 +68,7 @@ import {
   IconLogout,
   IconPlus,
   IconCamera,
+  IconBook,
 } from '../components/icons/DashboardIcons';
 
 function formatDate(isoDate) {
@@ -1381,6 +1382,7 @@ export default function MiCultivoPage() {
                 { id: 'overview', label: 'Vista general', Icon: IconOverview },
                 { id: 'plantas', label: 'Mis plantas', Icon: IconPlant },
                 { id: 'bitacora', label: 'Diario y bitácora', Icon: IconJournal },
+                { id: 'lecturas', label: 'Contenido y lecturas', Icon: IconBook },
                 { id: 'ambiente', label: 'Ambiente', Icon: IconEnvironment },
                 { id: 'ajustes', label: 'Ajustes', Icon: IconSettings },
               ].map(({ id, label, Icon }) => (
@@ -1397,72 +1399,121 @@ export default function MiCultivoPage() {
                 </li>
               ))}
             </ul>
+
+            <ul className="dashboard-nav-footer">
+              <li><Link href="/atlas">Ir al Atlas ↗</Link></li>
+              <li><Link href="/chatbot">Buscador del Atlas ↗</Link></li>
+              <li><Link href="/comunidad">Comunidad y clubes ↗</Link></li>
+            </ul>
           </nav>
 
           <div className="dashboard-main">
 
             {activeTab === 'overview' && (
               <>
-                <div className="atlas-entry-section mi-cultivo-season-header">
-                  <div className="mi-cultivo-season-header-top">
-                    {editingSeasonName ? (
-                      <form
-                        className="mi-cultivo-season-name-form"
-                        onSubmit={(domEvent) => { domEvent.preventDefault(); handleSaveSeasonName(); }}
-                      >
-                        <input
-                          type="text"
-                          value={seasonNameDraft}
-                          onChange={(event) => setSeasonNameDraft(event.target.value)}
-                          placeholder="Nombrá esta temporada"
-                          maxLength={80}
-                          autoFocus
-                        />
-                        <button type="submit" className="mi-cultivo-reset-link">Guardar</button>
-                        <button type="button" className="mi-cultivo-reset-link" onClick={() => setEditingSeasonName(false)}>Cancelar</button>
-                      </form>
+                <div className="dashboard-hero-row">
+                  <div className="atlas-entry-section mi-cultivo-season-header dashboard-hero-main">
+                    <div className="mi-cultivo-season-header-top">
+                      {editingSeasonName ? (
+                        <form
+                          className="mi-cultivo-season-name-form"
+                          onSubmit={(domEvent) => { domEvent.preventDefault(); handleSaveSeasonName(); }}
+                        >
+                          <input
+                            type="text"
+                            value={seasonNameDraft}
+                            onChange={(event) => setSeasonNameDraft(event.target.value)}
+                            placeholder="Nombrá esta temporada"
+                            maxLength={80}
+                            autoFocus
+                          />
+                          <button type="submit" className="mi-cultivo-reset-link">Guardar</button>
+                          <button type="button" className="mi-cultivo-reset-link" onClick={() => setEditingSeasonName(false)}>Cancelar</button>
+                        </form>
+                      ) : (
+                        <button
+                          type="button"
+                          className="mi-cultivo-season-name-button"
+                          onClick={() => { setSeasonNameDraft(seasonName ?? ''); setEditingSeasonName(true); }}
+                        >
+                          <h2>{seasonName || 'Temporada sin nombre'}</h2>
+                          <span className="mi-cultivo-edit-hint">Editar</span>
+                        </button>
+                      )}
+                      <span className="mi-cultivo-stage-badge">{STAGES[currentIndex].label}</span>
+                    </div>
+
+                    <div className="mi-cultivo-season-progress">
+                      <div className="mi-cultivo-season-progress-track">
+                        <div className="mi-cultivo-season-progress-fill" style={{ width: `${progressPercent}%` }} />
+                      </div>
+                      <span className="atlas-section-note">Etapa {currentIndex + 1} de {STAGES.length}</span>
+                    </div>
+
+                    {events.length === 0 ? (
+                      <div className="photo-placeholder">
+                        <span className="photo-placeholder-icon" aria-hidden="true">+</span>
+                        <p>Todavía no registraste tu primer evento.</p>
+                        <p className="atlas-section-note">Tu temporada va a empezar en cuanto cargues el primero, en &quot;Diario y bitácora&quot;.</p>
+                      </div>
                     ) : (
-                      <button
-                        type="button"
-                        className="mi-cultivo-season-name-button"
-                        onClick={() => { setSeasonNameDraft(seasonName ?? ''); setEditingSeasonName(true); }}
-                      >
-                        <h2>{seasonName || 'Temporada sin nombre'}</h2>
-                        <span className="mi-cultivo-edit-hint">Editar</span>
-                      </button>
+                      <div className="mi-cultivo-season-summary">
+                        <div className="mi-cultivo-season-stat">
+                          <span className="mi-cultivo-season-stat-label">Inicio</span>
+                          <span className="mi-cultivo-season-stat-value">{formatDate(seasonStartDate)}</span>
+                        </div>
+                        <div className="mi-cultivo-season-stat">
+                          <span className="mi-cultivo-season-stat-label">Días desde el inicio</span>
+                          <span className="mi-cultivo-season-stat-value">{formatElapsed(elapsedDays)}</span>
+                        </div>
+                        <div className="mi-cultivo-season-stat">
+                          <span className="mi-cultivo-season-stat-label">En esta etapa</span>
+                          <span className="mi-cultivo-season-stat-value">{daysInStage !== null ? formatElapsed(daysInStage) : 'Sin registros en esta etapa'}</span>
+                        </div>
+                      </div>
                     )}
-                    <span className="mi-cultivo-stage-badge">{STAGES[currentIndex].label}</span>
                   </div>
 
-                  <div className="mi-cultivo-season-progress">
-                    <div className="mi-cultivo-season-progress-track">
-                      <div className="mi-cultivo-season-progress-fill" style={{ width: `${progressPercent}%` }} />
+                  <div className="dashboard-hero-side">
+                    <div className="dashboard-floating-card">
+                      <div className="mi-cultivo-events-head">
+                        <h2>Clima</h2>
+                        <button type="button" className="mi-cultivo-reset-link" onClick={() => setActiveTab('ambiente')}>Ver todo</button>
+                      </div>
+                      {provinceId && weatherStatus === 'ready' && weatherResult?.ok ? (
+                        <div className="dashboard-sensor-grid dashboard-sensor-grid-compact">
+                          {weatherResult.current.temperature !== null && (
+                            <div className="dashboard-sensor-card">
+                              <IconThermometer className="dashboard-sensor-icon" />
+                              <div>
+                                <span className="dashboard-sensor-value">{Math.round(weatherResult.current.temperature)}°C</span>
+                                <span className="dashboard-sensor-label">Temperatura</span>
+                              </div>
+                            </div>
+                          )}
+                          {weatherResult.current.humidity !== null && (
+                            <div className="dashboard-sensor-card">
+                              <IconDroplet className="dashboard-sensor-icon" />
+                              <div>
+                                <span className="dashboard-sensor-value">{Math.round(weatherResult.current.humidity)}%</span>
+                                <span className="dashboard-sensor-label">Humedad</span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="atlas-section-note">
+                          {locationReady && !provinceId
+                            ? 'Elegí tu provincia en "Ambiente" para ver el contexto de tu zona.'
+                            : 'Cargando datos ambientales…'}
+                        </p>
+                      )}
                     </div>
-                    <span className="atlas-section-note">Etapa {currentIndex + 1} de {STAGES.length}</span>
-                  </div>
 
-                  {events.length === 0 ? (
-                    <div className="photo-placeholder">
-                      <span className="photo-placeholder-icon" aria-hidden="true">+</span>
-                      <p>Todavía no registraste tu primer evento.</p>
-                      <p className="atlas-section-note">Tu temporada va a empezar en cuanto cargues el primero, en &quot;Diario y bitácora&quot;.</p>
+                    <div className="dashboard-floating-card dashboard-floating-news">
+                      <NewsWidgetCompact supabase={supabase} />
                     </div>
-                  ) : (
-                    <div className="mi-cultivo-season-summary">
-                      <div className="mi-cultivo-season-stat">
-                        <span className="mi-cultivo-season-stat-label">Inicio</span>
-                        <span className="mi-cultivo-season-stat-value">{formatDate(seasonStartDate)}</span>
-                      </div>
-                      <div className="mi-cultivo-season-stat">
-                        <span className="mi-cultivo-season-stat-label">Días desde el inicio</span>
-                        <span className="mi-cultivo-season-stat-value">{formatElapsed(elapsedDays)}</span>
-                      </div>
-                      <div className="mi-cultivo-season-stat">
-                        <span className="mi-cultivo-season-stat-label">En esta etapa</span>
-                        <span className="mi-cultivo-season-stat-value">{daysInStage !== null ? formatElapsed(daysInStage) : 'Sin registros en esta etapa'}</span>
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
 
                 <div className="dashboard-stat-grid">
@@ -1487,50 +1538,6 @@ export default function MiCultivoPage() {
                       <span className="dashboard-stat-label">Próxima etapa</span>
                     </div>
                   </div>
-                </div>
-
-                <div className="atlas-entry-section">
-                  <div className="mi-cultivo-events-head">
-                    <h2>Ambiente</h2>
-                    <button type="button" className="mi-cultivo-reset-link" onClick={() => setActiveTab('ambiente')}>Ver todo</button>
-                  </div>
-                  {provinceId && weatherStatus === 'ready' && weatherResult?.ok ? (
-                    <div className="dashboard-sensor-grid">
-                      {weatherResult.current.temperature !== null && (
-                        <div className="dashboard-sensor-card">
-                          <IconThermometer className="dashboard-sensor-icon" />
-                          <div>
-                            <span className="dashboard-sensor-value">{Math.round(weatherResult.current.temperature)}°C</span>
-                            <span className="dashboard-sensor-label">Temperatura</span>
-                          </div>
-                        </div>
-                      )}
-                      {weatherResult.current.humidity !== null && (
-                        <div className="dashboard-sensor-card">
-                          <IconDroplet className="dashboard-sensor-icon" />
-                          <div>
-                            <span className="dashboard-sensor-value">{Math.round(weatherResult.current.humidity)}%</span>
-                            <span className="dashboard-sensor-label">Humedad</span>
-                          </div>
-                        </div>
-                      )}
-                      {weatherResult.current.windSpeed !== null && (
-                        <div className="dashboard-sensor-card">
-                          <IconWind className="dashboard-sensor-icon" />
-                          <div>
-                            <span className="dashboard-sensor-value">{Math.round(weatherResult.current.windSpeed)} km/h</span>
-                            <span className="dashboard-sensor-label">Viento</span>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <p className="atlas-section-note">
-                      {locationReady && !provinceId
-                        ? 'Elegí tu provincia en "Ambiente" para ver el contexto de tu zona.'
-                        : 'Cargando datos ambientales…'}
-                    </p>
-                  )}
                 </div>
 
                 <div className="atlas-entry-section mi-cultivo-last-entry">
@@ -1561,11 +1568,15 @@ export default function MiCultivoPage() {
                     </div>
                   )}
                 </div>
+              </>
+            )}
 
-                {(currentStageAtlasLink || nextStageAtlasLink) && (
-                  <div className="atlas-entry-section mi-cultivo-interest-section">
-                    <h2>Contenido de interés</h2>
-                    <span className="section-label mi-cultivo-weather-subtitle">Según tu etapa actual</span>
+            {activeTab === 'lecturas' && (
+              <>
+                <div className="atlas-entry-section mi-cultivo-interest-section">
+                  <h2>Contenido de interés</h2>
+                  <span className="section-label mi-cultivo-weather-subtitle">Según tu etapa actual</span>
+                  {(currentStageAtlasLink || nextStageAtlasLink) ? (
                     <ul className="mi-cultivo-interest-list">
                       {currentStageAtlasLink && (
                         <li>
@@ -1582,8 +1593,10 @@ export default function MiCultivoPage() {
                         </li>
                       )}
                     </ul>
-                  </div>
-                )}
+                  ) : (
+                    <p className="atlas-section-note">Sin contenido asociado a tu etapa actual por ahora.</p>
+                  )}
+                </div>
 
                 <div className="atlas-entry-section mi-cultivo-saved-readings-section">
                   <h2>Lecturas guardadas</h2>
@@ -1593,7 +1606,14 @@ export default function MiCultivoPage() {
                   </p>
                 </div>
 
-                <NewsWidgetCompact supabase={supabase} />
+                <div className="atlas-entry-section">
+                  <h2>Material de lectura del Atlas</h2>
+                  <p className="atlas-section-note">
+                    Reseñas y recomendaciones de lectura curadas por el Atlas — libros, informes y
+                    artículos históricos sobre cultivo, con contexto de por qué vale la pena cada uno.
+                  </p>
+                  <Link className="secondary-button" href="/atlas/material-de-lectura">Ver material de lectura ↗</Link>
+                </div>
               </>
             )}
 

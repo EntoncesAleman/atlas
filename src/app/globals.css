@@ -4920,6 +4920,30 @@ body::before {
   color: var(--paper-soft);
 }
 
+/* Enlaces de salida del panel (Atlas, Buscador, Comunidad) — separados de las pestañas porque
+   navegan fuera de Mi Cultivo, no cambian de pestaña. Mismo "↗" que usa el resto del sitio para
+   este tipo de enlace, sin ícono nuevo. */
+.dashboard-nav-footer {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 12px 10px 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dashboard-nav-footer a {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-soft);
+  text-decoration: none;
+}
+
+.dashboard-nav-footer a:hover {
+  color: var(--sage-deep);
+}
+
 /* --- Contenido principal --- */
 
 .dashboard-main {
@@ -4986,6 +5010,55 @@ body::before {
   padding: 14px 16px;
   border: 1px solid var(--line);
   background: var(--paper);
+}
+
+/* --- Fila superior: temporada + Clima/Noticias flotantes, misma altura que el título --- */
+
+.dashboard-hero-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(240px, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.dashboard-hero-main {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.dashboard-hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dashboard-floating-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 18px 20px;
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.dashboard-floating-card .atlas-entry-section:first-child,
+.dashboard-floating-card > .atlas-entry-section {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.dashboard-floating-news h2 {
+  font-size: clamp(18px, 1.4vw, 22px);
+}
+
+.dashboard-sensor-grid-compact {
+  grid-template-columns: repeat(2, minmax(90px, 1fr));
+}
+
+@media (max-width: 860px) {
+  .dashboard-hero-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .dashboard-sensor-icon {
