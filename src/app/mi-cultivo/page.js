@@ -54,6 +54,21 @@ import { PhotoValidationError } from '../lib/miCultivo/photoProcessing';
 import { PROVINCE_OPTIONS } from '../lib/weather/locations';
 import { fetchProvinceWeather } from '../lib/weather/service';
 import NewsWidgetCompact from '../components/NewsWidgetCompact';
+import {
+  IconOverview,
+  IconPlant,
+  IconJournal,
+  IconEnvironment,
+  IconSettings,
+  IconThermometer,
+  IconDroplet,
+  IconWind,
+  IconAlert,
+  IconChevronRight,
+  IconLogout,
+  IconPlus,
+  IconCamera,
+} from '../components/icons/DashboardIcons';
 
 function formatDate(isoDate) {
   if (!isoDate) return '';
@@ -225,6 +240,10 @@ export default function MiCultivoPage() {
   const [weatherStatus, setWeatherStatus] = useState('idle'); // idle | loading | ready | error
   const [weatherResult, setWeatherResult] = useState(null);
 
+  // --- Panel del dashboard (pestañas de navegación, ver referencia visual en documentacion/) ---
+  const [activeTab, setActiveTab] = useState('overview'); // overview | plantas | bitacora | ambiente | ajustes
+  const eventFormSectionRef = useRef(null);
+
   // --- Migración local -> cuenta ---
   const [migrationChecked, setMigrationChecked] = useState(false);
   const [pendingMigration, setPendingMigration] = useState(null);
@@ -265,6 +284,15 @@ export default function MiCultivoPage() {
     const chronological = a.date < b.date ? -1 : 1;
     return timelineOrder === 'chrono' ? chronological : -chronological;
   });
+  // Bitácora reciente (aside del dashboard): eventos + notas mezclados por fecha, más recientes
+  // primero — mismos datos que "Línea temporal"/"Notas de temporada", sin una tabla nueva.
+  const recentActivity = [
+    ...events.map((item) => ({ kind: 'event', id: `event-${item.id}`, date: item.date, label: stageLabel(item.stageId), detail: item.note || null })),
+    ...notes.map((item) => ({ kind: 'note', id: `note-${item.id}`, date: item.createdAt.slice(0, 10), label: 'Nota de temporada', detail: item.body })),
+  ]
+    .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
+    .slice(0, 6);
+  const activePlantsCount = isAccountMode && plantMode === 'detailed' ? plantas.length : plantCount;
   const nextStage = computeNextStage(currentStageId);
   const currentStageAtlasLink = STAGE_ATLAS_LINKS[currentStageId] ?? null;
   const nextStageAtlasLink = nextStage ? STAGE_ATLAS_LINKS[nextStage.id] ?? null : null;
@@ -1330,814 +1358,971 @@ export default function MiCultivoPage() {
         </section>
       )}
 
-      <section className="atlas-section mi-cultivo-layout-section">
-        <div className="mi-cultivo-layout">
-          <div className="mi-cultivo-main-column">
-
-            <div className="atlas-entry-section mi-cultivo-season-header">
-              <div className="mi-cultivo-season-header-top">
-                {editingSeasonName ? (
-                  <form
-                    className="mi-cultivo-season-name-form"
-                    onSubmit={(domEvent) => { domEvent.preventDefault(); handleSaveSeasonName(); }}
-                  >
-                    <input
-                      type="text"
-                      value={seasonNameDraft}
-                      onChange={(event) => setSeasonNameDraft(event.target.value)}
-                      placeholder="Nombrá esta temporada"
-                      maxLength={80}
-                      autoFocus
-                    />
-                    <button type="submit" className="mi-cultivo-reset-link">Guardar</button>
-                    <button type="button" className="mi-cultivo-reset-link" onClick={() => setEditingSeasonName(false)}>Cancelar</button>
-                  </form>
-                ) : (
-                  <button
-                    type="button"
-                    className="mi-cultivo-season-name-button"
-                    onClick={() => { setSeasonNameDraft(seasonName ?? ''); setEditingSeasonName(true); }}
-                  >
-                    <h2>{seasonName || 'Temporada sin nombre'}</h2>
-                    <span className="mi-cultivo-edit-hint">Editar</span>
-                  </button>
-                )}
-                <span className="mi-cultivo-stage-badge">{STAGES[currentIndex].label}</span>
+      <section className="atlas-section dashboard-section">
+        <div className="dashboard-shell">
+          <nav className="dashboard-sidebar" aria-label="Secciones de Mi Cultivo">
+            <div className="dashboard-profile">
+              <span className="dashboard-profile-avatar" aria-hidden="true">
+                {isAccountMode ? session.user.email[0].toUpperCase() : '?'}
+              </span>
+              <div>
+                <span className="dashboard-profile-name">{isAccountMode ? session.user.email.split('@')[0] : 'Invitado'}</span>
+                <span className="dashboard-profile-mode">{isAccountMode ? 'Con cuenta' : 'Este dispositivo'}</span>
               </div>
-
-              <div className="mi-cultivo-season-progress">
-                <div className="mi-cultivo-season-progress-track">
-                  <div className="mi-cultivo-season-progress-fill" style={{ width: `${progressPercent}%` }} />
-                </div>
-                <span className="atlas-section-note">Etapa {currentIndex + 1} de {STAGES.length}</span>
-              </div>
-
-              {events.length === 0 ? (
-                <div className="photo-placeholder">
-                  <span className="photo-placeholder-icon" aria-hidden="true">+</span>
-                  <p>Todavía no registraste tu primer evento.</p>
-                  <p className="atlas-section-note">Tu temporada va a empezar en cuanto cargues el primero, más abajo.</p>
-                </div>
-              ) : (
-                <div className="mi-cultivo-season-summary">
-                  <div className="mi-cultivo-season-stat">
-                    <span className="mi-cultivo-season-stat-label">Inicio</span>
-                    <span className="mi-cultivo-season-stat-value">{formatDate(seasonStartDate)}</span>
-                  </div>
-                  <div className="mi-cultivo-season-stat">
-                    <span className="mi-cultivo-season-stat-label">Días desde el inicio</span>
-                    <span className="mi-cultivo-season-stat-value">{formatElapsed(elapsedDays)}</span>
-                  </div>
-                  <div className="mi-cultivo-season-stat">
-                    <span className="mi-cultivo-season-stat-label">En esta etapa</span>
-                    <span className="mi-cultivo-season-stat-value">{daysInStage !== null ? formatElapsed(daysInStage) : 'Sin registros en esta etapa'}</span>
-                  </div>
-                </div>
+              {isAccountMode && (
+                <button type="button" className="dashboard-profile-signout" onClick={handleSignOut} aria-label="Cerrar sesión">
+                  <IconLogout width={16} height={16} />
+                </button>
               )}
             </div>
 
-            <div className="atlas-entry-section mi-cultivo-plants">
-              <div className="mi-cultivo-events-head">
-                <h2>Plantas</h2>
-                {isAccountMode && (
+            <ul className="dashboard-nav">
+              {[
+                { id: 'overview', label: 'Vista general', Icon: IconOverview },
+                { id: 'plantas', label: 'Mis plantas', Icon: IconPlant },
+                { id: 'bitacora', label: 'Diario y bitácora', Icon: IconJournal },
+                { id: 'ambiente', label: 'Ambiente', Icon: IconEnvironment },
+                { id: 'ajustes', label: 'Ajustes', Icon: IconSettings },
+              ].map(({ id, label, Icon }) => (
+                <li key={id}>
                   <button
                     type="button"
-                    className="mi-cultivo-reset-link"
-                    onClick={() => handleSetPlantMode(plantMode === 'simple' ? 'detailed' : 'simple')}
+                    className={`dashboard-nav-item ${activeTab === id ? 'dashboard-nav-item-active' : ''}`}
+                    onClick={() => setActiveTab(id)}
+                    aria-current={activeTab === id ? 'page' : undefined}
                   >
-                    {plantMode === 'simple' ? 'Gestionar plantas individualmente' : 'Volver a modo simple (cantidad)'}
+                    <Icon />
+                    {label}
                   </button>
-                )}
-              </div>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-              {(!isAccountMode || plantMode === 'simple') ? (
-                <form
-                  className="mi-cultivo-plant-basics-form"
-                  onSubmit={(domEvent) => {
-                    domEvent.preventDefault();
-                    handleSavePlantBasics(plantCount, variety);
-                  }}
-                >
-                  <label className="mi-cultivo-field">
-                    <span>Cantidad de plantas</span>
-                    <input
-                      type="number"
-                      min={1}
-                      value={plantCount}
-                      onChange={(event) => setPlantCount(Math.max(1, Number(event.target.value) || 1))}
-                    />
-                  </label>
-                  <label className="mi-cultivo-field">
-                    <span>Variedad (opcional)</span>
-                    <input
-                      type="text"
-                      value={variety}
-                      onChange={(event) => setVariety(event.target.value)}
-                      placeholder="Ej. autofloreciente, White Widow..."
-                    />
-                  </label>
-                  <button type="submit" className="secondary-button">Guardar</button>
-                </form>
-              ) : (
-                <div className="mi-cultivo-plantas-detail">
-                  {plantas.length === 0 ? (
-                    <p className="atlas-section-note">Todavía no agregaste ninguna planta individual.</p>
-                  ) : (
-                    <ul className="mi-cultivo-plantas-list">
-                      {plantas.map((planta) => (
-                        <li className="mi-cultivo-planta-item" key={planta.id}>
-                          {editingPlantaId === planta.id ? (
-                            <form
-                              className="mi-cultivo-plant-edit-form"
-                              onSubmit={(domEvent) => {
-                                domEvent.preventDefault();
-                                handleUpdatePlanta(planta, plantDraft);
-                              }}
-                            >
-                              <input
-                                type="text"
-                                value={plantDraft.label}
-                                onChange={(event) => setPlantDraft((prev) => ({ ...prev, label: event.target.value }))}
-                                placeholder="Nombre/identificador"
-                                required
-                              />
-                              <input
-                                type="text"
-                                value={plantDraft.variety}
-                                onChange={(event) => setPlantDraft((prev) => ({ ...prev, variety: event.target.value }))}
-                                placeholder="Variedad"
-                              />
-                              <select
-                                value={plantDraft.stageId}
-                                onChange={(event) => setPlantDraft((prev) => ({ ...prev, stageId: event.target.value }))}
-                              >
-                                <option value="">Sigue la etapa del cultivo</option>
-                                {STAGES.map((stage) => (
-                                  <option key={stage.id} value={stage.id}>{stage.label}</option>
-                                ))}
-                              </select>
-                              <button type="submit" className="mi-cultivo-reset-link" disabled={plantBusy}>Guardar</button>
-                              <button type="button" className="mi-cultivo-reset-link" onClick={() => setEditingPlantaId(null)}>Cancelar</button>
-                            </form>
-                          ) : (
-                            <>
-                              <div>
-                                <span className="mi-cultivo-planta-label">{planta.label}</span>
-                                {planta.variety && <span className="mi-cultivo-planta-variety"> · {planta.variety}</span>}
-                                {planta.stageId && <span className="mi-cultivo-planta-variety"> · {stageLabel(planta.stageId)}</span>}
-                              </div>
-                              <div className="mi-cultivo-planta-actions">
-                                <button
-                                  type="button"
-                                  className="mi-cultivo-reset-link"
-                                  onClick={() => {
-                                    setEditingPlantaId(planta.id);
-                                    setPlantDraft({ label: planta.label, variety: planta.variety ?? '', stageId: planta.stageId ?? '', notes: planta.notes ?? '' });
-                                  }}
-                                >
-                                  Editar
-                                </button>
-                                <button type="button" className="mi-cultivo-reset-link" onClick={() => handleDeletePlanta(planta)}>Eliminar</button>
-                              </div>
-                            </>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+          <div className="dashboard-main">
 
-                  {plantFormOpen ? (
-                    <form className="mi-cultivo-plant-edit-form" onSubmit={handleAddPlanta}>
-                      <input
-                        type="text"
-                        value={plantDraft.label}
-                        onChange={(event) => setPlantDraft((prev) => ({ ...prev, label: event.target.value }))}
-                        placeholder={`Planta ${String(plantas.length + 1).padStart(2, '0')}`}
-                        required
-                      />
-                      <input
-                        type="text"
-                        value={plantDraft.variety}
-                        onChange={(event) => setPlantDraft((prev) => ({ ...prev, variety: event.target.value }))}
-                        placeholder="Variedad (opcional)"
-                      />
-                      <button type="submit" className="secondary-button" disabled={plantBusy}>Agregar</button>
-                      <button type="button" className="mi-cultivo-reset-link" onClick={() => setPlantFormOpen(false)}>Cancelar</button>
-                    </form>
-                  ) : (
-                    <button type="button" className="secondary-button" onClick={() => setPlantFormOpen(true)}>
-                      + Agregar planta
-                    </button>
-                  )}
-                </div>
-              )}
-            </div>
-
-            <div className="atlas-entry-section mi-cultivo-last-entry">
-              <h2>Último registro</h2>
-              {lastEntry ? (
-                <div className="mi-cultivo-last-entry-card">
-                  {lastEntry.photo?.url && (
-                    <div className="mi-cultivo-last-entry-photo">
-                      <img src={lastEntry.photo.url} alt="Foto del último registro" />
-                    </div>
-                  )}
-                  <div className="mi-cultivo-last-entry-body">
-                    <div className="mi-cultivo-event-head">
-                      <span className="mi-cultivo-event-stage">{stageLabel(lastEntry.event.stageId)}</span>
-                      <span className="mi-cultivo-event-date">{formatDate(lastEntry.event.date)}</span>
-                    </div>
-                    {lastEntry.event.note ? (
-                      <p className="mi-cultivo-event-note">{lastEntry.event.note}</p>
+            {activeTab === 'overview' && (
+              <>
+                <div className="atlas-entry-section mi-cultivo-season-header">
+                  <div className="mi-cultivo-season-header-top">
+                    {editingSeasonName ? (
+                      <form
+                        className="mi-cultivo-season-name-form"
+                        onSubmit={(domEvent) => { domEvent.preventDefault(); handleSaveSeasonName(); }}
+                      >
+                        <input
+                          type="text"
+                          value={seasonNameDraft}
+                          onChange={(event) => setSeasonNameDraft(event.target.value)}
+                          placeholder="Nombrá esta temporada"
+                          maxLength={80}
+                          autoFocus
+                        />
+                        <button type="submit" className="mi-cultivo-reset-link">Guardar</button>
+                        <button type="button" className="mi-cultivo-reset-link" onClick={() => setEditingSeasonName(false)}>Cancelar</button>
+                      </form>
                     ) : (
-                      <p className="atlas-section-note">Sin nota en este registro.</p>
+                      <button
+                        type="button"
+                        className="mi-cultivo-season-name-button"
+                        onClick={() => { setSeasonNameDraft(seasonName ?? ''); setEditingSeasonName(true); }}
+                      >
+                        <h2>{seasonName || 'Temporada sin nombre'}</h2>
+                        <span className="mi-cultivo-edit-hint">Editar</span>
+                      </button>
                     )}
+                    <span className="mi-cultivo-stage-badge">{STAGES[currentIndex].label}</span>
+                  </div>
+
+                  <div className="mi-cultivo-season-progress">
+                    <div className="mi-cultivo-season-progress-track">
+                      <div className="mi-cultivo-season-progress-fill" style={{ width: `${progressPercent}%` }} />
+                    </div>
+                    <span className="atlas-section-note">Etapa {currentIndex + 1} de {STAGES.length}</span>
+                  </div>
+
+                  {events.length === 0 ? (
+                    <div className="photo-placeholder">
+                      <span className="photo-placeholder-icon" aria-hidden="true">+</span>
+                      <p>Todavía no registraste tu primer evento.</p>
+                      <p className="atlas-section-note">Tu temporada va a empezar en cuanto cargues el primero, en &quot;Diario y bitácora&quot;.</p>
+                    </div>
+                  ) : (
+                    <div className="mi-cultivo-season-summary">
+                      <div className="mi-cultivo-season-stat">
+                        <span className="mi-cultivo-season-stat-label">Inicio</span>
+                        <span className="mi-cultivo-season-stat-value">{formatDate(seasonStartDate)}</span>
+                      </div>
+                      <div className="mi-cultivo-season-stat">
+                        <span className="mi-cultivo-season-stat-label">Días desde el inicio</span>
+                        <span className="mi-cultivo-season-stat-value">{formatElapsed(elapsedDays)}</span>
+                      </div>
+                      <div className="mi-cultivo-season-stat">
+                        <span className="mi-cultivo-season-stat-label">En esta etapa</span>
+                        <span className="mi-cultivo-season-stat-value">{daysInStage !== null ? formatElapsed(daysInStage) : 'Sin registros en esta etapa'}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="dashboard-stat-grid">
+                  <div className="dashboard-stat-card">
+                    <IconAlert className="dashboard-stat-icon" />
+                    <div>
+                      <span className="dashboard-stat-value">{isAccountMode ? unreadAlerts.length : '—'}</span>
+                      <span className="dashboard-stat-label">Alertas sin leer</span>
+                    </div>
+                  </div>
+                  <div className="dashboard-stat-card">
+                    <IconPlant className="dashboard-stat-icon" />
+                    <div>
+                      <span className="dashboard-stat-value">{activePlantsCount}</span>
+                      <span className="dashboard-stat-label">Plantas activas</span>
+                    </div>
+                  </div>
+                  <div className="dashboard-stat-card">
+                    <IconChevronRight className="dashboard-stat-icon" />
+                    <div>
+                      <span className="dashboard-stat-value">{nextStage ? nextStage.label : '—'}</span>
+                      <span className="dashboard-stat-label">Próxima etapa</span>
+                    </div>
                   </div>
                 </div>
-              ) : (
-                <div className="photo-placeholder">
-                  <span className="photo-placeholder-icon" aria-hidden="true">+</span>
-                  <p>Todavía no registraste ningún evento.</p>
-                </div>
-              )}
-            </div>
 
-            <div className="atlas-entry-section mi-cultivo-gallery">
-              <h2>Registro visual</h2>
-              {!isAccountMode ? (
-                <p className="atlas-section-note">La galería de fotos de temporada está disponible con cuenta — creá una arriba para empezar a guardar fotos junto a tus registros.</p>
-              ) : allSeasonPhotos.length === 0 ? (
-                <div className="photo-placeholder">
-                  <span className="photo-placeholder-icon" aria-hidden="true">+</span>
-                  <p>Todavía no hay fotos en esta temporada.</p>
-                  <p className="atlas-section-note">Agregá una foto desde cualquier registro de la línea temporal, más abajo.</p>
-                </div>
-              ) : (
-                <div className="mi-cultivo-gallery-strip">
-                  {allSeasonPhotos.map((photo) => (
-                    <button
-                      type="button"
-                      key={photo.id}
-                      className="mi-cultivo-gallery-thumb"
-                      onClick={() => setExpandedPhotoId((current) => (current === photo.id ? null : photo.id))}
-                      disabled={!photo.url}
-                      aria-label="Ver foto más grande"
-                    >
-                      {photo.url ? <img src={photo.url} alt="Foto de la temporada" /> : <span className="mi-cultivo-photo-loading">…</span>}
-                      {photo.event?.date && <span className="mi-cultivo-gallery-thumb-date">{formatShortDate(photo.event.date)}</span>}
-                    </button>
-                  ))}
-                </div>
-              )}
-              {isAccountMode && allSeasonPhotos.some((photo) => photo.id === expandedPhotoId) && (
-                <div className="mi-cultivo-photo-expanded">
-                  <img
-                    src={allSeasonPhotos.find((photo) => photo.id === expandedPhotoId)?.url}
-                    alt="Foto de la temporada, tamaño ampliado"
-                  />
-                </div>
-              )}
-            </div>
-
-            <div className="atlas-entry-section mi-cultivo-notes">
-              <h2>Notas de temporada</h2>
-              <form className="mi-cultivo-note-form" onSubmit={handleAddNote}>
-                <textarea
-                  value={noteDraft}
-                  onChange={(event) => setNoteDraft(event.target.value)}
-                  placeholder="Anotá algo sobre esta temporada — una observación, una decisión, lo que quieras recordar más adelante."
-                  rows={2}
-                />
-                <button type="submit" className="secondary-button" disabled={noteBusy || !noteDraft.trim()}>Agregar nota</button>
-              </form>
-              {notes.length === 0 ? (
-                <p className="atlas-section-note">Todavía no agregaste ninguna nota.</p>
-              ) : (
-                <ul className="mi-cultivo-notes-list">
-                  {notes.map((note) => (
-                    <li className="mi-cultivo-note-item" key={note.id}>
-                      <div>
-                        <span className="mi-cultivo-note-date">{formatGeneratedAt(note.createdAt)}</span>
-                        <p>{note.body}</p>
-                      </div>
-                      <button type="button" className="mi-cultivo-reset-link" onClick={() => handleDeleteNote(note)}>Eliminar</button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-
-            <div className="atlas-entry-section">
-          <h2>{editingEventId ? 'Editar evento' : 'Registrar un evento'}</h2>
-          <form className="mi-cultivo-event-form" onSubmit={handleSubmit}>
-            <label className="mi-cultivo-field">
-              <span>Etapa</span>
-              <select value={formStageId} onChange={(event) => setFormStageId(event.target.value)}>
-                {STAGES.map((stage) => (
-                  <option key={stage.id} value={stage.id}>{stage.label}</option>
-                ))}
-              </select>
-            </label>
-
-            <label className="mi-cultivo-field">
-              <span>Fecha</span>
-              <input
-                type="date"
-                value={formDate}
-                onChange={(event) => setFormDate(event.target.value)}
-                required
-              />
-            </label>
-
-            <label className="mi-cultivo-field mi-cultivo-field-wide">
-              <span>Nota</span>
-              <textarea
-                value={formNote}
-                onChange={(event) => setFormNote(event.target.value)}
-                placeholder="Qué observaste en esta etapa..."
-                rows={2}
-              />
-            </label>
-
-            <div className="mi-cultivo-field mi-cultivo-field-wide">
-              <span>Foto</span>
-              {isAccountMode ? (
-                <p className="atlas-section-note">Podés agregar una foto después de guardar el evento, desde la lista de eventos de abajo.</p>
-              ) : (
-                <button type="button" className="photo-placeholder-button" disabled aria-disabled="true">
-                  <span aria-hidden="true">+</span>
-                  Agregar foto (próximamente)
-                </button>
-              )}
-            </div>
-
-            <div className="mi-cultivo-form-actions">
-              <button type="submit" className="primary-button mi-cultivo-submit" disabled={remoteBusy}>
-                {editingEventId ? 'Guardar cambios' : 'Registrar evento'}
-              </button>
-              {editingEventId && (
-                <button type="button" className="secondary-button" onClick={resetForm}>
-                  Cancelar edición
-                </button>
-              )}
-            </div>
-          </form>
-            </div>
-
-            <div className="atlas-entry-section">
-          <div className="mi-cultivo-events-head">
-            <h2>Línea temporal</h2>
-            {events.length > 0 && (
-              <button type="button" className="mi-cultivo-reset-link" onClick={handleReset} disabled={remoteBusy}>
-                {confirmingReset ? '¿Confirmar borrado? Tocá de nuevo' : 'Reiniciar Mi Cultivo'}
-              </button>
-            )}
-          </div>
-          {events.length === 0 ? (
-            <div className="photo-placeholder">
-              <span className="photo-placeholder-icon" aria-hidden="true">+</span>
-              <p>Todavía no registraste ningún evento.</p>
-              <p className="atlas-section-note">Los eventos que cargues arriba van a aparecer acá, en orden, con su etapa, fecha y nota.</p>
-            </div>
-          ) : (
-            <>
-              <div className="mi-cultivo-timeline-order" role="group" aria-label="Orden de la línea temporal">
-                <button
-                  type="button"
-                  className={`mi-cultivo-order-button ${timelineOrder === 'recent' ? 'mi-cultivo-order-active' : ''}`}
-                  onClick={() => setTimelineOrder('recent')}
-                  aria-pressed={timelineOrder === 'recent'}
-                >
-                  Más reciente primero
-                </button>
-                <button
-                  type="button"
-                  className={`mi-cultivo-order-button ${timelineOrder === 'chrono' ? 'mi-cultivo-order-active' : ''}`}
-                  onClick={() => setTimelineOrder('chrono')}
-                  aria-pressed={timelineOrder === 'chrono'}
-                >
-                  Cronológico (temporada completa)
-                </button>
-              </div>
-              <ol className="mi-cultivo-events-list">
-              {sortedEvents.map((cultivoEvent) => (
-                <li className="mi-cultivo-event-card" key={cultivoEvent.id}>
-                  <div className="mi-cultivo-event-head">
-                    <span className="mi-cultivo-event-stage">{stageLabel(cultivoEvent.stageId)}</span>
-                    <span className="mi-cultivo-event-date">{formatDate(cultivoEvent.date)}</span>
+                <div className="atlas-entry-section">
+                  <div className="mi-cultivo-events-head">
+                    <h2>Ambiente</h2>
+                    <button type="button" className="mi-cultivo-reset-link" onClick={() => setActiveTab('ambiente')}>Ver todo</button>
                   </div>
-                  {cultivoEvent.note && <p className="mi-cultivo-event-note">{cultivoEvent.note}</p>}
-
-                  {isAccountMode ? (
-                    <div className="mi-cultivo-event-photos">
-                      <div className="mi-cultivo-photo-thumbs">
-                        {(photosByEvent[cultivoEvent.id] ?? []).map((photo) => (
-                          <div className="mi-cultivo-photo-item" key={photo.id}>
-                            <button
-                              type="button"
-                              className="mi-cultivo-photo-thumb"
-                              onClick={() => setExpandedPhotoId((current) => (current === photo.id ? null : photo.id))}
-                              disabled={!photo.url}
-                              aria-label="Ver foto más grande"
-                            >
-                              {photo.url ? (
-                                <img src={photo.url} alt="Foto de este evento" />
-                              ) : (
-                                <span className="mi-cultivo-photo-loading">…</span>
-                              )}
-                            </button>
-                            <button
-                              type="button"
-                              className="mi-cultivo-photo-remove"
-                              onClick={() => handlePhotoDelete(photo)}
-                              disabled={photoBusyEventId === cultivoEvent.id}
-                            >
-                              Eliminar
-                            </button>
+                  {provinceId && weatherStatus === 'ready' && weatherResult?.ok ? (
+                    <div className="dashboard-sensor-grid">
+                      {weatherResult.current.temperature !== null && (
+                        <div className="dashboard-sensor-card">
+                          <IconThermometer className="dashboard-sensor-icon" />
+                          <div>
+                            <span className="dashboard-sensor-value">{Math.round(weatherResult.current.temperature)}°C</span>
+                            <span className="dashboard-sensor-label">Temperatura</span>
                           </div>
-                        ))}
-
-                        <label className={`mi-cultivo-photo-add ${photoBusyEventId === cultivoEvent.id ? 'mi-cultivo-photo-add-busy' : ''}`}>
-                          <span aria-hidden="true">+</span>
-                          <span>{photoBusyEventId === cultivoEvent.id ? 'Subiendo…' : 'Agregar foto'}</span>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            className="mi-cultivo-photo-input"
-                            disabled={photoBusyEventId === cultivoEvent.id}
-                            onChange={(fileEvent) => {
-                              const file = fileEvent.target.files?.[0];
-                              fileEvent.target.value = '';
-                              handlePhotoUpload(cultivoEvent.id, file);
-                            }}
-                          />
-                        </label>
-                      </div>
-
-                      {(photosByEvent[cultivoEvent.id] ?? [])
-                        .filter((photo) => photo.id === expandedPhotoId && photo.url)
-                        .map((photo) => (
-                          <div className="mi-cultivo-photo-expanded" key={photo.id}>
-                            <img src={photo.url} alt="Foto de este evento, tamaño ampliado" />
+                        </div>
+                      )}
+                      {weatherResult.current.humidity !== null && (
+                        <div className="dashboard-sensor-card">
+                          <IconDroplet className="dashboard-sensor-icon" />
+                          <div>
+                            <span className="dashboard-sensor-value">{Math.round(weatherResult.current.humidity)}%</span>
+                            <span className="dashboard-sensor-label">Humedad</span>
                           </div>
-                        ))}
-
-                      {photoErrorByEvent[cultivoEvent.id] && (
-                        <p className="mi-cultivo-auth-error">{photoErrorByEvent[cultivoEvent.id]}</p>
+                        </div>
+                      )}
+                      {weatherResult.current.windSpeed !== null && (
+                        <div className="dashboard-sensor-card">
+                          <IconWind className="dashboard-sensor-icon" />
+                          <div>
+                            <span className="dashboard-sensor-value">{Math.round(weatherResult.current.windSpeed)} km/h</span>
+                            <span className="dashboard-sensor-label">Viento</span>
+                          </div>
+                        </div>
                       )}
                     </div>
                   ) : (
-                    <div className="mi-cultivo-event-photo-slot">
-                      <span aria-hidden="true">+</span>
-                      <span>Espacio reservado para foto de esta etapa</span>
+                    <p className="atlas-section-note">
+                      {locationReady && !provinceId
+                        ? 'Elegí tu provincia en "Ambiente" para ver el contexto de tu zona.'
+                        : 'Cargando datos ambientales…'}
+                    </p>
+                  )}
+                </div>
+
+                <div className="atlas-entry-section mi-cultivo-last-entry">
+                  <h2>Último registro</h2>
+                  {lastEntry ? (
+                    <div className="mi-cultivo-last-entry-card">
+                      {lastEntry.photo?.url && (
+                        <div className="mi-cultivo-last-entry-photo">
+                          <img src={lastEntry.photo.url} alt="Foto del último registro" />
+                        </div>
+                      )}
+                      <div className="mi-cultivo-last-entry-body">
+                        <div className="mi-cultivo-event-head">
+                          <span className="mi-cultivo-event-stage">{stageLabel(lastEntry.event.stageId)}</span>
+                          <span className="mi-cultivo-event-date">{formatDate(lastEntry.event.date)}</span>
+                        </div>
+                        {lastEntry.event.note ? (
+                          <p className="mi-cultivo-event-note">{lastEntry.event.note}</p>
+                        ) : (
+                          <p className="atlas-section-note">Sin nota en este registro.</p>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="photo-placeholder">
+                      <span className="photo-placeholder-icon" aria-hidden="true">+</span>
+                      <p>Todavía no registraste ningún evento.</p>
                     </div>
                   )}
-
-                  <div className="mi-cultivo-event-actions">
-                    <button
-                      type="button"
-                      className="mi-cultivo-event-edit"
-                      onClick={() => handleStartEdit(cultivoEvent)}
-                    >
-                      Editar
-                    </button>
-                    <button
-                      type="button"
-                      className="mi-cultivo-event-delete"
-                      onClick={() => handleDeleteEvent(cultivoEvent)}
-                      disabled={deletingEventId === cultivoEvent.id}
-                    >
-                      {confirmingDeleteEventId === cultivoEvent.id
-                        ? '¿Confirmar? Tocá de nuevo'
-                        : deletingEventId === cultivoEvent.id
-                          ? 'Eliminando…'
-                          : 'Eliminar evento'}
-                    </button>
-                  </div>
-                </li>
-              ))}
-              </ol>
-            </>
-          )}
-            </div>
-
-          </div>
-
-          <aside className="mi-cultivo-aside-column">
-
-            <div className="atlas-entry-section">
-              <h2>Estado actual</h2>
-              <p className="mi-cultivo-current-stage">Etapa actual: <strong>{STAGES[currentIndex].label}</strong></p>
-              <ol className="mi-cultivo-timeline">
-                {STAGES.map((stage, index) => {
-                  const state = index < currentIndex ? 'done' : index === currentIndex ? 'current' : 'upcoming';
-                  return (
-                    <li className={`mi-cultivo-timeline-item mi-cultivo-timeline-${state}`} key={stage.id}>
-                      <button
-                        type="button"
-                        className="mi-cultivo-timeline-dot"
-                        onClick={() => handleTimelineClick(stage.id)}
-                        aria-pressed={state === 'current'}
-                        aria-label={`Marcar "${stage.label}" como etapa actual`}
-                      >
-                        <span aria-hidden="true">{index + 1}</span>
-                      </button>
-                      <span className="mi-cultivo-timeline-label">{stage.label}</span>
-                    </li>
-                  );
-                })}
-              </ol>
-              <p className="atlas-section-note">Tocá una etapa para marcarla como la etapa actual de tu planta. Las etapas siguientes quedan como próximas.</p>
-            </div>
-
-            <div className="atlas-entry-section mi-cultivo-weather-section">
-          <h2>Hoy</h2>
-          <span className="section-label mi-cultivo-weather-subtitle">Contexto ambiental</span>
-
-          <label className="mi-cultivo-field mi-cultivo-weather-location">
-            <span>Ubicación aproximada (provincia)</span>
-            <select value={provinceId ?? ''} onChange={handleProvinceChange} disabled={!locationReady}>
-              <option value="">Sin ubicación elegida</option>
-              {PROVINCE_OPTIONS.map((province) => (
-                <option key={province.id} value={province.id}>{province.name}</option>
-              ))}
-            </select>
-          </label>
-          <p className="atlas-section-note">
-            Solo a nivel provincia — nunca tu ubicación exacta ni GPS. Sirve para mostrar
-            condiciones ambientales de referencia junto a tu cultivo, no para calcular nada
-            sobre él. Es independiente de la provincia elegida en Inicio para explorar el Atlas —
-            la usamos como punto de partida acá si todavía no elegiste una para tu cultivo, pero
-            podés cambiarla en cualquier momento sin afectar tu navegación del Atlas.
-          </p>
-
-          {!locationReady && (
-            <p className="atlas-section-note">Cargando tu cultivo…</p>
-          )}
-
-          {locationReady && !provinceId && (
-            <p className="atlas-section-note">Elegí una provincia para ver el contexto ambiental de tu zona.</p>
-          )}
-
-          {provinceId && weatherStatus === 'loading' && (
-            <p className="atlas-section-note">Cargando datos ambientales…</p>
-          )}
-
-          {provinceId && weatherStatus === 'error' && (
-            <p className="mi-cultivo-weather-unavailable">Datos ambientales no disponibles en este momento.</p>
-          )}
-
-          {provinceId && weatherStatus === 'ready' && weatherResult?.ok && (
-            <div className="mi-cultivo-weather-body">
-              <p className="mi-cultivo-weather-context">
-                Tu cultivo está registrado en <strong>{weatherResult.locationName}</strong>, actualmente
-                en la etapa <strong>{STAGES[currentIndex].label}</strong>.
-              </p>
-
-              <div className="mi-cultivo-weather-current">
-                {weatherResult.current.temperature !== null && (
-                  <div className="mi-cultivo-weather-stat">
-                    <span className="mi-cultivo-weather-stat-label">Temperatura</span>
-                    <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.temperature)}°C</span>
-                  </div>
-                )}
-                {weatherResult.current.humidity !== null && (
-                  <div className="mi-cultivo-weather-stat">
-                    <span className="mi-cultivo-weather-stat-label">Humedad</span>
-                    <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.humidity)}%</span>
-                  </div>
-                )}
-                {weatherResult.current.precipitation !== null && (
-                  <div className="mi-cultivo-weather-stat">
-                    <span className="mi-cultivo-weather-stat-label">Lluvia</span>
-                    <span className="mi-cultivo-weather-stat-value">{weatherResult.current.precipitation} mm</span>
-                  </div>
-                )}
-                {weatherResult.current.windSpeed !== null && (
-                  <div className="mi-cultivo-weather-stat">
-                    <span className="mi-cultivo-weather-stat-label">Viento</span>
-                    <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.windSpeed)} km/h</span>
-                  </div>
-                )}
-              </div>
-
-              {weatherResult.todayReadings.length > 0 && (
-                <div className="mi-cultivo-weather-readings">
-                  <h3>Qué está pasando hoy</h3>
-                  <ul>
-                    {weatherResult.todayReadings.map((reading) => (
-                      <li key={reading.id}><strong>{reading.label}.</strong> {reading.detail}</li>
-                    ))}
-                  </ul>
                 </div>
-              )}
 
-              {weatherResult.forecast.length > 0 && (
-                <div className="mi-cultivo-weather-forecast">
-                  <h3>Pronóstico corto</h3>
-                  <ol>
-                    {weatherResult.forecast.slice(0, 5).map((day) => (
-                      <li key={day.date}>
-                        <span>{formatShortDate(day.date)}</span>
-                        <span>
-                          {day.tempMin !== null ? Math.round(day.tempMin) : '—'}° / {day.tempMax !== null ? Math.round(day.tempMax) : '—'}°
-                        </span>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              )}
+                {(currentStageAtlasLink || nextStageAtlasLink) && (
+                  <div className="atlas-entry-section mi-cultivo-interest-section">
+                    <h2>Contenido de interés</h2>
+                    <span className="section-label mi-cultivo-weather-subtitle">Según tu etapa actual</span>
+                    <ul className="mi-cultivo-interest-list">
+                      {currentStageAtlasLink && (
+                        <li>
+                          <Link className="mi-cultivo-atlas-link" href={`/atlas/${currentStageAtlasLink.categorySlug}/${currentStageAtlasLink.entrySlug}`}>
+                            Sobre tu etapa actual: {currentStageAtlasLink.label} ↗
+                          </Link>
+                        </li>
+                      )}
+                      {nextStageAtlasLink && (
+                        <li>
+                          <Link className="mi-cultivo-atlas-link" href={`/atlas/${nextStageAtlasLink.categorySlug}/${nextStageAtlasLink.entrySlug}`}>
+                            Para lo que sigue: {nextStageAtlasLink.label} ↗
+                          </Link>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
 
-              {weatherResult.alerts.length > 0 && (
-                <div className="mi-cultivo-weather-alerts">
-                  <h3>Alertas por umbral (cálculo propio, no oficiales)</h3>
-                  <ul>
-                    {weatherResult.alerts.map((alert) => (
-                      <li key={alert.id}><strong>{alert.label}.</strong> {alert.detail}</li>
-                    ))}
-                  </ul>
+                <div className="atlas-entry-section mi-cultivo-saved-readings-section">
+                  <h2>Lecturas guardadas</h2>
                   <p className="atlas-section-note">
-                    Lecturas calculadas localmente a partir del pronóstico — no reemplazan los
-                    avisos oficiales. Para alertas oficiales, consultá el{' '}
-                    <a href="https://www.smn.gob.ar/avisos_a_muy_corto_plazo" target="_blank" rel="noreferrer">
-                      Servicio Meteorológico Nacional
-                    </a>.
+                    Todavía no existe una forma de guardar artículos del Atlas para leer después —
+                    este espacio queda reservado para cuando esa función esté disponible.
                   </p>
                 </div>
-              )}
 
-              <p className="atlas-section-note mi-cultivo-weather-source">
-                Fuente: Open-Meteo{weatherResult.generatedAt ? ` — datos generados el ${formatGeneratedAt(weatherResult.generatedAt)}` : ''}.
-              </p>
-            </div>
-          )}
-            </div>
-
-            <div className="atlas-entry-section mi-cultivo-next-stage-section">
-              <h2>Siguiente etapa</h2>
-              {nextStage ? (
-                <p className="mi-cultivo-next-stage">
-                  Próxima etapa: <strong>{nextStage.label}</strong>. Vos decidís cuándo marcarla
-                  como etapa actual, en &quot;Estado actual&quot; — no hay fechas automáticas ni
-                  calendario fijo.
-                </p>
-              ) : (
-                <p className="mi-cultivo-next-stage">
-                  Ya estás en la última etapa del recorrido (<strong>{STAGES[currentIndex].label}</strong>).
-                </p>
-              )}
-            </div>
-
-            {(currentStageAtlasLink || nextStageAtlasLink) && (
-              <div className="atlas-entry-section mi-cultivo-interest-section">
-                <h2>Contenido de interés</h2>
-                <span className="section-label mi-cultivo-weather-subtitle">Según tu etapa actual</span>
-                <ul className="mi-cultivo-interest-list">
-                  {currentStageAtlasLink && (
-                    <li>
-                      <Link className="mi-cultivo-atlas-link" href={`/atlas/${currentStageAtlasLink.categorySlug}/${currentStageAtlasLink.entrySlug}`}>
-                        Sobre tu etapa actual: {currentStageAtlasLink.label} ↗
-                      </Link>
-                    </li>
-                  )}
-                  {nextStageAtlasLink && (
-                    <li>
-                      <Link className="mi-cultivo-atlas-link" href={`/atlas/${nextStageAtlasLink.categorySlug}/${nextStageAtlasLink.entrySlug}`}>
-                        Para lo que sigue: {nextStageAtlasLink.label} ↗
-                      </Link>
-                    </li>
-                  )}
-                </ul>
-              </div>
+                <NewsWidgetCompact supabase={supabase} />
+              </>
             )}
 
-            <div className="atlas-entry-section mi-cultivo-saved-readings-section">
-              <h2>Lecturas guardadas</h2>
-              <p className="atlas-section-note">
-                Todavía no existe una forma de guardar artículos del Atlas para leer después — este
-                espacio queda reservado para cuando esa función esté disponible.
-              </p>
-            </div>
-
-            <NewsWidgetCompact supabase={supabase} />
-
-            <div className="atlas-entry-section mi-cultivo-summary-widget">
-              <h2>Resumen de temporada</h2>
-              <ul className="mi-cultivo-summary-list">
-                <li><span>Registros</span><strong>{seasonSummary.totalEvents}</strong></li>
-                <li><span>Fotos</span><strong>{isAccountMode ? seasonSummary.totalPhotos : '—'}</strong></li>
-                <li><span>Días con registro</span><strong>{seasonSummary.distinctDaysRegistered}</strong></li>
-                <li><span>Última actividad</span><strong>{seasonSummary.lastActivityDate ? formatDate(seasonSummary.lastActivityDate) : 'Sin actividad'}</strong></li>
-              </ul>
-            </div>
-
-            <div className="atlas-entry-section mi-cultivo-alerts-widget">
-              <div className="mi-cultivo-events-head">
-                <h2>Alertas</h2>
-                {unreadAlerts.length > 0 && (
-                  <button type="button" className="mi-cultivo-reset-link" onClick={handleMarkAllAlertsRead}>Marcar todas leídas</button>
-                )}
-              </div>
-              {!isAccountMode ? (
-                <p className="atlas-section-note">El acompañamiento activo (clima, etapa, sanidad) está disponible con cuenta.</p>
-              ) : !alertsChecked ? (
-                <p className="atlas-section-note">Evaluando avisos…</p>
-              ) : alerts.length === 0 ? (
-                <p className="atlas-section-note">Sin avisos por ahora.</p>
-              ) : (
-                <>
-                  {unreadAlerts.length > 0 ? (
-                    <ul className="mi-cultivo-alerts-list">
-                      {unreadAlerts.map((alert) => (
-                        <li className={`mi-cultivo-alert-item mi-cultivo-alert-${alert.category}`} key={alert.id}>
-                          <div className="mi-cultivo-alert-head">
-                            <span className={`mi-cultivo-alert-category mi-cultivo-alert-category-${alert.category}`}>
-                              {alert.category === 'clima' ? 'Clima' : alert.category === 'etapa' ? 'Etapa' : 'Sanidad'}
-                            </span>
-                            <span className="mi-cultivo-alert-date">{formatGeneratedAt(alert.createdAt)}</span>
-                          </div>
-                          <span className="mi-cultivo-alert-target">{alertTargetLabel(alert)}</span>
-                          <p className="mi-cultivo-alert-title">{alert.title}</p>
-                          <p className="mi-cultivo-alert-body">{alert.body}</p>
-                          <div className="mi-cultivo-alert-actions">
-                            {alert.relatedHref && <Link href={alert.relatedHref}>Ver en el Atlas ↗</Link>}
-                            <button type="button" className="mi-cultivo-reset-link" onClick={() => handleMarkAlertRead(alert.id)}>Marcar leída</button>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="atlas-section-note">Sin avisos nuevos.</p>
+            {activeTab === 'plantas' && (
+              <div className="atlas-entry-section mi-cultivo-plants">
+                <div className="mi-cultivo-events-head">
+                  <h2>Plantas</h2>
+                  {isAccountMode && (
+                    <button
+                      type="button"
+                      className="mi-cultivo-reset-link"
+                      onClick={() => handleSetPlantMode(plantMode === 'simple' ? 'detailed' : 'simple')}
+                    >
+                      {plantMode === 'simple' ? 'Gestionar plantas individualmente' : 'Volver a modo simple (cantidad)'}
+                    </button>
                   )}
-                  {readAlerts.length > 0 && (
-                    <details className="mi-cultivo-alerts-history">
-                      <summary>Anteriores ({readAlerts.length})</summary>
-                      <ul className="mi-cultivo-alerts-list">
-                        {readAlerts.map((alert) => (
-                          <li className={`mi-cultivo-alert-item mi-cultivo-alert-read mi-cultivo-alert-${alert.category}`} key={alert.id}>
-                            <div className="mi-cultivo-alert-head">
-                              <span className={`mi-cultivo-alert-category mi-cultivo-alert-category-${alert.category}`}>
-                                {alert.category === 'clima' ? 'Clima' : alert.category === 'etapa' ? 'Etapa' : 'Sanidad'}
-                              </span>
-                              <span className="mi-cultivo-alert-date">{formatGeneratedAt(alert.createdAt)}</span>
-                            </div>
-                            <span className="mi-cultivo-alert-target">{alertTargetLabel(alert)}</span>
-                            <p className="mi-cultivo-alert-title">{alert.title}</p>
-                            <p className="mi-cultivo-alert-body">{alert.body}</p>
-                            {alert.relatedHref && <Link href={alert.relatedHref}>Ver en el Atlas ↗</Link>}
+                </div>
+
+                {(!isAccountMode || plantMode === 'simple') ? (
+                  <form
+                    className="mi-cultivo-plant-basics-form"
+                    onSubmit={(domEvent) => {
+                      domEvent.preventDefault();
+                      handleSavePlantBasics(plantCount, variety);
+                    }}
+                  >
+                    <label className="mi-cultivo-field">
+                      <span>Cantidad de plantas</span>
+                      <input
+                        type="number"
+                        min={1}
+                        value={plantCount}
+                        onChange={(event) => setPlantCount(Math.max(1, Number(event.target.value) || 1))}
+                      />
+                    </label>
+                    <label className="mi-cultivo-field">
+                      <span>Variedad (opcional)</span>
+                      <input
+                        type="text"
+                        value={variety}
+                        onChange={(event) => setVariety(event.target.value)}
+                        placeholder="Ej. autofloreciente, White Widow..."
+                      />
+                    </label>
+                    <button type="submit" className="secondary-button">Guardar</button>
+                  </form>
+                ) : (
+                  <div className="mi-cultivo-plantas-detail">
+                    {plantas.length === 0 ? (
+                      <p className="atlas-section-note">Todavía no agregaste ninguna planta individual.</p>
+                    ) : (
+                      <ul className="dashboard-plant-grid">
+                        {plantas.map((planta) => (
+                          <li className="dashboard-plant-card" key={planta.id}>
+                            {editingPlantaId === planta.id ? (
+                              <form
+                                className="mi-cultivo-plant-edit-form"
+                                onSubmit={(domEvent) => {
+                                  domEvent.preventDefault();
+                                  handleUpdatePlanta(planta, plantDraft);
+                                }}
+                              >
+                                <input
+                                  type="text"
+                                  value={plantDraft.label}
+                                  onChange={(event) => setPlantDraft((prev) => ({ ...prev, label: event.target.value }))}
+                                  placeholder="Nombre/identificador"
+                                  required
+                                />
+                                <input
+                                  type="text"
+                                  value={plantDraft.variety}
+                                  onChange={(event) => setPlantDraft((prev) => ({ ...prev, variety: event.target.value }))}
+                                  placeholder="Variedad"
+                                />
+                                <select
+                                  value={plantDraft.stageId}
+                                  onChange={(event) => setPlantDraft((prev) => ({ ...prev, stageId: event.target.value }))}
+                                >
+                                  <option value="">Sigue la etapa del cultivo</option>
+                                  {STAGES.map((stage) => (
+                                    <option key={stage.id} value={stage.id}>{stage.label}</option>
+                                  ))}
+                                </select>
+                                <button type="submit" className="mi-cultivo-reset-link" disabled={plantBusy}>Guardar</button>
+                                <button type="button" className="mi-cultivo-reset-link" onClick={() => setEditingPlantaId(null)}>Cancelar</button>
+                              </form>
+                            ) : (
+                              <>
+                                <div className="dashboard-plant-card-head">
+                                  <IconPlant className="dashboard-plant-card-icon" />
+                                  <span className={`mi-cultivo-stage-badge dashboard-plant-card-badge`}>{stageLabel(planta.stageId) || STAGES[currentIndex].label}</span>
+                                </div>
+                                <span className="dashboard-plant-card-name">{planta.label}</span>
+                                {planta.variety && <span className="dashboard-plant-card-variety">{planta.variety}</span>}
+                                <div className="dashboard-plant-card-actions">
+                                  <button
+                                    type="button"
+                                    className="mi-cultivo-reset-link"
+                                    onClick={() => {
+                                      setEditingPlantaId(planta.id);
+                                      setPlantDraft({ label: planta.label, variety: planta.variety ?? '', stageId: planta.stageId ?? '', notes: planta.notes ?? '' });
+                                    }}
+                                  >
+                                    Editar
+                                  </button>
+                                  <button type="button" className="mi-cultivo-reset-link" onClick={() => handleDeletePlanta(planta)}>Eliminar</button>
+                                </div>
+                              </>
+                            )}
                           </li>
                         ))}
                       </ul>
-                    </details>
-                  )}
-                </>
-              )}
-            </div>
+                    )}
 
-            {isAccountMode && (
-              <div className="atlas-entry-section mi-cultivo-preferences-widget">
-                <h2>Notificaciones</h2>
-                {!notificationPreferences ? (
-                  <p className="atlas-section-note">Cargando preferencias…</p>
-                ) : (
-                  <form className="mi-cultivo-preferences-form" onSubmit={handleSavePreferences}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={notificationPreferences.emailClima}
-                        onChange={(event) => setNotificationPreferences((prev) => ({ ...prev, emailClima: event.target.checked }))}
-                      />
-                      Alertas de clima por email
-                    </label>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={notificationPreferences.emailEtapa}
-                        onChange={(event) => setNotificationPreferences((prev) => ({ ...prev, emailEtapa: event.target.checked }))}
-                      />
-                      Avisos de etapa por email
-                    </label>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={notificationPreferences.emailSanidad}
-                        onChange={(event) => setNotificationPreferences((prev) => ({ ...prev, emailSanidad: event.target.checked }))}
-                      />
-                      Avisos de sanidad/plagas por email
-                    </label>
-                    <label className="mi-cultivo-preference-disabled">
-                      <input type="checkbox" checked={false} disabled readOnly />
-                      Notificaciones web (próximamente)
-                    </label>
-                    <p className="atlas-section-note">El envío de emails todavía no está activo — tu preferencia queda guardada para cuando se habilite.</p>
-                    {preferencesNotice && <p className="atlas-section-note">{preferencesNotice}</p>}
-                    <button type="submit" className="secondary-button" disabled={preferencesSaving}>Guardar preferencias</button>
-                  </form>
+                    {plantFormOpen ? (
+                      <form className="mi-cultivo-plant-edit-form" onSubmit={handleAddPlanta}>
+                        <input
+                          type="text"
+                          value={plantDraft.label}
+                          onChange={(event) => setPlantDraft((prev) => ({ ...prev, label: event.target.value }))}
+                          placeholder={`Planta ${String(plantas.length + 1).padStart(2, '0')}`}
+                          required
+                        />
+                        <input
+                          type="text"
+                          value={plantDraft.variety}
+                          onChange={(event) => setPlantDraft((prev) => ({ ...prev, variety: event.target.value }))}
+                          placeholder="Variedad (opcional)"
+                        />
+                        <button type="submit" className="secondary-button" disabled={plantBusy}>Agregar</button>
+                        <button type="button" className="mi-cultivo-reset-link" onClick={() => setPlantFormOpen(false)}>Cancelar</button>
+                      </form>
+                    ) : (
+                      <button type="button" className="secondary-button" onClick={() => setPlantFormOpen(true)}>
+                        + Agregar planta
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
             )}
 
+            {activeTab === 'bitacora' && (
+              <>
+                <div className="atlas-entry-section">
+                  <h2>Estado actual</h2>
+                  <p className="mi-cultivo-current-stage">Etapa actual: <strong>{STAGES[currentIndex].label}</strong></p>
+                  <ol className="mi-cultivo-timeline">
+                    {STAGES.map((stage, index) => {
+                      const state = index < currentIndex ? 'done' : index === currentIndex ? 'current' : 'upcoming';
+                      return (
+                        <li className={`mi-cultivo-timeline-item mi-cultivo-timeline-${state}`} key={stage.id}>
+                          <button
+                            type="button"
+                            className="mi-cultivo-timeline-dot"
+                            onClick={() => handleTimelineClick(stage.id)}
+                            aria-pressed={state === 'current'}
+                            aria-label={`Marcar "${stage.label}" como etapa actual`}
+                          >
+                            <span aria-hidden="true">{index + 1}</span>
+                          </button>
+                          <span className="mi-cultivo-timeline-label">{stage.label}</span>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                  <p className="atlas-section-note">Tocá una etapa para marcarla como la etapa actual de tu planta. Las etapas siguientes quedan como próximas.</p>
+                </div>
+
+                <div className="atlas-entry-section mi-cultivo-gallery">
+                  <h2>Registro visual</h2>
+                  {!isAccountMode ? (
+                    <p className="atlas-section-note">La galería de fotos de temporada está disponible con cuenta — ingresá arriba para empezar a guardar fotos junto a tus registros.</p>
+                  ) : allSeasonPhotos.length === 0 ? (
+                    <div className="photo-placeholder">
+                      <span className="photo-placeholder-icon" aria-hidden="true">+</span>
+                      <p>Todavía no hay fotos en esta temporada.</p>
+                      <p className="atlas-section-note">Agregá una foto desde cualquier registro de la línea temporal, más abajo.</p>
+                    </div>
+                  ) : (
+                    <div className="mi-cultivo-gallery-strip">
+                      {allSeasonPhotos.map((photo) => (
+                        <button
+                          type="button"
+                          key={photo.id}
+                          className="mi-cultivo-gallery-thumb"
+                          onClick={() => setExpandedPhotoId((current) => (current === photo.id ? null : photo.id))}
+                          disabled={!photo.url}
+                          aria-label="Ver foto más grande"
+                        >
+                          {photo.url ? <img src={photo.url} alt="Foto de la temporada" /> : <span className="mi-cultivo-photo-loading">…</span>}
+                          {photo.event?.date && <span className="mi-cultivo-gallery-thumb-date">{formatShortDate(photo.event.date)}</span>}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  {isAccountMode && allSeasonPhotos.some((photo) => photo.id === expandedPhotoId) && (
+                    <div className="mi-cultivo-photo-expanded">
+                      <img
+                        src={allSeasonPhotos.find((photo) => photo.id === expandedPhotoId)?.url}
+                        alt="Foto de la temporada, tamaño ampliado"
+                      />
+                    </div>
+                  )}
+                </div>
+
+                <div className="atlas-entry-section mi-cultivo-notes">
+                  <h2>Notas de temporada</h2>
+                  <form className="mi-cultivo-note-form" onSubmit={handleAddNote}>
+                    <textarea
+                      value={noteDraft}
+                      onChange={(event) => setNoteDraft(event.target.value)}
+                      placeholder="Anotá algo sobre esta temporada — una observación, una decisión, lo que quieras recordar más adelante."
+                      rows={2}
+                    />
+                    <button type="submit" className="secondary-button" disabled={noteBusy || !noteDraft.trim()}>Agregar nota</button>
+                  </form>
+                  {notes.length === 0 ? (
+                    <p className="atlas-section-note">Todavía no agregaste ninguna nota.</p>
+                  ) : (
+                    <ul className="mi-cultivo-notes-list">
+                      {notes.map((note) => (
+                        <li className="mi-cultivo-note-item" key={note.id}>
+                          <div>
+                            <span className="mi-cultivo-note-date">{formatGeneratedAt(note.createdAt)}</span>
+                            <p>{note.body}</p>
+                          </div>
+                          <button type="button" className="mi-cultivo-reset-link" onClick={() => handleDeleteNote(note)}>Eliminar</button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+
+                <div className="atlas-entry-section" ref={eventFormSectionRef}>
+                  <h2>{editingEventId ? 'Editar evento' : 'Registrar un evento'}</h2>
+                  <form className="mi-cultivo-event-form" onSubmit={handleSubmit}>
+                    <label className="mi-cultivo-field">
+                      <span>Etapa</span>
+                      <select value={formStageId} onChange={(event) => setFormStageId(event.target.value)}>
+                        {STAGES.map((stage) => (
+                          <option key={stage.id} value={stage.id}>{stage.label}</option>
+                        ))}
+                      </select>
+                    </label>
+
+                    <label className="mi-cultivo-field">
+                      <span>Fecha</span>
+                      <input
+                        type="date"
+                        value={formDate}
+                        onChange={(event) => setFormDate(event.target.value)}
+                        required
+                      />
+                    </label>
+
+                    <label className="mi-cultivo-field mi-cultivo-field-wide">
+                      <span>Nota</span>
+                      <textarea
+                        value={formNote}
+                        onChange={(event) => setFormNote(event.target.value)}
+                        placeholder="Qué observaste en esta etapa..."
+                        rows={2}
+                      />
+                    </label>
+
+                    <div className="mi-cultivo-field mi-cultivo-field-wide">
+                      <span>Foto</span>
+                      {isAccountMode ? (
+                        <p className="atlas-section-note">Podés agregar una foto después de guardar el evento, desde la lista de eventos de abajo.</p>
+                      ) : (
+                        <button type="button" className="photo-placeholder-button" disabled aria-disabled="true">
+                          <span aria-hidden="true">+</span>
+                          Agregar foto (próximamente)
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="mi-cultivo-form-actions">
+                      <button type="submit" className="primary-button mi-cultivo-submit" disabled={remoteBusy}>
+                        {editingEventId ? 'Guardar cambios' : 'Registrar evento'}
+                      </button>
+                      {editingEventId && (
+                        <button type="button" className="secondary-button" onClick={resetForm}>
+                          Cancelar edición
+                        </button>
+                      )}
+                    </div>
+                  </form>
+                </div>
+
+                <div className="atlas-entry-section">
+                  <div className="mi-cultivo-events-head">
+                    <h2>Línea temporal</h2>
+                    {events.length > 0 && (
+                      <button type="button" className="mi-cultivo-reset-link" onClick={handleReset} disabled={remoteBusy}>
+                        {confirmingReset ? '¿Confirmar borrado? Tocá de nuevo' : 'Reiniciar Mi Cultivo'}
+                      </button>
+                    )}
+                  </div>
+                  {events.length === 0 ? (
+                    <div className="photo-placeholder">
+                      <span className="photo-placeholder-icon" aria-hidden="true">+</span>
+                      <p>Todavía no registraste ningún evento.</p>
+                      <p className="atlas-section-note">Los eventos que cargues arriba van a aparecer acá, en orden, con su etapa, fecha y nota.</p>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="mi-cultivo-timeline-order" role="group" aria-label="Orden de la línea temporal">
+                        <button
+                          type="button"
+                          className={`mi-cultivo-order-button ${timelineOrder === 'recent' ? 'mi-cultivo-order-active' : ''}`}
+                          onClick={() => setTimelineOrder('recent')}
+                          aria-pressed={timelineOrder === 'recent'}
+                        >
+                          Más reciente primero
+                        </button>
+                        <button
+                          type="button"
+                          className={`mi-cultivo-order-button ${timelineOrder === 'chrono' ? 'mi-cultivo-order-active' : ''}`}
+                          onClick={() => setTimelineOrder('chrono')}
+                          aria-pressed={timelineOrder === 'chrono'}
+                        >
+                          Cronológico (temporada completa)
+                        </button>
+                      </div>
+                      <ol className="mi-cultivo-events-list">
+                        {sortedEvents.map((cultivoEvent) => (
+                          <li className="mi-cultivo-event-card" key={cultivoEvent.id}>
+                            <div className="mi-cultivo-event-head">
+                              <span className="mi-cultivo-event-stage">{stageLabel(cultivoEvent.stageId)}</span>
+                              <span className="mi-cultivo-event-date">{formatDate(cultivoEvent.date)}</span>
+                            </div>
+                            {cultivoEvent.note && <p className="mi-cultivo-event-note">{cultivoEvent.note}</p>}
+
+                            {isAccountMode ? (
+                              <div className="mi-cultivo-event-photos">
+                                <div className="mi-cultivo-photo-thumbs">
+                                  {(photosByEvent[cultivoEvent.id] ?? []).map((photo) => (
+                                    <div className="mi-cultivo-photo-item" key={photo.id}>
+                                      <button
+                                        type="button"
+                                        className="mi-cultivo-photo-thumb"
+                                        onClick={() => setExpandedPhotoId((current) => (current === photo.id ? null : photo.id))}
+                                        disabled={!photo.url}
+                                        aria-label="Ver foto más grande"
+                                      >
+                                        {photo.url ? (
+                                          <img src={photo.url} alt="Foto de este evento" />
+                                        ) : (
+                                          <span className="mi-cultivo-photo-loading">…</span>
+                                        )}
+                                      </button>
+                                      <button
+                                        type="button"
+                                        className="mi-cultivo-photo-remove"
+                                        onClick={() => handlePhotoDelete(photo)}
+                                        disabled={photoBusyEventId === cultivoEvent.id}
+                                      >
+                                        Eliminar
+                                      </button>
+                                    </div>
+                                  ))}
+
+                                  <label className={`mi-cultivo-photo-add ${photoBusyEventId === cultivoEvent.id ? 'mi-cultivo-photo-add-busy' : ''}`}>
+                                    <span aria-hidden="true">+</span>
+                                    <span>{photoBusyEventId === cultivoEvent.id ? 'Subiendo…' : 'Agregar foto'}</span>
+                                    <input
+                                      type="file"
+                                      accept="image/*"
+                                      className="mi-cultivo-photo-input"
+                                      disabled={photoBusyEventId === cultivoEvent.id}
+                                      onChange={(fileEvent) => {
+                                        const file = fileEvent.target.files?.[0];
+                                        fileEvent.target.value = '';
+                                        handlePhotoUpload(cultivoEvent.id, file);
+                                      }}
+                                    />
+                                  </label>
+                                </div>
+
+                                {(photosByEvent[cultivoEvent.id] ?? [])
+                                  .filter((photo) => photo.id === expandedPhotoId && photo.url)
+                                  .map((photo) => (
+                                    <div className="mi-cultivo-photo-expanded" key={photo.id}>
+                                      <img src={photo.url} alt="Foto de este evento, tamaño ampliado" />
+                                    </div>
+                                  ))}
+
+                                {photoErrorByEvent[cultivoEvent.id] && (
+                                  <p className="mi-cultivo-auth-error">{photoErrorByEvent[cultivoEvent.id]}</p>
+                                )}
+                              </div>
+                            ) : (
+                              <div className="mi-cultivo-event-photo-slot">
+                                <span aria-hidden="true">+</span>
+                                <span>Espacio reservado para foto de esta etapa</span>
+                              </div>
+                            )}
+
+                            <div className="mi-cultivo-event-actions">
+                              <button
+                                type="button"
+                                className="mi-cultivo-event-edit"
+                                onClick={() => handleStartEdit(cultivoEvent)}
+                              >
+                                Editar
+                              </button>
+                              <button
+                                type="button"
+                                className="mi-cultivo-event-delete"
+                                onClick={() => handleDeleteEvent(cultivoEvent)}
+                                disabled={deletingEventId === cultivoEvent.id}
+                              >
+                                {confirmingDeleteEventId === cultivoEvent.id
+                                  ? '¿Confirmar? Tocá de nuevo'
+                                  : deletingEventId === cultivoEvent.id
+                                    ? 'Eliminando…'
+                                    : 'Eliminar evento'}
+                              </button>
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                    </>
+                  )}
+                </div>
+              </>
+            )}
+
+            {activeTab === 'ambiente' && (
+              <div className="atlas-entry-section mi-cultivo-weather-section">
+                <h2>Hoy</h2>
+                <span className="section-label mi-cultivo-weather-subtitle">Contexto ambiental</span>
+
+                <label className="mi-cultivo-field mi-cultivo-weather-location">
+                  <span>Ubicación aproximada (provincia)</span>
+                  <select value={provinceId ?? ''} onChange={handleProvinceChange} disabled={!locationReady}>
+                    <option value="">Sin ubicación elegida</option>
+                    {PROVINCE_OPTIONS.map((province) => (
+                      <option key={province.id} value={province.id}>{province.name}</option>
+                    ))}
+                  </select>
+                </label>
+                <p className="atlas-section-note">
+                  Solo a nivel provincia — nunca tu ubicación exacta ni GPS. Sirve para mostrar
+                  condiciones ambientales de referencia junto a tu cultivo, no para calcular nada
+                  sobre él. Es independiente de la provincia elegida en Inicio para explorar el Atlas —
+                  la usamos como punto de partida acá si todavía no elegiste una para tu cultivo, pero
+                  podés cambiarla en cualquier momento sin afectar tu navegación del Atlas.
+                </p>
+
+                {!locationReady && (
+                  <p className="atlas-section-note">Cargando tu cultivo…</p>
+                )}
+
+                {locationReady && !provinceId && (
+                  <p className="atlas-section-note">Elegí una provincia para ver el contexto ambiental de tu zona.</p>
+                )}
+
+                {provinceId && weatherStatus === 'loading' && (
+                  <p className="atlas-section-note">Cargando datos ambientales…</p>
+                )}
+
+                {provinceId && weatherStatus === 'error' && (
+                  <p className="mi-cultivo-weather-unavailable">Datos ambientales no disponibles en este momento.</p>
+                )}
+
+                {provinceId && weatherStatus === 'ready' && weatherResult?.ok && (
+                  <div className="mi-cultivo-weather-body">
+                    <p className="mi-cultivo-weather-context">
+                      Tu cultivo está registrado en <strong>{weatherResult.locationName}</strong>, actualmente
+                      en la etapa <strong>{STAGES[currentIndex].label}</strong>.
+                    </p>
+
+                    <div className="mi-cultivo-weather-current">
+                      {weatherResult.current.temperature !== null && (
+                        <div className="mi-cultivo-weather-stat">
+                          <span className="mi-cultivo-weather-stat-label">Temperatura</span>
+                          <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.temperature)}°C</span>
+                        </div>
+                      )}
+                      {weatherResult.current.humidity !== null && (
+                        <div className="mi-cultivo-weather-stat">
+                          <span className="mi-cultivo-weather-stat-label">Humedad</span>
+                          <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.humidity)}%</span>
+                        </div>
+                      )}
+                      {weatherResult.current.precipitation !== null && (
+                        <div className="mi-cultivo-weather-stat">
+                          <span className="mi-cultivo-weather-stat-label">Lluvia</span>
+                          <span className="mi-cultivo-weather-stat-value">{weatherResult.current.precipitation} mm</span>
+                        </div>
+                      )}
+                      {weatherResult.current.windSpeed !== null && (
+                        <div className="mi-cultivo-weather-stat">
+                          <span className="mi-cultivo-weather-stat-label">Viento</span>
+                          <span className="mi-cultivo-weather-stat-value">{Math.round(weatherResult.current.windSpeed)} km/h</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {weatherResult.todayReadings.length > 0 && (
+                      <div className="mi-cultivo-weather-readings">
+                        <h3>Qué está pasando hoy</h3>
+                        <ul>
+                          {weatherResult.todayReadings.map((reading) => (
+                            <li key={reading.id}><strong>{reading.label}.</strong> {reading.detail}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {weatherResult.forecast.length > 0 && (
+                      <div className="mi-cultivo-weather-forecast">
+                        <h3>Pronóstico corto</h3>
+                        <ol>
+                          {weatherResult.forecast.slice(0, 5).map((day) => (
+                            <li key={day.date}>
+                              <span>{formatShortDate(day.date)}</span>
+                              <span>
+                                {day.tempMin !== null ? Math.round(day.tempMin) : '—'}° / {day.tempMax !== null ? Math.round(day.tempMax) : '—'}°
+                              </span>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+
+                    {weatherResult.alerts.length > 0 && (
+                      <div className="mi-cultivo-weather-alerts">
+                        <h3>Alertas por umbral (cálculo propio, no oficiales)</h3>
+                        <ul>
+                          {weatherResult.alerts.map((alert) => (
+                            <li key={alert.id}><strong>{alert.label}.</strong> {alert.detail}</li>
+                          ))}
+                        </ul>
+                        <p className="atlas-section-note">
+                          Lecturas calculadas localmente a partir del pronóstico — no reemplazan los
+                          avisos oficiales. Para alertas oficiales, consultá el{' '}
+                          <a href="https://www.smn.gob.ar/avisos_a_muy_corto_plazo" target="_blank" rel="noreferrer">
+                            Servicio Meteorológico Nacional
+                          </a>.
+                        </p>
+                      </div>
+                    )}
+
+                    <p className="atlas-section-note mi-cultivo-weather-source">
+                      Fuente: Open-Meteo{weatherResult.generatedAt ? ` — datos generados el ${formatGeneratedAt(weatherResult.generatedAt)}` : ''}.
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {activeTab === 'ajustes' && (
+              <>
+                {isAccountMode && cultivoId && (
+                  <div className="atlas-entry-section">
+                    <h2>Cultivo / temporada</h2>
+                    <div className="mi-cultivo-switcher">
+                      <select
+                        value={cultivoId}
+                        onChange={(event) => handleSwitchCultivo(event.target.value)}
+                        disabled={cultivoSwitchBusy}
+                      >
+                        {cultivosList.map((item) => (
+                          <option key={item.id} value={item.id}>
+                            {item.seasonName || `Temporada sin nombre (${formatDate(item.createdAt.slice(0, 10))})`}
+                          </option>
+                        ))}
+                      </select>
+                      <button type="button" className="mi-cultivo-reset-link" onClick={handleCreateCultivo} disabled={cultivoSwitchBusy}>
+                        + Nuevo cultivo
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                <div className="atlas-entry-section mi-cultivo-summary-widget">
+                  <h2>Resumen de temporada</h2>
+                  <ul className="mi-cultivo-summary-list">
+                    <li><span>Registros</span><strong>{seasonSummary.totalEvents}</strong></li>
+                    <li><span>Fotos</span><strong>{isAccountMode ? seasonSummary.totalPhotos : '—'}</strong></li>
+                    <li><span>Días con registro</span><strong>{seasonSummary.distinctDaysRegistered}</strong></li>
+                    <li><span>Última actividad</span><strong>{seasonSummary.lastActivityDate ? formatDate(seasonSummary.lastActivityDate) : 'Sin actividad'}</strong></li>
+                  </ul>
+                </div>
+
+                <div className="atlas-entry-section mi-cultivo-alerts-widget">
+                  <div className="mi-cultivo-events-head">
+                    <h2>Alertas</h2>
+                    {unreadAlerts.length > 0 && (
+                      <button type="button" className="mi-cultivo-reset-link" onClick={handleMarkAllAlertsRead}>Marcar todas leídas</button>
+                    )}
+                  </div>
+                  {!isAccountMode ? (
+                    <p className="atlas-section-note">El acompañamiento activo (clima, etapa, sanidad) está disponible con cuenta.</p>
+                  ) : !alertsChecked ? (
+                    <p className="atlas-section-note">Evaluando avisos…</p>
+                  ) : alerts.length === 0 ? (
+                    <p className="atlas-section-note">Sin avisos por ahora.</p>
+                  ) : (
+                    <>
+                      {unreadAlerts.length > 0 ? (
+                        <ul className="mi-cultivo-alerts-list">
+                          {unreadAlerts.map((alert) => (
+                            <li className={`mi-cultivo-alert-item mi-cultivo-alert-${alert.category}`} key={alert.id}>
+                              <div className="mi-cultivo-alert-head">
+                                <span className={`mi-cultivo-alert-category mi-cultivo-alert-category-${alert.category}`}>
+                                  {alert.category === 'clima' ? 'Clima' : alert.category === 'etapa' ? 'Etapa' : 'Sanidad'}
+                                </span>
+                                <span className="mi-cultivo-alert-date">{formatGeneratedAt(alert.createdAt)}</span>
+                              </div>
+                              <span className="mi-cultivo-alert-target">{alertTargetLabel(alert)}</span>
+                              <p className="mi-cultivo-alert-title">{alert.title}</p>
+                              <p className="mi-cultivo-alert-body">{alert.body}</p>
+                              <div className="mi-cultivo-alert-actions">
+                                {alert.relatedHref && <Link href={alert.relatedHref}>Ver en el Atlas ↗</Link>}
+                                <button type="button" className="mi-cultivo-reset-link" onClick={() => handleMarkAlertRead(alert.id)}>Marcar leída</button>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="atlas-section-note">Sin avisos nuevos.</p>
+                      )}
+                      {readAlerts.length > 0 && (
+                        <details className="mi-cultivo-alerts-history">
+                          <summary>Anteriores ({readAlerts.length})</summary>
+                          <ul className="mi-cultivo-alerts-list">
+                            {readAlerts.map((alert) => (
+                              <li className={`mi-cultivo-alert-item mi-cultivo-alert-read mi-cultivo-alert-${alert.category}`} key={alert.id}>
+                                <div className="mi-cultivo-alert-head">
+                                  <span className={`mi-cultivo-alert-category mi-cultivo-alert-category-${alert.category}`}>
+                                    {alert.category === 'clima' ? 'Clima' : alert.category === 'etapa' ? 'Etapa' : 'Sanidad'}
+                                  </span>
+                                  <span className="mi-cultivo-alert-date">{formatGeneratedAt(alert.createdAt)}</span>
+                                </div>
+                                <span className="mi-cultivo-alert-target">{alertTargetLabel(alert)}</span>
+                                <p className="mi-cultivo-alert-title">{alert.title}</p>
+                                <p className="mi-cultivo-alert-body">{alert.body}</p>
+                                {alert.relatedHref && <Link href={alert.relatedHref}>Ver en el Atlas ↗</Link>}
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
+                      )}
+                    </>
+                  )}
+                </div>
+
+                {isAccountMode && (
+                  <div className="atlas-entry-section mi-cultivo-preferences-widget">
+                    <h2>Notificaciones</h2>
+                    {!notificationPreferences ? (
+                      <p className="atlas-section-note">Cargando preferencias…</p>
+                    ) : (
+                      <form className="mi-cultivo-preferences-form" onSubmit={handleSavePreferences}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={notificationPreferences.emailClima}
+                            onChange={(event) => setNotificationPreferences((prev) => ({ ...prev, emailClima: event.target.checked }))}
+                          />
+                          Alertas de clima por email
+                        </label>
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={notificationPreferences.emailEtapa}
+                            onChange={(event) => setNotificationPreferences((prev) => ({ ...prev, emailEtapa: event.target.checked }))}
+                          />
+                          Avisos de etapa por email
+                        </label>
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={notificationPreferences.emailSanidad}
+                            onChange={(event) => setNotificationPreferences((prev) => ({ ...prev, emailSanidad: event.target.checked }))}
+                          />
+                          Avisos de sanidad/plagas por email
+                        </label>
+                        <label className="mi-cultivo-preference-disabled">
+                          <input type="checkbox" checked={false} disabled readOnly />
+                          Notificaciones web (próximamente)
+                        </label>
+                        <p className="atlas-section-note">El envío de emails todavía no está activo — tu preferencia queda guardada para cuando se habilite.</p>
+                        {preferencesNotice && <p className="atlas-section-note">{preferencesNotice}</p>}
+                        <button type="submit" className="secondary-button" disabled={preferencesSaving}>Guardar preferencias</button>
+                      </form>
+                    )}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+
+          <aside className="dashboard-activity" aria-label="Bitácora reciente">
+            <h2>Bitácora reciente</h2>
+            {recentActivity.length === 0 ? (
+              <p className="atlas-section-note">Todavía no hay actividad registrada.</p>
+            ) : (
+              <ul className="dashboard-activity-list">
+                {recentActivity.map((item) => (
+                  <li key={item.id} className="dashboard-activity-item">
+                    {item.kind === 'event' ? <IconJournal className="dashboard-activity-icon" /> : <IconCamera className="dashboard-activity-icon" />}
+                    <div>
+                      <span className="dashboard-activity-label">{item.label}</span>
+                      <span className="dashboard-activity-date">{formatDate(item.date)}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
           </aside>
+
+          <button
+            type="button"
+            className="dashboard-fab"
+            aria-label="Registrar un evento"
+            onClick={() => {
+              setActiveTab('bitacora');
+              requestAnimationFrame(() => eventFormSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+            }}
+          >
+            <IconPlus width={22} height={22} />
+          </button>
         </div>
       </section>
 
