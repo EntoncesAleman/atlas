@@ -1,57 +1,44 @@
 import Link from 'next/link';
 import GeoSelector from './components/GeoSelector';
+import GlobalHeader from './components/shell/GlobalHeader';
 
 export default function HomePage() {
   return (
-    <div className="site-shell home-shell">
-      <header className="site-header home-header">
-        <a className="brand" href="/" aria-label="Atlas del Cultivo Argentino">
-          <span className="brand-mark">ARG</span>
-          <span className="brand-copy">
-            <span className="brand-title">Atlas del Cultivo Argentino</span>
-            <span className="brand-subtitle">Geografía · Clima · Contenido</span>
-          </span>
-        </a>
-      </header>
+    <div className="club-shell">
+      <GlobalHeader />
 
-      <main className="page home-page home-page-entry">
-        <section className="home-intro">
-          <div className="home-intro-copy">
-            <span className="section-label">Atlas de cultivo / Argentina</span>
-            <h1>El cultivo cambia según dónde estés.</h1>
-            <p className="hero-lede">Una guía pública para entender cultivo a partir de la geografía, el contenido regional y el contexto ambiental de Argentina.</p>
-
-            <div className="hero-actions">
-              <Link className="primary-button" href="/mi-cultivo">
-                Ingresar
-              </Link>
-              <Link className="secondary-button" href="/atlas">
-                Explorar el Atlas
-              </Link>
+      <main className="club-home club-enter">
+        <section className="club-hero">
+          <div className="club-hero-copy">
+            <span className="club-eyebrow">Atlas de cultivo · Argentina</span>
+            <h1>
+              El cultivo cambia
+              <br />
+              según dónde estés.
+            </h1>
+            <p className="club-hero-lede">
+              Una guía pública para entender el cultivo a partir de la geografía, el contenido
+              regional y el contexto ambiental de cada provincia argentina.
+            </p>
+            <div className="club-hero-actions">
+              <Link className="club-button" href="/mi-cultivo">Entrar a Mi Cultivo</Link>
+              <Link className="club-button club-button-outline" href="/atlas">Explorar el Atlas</Link>
             </div>
           </div>
 
-          <aside className="hero-panel">
+          <div className="club-hero-map">
             <GeoSelector />
-          </aside>
+          </div>
         </section>
       </main>
 
-      <footer className="site-footer">
-        <div className="footer-content">
-          <a className="brand footer-brand" href="#">
-            <span className="brand-mark small">ARG</span>
-            <span className="brand-copy">
-              <span className="brand-title">Atlas del Cultivo Argentino</span>
-            </span>
-          </a>
-          <nav className="footer-links">
-            <a href="/sobre-el-proyecto">Sobre el proyecto</a>
-            <a href="/comunidad">Comunidad</a>
-            <a href="#">Privacidad</a>
-            <a href="#">Términos</a>
-            <a href="/creditos">Créditos</a>
-            <a href="#">Mapa</a>
+      <footer className="club-footer">
+        <div className="club-footer-row">
+          <Link href="/" className="club-footer-brand">ATLAS DEL CULTIVO ARGENTINO</Link>
+          <nav className="club-footer-links">
+            <Link href="/sobre-el-proyecto">Sobre el proyecto</Link>
+            <Link href="/comunidad">Comunidad</Link>
+            <Link href="/creditos">Créditos</Link>
           </nav>
         </div>
       </footer>

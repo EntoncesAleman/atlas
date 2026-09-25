@@ -4,6 +4,26 @@
 @import '@fontsource/source-serif-4/400.css';
 @import '@fontsource/source-serif-4/500.css';
 
+/* ==========================================================================
+   SISTEMA VISUAL "CLUB" (v2) — ver docs/CLUB_VISUAL_SYSTEM.md.
+   Tipografía y tokens nuevos, deliberadamente ADITIVOS: los tokens legados de
+   arriba (--sage-*, --paper*, --font-main, --font-serif...) NO cambian de
+   valor. Noticias, el panel admin, Comunidad y el resto de páginas no
+   tocadas en esta fase siguen usando exactamente esos tokens, sin variación
+   visual. El shell nuevo (GlobalHeader/ContextHeader) y las páginas
+   rediseñadas (Home, índice del Atlas, Mi Cultivo) usan este segundo set.
+   ========================================================================== */
+@import '@fontsource/libre-caslon-display/400.css';
+@import '@fontsource/newsreader/400.css';
+@import '@fontsource/newsreader/500.css';
+@import '@fontsource/newsreader/400-italic.css';
+@import '@fontsource/public-sans/400.css';
+@import '@fontsource/public-sans/500.css';
+@import '@fontsource/public-sans/600.css';
+@import '@fontsource/public-sans/700.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -32,6 +52,629 @@
   --max-width: 1400px;
   --font-main: "Inter", "Avenir Next", "Segoe UI", Arial, sans-serif;
   --font-serif: "Source Serif 4", "Iowan Old Style", "Times New Roman", serif;
+
+  /* --- Club v2: identidad "cartográfica" — tinta y papel, no verde-naturaleza
+     automático. El sage queda como acento territorial secundario (clima,
+     tags), no como color dominante. --- */
+  --club-parchment: #f2ece0;
+  --club-parchment-soft: #e9e1d0;
+  --club-surface: #fbf8f2;
+  --club-ink: #201c1a;
+  --club-ink-soft: #4a4440;
+  --club-ink-muted: #7a736c;
+  --club-line: #d9cfba;
+  --club-line-strong: #b9ac8e;
+  --club-signal: #b5541f;
+  --club-signal-soft: #f0dcc9;
+  --club-sage: #55705a;
+  --club-sage-soft: #dfe6d6;
+  --club-shadow: rgba(32, 28, 26, 0.16);
+
+  --club-font-display: "Libre Caslon Display", var(--font-serif);
+  --club-font-serif: "Newsreader", var(--font-serif);
+  --club-font-sans: "Public Sans", var(--font-main);
+  --club-font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* ==========================================================================
+   GlobalHeader — capa 1 (identidad de producto, navegación principal).
+   ========================================================================== */
+
+.gh {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--club-surface);
+  border-bottom: 1px solid var(--club-line);
+}
+
+.gh-row {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.gh-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--club-ink);
+  flex: 0 0 auto;
+}
+
+.gh-brand-mark {
+  font-family: var(--club-font-display);
+  font-size: 24px;
+  letter-spacing: 0.01em;
+}
+
+.gh-brand-sub {
+  display: none;
+  font-family: var(--club-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--club-ink-muted);
+}
+
+.gh-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1 1 auto;
+}
+
+.gh-nav a {
+  font-family: var(--club-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--club-ink-soft);
+  text-decoration: none;
+  padding: 4px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.gh-nav a:hover {
+  color: var(--club-ink);
+  border-bottom-color: var(--club-signal);
+}
+
+.gh-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 0 0 auto;
+}
+
+.gh-club-link {
+  font-family: var(--club-font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--club-surface);
+  background: var(--club-ink);
+  padding: 8px 16px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.gh-club-link:hover {
+  background: var(--club-signal);
+}
+
+.gh-account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--club-font-sans);
+  font-size: 13px;
+  color: var(--club-ink-soft);
+}
+
+.gh-account button {
+  border: 1px solid var(--club-line-strong);
+  background: transparent;
+  color: var(--club-ink-soft);
+  font-family: var(--club-font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.gh-account button:hover {
+  border-color: var(--club-signal);
+  color: var(--club-signal);
+}
+
+.gh-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.gh-menu-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--club-ink);
+}
+
+.gh-nav-mobile {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .gh-brand-sub {
+    display: inline;
+  }
+}
+
+@media (max-width: 860px) {
+  .gh-nav {
+    display: none;
+  }
+
+  .gh-menu-toggle {
+    display: flex;
+  }
+
+  .gh-nav-mobile.gh-nav-mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 4px 20px 18px;
+    gap: 2px;
+    border-top: 1px solid var(--club-line);
+  }
+
+  .gh-nav-mobile a {
+    font-family: var(--club-font-sans);
+    font-weight: 600;
+    color: var(--club-ink-soft);
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--club-line);
+  }
+
+  .gh-row {
+    padding: 0 20px;
+  }
+}
+
+/* ==========================================================================
+   ContextHeader — capa 2 (dónde está la persona + widgets persistentes).
+   ========================================================================== */
+
+.ch {
+  background: var(--club-parchment);
+  border-bottom: 1px solid var(--club-line);
+}
+
+.ch-row {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 22px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ch-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ch-kicker {
+  font-family: var(--club-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--club-ink-muted);
+}
+
+.ch-title {
+  margin: 0;
+  font-family: var(--club-font-display);
+  font-size: clamp(26px, 3vw, 38px);
+  color: var(--club-ink);
+  line-height: 1.05;
+}
+
+.ch-widgets {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ch-tabs-row {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-top: 1px solid var(--club-line);
+}
+
+@media (max-width: 720px) {
+  .ch-row,
+  .ch-tabs-row {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .ch-widgets {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-bottom: 4px;
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .ch-widgets .club-widget-chip {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    min-width: 148px;
+  }
+}
+
+/* --- Chip de widget genérico (Clima / Noticias / Alertas en el Context Header) --- */
+
+.club-widget-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--club-surface);
+  border: 1px solid var(--club-line);
+  font-family: var(--club-font-sans);
+  min-width: 0;
+}
+
+.club-widget-chip-icon {
+  flex: 0 0 auto;
+  color: var(--club-signal);
+}
+
+.club-widget-chip-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.club-widget-chip-label {
+  font-family: var(--club-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--club-ink-muted);
+}
+
+.club-widget-chip-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--club-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 220px;
+}
+
+.club-widget-chip-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: contents;
+}
+
+/* --- Tabs horizontales (reemplaza el sidebar de navegación anterior en Mi Cultivo) --- */
+
+.club-tabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 4px;
+}
+
+.club-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  font-family: var(--club-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--club-ink-muted);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.club-tab:hover {
+  color: var(--club-ink);
+}
+
+.club-tab-active {
+  color: var(--club-ink);
+  border-bottom-color: var(--club-signal);
+}
+
+/* --- Botones del sistema nuevo --- */
+
+.club-button {
+  font-family: var(--club-font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: 1px solid var(--club-ink);
+  background: var(--club-ink);
+  color: var(--club-surface);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.club-button:hover {
+  background: var(--club-signal);
+  border-color: var(--club-signal);
+}
+
+.club-button:active {
+  transform: translateY(1px);
+}
+
+.club-button-outline {
+  background: transparent;
+  color: var(--club-ink);
+}
+
+.club-button-outline:hover {
+  background: var(--club-ink);
+  color: var(--club-surface);
+}
+
+/* --- Contenedor de sección/ficha del sistema nuevo (reemplaza el card genérico) --- */
+
+.club-panel {
+  background: var(--club-surface);
+  border: 1px solid var(--club-line);
+  padding: 24px 26px;
+}
+
+.club-panel-flush {
+  border: none;
+  padding: 0;
+  border-top: 1px solid var(--club-line);
+  padding-top: 22px;
+}
+
+.club-eyebrow {
+  font-family: var(--club-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--club-ink-muted);
+}
+
+.club-heading {
+  font-family: var(--club-font-display);
+  color: var(--club-ink);
+  margin: 4px 0 10px;
+}
+
+/* --- Motion: transición de entrada de contenido, respetando prefers-reduced-motion --- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .club-enter {
+    animation: club-fade-up 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes club-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ==========================================================================
+   Home — nuevo shell.
+   ========================================================================== */
+
+.club-shell {
+  background: var(--club-parchment);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.club-home {
+  flex: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 32px;
+}
+
+.club-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+  gap: 48px;
+  align-items: center;
+  min-height: calc(100vh - 68px - 90px);
+  padding: 24px 0;
+}
+
+.club-hero-copy h1 {
+  margin: 14px 0 20px;
+  font-family: var(--club-font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.02;
+  color: var(--club-ink);
+}
+
+.club-hero-lede {
+  font-family: var(--club-font-serif);
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--club-ink-soft);
+  max-width: 46ch;
+  margin: 0 0 28px;
+}
+
+.club-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.club-hero-map {
+  justify-self: end;
+  width: 100%;
+}
+
+.club-footer {
+  border-top: 1px solid var(--club-line);
+  background: var(--club-surface);
+}
+
+.club-footer-row {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 26px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.club-footer-brand {
+  font-family: var(--club-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--club-ink-muted);
+  text-decoration: none;
+}
+
+.club-footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.club-footer-links a {
+  font-family: var(--club-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--club-ink-soft);
+  text-decoration: none;
+}
+
+.club-footer-links a:hover {
+  color: var(--club-signal);
+}
+
+@media (max-width: 900px) {
+  .club-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 32px 0;
+  }
+
+  .club-hero-map {
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  .club-home,
+  .club-footer-row {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* ==========================================================================
+   Índice del Atlas — nuevo shell. La grilla de categorías (`.atlas-grid` /
+   `.atlas-card`) reutiliza su estructura y datos, pero acá se sobreescriben
+   tipografía y motion — con selectores scopeados bajo `.club-atlas-index`
+   para no afectar `.atlas-card` donde se reusa en otras páginas
+   (categoría/entrada) que esta fase no rediseña.
+   ========================================================================== */
+
+.club-atlas-index {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding: 32px;
+}
+
+.club-atlas-lede {
+  font-family: var(--club-font-serif);
+  font-size: 18px;
+  color: var(--club-ink-soft);
+  max-width: 62ch;
+  margin: 0 0 20px;
+}
+
+.club-atlas-section {
+  margin: 40px 0;
+}
+
+.club-atlas-index .atlas-card-title-link {
+  font-family: var(--club-font-display);
+}
+
+.club-atlas-index .atlas-card-tag,
+.club-atlas-index .atlas-card-number {
+  font-family: var(--club-font-mono);
+}
+
+.club-atlas-index .atlas-card-image {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .club-atlas-index .atlas-card:hover .atlas-card-image {
+    transform: scale(1.045);
+  }
+}
+
+.club-community-promo .community-promo-card {
+  background: var(--club-ink);
+}
+
+@media (max-width: 640px) {
+  .club-atlas-index {
+    padding: 20px;
+  }
 }
 
 body {
@@ -4946,9 +5589,13 @@ body::before {
 
 .dashboard-quick-search {
   margin-bottom: 4px;
+  display: flex;
+  gap: 10px;
+  max-width: 520px;
 }
 
 .dashboard-quick-search input {
+  flex: 1 1 auto;
   width: 100%;
   box-sizing: border-box;
   padding: 8px 10px;
@@ -5106,6 +5753,49 @@ body::before {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+/* --- Mi Cultivo: contenedor de página bajo el shell nuevo (reemplaza el viejo `.atlas-page`
+   para esta página — mismo padding/fondo, sin la franja de breadcrumb que traía) --- */
+
+.club-mi-cultivo {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding: 28px 32px 80px;
+  background: var(--club-parchment);
+  min-height: 60vh;
+}
+
+.club-mi-cultivo-main {
+  margin-top: 8px;
+}
+
+.club-mi-cultivo-cta {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 30px 32px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-top: 1px solid var(--club-line);
+}
+
+.club-mi-cultivo-cta p {
+  font-family: var(--club-font-sans);
+  font-size: 14px;
+  color: var(--club-ink-muted);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .club-mi-cultivo,
+  .club-mi-cultivo-cta {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 /* --- Grilla de plantas --- */

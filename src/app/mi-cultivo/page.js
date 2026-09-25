@@ -53,8 +53,10 @@ import { uploadEventPhoto, fetchPhotosByEvent, deleteEventPhoto } from '../lib/m
 import { PhotoValidationError } from '../lib/miCultivo/photoProcessing';
 import { PROVINCE_OPTIONS } from '../lib/weather/locations';
 import { fetchProvinceWeather } from '../lib/weather/service';
-import NewsWidgetCompact from '../components/NewsWidgetCompact';
 import MiniCalendar from '../components/MiniCalendar';
+import GlobalHeader from '../components/shell/GlobalHeader';
+import ContextHeader from '../components/shell/ContextHeader';
+import NewsChip from '../components/shell/NewsChip';
 import {
   IconOverview,
   IconPlant,
@@ -1165,29 +1167,71 @@ export default function MiCultivoPage() {
     await supabase.auth.signOut();
   }
 
+  const tabDefs = [
+    { id: 'overview', label: 'Vista general', Icon: IconOverview },
+    { id: 'plantas', label: 'Mis plantas', Icon: IconPlant },
+    { id: 'bitacora', label: 'Diario y bitácora', Icon: IconJournal },
+    { id: 'lecturas', label: 'Contenido y lecturas', Icon: IconBook },
+    { id: 'ambiente', label: 'Ambiente', Icon: IconEnvironment },
+    { id: 'ajustes', label: 'Ajustes', Icon: IconSettings },
+  ];
+
   return (
-    <main className="atlas-page mi-cultivo-page">
-      <section className="atlas-topbar">
-        <span className="section-label dark-label">Atlas del Cultivo Argentino</span>
-        <nav className="atlas-breadcrumb" aria-label="Breadcrumb">
-          <Link className="crumb" href="/">Inicio</Link>
-          <span className="crumb-sep">/</span>
-          <span className="crumb-current">Mi Cultivo</span>
-        </nav>
-      </section>
+    <div className="club-shell">
+      <GlobalHeader
+        accountLabel={isAccountMode ? session.user.email.split('@')[0] : undefined}
+        onSignOut={isAccountMode ? handleSignOut : undefined}
+      />
 
-      <section className="atlas-category-hero">
-        <div>
-          <span className="section-label dark-label">Seguimiento de cultivo</span>
-          <h1>Mi Cultivo</h1>
-          <p className="atlas-lede">
-            Un historial visual del recorrido de tu planta, etapa por etapa. Podés usarlo sin
-            cuenta (se guarda en este navegador) o crear una cuenta para tener tu historial
-            asociado a vos.
-          </p>
-        </div>
-      </section>
+      <ContextHeader
+        kicker="Tu espacio dentro del Atlas"
+        title="Mi Cultivo"
+        tabs={(
+          <ul className="club-tabs">
+            {tabDefs.map(({ id, label, Icon }) => (
+              <li key={id}>
+                <button
+                  type="button"
+                  className={`club-tab ${activeTab === id ? 'club-tab-active' : ''}`}
+                  onClick={() => setActiveTab(id)}
+                  aria-current={activeTab === id ? 'page' : undefined}
+                >
+                  <Icon width={15} height={15} />
+                  {label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      >
+        <button type="button" className="club-widget-chip-button" onClick={() => setActiveTab('ambiente')}>
+          <span className="club-widget-chip">
+            <IconThermometer className="club-widget-chip-icon" />
+            <span className="club-widget-chip-body">
+              <span className="club-widget-chip-label">Clima</span>
+              <span className="club-widget-chip-value">
+                {provinceId && weatherStatus === 'ready' && weatherResult?.ok && weatherResult.current.temperature !== null
+                  ? `${Math.round(weatherResult.current.temperature)}°C · ${weatherResult.locationName}`
+                  : 'Elegí tu zona'}
+              </span>
+            </span>
+          </span>
+        </button>
 
+        <NewsChip />
+
+        <button type="button" className="club-widget-chip-button" onClick={() => setActiveTab('ajustes')}>
+          <span className="club-widget-chip">
+            <IconAlert className="club-widget-chip-icon" />
+            <span className="club-widget-chip-body">
+              <span className="club-widget-chip-label">Alertas</span>
+              <span className="club-widget-chip-value">{isAccountMode ? `${unreadAlerts.length} sin leer` : 'Con cuenta'}</span>
+            </span>
+          </span>
+        </button>
+      </ContextHeader>
+
+      <main className="club-mi-cultivo club-enter">
       {pendingMigration && (
         <section className="atlas-section mi-cultivo-migration">
           <div className="mi-cultivo-migration-card">
@@ -1371,70 +1415,11 @@ export default function MiCultivoPage() {
         </section>
       )}
 
-      <section className="atlas-section dashboard-section">
-        <div className="dashboard-shell">
-          <nav className="dashboard-sidebar" aria-label="Secciones de Mi Cultivo">
-            <div className="dashboard-profile">
-              <span className="dashboard-profile-avatar" aria-hidden="true">
-                {isAccountMode ? session.user.email[0].toUpperCase() : '?'}
-              </span>
-              <div>
-                <span className="dashboard-profile-name">{isAccountMode ? session.user.email.split('@')[0] : 'Invitado'}</span>
-                <span className="dashboard-profile-mode">{isAccountMode ? 'Con cuenta' : 'Este dispositivo'}</span>
-              </div>
-              {isAccountMode && (
-                <button type="button" className="dashboard-profile-signout" onClick={handleSignOut} aria-label="Cerrar sesión">
-                  <IconLogout width={16} height={16} />
-                </button>
-              )}
-            </div>
-
-            <form className="dashboard-quick-search" onSubmit={handleQuickSearch}>
-              <input
-                type="search"
-                value={quickQuestion}
-                onChange={(event) => setQuickQuestion(event.target.value)}
-                placeholder="Preguntale al Atlas…"
-                aria-label="Buscar en el Atlas"
-              />
-            </form>
-
-            <ul className="dashboard-nav">
-              {[
-                { id: 'overview', label: 'Vista general', Icon: IconOverview },
-                { id: 'plantas', label: 'Mis plantas', Icon: IconPlant },
-                { id: 'bitacora', label: 'Diario y bitácora', Icon: IconJournal },
-                { id: 'lecturas', label: 'Contenido y lecturas', Icon: IconBook },
-                { id: 'ambiente', label: 'Ambiente', Icon: IconEnvironment },
-                { id: 'ajustes', label: 'Ajustes', Icon: IconSettings },
-              ].map(({ id, label, Icon }) => (
-                <li key={id}>
-                  <button
-                    type="button"
-                    className={`dashboard-nav-item ${activeTab === id ? 'dashboard-nav-item-active' : ''}`}
-                    onClick={() => setActiveTab(id)}
-                    aria-current={activeTab === id ? 'page' : undefined}
-                  >
-                    <Icon />
-                    {label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-
-            <ul className="dashboard-nav-footer">
-              <li><Link href="/atlas">Ir al Atlas ↗</Link></li>
-              <li><Link href="/chatbot">Buscador del Atlas ↗</Link></li>
-              <li><Link href="/comunidad">Comunidad y clubes ↗</Link></li>
-            </ul>
-          </nav>
-
-          <div className="dashboard-main">
+      <div className="dashboard-main club-mi-cultivo-main">
 
             {activeTab === 'overview' && (
               <>
-                <div className="dashboard-hero-row">
-                  <div className="atlas-entry-section mi-cultivo-season-header dashboard-hero-main">
+                <div className="club-panel mi-cultivo-season-header">
                     {lastEntry?.photo?.url && (
                       <div className="mi-cultivo-season-cover">
                         <img src={lastEntry.photo.url} alt="" />
@@ -1499,48 +1484,6 @@ export default function MiCultivoPage() {
                         </div>
                       </div>
                     )}
-                  </div>
-
-                  <div className="dashboard-hero-side">
-                    <div className="dashboard-floating-card">
-                      <div className="mi-cultivo-events-head">
-                        <h2>Clima</h2>
-                        <button type="button" className="mi-cultivo-reset-link" onClick={() => setActiveTab('ambiente')}>Ver todo</button>
-                      </div>
-                      {provinceId && weatherStatus === 'ready' && weatherResult?.ok ? (
-                        <div className="dashboard-sensor-grid dashboard-sensor-grid-compact">
-                          {weatherResult.current.temperature !== null && (
-                            <div className="dashboard-sensor-card">
-                              <IconThermometer className="dashboard-sensor-icon" />
-                              <div>
-                                <span className="dashboard-sensor-value">{Math.round(weatherResult.current.temperature)}°C</span>
-                                <span className="dashboard-sensor-label">Temperatura</span>
-                              </div>
-                            </div>
-                          )}
-                          {weatherResult.current.humidity !== null && (
-                            <div className="dashboard-sensor-card">
-                              <IconDroplet className="dashboard-sensor-icon" />
-                              <div>
-                                <span className="dashboard-sensor-value">{Math.round(weatherResult.current.humidity)}%</span>
-                                <span className="dashboard-sensor-label">Humedad</span>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      ) : (
-                        <p className="atlas-section-note">
-                          {locationReady && !provinceId
-                            ? 'Elegí tu provincia en "Ambiente" para ver el contexto de tu zona.'
-                            : 'Cargando datos ambientales…'}
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="dashboard-floating-card dashboard-floating-news">
-                      <NewsWidgetCompact supabase={supabase} />
-                    </div>
-                  </div>
                 </div>
 
                 <div className="dashboard-stat-grid">
@@ -1606,6 +1549,20 @@ export default function MiCultivoPage() {
 
             {activeTab === 'lecturas' && (
               <>
+                <div className="atlas-entry-section">
+                  <h2>Preguntale al Atlas</h2>
+                  <form className="dashboard-quick-search" onSubmit={handleQuickSearch}>
+                    <input
+                      type="search"
+                      value={quickQuestion}
+                      onChange={(event) => setQuickQuestion(event.target.value)}
+                      placeholder="Ej. cómo germinar en interior…"
+                      aria-label="Buscar en el Atlas"
+                    />
+                    <button type="submit" className="club-button club-button-outline">Buscar</button>
+                  </form>
+                </div>
+
                 <div className="atlas-entry-section mi-cultivo-interest-section">
                   <h2>Contenido de interés</h2>
                   <span className="section-label mi-cultivo-weather-subtitle">Según tu etapa actual</span>
@@ -1945,6 +1902,25 @@ export default function MiCultivoPage() {
                     <MiniCalendar events={events} forecast={weatherResult?.ok ? weatherResult.forecast : []} />
                   </div>
                 )}
+
+                <div className="atlas-entry-section">
+                  <h2>Bitácora reciente</h2>
+                  {recentActivity.length === 0 ? (
+                    <p className="atlas-section-note">Todavía no hay actividad registrada.</p>
+                  ) : (
+                    <ul className="dashboard-activity-list dashboard-activity-list-inline">
+                      {recentActivity.map((item) => (
+                        <li key={item.id} className="dashboard-activity-item">
+                          {item.kind === 'event' ? <IconJournal className="dashboard-activity-icon" /> : <IconCamera className="dashboard-activity-icon" />}
+                          <div>
+                            <span className="dashboard-activity-label">{item.label}</span>
+                            <span className="dashboard-activity-date">{formatDate(item.date)}</span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
 
                 <div className="atlas-entry-section">
                   <div className="mi-cultivo-events-head">
@@ -2359,44 +2335,24 @@ export default function MiCultivoPage() {
               </>
             )}
           </div>
+      </main>
 
-          <aside className="dashboard-activity" aria-label="Bitácora reciente">
-            <h2>Bitácora reciente</h2>
-            {recentActivity.length === 0 ? (
-              <p className="atlas-section-note">Todavía no hay actividad registrada.</p>
-            ) : (
-              <ul className="dashboard-activity-list">
-                {recentActivity.map((item) => (
-                  <li key={item.id} className="dashboard-activity-item">
-                    {item.kind === 'event' ? <IconJournal className="dashboard-activity-icon" /> : <IconCamera className="dashboard-activity-icon" />}
-                    <div>
-                      <span className="dashboard-activity-label">{item.label}</span>
-                      <span className="dashboard-activity-date">{formatDate(item.date)}</span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </aside>
+      <button
+        type="button"
+        className="dashboard-fab"
+        aria-label="Registrar un evento"
+        onClick={() => {
+          setActiveTab('bitacora');
+          requestAnimationFrame(() => eventFormSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+        }}
+      >
+        <IconPlus width={22} height={22} />
+      </button>
 
-          <button
-            type="button"
-            className="dashboard-fab"
-            aria-label="Registrar un evento"
-            onClick={() => {
-              setActiveTab('bitacora');
-              requestAnimationFrame(() => eventFormSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
-            }}
-          >
-            <IconPlus width={22} height={22} />
-          </button>
-        </div>
+      <section className="club-mi-cultivo-cta">
+        <p>¿Buscás algo puntual? El resto del Atlas está organizado por categoría de cultivo.</p>
+        <Link className="club-button" href="/atlas">Explorar el Atlas</Link>
       </section>
-
-      <section className="atlas-section mi-cultivo-cta-section">
-        <p className="atlas-section-note">¿Buscás algo puntual? El resto del Atlas está organizado por categoría de cultivo.</p>
-        <Link className="primary-button" href="/atlas">Explorar el Atlas</Link>
-      </section>
-    </main>
+    </div>
   );
 }
