@@ -1,3 +1,5 @@
+import { visualPresentation } from '../../lib/editorial/visualPresentation';
+import EditorialVisual from '../../components/EditorialVisual';
 import { publicMetadata } from '../../lib/site';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -50,9 +52,7 @@ export default async function CategoryPage({ params }) {
             <Link className="secondary-button" href="/atlas">Volver al atlas</Link>
           </div>
         </div>
-        <div className="atlas-category-media">
-          <img src={category.asset} alt={category.alt} className="atlas-category-image" />
-        </div>
+        <EditorialVisual asset={category.visual} category />
       </section>
 
       <section className="atlas-section">
@@ -68,7 +68,7 @@ export default async function CategoryPage({ params }) {
             <article className="atlas-entry-card" key={entry.id}>
               {entry.image && (
                 <div className="atlas-entry-card-media">
-                  <img src={entry.image} alt={entry.alt} className="atlas-entry-image" />
+                  <img src={entry.image} alt={entry.alt} className="atlas-entry-image" style={visualPresentation(entry.visual)} loading="lazy" />
                 </div>
               )}
               <div className="atlas-entry-card-body">

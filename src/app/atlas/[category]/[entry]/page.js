@@ -1,3 +1,4 @@
+import EditorialVisual from '../../../components/EditorialVisual';
 import ReadingTools from '../../../components/ReadingTools';
 import { publicMetadata, SITE_URL, SITE_NAME } from '../../../lib/site';
 import Link from 'next/link';
@@ -106,7 +107,7 @@ export default async function EntryPage({ params }) {
         </nav>
       </section>
 
-      <section className="atlas-entry-hero">
+      <section className={`atlas-entry-hero${heroAsset?.type === 'diagram' ? ' atlas-entry-hero-with-diagram' : ''}`}>
         <div className="atlas-entry-hero-copy">
           <span className="section-label dark-label">{category.title}</span>
           <h1>{entry.title}</h1>
@@ -115,11 +116,7 @@ export default async function EntryPage({ params }) {
             {entry.tags.map((tag) => <span className="atlas-tag" key={tag}>{tag}</span>)}
           </div>
         </div>
-        {heroAsset && (
-          <div className="atlas-entry-media">
-            <img src={heroAsset.file} alt={heroAsset.alt} className="atlas-entry-hero-image" />
-          </div>
-        )}
+        <EditorialVisual asset={heroAsset} />
       </section>
 
       <div className="entry-reading-bar">

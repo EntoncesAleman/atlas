@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-06",
+  "method": "Built-in image_gen tool",
+  "authorization": "Solicitud explícita del usuario: crealas vos. Excepción limitada a las tres entradas pendientes.",
+  "prompts": [
+    {
+      "id": "super-cropping",
+      "prompt": "Use case: scientific-educational. Create an original restrained botanical editorial illustration for Atlas del Cultivo Argentino, landscape 3:2. Close view of a single living green Cannabis sativa branch with recognizable narrow serrated palmate leaves and two clear nodes. The stem has a gentle sideways bend at a slightly thickened intact section: continuous unbroken green outer skin, attached branch, no cuts, no detached segments, no split-open anatomy. Depict a conceptual botanical study of a bent stem, not an instruction sequence and not a photograph or research result. Cream paper background, delicate ink contours, muted sage green watercolor, subtle paper grain, accurate leaf attachment and natural branching. Entire important bent section and leaves within generous margins, centered. No hands, no scissors, no labels, no text, no arrows, no logos, no watermark, no cannabis products or smoke. Quiet scholarly atlas plate, visually legible at thumbnail size.",
+      "original": "output/imagegen/atlas-2026-10-06/super-cropping.png",
+      "webAsset": "public/atlas/entries/generated/super-cropping.webp"
+    },
+    {
+      "id": "documental-madre-planta",
+      "prompt": "Use case: illustration-story. Original editorial illustration accompanying a review of the Argentine documentary Madre Planta, not its official poster and not a film still. Landscape 3:2 composition, human and sober, finely drawn ink with muted sage green and warm earth watercolor on cream textured paper. A modest domestic Argentine patio: an elderly woman's hand and a younger family member's hand gently support a terracotta pot containing a small, living Cannabis plant with botanically recognizable narrow serrated palmate leaves. Show only hands and forearms, no faces or identifiable real people; no imitation of any real documentary subjects. Central focus on shared care and transmission, soft natural light, humble table and understated patio background, no medical treatment or implication of efficacy. Whole plant and hands fit inside generous margins. No writing, titles, lettering, poster credits, logos, branded products, bottles, smoke, syringes or watermark. This is a conceptual commissioned illustration, visibly painted, not photorealistic.",
+      "original": "output/imagegen/atlas-2026-10-06/documental-madre-planta.png",
+      "webAsset": "public/atlas/entries/generated/documental-madre-planta.webp"
+    },
+    {
+      "id": "documental-el-profe",
+      "prompt": "Use case: illustration-story. Create an original conceptual editorial illustration for an Atlas del Cultivo Argentino review of El Profe, a documentary about sharing cultivation knowledge. It must not imitate an official poster, film still, archive photograph or real person's likeness. Landscape 3:2, understated ink and watercolor on lightly textured cream paper, muted sage greens and earthy brown. A modest Argentine workshop table in a small greenhouse: one mature person's hand points gently at the branching of a potted young Cannabis plant, another adult person's hands hold an open notebook with subtle line sketches and absolutely no writing. No faces, no identifiable historical individuals. Central composition emphasizing teaching by observation: clear recognizable narrow serrated palmate cannabis leaves, pencil and a simple watering can, soft daylight, generous margins so plant and hands are completely visible. Sober documentary-inspired editorial mood, visibly hand-painted rather than a photo. No titles, text, logos, brands, pharmaceutical claims, extraction apparatus, pills, smoke or watermark.",
+      "original": "output/imagegen/atlas-2026-10-06/documental-el-profe.png",
+      "webAsset": "public/atlas/entries/generated/documental-el-profe.webp"
+    }
+  ]
+}

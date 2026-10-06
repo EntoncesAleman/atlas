@@ -82,3 +82,13 @@ Reemplazados por las imágenes de la tabla de arriba: `asset-fundamentos-ciclo-i
 ### Nota de composición: Luz y clima (Fase 8C.1, contexto histórico)
 
 El diagrama de fitocromo (`category-luz-y-clima-real.jpg`) es una imagen apaisada con texto explicativo distribuido en los cuatro costados — en el grid cuadrado de categorías (Fase 8B), el recorte a 1:1 cortaba buena parte de ese texto. Se resolvió en su momento reemplazando la imagen de portada de categoría por una fotografía documental distinta — el diagrama original no se eliminó: sigue activo como asset de la entrada "luz-y-fotoperiodo" (`asset-luz-clima-photoperiodism`), sin cambios en la ronda 2026-09-16. La misma lección de composición (evitar diagramas con contenido pegado a los bordes como portada de categoría, reservarlos para la entrada) se aplicó de nuevo en esta ronda con `Cannabis_sativa_radix_profile.png` (Suelo y agua).
+
+
+## Ampliación de imágenes de entradas — 2026-10-06
+
+37 nuevos archivos reales con licencias libres verificadas. Cobertura de entradas: 15/87 → 84/87. No se borran ni reemplazan archivos visuales anteriores. Las láminas y fotos de artículo se muestran completas; las portadas de categoría conservan su recorte revisado. Fuentes, autores, licencias, transformaciones y destinos: [registro completo](../docs/OPEN_VISUAL_LICENSES_2026_10_06.json). Decisiones, pendientes y verificación: [informe](../docs/ATLAS_VISUALS_2026_10_06.md).
+
+
+## Ilustraciones solicitadas — 2026-10-06
+
+Tres ilustraciones originales generadas con `image_gen`, autorizadas expresamente por el usuario para Super cropping, Madre Planta y El Profe. Cobertura final: 87/87 entradas. Se registran como material interno, con identificación visible de IA y encuadre completo. No son fotografías, afiches ni fotogramas. [Registro de assets](../src/app/lib/editorial/generatedVisuals.js) y [prompts y originales](../docs/GENERATED_VISUAL_PROMPTS_2026_10_06.json).

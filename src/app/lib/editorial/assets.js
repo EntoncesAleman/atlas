@@ -1,3 +1,5 @@
+import { generatedVisuals } from './generatedVisuals';
+import { openVisuals } from './openVisuals';
 // Registro estructurado de assets visuales.
 // Deriva de MASTER_PACKAGE/ASSET_REGISTRY.md. Cada asset referencia su fuente real vía sourceId
 // (ver ./sources.js) salvo los assets internos del proyecto (license: 'Interno').
@@ -10,8 +12,12 @@
 // assets reemplazados quedan `ARCHIVED` con su registro intacto, nunca reescritos ni eliminados.
 
 export const assets = [
+  ...openVisuals,
+  ...generatedVisuals,
   {
     id: 'asset-fundamentos-koehler',
+    width: 1001,
+    height: 1200,
     file: '/atlas/categories/real/category-fundamentos-real.jpg',
     type: 'illustration',
     categoryId: null,
@@ -42,6 +48,8 @@ export const assets = [
   },
   {
     id: 'asset-fundamentos-vegetative',
+    width: 1280,
+    height: 960,
     file: '/atlas/categories/real/category-fundamentos-vegetative-real.jpg',
     type: 'photo',
     categoryId: 'fundamentos',
@@ -57,6 +65,14 @@ export const assets = [
   },
   {
     id: 'asset-ciclo-de-vida-untrained',
+    width: 706,
+    height: 900,
+    entryIds: ['crecimiento-vegetal-y-desarrollo', 'lectura-frank-rosenthal-marijuana-growers-guide', 'lectura-drake-cultivators-handbook'],
+    caption: 'Planta de Cannabis en etapa vegetativa, sin conducción.',
+    entryCaptions: {
+      'lectura-frank-rosenthal-marijuana-growers-guide': 'Planta de Cannabis en etapa vegetativa. Fotografía de referencia del tema de la lectura; no es la portada del libro.',
+      'lectura-drake-cultivators-handbook': 'Planta de Cannabis en etapa vegetativa. Fotografía de referencia del tema de la lectura; no es la portada del libro.',
+    },
     file: '/atlas/categories/real/entry-ciclo-de-vida-real.jpg',
     type: 'photo',
     categoryId: null,
@@ -72,6 +88,8 @@ export const assets = [
   },
   {
     id: 'asset-cuidado-de-la-plantula-seedling',
+    width: 516,
+    height: 828,
     file: '/atlas/categories/real/entry-cuidado-de-la-plantula-real.jpg',
     type: 'photo',
     categoryId: null,
@@ -87,6 +105,8 @@ export const assets = [
   },
   {
     id: 'asset-germinacion-diagram',
+    width: 840,
+    height: 412,
     file: '/atlas/categories/real/entry-germinacion-real.svg',
     type: 'diagram',
     categoryId: null,
@@ -102,6 +122,8 @@ export const assets = [
   },
   {
     id: 'asset-germinacion-hanfsamen',
+    width: 1280,
+    height: 850,
     file: '/atlas/categories/real/category-germinacion-real.jpg',
     type: 'photo',
     categoryId: 'germinacion',
@@ -117,6 +139,8 @@ export const assets = [
   },
   {
     id: 'asset-formas-de-germinar-seedling',
+    width: 1280,
+    height: 719,
     file: '/atlas/categories/real/entry-formas-de-germinar-real.jpg',
     type: 'photo',
     categoryId: null,
@@ -162,6 +186,8 @@ export const assets = [
   },
   {
     id: 'asset-suelo-agua-garden-sevela',
+    width: 1372,
+    height: 1765,
     file: '/atlas/categories/real/category-suelo-y-agua-garden-real.jpg',
     type: 'photo',
     categoryId: 'suelo-y-agua',
@@ -192,6 +218,8 @@ export const assets = [
   },
   {
     id: 'asset-sustrato-y-drenaje-radix',
+    width: 960,
+    height: 462,
     file: '/atlas/categories/real/entry-sustrato-y-drenaje-real.png',
     type: 'diagram',
     categoryId: null,
@@ -222,6 +250,8 @@ export const assets = [
   },
   {
     id: 'asset-luz-clima-sunlight',
+    width: 1280,
+    height: 1920,
     file: '/atlas/categories/real/category-luz-y-clima-sunlight-real.jpg',
     type: 'photo',
     categoryId: 'luz-y-clima',
@@ -237,6 +267,10 @@ export const assets = [
   },
   {
     id: 'asset-luz-clima-photoperiodism',
+    width: 960,
+    height: 720,
+    entryIds: ['fotoperiodo-segun-latitud-argentina'],
+    caption: 'Diagrama general del fitocromo y la respuesta al fotoperíodo. Describe el mecanismo; no representa las horas de luz de una localidad argentina.',
     file: '/atlas/categories/real/category-luz-y-clima-real.jpg',
     type: 'diagram',
     categoryId: null,
@@ -252,6 +286,8 @@ export const assets = [
   },
   {
     id: 'asset-sanidad-spider-mite',
+    width: 1200,
+    height: 814,
     file: '/atlas/categories/real/category-sanidad-real.jpg',
     type: 'photo',
     categoryId: 'sanidad',
@@ -267,6 +303,8 @@ export const assets = [
   },
   {
     id: 'asset-cultivo-hemp-field',
+    width: 1200,
+    height: 800,
     file: '/atlas/categories/real/category-cultivo-real.jpg',
     type: 'photo',
     categoryId: 'cultivo',
@@ -282,6 +320,8 @@ export const assets = [
   },
   {
     id: 'asset-cultivo-en-secuencia-hoophouse',
+    width: 1280,
+    height: 853,
     file: '/atlas/categories/real/entry-cultivo-en-secuencia-real.jpg',
     type: 'photo',
     categoryId: null,
@@ -297,10 +337,12 @@ export const assets = [
   },
   {
     id: 'asset-cosecha-drying',
+    width: 1200,
+    height: 798,
     file: '/atlas/categories/real/category-cosecha-real.jpg',
     type: 'photo',
     categoryId: 'cosecha',
-    entryId: 'cosecha-y-maduracion',
+    entryId: null,
     sourceId: 'visual-cannabis-drying',
     author: '"Cannabis Pictures"',
     license: 'CC BY 2.0',
@@ -327,6 +369,8 @@ export const assets = [
   },
   {
     id: 'asset-manejo-poscosecha-drying-room',
+    width: 1280,
+    height: 1071,
     file: '/atlas/categories/real/category-manejo-poscosecha-real.jpg',
     type: 'photo',
     categoryId: 'manejo-poscosecha',
@@ -342,6 +386,8 @@ export const assets = [
   },
   {
     id: 'asset-historia-koehler',
+    width: 1001,
+    height: 1200,
     file: '/atlas/categories/real/category-fundamentos-real.jpg',
     type: 'illustration',
     categoryId: 'historia',
@@ -372,6 +418,8 @@ export const assets = [
   },
   {
     id: 'asset-historia-de-la-planta-1542',
+    width: 500,
+    height: 1152,
     file: '/atlas/categories/real/entry-historia-de-la-planta-real.jpg',
     type: 'illustration',
     categoryId: null,
@@ -402,6 +450,10 @@ export const assets = [
   },
   {
     id: 'asset-genetica-tipos-koehler',
+    width: 1001,
+    height: 1200,
+    entryIds: ['lectura-pollio-nombre-cannabis', 'diferencias-geneticas-crecimiento-cultivares'],
+    caption: 'Lámina botánica de Cannabis de Köhler (1887). Representación histórica de su morfología, no una comparación experimental entre cultivares.',
     file: '/atlas/categories/real/category-fundamentos-real.jpg',
     type: 'illustration',
     categoryId: null,
@@ -417,6 +469,8 @@ export const assets = [
   },
   {
     id: 'asset-genetica-tipos-indica-oshaughnessy',
+    width: 1164,
+    height: 1626,
     file: '/atlas/categories/real/category-genetica-tipos-indica-real.jpg',
     type: 'illustration',
     categoryId: 'genetica-tipos',
@@ -447,6 +501,8 @@ export const assets = [
   },
   {
     id: 'asset-poda-topped',
+    width: 640,
+    height: 512,
     file: '/atlas/categories/real/category-poda-real.jpg',
     type: 'photo',
     categoryId: 'poda',
@@ -492,6 +548,10 @@ export const assets = [
   },
   {
     id: 'asset-fertilizacion-nutrient-deficiency',
+    width: 1280,
+    height: 853,
+    entryIds: ['deficiencias-toxicidades-interpretacion'],
+    caption: 'Cannabis con amarilleamiento atribuido por la fuente a un desequilibrio nutricional. La fotografía sola no identifica el elemento implicado.',
     file: '/atlas/categories/real/category-fertilizacion-real.jpg',
     type: 'photo',
     categoryId: 'fertilizacion',
@@ -507,6 +567,8 @@ export const assets = [
   },
   {
     id: 'asset-marco-legal-internal',
+    width: 900,
+    height: 680,
     file: '/atlas/categories/category-marco-legal.svg',
     type: 'internal-illustration',
     categoryId: null,
@@ -522,6 +584,10 @@ export const assets = [
   },
   {
     id: 'asset-marco-legal-congreso',
+    width: 1600,
+    height: 1199,
+    entryIds: ['reprocann-modalidades', 'lectura-ariccame-preguntas-frecuentes', 'noticia-decreto-27-2026-sedronar', 'noticia-ariccame-resolucion-41-propagacion'],
+    caption: 'Palacio del Congreso de la Nación Argentina. Imagen de referencia del ámbito legislativo argentino.',
     file: '/atlas/categories/real/category-marco-legal-congreso-real.jpg',
     type: 'photo',
     categoryId: 'marco-legal',
@@ -540,6 +606,8 @@ export const assets = [
   // Documentales, Noticias ---
   {
     id: 'asset-material-de-lectura-openbook',
+    width: 1600,
+    height: 1062,
     file: '/atlas/categories/real/category-material-de-lectura-real.jpg',
     type: 'photo',
     categoryId: 'material-de-lectura',
@@ -555,6 +623,8 @@ export const assets = [
   },
   {
     id: 'asset-documentales-clapperboard',
+    width: 1600,
+    height: 1173,
     file: '/atlas/categories/real/category-documentales-real.jpg',
     type: 'photo',
     categoryId: 'documentales',
@@ -570,6 +640,8 @@ export const assets = [
   },
   {
     id: 'asset-noticias-newspapers',
+    width: 1600,
+    height: 1200,
     file: '/atlas/categories/real/category-noticias-real.jpg',
     type: 'photo',
     categoryId: 'noticias',
@@ -590,7 +662,8 @@ export function assetById(id) {
 }
 
 export function assetsForEntry(entryId) {
-  return assets.filter((asset) => asset.entryId === entryId && asset.status !== 'ARCHIVED');
+  return assets.filter((asset) => (asset.entryId === entryId || asset.entryIds?.includes(entryId)) && asset.status !== 'ARCHIVED')
+    .map((asset) => ({ ...asset, caption: asset.entryCaptions?.[entryId] ?? asset.caption }));
 }
 
 export function assetForCategory(categoryId) {
@@ -600,5 +673,5 @@ export function assetForCategory(categoryId) {
 }
 
 export function attributableAssets() {
-  return assets.filter((asset) => asset.license !== 'Interno' && asset.status !== 'ARCHIVED');
+  return assets.filter((asset) => (asset.license !== 'Interno' || asset.generated) && asset.status !== 'ARCHIVED');
 }

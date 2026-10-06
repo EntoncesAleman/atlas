@@ -34,7 +34,8 @@ function legacyCategory(category) {
     shortDescription: category.shortDescription,
     editorialDescription: category.editorialDescription,
     asset: asset?.file ?? null,
-    alt: asset?.alt ?? ''
+    alt: asset?.alt ?? '',
+    visual: asset
   };
 }
 
@@ -70,6 +71,7 @@ function legacyEntry(entry) {
     content: entry.intro,
     image: primaryAsset?.file ?? null,
     alt: primaryAsset?.alt ?? '',
+    visual: primaryAsset,
     tags: entry.tags,
     category: category?.title ?? '',
     categorySlug: category?.slug ?? '',

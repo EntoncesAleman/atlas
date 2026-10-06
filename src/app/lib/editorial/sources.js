@@ -1,3 +1,4 @@
+import { openVisuals } from './openVisuals';
 // Registro estructurado de fuentes reales.
 // Cada fuente proviene de MASTER_PACKAGE/19_SOURCE_REGISTRY.md — no se inventa ninguna URL,
 // autor ni fecha. Si un dato no está determinado en el registro original, se deja `null`.
@@ -12,6 +13,16 @@
 // campo describe el objeto de estudio real de la fuente, no la entrada donde se cita.
 
 export const sources = [
+  ...openVisuals.map((asset) => ({
+    id: asset.sourceId,
+    title: asset.caption,
+    authorOrInstitution: asset.author,
+    url: asset.sourceUrl,
+    type: 'VISUAL',
+    publicationDate: null,
+    accessedAt: asset.verifiedAt,
+    notes: `${asset.license}. ${asset.modifications}`,
+  })),
   // --- Fuentes legales (ver MASTER_PACKAGE/12_LEGAL.md y 19_SOURCE_REGISTRY.md, sección Legal/regulatorio) ---
   {
     id: 'ley-27350-reprocann',

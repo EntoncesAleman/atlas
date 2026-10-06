@@ -1,7 +1,9 @@
+import { visualPresentation } from '../lib/editorial/visualPresentation';
 import Link from 'next/link';
 
 export default function AtlasVisualCard({ category, index }) {
-  const isIllustration = category.asset?.endsWith('.svg');
+  const presentation = visualPresentation(category.visual, { card: true });
+  const isIllustration = presentation.objectFit === 'contain';
   const imageClassName = isIllustration ? 'atlas-card-image atlas-card-image-contain' : 'atlas-card-image';
 
   return (
@@ -9,7 +11,7 @@ export default function AtlasVisualCard({ category, index }) {
       <Link className="atlas-card-media-link" href={`/atlas/${category.slug}`} aria-label={`Explorar ${category.title}`}>
         <div className="atlas-card-media">
           <span className="atlas-card-scrim" />
-          <img src={category.asset} alt={category.alt} className={imageClassName} />
+          <img src={category.asset} alt={category.alt} className={imageClassName} style={presentation} />
           <span className="atlas-card-number">{String(index + 1).padStart(2, '0')}</span>
           <span className="atlas-card-region">{category.regionLabel}</span>
         </div>

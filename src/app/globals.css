@@ -6261,3 +6261,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .public-search-filters select { width: 100%; padding: 12px; font: inherit; border: 1px solid #d6d0bf; background: #faf8f1; }
 @media (max-width: 600px) { .public-search-filters { grid-template-columns: 1fr; } }
 .entry-reading-bar > a, .atlas-province-status > a, .privacy-copy a, .community-contribute a, .contribution-form + a { color: #365333; text-underline-offset: 3px; }
+
+/* Editorial images: complete figures and subjects, with local full-size access. */
+.editorial-visual { margin: 0; min-width: 0; width: 100%; }
+.editorial-visual .atlas-entry-media,
+.editorial-visual .atlas-category-media { min-height: 0; padding: 12px; }
+.editorial-visual .atlas-entry-hero-image,
+.editorial-visual .atlas-category-image { height: auto; max-height: 560px; object-fit: contain; }
+.editorial-visual-caption { padding: 12px 0 0; font-size: 13px; line-height: 1.6; color: var(--text-soft); overflow-wrap: anywhere; }
+.editorial-visual-caption p { margin: 0 0 8px; }
+.editorial-visual-caption a { color: var(--sage-dark); text-underline-offset: 3px; }
+.editorial-visual-credit { font-size: 12px; }
+.editorial-visual-expand { font-size: 12px; }
+.atlas-entry-hero-with-diagram { grid-template-columns: minmax(0, 1fr); }
+.atlas-entry-hero-with-diagram .atlas-entry-hero-copy { max-width: 850px; }
+.editorial-visual-diagram .atlas-entry-media { background: #fff; padding: clamp(12px, 3vw, 32px); }
+.editorial-visual-diagram .atlas-entry-hero-image { max-height: 700px; }
+@media (max-width: 600px) {
+  .editorial-visual .atlas-entry-hero-image,
+  .editorial-visual .atlas-category-image { max-height: 460px; }
+  .editorial-visual-caption { font-size: 12px; }
+}
+.atlas-entry-card-media { background: var(--paper-soft); }

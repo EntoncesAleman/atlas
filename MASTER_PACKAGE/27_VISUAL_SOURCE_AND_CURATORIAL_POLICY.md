@@ -73,3 +73,8 @@ Exactitud, Relevancia, Calidad, Compatibilidad RELIEVE y Licencia, 0-5 cada una.
 - **Reserva estética de "Cosecha"**: aceptada pero con la tensión documentada contra la regla anti-dispensario; revisar si aparece una alternativa real más sobria.
 - **Ampliar la biblioteca**: esta fase resolvió 7 categorías con 1 imagen principal cada una (más 1 imagen específica de entrada para Fundamentos) — no se agregaron fotografías secundarias, ilustraciones adicionales por artículo, ni cobertura para futuras entradas de contenido más allá de las 7 ya existentes.
 - **Material argentino específico**: se evaluó y se descartó conscientemente un candidato argentino (viñedo de Cafayate) por imprecisión temática — sigue pendiente encontrar, a futuro, material fotográfico real de cultivo/territorio específicamente argentino y on-topic (no se encontró en esta ronda dentro del alcance de tiempo disponible).
+
+
+## Excepción autorizada — 2026-10-06
+
+La solicitud explícita del usuario «crealas vos» autoriza tres ilustraciones conceptuales generadas con IA para `super-cropping`, `documental-madre-planta` y `documental-el-profe`. Se identifican en los pies y créditos; no representan evidencia científica, afiches oficiales, fotogramas ni personas reales. Esta excepción se limita a estas tres entradas. Procedencia, prompts y originales: [registro](../docs/GENERATED_VISUAL_PROMPTS_2026_10_06.json).
