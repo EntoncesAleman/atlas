@@ -6159,3 +6159,105 @@ body::before {
     font-size: 10px;
   }
 }
+
+/* Public exploration, reading and account controls. */
+#site-content { min-height: 60vh; }
+#site-content:focus { outline: none; }
+.skip-link { position: fixed; top: 8px; left: 16px; z-index: 1000; padding: 12px 18px; background: var(--club-ink); color: white; transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid #426040; outline-offset: 4px; }
+.gh-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+.club-shell { min-height: auto; }
+.club-hero { min-height: 680px; }
+.home-start, .home-preview { padding: 48px 0; border-top: 1px solid var(--club-line, #d6d0bf); }
+.home-start h2, .home-preview h2, .regional-intro h2 { font-family: var(--club-font-display); font-size: clamp(30px, 4vw, 44px); line-height: 1.15; margin: 12px 0 20px; }
+.home-start-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.home-start-grid > a { padding: 24px; border: 1px solid #d6d0bf; text-decoration: none; background: #faf8f1; color: var(--club-ink); }
+.home-start-grid > a:hover { border-color: #426040; }
+.home-start-grid span, .reading-resume > span { font-size: 12px; color: #426040; }
+.home-start-grid h3 { margin: 16px 0 12px; font-size: 21px; }
+.home-start-grid p, .home-preview p, .regional-intro p { line-height: 1.65; }
+.home-preview, .regional-intro { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; align-items: start; }
+.preview-journal { padding: 28px; border: 1px solid #d6d0bf; background: #faf8f1; }
+.preview-journal h3 { font-family: var(--club-font-display); font-size: 29px; }
+.preview-journal ul { list-style: none; padding: 0; margin: 0; }
+.preview-journal li { border-top: 1px solid #d6d0bf; padding: 16px 0; display: grid; gap: 8px; }
+.preview-journal li > span { font-size: 12px; color: #62665a; }
+.preview-journal li p { margin: 0; }
+.regional-intro { padding: 28px; margin: 28px 0; background: #edf1e7; border: 1px solid #d8dfcf; }
+.regional-intro ul { padding-left: 20px; }
+.regional-intro li { margin: 14px 0; }
+.regional-intro a { color: #365333; }
+.atlas-public-search { margin: 28px 0; }
+.atlas-public-search label { display: block; margin-bottom: 10px; font-weight: 600; }
+.atlas-public-search > div { display: flex; gap: 12px; }
+.atlas-public-search input { flex: 1; min-width: 0; padding: 12px; border: 1px solid #d6d0bf; background: #faf8f1; font: inherit; }
+.geo-scope-note { font-size: 12px; line-height: 1.5; color: #52634e; }
+.zone-option[aria-pressed="true"] { background: #426040; color: white; }
+.reading-resume { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 24px 0; padding: 20px; border: 1px solid #d6d0bf; }
+.reading-resume a { color: #365333; }
+.entry-reading-bar { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-bottom: 28px; font-size: 13px; }
+.entry-reading-bar p { margin: 0; }
+.reading-tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.reading-tools button { min-height: 44px; }
+.reading-tools span { font-size: 12px; }
+.entry-toc { border-block: 1px solid #d6d0bf; padding: 20px 0; margin: 0 0 32px; }
+.entry-toc h2 { font-size: 15px; margin: 0 0 14px; }
+.entry-toc ul { display: flex; flex-wrap: wrap; gap: 12px 24px; list-style: none; padding: 0; margin: 0; }
+.entry-toc a { color: #365333; }
+.atlas-entry-content h2[id], #fuentes, #elegir-provincia { scroll-margin-top: 24px; }
+.saved-reading-list { list-style: none; padding: 0; }
+.saved-reading-list li { padding: 24px 0; border-bottom: 1px solid #d6d0bf; display: flex; justify-content: space-between; gap: 24px; align-items: start; }
+.saved-reading-list a { font-size: 22px; color: #365333; }
+.saved-reading-list p { line-height: 1.6; }
+.community-contribute nav { display: flex; flex-wrap: wrap; gap: 20px; }
+.community-item-count { font-size: 12px; color: #426040; margin-top: 10px; }
+.contribution-form, .account-recovery-form { display: grid; gap: 20px; max-width: 720px; margin: 28px 0; }
+.contribution-form .mi-cultivo-field, .account-recovery-form .mi-cultivo-field { display: grid; gap: 8px; }
+.contribution-form input, .contribution-form select, .contribution-form textarea, .account-recovery-form input { width: 100%; padding: 12px; font: inherit; border: 1px solid #d6d0bf; background: #faf8f1; }
+.contribution-form textarea { resize: vertical; }
+.contribution-form button, .account-recovery-form button { justify-self: start; }
+.contribution-consent { display: flex; align-items: start; gap: 12px; line-height: 1.6; font-size: 14px; }
+.contribution-consent input { width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; }
+.contribution-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.account-controls details { margin-top: 24px; max-width: 650px; }
+.account-controls summary { cursor: pointer; color: #8b332a; padding: 12px 0; }
+.account-controls .mi-cultivo-field { margin: 18px 0; }
+.danger-button { border-color: #8b332a; color: #8b332a; }
+.privacy-copy { max-width: 800px; line-height: 1.8; }
+.privacy-copy h2 { margin-top: 32px; }
+.club-footer-links { flex-wrap: wrap; }
+@media (max-width: 900px) {
+  .home-start-grid { grid-template-columns: 1fr; }
+  .home-preview, .regional-intro { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 600px) {
+  .club-hero { min-height: auto; gap: 24px; padding-top: 32px; }
+  .club-hero-lede { font-size: 17px; line-height: 1.5; margin-bottom: 20px; }
+  .geo-picker { display: flex; flex-direction: column; gap: 12px; }
+  .geo-picker-head { order: 0; }
+  .geo-picker-lede { order: 1; margin: 0; }
+  .geo-form { order: 2; }
+  .geo-map-wrap { order: 3; height: 260px; padding: 12px; }
+  .geo-map { height: 100%; }
+  .argentina-map { width: auto; height: 100%; max-width: 100%; }
+  .home-start, .home-preview { padding: 32px 0; }
+  .saved-reading-list li { flex-direction: column; gap: 8px; }
+  .atlas-public-search > div { flex-wrap: wrap; }
+  .atlas-public-search input { flex-basis: 100%; }
+  .regional-intro { padding: 20px; }
+  .entry-reading-bar { align-items: start; }
+  .entry-toc ul { display: grid; gap: 14px; }
+  .club-footer-row { align-items: start; }
+}
+.zone-list { padding: 12px 0; }
+.zone-list-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; font-size: 13px; }
+.zone-list-cta { color: #63755b; font-size: 12px; }
+.zone-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.zone-option { padding: 10px 12px; min-height: 44px; border: 1px solid #ccd6c2; border-radius: 16px; font: inherit; font-size: 12px; color: #365333; background: #faf8f1; cursor: pointer; }
+@media (min-width: 901px) { .club-hero .geo-map-wrap { height: 360px; } .club-hero .geo-map { height: 100%; } .club-hero .argentina-map { height: 100%; width: auto; max-width: 100%; } }
+.public-search-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: 100%; }
+.public-search-filters .mi-cultivo-field { display: grid; gap: 8px; }
+.public-search-filters select { width: 100%; padding: 12px; font: inherit; border: 1px solid #d6d0bf; background: #faf8f1; }
+@media (max-width: 600px) { .public-search-filters { grid-template-columns: 1fr; } }
+.entry-reading-bar > a, .atlas-province-status > a, .privacy-copy a, .community-contribute a, .contribution-form + a { color: #365333; text-underline-offset: 3px; }

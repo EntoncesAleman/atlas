@@ -35,6 +35,7 @@ const NAV_SECTIONS = [
     items: [
       { href: '/admin/editorial', label: 'Editorial' },
       { href: '/admin/noticias', label: 'Noticias' },
+      { href: '/admin/aportes', label: 'Aportes y correcciones' },
       { href: '/admin/recursos', label: 'Recursos' },
       { href: '/admin/seo', label: 'SEO' }
     ]

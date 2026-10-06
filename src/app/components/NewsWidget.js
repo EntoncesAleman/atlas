@@ -46,14 +46,14 @@ function NewsRow({ item, lead = false }) {
 
 export default async function NewsWidget({ limit = 8, compact = false }) {
   const supabase = await getServerSupabaseClient();
-  const { data } = supabase
+  const { data, error } = supabase
     ? await supabase
         .from('news_items')
         .select('id, title, summary, source_name, source_url, published_at, country_scope, image_url')
         .eq('status', 'published')
         .order('published_at', { ascending: false })
-        .limit(limit)
-    : { data: null };
+        .limit(limit).abortSignal(AbortSignal.timeout(8000))
+    : { data: null, error: true };
 
   const items = data ?? [];
   const argentina = items.filter((item) => item.country_scope === 'argentina');
@@ -67,7 +67,7 @@ export default async function NewsWidget({ limit = 8, compact = false }) {
       </div>
 
       {items.length === 0 ? (
-        <p className="news-widget-empty">Todavía no hay noticias sincronizadas.</p>
+        <div className="news-widget-empty"><p>{error ? 'Las noticias no están disponibles en este momento.' : 'Todavía no hay noticias publicadas.'}</p><Link href="/comunidad/agenda">Explorar la agenda →</Link></div>
       ) : (
         <div className="news-widget-columns">
           {argentina.length > 0 && (

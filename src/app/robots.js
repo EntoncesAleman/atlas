@@ -6,7 +6,7 @@ export default function robots() {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/mi-cultivo', '/admin', '/club']
+      disallow: ['/mi-cultivo', '/admin', '/club', '/cuenta', '/api/cuenta', '/lecturas']
     },
     sitemap: `${BASE_URL}/sitemap.xml`
   };

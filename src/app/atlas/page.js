@@ -1,21 +1,22 @@
+import { Suspense } from 'react';
+import { publicMetadata } from '../lib/site';
 import Link from 'next/link';
 import CategoryShowcase from '../components/CategoryShowcase';
 import PartnersStrip from '../components/PartnersStrip';
 import ProvinceStatusBar from '../components/ProvinceStatusBar';
 import EnvironmentalPanel from '../components/EnvironmentalPanel';
 import NewsWidget from '../components/NewsWidget';
-import GlobalHeader from '../components/shell/GlobalHeader';
+import RegionalIntro from '../components/RegionalIntro';
+import { getEntries, getCategoryById } from '../lib/editorial/registry';
 import ContextHeader from '../components/shell/ContextHeader';
 
-export const metadata = {
-  title: 'El Atlas — Atlas del Cultivo Argentino',
-  description: 'Índice editorial del Atlas: una navegación por categorías para recorrer el cultivo como sistema geográfico, ambiental y cultural.'
-};
+export const metadata = publicMetadata('/atlas', 'El Atlas — Atlas del Cultivo Argentino', 'Índice editorial del Atlas: una navegación por categorías para recorrer el cultivo como sistema geográfico, ambiental y cultural.');
 
 export default function AtlasIndexPage() {
+  const regionalIds = ['diferencias-agroclimaticas-regiones-argentinas', 'fotoperiodo-segun-latitud-argentina', 'heladas'];
+  const readings = getEntries().filter(entry => regionalIds.includes(entry.id)).map(entry => ({ id: entry.id, title: entry.title, url: `/atlas/${getCategoryById(entry.categoryId).slug}/${entry.slug}` }));
   return (
     <div className="club-shell">
-      <GlobalHeader />
       <ContextHeader kicker="Índice editorial" title="El Atlas" />
 
       <main className="club-atlas-index club-enter">
@@ -24,6 +25,8 @@ export default function AtlasIndexPage() {
           cultural.
         </p>
         <ProvinceStatusBar />
+        <RegionalIntro readings={readings} />
+        <form action="/chatbot" className="atlas-public-search"><label htmlFor="atlas-query">Buscar en el Atlas</label><div><input id="atlas-query" name="q" type="search" placeholder="Tema, palabra o pregunta" required /><button type="submit" className="club-button">Buscar</button></div></form>
 
         <section className="club-atlas-section">
           <EnvironmentalPanel />
@@ -33,7 +36,7 @@ export default function AtlasIndexPage() {
           <CategoryShowcase showHeading={false} />
         </section>
 
-        <NewsWidget />
+        <Suspense fallback={<p role="status">Cargando noticias…</p>}><NewsWidget /></Suspense>
 
         <section className="club-atlas-section club-community-promo">
           <Link className="community-promo-card" href="/comunidad">

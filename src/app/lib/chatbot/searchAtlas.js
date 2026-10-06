@@ -13,6 +13,7 @@
 // "anónimo". Ver MASTER_PACKAGE/45_PHASE_13B_CHATBOT_RETRIEVAL.md para el
 // detalle de diseño (scoring, normalización, snippets, límites).
 
+import { getProvinceGeoContext } from '../geo/provinceContext';
 import { getEntries, getCategoryById } from '../editorial/registry';
 
 const STOPWORDS = new Set([
@@ -202,12 +203,20 @@ function pickSnippet(entry, bestChunk, queryStems) {
 // Devuelve { results } — máximo 5, ordenados por relevancia, nunca rellenado
 // con coincidencias débiles solo para completar el límite. `results: []`
 // significa explícitamente "no hay evidencia suficiente en el Atlas".
-export function searchAtlas(query) {
+export function searchAtlas(query, { categoryId = '', provinceId = '', limit = MAX_RESULTS } = {}) {
   const queryStems = queryStemsFrom(query);
   if (queryStems.size === 0) return { results: [] };
 
   const scored = [];
+  const province = provinceId ? getProvinceGeoContext(provinceId) : null;
+  if (provinceId && !province) return { results: [] };
   for (const entry of getEntries()) {
+    if (categoryId && entry.categoryId !== categoryId) continue;
+    if (province) {
+      const text = ` ${normalizeText(collectChunks(entry).map(chunk => chunk.text).join(' '))} `;
+      const names = province.id === 'caba' ? ['caba', 'ciudad autonoma de buenos aires', 'capital federal'] : [normalizeText(province.name)];
+      if (!names.some(name => text.includes(` ${name} `))) continue;
+    }
     const { total, matchedFields, bestChunk } = scoreEntry(entry, queryStems);
     if (total < MIN_SCORE) continue;
 
@@ -228,5 +237,5 @@ export function searchAtlas(query) {
   }
 
   scored.sort((a, b) => b.score - a.score);
-  return { results: scored.slice(0, MAX_RESULTS) };
+  return { results: scored.slice(0, Math.min(50, Math.max(1, limit))) };
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getProvinceProfile } from '../lib/geo/provinceProfile';
 
@@ -45,6 +46,7 @@ export default function ProvinceStatusBar() {
   return (
     <div className="atlas-province-status">
       <span className="atlas-province-status-label">Viendo · {label}</span>
+      <Link href="/#elegir-provincia">Cambiar provincia</Link>
       <button type="button" className="atlas-province-status-clear" onClick={clearProvince}>
         Quitar provincia · Ver Atlas nacional
       </button>

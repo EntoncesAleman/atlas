@@ -1,11 +1,16 @@
 import Link from 'next/link';
 import GeoSelector from './components/GeoSelector';
-import GlobalHeader from './components/shell/GlobalHeader';
+import CultivoPreview from './components/CultivoPreview';
+import SavedReadings from './components/SavedReadings';
+import { getEntries, getCategoryById } from './lib/editorial/registry';
+import { publicMetadata } from './lib/site';
+
+export const metadata = publicMetadata('/', 'Atlas del Cultivo Argentino', 'Explorá el cultivo desde la geografía, el clima y las condiciones de cada provincia argentina.');
 
 export default function HomePage() {
+  const entries = getEntries().map(entry => ({ id: entry.id, title: entry.title, url: `/atlas/${getCategoryById(entry.categoryId).slug}/${entry.slug}` }));
   return (
     <div className="club-shell">
-      <GlobalHeader />
 
       <main className="club-home club-enter">
         <section className="club-hero">
@@ -21,7 +26,7 @@ export default function HomePage() {
               regional y el contexto ambiental de cada provincia argentina.
             </p>
             <div className="club-hero-actions">
-              <Link className="club-button" href="/mi-cultivo">Entrar a Mi Cultivo</Link>
+              <a className="club-button" href="#elegir-provincia">Explorar mi provincia</a>
               <Link className="club-button club-button-outline" href="/atlas">Explorar el Atlas</Link>
             </div>
           </div>
@@ -30,18 +35,18 @@ export default function HomePage() {
             <GeoSelector />
           </div>
         </section>
+        <section className="home-start" aria-labelledby="home-start-title">
+          <span className="club-eyebrow">Primer recorrido</span><h2 id="home-start-title">Empezá por acá</h2>
+          <div className="home-start-grid">
+            <a href="#elegir-provincia"><span>01 · Territorio</span><h3>Entender mi región</h3><p>Elegí provincia y explorá su contexto ambiental.</p></a>
+            <Link href="/atlas/germinacion"><span>02 · Lecturas</span><h3>Aprender lo básico</h3><p>Empezá por la semilla y seguí el recorrido de la planta.</p></Link>
+            <Link href="/mi-cultivo"><span>03 · Bitácora</span><h3>Registrar mi cultivo</h3><p>Conocé cómo llevar fechas, notas y fotos de tu temporada.</p></Link>
+          </div>
+        </section>
+        <SavedReadings entries={entries} compact />
+        <CultivoPreview />
       </main>
 
-      <footer className="club-footer">
-        <div className="club-footer-row">
-          <Link href="/" className="club-footer-brand">ATLAS DEL CULTIVO ARGENTINO</Link>
-          <nav className="club-footer-links">
-            <Link href="/sobre-el-proyecto">Sobre el proyecto</Link>
-            <Link href="/comunidad">Comunidad</Link>
-            <Link href="/creditos">Créditos</Link>
-          </nav>
-        </div>
-      </footer>
     </div>
   );
 }

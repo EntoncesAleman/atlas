@@ -1,3 +1,4 @@
+import { publicMetadata } from '../../lib/site';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { atlasCategories, atlasEntries } from '../../lib/atlasData';
@@ -8,11 +9,7 @@ export async function generateMetadata({ params }) {
   const category = getCategory(categorySlug);
   if (!category) return {};
 
-  return {
-    title: category.metadata?.seoTitle ?? `${category.title} — Atlas del Cultivo Argentino`,
-    description: category.metadata?.seoDescription ?? category.description,
-    alternates: category.metadata?.canonical ? { canonical: category.metadata.canonical } : undefined
-  };
+  return publicMetadata(`/atlas/${category.slug}`, category.metadata?.seoTitle ?? `${category.title} — Atlas del Cultivo Argentino`, category.metadata?.seoDescription ?? category.description);
 }
 
 export default async function CategoryPage({ params }) {

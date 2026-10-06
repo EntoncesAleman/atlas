@@ -1,11 +1,9 @@
+import { publicMetadata } from '../lib/site';
 import Link from 'next/link';
-import { getFeaturedClub } from '../lib/community/communityData';
+import { getFeaturedClub, communityEvents, communityCourses, communityClubs, communityVoices } from '../lib/community/communityData';
 import CommunityEmptyState from '../components/CommunityEmptyState';
 
-export const metadata = {
-  title: 'Comunidad — Atlas del Cultivo Argentino',
-  description: 'Clubes, investigadores, universidades y educadores de distintas provincias: un directorio editorial y territorial aparte del contenido enciclopédico del Atlas.'
-};
+export const metadata = publicMetadata('/comunidad', 'Comunidad — Atlas del Cultivo Argentino', 'Clubes, investigadores, universidades y educadores de distintas provincias: un directorio editorial y territorial aparte del contenido enciclopédico del Atlas.');
 
 const SECTIONS = [
   {
@@ -36,6 +34,9 @@ const SECTIONS = [
 
 export default function ComunidadPage() {
   const featuredClub = getFeaturedClub();
+  const counts = { clubes: communityClubs.length, agenda: communityEvents.length, formacion: communityCourses.length, voces: communityVoices.length };
+  const publishedSections = SECTIONS.filter(section => counts[section.slug] > 0);
+  const upcomingSections = SECTIONS.filter(section => !counts[section.slug]);
 
   return (
     <main className="atlas-page community-page">
@@ -70,18 +71,19 @@ export default function ComunidadPage() {
           </div>
         </div>
         <div className="atlas-related-grid community-hub-grid">
-          {SECTIONS.map((section) => (
+          {publishedSections.map((section) => (
             <Link key={section.slug} className="atlas-related-card" href={`/comunidad/${section.slug}`}>
               <span className="atlas-related-type">{section.type}</span>
               <span className="atlas-related-title">{section.title}</span>
               <p className="community-hub-card-description">{section.description}</p>
               <span className="atlas-related-arrow">↗</span>
+              <span className="community-item-count">{counts[section.slug]} publicaciones</span>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="atlas-section">
+      {featuredClub && <section className="atlas-section">
         <div className="section-heading">
           <div>
             <span className="section-label dark-label">Editorial rotativo</span>
@@ -99,7 +101,8 @@ export default function ComunidadPage() {
             description="Este espacio no es un ranking — es un lugar editorial rotativo para la historia, actividad o proyecto de un club por vez, cuando exista contenido documentado para mostrar."
           />
         )}
-      </section>
+      </section>}
+      <section className="atlas-section community-contribute"><h2>Sumar conocimiento del territorio</h2><p>Podés proponer una actividad, una fuente o una entrevista. El equipo revisa cada aporte antes de publicarlo.</p><Link className="primary-button" href="/aportes?tipo=actividad">Proponer un aporte</Link><p className="atlas-section-note">En preparación: {upcomingSections.map(section => section.title).join(' y ')}.</p><nav aria-label="Secciones en preparación">{upcomingSections.map(section => <Link key={section.slug} href={`/comunidad/${section.slug}`}>{section.title} →</Link>)}</nav></section>
     </main>
   );
 }

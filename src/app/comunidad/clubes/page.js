@@ -1,11 +1,9 @@
+import { publicMetadata } from '../../lib/site';
 import Link from 'next/link';
 import { communityClubs } from '../../lib/community/communityData';
 import CommunityEmptyState from '../../components/CommunityEmptyState';
 
-export const metadata = {
-  title: 'Clubes — Atlas del Cultivo Argentino',
-  description: 'Clubes cannábicos de todo el país, como espacios educativos y territoriales con cursos, talleres y actividades propias de su provincia.'
-};
+export const metadata = publicMetadata('/comunidad/clubes', 'Clubes — Atlas del Cultivo Argentino', 'Clubes cannábicos de todo el país, como espacios educativos y territoriales con cursos, talleres y actividades propias de su provincia.');
 
 export default function ClubesPage() {
   return (

@@ -103,21 +103,26 @@ const smallProvinceGeometries = SMALL_PROVINCE_HITBOX_IDS
 
 export default function GeoSelector() {
   const [province, setProvince] = useState('');
+  const [provinceQuery, setProvinceQuery] = useState('');
   const [zone, setZone] = useState('');
   const [hoveredProvince, setHoveredProvince] = useState('');
   const selectedProvince = provinceData.find((item) => item.id === province)?.name ?? 'Argentina';
-  const zoneOptions = province ? zoneExamples[province] ?? ['Zona aproximada'] : [];
+  const zoneOptions = province ? zoneExamples[province] ?? [] : [];
 
   // Hidrata la elección previa (si existe) al entrar — la selección deja de
   // ser efímera: "mostrando siempre un selector para cambiarla" (02_UX.md).
   useEffect(() => {
     const stored = readStoredLocation();
-    if (stored.province) setProvince(stored.province);
+    if (provinceData.some(item => item.id === stored.province)) {
+      setProvince(stored.province);
+      setProvinceQuery(provinceData.find(item => item.id === stored.province).name);
+    }
     if (stored.zone) setZone(stored.zone);
   }, []);
 
   const selectProvince = (id) => {
     setProvince(id);
+    setProvinceQuery(provinceData.find(item => item.id === id)?.name || '');
     setZone('');
   };
 
@@ -148,6 +153,7 @@ export default function GeoSelector() {
       }
     }
     setProvince('');
+    setProvinceQuery('');
     setZone('');
   }
 
@@ -159,12 +165,12 @@ export default function GeoSelector() {
   };
 
   return (
-    <section className="geo-picker" aria-label="Selector geográfico">
+    <section className="geo-picker" aria-label="Selector geográfico" id="elegir-provincia">
       <div className="geo-picker-head">
         <span className="panel-kicker">¿Dónde cultivás?</span>
-        <span className="panel-status">Argentina</span>
+        <span className="panel-status">{selectedProvince}</span>
       </div>
-      <p className="geo-picker-lede">Elegí tu provincia para adaptar la información al contexto climático de tu zona.</p>
+      <p className="geo-picker-lede">Elegí tu provincia para explorar su contexto ambiental y las lecturas del Atlas.</p>
 
       <div className="geo-map-wrap">
         <div className="geo-map" aria-label="Mapa de Argentina">
@@ -173,7 +179,7 @@ export default function GeoSelector() {
             viewBox={ARGENTINA_MAP_VIEWBOX}
             width={ARGENTINA_MAP_WIDTH}
             height={ARGENTINA_MAP_HEIGHT}
-            role="img"
+            role="group"
             aria-label="Mapa de la República Argentina — 23 provincias y Ciudad Autónoma de Buenos Aires"
           >
             <g className="map-provinces">
@@ -259,8 +265,9 @@ export default function GeoSelector() {
             className="geo-input"
             list="province-options"
             placeholder="Buscar provincia"
-            value={selectedProvince === 'Argentina' ? '' : selectedProvince}
+            value={provinceQuery}
             onChange={(event) => {
+              setProvinceQuery(event.target.value);
               const match = provinceData.find((item) => item.name.toLowerCase() === event.target.value.toLowerCase());
               const nextProvince = match ? match.id : '';
               setProvince(nextProvince);
@@ -274,20 +281,21 @@ export default function GeoSelector() {
           </datalist>
         </label>
 
-        {province && (
+        {province && zoneOptions.length > 0 && (
           <div className="zone-list" aria-label="Zonas editoriales">
             <div className="zone-list-head">
               <span className="zone-list-title">Zonas de {selectedProvince}</span>
-              <span className="zone-list-cta">Explorar</span>
+              <span className="zone-list-cta">Opcional</span>
             </div>
             <div className="zone-options">
               {zoneOptions.map((item) => (
-                <button className="zone-option" type="button" key={item} onClick={() => setZone(item)}>{item}</button>
+                <button className="zone-option" type="button" key={item} aria-pressed={zone === item} onClick={() => setZone(item)}>{item}</button>
               ))}
             </div>
           </div>
         )}
 
+        {province && <p className="geo-scope-note">El clima se muestra para un punto de referencia provincial. La zona es una referencia de navegación; no cambia el pronóstico.</p>}
         <div className="geo-selection-summary">
           <span className="summary-label">Ubicación</span>
           <span className="summary-value">

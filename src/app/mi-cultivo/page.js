@@ -54,7 +54,7 @@ import { PhotoValidationError } from '../lib/miCultivo/photoProcessing';
 import { PROVINCE_OPTIONS } from '../lib/weather/locations';
 import { fetchProvinceWeather } from '../lib/weather/service';
 import MiniCalendar from '../components/MiniCalendar';
-import GlobalHeader from '../components/shell/GlobalHeader';
+import AccountControls from '../components/AccountControls';
 import ContextHeader from '../components/shell/ContextHeader';
 import NewsChip from '../components/shell/NewsChip';
 import {
@@ -157,10 +157,7 @@ function writeSelectedCultivoId(cultivoId) {
   }
 }
 
-// A dónde ir después de iniciar sesión (no de crear cuenta: una cuenta recién creada siempre
-// empieza en rol 'user', ver `handleAuthSubmit`) — según el rol real leído de `profiles`, la
-// misma tabla que hace cumplir `proxy.js`/`requireRole` del lado servidor. Si la consulta
-// falla por lo que sea, el destino por defecto sigue siendo el Atlas (comportamiento previo).
+// Account sign-in opens the personal journal or the panel assigned to the verified role.
 async function destinationForUser(supabase, userId) {
   try {
     const { data: profile } = await supabase.from('profiles').select('role').eq('id', userId).maybeSingle();
@@ -169,7 +166,7 @@ async function destinationForUser(supabase, userId) {
   } catch {
     // sigue al valor por defecto de abajo
   }
-  return '/atlas';
+  return '/mi-cultivo';
 }
 
 function translateAuthError(error) {
@@ -1116,10 +1113,7 @@ export default function MiCultivoPage() {
           // "pendiente de aprobación" quede visible en vez de perderse en la navegación.
           setAuthNotice(clubNotice.trim());
         } else {
-          // Sesión inmediata (confirmación de email desactivada en este proyecto): el ingreso
-          // lleva al Atlas completo, no directo a Mi Cultivo (Loop 4.1) — la sesión ya quedó
-          // activa acá mismo (`onAuthStateChange`), así que el Atlas la va a reconocer enseguida.
-          router.push('/atlas');
+          router.push('/mi-cultivo');
         }
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({ email: authEmail, password: authPassword });
@@ -1178,10 +1172,6 @@ export default function MiCultivoPage() {
 
   return (
     <div className="club-shell">
-      <GlobalHeader
-        accountLabel={isAccountMode ? session.user.email.split('@')[0] : undefined}
-        onSignOut={isAccountMode ? handleSignOut : undefined}
-      />
 
       <ContextHeader
         kicker="Tu espacio dentro del Atlas"
@@ -1365,6 +1355,7 @@ export default function MiCultivoPage() {
                 </button>
               </div>
             </form>
+            <p><Link href="/cuenta/recuperar">Olvidé mi contraseña</Link> · <Link href="/privacidad">Privacidad</Link></p>
 
             <details className="mi-cultivo-auth-benefits">
               <summary className="mi-cultivo-auth-benefits-title">¿Qué gano al ingresar?</summary>
@@ -1374,7 +1365,7 @@ export default function MiCultivoPage() {
                 <li>Guardar fotos privadas de tu cultivo, asociadas a tu cuenta.</li>
                 <li>Mantener guardado el contexto de tu provincia entre visitas.</li>
                 <li>Consultar tu historial completo en "Mi Temporada".</li>
-                <li>Usar el Buscador del Atlas con contexto de tu propio cultivo.</li>
+                <li>Acceder al seguimiento privado de tus plantas y temporadas.</li>
                 <li>Conservar tu información si cambiás de dispositivo o de navegador.</li>
               </ul>
             </details>
@@ -2188,6 +2179,7 @@ export default function MiCultivoPage() {
 
             {activeTab === 'ajustes' && (
               <>
+                <AccountControls hasAccount={isAccountMode} localData={{ id: cultivoId, currentStageId, provinceId, seasonName, plantCount, variety, events, notes, createdAt }} />
                 {isAccountMode && cultivoId && (
                   <div className="atlas-entry-section">
                     <h2>Cultivo / temporada</h2>

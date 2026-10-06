@@ -1,3 +1,4 @@
+import { publicMetadata } from '../lib/site';
 import Link from 'next/link';
 import { getServerSupabaseClient } from '../lib/supabase/server';
 import { NEWS_CATEGORIES, NEWS_COUNTRY_SCOPES } from '../lib/news/sources';
@@ -9,10 +10,7 @@ import { NEWS_CATEGORIES, NEWS_COUNTRY_SCOPES } from '../lib/news/sources';
 // acá se pueden ver `published` y `archived` — lo archivado sigue siendo historial válido, solo
 // dejó de ser "reciente" para el widget de `/atlas`.
 
-export const metadata = {
-  title: 'Historial de noticias — Atlas del Cultivo Argentino',
-  description: 'Todas las noticias publicadas en el Atlas, con filtro por país y categoría.'
-};
+export const metadata = publicMetadata('/noticias', 'Historial de noticias — Atlas del Cultivo Argentino', 'Todas las noticias publicadas en el Atlas, con filtro por país y categoría.');
 
 const COUNTRY_SCOPE_LABELS = { argentina: 'Argentina', mundo: 'Mundo' };
 const CATEGORY_LABELS = {
@@ -46,9 +44,9 @@ export default async function NoticiasHistorialPage({ searchParams }) {
   if (query && scope) query = query.eq('country_scope', scope);
   if (query && category) query = query.eq('category', category);
 
-  const { data, count } = query
-    ? await query.order('published_at', { ascending: sort === 'asc' }).range(from, to)
-    : { data: [], count: 0 };
+  const { data, count, error } = query
+    ? await query.order('published_at', { ascending: sort === 'asc' }).range(from, to).abortSignal(AbortSignal.timeout(8000))
+    : { data: [], count: 0, error: { message: 'unavailable' } };
 
   const items = data ?? [];
   const total = count ?? 0;
@@ -91,19 +89,19 @@ export default async function NoticiasHistorialPage({ searchParams }) {
 
       <section className="atlas-section">
         <form className="news-filters" method="get">
-          <select name="scope" defaultValue={scope}>
+          <select aria-label="País de la noticia" name="scope" defaultValue={scope}>
             <option value="">Argentina y Mundo</option>
             {NEWS_COUNTRY_SCOPES.map((value) => (
               <option key={value} value={value}>{COUNTRY_SCOPE_LABELS[value]}</option>
             ))}
           </select>
-          <select name="category" defaultValue={category}>
+          <select aria-label="Categoría de la noticia" name="category" defaultValue={category}>
             <option value="">Todas las categorías</option>
             {NEWS_CATEGORIES.map((value) => (
               <option key={value} value={value}>{CATEGORY_LABELS[value] ?? value}</option>
             ))}
           </select>
-          <select name="sort" defaultValue={sort}>
+          <select aria-label="Orden de las noticias" name="sort" defaultValue={sort}>
             <option value="desc">Más recientes primero</option>
             <option value="asc">Más antiguas primero</option>
           </select>
@@ -111,7 +109,7 @@ export default async function NoticiasHistorialPage({ searchParams }) {
         </form>
 
         {items.length === 0 ? (
-          <p className="news-widget-empty">No hay noticias que coincidan con estos filtros.</p>
+          <div className="news-widget-empty"><p>{error ? 'No pudimos cargar las noticias. Probá de nuevo más tarde.' : scope || category || page > 1 ? 'No hay noticias que coincidan con estos filtros.' : 'Todavía no hay noticias publicadas.'}</p><div className="mi-cultivo-form-actions">{(scope || category || page > 1) && <Link href="/noticias">Quitar filtros</Link>}<Link href="/comunidad/agenda">Ver agenda</Link><Link href="/aportes?tipo=fuente">Proponer una fuente</Link></div></div>
         ) : (
           <ul className="news-widget-list news-historial-list">
             {items.map((item) => (

@@ -28,6 +28,8 @@ const ROLE_RANK = { user: 0, club: 1, admin: 2 };
 
 export async function proxy(request) {
   let response = NextResponse.next({ request });
+  // Reading and public search do not depend on a verified account.
+  if (!/^\/(admin|club|mi-cultivo|cuenta|auth)(\/|$)/.test(request.nextUrl.pathname) && !request.nextUrl.pathname.startsWith('/api/cuenta/')) return response;
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -53,7 +55,7 @@ export async function proxy(request) {
   // de solo decodificar la cookie — una cookie manipulada a mano no alcanza para pasar esto.
   const { data: { user } } = await supabase.auth.getUser();
 
-  const match = PROTECTED_PREFIXES.find(({ prefix }) => request.nextUrl.pathname.startsWith(prefix));
+  const match = PROTECTED_PREFIXES.find(({ prefix }) => (request.nextUrl.pathname === prefix || request.nextUrl.pathname.startsWith(`${prefix}/`)));
   if (match) {
     if (!user) {
       const url = request.nextUrl.clone();

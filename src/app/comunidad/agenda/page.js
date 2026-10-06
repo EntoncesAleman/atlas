@@ -1,3 +1,4 @@
+import { publicMetadata } from '../../lib/site';
 import Link from 'next/link';
 import {
   communityEvents,
@@ -22,10 +23,7 @@ function formatEventDate(event) {
   return `${start} al ${end}`;
 }
 
-export const metadata = {
-  title: 'Agenda — Atlas del Cultivo Argentino',
-  description: 'Cursos, talleres, charlas, jornadas y encuentros organizados por provincia y fecha.'
-};
+export const metadata = publicMetadata('/comunidad/agenda', 'Agenda — Atlas del Cultivo Argentino', 'Cursos, talleres, charlas, jornadas y encuentros organizados por provincia y fecha.');
 
 export default function AgendaPage() {
   return (

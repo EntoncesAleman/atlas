@@ -1,3 +1,5 @@
+import ReadingTools from '../../../components/ReadingTools';
+import { publicMetadata, SITE_URL, SITE_NAME } from '../../../lib/site';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
@@ -42,11 +44,9 @@ export async function generateMetadata({ params }) {
   const entry = category ? getEntry(categorySlug, entrySlug) : null;
   if (!category || !entry) return {};
 
-  return {
-    title: entry.metadata?.seoTitle ?? `${entry.title} — Atlas del Cultivo Argentino`,
-    description: entry.metadata?.seoDescription ?? entry.summary,
-    alternates: entry.metadata?.canonical ? { canonical: entry.metadata.canonical } : undefined
-  };
+  const path = `/atlas/${category.slug}/${entry.slug}`;
+  const [asset] = getAssetsForEntry(entry);
+  return publicMetadata(path, entry.metadata?.seoTitle ?? `${entry.title} — Atlas del Cultivo Argentino`, entry.metadata?.seoDescription ?? entry.summary, entry.metadata?.ogImage || asset?.file || '/opengraph-image');
 }
 
 export default async function EntryPage({ params }) {
@@ -79,8 +79,20 @@ export default async function EntryPage({ params }) {
   ].filter((group) => group.items.length > 0);
   const showSourceGroupLabels = sourceGroups.length > 1;
 
+  const entryPath = `/atlas/${category.slug}/${entry.slug}`;
+  const toc = [...(entry.sections ?? []).map(section => ({ id: `section-${section.id}`, title: section.title })),
+    ...(entry.observations?.length ? [{ id: 'observaciones', title: 'Observaciones' }] : []),
+    ...(entry.signals?.length ? [{ id: 'senales', title: 'Señales' }] : []),
+    ...(entry.commonMistakes?.length ? [{ id: 'errores-frecuentes', title: 'Errores frecuentes' }] : []),
+    ...(entry.environmentContext?.length ? [{ id: 'contexto-ambiental', title: 'Contexto ambiental' }] : []),
+    ...(entrySources.length ? [{ id: 'fuentes', title: 'Fuentes' }] : [])];
+  const structuredData = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: entry.title, description: entry.summary, mainEntityOfPage: `${SITE_URL}${entryPath}`, ...(entry.lastReviewed ? { dateModified: entry.lastReviewed } : {}), ...(heroAsset ? { image: `${SITE_URL}${heroAsset.file}` } : {}), publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL } },
+    { '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'Atlas', item: `${SITE_URL}/atlas` }, { '@type': 'ListItem', position: 2, name: category.title, item: `${SITE_URL}/atlas/${category.slug}` }, { '@type': 'ListItem', position: 3, name: entry.title, item: `${SITE_URL}${entryPath}` } ] }
+  ] };
   return (
     <main className="atlas-page entry-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       <section className="atlas-topbar">
         <span className="section-label dark-label">Atlas del Cultivo Argentino</span>
         <nav className="atlas-breadcrumb" aria-label="Breadcrumb">
@@ -110,6 +122,12 @@ export default async function EntryPage({ params }) {
         )}
       </section>
 
+      <div className="entry-reading-bar">
+        <ReadingTools entryId={entry.id} />
+        {entry.lastReviewed && <p>Última revisión: <time dateTime={entry.lastReviewed}>{new Date(`${entry.lastReviewed}T12:00:00Z`).toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Argentina/Buenos_Aires' })}</time></p>}
+        <Link href={`/aportes?tipo=correccion&referencia=${encodeURIComponent(entryPath)}`}>Avisar sobre un error</Link>
+      </div>
+      {toc.length > 0 && <nav className="entry-toc" aria-label="Índice del artículo"><h2>En esta entrada</h2><ul>{toc.map(item => <li key={item.id}><a href={`#${item.id}`}>{item.title}</a></li>)}</ul></nav>}
       <section className="atlas-entry-content-wrap">
         <article className="atlas-entry-content">
           <div className="atlas-entry-content-body">
@@ -117,7 +135,7 @@ export default async function EntryPage({ params }) {
 
             {entry.sections?.length > 0 && entry.sections.map((section) => (
               <div className="atlas-entry-section" key={section.id}>
-                <h2>{section.title}</h2>
+                <h2 id={`section-${section.id}`}>{section.title}</h2>
                 {section.paragraphs?.map((paragraph, index) => (
                   <p key={index}>{renderTextWithReferences(paragraph, entry.id, `${section.id}-p${index}`)}</p>
                 ))}
@@ -156,7 +174,7 @@ export default async function EntryPage({ params }) {
 
             {entry.observations?.length > 0 && (
               <div className="atlas-entry-section">
-                <h2>Observaciones</h2>
+                <h2 id="observaciones">Observaciones</h2>
                 {entry.observations.map((paragraph, index) => (
                   <p key={index}>{renderTextWithReferences(paragraph, entry.id, `obs-p${index}`)}</p>
                 ))}
@@ -165,7 +183,7 @@ export default async function EntryPage({ params }) {
 
             {entry.signals?.length > 0 && (
               <div className="atlas-entry-section">
-                <h2>Señales</h2>
+                <h2 id="senales">Señales</h2>
                 <ul className="atlas-signal-list">
                   {entry.signals.map((signal, index) => (
                     <li className={`atlas-signal atlas-signal-${signal.level.toLowerCase()}`} key={index}>
@@ -179,7 +197,7 @@ export default async function EntryPage({ params }) {
 
             {entry.commonMistakes?.length > 0 && (
               <div className="atlas-entry-section">
-                <h2>Errores frecuentes</h2>
+                <h2 id="errores-frecuentes">Errores frecuentes</h2>
                 <ul className="atlas-mistake-list">
                   {entry.commonMistakes.map((mistake, index) => (
                     <li className="atlas-mistake" key={index}>
@@ -193,7 +211,7 @@ export default async function EntryPage({ params }) {
 
             {entry.environmentContext?.length > 0 && (
               <div className="atlas-entry-section">
-                <h2>Contexto ambiental</h2>
+                <h2 id="contexto-ambiental">Contexto ambiental</h2>
                 {entry.environmentContext.map((paragraph, index) => (
                   <p key={index}>{renderTextWithReferences(paragraph, entry.id, `env-p${index}`)}</p>
                 ))}
@@ -203,7 +221,7 @@ export default async function EntryPage({ params }) {
           </div>
 
           {entrySources.length > 0 && (
-            <div className="atlas-sources">
+            <div className="atlas-sources" id="fuentes">
               <span className="atlas-aside-label">Fuentes</span>
               {sourceGroups.map((group) => (
                 <div className="atlas-source-group" key={group.key}>

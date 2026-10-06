@@ -1,3 +1,4 @@
+import { publicMetadata } from '../../lib/site';
 import Link from 'next/link';
 import {
   communityCourses,
@@ -8,10 +9,7 @@ import CommunityEmptyState from '../../components/CommunityEmptyState';
 
 const MODALITY_LABELS = { PRESENCIAL: 'Presencial', VIRTUAL: 'Virtual', HIBRIDA: 'Híbrida' };
 
-export const metadata = {
-  title: 'Formación — Atlas del Cultivo Argentino',
-  description: 'Cursos online, talleres y capacitaciones documentadas, con su organizador, docente y modalidad.'
-};
+export const metadata = publicMetadata('/comunidad/formacion', 'Formación — Atlas del Cultivo Argentino', 'Cursos online, talleres y capacitaciones documentadas, con su organizador, docente y modalidad.');
 
 export default function FormacionPage() {
   return (

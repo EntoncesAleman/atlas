@@ -23,7 +23,8 @@ import { getServerSupabaseClient } from '../../lib/supabase/server';
 export async function GET(request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get('code');
-  const next = searchParams.get('next') ?? '/mi-cultivo';
+  const requested = searchParams.get('next') ?? '/mi-cultivo';
+  const next = requested.startsWith('/') && !requested.startsWith('//') && !requested.includes('\\') ? requested : '/mi-cultivo';
 
   if (code) {
     const supabase = await getServerSupabaseClient();

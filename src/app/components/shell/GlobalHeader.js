@@ -1,17 +1,11 @@
 'use client';
 
-// Capa 1 del shell nuevo (ver docs/CLUB_VISUAL_SYSTEM.md): representa al PRODUCTO completo, no a
-// una página puntual. Reemplaza el patrón anterior de cada página reimplementando su propia
-// franja superior ("ATLAS DEL CULTIVO ARGENTINO" + breadcrumb) — ahora es un único componente
-// compartido, montado en Home / índice del Atlas / Mi Cultivo (las tres superficies de esta fase
-// de rediseño; el resto del sitio conserva su encabezado anterior por ahora).
-//
-// Deliberadamente sin conocimiento de sesión real: Home y el índice del Atlas son Server
-// Components sin estado de auth propio. El único lugar con sesión real (Mi Cultivo) pasa
-// `accountLabel`/`onSignOut` para reflejarla — en el resto simplemente enlaza a "/mi-cultivo".
+// Shared public navigation. Session only changes the account link; reading stays public.
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { getSupabaseClient } from '../../lib/supabase/client';
 
 const NAV_LINKS = [
   { href: '/atlas', label: 'Explorar' },
@@ -19,10 +13,27 @@ const NAV_LINKS = [
   { href: '/noticias', label: 'Noticias' },
   { href: '/comunidad', label: 'Comunidad' },
   { href: '/chatbot', label: 'Buscador' },
+  { href: '/lecturas', label: 'Guardadas' },
 ];
 
 export default function GlobalHeader({ accountLabel, onSignOut }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [sessionLabel, setSessionLabel] = useState(null);
+  const pathname = usePathname();
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => {
+    const supabase = getSupabaseClient();
+    if (!supabase) return;
+    let active = true;
+    supabase.auth.getSession().then(({ data }) => {
+      if (active) setSessionLabel(data.session?.user.email ?? null);
+    }).catch(() => {});
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (active) setSessionLabel(session?.user.email ?? null);
+    });
+    return () => { active = false; data.subscription.unsubscribe(); };
+  }, []);
+  const label = accountLabel ?? sessionLabel;
 
   return (
     <header className="gh">
@@ -34,14 +45,14 @@ export default function GlobalHeader({ accountLabel, onSignOut }) {
 
         <nav className="gh-nav" aria-label="Navegación principal">
           {NAV_LINKS.map((item) => (
-            <Link key={item.href} href={item.href}>{item.label}</Link>
+            <Link key={item.href} href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>{item.label}</Link>
           ))}
         </nav>
 
         <div className="gh-actions">
-          {accountLabel ? (
+          {label ? (
             <div className="gh-account">
-              <span>{accountLabel}</span>
+              <Link href="/mi-cultivo" className="gh-club-link" title={label}>Mi Cultivo</Link>
               {onSignOut && <button type="button" onClick={onSignOut}>Salir</button>}
             </div>
           ) : (
@@ -51,7 +62,8 @@ export default function GlobalHeader({ accountLabel, onSignOut }) {
             type="button"
             className="gh-menu-toggle"
             aria-expanded={menuOpen}
-            aria-label="Abrir navegación"
+            aria-label={menuOpen ? 'Cerrar navegación' : 'Abrir navegación'}
+            aria-controls="global-mobile-nav"
             onClick={() => setMenuOpen((open) => !open)}
           >
             <span />
@@ -62,11 +74,11 @@ export default function GlobalHeader({ accountLabel, onSignOut }) {
       </div>
 
       {menuOpen && (
-        <nav className="gh-nav-mobile" aria-label="Navegación principal (móvil)">
+        <nav id="global-mobile-nav" className="gh-nav-mobile" aria-label="Navegación principal (móvil)" onKeyDown={(event) => { if (event.key === 'Escape') setMenuOpen(false); }}>
           {NAV_LINKS.map((item) => (
             <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</Link>
           ))}
-          {!accountLabel && <Link href="/mi-cultivo" onClick={() => setMenuOpen(false)}>Mi Cultivo</Link>}
+          <Link href="/mi-cultivo" onClick={() => setMenuOpen(false)}>Mi Cultivo</Link>
         </nav>
       )}
     </header>

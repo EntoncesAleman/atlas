@@ -1,9 +1,7 @@
+import { publicMetadata } from '../lib/site';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Sobre el proyecto — Atlas del Cultivo Argentino',
-  description: 'Por qué Argentina no es un lugar único para cultivar: un atlas editorial sobre cultivo, clima, geografía y condiciones regionales.'
-};
+export const metadata = publicMetadata('/sobre-el-proyecto', 'Sobre el proyecto — Atlas del Cultivo Argentino', 'Por qué Argentina no es un lugar único para cultivar: un atlas editorial sobre cultivo, clima, geografía y condiciones regionales.');
 
 export default function SobreElProyectoPage() {
   return (

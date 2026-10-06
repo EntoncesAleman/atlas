@@ -18,13 +18,14 @@ const STATIC_ROUTES = [
   '/comunidad/voces',
   '/creditos',
   '/sobre-el-proyecto',
-  '/chatbot'
+  '/chatbot',
+  '/aportes',
+  '/privacidad'
 ];
 
 export default function sitemap() {
   const staticEntries = STATIC_ROUTES.map((path) => ({
-    url: `${BASE_URL}${path}`,
-    lastModified: new Date()
+    url: `${BASE_URL}${path}`
   }));
 
   const categoryEntries = getCategories().map((category) => ({

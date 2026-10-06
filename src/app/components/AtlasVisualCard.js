@@ -10,7 +10,7 @@ export default function AtlasVisualCard({ category, index }) {
         <div className="atlas-card-media">
           <span className="atlas-card-scrim" />
           <img src={category.asset} alt={category.alt} className={imageClassName} />
-          <span className="atlas-card-number">0{index + 1}</span>
+          <span className="atlas-card-number">{String(index + 1).padStart(2, '0')}</span>
           <span className="atlas-card-region">{category.regionLabel}</span>
         </div>
       </Link>

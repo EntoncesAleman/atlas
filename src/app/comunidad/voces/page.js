@@ -1,11 +1,9 @@
+import { publicMetadata } from '../../lib/site';
 import Link from 'next/link';
 import { communityVoices } from '../../lib/community/communityData';
 import CommunityEmptyState from '../../components/CommunityEmptyState';
 
-export const metadata = {
-  title: 'Voces del territorio — Atlas del Cultivo Argentino',
-  description: 'Entrevistas con investigadores, clubes, profesionales, educadores y especialistas de distintas provincias.'
-};
+export const metadata = publicMetadata('/comunidad/voces', 'Voces del territorio — Atlas del Cultivo Argentino', 'Entrevistas con investigadores, clubes, profesionales, educadores y especialistas de distintas provincias.');
 
 export default function VocesPage() {
   return (

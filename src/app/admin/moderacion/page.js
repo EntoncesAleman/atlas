@@ -19,10 +19,7 @@ export default async function AdminModeracionPage() {
       <div className={styles.pageHeader}>
         <h1>Moderación</h1>
         <p>
-          Lo único que hoy genera una cola real de revisión en el sitio son las solicitudes de
-          cuenta de club (alguien se registra pidiendo el rol "Club" en Mi Cultivo). No hay todavía
-          comentarios, reseñas ni contenido enviado por usuarios que requiera moderación — cuando
-          exista ese tipo de contenido, su cola aparece acá mismo.
+          Revisá las solicitudes de cuenta de club. Los mensajes del sitio público se reciben en Aportes y correcciones.
         </p>
       </div>
 
