@@ -6283,3 +6283,94 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .editorial-visual-caption { font-size: 12px; }
 }
 .atlas-entry-card-media { background: var(--paper-soft); }
+
+/* Perfil provincial — Grafito, propuesta elegida por el usuario. */
+.province-profile-card {
+  --paper: #202a25;
+  --text: #eef3ed;
+  --text-soft: #bac9bc;
+  --text-muted: #a7b9a8;
+  --sage-dark: #eef3ed;
+  --sage-deep: #c4dfb1;
+  --sage: #94b39a;
+  --sage-light: #8aa58e;
+  --sage-glass: rgba(165, 194, 148, .06);
+  --line: rgba(185, 209, 177, .18);
+  --clay: #e0c38f;
+  --soil: #e0c38f;
+  color: var(--text);
+  background: linear-gradient(145deg, #344139, #18211d 72%);
+  border: 1px solid #56665a;
+  border-radius: 28px;
+  padding: 24px;
+  gap: 14px;
+  box-shadow: 0 18px 48px rgba(23, 39, 30, .18), inset 0 1px 0 rgba(218, 236, 213, .16);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+  color-scheme: dark;
+  min-width: 0;
+}
+.province-profile-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 4px 0 12px; }
+.province-profile-identity { min-width: 0; }
+.province-profile-identity h3 { font-family: inherit; font-size: clamp(25px, 2.2vw, 34px); font-weight: 650; letter-spacing: -.04em; line-height: 1.15; margin: 8px 0; }
+.province-profile-kicker { color: #b5c8b6; font-size: 9px; font-weight: 600; letter-spacing: .14em; }
+.province-profile-identity-meta { color: #b5c8b6; font-size: 12px; }
+.province-profile-header .province-profile-map { width: 84px; height: 100px; flex-shrink: 0; filter: drop-shadow(0 5px 12px rgba(187, 223, 181, .15)); }
+.province-profile-map-shape { stroke: #bed3bf; stroke-width: .6; }
+.province-profile-card > .province-profile-map { max-height: 180px; }
+.province-profile-block { padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); box-shadow: inset 0 1px 0 rgba(255,255,255,.04); min-width: 0; }
+.province-profile-block > summary { font-family: inherit; font-size: 14px; font-weight: 600; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.province-profile-block > summary::-webkit-details-marker { display: none; }
+.province-profile-block > summary::after { content: '+'; font-weight: 400; font-size: 20px; color: #b6c9aa; }
+.province-profile-block[open] > summary::after { content: '−'; }
+.province-profile-block-focus { border-color: #8bab7166; }
+.province-profile-block-focus > summary { color: #d5e9c5; }
+.province-profile-card :is(summary,a,button):focus-visible { outline: 2px solid #d2e8b9; outline-offset: 4px; border-radius: 4px; }
+.province-profile-card a { color: #c4dfb1; text-decoration-color: #8ca47b; }
+.province-profile-card .atlas-section-note { color: #b0c0ad; font-size: 12px; font-style: normal; line-height: 1.7; }
+.province-profile-geography-metrics { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 20px 0 14px; }
+.province-profile-geography-metrics span { display: block; color: #b0c2ae; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.province-profile-geography-metrics strong { display: block; font-weight: 600; font-size: 30px; letter-spacing: -.04em; margin-top: 5px; line-height: 1.25; }
+.province-profile-geography-metrics small { font-size: 11px; font-weight: 400; color: #b0c2ae; letter-spacing: 0; }
+.province-profile-datapoints { margin-top: 16px; gap: 10px; }
+.province-profile-datapoint-value { font-size: 16px; }
+.province-profile-datapoint-notes { font-size: 12px; line-height: 1.7; }
+.province-profile-light-today { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 22px 0 14px; }
+.province-profile-day-value { display: block; font-size: clamp(42px, 4vw, 60px); color: #dfefce; font-weight: 600; letter-spacing: -.055em; line-height: 1.2; margin: 6px 0; text-shadow: 0 0 35px rgba(181,219,134,.12); font-variant-numeric: tabular-nums; }
+.province-profile-day-value small { color: #b6c9a8; font-size: 22px; font-weight: 400; letter-spacing: 0; }
+.province-profile-sun { display: grid; place-items: center; width: 56px; height: 56px; flex-shrink: 0; font-size: 34px; color: #ecd29c; background: radial-gradient(circle at 35% 20%, #c3ac6240, #7b622a15); border: 1px solid #d0b87c50; border-radius: 18px; box-shadow: inset 0 1px 0 #e7cf9922, 0 0 25px #c1a56f15; }
+.province-profile-seasonal-light { margin-top: 18px; gap: 9px; }
+.province-profile-seasonal-light-item { flex-wrap: wrap; padding: 12px; border: 1px solid #a8bca325; border-radius: 11px; background: #ccdfc007; font-size: 11px; gap: 6px; }
+.province-profile-seasonal-light-label { flex: 1 1 110px; color: #b4c7ac; }
+.province-profile-seasonal-light-value { white-space: nowrap; color: #d0e4c4; font-variant-numeric: tabular-nums; }
+.province-profile-cultivation-block { margin-top: 18px; }
+.province-profile-cultivation-block h4 { text-transform: none; letter-spacing: 0; font-size: 12px; font-weight: 500; color: #d0ddcc; }
+.province-profile-phenology-card { margin-top: 14px; padding: 15px; border-radius: 13px; border-style: solid; background: linear-gradient(140deg,#98b97812,#9dba7e05); }
+.province-profile-phenology-card p { color: #bacdb1; font-size: 12px; line-height: 1.75; margin-bottom: 10px; }
+.province-profile-phenology-badge { font-size: 9px; letter-spacing: .08em; line-height: 1.6; font-weight: 600; margin-bottom: 10px; }
+.province-profile-badge-general { color: #c0d8b1; }
+.province-profile-evidence-direct { border: 2px solid #a8cc83; }
+.province-profile-evidence-historical { border-color: #c4a36a88; background: #cdb5730d; opacity: 1; }
+.province-profile-badge-historical { color: #e0c38f; }
+.province-profile-evidence-lastresort { background: rgba(255,255,255,.02); opacity: 1; }
+.province-profile-evidence-lastresort > summary { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 0; text-transform: none; letter-spacing: 0; font-size: 11px; color: #b0c3a5; }
+.province-profile-evidence-lastresort > summary::after { content: '+'; }
+.province-profile-evidence-lastresort[open] > summary { margin-bottom: 10px; }
+.province-profile-evidence-lastresort[open] > summary::after { content: '−'; }
+.province-profile-sources-list { font-size: 11px; gap: 12px; margin-top: 16px; overflow-wrap: anywhere; }
+.province-profile-card .atlas-province-status { margin: 0; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.025); gap: 9px; font-size: 11px; }
+.province-profile-card .atlas-province-status-label { color: #c5d8bb; }
+.province-profile-card .atlas-province-status-clear { color: #c0ceba; background: transparent; border-color: var(--line); font-family: inherit; }
+.province-profile-card .atlas-entry-section { margin: 0; padding: 0; background: transparent; border: 0; }
+.province-profile-card .atlas-entry-section h2 { font-family: inherit; font-size: 15px; color: #e0ebda; }
+.province-profile-card .atlas-entry-section p { color: #b8c8b1; font-size: 12px; line-height: 1.75; }
+.province-profile-card .atlas-province-context-name { color: #c4dfb1; }
+@media (max-width: 640px) {
+  .province-profile-card { padding: 16px; border-radius: 24px; }
+  .province-profile-block { padding: 16px; }
+  .province-profile-header .province-profile-map { width: 64px; height: 82px; }
+}
+@media (max-width: 360px) {
+  .province-profile-seasonal-light { grid-template-columns: 1fr; }
+}

@@ -264,31 +264,28 @@ export default function ProvinceProfileCard({ entryId }) {
 
   return (
     <div className="province-profile-card">
-      <div className="province-profile-identity">
-        <span className="province-profile-kicker">Ubicación</span>
-        <h3>{profile.identity.visibleName}</h3>
-        <p className="province-profile-identity-meta">
-          Capital: {profile.identity.capital}
-          {profile.geography.regionLabel ? ` · ${profile.geography.regionLabel}` : ''}
-        </p>
+      <div className="province-profile-header">
+        <div className="province-profile-identity">
+          <span className="province-profile-kicker">Perfil provincial</span>
+          <h3>{profile.identity.visibleName}</h3>
+          <p className="province-profile-identity-meta">
+            Capital: {profile.identity.capital}
+            {profile.geography.regionLabel ? ` · ${profile.geography.regionLabel}` : ''}
+          </p>
+        </div>
+
+        <ProfileMap provinceId={provinceId} label={profile.identity.visibleName} />
       </div>
-
       <ProvinceStatusBar />
-
-      <ProfileMap provinceId={provinceId} label={profile.identity.visibleName} />
 
       <details className={blockClass('geography')} open>
         <summary>Geografía</summary>
-        <p>
-          Latitud aproximada: {Math.abs(profile.geography.latitude).toFixed(1)}° sur (centroide
-          geométrico de la provincia — no tu ubicación exacta).
-        </p>
-        {altitude && (
-          <p>
-            Altitud de referencia: {altitude.value} {altitude.unit} ({altitude.methodology.includes('propia ciudad capital') ? 'estación de la capital' : 'estación más cercana a la capital'}).
-            <span className="atlas-section-note province-profile-altitude-note"> {altitude.limitation}</span>
-          </p>
-        )}
+        <div className="province-profile-geography-metrics">
+          <div><span>Latitud aproximada</span><strong>{Math.abs(profile.geography.latitude).toFixed(1)}° <small>sur</small></strong></div>
+          {altitude && <div><span>Altitud de referencia</span><strong>{altitude.value} <small>{altitude.unit}</small></strong></div>}
+        </div>
+        <p className="atlas-section-note">La latitud corresponde al centroide geométrico de la provincia, no a tu ubicación exacta.</p>
+        {altitude && <p className="atlas-section-note">{altitude.methodology.includes('propia ciudad capital') ? 'Estación de la capital.' : 'Estación más cercana a la capital.'} {altitude.limitation}</p>}
       </details>
 
       {environmentPoints.length > 0 && (
@@ -301,14 +298,19 @@ export default function ProvinceProfileCard({ entryId }) {
       {lightPoints.length > 0 && (
         <details className={blockClass('light')} open>
           <summary>Luz</summary>
+          {todayLight && (
+            <div className="province-profile-light-today">
+              <div>
+                <span className="province-profile-kicker">Día astronómico</span>
+                <strong className="province-profile-day-value">{todayLight.value} <small>{todayLight.unit}</small></strong>
+                <span className="province-profile-datapoint-period">{todayLight.period}</span>
+              </div>
+              <span className="province-profile-sun" aria-hidden="true">☀</span>
+            </div>
+          )}
           <p className="atlas-section-note">
             {todayLight?.limitation ?? 'Cálculo astronómico a partir de la latitud — no una medición ni un pronóstico.'}
           </p>
-          {todayLight && (
-            <div className="province-profile-light-today">
-              <DataPointList points={[todayLight]} />
-            </div>
-          )}
           {seasonalLight.length > 0 && (
             <ul className="province-profile-seasonal-light">
               {seasonalLight.map((point) => (
