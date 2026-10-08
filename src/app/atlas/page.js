@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { publicMetadata } from '../lib/site';
 import Link from 'next/link';
-import CategoryShowcase from '../components/CategoryShowcase';
+import AtlasEditorialRail from '../components/AtlasEditorialRail';
 import PartnersStrip from '../components/PartnersStrip';
 import ProvinceStatusBar from '../components/ProvinceStatusBar';
 import EnvironmentalPanel from '../components/EnvironmentalPanel';
@@ -21,24 +21,21 @@ export default function AtlasIndexPage() {
     <div className="club-shell">
       <ContextHeader kicker="Índice editorial" title="El Atlas" />
 
-      <main className="club-atlas-index club-enter">
+      <main className="club-atlas-index club-enter atlas-index-columns">
         <p className="club-atlas-lede">
           Una navegación editorial para recorrer el cultivo como sistema geográfico, ambiental y
           cultural.
         </p>
         <ProvinceStatusBar />
-        <TerritorialContext />
-        <RegionalIntro readings={readings} />
-        <form action="/chatbot" className="atlas-public-search"><label htmlFor="atlas-query">Buscar en el Atlas</label><div><input id="atlas-query" name="q" type="search" placeholder="Tema, palabra o pregunta" required /><button type="submit" className="club-button">Buscar</button></div></form>
-
-        <section className="club-atlas-section">
-          <EnvironmentalPanel />
-        </section>
-
-        <ProvinceLandscapeGallery />
-        <section className="club-atlas-section">
-          <CategoryShowcase showHeading={false} />
-        </section>
+        <div className="atlas-index-layout">
+          <AtlasEditorialRail />
+          <div className="atlas-index-territory">
+            <TerritorialContext />
+            <RegionalIntro readings={readings} />
+            <section className="club-atlas-section"><EnvironmentalPanel /></section>
+            <ProvinceLandscapeGallery />
+          </div>
+        </div>
 
         <Suspense fallback={<p role="status">Cargando noticias…</p>}><NewsWidget /></Suspense>
 
