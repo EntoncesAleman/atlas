@@ -242,31 +242,66 @@
 @media(max-width:1099px) { .atlas-index-layout { grid-template-columns:1fr; gap:24px; } .atlas-editorial-rail { grid-column:1; grid-row:1; position:static; max-height:none; } .atlas-index-territory { grid-column:1; grid-row:2; } .atlas-editorial-rail-scroll { max-height:380px; } }
 @media(max-height:600px) and (min-width:1100px) { .atlas-editorial-rail { position:static; max-height:none; } .atlas-editorial-rail-scroll { max-height:380px; } }
 
-/* Espacio personal y espacio del club: al entrar con sesión, el menú lateral deja de ser el del
-   Atlas público y pasa a ser el del perfil (ver `lib/workspace/navigation.js`). */
-.gh-profile-identity { display: none; }
-.field-atlas .gh-account button { color: #f0e9d9; border-color: #87917a; min-height: 40px; padding: 8px 14px; }
-.field-atlas .gh-account button:hover { color: #f0e9d9; border-color: #f0e9d9; }
-.field-atlas .gh-account button:disabled { opacity: .7; cursor: progress; }
+/* Cuenta en el menú lateral. Con sesión aparecen el perfil y "Tu espacio" en todo el sitio; dentro
+   de Mi Cultivo o del club, el menú completo pasa a ser el del perfil (`lib/workspace/navigation.js`). */
+.field-atlas .gh a.gh-club-link { background: #f0e9d9; color: #172c23; border: 1px solid #f0e9d9; font-weight: 700; }
+.field-atlas .gh a.gh-club-link:hover { background: #fff; }
+.gh-profile-avatar { flex: 0 0 auto; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #b3a184; color: #172c23; font: 400 24px/1 var(--club-font-display); }
+.gh-profile-identity, .gh-account-hint, .gh-nav-label { display: none; }
+.field-atlas .gh a.gh-space-chip { color: #f0e9d9; }
+.gh-space-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 4px 12px 4px 4px; border: 1px solid #87917a; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.gh-space-chip .gh-profile-avatar { width: 30px; height: 30px; font-size: 17px; }
+.field-atlas .gh-signout { border: 1px solid #87917a; background: transparent; color: #f0e9d9; font: 600 12px var(--club-font-sans); min-height: 40px; padding: 8px 14px; cursor: pointer; }
+.field-atlas .gh-signout:hover { color: #f0e9d9; border-color: #f0e9d9; }
+.field-atlas .gh-signout:disabled { opacity: .7; cursor: progress; }
+.field-atlas .gh-account > .gh-signout { display: none; }
 .field-atlas .gh [role='alert'] { margin: 0; font-size: 12px; color: #f3d6b8; }
-.field-atlas .gh-personal .gh-nav-mobile a[aria-current='page'] { color: #f0e9d9; border-left: 2px solid #b3a184; padding-left: 10px; }
+.field-atlas .gh-nav-mobile .gh-nav-label { display: block; padding: 14px 0 4px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #c4cbb6; }
+.field-atlas .gh-nav-mobile a[aria-current='page'] { color: #f0e9d9; border-left: 2px solid #b3a184; padding-left: 10px; }
+.field-atlas .gh-nav-mobile .gh-signout { margin-top: 14px; align-self: flex-start; }
 @media (min-width: 1100px) {
-  .field-atlas .gh-personal { background-image: linear-gradient(#172c23f2, #172c23d9), var(--field-banner-image); background-size: cover; background-position: center bottom; }
-  .field-atlas .gh-personal .gh-row { padding: 28px 22px; gap: 18px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #87917a transparent; }
-  .field-atlas .gh-personal .gh-brand-mark { font-size: 30px; letter-spacing: 2px; }
-  .field-atlas .gh-personal .gh-brand-sub { font-size: 10px; }
-  .field-atlas .gh-personal .gh-brand-motto { display: none; }
-  .field-atlas .gh-personal .gh-profile-identity { display: flex; align-items: center; gap: 12px; padding: 16px 0; border-top: 1px solid #f0e9d92e; border-bottom: 1px solid #f0e9d92e; min-width: 0; }
-  .gh-profile-avatar { flex: 0 0 auto; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #b3a184; color: #172c23; font: 400 24px/1 var(--club-font-display); }
-  .gh-profile-identity > div { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-  .gh-profile-identity strong { font: 400 19px/1.2 var(--club-font-display); overflow-wrap: anywhere; }
-  .gh-profile-identity span:not(.gh-profile-avatar) { font-size: 10px; letter-spacing: .8px; text-transform: uppercase; color: #c4cbb6; }
-  .field-atlas .gh-personal .gh-nav a { padding: 11px 10px; }
-  .field-atlas .gh-personal .gh-nav a[aria-current='page'] { text-decoration: none; }
-  .field-atlas .gh-personal .gh-sidebar-note { background: transparent; padding: 0; }
+  .field-atlas .gh-space-chip { display: none; }
+  .field-atlas .gh-account { flex-direction: column; align-items: stretch; width: 100%; gap: 8px; }
+  .field-atlas .gh-account > .gh-signout { display: block; width: 100%; }
+  .gh-account-hint { display: block; font-size: 11px; color: #f0e9d9; background: #172c23; padding: 6px 8px; }
+  .field-atlas .gh-signed { background-image: linear-gradient(#172c23f2, #172c23d9), var(--field-banner-image); background-size: cover; background-position: center bottom; }
+  .field-atlas .gh-signed .gh-row { padding: 28px 22px; gap: 16px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #87917a transparent; }
+  .field-atlas .gh-signed .gh-brand-mark { font-size: 30px; letter-spacing: 2px; }
+  .field-atlas .gh-signed .gh-brand-sub { font-size: 10px; }
+  .field-atlas .gh-signed .gh-brand-motto { display: none; }
+  .field-atlas .gh-signed .gh-profile-identity { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #f0e9d92e; border-bottom: 1px solid #f0e9d92e; min-width: 0; text-decoration: none; }
+  .gh-profile-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .gh-profile-text strong { font: 400 19px/1.2 var(--club-font-display); overflow-wrap: anywhere; }
+  .gh-profile-text span { font-size: 10px; letter-spacing: .8px; text-transform: uppercase; color: #c4cbb6; }
+  .field-atlas .gh-signed .gh-nav { flex: 0 0 auto; }
+  .field-atlas .gh-signed .gh-nav a { padding: 10px 10px; }
+  .field-atlas .gh-signed .gh-nav a[aria-current='page'] { text-decoration: none; }
+  .field-atlas .gh-signed .gh-nav-label { display: block; padding: 0 10px 6px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #c4cbb6; }
+  .field-atlas .gh-signed:not(.gh-personal) .gh-sidebar-note { display: none; }
+  .field-atlas .gh-signed .gh-actions { margin-top: auto; }
+  .field-atlas .gh-personal .gh-sidebar-note { background: transparent; padding: 0; margin-top: auto; }
   .field-atlas .gh-personal .gh-sidebar-note p { font-size: 15px; margin: 6px 0 10px; }
   .field-atlas .gh-personal .gh-sidebar-note a { font-size: 12px; color: #f0e9d9; }
-  .field-atlas .gh-personal .gh-account, .field-atlas .gh-personal .gh-account button { width: 100%; }
+  .field-atlas .gh-personal .gh-actions { margin-top: 0; }
+}
+
+/* Portada: el índice del Atlas en una columna propia a la derecha, con scroll interno. */
+.field-atlas .club-home.home-with-rail { max-width: 1640px; }
+.home-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 28px; align-items: start; }
+.home-main { grid-column: 1; grid-row: 1; min-width: 0; }
+.home-layout .atlas-editorial-rail { margin-top: 28px; }
+.home-welcome { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; border: 1px solid var(--line); background: #f6f1e6; padding: 20px 24px; margin-top: 20px; }
+.home-welcome h2 { font: 400 clamp(24px, 2.4vw, 32px)/1.15 var(--club-font-display); margin: 10px 0 0; color: #172c23; }
+.home-welcome nav { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; }
+.home-welcome nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; color: #172c23; }
+.home-welcome nav a.club-button { color: #f0e9d9; padding: 0 20px; text-decoration: none; }
+@media (min-width: 1100px) and (max-width: 1599px) {
+  .home-main .field-explore { grid-template-columns: 1fr; }
+  .home-main .province-landscape-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 1099px) {
+  .home-layout { grid-template-columns: 1fr; gap: 0; }
+  .home-main { grid-row: 2; }
 }
 
 .field-atlas .personal-workspace .club-mi-cultivo-main { max-width: 860px; margin: 0 auto; width: 100%; padding: 22px 32px 56px; }

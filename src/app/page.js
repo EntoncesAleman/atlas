@@ -9,6 +9,8 @@ import TerritorialContext from './components/TerritorialContext';
 import ProvinceLandscapeGallery from './components/ProvinceLandscapeGallery';
 import CultivoPreview from './components/CultivoPreview';
 import SavedReadings from './components/SavedReadings';
+import AtlasEditorialRail from './components/AtlasEditorialRail';
+import HomeWelcome from './components/HomeWelcome';
 import { getEntries, getCategoryById } from './lib/editorial/registry';
 import { publicMetadata } from './lib/site';
 
@@ -19,8 +21,12 @@ export default function HomePage() {
   return (
     <div className="club-shell">
 
-      <main className="club-home club-enter">
+      <main className="club-home club-enter home-with-rail">
         <RegionalBanner home />
+        <HomeWelcome />
+        <div className="home-layout">
+        <AtlasEditorialRail />
+        <div className="home-main">
         <div className="field-section-title"><span>01 / El territorio</span><span>Argentina · Un recorrido federal</span></div>
         <section className="field-explore" aria-label="Explorar el territorio">
           <div className="field-map-panel"><h2>Tu lugar en el mapa</h2><p>Cada provincia, una forma de cultivar.</p><GeoSelector /></div>
@@ -46,6 +52,8 @@ export default function HomePage() {
         <Suspense fallback={<p role="status">Cargando noticias…</p>}><NewsWidget /></Suspense>
         <SavedReadings entries={entries} compact />
         <CultivoPreview />
+        </div>
+        </div>
       </main>
 
     </div>
