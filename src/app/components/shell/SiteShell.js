@@ -10,7 +10,7 @@ export default function SiteShell({ children }) {
   const pathname = usePathname();
   const { provinceId } = useAtlasLocation();
   const region = getRegionalIdentity(provinceId);
-  const privatePanel = /^\/(admin|club)(\/|$)/.test(pathname ?? '');
+  const privatePanel = /^\/admin(\/|$)/.test(pathname ?? '');
   return <div className={privatePanel ? undefined : 'field-atlas'} style={!privatePanel && region ? { '--field-banner-image': `url("${region.banner}")` } : undefined}>
     <a href="#site-content" className="skip-link">Ir al contenido</a>
     {!privatePanel && <GlobalHeader />}

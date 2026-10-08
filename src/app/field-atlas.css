@@ -241,3 +241,55 @@
 .atlas-editorial-rail-scroll:focus-visible { outline:3px solid #a96b35; outline-offset:-3px; }
 @media(max-width:1099px) { .atlas-index-layout { grid-template-columns:1fr; gap:24px; } .atlas-editorial-rail { grid-column:1; grid-row:1; position:static; max-height:none; } .atlas-index-territory { grid-column:1; grid-row:2; } .atlas-editorial-rail-scroll { max-height:380px; } }
 @media(max-height:600px) and (min-width:1100px) { .atlas-editorial-rail { position:static; max-height:none; } .atlas-editorial-rail-scroll { max-height:380px; } }
+
+/* Espacio personal y espacio del club: al entrar con sesión, el menú lateral deja de ser el del
+   Atlas público y pasa a ser el del perfil (ver `lib/workspace/navigation.js`). */
+.gh-profile-identity { display: none; }
+.field-atlas .gh-account button { color: #f0e9d9; border-color: #87917a; min-height: 40px; padding: 8px 14px; }
+.field-atlas .gh-account button:hover { color: #f0e9d9; border-color: #f0e9d9; }
+.field-atlas .gh-account button:disabled { opacity: .7; cursor: progress; }
+.field-atlas .gh [role='alert'] { margin: 0; font-size: 12px; color: #f3d6b8; }
+.field-atlas .gh-personal .gh-nav-mobile a[aria-current='page'] { color: #f0e9d9; border-left: 2px solid #b3a184; padding-left: 10px; }
+@media (min-width: 1100px) {
+  .field-atlas .gh-personal { background-image: linear-gradient(#172c23f2, #172c23d9), var(--field-banner-image); background-size: cover; background-position: center bottom; }
+  .field-atlas .gh-personal .gh-row { padding: 28px 22px; gap: 18px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #87917a transparent; }
+  .field-atlas .gh-personal .gh-brand-mark { font-size: 30px; letter-spacing: 2px; }
+  .field-atlas .gh-personal .gh-brand-sub { font-size: 10px; }
+  .field-atlas .gh-personal .gh-brand-motto { display: none; }
+  .field-atlas .gh-personal .gh-profile-identity { display: flex; align-items: center; gap: 12px; padding: 16px 0; border-top: 1px solid #f0e9d92e; border-bottom: 1px solid #f0e9d92e; min-width: 0; }
+  .gh-profile-avatar { flex: 0 0 auto; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #b3a184; color: #172c23; font: 400 24px/1 var(--club-font-display); }
+  .gh-profile-identity > div { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .gh-profile-identity strong { font: 400 19px/1.2 var(--club-font-display); overflow-wrap: anywhere; }
+  .gh-profile-identity span:not(.gh-profile-avatar) { font-size: 10px; letter-spacing: .8px; text-transform: uppercase; color: #c4cbb6; }
+  .field-atlas .gh-personal .gh-nav a { padding: 11px 10px; }
+  .field-atlas .gh-personal .gh-nav a[aria-current='page'] { text-decoration: none; }
+  .field-atlas .gh-personal .gh-sidebar-note { background: transparent; padding: 0; }
+  .field-atlas .gh-personal .gh-sidebar-note p { font-size: 15px; margin: 6px 0 10px; }
+  .field-atlas .gh-personal .gh-sidebar-note a { font-size: 12px; color: #f0e9d9; }
+  .field-atlas .gh-personal .gh-account, .field-atlas .gh-personal .gh-account button { width: 100%; }
+}
+
+.field-atlas .personal-workspace .club-mi-cultivo-main { max-width: 860px; margin: 0 auto; width: 100%; padding: 22px 32px 56px; }
+.personal-privacy-tag { display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #435f40; border: 1px solid #87917a; padding: 4px 8px; }
+.personal-journal-intro { border: 1px solid var(--line); background: #f6f1e6; padding: 24px 26px; }
+.personal-journal-intro h2 { font: 400 clamp(30px, 3vw, 40px)/1.1 var(--club-font-display); margin: 14px 0 8px; color: #172c23; }
+.personal-journal-intro p { margin: 0; font-size: 14px; line-height: 1.7; color: #52604e; max-width: 60ch; }
+.field-atlas .personal-workspace .personal-journal-intro + .atlas-entry-section { margin-top: 0; border: 1px solid var(--line); background: #f6f1e6; padding: 22px 26px 26px; }
+.field-atlas .personal-workspace .mi-cultivo-switcher-section { max-width: 860px; margin: 0 auto; width: 100%; padding: 22px 32px 0; border: 0; }
+.field-atlas .personal-network-section, .field-atlas .personal-profile-card { margin-top: 0; border: 1px solid var(--line); background: #f6f1e6; padding: 24px 26px; }
+.personal-network-section h2, .personal-profile-card h2 { margin-top: 14px; }
+.personal-network-section > a, .personal-network-links a { color: #172c23; font-size: 13px; }
+.personal-network-links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 18px; }
+.personal-network-links a, .personal-network-section > a { display: inline-flex; align-items: center; min-height: 44px; }
+.personal-empty-state { border: 1px dashed #b3a184; padding: 22px; margin-top: 16px; background: #f0e9d9; }
+.personal-empty-state h3 { font: 400 22px/1.2 var(--club-font-display); margin: 0 0 8px; color: #172c23; }
+.personal-empty-state p { margin: 0; font-size: 13px; line-height: 1.7; }
+.personal-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px 24px; margin: 16px 0 0; }
+.personal-facts dt { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #52604e; }
+.personal-facts dd { margin: 4px 0 0; font: 400 20px/1.3 var(--club-font-display); color: #172c23; overflow-wrap: anywhere; }
+.personal-profile-card p { margin: 4px 0; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .field-atlas .personal-workspace .club-mi-cultivo-main { padding: 18px 16px 40px; }
+  .field-atlas .personal-workspace .mi-cultivo-switcher-section { padding: 18px 16px 0; }
+  .personal-journal-intro, .field-atlas .personal-workspace .personal-journal-intro + .atlas-entry-section, .field-atlas .personal-network-section, .field-atlas .personal-profile-card { padding: 20px 18px; }
+}

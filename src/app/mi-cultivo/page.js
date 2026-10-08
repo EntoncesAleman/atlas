@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { PERSONAL_LINKS, WORKSPACE_EVENT, readWorkspaceSection } from '../lib/workspace/navigation';
+import { communityClubs } from '../lib/community/communityData';
 import { STAGES, createCultivo, createEvent, createNote, updateEvent, stageIndex, stageLabel } from '../lib/miCultivo/model';
 import { loadCultivo, saveCultivo, resetCultivo } from '../lib/miCultivo/storage';
 import { getSupabaseClient } from '../lib/supabase/client';
@@ -58,11 +60,8 @@ import AccountControls from '../components/AccountControls';
 import ContextHeader from '../components/shell/ContextHeader';
 import NewsChip from '../components/shell/NewsChip';
 import {
-  IconOverview,
   IconPlant,
   IconJournal,
-  IconEnvironment,
-  IconSettings,
   IconThermometer,
   IconDroplet,
   IconWind,
@@ -71,7 +70,6 @@ import {
   IconLogout,
   IconPlus,
   IconCamera,
-  IconBook,
 } from '../components/icons/DashboardIcons';
 
 function formatDate(isoDate) {
@@ -242,7 +240,7 @@ export default function MiCultivoPage() {
   const [weatherResult, setWeatherResult] = useState(null);
 
   // --- Panel del dashboard (pestañas de navegación, ver referencia visual en documentacion/) ---
-  const [activeTab, setActiveTab] = useState('overview'); // overview | plantas | bitacora | ambiente | ajustes
+  const [activeTab, setActiveTab] = useState('bitacora'); // entrada personal: la bitácora
   const eventFormSectionRef = useRef(null);
   const [quickQuestion, setQuickQuestion] = useState('');
 
@@ -387,6 +385,22 @@ export default function MiCultivoPage() {
     }
   }, []);
 
+  // Links del menú personal, acceso directo y navegación atrás/adelante.
+  useEffect(() => {
+    const update = () => setActiveTab(readWorkspaceSection(PERSONAL_LINKS, 'bitacora'));
+    update();
+    window.addEventListener(WORKSPACE_EVENT, update);
+    window.addEventListener('popstate', update);
+    return () => { window.removeEventListener(WORKSPACE_EVENT, update); window.removeEventListener('popstate', update); };
+  }, []);
+  useEffect(() => {
+    if (!session) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set('seccion', activeTab);
+    window.history.replaceState({}, '', url.pathname + url.search);
+    window.dispatchEvent(new Event(WORKSPACE_EVENT));
+  }, [activeTab, session]);
+
   // Sesión de Supabase.
   useEffect(() => {
     if (!supabase) {
@@ -466,6 +480,7 @@ export default function MiCultivoPage() {
       setMigrationChecked(false);
       setPendingMigration(null);
       resetForm();
+      setActiveTab('bitacora');
       loadLocalIntoState();
       setPhotosByEvent({});
       setPhotoErrorByEvent({});
@@ -1162,38 +1177,12 @@ export default function MiCultivoPage() {
     await supabase.auth.signOut();
   }
 
-  const tabDefs = [
-    { id: 'overview', label: 'Vista general', Icon: IconOverview },
-    { id: 'plantas', label: 'Mis plantas', Icon: IconPlant },
-    { id: 'bitacora', label: 'Diario y bitácora', Icon: IconJournal },
-    { id: 'lecturas', label: 'Contenido y lecturas', Icon: IconBook },
-    { id: 'ambiente', label: 'Ambiente', Icon: IconEnvironment },
-    { id: 'ajustes', label: 'Ajustes', Icon: IconSettings },
-  ];
-
   return (
-    <div className="club-shell">
+    <div className={`club-shell${isAccountMode ? ' personal-workspace' : ''}`}>
 
       <ContextHeader
-        kicker="Tu espacio dentro del Atlas"
-        title="Mi Cultivo"
-        tabs={privatePanelReady && (
-          <ul className="club-tabs">
-            {tabDefs.map(({ id, label, Icon }) => (
-              <li key={id}>
-                <button
-                  type="button"
-                  className={`club-tab ${activeTab === id ? 'club-tab-active' : ''}`}
-                  onClick={() => setActiveTab(id)}
-                  aria-current={activeTab === id ? 'page' : undefined}
-                >
-                  <Icon width={15} height={15} />
-                  {label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+        kicker={isAccountMode ? "Tu espacio personal · registro privado" : "Tu espacio dentro del Atlas"}
+        title={privatePanelReady ? (PERSONAL_LINKS.find(item => item.section === activeTab)?.label ?? "Mi Cultivo") : "Mi Cultivo"}
       >
         {privatePanelReady && <>
         <button type="button" className="club-widget-chip-button" onClick={() => setActiveTab('ambiente')}>
@@ -1250,6 +1239,8 @@ export default function MiCultivoPage() {
         </section>
       )}
 
+      {/* Con el panel listo, la cuenta y el cierre de sesión viven en el menú lateral y en Perfil. */}
+      {!privatePanelReady && (
       <section className="atlas-section mi-cultivo-mode-section">
         {authLoading ? (
           <p className="atlas-section-note">Comprobando sesión…</p>
@@ -1379,6 +1370,7 @@ export default function MiCultivoPage() {
           </div>
         )}
       </section>
+      )}
 
       {privatePanelReady && cultivoId && (
         <section className="atlas-section mi-cultivo-switcher-section">
@@ -1746,6 +1738,64 @@ export default function MiCultivoPage() {
 
             {activeTab === 'bitacora' && (
               <>
+                <section className="personal-journal-intro"><span className="personal-privacy-tag">Solo vos · privado</span><h2>¿Qué observaste hoy?</h2><p>Una nota, una fecha, una foto. Tu bitácora empieza con lo que querés recordar.</p></section>
+                <div className="atlas-entry-section" ref={eventFormSectionRef}>
+                  <h2>{editingEventId ? 'Editar evento' : 'Registrar un evento'}</h2>
+                  <form className="mi-cultivo-event-form" onSubmit={handleSubmit}>
+                    <label className="mi-cultivo-field">
+                      <span>Etapa</span>
+                      <select value={formStageId} onChange={(event) => setFormStageId(event.target.value)}>
+                        {STAGES.map((stage) => (
+                          <option key={stage.id} value={stage.id}>{stage.label}</option>
+                        ))}
+                      </select>
+                    </label>
+
+                    <label className="mi-cultivo-field">
+                      <span>Fecha</span>
+                      <input
+                        type="date"
+                        value={formDate}
+                        onChange={(event) => setFormDate(event.target.value)}
+                        required
+                      />
+                    </label>
+
+                    <label className="mi-cultivo-field mi-cultivo-field-wide">
+                      <span>Nota</span>
+                      <textarea
+                        value={formNote}
+                        onChange={(event) => setFormNote(event.target.value)}
+                        placeholder="Qué observaste en esta etapa..."
+                        rows={2}
+                      />
+                    </label>
+
+                    <div className="mi-cultivo-field mi-cultivo-field-wide">
+                      <span>Foto</span>
+                      {isAccountMode ? (
+                        <p className="atlas-section-note">Podés agregar una foto después de guardar el evento, desde la lista de eventos de abajo.</p>
+                      ) : (
+                        <button type="button" className="photo-placeholder-button" disabled aria-disabled="true">
+                          <span aria-hidden="true">+</span>
+                          Agregar foto (próximamente)
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="mi-cultivo-form-actions">
+                      <button type="submit" className="primary-button mi-cultivo-submit" disabled={remoteBusy}>
+                        {editingEventId ? 'Guardar cambios' : 'Registrar evento'}
+                      </button>
+                      {editingEventId && (
+                        <button type="button" className="secondary-button" onClick={resetForm}>
+                          Cancelar edición
+                        </button>
+                      )}
+                    </div>
+                  </form>
+                </div>
+
                 <div className="atlas-entry-section">
                   <h2>Estado actual</h2>
                   <p className="mi-cultivo-current-stage">Etapa actual: <strong>{STAGES[currentIndex].label}</strong></p>
@@ -1834,63 +1884,6 @@ export default function MiCultivoPage() {
                       ))}
                     </ul>
                   )}
-                </div>
-
-                <div className="atlas-entry-section" ref={eventFormSectionRef}>
-                  <h2>{editingEventId ? 'Editar evento' : 'Registrar un evento'}</h2>
-                  <form className="mi-cultivo-event-form" onSubmit={handleSubmit}>
-                    <label className="mi-cultivo-field">
-                      <span>Etapa</span>
-                      <select value={formStageId} onChange={(event) => setFormStageId(event.target.value)}>
-                        {STAGES.map((stage) => (
-                          <option key={stage.id} value={stage.id}>{stage.label}</option>
-                        ))}
-                      </select>
-                    </label>
-
-                    <label className="mi-cultivo-field">
-                      <span>Fecha</span>
-                      <input
-                        type="date"
-                        value={formDate}
-                        onChange={(event) => setFormDate(event.target.value)}
-                        required
-                      />
-                    </label>
-
-                    <label className="mi-cultivo-field mi-cultivo-field-wide">
-                      <span>Nota</span>
-                      <textarea
-                        value={formNote}
-                        onChange={(event) => setFormNote(event.target.value)}
-                        placeholder="Qué observaste en esta etapa..."
-                        rows={2}
-                      />
-                    </label>
-
-                    <div className="mi-cultivo-field mi-cultivo-field-wide">
-                      <span>Foto</span>
-                      {isAccountMode ? (
-                        <p className="atlas-section-note">Podés agregar una foto después de guardar el evento, desde la lista de eventos de abajo.</p>
-                      ) : (
-                        <button type="button" className="photo-placeholder-button" disabled aria-disabled="true">
-                          <span aria-hidden="true">+</span>
-                          Agregar foto (próximamente)
-                        </button>
-                      )}
-                    </div>
-
-                    <div className="mi-cultivo-form-actions">
-                      <button type="submit" className="primary-button mi-cultivo-submit" disabled={remoteBusy}>
-                        {editingEventId ? 'Guardar cambios' : 'Registrar evento'}
-                      </button>
-                      {editingEventId && (
-                        <button type="button" className="secondary-button" onClick={resetForm}>
-                          Cancelar edición
-                        </button>
-                      )}
-                    </div>
-                  </form>
                 </div>
 
                 {events.length > 0 && (
@@ -2183,8 +2176,19 @@ export default function MiCultivoPage() {
               </div>
             )}
 
+            {activeTab === 'clubes' && (
+              <section className="atlas-entry-section personal-network-section"><span className="personal-privacy-tag">Comunidad</span><h2>Clubes y territorio</h2><p>Un lugar para encontrar organizaciones y conocer sus actividades.</p>
+                {communityClubs.length === 0 ? <div className="personal-empty-state"><h3>El directorio está empezando</h3><p>Todavía no hay clubes documentados para mostrar acá.</p></div> : communityClubs.map(club => <article key={club.id}><h3>{club.name}</h3><p>{club.description}</p></article>)}
+                <div className="personal-network-links"><Link href="/comunidad/clubes">Explorar el directorio ↗</Link><Link href="/comunidad/agenda">Ver agenda del territorio ↗</Link></div>
+              </section>
+            )}
+            {activeTab === 'amigos' && (
+              <section className="atlas-entry-section personal-network-section"><span className="personal-privacy-tag">Tu círculo</span><h2>Amigos</h2><div className="personal-empty-state"><h3>Un espacio para conectar</h3><p>Agregar amigos todavía no está disponible. Tu bitácora sigue siendo privada.</p></div><Link href="/comunidad">Conocer la comunidad del Atlas ↗</Link></section>
+            )}
+
             {activeTab === 'ajustes' && (
               <>
+                <section className="atlas-entry-section personal-profile-card"><span className="personal-privacy-tag">Perfil privado</span><h2>{session?.user.user_metadata?.full_name || session?.user.user_metadata?.name || 'Tu perfil'}</h2><p>{session?.user.email}</p><p className="atlas-section-note">Tus plantas y registros no se publican en Comunidad.</p></section>
                 <AccountControls hasAccount={isAccountMode} localData={{ id: cultivoId, currentStageId, provinceId, seasonName, plantCount, variety, events, notes, createdAt }} />
                 {isAccountMode && cultivoId && (
                   <div className="atlas-entry-section">
