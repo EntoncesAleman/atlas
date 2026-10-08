@@ -1,27 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import useAtlasLocation from '../lib/hooks/useAtlasLocation';
 import { getEntryProvinceContext } from '../lib/editorial/provinceContext';
 
-// Misma clave que ya escribe `GeoSelector.js` y ya lee `EnvironmentalPanel.js` — no se crea
-// ningún estado ni ninguna clave de `localStorage` nueva (Fase 47.2, ver
-// `MASTER_PACKAGE/47_2_PROVINCIAL_CONTEXT.md`).
-const PROVINCE_STORAGE_KEY = 'atlas:selectedProvince';
-
 export default function ProvinceContextPanel({ entryId }) {
-  // `null` = todavía no se hidrató desde localStorage (evita mostrar un estado que después
-  // "salta" al montar); `''` = hidratado, sin provincia elegida.
-  const [provinceId, setProvinceId] = useState(null);
-
-  useEffect(() => {
-    try {
-      setProvinceId(window.localStorage.getItem(PROVINCE_STORAGE_KEY) || '');
-    } catch {
-      setProvinceId('');
-    }
-  }, []);
-
-  if (provinceId === null) return null;
+  const { provinceId, hydrated } = useAtlasLocation();
+  if (!hydrated) return null;
 
   if (!provinceId) {
     return (

@@ -4,6 +4,9 @@ import { Suspense } from 'react';
 import EnvironmentalPanel from './components/EnvironmentalPanel';
 import NewsWidget from './components/NewsWidget';
 import GeoSelector from './components/GeoSelector';
+import RegionalBanner from './components/RegionalBanner';
+import TerritorialContext from './components/TerritorialContext';
+import ProvinceLandscapeGallery from './components/ProvinceLandscapeGallery';
 import CultivoPreview from './components/CultivoPreview';
 import SavedReadings from './components/SavedReadings';
 import { getEntries, getCategoryById } from './lib/editorial/registry';
@@ -17,21 +20,16 @@ export default function HomePage() {
     <div className="club-shell">
 
       <main className="club-home club-enter">
-        <section className="field-banner">
-          <span className="club-eyebrow">Atlas del Cultivo Argentino</span>
-          <h1>Cultivar es conocer<br />el territorio.</h1>
-          <p>Geografía, clima y saberes para acompañar lo que crece.</p>
-          <a className="field-banner-link" href="#elegir-provincia">Explorá tu región <span aria-hidden="true">↗</span></a>
-        </section>
+        <RegionalBanner home />
         <div className="field-section-title"><span>01 / El territorio</span><span>Argentina · Un recorrido federal</span></div>
         <section className="field-explore" aria-label="Explorar el territorio">
           <div className="field-map-panel"><h2>Tu lugar en el mapa</h2><p>Cada provincia, una forma de cultivar.</p><GeoSelector /></div>
           <div className="field-context">
-            <Link href="/atlas/luz-y-clima" className="field-photo-card"><Image src="/atlas/field/patagonia-llao-llao.webp" alt="Bosques y lagos de la península Llao Llao, Río Negro" width={1400} height={467} sizes="(max-width: 767px) 90vw, 40vw" /><div><span className="club-eyebrow">Ambiente y cultivo</span><h2>Leer el paisaje</h2><p>Luz, estaciones y condiciones que cambian de un territorio a otro.</p><span>Explorar luz y clima ↗</span></div></Link>
-            <p className="field-photo-credit">Llao Llao, Río Negro · Foto: <a href="https://commons.wikimedia.org/wiki/File:Llao_Llao_Peninsula_Panorama.jpg">Fernando</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · Encuadre adaptado.</p>
+            <TerritorialContext />
             <EnvironmentalPanel />
           </div>
         </section>
+        <ProvinceLandscapeGallery />
         <section className="home-start" aria-labelledby="home-start-title">
           <span className="club-eyebrow">Primer recorrido</span><h2 id="home-start-title">Empezá por acá</h2>
           <div className="home-start-grid">

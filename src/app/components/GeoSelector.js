@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { selectAtlasLocation } from '../lib/hooks/useAtlasLocation';
+import { REGIONAL_IDENTITIES } from '../lib/geo/regionalIdentity';
 import { getProvinceGeoContext } from '../lib/geo/provinceContext';
 import {
   ARGENTINA_PROVINCES,
@@ -113,57 +116,32 @@ export default function GeoSelector() {
   // Hidrata la elección previa (si existe) al entrar — la selección deja de
   // ser efímera: "mostrando siempre un selector para cambiarla" (02_UX.md).
   useEffect(() => {
-    const stored = readStoredLocation();
-    if (provinceData.some(item => item.id === stored.province)) {
-      setProvince(stored.province);
-      setProvinceQuery(provinceData.find(item => item.id === stored.province).name);
+    function sync(event) {
+      const saved = event?.detail;
+      const stored = saved ? { province: saved.provinceId, zone: saved.zone } : readStoredLocation();
+      const valid = provinceData.find(item => item.id === stored.province);
+      setProvince(valid?.id || '');
+      setProvinceQuery(valid?.name || '');
+      setZone(valid && (zoneExamples[valid.id] || []).includes(stored.zone) ? stored.zone : '');
     }
-    if (stored.zone) setZone(stored.zone);
+    sync();
+    window.addEventListener('atlas:location-change', sync);
+    window.addEventListener('storage', sync);
+    return () => {
+      window.removeEventListener('atlas:location-change', sync);
+      window.removeEventListener('storage', sync);
+    };
   }, []);
 
-  const selectProvince = (id) => {
+  const selectProvince = id => {
     setProvince(id);
     setProvinceQuery(provinceData.find(item => item.id === id)?.name || '');
     setZone('');
-    try {
-      if (id) localStorage.setItem(PROVINCE_STORAGE_KEY, id);
-      else localStorage.removeItem(PROVINCE_STORAGE_KEY);
-      localStorage.removeItem(ZONE_STORAGE_KEY);
-      window.dispatchEvent(new Event('atlas:location-change'));
-    } catch {}
+    selectAtlasLocation(id);
   };
 
-  function persistLocation() {
-    if (typeof window === 'undefined') return;
-    try {
-      if (province) window.localStorage.setItem(PROVINCE_STORAGE_KEY, province);
-      else window.localStorage.removeItem(PROVINCE_STORAGE_KEY);
-      if (zone) window.localStorage.setItem(ZONE_STORAGE_KEY, zone);
-      else window.localStorage.removeItem(ZONE_STORAGE_KEY);
-    } catch {
-      // localStorage no disponible (modo privado, cuota, etc.) — la
-      // exploración del Atlas no debe depender de que esto funcione.
-    }
-  }
-
-  // Quitar provincia desde la Home: a diferencia de `ProvinceStatusBar` (que recarga la página
-  // porque vive en rutas ya montadas con datos derivados de la provincia), acá no hace falta
-  // recargar nada — el mapa y el resumen ya son estado de React, así que limpiarlo alcanza para
-  // que la Home vuelva a mostrarse sin selección, sin salir de la página.
-  function clearLocation() {
-    if (typeof window !== 'undefined') {
-      try {
-        window.localStorage.removeItem(PROVINCE_STORAGE_KEY);
-        window.localStorage.removeItem(ZONE_STORAGE_KEY);
-      } catch {
-        // localStorage no disponible — nada que limpiar.
-      }
-    }
-    window.dispatchEvent(new Event('atlas:location-change'));
-    setProvince('');
-    setProvinceQuery('');
-    setZone('');
-  }
+  function persistLocation() { selectAtlasLocation(province, zone); }
+  function clearLocation() { selectProvince(''); }
 
   const provinceKeyHandler = (id) => (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -205,6 +183,7 @@ export default function GeoSelector() {
                     key={item.id}
                     className={className}
                     d={item.d}
+                    data-region={getProvinceGeoContext(item.id)?.region}
                     tabIndex={0}
                     role="button"
                     aria-label={item.name}
@@ -263,7 +242,10 @@ export default function GeoSelector() {
             )}
           </svg>
         </div>
+        <figure className="geo-botanical"><Image src="/atlas/field/botanical-specimens.webp" alt="Grabado de una planta de cannabis en crecimiento, un helecho y una gramínea" width={480} height={720} sizes="(max-width: 767px) 120px, 190px" /><figcaption>Estudio botánico<br />Ilustración artística</figcaption></figure>
+        <span className="geo-map-compass" aria-hidden="true">N<br />↑</span>
       </div>
+      <div className="geo-region-legend" aria-label="Familias geográficas del mapa">{Object.entries(REGIONAL_IDENTITIES).map(([id, region]) => <span key={id}><i style={{background:region.color}} aria-hidden="true" />{region.shortName}</span>)}</div>
 
       <div className="geo-form">
         {province && <p className="field-province-context" role="status">{selectedProvince} · {getProvinceGeoContext(province)?.regionLabel}. Explorá su contexto ambiental y las lecturas regionales en el Atlas.</p>}
@@ -299,7 +281,7 @@ export default function GeoSelector() {
             </div>
             <div className="zone-options">
               {zoneOptions.map((item) => (
-                <button className="zone-option" type="button" key={item} aria-pressed={zone === item} onClick={() => setZone(item)}>{item}</button>
+                <button className="zone-option" type="button" key={item} aria-pressed={zone === item} onClick={() => { setZone(item); selectAtlasLocation(province, item); }}>{item}</button>
               ))}
             </div>
           </div>

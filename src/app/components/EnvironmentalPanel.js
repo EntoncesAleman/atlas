@@ -9,11 +9,9 @@
 // duplicada, mismo proxy server-side (`/api/climate`), misma clave de contexto geográfico
 // (`atlas:selectedProvince`) que ya escriben `GeoSelector`/`ProvinceStatusBar`.
 //
-// Sincronización de provincia: se lee una sola vez al montar, igual que
-// `ProvinceStatusBar`/`ProvinceContextPanel` — ese mismo componente ya resuelve un cambio de
-// provincia con un `window.location.reload()` explícito (ver su comentario: "sin depender de un
-// mecanismo de sincronización entre componentes nuevo"), así que este panel no necesita — ni
-// debe — inventar uno propio.
+// La selección se sincroniza al montar y cuando cambia en la página o en otra pestaña.
+// El evento compartido también permite explorar cuando localStorage no está disponible.
+// La zona sigue siendo contexto editorial y no modifica el punto del pronóstico.
 //
 // Principio "informa, no interpreta": este componente solo presenta valores meteorológicos reales
 // con su unidad y etiqueta. No arma ninguna frase de recomendación de cultivo — eso es contenido
@@ -66,10 +64,14 @@ export default function EnvironmentalPanel() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    const sync = () => setProvinceId(readStoredProvince());
+    const sync = event => setProvinceId(event?.detail?.provinceId ?? readStoredProvince());
     sync();
     window.addEventListener('atlas:location-change', sync);
-    return () => window.removeEventListener('atlas:location-change', sync);
+    window.addEventListener('storage', sync);
+    return () => {
+      window.removeEventListener('atlas:location-change', sync);
+      window.removeEventListener('storage', sync);
+    };
   }, []);
 
   useEffect(() => {

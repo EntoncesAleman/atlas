@@ -9,6 +9,8 @@ import NewsWidget from '../components/NewsWidget';
 import RegionalIntro from '../components/RegionalIntro';
 import { getEntries, getCategoryById } from '../lib/editorial/registry';
 import ContextHeader from '../components/shell/ContextHeader';
+import TerritorialContext from '../components/TerritorialContext';
+import ProvinceLandscapeGallery from '../components/ProvinceLandscapeGallery';
 
 export const metadata = publicMetadata('/atlas', 'El Atlas — Atlas del Cultivo Argentino', 'Índice editorial del Atlas: una navegación por categorías para recorrer el cultivo como sistema geográfico, ambiental y cultural.');
 
@@ -25,6 +27,7 @@ export default function AtlasIndexPage() {
           cultural.
         </p>
         <ProvinceStatusBar />
+        <TerritorialContext />
         <RegionalIntro readings={readings} />
         <form action="/chatbot" className="atlas-public-search"><label htmlFor="atlas-query">Buscar en el Atlas</label><div><input id="atlas-query" name="q" type="search" placeholder="Tema, palabra o pregunta" required /><button type="submit" className="club-button">Buscar</button></div></form>
 
@@ -32,6 +35,7 @@ export default function AtlasIndexPage() {
           <EnvironmentalPanel />
         </section>
 
+        <ProvinceLandscapeGallery />
         <section className="club-atlas-section">
           <CategoryShowcase showHeading={false} />
         </section>

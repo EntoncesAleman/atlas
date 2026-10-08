@@ -1,3 +1,5 @@
+import RegionalBanner from '../RegionalBanner';
+
 // Capa 2 del shell nuevo: representa DÓNDE está la persona (a diferencia de GlobalHeader, que
 // representa al producto). `children` es la franja de widgets/contexto persistente — pensado
 // para Clima/Noticias/Alertas en Mi Cultivo, pero cualquier página puede pasar lo que le
@@ -6,7 +8,7 @@
 
 export default function ContextHeader({ kicker, title, tabs, children }) {
   return (
-    <div className="ch">
+    <RegionalBanner>
       <div className="ch-row">
         <div className="ch-title-block">
           {kicker && <span className="ch-kicker">{kicker}</span>}
@@ -15,6 +17,6 @@ export default function ContextHeader({ kicker, title, tabs, children }) {
         {children && <div className="ch-widgets">{children}</div>}
       </div>
       {tabs && <div className="ch-tabs-row">{tabs}</div>}
-    </div>
+    </RegionalBanner>
   );
 }

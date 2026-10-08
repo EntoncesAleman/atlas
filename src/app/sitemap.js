@@ -11,6 +11,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://atlas-one-zeta-43.
 const STATIC_ROUTES = [
   '',
   '/atlas',
+  '/atlas/regiones',
   '/comunidad',
   '/comunidad/clubes',
   '/comunidad/agenda',

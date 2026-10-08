@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import useAtlasLocation from '../lib/hooks/useAtlasLocation';
 import {
   getProvinceProfile,
   getArgentinaProfile,
@@ -11,10 +11,6 @@ import { ARGENTINA_PROVINCES, ARGENTINA_MAP_VIEWBOX } from '../lib/geo/argentina
 import { sourceById } from '../lib/editorial/sources';
 import ProvinceContextPanel from './ProvinceContextPanel';
 import ProvinceStatusBar from './ProvinceStatusBar';
-
-// Misma clave que ya usan `GeoSelector`/`ProvinceContextPanel` desde la Fase 47.1/47.2 — no se
-// crea ningún estado ni clave de `localStorage` nueva (regla explícita del Loop 3C).
-const PROVINCE_STORAGE_KEY = 'atlas:selectedProvince';
 
 function available(points) {
   return (points ?? []).filter((point) => point.availability === 'AVAILABLE');
@@ -184,18 +180,8 @@ function SourcesBlock({ sourceIds }) {
 }
 
 export default function ProvinceProfileCard({ entryId }) {
-  // `null` = todavía no se hidrató desde localStorage; `''` = hidratado, sin provincia elegida.
-  const [provinceId, setProvinceId] = useState(null);
-
-  useEffect(() => {
-    try {
-      setProvinceId(window.localStorage.getItem(PROVINCE_STORAGE_KEY) || '');
-    } catch {
-      setProvinceId('');
-    }
-  }, []);
-
-  if (provinceId === null) return null;
+  const { provinceId, hydrated } = useAtlasLocation();
+  if (!hydrated) return null;
 
   const focusBlocks = new Set(ENTRY_FOCUS[entryId] ?? []);
   const hiddenBlocks = new Set(entryId === 'marco-editorial' ? MARCO_EDITORIAL_HIDDEN_BLOCKS : []);
