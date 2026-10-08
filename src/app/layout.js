@@ -1,4 +1,5 @@
 import './globals.css';
+import './field-atlas.css';
 import SiteShell from './components/shell/SiteShell';
 import { SITE_URL } from './lib/site';
 

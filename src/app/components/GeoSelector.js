@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { getProvinceGeoContext } from '../lib/geo/provinceContext';
 import {
   ARGENTINA_PROVINCES,
   ARGENTINA_MAP_VIEWBOX,
@@ -124,6 +125,12 @@ export default function GeoSelector() {
     setProvince(id);
     setProvinceQuery(provinceData.find(item => item.id === id)?.name || '');
     setZone('');
+    try {
+      if (id) localStorage.setItem(PROVINCE_STORAGE_KEY, id);
+      else localStorage.removeItem(PROVINCE_STORAGE_KEY);
+      localStorage.removeItem(ZONE_STORAGE_KEY);
+      window.dispatchEvent(new Event('atlas:location-change'));
+    } catch {}
   };
 
   function persistLocation() {
@@ -152,6 +159,7 @@ export default function GeoSelector() {
         // localStorage no disponible — nada que limpiar.
       }
     }
+    window.dispatchEvent(new Event('atlas:location-change'));
     setProvince('');
     setProvinceQuery('');
     setZone('');
@@ -258,6 +266,8 @@ export default function GeoSelector() {
       </div>
 
       <div className="geo-form">
+        {province && <p className="field-province-context" role="status">{selectedProvince} · {getProvinceGeoContext(province)?.regionLabel}. Explorá su contexto ambiental y las lecturas regionales en el Atlas.</p>}
+        {provinceQuery && !province && <p role="status">No encontramos esa provincia. Elegí una de las opciones de la lista.</p>}
         <label className="geo-label" htmlFor="provinceSelect">
           <span className="geo-label-text">Provincia</span>
           <input
@@ -270,8 +280,8 @@ export default function GeoSelector() {
               setProvinceQuery(event.target.value);
               const match = provinceData.find((item) => item.name.toLowerCase() === event.target.value.toLowerCase());
               const nextProvince = match ? match.id : '';
-              setProvince(nextProvince);
-              setZone('');
+              selectProvince(nextProvince);
+              setProvinceQuery(event.target.value);
             }}
           />
           <datalist id="province-options">

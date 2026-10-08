@@ -66,7 +66,10 @@ export default function EnvironmentalPanel() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    setProvinceId(readStoredProvince());
+    const sync = () => setProvinceId(readStoredProvince());
+    sync();
+    window.addEventListener('atlas:location-change', sync);
+    return () => window.removeEventListener('atlas:location-change', sync);
   }, []);
 
   useEffect(() => {

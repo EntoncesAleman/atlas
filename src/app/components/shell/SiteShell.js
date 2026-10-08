@@ -7,10 +7,10 @@ import SiteFooter from './SiteFooter';
 export default function SiteShell({ children }) {
   const pathname = usePathname();
   const privatePanel = /^\/(admin|club)(\/|$)/.test(pathname ?? '');
-  return <>
+  return <div className={privatePanel ? undefined : 'field-atlas'}>
     <a href="#site-content" className="skip-link">Ir al contenido</a>
     {!privatePanel && <GlobalHeader />}
     <div id="site-content" tabIndex={-1}>{children}</div>
     {!privatePanel && <SiteFooter />}
-  </>;
+  </div>;
 }

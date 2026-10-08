@@ -40,7 +40,7 @@ export default function GlobalHeader({ accountLabel, onSignOut }) {
       <div className="gh-row">
         <Link href="/" className="gh-brand" onClick={() => setMenuOpen(false)}>
           <span className="gh-brand-mark">ATLAS</span>
-          <span className="gh-brand-sub">del cultivo argentino</span>
+          <span className="gh-brand-sub">del cultivo argentino</span><span className="gh-brand-motto">Cultivo · Territorio · Comunidad</span>
         </Link>
 
         <nav className="gh-nav" aria-label="Navegación principal">
@@ -49,7 +49,7 @@ export default function GlobalHeader({ accountLabel, onSignOut }) {
           ))}
         </nav>
 
-        <div className="gh-actions">
+        <div className="gh-sidebar-note"><span>Un atlas vivo</span><p>Conocer el territorio.<br />Observar lo que crece.</p></div><div className="gh-actions">
           {label ? (
             <div className="gh-account">
               <Link href="/mi-cultivo" className="gh-club-link" title={label}>Mi Cultivo</Link>

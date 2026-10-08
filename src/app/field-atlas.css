@@ -1,0 +1,84 @@
+/* Editorial field atlas: shared public shell, independent of private admin panels. */
+.field-atlas{--page-bg:#f0e9d9;--paper:#f6f1e6;--paper-soft:#ebe4d4;--text:#292c25;--text-soft:#52604e;--line:#cfc5af;--sage-dark:#172c23;--sage-deep:#314e3b;--clay:#79674b;--club-parchment:#f0e9d9;--club-surface:#f6f1e6;--club-ink:#292c25;--club-ink-soft:#52604e;--club-ink-muted:#636758;--club-line:#cfc5af;--club-signal:#314e3b;--club-signal-soft:#dce2d4;--club-font-display:"Libre Caslon Display",serif;min-height:100vh;color:var(--text);background:var(--page-bg);background-image:radial-gradient(#74694b0a .7px,transparent .7px);background-size:5px 5px}
+.field-atlas :focus-visible{outline:3px solid #79674b;outline-offset:4px}
+.field-atlas .gh{background:#172c23;color:#f0e9d9;border:0}
+.field-atlas .gh a{color:inherit}
+.field-atlas .gh-brand-mark{font-family:var(--club-font-display);font-size:56px;letter-spacing:3px;font-weight:400}
+.field-atlas .gh-brand-sub{font-size:12px;letter-spacing:1px}
+.gh-brand-motto{font-size:10px;letter-spacing:.7px;margin-top:20px;line-height:1.8}
+.gh-sidebar-note{display:none}
+.field-atlas .club-home{max-width:1240px;margin:auto;padding:32px 40px 48px}
+.field-banner{position:relative;background:#172c23 url('/atlas/field/forest-banner.webp') center 65%/cover;color:#f0e9d9;min-height:310px;padding:38px 44px;isolation:isolate}
+.field-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#172c23da,#172c2340);z-index:-1}
+.field-banner .club-eyebrow{color:#d1d5bf;letter-spacing:2px}
+.field-banner h1{font:400 clamp(40px,4.4vw,65px)/1.03 var(--club-font-display);margin:20px 0 16px;letter-spacing:-1px}
+.field-banner p{font-size:14px;max-width:380px;line-height:1.7}
+.field-banner-link{display:inline-flex;gap:42px;color:#f0e9d9;margin-top:14px;padding-bottom:8px;border-bottom:1px solid #b3a184;text-decoration:none;font-size:13px}
+.field-section-title{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--line);padding:18px 0;margin-top:28px;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.field-section-title h2{font:400 32px var(--club-font-display);margin:0;letter-spacing:0;text-transform:none}
+.field-section-title a{color:var(--text)}
+.field-explore{display:grid;grid-template-columns:1.05fr 1fr;gap:28px}
+.field-map-panel{border:1px solid var(--line);padding:24px;background:repeating-radial-gradient(ellipse at 0 40%,transparent 0 28px,#87917a12 29px 30px,transparent 31px 43px)}
+.field-map-panel>h2{font:400 34px var(--club-font-display);margin:0 0 8px}
+.field-map-panel>p{font-size:13px;color:var(--text-soft);margin:0 0 18px}
+.field-atlas .geo-picker{padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.field-atlas .geo-picker-lede{font-size:12px}
+.field-atlas .geo-map-wrap{background:transparent;border-radius:0;height:370px;margin:12px 0;padding:0;order:initial}
+.field-atlas .geo-map-wrap::before{background:none}
+.field-atlas .geo-map{width:100%;height:100%}
+.field-atlas .argentina-map{width:auto;height:100%;max-width:100%;margin:auto;filter:drop-shadow(4px 5px 0 #b3a18433)}
+.field-atlas .map-province{fill:#87917a;stroke:#f0e9d9;stroke-width:1.6}
+.field-atlas .map-province:nth-child(3n){fill:#9ba28a}
+.field-atlas .map-province:nth-child(4n){fill:#b3a184}
+.field-atlas .map-province.hovered{fill:#435f40}
+.field-atlas .map-province.selected{fill:#172c23;stroke:#292c25;stroke-width:2}
+.field-atlas .map-province:focus-visible{stroke:#172c23;stroke-width:4}
+.field-atlas .geo-input{background:#f6f1e6;border-radius:0}
+.field-atlas .geo-selection-summary{background:transparent}
+.field-atlas .primary-button,.field-atlas .club-button{background:#172c23;color:#f0e9d9;border-radius:2px}
+.field-atlas .club-button-outline{background:transparent;color:#172c23;border-color:#172c23}
+.field-context{display:flex;flex-direction:column;gap:22px;min-width:0}
+.field-photo-card{display:block;border:1px solid var(--line);color:var(--text);text-decoration:none;background:var(--paper)}
+.field-photo-card img{width:100%;height:220px;object-fit:cover;filter:saturate(.65)}
+.field-photo-card>div{padding:22px}
+.field-photo-card h2{font:400 34px var(--club-font-display);margin:10px 0}
+.field-photo-card p{font-size:13px;line-height:1.7;color:var(--text-soft)}
+.field-photo-card div>span:last-child{font-size:12px}
+.field-atlas .environmental-panel{border:1px solid var(--line);border-radius:0;box-shadow:none;background:var(--paper)}
+.field-atlas .home-start{margin:30px 0}
+.field-atlas .home-start-grid>a{border-radius:0;background:transparent;box-shadow:none;border:1px solid var(--line)}
+.field-reading-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.field-reading-card{color:var(--text);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:12px}
+.field-reading-card img{width:100%;height:170px;object-fit:cover;filter:saturate(.6);margin-bottom:16px}
+.field-reading-card h3{font:400 25px/1.2 var(--club-font-display);margin:10px 0;display:flex;justify-content:space-between;gap:10px}
+.field-atlas .home-preview{background:#172c23 url('/atlas/field/forest-banner.webp') center/cover;color:#f0e9d9;padding:30px;margin-top:36px}
+.field-atlas .home-preview p,.field-atlas .home-preview .club-eyebrow{color:#f0e9d9}
+.field-atlas .home-preview .club-button{color:#f0e9d9;border-color:#b3a184}
+.field-atlas .preview-journal{background:#f0e9d9;color:#292c25;border-radius:0}
+.field-atlas .preview-journal p{color:#292c25}
+.field-atlas .ch{background:#172c23 url('/atlas/field/forest-banner.webp') center/cover;color:#f0e9d9;border-bottom:1px solid #87917a}
+.field-atlas .ch-title,.field-atlas .ch-kicker{color:#f0e9d9}
+.field-atlas .club-footer{background:transparent;border-top:1px solid var(--line)}
+@media(min-width:1100px){.field-atlas{padding-left:220px}.field-atlas .gh{position:fixed;inset:0 auto 0 0;width:220px;height:100dvh;background:#172c23 url('/atlas/field/forest-banner.webp') 70% bottom/auto 320px no-repeat}.field-atlas .gh-row{height:100%;padding:40px 25px;display:flex;flex-direction:column;align-items:stretch;gap:36px}.field-atlas .gh-brand{display:flex;flex-direction:column;align-items:flex-start;gap:5px}.field-atlas .gh-nav{display:flex;flex-direction:column;align-items:stretch;gap:0;width:100%}.field-atlas .gh-nav a{padding:15px 10px;border-bottom:1px solid #f0e9d91c;font-size:13px}.field-atlas .gh-nav a[aria-current=page]{background:#f0e9d916;border-left:2px solid #b3a184}.gh-sidebar-note{display:block;margin-top:auto;font-size:11px;color:#c4cbb6}.gh-sidebar-note p{font:400 21px/1.4 var(--club-font-serif)}.field-atlas .gh-actions{margin:0}.field-atlas .gh-club-link{border:1px solid #87917a;padding:12px 20px;width:100%;text-align:center}.field-atlas .gh-menu-toggle{display:none}}
+@media(max-width:1099px){.field-atlas .gh-row{padding:12px 24px}.field-atlas .gh-brand-mark{font-size:32px}.gh-brand-motto{display:none}.field-atlas .gh-nav{display:none}.field-atlas .gh-menu-toggle{display:flex}.field-atlas .gh-menu-toggle span{background:#f0e9d9}.field-atlas .gh-nav-mobile{background:#172c23}.field-atlas .gh-club-link{color:#f0e9d9}.field-atlas .club-home{padding:24px}.field-banner{min-height:290px}}
+@media(max-width:767px){.field-atlas .club-home{padding:16px}.field-banner{padding:28px 24px;min-height:320px}.field-banner h1{font-size:44px}.field-explore{grid-template-columns:1fr;gap:20px}.field-section-title{font-size:9px;letter-spacing:.4px}.field-map-panel{padding:20px}.field-atlas .geo-map-wrap{height:350px}.field-reading-grid{grid-template-columns:1fr}.field-reading-card{display:grid;grid-template-columns:110px 1fr;gap:6px 16px}.field-reading-card img{grid-row:span 2;height:110px;margin:0}.field-reading-card .club-eyebrow{align-self:end}.field-reading-card h3{font-size:25px}.field-atlas .home-preview{padding:22px}.field-atlas .gh-row{padding:12px 16px}.field-atlas .gh-brand-sub{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.field-atlas *, .field-atlas *::before,.field-atlas *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.field-atlas .gh-brand-sub{display:block;color:#d4d8c6}
+.field-atlas .gh:focus-within a:focus-visible,.field-atlas .gh button:focus-visible{outline-color:#f0e9d9}
+.field-atlas .atlas-category-hero{background:#172c23 url('/atlas/field/forest-banner.webp') center/cover;color:#f0e9d9;padding:36px;border-radius:0}
+.field-atlas .atlas-category-hero h1,.field-atlas .atlas-category-hero p,.field-atlas .atlas-category-hero .section-label{color:#f0e9d9}
+.field-atlas .atlas-visual-card,.field-atlas .atlas-entry-section,.field-atlas .community-promo-card,.field-atlas .regional-intro{border-radius:0;box-shadow:none}
+.field-atlas .field-province-context{font-size:13px;line-height:1.6;border-left:2px solid #87917a;padding-left:12px}
+.field-atlas .club-shell{background:transparent}
+.field-photo-credit{margin:8px 0 0;font-size:10px;color:#52604e;line-height:1.5}
+.field-photo-credit a{color:inherit}
+.field-atlas .home-preview{background-image:linear-gradient(90deg,#172c23e8 0%,#172c2399 55%,#172c2322 100%),url('/atlas/field/forest-banner.webp')}
+.field-atlas .news-widget h2{font:400 34px/1.2 var(--club-font-display)}
+.field-atlas .news-row-title{font-family:var(--club-font-serif);font-weight:500}
+.field-atlas .home-start h2{font:400 34px var(--club-font-display)}
+.field-atlas .gh-sidebar-note{background:#172c23bb;padding:10px 0}
+@media(max-width:767px){.field-atlas .home-preview{background-image:linear-gradient(#172c23e8,#172c2399),url('/atlas/field/forest-banner.webp')}}
+@media(max-width:1099px){.field-atlas .gh-brand{flex-direction:column;align-items:flex-start;gap:0}.field-atlas .gh-row{justify-content:space-between;gap:12px}.field-atlas .gh-actions{margin-left:auto}}
+@media(max-width:600px){.field-atlas .geo-map-wrap{order:3}.field-atlas .gh-brand-sub{font-size:8px;letter-spacing:.8px}}
+.field-atlas .environmental-forecast ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:10px}
+.field-atlas .environmental-current{grid-template-columns:repeat(auto-fit,minmax(95px,1fr))}
