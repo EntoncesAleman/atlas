@@ -1,6 +1,6 @@
 # Variantes de usuarios, cultivo y clubes
 
-Prototipos: `/propuestas/dashboards.html`. HTML, CSS y JavaScript independientes; no alteran Mi Cultivo ni el panel de club. Todos los registros son ejemplos y viven únicamente en memoria durante la visita. Las fotografías son ilustrativas y reutilizan los recursos locales del Atlas.
+Galería accesible: `/propuestas`, con las seis capturas y enlaces individuales. Prototipos: `/propuestas/dashboards.html?variante=user-field` (cada variante tiene su identificador). El enlace local compartido inicialmente dependía de un servidor que dejó de estar activo; usar la ruta del sitio publicado para compartir. HTML, CSS y JavaScript independientes; no alteran Mi Cultivo ni el panel de club. Todos los registros son ejemplos y viven únicamente en memoria durante la visita. Las fotografías son ilustrativas y reutilizan los recursos locales del Atlas.
 
 ## Contexto comprobado
 

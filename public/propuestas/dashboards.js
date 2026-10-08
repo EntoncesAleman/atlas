@@ -7,7 +7,8 @@ const variants = {
  'club-editorial': { title:'Un club dentro del territorio', sub:'Ficha pública, actividades y contacto, con una revisión editorial antes de publicar.', space:'Club · Comunidad', type:'club', keep:'Aprobación de cuentas de club y directorio público. El equipo del Atlas sigue revisando lo que aparece en Comunidad.', remove:'Una pantalla que solo explica que hay que contactar al equipo. Evitar convertir el panel en una tienda o un padrón de datos sensibles.', change:'Primera etapa: autogestión de ficha y borradores de actividades. Estado visible: borrador, en revisión, publicado. Este circuito todavía debe implementarse.' },
  'club-team': { title:'El trabajo del equipo', sub:'Personas, responsabilidades y borradores compartidos dentro de una organización.', space:'Club · Equipo', type:'team', keep:'Separación entre información pública del club y registros privados. Moderación del Atlas para las publicaciones.', remove:'Una sola contraseña compartida y permisos implícitos por tener rol de club. No trasladar diarios personales al club automáticamente.', change:'Segunda etapa: organización con miembros y permisos de propietario, editor y lector. Necesita tablas de pertenencia y autorización por organización; el rol actual no alcanza.' }
 };
-let view='user-field', section='home', notes=[], toastTimer;
+const requestedView=new URLSearchParams(window.location.search).get('variante');
+let view=Object.hasOwn(variants,requestedView)?requestedView:'user-field', section='home', notes=[], toastTimer;
 const canvas=document.querySelector('#canvas');
 const escapeText=value=>value.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const action=(label='Registrar observación')=>`<button class="primary" data-action="record">＋ ${label}</button>`;
