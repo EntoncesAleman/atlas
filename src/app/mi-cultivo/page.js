@@ -277,6 +277,7 @@ export default function MiCultivoPage() {
 
   const currentIndex = stageIndex(currentStageId);
   const isAccountMode = Boolean(session);
+  const privatePanelReady = !authLoading && isAccountMode && migrationChecked && !pendingMigration && !remoteError;
   // En modo cuenta, `cultivoId` todavía puede ser el id local (no un UUID)
   // mientras se resuelve la carga/migración remota — elegir una provincia en
   // esa ventana escribiría contra un id que no existe en la cuenta y la
@@ -457,7 +458,7 @@ export default function MiCultivoPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAccountMode, supabase, session, migrationChecked, pendingMigration]);
 
-  // Al cerrar sesión: vuelve a mostrar el cultivo local.
+  // Al cerrar sesión: oculta el panel y restablece el estado local para una migración posterior.
   useEffect(() => {
     if (authLoading) return;
     const wasLoggedIn = Boolean(previousSessionRef.current);
@@ -1176,7 +1177,7 @@ export default function MiCultivoPage() {
       <ContextHeader
         kicker="Tu espacio dentro del Atlas"
         title="Mi Cultivo"
-        tabs={(
+        tabs={privatePanelReady && (
           <ul className="club-tabs">
             {tabDefs.map(({ id, label, Icon }) => (
               <li key={id}>
@@ -1194,6 +1195,7 @@ export default function MiCultivoPage() {
           </ul>
         )}
       >
+        {privatePanelReady && <>
         <button type="button" className="club-widget-chip-button" onClick={() => setActiveTab('ambiente')}>
           <span className="club-widget-chip">
             <IconThermometer className="club-widget-chip-icon" />
@@ -1219,10 +1221,11 @@ export default function MiCultivoPage() {
             </span>
           </span>
         </button>
+        </>}
       </ContextHeader>
 
       <main className="club-mi-cultivo club-enter">
-      {pendingMigration && (
+      {!authLoading && isAccountMode && pendingMigration && (
         <section className="atlas-section mi-cultivo-migration">
           <div className="mi-cultivo-migration-card">
             <h2>{pendingMigration.remote.events.length > 0 ? 'Tenés datos en dos lugares' : 'Tenés un cultivo guardado en este dispositivo'}</h2>
@@ -1360,7 +1363,7 @@ export default function MiCultivoPage() {
             <details className="mi-cultivo-auth-benefits">
               <summary className="mi-cultivo-auth-benefits-title">¿Qué gano al ingresar?</summary>
               <ul>
-                <li>Guardar Mi Cultivo en la nube, no solo en este navegador.</li>
+                <li>Guardar Mi Cultivo en tu cuenta.</li>
                 <li>Registrar etapas y eventos con fecha y notas, con historial completo.</li>
                 <li>Guardar fotos privadas de tu cultivo, asociadas a tu cuenta.</li>
                 <li>Mantener guardado el contexto de tu provincia entre visitas.</li>
@@ -1371,14 +1374,13 @@ export default function MiCultivoPage() {
             </details>
 
             <p className="mi-cultivo-guest-note">
-              ¿Preferís no crear una cuenta todavía? Podés seguir usando Mi Cultivo igual: se
-              guarda automáticamente en este navegador (sin sincronización entre dispositivos).
+              Iniciá sesión para acceder a tus plantas, temporadas y diario privado.
             </p>
           </div>
         )}
       </section>
 
-      {isAccountMode && cultivoId && (
+      {privatePanelReady && cultivoId && (
         <section className="atlas-section mi-cultivo-switcher-section">
           <label className="mi-cultivo-switcher">
             <span>Cultivo / temporada</span>
@@ -1406,7 +1408,11 @@ export default function MiCultivoPage() {
         </section>
       )}
 
-      <div className="dashboard-main club-mi-cultivo-main">
+      {!authLoading && isAccountMode && !privatePanelReady && !pendingMigration && !remoteError && (
+        <p className="atlas-section-note" role="status">Cargando tu cultivo…</p>
+      )}
+
+      {privatePanelReady && <div className="dashboard-main club-mi-cultivo-main">
 
             {activeTab === 'overview' && (
               <>
@@ -2326,10 +2332,10 @@ export default function MiCultivoPage() {
                 )}
               </>
             )}
-          </div>
+          </div>}
       </main>
 
-      <button
+      {privatePanelReady && <button
         type="button"
         className="dashboard-fab"
         aria-label="Registrar un evento"
@@ -2339,7 +2345,7 @@ export default function MiCultivoPage() {
         }}
       >
         <IconPlus width={22} height={22} />
-      </button>
+      </button>}
 
       <section className="club-mi-cultivo-cta">
         <p>¿Buscás algo puntual? El resto del Atlas está organizado por categoría de cultivo.</p>
