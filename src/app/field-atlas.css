@@ -325,3 +325,24 @@
   .field-atlas .personal-workspace .mi-cultivo-switcher-section { padding: 18px 16px 0; }
   .personal-journal-intro, .field-atlas .personal-workspace .personal-journal-intro + .atlas-entry-section, .field-atlas .personal-network-section, .field-atlas .personal-profile-card { padding: 20px 18px; }
 }
+
+/* Panel de club: propuestas de actividades y su estado de revisión. */
+.field-atlas .club-workspace .personal-network-section + .personal-network-section { margin-top: 0; }
+.club-event-form { margin-top: 18px; }
+.club-event-form-status { grid-column: 1 / -1; margin: 0; padding: 12px 14px; font-size: 13px; border-left: 3px solid #435f40; background: #dce2d4; color: #172c23; }
+.club-event-form-status.is-error { border-left-color: #8a3b24; background: #f1ddd3; color: #5c2414; }
+.club-submission-list { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 12px; }
+.club-submission { border: 1px solid var(--line); border-left: 3px solid #b3a184; background: #f0e9d9; padding: 16px 18px; }
+.club-submission-approved { border-left-color: #435f40; }
+.club-submission-rejected, .club-submission-withdrawn { border-left-color: #8a3b24; }
+.club-submission-status { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #52604e; }
+.club-submission h3 { font: 400 22px/1.2 var(--club-font-display); margin: 6px 0 4px; color: #172c23; overflow-wrap: anywhere; }
+.field-atlas .club-submission p { margin: 0; font-size: 13px; line-height: 1.6; }
+.field-atlas .club-submission .club-submission-note { margin-top: 8px; color: #27402f; font-style: italic; }
+.club-submission > a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; color: #172c23; }
+.club-submission-withdraw { margin-top: 6px; min-height: 44px; padding: 0; border: 0; background: transparent; color: #5c2414; font: 13px var(--club-font-sans); text-decoration: underline; cursor: pointer; }
+.field-atlas .personal-network-links a.club-button { color: #f0e9d9; padding: 0 20px; text-decoration: none; }
+.club-activity-counts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.club-activity-counts dd { font-size: 30px; }
+.club-event-form .mi-cultivo-field { min-width: 0; }
+.club-event-form .mi-cultivo-field input, .club-event-form .mi-cultivo-field select, .club-event-form .mi-cultivo-field textarea { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; }

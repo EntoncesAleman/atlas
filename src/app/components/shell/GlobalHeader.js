@@ -33,7 +33,8 @@ export default function GlobalHeader({ accountLabel, onSignOut }) {
   // del sitio, con sesión, el menú del Atlas se mantiene y suma un acceso corto a ese espacio.
   const personalSpace = signedIn && (clubSpace || pathname === '/mi-cultivo');
   const spaceLinks = personalSpace ? (clubSpace ? CLUB_LINKS : PERSONAL_LINKS) : QUICK_LINKS;
-  const isClub = profile?.role === 'club' || profile?.role === 'admin';
+  // El panel de club es solo para cuentas de club; una cuenta admin tiene su propio panel.
+  const isClub = profile?.role === 'club';
   const name = (clubSpace ? profile?.club_name : profile?.display_name) || user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email?.split('@')[0] || 'Mi perfil';
   const initial = name.trim().slice(0, 1).toUpperCase();
 

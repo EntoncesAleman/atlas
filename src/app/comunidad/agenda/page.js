@@ -7,6 +7,10 @@ import {
   getProvinceLabel,
 } from '../../lib/community/communityData';
 import CommunityEmptyState from '../../components/CommunityEmptyState';
+import { listApprovedClubEvents } from '../../lib/community/clubEvents';
+
+// Las actividades de clubes aprobadas se leen de la base; aprobar una también revalida esta página.
+export const revalidate = 300;
 
 function formatEventDate(event) {
   const start = new Date(`${event.date}T00:00:00`).toLocaleDateString('es-AR', {
@@ -25,7 +29,8 @@ function formatEventDate(event) {
 
 export const metadata = publicMetadata('/comunidad/agenda', 'Agenda — Atlas del Cultivo Argentino', 'Cursos, talleres, charlas, jornadas y encuentros organizados por provincia y fecha.');
 
-export default function AgendaPage() {
+export default async function AgendaPage() {
+  const events = [...communityEvents, ...(await listApprovedClubEvents())].sort((a, b) => b.date.localeCompare(a.date));
   return (
     <main className="atlas-page community-page">
       <section className="atlas-topbar">
@@ -52,14 +57,14 @@ export default function AgendaPage() {
       </section>
 
       <section className="atlas-section">
-        {communityEvents.length === 0 ? (
+        {events.length === 0 ? (
           <CommunityEmptyState
             title="Todavía no hay actividades documentadas"
             description="No se inventa ningún evento: esta agenda solo muestra actividad real, con su organizador, fecha y fuente verificable."
           />
         ) : (
           <div className="community-directory-grid">
-            {communityEvents.map((event) => (
+            {events.map((event) => (
               <article className="community-directory-card" key={event.id}>
                 <span className="community-card-status">{EVENT_STATUS_LABELS[event.status]}</span>
                 <h3>{event.title}</h3>
@@ -68,7 +73,7 @@ export default function AgendaPage() {
                   {event.locality ? ` · ${event.locality}, ${getProvinceLabel(event.provinceId)}` : ''}
                 </p>
                 <p>{event.description}</p>
-                <p className="community-card-meta">{event.organizer}</p>
+                <p className="community-card-meta">{event.fromClub ? `Organiza: ${event.organizer} · Publicado tras revisión del Atlas` : event.organizer}</p>
                 {event.url && (
                   <p className="community-card-link">
                     <a href={event.url} target="_blank" rel="noreferrer">
