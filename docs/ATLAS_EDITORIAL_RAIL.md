@@ -1,6 +1,6 @@
 # Biblioteca lateral del Atlas
 
-En `/atlas`, el índice de categorías y lecturas se muestra al comienzo, a la derecha del contexto territorial en escritorio (desde 1100 px). La columna permanece visible mientras se recorre la página y su lista tiene desplazamiento independiente. Cada lectura se muestra con su imagen y su título. El acceso a Mi Cultivo está fuera de la lista desplazable. El buscador no forma parte de la columna: sigue en `/atlas`, después de la introducción regional. La portada usa la misma columna.
+En `/atlas`, el índice de categorías y lecturas se muestra al comienzo, a la derecha del contexto territorial en escritorio (desde 1100 px). La columna permanece visible mientras se recorre la página y su lista tiene desplazamiento independiente. Cada categoría se muestra como una tarjeta con su imagen y su nombre; las lecturas se ven al entrar a la categoría. El acceso a Mi Cultivo está fuera de la lista desplazable. El buscador no forma parte de la columna: sigue en `/atlas`, después de la introducción regional. La portada usa la misma columna.
 
 `AtlasEditorialRail` obtiene las categorías y entradas publicadas del registro editorial existente; no mantiene otro catálogo. Todos los títulos enlazan a sus rutas reales. Los bloques de contexto, clima, fotografías, noticias y comunidad permanecen en la página.
 
