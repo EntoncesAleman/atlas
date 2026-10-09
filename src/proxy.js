@@ -71,7 +71,15 @@ export async function proxy(request) {
       .maybeSingle();
 
     const role = profile?.role ?? 'user';
-    if (ROLE_RANK[role] < ROLE_RANK[match.minRole]) {
+    let allowed = ROLE_RANK[role] >= ROLE_RANK[match.minRole];
+    // Al panel de club también entran los integrantes activos de un equipo (`club_members`); la
+    // policy de esa tabla solo deja leer las membresías propias. `club/layout.js` vuelve a
+    // comprobarlo con `requireClubAccess()`.
+    if (!allowed && match.prefix === '/club') {
+      const { data: memberships } = await supabase.from('club_members').select('id').eq('user_id', user.id).eq('status', 'active').limit(1);
+      allowed = Boolean(memberships?.length);
+    }
+    if (!allowed) {
       const url = request.nextUrl.clone();
       url.pathname = '/mi-cultivo';
       url.search = '?acceso=denegado';

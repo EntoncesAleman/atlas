@@ -342,7 +342,35 @@
 .club-submission > a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; color: #172c23; }
 .club-submission-withdraw { margin-top: 6px; min-height: 44px; padding: 0; border: 0; background: transparent; color: #5c2414; font: 13px var(--club-font-sans); text-decoration: underline; cursor: pointer; }
 .field-atlas .personal-network-links a.club-button { color: #f0e9d9; padding: 0 20px; text-decoration: none; }
-.club-activity-counts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .club-activity-counts dd { font-size: 30px; }
 .club-event-form .mi-cultivo-field { min-width: 0; }
 .club-event-form .mi-cultivo-field input, .club-event-form .mi-cultivo-field select, .club-event-form .mi-cultivo-field textarea { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; }
+
+/* Clubes: ficha editable, equipo, cuaderno colectivo y ficha pública. */
+.club-activity-counts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.club-specialties { border: 1px solid var(--line); padding: 12px 14px; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; min-width: 0; }
+.club-specialties legend { font-size: 12px; color: #52604e; padding: 0 6px; }
+.club-specialties label, .club-inline-check { display: flex; align-items: center; gap: 8px; min-height: 36px; font-size: 13px; color: #292c25; }
+.club-event-form .club-specialties input, .club-event-form .club-inline-check input { width: auto; }
+.club-ficha-photo { display: block; width: 100%; max-width: 320px; height: auto; border: 1px solid var(--line); }
+.field-atlas .club-submission .club-journal-note { margin-top: 6px; font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.club-member-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin-top: 8px; }
+.club-member-actions select { min-height: 40px; padding: 6px 10px; border: 1px solid var(--line); background: #f6f1e6; font: 13px var(--club-font-sans); color: #292c25; }
+.club-member-actions .club-button { min-height: 44px; padding: 0 20px; border: 0; cursor: pointer; font: 600 13px var(--club-font-sans); }
+.club-upcoming { list-style: none; padding: 0; margin: 6px 0 0; font-size: 13px; line-height: 1.8; }
+.club-directory-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 14px; }
+.club-directory-card h3 a { color: inherit; }
+.club-public-about { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 28px; align-items: start; }
+.club-public-about > img { width: 100%; height: auto; border: 1px solid var(--line); }
+.club-public-about > div:only-child { grid-column: 1 / -1; }
+.club-public-description { white-space: pre-wrap; font-size: 15px; line-height: 1.8; margin: 0 0 18px; max-width: 70ch; overflow-wrap: anywhere; }
+.club-follow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; min-height: 48px; margin: 20px 0 0; font-size: 13px; }
+.club-follow .club-button { min-height: 44px; padding: 0 22px; border: 1px solid #172c23; cursor: pointer; font: 600 13px var(--club-font-sans); display: inline-flex; align-items: center; text-decoration: none; }
+.club-public-news { border-top: 1px solid var(--line); padding: 16px 0; max-width: 70ch; }
+.club-public-news h3 { font: 400 24px/1.2 var(--club-font-display); margin: 6px 0; color: #172c23; }
+.club-public-news p { white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .club-activity-counts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .club-specialties, .club-public-about { grid-template-columns: 1fr; }
+}
+.club-submission h3 a { color: inherit; }

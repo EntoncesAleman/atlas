@@ -1,11 +1,16 @@
 import { publicMetadata } from '../../lib/site';
 import Link from 'next/link';
-import { communityClubs } from '../../lib/community/communityData';
+import { communityClubs, getProvinceLabel } from '../../lib/community/communityData';
+import { listPublicClubs } from '../../lib/club/data';
 import CommunityEmptyState from '../../components/CommunityEmptyState';
 
 export const metadata = publicMetadata('/comunidad/clubes', 'Clubes — Atlas del Cultivo Argentino', 'Clubes cannábicos de todo el país, como espacios educativos y territoriales con cursos, talleres y actividades propias de su provincia.');
 
-export default function ClubesPage() {
+// Las fichas aprobadas se leen de la base; aprobar una también revalida esta página.
+export const revalidate = 300;
+
+export default async function ClubesPage() {
+  const clubs = await listPublicClubs();
   return (
     <main className="atlas-page community-page">
       <section className="atlas-topbar">
@@ -32,13 +37,21 @@ export default function ClubesPage() {
       </section>
 
       <section className="atlas-section">
-        {communityClubs.length === 0 ? (
+        {clubs.length === 0 && communityClubs.length === 0 ? (
           <CommunityEmptyState
-            title="Todavía no hay clubes documentados"
-            description="Esta sección se administra editorialmente, con la misma disciplina de fuente y verificación que el resto del Atlas — no se publican perfiles sin confirmar directamente con cada organización."
+            title="Todavía no hay clubes publicados"
+            description="Cada ficha la completa el propio club desde su cuenta y se publica después de una revisión del equipo del Atlas."
           />
         ) : (
           <div className="community-directory-grid">
+            {clubs.map((club) => (
+              <article className="community-directory-card club-directory-card" key={club.id}>
+                {club.photoUrl && <img src={club.photoUrl} alt="" loading="lazy" />}
+                <span className="community-card-status">{[club.locality, getProvinceLabel(club.provinceId)].filter(Boolean).join(', ')}</span>
+                <h3><Link href={`/comunidad/clubes/${club.slug}`}>{club.name}</Link></h3>
+                <p>{club.description.length > 180 ? `${club.description.slice(0, 180)}…` : club.description}</p>
+              </article>
+            ))}
             {communityClubs.map((club) => (
               <article className="community-directory-card" key={club.id}>
                 <h3>{club.name}</h3>

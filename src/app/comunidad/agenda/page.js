@@ -7,7 +7,7 @@ import {
   getProvinceLabel,
 } from '../../lib/community/communityData';
 import CommunityEmptyState from '../../components/CommunityEmptyState';
-import { listApprovedClubEvents } from '../../lib/community/clubEvents';
+import { listApprovedClubEvents } from '../../lib/club/data';
 
 // Las actividades de clubes aprobadas se leen de la base; aprobar una también revalida esta página.
 export const revalidate = 300;
@@ -73,7 +73,7 @@ export default async function AgendaPage() {
                   {event.locality ? ` · ${event.locality}, ${getProvinceLabel(event.provinceId)}` : ''}
                 </p>
                 <p>{event.description}</p>
-                <p className="community-card-meta">{event.fromClub ? `Organiza: ${event.organizer} · Publicado tras revisión del Atlas` : event.organizer}</p>
+                <p className="community-card-meta">{event.fromClub ? <>Organiza: {event.clubSlug ? <Link href={`/comunidad/clubes/${event.clubSlug}`}>{event.organizer}</Link> : event.organizer} · Publicado tras revisión del Atlas</> : event.organizer}</p>
                 {event.url && (
                   <p className="community-card-link">
                     <a href={event.url} target="_blank" rel="noreferrer">

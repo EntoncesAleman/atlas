@@ -1,7 +1,7 @@
-// Igual que `/admin/layout.js`: `requireRole('club')` es la comprobación real del lado servidor
-// (una cuenta 'admin' también pasa, por rango — ver ROLE_RANK en lib/auth/roles.js). El
-// proxy ya corta el acceso antes de llegar acá; este layout es la segunda capa.
-import { requireRole } from '../lib/auth/roles';
+// `requireClubAccess()` es la comprobación real del lado servidor: entra la cuenta del club y los
+// integrantes activos de su equipo. El proxy ya corta el acceso antes de llegar acá; este layout
+// es la segunda capa.
+import { requireClubAccess } from '../lib/club/context';
 
 export const metadata = {
   title: 'Panel de club — Atlas del Cultivo Argentino',
@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export default async function ClubLayout({ children }) {
-  await requireRole('club');
+  await requireClubAccess();
 
   // El menú lateral del club lo arma GlobalHeader (ver `CLUB_LINKS`).
   return <main>{children}</main>;

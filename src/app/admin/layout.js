@@ -28,7 +28,7 @@ const NAV_SECTIONS = [
       { href: '/admin/usuarios', label: 'Usuarios' },
       { href: '/admin/clubes', label: 'Clubes' },
       { href: '/admin/moderacion', label: 'Moderación' },
-      { href: '/admin/eventos', label: 'Eventos de clubes' }
+      { href: '/admin/eventos', label: 'Contenido de clubes' }
     ]
   },
   {

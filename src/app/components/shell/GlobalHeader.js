@@ -22,6 +22,7 @@ export default function GlobalHeader({ accountLabel, onSignOut }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
+  const [isClubMember, setIsClubMember] = useState(false);
   const [sessionReady, setSessionReady] = useState(false);
   const [activeSection, setActiveSection] = useState('bitacora');
   const [signOutBusy, setSignOutBusy] = useState(false);
@@ -33,9 +34,10 @@ export default function GlobalHeader({ accountLabel, onSignOut }) {
   // del sitio, con sesión, el menú del Atlas se mantiene y suma un acceso corto a ese espacio.
   const personalSpace = signedIn && (clubSpace || pathname === '/mi-cultivo');
   const spaceLinks = personalSpace ? (clubSpace ? CLUB_LINKS : PERSONAL_LINKS) : QUICK_LINKS;
-  // El panel de club es solo para cuentas de club; una cuenta admin tiene su propio panel.
-  const isClub = profile?.role === 'club';
-  const name = (clubSpace ? profile?.club_name : profile?.display_name) || user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email?.split('@')[0] || 'Mi perfil';
+  // El panel de club es para la cuenta del club y para quienes integran su equipo; una cuenta
+  // admin tiene su propio panel.
+  const isClub = profile?.role === 'club' || isClubMember;
+  const name = (clubSpace && profile?.role === 'club' ? profile?.club_name : profile?.display_name) || user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email?.split('@')[0] || 'Mi perfil';
   const initial = name.trim().slice(0, 1).toUpperCase();
 
   useEffect(() => { setMenuOpen(false); }, [pathname]);
@@ -55,14 +57,21 @@ export default function GlobalHeader({ accountLabel, onSignOut }) {
       if (!active) return;
       setUser(session?.user ?? null);
       setProfile(null);
+      setIsClubMember(false);
       setSessionReady(true);
       if (!session?.user) return;
       const { data } = await supabase.from('profiles').select('display_name, role, club_name, club_status').eq('id', session.user.id).maybeSingle();
       if (active && version === requestVersion) setProfile(data ?? null);
+      // La policy de `club_members` solo deja leer las membresías propias.
+      const { data: memberships } = await supabase.from('club_members').select('id').eq('user_id', session.user.id).eq('status', 'active').limit(1);
+      if (active && version === requestVersion) setIsClubMember(Boolean(memberships?.length));
     };
     supabase.auth.getSession().then(({ data }) => updateUser(data.session)).catch(() => { if (active) setSessionReady(true); });
     const { data } = supabase.auth.onAuthStateChange((_event, session) => { setTimeout(() => { void updateUser(session).catch(() => {}); }, 0); });
-    return () => { active = false; data.subscription.unsubscribe(); };
+    // Aceptar una invitación a un equipo cambia lo que muestra el menú sin cambiar la sesión.
+    const refresh = () => { supabase.auth.getSession().then(({ data: current }) => updateUser(current.session)).catch(() => {}); };
+    window.addEventListener('atlas:club-access-changed', refresh);
+    return () => { active = false; data.subscription.unsubscribe(); window.removeEventListener('atlas:club-access-changed', refresh); };
   }, []);
 
   async function signOut() {

@@ -2,6 +2,7 @@ import { isSameOrigin } from '../../../lib/account/request';
 import { getServerSupabaseClient } from '../../../lib/supabase/server';
 import { getSupabaseAdminClient } from '../../../lib/supabase/admin';
 import { deleteAccount } from '../../../lib/account/data';
+import { removeClubMedia } from '../../../lib/club/data';
 export const maxDuration = 60;
 export async function DELETE(request) {
   if (!isSameOrigin(request)) return Response.json({ error: 'Solicitud inválida.' }, { status: 403 });
@@ -13,6 +14,7 @@ export async function DELETE(request) {
   const admin = getSupabaseAdminClient();
   if (!admin) return Response.json({ error: 'La eliminación de cuentas no está disponible ahora.' }, { status: 503 });
   try {
+    await removeClubMedia(admin, user.id);
     await deleteAccount(admin, user.id);
     await client.auth.signOut();
     return Response.json({ ok: true }, { headers: { 'Cache-Control': 'no-store' } });

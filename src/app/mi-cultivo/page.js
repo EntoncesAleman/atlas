@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { PERSONAL_LINKS, WORKSPACE_EVENT, readWorkspaceSection } from '../lib/workspace/navigation';
-import { communityClubs } from '../lib/community/communityData';
 import { STAGES, createCultivo, createEvent, createNote, updateEvent, stageIndex, stageLabel } from '../lib/miCultivo/model';
 import { loadCultivo, saveCultivo, resetCultivo } from '../lib/miCultivo/storage';
 import { getSupabaseClient } from '../lib/supabase/client';
@@ -57,6 +56,7 @@ import { PROVINCE_OPTIONS } from '../lib/weather/locations';
 import { fetchProvinceWeather } from '../lib/weather/service';
 import MiniCalendar from '../components/MiniCalendar';
 import AccountControls from '../components/AccountControls';
+import MyClubs from '../components/MyClubs';
 import ContextHeader from '../components/shell/ContextHeader';
 import NewsChip from '../components/shell/NewsChip';
 import {
@@ -2176,12 +2176,7 @@ export default function MiCultivoPage() {
               </div>
             )}
 
-            {activeTab === 'clubes' && (
-              <section className="atlas-entry-section personal-network-section"><span className="personal-privacy-tag">Comunidad</span><h2>Clubes y territorio</h2><p>Un lugar para encontrar organizaciones y conocer sus actividades.</p>
-                {communityClubs.length === 0 ? <div className="personal-empty-state"><h3>El directorio está empezando</h3><p>Todavía no hay clubes documentados para mostrar acá.</p></div> : communityClubs.map(club => <article key={club.id}><h3>{club.name}</h3><p>{club.description}</p></article>)}
-                <div className="personal-network-links"><Link href="/comunidad/clubes">Explorar el directorio ↗</Link><Link href="/comunidad/agenda">Ver agenda del territorio ↗</Link></div>
-              </section>
-            )}
+            {activeTab === 'clubes' && <MyClubs />}
             {activeTab === 'amigos' && (
               <section className="atlas-entry-section personal-network-section"><span className="personal-privacy-tag">Tu círculo</span><h2>Amigos</h2><div className="personal-empty-state"><h3>Un espacio para conectar</h3><p>Agregar amigos todavía no está disponible. Tu bitácora sigue siendo privada.</p></div><Link href="/comunidad">Conocer la comunidad del Atlas ↗</Link></section>
             )}
