@@ -222,10 +222,6 @@
 .atlas-editorial-rail-heading { padding:22px 22px 12px; border-bottom:1px solid #d8cdb7; }
 .atlas-editorial-rail-heading>span { font:10px var(--club-font-mono,monospace); letter-spacing:.13em; color:#46604b; }
 .atlas-editorial-rail-heading h2 { font-family:var(--club-font-display,Georgia,serif); font-weight:400; font-size:32px; line-height:1.1; margin:10px 0; }
-.atlas-editorial-rail-heading p { font-size:13px; margin:0 0 5px; }
-.atlas-editorial-rail .atlas-public-search { flex-shrink:0; padding:14px 22px; margin:0; }
-.atlas-editorial-rail .atlas-public-search input { min-width:0; width:100%; }
-.atlas-editorial-rail .atlas-public-search button { padding:10px 12px; }
 .atlas-editorial-rail-scroll { overflow-y:auto; min-height:0; padding:0 22px 12px; scrollbar-width:thin; scrollbar-color:#87917a #e7deca; }
 .atlas-editorial-rail-category { border-top:1px solid #d8cdb7; padding:16px 0; }
 .atlas-editorial-rail-category-heading { display:flex; align-items:baseline; gap:12px; }
@@ -233,9 +229,10 @@
 .atlas-editorial-rail-category h3 { margin:0; font-family:var(--club-font-display,Georgia,serif); font-weight:400; font-size:23px; }
 .atlas-editorial-rail-category h3 a { text-decoration:none; color:#172c23; }
 .atlas-editorial-rail-category h3 a span { font:15px sans-serif; }
-.atlas-editorial-rail-category ul { list-style:none; padding:0 0 0 28px; margin:10px 0 0; }
-.atlas-editorial-rail-category li+li { margin-top:9px; }
-.atlas-editorial-rail-category li a { display:block; font-size:13px; line-height:1.45; color:#344a38; text-decoration:none; padding:3px 0; }
+.atlas-editorial-rail-category ul { list-style:none; padding:0; margin:12px 0 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px 12px; }
+.atlas-editorial-rail-category li img { display:block; width:100%; aspect-ratio:4/3; background:#e7deca; border:1px solid #d8cdb7; }
+.atlas-editorial-rail-category li a { display:flex; flex-direction:column; gap:7px; font-size:12px; line-height:1.35; color:#27402f; text-decoration:none; }
+.atlas-editorial-rail-category li a:hover img, .atlas-editorial-rail-category li a:focus-visible img { border-color:#172c23; }
 .atlas-editorial-rail a:hover { text-decoration:underline; }
 .atlas-editorial-rail footer { border-top:1px solid #d8cdb7; padding:14px 22px; font-size:12px; flex-shrink:0; }
 .atlas-editorial-rail-scroll:focus-visible { outline:3px solid #a96b35; outline-offset:-3px; }

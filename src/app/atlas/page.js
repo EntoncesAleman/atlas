@@ -32,6 +32,7 @@ export default function AtlasIndexPage() {
           <div className="atlas-index-territory">
             <TerritorialContext />
             <RegionalIntro readings={readings} />
+            <form action="/chatbot" className="atlas-public-search"><label htmlFor="atlas-query">Buscar en el Atlas</label><div><input id="atlas-query" name="q" type="search" placeholder="Tema, palabra o pregunta" required /><button type="submit" className="club-button">Buscar</button></div></form>
             <section className="club-atlas-section"><EnvironmentalPanel /></section>
             <ProvinceLandscapeGallery />
           </div>
