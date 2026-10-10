@@ -370,3 +370,43 @@
   .club-specialties, .club-public-about { grid-template-columns: 1fr; }
 }
 .club-submission h3 a { color: inherit; }
+
+/* Home: one exploration surface on mobile, territory + editorial column on desktop. */
+.home-view-tabs, .home-context-toggle, .home-mobile-title { display:none; }
+.home-atlas-panel { grid-column:2; grid-row:1; position:sticky; top:24px; min-width:0; }
+.home-layout .home-atlas-panel .atlas-editorial-rail { position:static; margin-top:12px; max-height:calc(100dvh - 140px); }
+.home-explorer .field-explore { grid-template-columns:1fr; }
+.home-atlas-search { margin-top:28px; }
+.home-atlas-panel .atlas-editorial-rail footer a { color:#172c23; }
+.home-atlas-search label { display:block; font-size:12px; margin-bottom:8px; }
+.home-atlas-search>div { display:flex; gap:6px; }
+.home-atlas-search input { min-width:0; flex:1; width:100%; border:1px solid var(--line); border-radius:0; background:#f7f2e7; padding:10px; font:inherit; font-size:13px; }
+.home-atlas-search button { border:0; background:#172c23; color:#f0e9d9; padding:10px 14px; min-height:44px; cursor:pointer; }
+@media(max-width:1099px) {
+  .home-with-rail>.field-banner, .home-with-rail>.home-welcome { display:none; }
+  .home-explorer { display:block; }
+  .home-mobile-title { display:block; position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+  .home-view-tabs { display:flex; margin:0 0 16px; padding:4px; background:#172c23; }
+  .home-view-tabs button { flex:1; min-height:44px; border:0; padding:10px; font:500 14px var(--club-font-body); color:#f0e9d9; background:transparent; cursor:pointer; }
+  .home-view-tabs button[aria-selected="true"] { background:#f0e9d9; color:#172c23; }
+  .home-view-tabs button:focus-visible { outline:3px solid #b3a184; outline-offset:-3px; }
+  .home-explorer[data-home-view="territorio"] .home-atlas-panel, .home-explorer[data-home-view="atlas"] .home-territory-panel { display:none; }
+  .home-atlas-panel { position:static; }
+  .home-explorer .home-main>.field-section-title { display:none; }
+  .home-explorer .field-map-panel { padding:16px; }
+  .home-explorer .field-map-panel>h2 { font-size:28px; }
+  .home-explorer .field-map-panel>p, .home-explorer .geo-picker-head, .home-explorer .geo-picker-lede { display:none; }
+  .field-atlas .home-explorer .geo-map-wrap { order:0; height:300px; margin:4px 0 12px; }
+  .home-explorer .geo-selection-summary { display:none; }
+  .home-context-toggle { display:flex; justify-content:space-between; align-items:center; width:100%; min-height:48px; padding:12px 14px; margin-top:14px; border:1px solid var(--line); background:#f7f2e7; color:#172c23; font:inherit; font-size:13px; text-align:left; cursor:pointer; }
+  .home-explorer[data-context-open="false"] .home-territory-context { display:none; }
+  .home-atlas-search { margin:0 0 14px; }
+  .home-layout .home-atlas-panel .atlas-editorial-rail { max-height:none; margin-top:0; }
+  .home-atlas-panel .atlas-editorial-rail-scroll { max-height:none; overflow:visible; }
+  .home-atlas-panel .atlas-editorial-rail-heading { padding:16px; }
+  .home-atlas-panel .atlas-editorial-rail-scroll { padding:0 16px 12px; }
+  .home-atlas-panel .atlas-editorial-rail-categories { gap:14px 12px; }
+  .home-atlas-panel .atlas-editorial-rail-categories img { aspect-ratio:2/1; object-fit:cover; }
+  .home-atlas-panel .atlas-editorial-rail-title { font-size:19px; }
+  .home-explorer [role="tabpanel"]:focus-visible { outline:2px solid #172c23; outline-offset:4px; }
+}
